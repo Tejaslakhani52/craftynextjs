@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+body {
+  font-family: "Inter", sans-serif !important;
+}
+
+img {
+  width: 100%;
+  /* height: 100%; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+input,
+div,
+button,
+ul,
+li {
+  font-family: "Inter" !important;
+  color: "#1C3048";
+}
+
+.header {
+  /* transition: 0.2s all !important; */
+}
+
+.openMenu {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  background: linear-gradient(265.7deg, #2ec6b8 43.07%, #32e4d4 131.91%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.bg_linear {
+  background: linear-gradient(
+    268.03deg,
+    #5961f8 -0.66%,
+    #15d8c5 100%,
+    #15d8c5 100%
+  );
+}
+
+.pre_botton {
+  position: absolute;
+  top: 40%;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0px 8px 12px rgba(24, 24, 24, 0.2);
+  height: 35px;
+  justify-content: center;
+  line-height: 35px;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  transition-duration: 0.2s;
+  transition-property: border-color, color;
+  width: 35px;
+  align-items: center;
+}
+.next_botton {
+  position: absolute;
+  top: 40%;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0px 8px 12px rgba(24, 24, 24, 0.2);
+  height: 35px;
+  justify-content: center;
+  line-height: 35px;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  transition-duration: 0.2s;
+  transition-property: border-color, color;
+  width: 35px;
+  align-items: center;
+}
+
+.scroll_none::-webkit-scrollbar {
+  display: none;
+}
+
+.text_linear {
+  background: linear-gradient(
+    268.03deg,
+    #5961f8 -0.66%,
+    #15d8c5 100%,
+    #15d8c5 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.active_text_linear {
+  background: linear-gradient(268.03deg, #5765f6 -0.66%, #30a9d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.custome_invitation_bg {
+}
+
+.custome_invitation_bg {
+  overflow: hidden; /* half circle - top is not visible */
+  position: relative;
+}
+.custome_invitation_bg::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+.custome_invitation_bg::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 153px;
+  /* left: 50%; */
+  /* margin-left: -100px; */
+  top: -100px;
+  border-radius: 37%;
+  background-color: white;
+}
+.middle_round {
+  position: relative;
+}
+.middle_round::before {
+  content: "";
+  position: absolute;
+  height: 200px;
+  background-color: white;
+  width: 100%;
+}
+
+.ring-button {
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 50px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ring-button:before,
+.ring-button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: -1;
+}
+
+.ring-button:before {
+  animation: ring-out 2s ease-in-out infinite;
+}
+
+.ring-button:after {
+  animation: ring-in 2s ease-in-out infinite;
+}
+
+@keyframes ring-out {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+  }
+  100% {
+    width: 400%;
+    height: 400%;
+    opacity: 0;
+  }
+}
+
+@keyframes ring-in {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 400%;
+    height: 400%;
+    opacity: 0;
+  }
+  100% {
+    width: 200%;
+    height: 200%;
+    opacity: 1;
+  }
+}
