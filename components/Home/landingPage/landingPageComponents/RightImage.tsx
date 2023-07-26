@@ -1,7 +1,14 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
+import Iframe from "react-iframe";
 
-export default function RightImage({ title, point, image, buttonName }: any) {
+export default function RightImage({
+  title,
+  point,
+  image,
+  buttonName,
+  video,
+}: any) {
   return (
     <Box className="flex py-[30px] sm:py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
       <Box className="flex-1 flex justify-center max-lg:order-2  max-lg:w-[100%]">
@@ -40,11 +47,19 @@ export default function RightImage({ title, point, image, buttonName }: any) {
         </Box>
       </Box>
       <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
-        <img
-          src={image}
-          alt={image}
-          className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
-        />
+        {image ? (
+          <img
+            src={image}
+            alt={image}
+            className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+          />
+        ) : (
+          <Iframe
+            url={video}
+            // height="auto"
+            className="object-contain w-[650px] h-[500px] max-lg:w-[400px] max-sm:w-full"
+          />
+        )}
       </Box>
     </Box>
   );

@@ -7,6 +7,7 @@ import CustomInvitations from "./landingPageComponents/CustomInvitations";
 import CustomerSaying from "./landingPageComponents/CustomerSaying";
 import Celebrate from "./landingPageComponents/Celebrate";
 import ExploreBlog from "./landingPageComponents/ExploreBlog";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Schema from "@/components/common/Schema";
@@ -32,6 +33,17 @@ export const MarkText = ({ text }: any) => {
 };
 
 export default function LandingPage({ post }: any) {
+  const [videoData, setVideoData] = useState(null);
+
+  useEffect(() => {
+    const fetchVideoData = async () => {
+      const response = await fetch("/videos/bgRemove.json");
+      const data = await response.json();
+      setVideoData(data);
+    };
+
+    fetchVideoData();
+  }, []);
   return (
     <>
       <Box className="h-[463px] bg-[url('/images/landingPageBanner.png')] bg-cover bg-no-repeat max-lg:px-[20px] max-sm:h-auto max-sm:pb-[100px]">
@@ -62,8 +74,6 @@ export default function LandingPage({ post }: any) {
               opacity: "1",
               width: "180px",
 
-
-              
               borderRadius: "8px",
               "&:hover": {
                 backgroundColor: "white",
@@ -102,7 +112,8 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Explore Background Remover"}
-        image="./images/landingPageRemoveBack.png"
+        // image="./images/landingPageRemoveBack.png"
+        video={"./videos/bgRemove.html"}
       />
 
       <LeftImage

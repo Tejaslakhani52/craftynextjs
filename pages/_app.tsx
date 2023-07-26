@@ -81,7 +81,7 @@ export default function App({
         <Component {...pageProps} />
         {pageProps.paragraphContent && <p>{pageProps.paragraphContent}</p>}
       </Box>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
