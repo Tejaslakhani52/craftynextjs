@@ -1,16 +1,37 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
+import Iframe from "react-iframe";
 
-export default function LeftImage({ title, point, image, buttonName }: any) {
+export default function LeftImage({
+  title,
+  point,
+  image,
+  buttonName,
+  video,
+}: any) {
   return (
     <Box className="  bg-[#F4F7FE]  ">
       <Box className="flex py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
         <Box className="flex-1 flex justify-center ">
-          <img
+          {/* <img
             src={image}
             alt={image}
             className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
-          />
+          /> */}
+
+          {image ? (
+            <img
+              src={image}
+              alt={image}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          ) : (
+            <Iframe
+              url={video}
+              // height="auto"
+              className="object-contain w-[500px] h-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          )}
         </Box>
         <Box className="flex-1 flex justify-center py-[30px]  max-lg:pb-0  max-lg:w-[100%]">
           <Box className="w-[90%] flex  flex-col gap-[20px]   max-lg:w-[8 0%] max-sm:w-[100%]">

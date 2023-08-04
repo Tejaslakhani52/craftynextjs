@@ -57,7 +57,7 @@ export default function RightImage({
           <Iframe
             url={video}
             // height="auto"
-            className="object-contain w-[650px] h-[500px] max-lg:w-[400px] max-sm:w-full"
+            className="object-contain w-[500px] h-[500px] max-lg:w-[400px] max-sm:w-full"
           />
         )}
       </Box>

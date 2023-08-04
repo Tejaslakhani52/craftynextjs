@@ -41,7 +41,7 @@ export default function App({
   );
   let convertedString = convertedWords.join(" ");
   const canonicalUrl = `https://craftyartapp.com${router.asPath}`;
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [sidebarOpen, setSidebarOpen] = useState<boolean>(true);
   return (
     <>
       <Head>
@@ -81,7 +81,7 @@ export default function App({
         <Component {...pageProps} />
         {pageProps.paragraphContent && <p>{pageProps.paragraphContent}</p>}
       </Box>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

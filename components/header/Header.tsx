@@ -71,14 +71,14 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
             <img src="./icons/SearchIcon.svg" alt="SearchIcon" />
           </Box>
 
-          <LoginButton
+          {/* <LoginButton
             openLogin={openLogin}
             setOpenLogin={setOpenLogin}
             openSignUp={openSignUp}
             setOpenSignUp={setOpenSignUp}
-          />
+          /> */}
 
-          {/* <Profile /> */}
+          <Profile />
         </Box>
       </Box>
 

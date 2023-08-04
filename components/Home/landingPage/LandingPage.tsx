@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Schema from "@/components/common/Schema";
+import axios from "axios";
 
 export const MarkText = ({ text }: any) => {
   return (
@@ -43,7 +44,21 @@ export default function LandingPage({ post }: any) {
     };
 
     fetchVideoData();
+
+    axios
+      .post("https://story.craftyartapp.com/get/main/data", {
+        key: process.env.KEY as string,
+        page: 1,
+        count: 0,
+      })
+      .then(({ data }) => {
+        console.log("datadscsdc: ", data);
+      })
+      .catch((err) => {
+        console.log("err: ", err);
+      });
   }, []);
+
   return (
     <>
       <Box className="h-[463px] bg-[url('/images/landingPageBanner.png')] bg-cover bg-no-repeat max-lg:px-[20px] max-sm:h-auto max-sm:pb-[100px]">
@@ -113,7 +128,7 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Explore Background Remover"}
         // image="./images/landingPageRemoveBack.png"
-        video={"./videos/bgRemove.html"}
+        video={"./videos/remove_bg_json/demo/data.html"}
       />
 
       <LeftImage
@@ -128,7 +143,8 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Choose your Brand Kit"}
-        image="./images/brand_kit.svg"
+        // image="./images/brand_kit.svg"
+        video={"./videos/BrandKit json/demo/data.html"}
       />
 
       <RightImage
