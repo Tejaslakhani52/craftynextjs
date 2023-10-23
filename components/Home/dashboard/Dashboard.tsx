@@ -33,11 +33,7 @@ export default function Dashboard() {
               className="flex flex-col  items-center   cursor-pointer gap-[10px]"
               onClick={() => router.push(item?.path)}
             >
-              <img
-                src={item?.image}
-                alt=""
-                className="w-[50px] max-w-[50px] "
-              />
+              <img src={item?.image} alt="" className="w-[50px] max-w-[50px]" />
               <Typography className="text-white text-center text-[14px] whitespace-nowrap ">
                 {item?.name}
               </Typography>

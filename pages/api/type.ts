@@ -45,4 +45,5 @@ export interface getAllTemplatesDataType {
   id_name: string;
   map: Function;
   filter: Function;
+  length: any;
 }

@@ -186,29 +186,21 @@ export default function ExploreTemplates({ category }: props) {
           </Box>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center", p: "30px" }}>
-          <Button
+          <button
             style={{
               background:
                 "linear-gradient(268.03deg, #5961F8 -0.66%, #15D8C5 100%, #15D8C5 100%)",
               width: "fit-content",
-              fontSize: "18px",
+              fontSize: "17px",
               textTransform: "unset",
               borderRadius: "10px",
               fontWeight: "500",
+              color: "white",
             }}
             className="bg_linear py-[10px] px-[15px]"
           >
-            <Typography
-              sx={{
-                fontSize: "17px",
-                color: "white",
-                width: "100%",
-                fontWeight: "500",
-              }}
-            >
-              Get All Templates
-            </Typography>
-          </Button>
+            Get All Templates
+          </button>
         </Box>
       </Box>
     </Box>

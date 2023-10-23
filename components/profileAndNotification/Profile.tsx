@@ -1,17 +1,105 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Divider } from "@mui/material";
+import { tokenGet, tokenSet } from "@/redux/action/AuthToken";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import Cookies from "js-cookie";
 
 export default function Profile() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const dispatch = useDispatch();
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const [uId, setuId] = useState<any>("");
+  const [userProfile, setUserProfile] = useState<any>(null);
+  const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
+  const router = useRouter();
+
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
+  const getData = tokenGet("userProfile");
+
+  useEffect(() => {
+    setuId(getData);
+    // setProfileLoading(true);
+  }, []);
+
+  // localStorage.clear();
+  useEffect(() => {
+    if (uId == "") {
+      setUserProfile(null);
+    } else fetchData();
+  }, [uId, getData]);
+
+  const fetchData = async () => {
+    axios
+      .post("https://story.craftyartapp.com/get/user", {
+        key: "qwfsegxdhbxfjhncf",
+        device_id: "",
+        email: uId,
+      })
+      .then(({ data }) => {
+        console.log("data: ", data);
+        tokenSet("premium", data?.user?.is_premium === 1 ? "true" : "false");
+        setImageBaseUrl(data?.url);
+        setUserProfile(data?.user);
+      })
+      .catch((err) => {
+        console.log("err: ", err);
+      });
+  };
+
+  const ProfileImage = () => {
+    return userProfile?.photo_uri !== "null" && userProfile?.photo_uri ? (
+      userProfile?.photo_uri.includes("googleusercontent") ? (
+        <img
+          src={`${userProfile?.photo_uri}`}
+          alt="Selected file preview"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      ) : (
+        <img
+          src={`${imageBaseUrl}${userProfile?.photo_uri}`}
+          alt="Selected file preview"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      )
+    ) : (
+      <p
+        style={{
+          background:
+            "linear-gradient(268.03deg, #5961F8 -0.66%, #5961F8 -0.65%, #497DEC 22.41%, #15D8C5 100%, #15D8C5 100%)",
+          color: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100%",
+          fontSize: "23px",
+          textTransform: "capitalize",
+        }}
+      >
+        {userProfile?.name?.charAt(0)}
+      </p>
+    );
+  };
+
   return (
-    <>
+    <Box>
       <Box className="flex items-center">
         <Button className="min-w-[20px] h-[30px]">
           <img
@@ -20,19 +108,11 @@ export default function Profile() {
             className="w-[20px]"
           />
         </Button>
-        <Button onClick={handleClick}>
+        <Box onClick={handleClick} className="cursor-pointer">
           <Box className="rounded-[50%] w-[40px] h-[40px] overflow-hidden">
-            <img
-              src={`./images/profileImage.png`}
-              alt="Selected file preview"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
+            <ProfileImage />
           </Box>
-        </Button>
+        </Box>
       </Box>
 
       <Menu
@@ -60,62 +140,12 @@ export default function Profile() {
                 overflow: "hidden",
               }}
             >
-              {/* {userProfile?.photo_uri ? (
-                userProfile?.photo_uri?.includes("googleusercontent") ? (
-                  <img
-                    src={`${userProfile?.photo_uri}`}
-                    alt="Selected file preview"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                ) : (
-                  <img
-                    src={`${imageBaseUrl}${userProfile?.photo_uri}`}
-                    alt="Selected file preview"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                )
-              ) : (
-                <div
-                  style={{
-                    background:
-                      "linear-gradient(268.03deg, #5961F8 -0.66%, #5961F8 -0.65%, #497DEC 22.41%, #15D8C5 100%, #15D8C5 100%)",
-                    color: "white",
-                    display: "flex",
-                    justifyContent: "center", 
-                    alignItems: "center",
-                    width: "100%",
-                    height: "100%",
-                    fontSize: "30px",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  {userProfile?.name?.charAt(0)}
-                </div>
-              )} */}
-
-              <img
-                src={`./images/profileImage.png`}
-                alt="Selected file preview"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-              />
+              <ProfileImage />
             </div>
-            <Box>
-              <Typography className="font-medium">
-                {/* {userProfile?.name || userProfile?.displayName} */}
-                Infiapp Solution
-              </Typography>
+            <div>
+              <h4 className="mb-0">
+                {userProfile?.name || userProfile?.displayName}
+              </h4>
               <p
                 style={{
                   fontSize: "13px",
@@ -126,10 +156,9 @@ export default function Profile() {
                   marginBottom: "0",
                 }}
               >
-                {/* {userProfile?.email} */}
-                infiappsolution@gmail.com
+                {userProfile?.email}
               </p>
-            </Box>
+            </div>
           </Box>
         </MenuItem>
         <Divider />
@@ -142,14 +171,19 @@ export default function Profile() {
         >
           My Account
         </MenuItem>
-        <MenuItem className="text-[14px]">My Project</MenuItem>
+        {/* <MenuItem className="text-[14px]">My Project</MenuItem> */}
         <MenuItem
-          // onClick={handleClose}
+          onClick={() => {
+            localStorage.clear();
+            router.push("/");
+            dispatch(openSidebar(false));
+            Cookies.remove("rememberMe");
+          }}
           className="text-[14px] mb-3"
         >
           Sign Out
         </MenuItem>
       </Menu>
-    </>
+    </Box>
   );
 }

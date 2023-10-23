@@ -1,39 +1,44 @@
 import { Box, Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MenuBox from "./headerComponents/Menu";
 import LoginButton from "./headerComponents/LoginButton";
 import { useRouter } from "next/router";
 import Sidebar from "../sidebar/Sidebar";
 import Profile from "../profileAndNotification/Profile";
+import { tokenGet } from "@/redux/action/AuthToken";
+import { useDispatch, useSelector } from "react-redux";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+
 // import { logo } from "../../public/images/logo.svg";
 
 export default function Header({ sidebarOpen, setSidebarOpen }: any) {
+  const dispatch = useDispatch();
+  const token = tokenGet("userProfile");
+  const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+  console.log("token: ", token);
   const router = useRouter();
   const [openLogin, setOpenLogin] = useState<boolean>(false);
   const [openSignUp, setOpenSignUp] = useState<boolean>(false);
-  const token = true;
+
+  useEffect(() => {
+    setSidebarOpen(sideBarRedux);
+  }, [sideBarRedux]);
+
   return (
-    <>
+    <div>
       <Box
         className="fixed top-0 left-0 right-0 h-[70px] bg-white flex items-center px-5  z-[100] lg:z-[1000] gap-12 header"
         sx={{ boxShadow: "0px 1px 4px 1px rgba(0, 0, 0, 0.08)" }}
       >
         <Box className="w-[60%] flex items-center justify-start gap-12 max-lg:w-[40%]">
-          <Box className="  flex items-center justify-start gap-5">
-            <Button
-              className="py-3 min-w-[30px] px-1 block lg:hidden"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-            >
-              <img
-                src="./icons/menuOpen.svg"
-                alt="menuOpen"
-                className="w-[22px] mx-auto"
-              />
-            </Button>
-            {token && (
+          <Box className="flex items-center justify-start gap-5">
+            <div>
               <Button
-                className="py-3 min-w-[30px] px-1 hidden lg:block"
-                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="py-3 min-w-[30px] px-1 block lg:hidden"
+                onClick={() => {
+                  dispatch(openSidebar(!sideBarRedux));
+                  setSidebarOpen(!sideBarRedux);
+                }}
               >
                 <img
                   src="./icons/menuOpen.svg"
@@ -41,6 +46,24 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                   className="w-[22px] mx-auto"
                 />
               </Button>
+            </div>
+
+            {token && (
+              <div style={{ display: token ? "block" : "none" }}>
+                <Button
+                  className="py-3 min-w-[30px] px-1 hidden lg:block"
+                  onClick={() => {
+                    dispatch(openSidebar(!sideBarRedux));
+                    setSidebarOpen(!sideBarRedux);
+                  }}
+                >
+                  <img
+                    src="./icons/menuOpen.svg"
+                    alt="menuOpen"
+                    className="w-[22px] mx-auto"
+                  />
+                </Button>
+              </div>
             )}
             <Box
               className="w-[146px] cursor-pointer "
@@ -53,8 +76,9 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
               />
             </Box>
           </Box>
-
-          <MenuBox />
+          <div>
+            <MenuBox />
+          </div>
         </Box>
         <Box className="w-[40%] flex items-center justify-end gap-4 max-lg:w-[60%]">
           <Box className="w-[80%] bg-[#F4F7FE] px-4 py-[9px] rounded-[6px] flex items-center gap-3 max-sm:hidden">
@@ -71,25 +95,30 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
             <img src="./icons/SearchIcon.svg" alt="SearchIcon" />
           </Box>
 
-          {/* <LoginButton
-            openLogin={openLogin}
-            setOpenLogin={setOpenLogin}
-            openSignUp={openSignUp}
-            setOpenSignUp={setOpenSignUp}
-          /> */}
+          <div style={{ display: token ? "block" : "none" }}>
+            <Profile />
+          </div>
 
-          <Profile />
+          <div style={{ display: token ? "none" : "block" }}>
+            <LoginButton
+              openLogin={openLogin}
+              setOpenLogin={setOpenLogin}
+              openSignUp={openSignUp}
+              setOpenSignUp={setOpenSignUp}
+            />
+          </div>
         </Box>
       </Box>
-
-      <Sidebar
-        open={sidebarOpen}
-        setOpen={setSidebarOpen}
-        openLogin={openLogin}
-        setOpenLogin={setOpenLogin}
-        openSignUp={openSignUp}
-        setOpenSignUp={setOpenSignUp}
-      />
-    </>
+      <div>
+        <Sidebar
+          open={sidebarOpen}
+          setOpen={setSidebarOpen}
+          openLogin={openLogin}
+          setOpenLogin={setOpenLogin}
+          openSignUp={openSignUp}
+          setOpenSignUp={setOpenSignUp}
+        />
+      </div>
+    </div>
   );
 }

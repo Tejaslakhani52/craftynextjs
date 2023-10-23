@@ -28,21 +28,12 @@ export default function RightImage({
               fontSize: "18px",
               textTransform: "unset",
               borderRadius: "10px",
-
+              color: "white",
               fontWeight: "500",
             }}
-            className="bg_linear py-[10px] px-[10px] ml-[40px] max-lg:mx-auto"
+            className="bg_linear py-[10px] px-[10px] ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
           >
-            <Typography
-              sx={{
-                color: "white",
-                width: "100%",
-                fontWeight: "500",
-              }}
-              className="text-[14px] 2sm:text-[17px]"
-            >
-              {buttonName}
-            </Typography>
+            {buttonName}
           </Button>
         </Box>
       </Box>
@@ -54,13 +45,30 @@ export default function RightImage({
             className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
           />
         ) : (
-          <Iframe
-            url={video}
-            // height="auto"
-            className="object-contain w-[500px] h-[500px] max-lg:w-[400px] max-sm:w-full"
+          <video
+            src={video}
+            controls={false}
+            autoPlay
+            loop
+            muted
+            className="object-contain w-[550px] max-lg:w-[400px] max-sm:w-full"
           />
         )}
       </Box>
     </Box>
   );
+}
+
+{
+  /* <Iframe
+  url={video}
+  // height="auto"
+  width="500"
+  height="281"
+  className="object-contain w-[500px] h-[500px] max-lg:w-[400px] max-sm:w-full"
+  allowfullscreen
+  controls="false"
+  autoplay
+  loop
+/>; */
 }

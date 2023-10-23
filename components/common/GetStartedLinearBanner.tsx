@@ -61,24 +61,17 @@ export default function GetStartedLinearBanner(props: props) {
           style={{
             backgroundColor: "white",
             width: "162px",
-            fontSize: "20px",
+
             textTransform: "unset",
             boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
             border: "none",
             padding: "8px 10px",
             borderRadius: "10px",
+            fontSize: "16px",
+            fontWeight: "500",
           }}
         >
-          <Typography
-            sx={{
-              fontSize: "16px",
-              width: "100%",
-              fontWeight: "500",
-            }}
-            className="text-black"
-          >
-            {props?.buttonName}
-          </Typography>
+          {props?.buttonName}
         </Button>
       </Box>
       <Box

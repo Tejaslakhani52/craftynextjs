@@ -34,24 +34,15 @@ export default function LeftDetail({
                 background:
                   "linear-gradient(268.03deg, #5961F8 -0.66%, #15D8C5 100%, #15D8C5 100%)",
                 width: "fit-content",
-                fontSize: "18px",
+                color: "white",
                 textTransform: "unset",
                 borderRadius: "10px",
                 fontWeight: "500",
               }}
-              className="bg_linear py-[10px] px-[10px] ml-[40px]  max-lg:mx-auto"
+              className="bg_linear py-[10px] px-[10px] ml-[40px]  max-lg:mx-auto text-[14px] 2sm:text-[17px]"
               onClick={() => router.push(path)}
             >
-              <Typography
-                sx={{
-                  color: "white",
-                  width: "100%",
-                  fontWeight: "500",
-                }}
-                className="text-[14px] 2sm:text-[17px]"
-              >
-                {buttonName}
-              </Typography>
+              {buttonName}
             </Button>
           </Box>
         </Box>

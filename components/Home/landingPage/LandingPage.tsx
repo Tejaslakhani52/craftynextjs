@@ -159,7 +159,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Resize your Image"}
-        image="./images/resize_img.png"
+        video={"./videos/resize.mp4"}
       />
 
       <LeftImage

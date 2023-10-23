@@ -118,10 +118,11 @@ export default function Celebrate() {
           background:
             "linear-gradient(268.03deg, #5961F8 -0.66%, #15D8C5 100%, #15D8C5 100%)",
           width: "fit-content",
-          fontSize: "18px",
+          fontSize: "17px",
           textTransform: "unset",
           borderRadius: "10px",
           fontWeight: "500",
+          color: "white",
         }}
         className="bg_linear py-[10px] px-[40px] max-lg:mt-10 ring-out"
         onClick={() => setOpen(true)}
@@ -130,16 +131,7 @@ export default function Celebrate() {
         <span className="animate-ping absolute inline-flex  w-full rounded-full bg-sky-400 opacity-75 h-[100px] top-0 left-0"></span>
         <span className="relative inline-flex rounded-full bg-sky-500"></span> */}
 
-        <Typography
-          sx={{
-            fontSize: "17px",
-            color: "white",
-            width: "100%",
-            fontWeight: "500",
-          }}
-        >
-          {"Celebrate with us"}
-        </Typography>
+        {"Celebrate with us"}
       </Button>
 
       {open && (

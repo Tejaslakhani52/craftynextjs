@@ -34,19 +34,11 @@ export default function LeftImageSection({
               textTransform: "unset",
               borderRadius: "10px",
               fontWeight: "500",
+              color: "white",
             }}
-            className="bg_linear py-[10px] px-[10px] ml-[40px]  max-lg:mx-auto"
+            className="bg_linear py-[10px] px-[10px] ml-[40px]  max-lg:mx-auto text-[14px] 2sm:text-[17px]"
           >
-            <Typography
-              sx={{
-                color: "white",
-                width: "100%",
-                fontWeight: "500",
-              }}
-              className="text-[14px] 2sm:text-[17px]"
-            >
-              {buttonName}
-            </Typography>
+            {buttonName}
           </Button>
         </Box>
       </Box>

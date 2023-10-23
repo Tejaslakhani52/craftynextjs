@@ -1,5 +1,6 @@
 import { Box, Button, Divider, MenuItem, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   EditorTools,
   Product,
@@ -10,6 +11,7 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
 import { useRouter } from "next/router";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
 
 export const sidebarMenu = [
   {
@@ -98,11 +100,11 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
       border-[1.5px] border-r-[#D5D8E3] py-[20px]  ${
         open
           ? "left-0"
-          : "left-[-268px] max-lg:left-[-350px] max-sm:left-[-80%] "
+          : "left-[-268px] max-lg:left-[-350px] max-sm:left-[-80%]"
       } `}
       sx={{ transition: "0.2s all" }}
     >
-      <Box className=" ">
+      <Box className="">
         <Box
           className="px-[20px] flex items-center gap-4 pb-3 "
           // sx={{ borderBottom: "1px solid #394c6026" }}
@@ -116,14 +118,14 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
             />
           </Button>
 
-          <Typography className="text-black text-[20px] font-semibold">
+          <span className="text-black text-[20px] font-semibold">
             {data?.name}
-          </Typography>
+          </span>
         </Box>
         <Divider />
 
         {data?.subName?.map((data: any) => (
-          <>
+          <div>
             <Box className="flex flex-col p-[20px]">
               <Typography
                 className={`text-black font-semibold px-4 ${
@@ -133,27 +135,29 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
                 {data?.heading}
               </Typography>
               {data?.allName?.map((item: any) => (
-                <MenuItem
-                  onClick={() => {
-                    router.push(item.path);
-                    setOpen(false);
-                  }}
-                  sx={{
-                    fontSize: "14px",
-                    borderRadius: "4px",
-                    "&:hover": {
-                      backgroundColor: "#EDF0F9",
-                    },
-                    color:
-                      router.pathname === item.path ? "#2EC6B8" : "#1C3048",
-                  }}
-                >
-                  {item?.name}
-                </MenuItem>
+                <div>
+                  <MenuItem
+                    onClick={() => {
+                      router.push(item.path);
+                      setOpen(false);
+                    }}
+                    sx={{
+                      fontSize: "14px",
+                      borderRadius: "4px",
+                      "&:hover": {
+                        backgroundColor: "#EDF0F9",
+                      },
+                      color:
+                        router.pathname === item.path ? "#2EC6B8" : "#1C3048",
+                    }}
+                  >
+                    {item?.name}
+                  </MenuItem>
+                </div>
               ))}
             </Box>
             <Divider />
-          </>
+          </div>
         ))}
       </Box>
     </Box>
@@ -170,6 +174,9 @@ export default function Sidebar({
 }: any) {
   console.log("open: ", open);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+  console.log("sideBarRedux: ", sideBarRedux);
   const [screenHeight, setScreenHeight] = useState(0);
   const token = true;
 
@@ -187,14 +194,12 @@ export default function Sidebar({
   const SideBarMenuButton = ({ data }: any) => {
     const [open, setOpens] = useState<boolean>(false);
     return (
-      <>
+      <Box>
         <Button
           className="flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
           onClick={() => setOpens(!open)}
         >
-          <Typography className="text-black text-[15px]">
-            {data?.name}
-          </Typography>
+          <span className="text-black text-[15px]">{data?.name}</span>
           {/* <ChevronRightIcon className="text-black" /> */}
           <img
             src="./icons/rightArrow.svg"
@@ -202,32 +207,34 @@ export default function Sidebar({
             className="w-[7px]"
           />
         </Button>
-        <InnerButton
-          open={open}
-          data={data}
-          setOpens={setOpens}
-          setOpen={setOpen}
-        />
-      </>
+        <div>
+          <InnerButton
+            open={open}
+            data={data}
+            setOpens={setOpens}
+            setOpen={setOpen}
+          />
+        </div>
+      </Box>
     );
   };
   return (
-    <>
+    <Box>
       <Box
         className={`fixed  
        bottom-0 top-[70px] max-lg:top-0  bg-[#4f4f4f6b] w-[100%]   py-[20px] block lg:hidden `}
         sx={{
-          left: open ? "0" : "-100%",
+          left: sideBarRedux ? "0" : "-100%",
           // transition: "0.1s all",
           zIndex: "500",
         }}
-        onClick={() => setOpen(false)}
+        onClick={() => dispatch(openSidebar(false))}
       ></Box>
       <Box
         className={`fixed  
        bottom-0 top-[70px] max-lg:top-0 bg-white w-[250px] max-lg:w-[300px] max-sm:w-[80%]
         py-[20px]  ${
-          open
+          sideBarRedux
             ? "left-0"
             : "left-[-268px] max-lg:left-[-350px] max-sm:left-[-80%] "
         } `}
@@ -246,17 +253,13 @@ export default function Sidebar({
               className="flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
               onClick={() => setOpen(!open)}
             >
-              <Typography className="text-black text-[15px]">
-                Custom order
-              </Typography>
+              <span className="text-black text-[15px]">Custom order</span>
             </Button>
             <Button
               className="flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
               onClick={() => setOpen(!open)}
             >
-              <Typography className="text-black text-[15px]">
-                Pricing
-              </Typography>
+              <span className="text-black text-[15px]">Pricing</span>
               <img
                 src="./icons/pricing.svg"
                 alt="price"
@@ -344,7 +347,7 @@ export default function Sidebar({
                   onClick={() => router.push(item.path)}
                 >
                   {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
-                  <Box className="flex gap-5  ">
+                  <Box className="flex gap-5">
                     <Box className="w-[20px]">
                       <img
                         src={
@@ -356,9 +359,9 @@ export default function Sidebar({
                       />
                     </Box>
                     <Typography
-                      className={`  text-[15px] ${
+                      className={`text-[15px] ${
                         router.pathname === item.path
-                          ? " active_text_linear "
+                          ? " active_text_linear"
                           : "text-black opacity-60"
                       }`}
                     >
@@ -400,6 +403,6 @@ export default function Sidebar({
           /> */}
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }

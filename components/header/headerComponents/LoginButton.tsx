@@ -11,11 +11,13 @@ export default function LoginButton({
 }: any) {
   return (
     <Box className="w-[auto] flex justify-end   sm:gap-4 items-center">
-      <Login
-        setOpenSignUp={setOpenSignUp}
-        openLogin={openLogin}
-        setOpenLogin={setOpenLogin}
-      />
+      <Box>
+        <Login
+          setOpenSignUp={setOpenSignUp}
+          openLogin={openLogin}
+          setOpenLogin={setOpenLogin}
+        />
+      </Box>
       <Box className="max-sm:hidden">
         <SignUp
           setOpenLogin={setOpenLogin}

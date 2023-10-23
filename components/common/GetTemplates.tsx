@@ -49,30 +49,22 @@ export default function GetTemplates(props: any) {
           </Typography>
         </Box>
 
-        <Button
+        <button
           style={{
             backgroundColor: "white",
             width: "fit-content",
-            fontSize: "18px",
+
             textTransform: "unset",
             borderRadius: "10px",
             fontWeight: "500",
+            fontSize: "17px",
+            color: "white",
           }}
           onClick={() => router.push(props.navigate)}
-          className=" py-[10px] px-[15px]"
+          className=" py-[10px] px-[15px] text_linear"
         >
-          <Typography
-            sx={{
-              fontSize: "17px",
-              color: "white",
-              width: "100%",
-              fontWeight: "500",
-            }}
-            className="text_linear"
-          >
-            Get All Templates
-          </Typography>
-        </Button>
+          Get All Templates
+        </button>
       </Box>
     </>
   );
