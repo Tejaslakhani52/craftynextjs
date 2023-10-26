@@ -11,4 +11,14 @@ module.exports = {
   devIndicators: {
     autoPrerender: false,
   },
+
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "panel.craftyartapp.com",
+        port: "",
+      },
+    ],
+  },
 };
