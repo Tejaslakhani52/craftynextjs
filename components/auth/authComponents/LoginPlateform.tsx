@@ -28,26 +28,24 @@ const auth: any = getAuth();
 
 export const LoginButton = (props: any) => {
   return (
-    <div>
-      <Button
-        sx={{
-          display: "flex",
-          gap: "18px",
-          color: "#1C3048",
-          textTransform: "unset",
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#F4F7FE !important",
-          boxShadow: "0px 0px 3px 1px rgba(28, 48, 72, 0.15)",
-          borderRadius: "10px",
-          padding: "9px",
-        }}
-        className="text-[16px] max-2sm:text-[12px]"
-        {...props}
-      >
-        {props.children}
-      </Button>
-    </div>
+    <Button
+      sx={{
+        display: "flex",
+        gap: "18px",
+        color: "#1C3048",
+        textTransform: "unset",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#F4F7FE !important",
+        boxShadow: "0px 0px 3px 1px rgba(28, 48, 72, 0.15)",
+        borderRadius: "10px",
+        padding: "9px",
+      }}
+      className="text-[16px] max-2sm:text-[12px]"
+      {...props}
+    >
+      {props.children}
+    </Button>
   );
 };
 

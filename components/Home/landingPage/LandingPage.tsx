@@ -12,6 +12,7 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Schema from "@/components/common/Schema";
 import axios from "axios";
+import TrendingFunctionalities from "./landingPageComponents/TrendingFunctionalities";
 
 export const MarkText = ({ text }: any) => {
   return (
@@ -88,7 +89,6 @@ export default function LandingPage({ post }: any) {
               whiteSpace: "nowrap",
               opacity: "1",
               width: "180px",
-
               borderRadius: "8px",
               "&:hover": {
                 backgroundColor: "white",
@@ -108,7 +108,8 @@ export default function LandingPage({ post }: any) {
         />
       </Box>
       <Box className=" my-8 sm:my-16">
-        <BrandsIconSlider />
+        {/* <BrandsIconSlider /> */}
+        <TrendingFunctionalities />
       </Box>
 
       <Typography className="text-[47px] font-bold	text-black text-center text_linear mb-5 max-sm:text-[28px] px-[20px]">
@@ -127,8 +128,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Explore Background Remover"}
-        // image="./images/landingPageRemoveBack.png"
-        video={"./videos/remove_bg_json/demo/data.html"}
+        video={"./videos/Remove Bg.mp4"}
       />
 
       <LeftImage
@@ -143,8 +143,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Choose your Brand Kit"}
-        // image="./images/brand_kit.svg"
-        video={"./videos/BrandKit json/demo/data.html"}
+        video={"./videos/Brandkit.mp4"}
       />
 
       <RightImage
@@ -174,7 +173,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Turn photo to Caricature"}
-        image="./images/cature_img.png"
+        video={"./videos/Caricature.mp4"}
       />
 
       <CustomInvitations />
@@ -191,7 +190,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Apply Style Kit"}
-        image="./images/stylekit_img.png"
+        video={"./videos/Stylekit.mp4"}
       />
 
       <LeftImage
@@ -206,7 +205,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Place your Custom Order"}
-        image="./images/order_img.png"
+        video={"./videos/Custom Order.mp4"}
       />
       <RightImage
         title=" Schedule Your Post"
@@ -220,7 +219,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Schedule your Post"}
-        image="./images/frames.png"
+        video={"./videos/Schedule Post.mp4"}
       />
 
       <LeftImage

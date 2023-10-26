@@ -18,6 +18,7 @@ export const createUserApi =
         console.log("data: ", data);
         toast.success("Success Login");
         tokenSet("userProfile", data?.user?.uid);
+        window.location.reload();
         // navigate(`${currentPathname !== "/login" ? currentPathname : "/"}`);
         router.push(`${"/"}`);
       })

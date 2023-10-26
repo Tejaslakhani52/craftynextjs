@@ -99,11 +99,9 @@ li {
 }
 
 .text_linear {
-  background: linear-gradient(
-    268.03deg,
-    #5961f8 -0.66%,
-    #15d8c5 100%,
-    #15d8c5 100%
+  background: var(
+    --text-grediant,
+    linear-gradient(268deg, #5765f6 -0.66%, #30a9d9 100%)
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -228,4 +226,19 @@ li {
   }
 }
 
+.MuiPagination-root ul li button {
+  background-color: #ffffff;
+  border: none !important;
+  border-radius: 6px !important;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1) !important;
+}
 
+.css-kvsszq-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+  border-radius: 6px !important;
+  background: linear-gradient(
+    276deg,
+    #5961f8 -6.08%,
+    #15d8c5 99.13%,
+    #15d8c5 99.13%
+  ) !important;
+}

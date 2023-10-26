@@ -11,7 +11,7 @@ export default function CustomInvitations() {
 
   useEffect(() => {
     axios
-      .post("https://craftyverse.in/templates/api/getCategoryDatas", {
+      .post("https://story.craftyartapp.com/get/datas", {
         debug_key: "debug",
         cat_id: "a4-invitation",
         limit: 10,
@@ -24,19 +24,8 @@ export default function CustomInvitations() {
       .catch((err) => consoleShow("err", err));
   }, []);
 
-  //   const fetchData = async () => {
-  //     const templates_ = await api.getCategoryDatas({
-  //       debug_key: "debug",
-  //       cat_id: "invitation-card" as any,
-  //       limit: 20,
-  //       page: 1,
-  //     });
-  //     consoleShow("templates_: ", templates_);
-  //     setData(templates_?.datas);
-  //     // setTemplates(templates_);
-  //   };
   return (
-    <Box className="h-[516px] sm:h-[693px]  bg-[url('/images/customeinvitation.png')]  bg-cover bg-no-repeat mt-[-100px]  xl:mt-[-171px] bg-[#F4F7FE] 5xl:bg_linear px-[20px]   bg-top max-2sm:h-auto  max-2sm:pt-[50px]	">
+    <Box className="h-[516px] sm:h-[693px]  bg-[url('/images/customeinvitation.png')]  bg-cover bg-no-repeat mt-[-100px]  xl:mt-[-142px] bg-[#F4F7FE] 5xl:bg_linear px-[20px]   bg-top max-2sm:h-auto  max-2sm:pt-[50px]	">
       {/* <Box className="h-[693px] bg_linear mt-[-171px]  middle_round  bg-center	"> */}
       <Box className="flex flex-col items-center pt-14 gap-5  pt-[230px] max-sm:pt-[169px] max-2sm:pt-[100px]">
         <Typography

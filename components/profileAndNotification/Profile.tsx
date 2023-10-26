@@ -24,11 +24,12 @@ export default function Profile() {
     setAnchorEl(event.currentTarget);
   };
   const getData = tokenGet("userProfile");
+  console.log("getData: ", getData);
 
   useEffect(() => {
     setuId(getData);
     // setProfileLoading(true);
-  }, []);
+  }, [getData]);
 
   // localStorage.clear();
   useEffect(() => {
@@ -99,11 +100,11 @@ export default function Profile() {
   };
 
   return (
-    <Box>
+    <>
       <Box className="flex items-center">
         <Button className="min-w-[20px] h-[30px]">
           <img
-            src="./icons/notification.svg"
+            src="/icons/notification.svg"
             alt="notification"
             className="w-[20px]"
           />
@@ -178,12 +179,13 @@ export default function Profile() {
             router.push("/");
             dispatch(openSidebar(false));
             Cookies.remove("rememberMe");
+            window.location.reload();
           }}
           className="text-[14px] mb-3"
         >
           Sign Out
         </MenuItem>
       </Menu>
-    </Box>
+    </>
   );
 }

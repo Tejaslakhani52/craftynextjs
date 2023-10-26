@@ -63,12 +63,12 @@ export default function BrandsIconSlider() {
         </Typography>
 
         <Box className="relative px-[10%] w-[100%] max-md:px-0">
-          <Button
+          <button
             onClick={handlePrevClick}
             className="pre_botton left-[10%] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] hidden sm:flex"
           >
             <KeyboardArrowLeftIcon />
-          </Button>
+          </button>
 
           <Box
             className="flex w-[80%] mx-auto overflow-x-auto gap-[100px] items-center scroll_none max-md:gap-[30px]   max-sm:w-[100%]"
@@ -118,12 +118,12 @@ export default function BrandsIconSlider() {
             </Button>
           </Box>
 
-          <Button
+          <button
             onClick={handleNextClick}
             className="next_botton right-[10%] max-md:right-[20px] max-sm:top-[100px] max-sm:right-[30%] hidden sm:flex"
           >
             <KeyboardArrowRightIcon />
-          </Button>
+          </button>
         </Box>
       </Box>
     </Box>

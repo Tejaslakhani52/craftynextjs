@@ -26,10 +26,13 @@ export default function LeftImage({
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           ) : (
-            <Iframe
-              url={video}
-              // height="auto"
-              className="object-contain w-[500px] h-[500px] max-lg:w-[400px] max-sm:w-full"
+            <video
+              src={video} 
+              controls={false}
+              autoPlay
+              loop
+              muted
+              className="object-contain w-[550px] max-lg:w-[400px] max-sm:w-full"
             />
           )}
         </Box>

@@ -78,13 +78,13 @@ export default function App({
           <meta property="og:type" content="website" />
           <meta property="og:url" content={canonicalUrl} />
         </Head>
-        <div>
+        <Box>
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           <Box
             sx={{
               marginLeft: sidebarOpen ? "250px" : "0",
               marginTop: "70px",
-              transition: "0.1s all",
+              // transition: "0.1s all",
             }}
             className="max-lg:ml-0"
           >
@@ -96,7 +96,7 @@ export default function App({
           </Box>
           {!token && <Footer />}
           {/* <MainLoader /> */}
-        </div>
+        </Box>
       </Provider>
     </>
   );

@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface DataState {
   openSidebar: boolean;
+  openMobileMenubar: boolean;
 }
 
 const initialState: DataState = {
   openSidebar: false,
+  openMobileMenubar: false,
 };
 
 const dataActions = createSlice({
@@ -15,8 +17,11 @@ const dataActions = createSlice({
     openSidebar: (state, action: PayloadAction<any>) => {
       state.openSidebar = action.payload;
     },
+    openMobileMenubar: (state, action: PayloadAction<any>) => {
+      state.openMobileMenubar = action.payload;
+    },
   },
 });
 
-export const { openSidebar } = dataActions.actions;
+export const { openSidebar, openMobileMenubar } = dataActions.actions;
 export default dataActions.reducer;

@@ -12,66 +12,67 @@ import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
 import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import { tokenGet } from "@/redux/action/AuthToken";
 
 export const sidebarMenu = [
   {
     name: "Home",
-    icons: "./icons/homeIcons.svg",
-    activeIcon: "./icons/homeIconActive.svg",
+    icons: "/icons/homeIcons.svg",
+    activeIcon: "/icons/homeIconActive.svg",
     path: "/",
   },
   {
     name: "Eprofile",
-    icons: "./icons/profiile.svg",
-    activeIcon: "./icons/profileActive.svg",
+    icons: "/icons/profiile.svg",
+    activeIcon: "/icons/profileActive.svg",
     path: "/profile",
   },
   {
     name: "Templates",
-    icons: "./icons/templates.svg",
-    activeIcon: "./icons/templatesActive.svg",
+    icons: "/icons/templates.svg",
+    activeIcon: "/icons/templatesActive.svg",
     path: "/templates",
   },
   {
     name: "Brand Kit",
-    icons: "./icons/brandKit.svg",
-    activeIcon: "./icons/brandKitActive.svg",
+    icons: "/icons/brandKit.svg",
+    activeIcon: "/icons/brandKitActive.svg",
     path: "/brandKit",
   },
   {
     name: "Content planner",
-    icons: "./icons/contentPlaner.svg",
-    activeIcon: "./icons/contentPlanerActive.svg",
+    icons: "/icons/contentPlaner.svg",
+    activeIcon: "/icons/contentPlanerActive.svg",
     path: "/contentPlanner",
   },
   {
     name: "Schedule post",
-    icons: "./icons/schedulePost.svg",
-    activeIcon: "./icons/schedulePostActive.svg",
+    icons: "/icons/schedulePost.svg",
+    activeIcon: "/icons/schedulePostActive.svg",
     path: "/schedulePost",
   },
   {
     name: "Upload",
-    icons: "./icons/upload.svg",
-    activeIcon: "./icons/uploadActive.svg",
+    icons: "/icons/upload.svg",
+    activeIcon: "/icons/uploadActive.svg",
     path: "/upload",
   },
   {
     name: "Recomendation",
-    icons: "./icons/recomendation.svg",
-    activeIcon: "./icons/recomendationActive.svg",
+    icons: "/icons/recomendation.svg",
+    activeIcon: "/icons/recomendationActive.svg",
     path: "/recomendation",
   },
   {
     name: "Custom Order",
-    icons: "./icons/customOrder.svg",
-    activeIcon: "./icons/customOrderIconActive.svg",
+    icons: "/icons/customOrder.svg",
+    activeIcon: "/icons/customOrderIconActive.svg",
     path: "/customOrder",
   },
   {
     name: "Refer and earn",
-    icons: "./icons/refer.svg",
-    activeIcon: "./icons/referActive.svg",
+    icons: "/icons/refer.svg",
+    activeIcon: "/icons/referActive.svg",
     path: "/refer",
   },
 ];
@@ -79,14 +80,14 @@ export const sidebarMenu = [
 const option = [
   {
     name: "Draft",
-    icons: "./icons/draft.svg",
-    activeIcon: "./icons/draftActive.svg",
+    icons: "/icons/draft.svg",
+    activeIcon: "/icons/draftActive.svg",
     path: "/draft",
   },
   {
     name: "Trash",
-    icons: "./icons/trash.svg",
-    activeIcon: "./icons/trashActive.svg",
+    icons: "/icons/trash.svg",
+    activeIcon: "/icons/trashActive.svg",
     path: "/trash",
   },
 ];
@@ -112,7 +113,7 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
           <Button onClick={() => setOpens(false)} className="min-w-[auto]">
             {/* <KeyboardArrowLeftIcon className="text-black text-[30px]" /> */}
             <img
-              src="./icons/leftArrow.svg"
+              src="/icons/leftArrow.svg"
               alt="leftArrow"
               className="w-[8px]"
             />
@@ -176,9 +177,12 @@ export default function Sidebar({
   const router = useRouter();
   const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+  const MobileMenuRedux = useSelector(
+    (state: any) => state.actions.openMobileMenubar
+  );
   console.log("sideBarRedux: ", sideBarRedux);
   const [screenHeight, setScreenHeight] = useState(0);
-  const token = true;
+  const token = tokenGet("userProfile");
 
   useEffect(() => {
     const updateScreenHeight = () => {
@@ -202,7 +206,7 @@ export default function Sidebar({
           <span className="text-black text-[15px]">{data?.name}</span>
           {/* <ChevronRightIcon className="text-black" /> */}
           <img
-            src="./icons/rightArrow.svg"
+            src="/icons/rightArrow.svg"
             alt="rightArrow"
             className="w-[7px]"
           />
@@ -236,10 +240,10 @@ export default function Sidebar({
         py-[20px]  ${
           sideBarRedux
             ? "left-0"
-            : "left-[-268px] max-lg:left-[-350px] max-sm:left-[-80%] "
+            : "left-[-268px] max-lg:left-[-350px] max-sm:left-[-80%]"
         } `}
         sx={{
-          transition: "0.1s all",
+          // transition: "0.1s all",
           zIndex: "500",
           borderRight: "1px solid #D5D8E3",
         }}
@@ -261,7 +265,7 @@ export default function Sidebar({
             >
               <span className="text-black text-[15px]">Pricing</span>
               <img
-                src="./icons/pricing.svg"
+                src="/icons/pricing.svg"
                 alt="price"
                 className="ml-[8px] w-[20px] "
               />
@@ -304,7 +308,7 @@ export default function Sidebar({
                       />
                     </Box>
                     <Typography
-                      className={`  text-[15px] ${
+                      className={`text-[15px] ${
                         router.pathname === item.path
                           ? " active_text_linear "
                           : "text-black opacity-60"
@@ -314,7 +318,7 @@ export default function Sidebar({
                     </Typography>
                     {item.name === "Templates" && (
                       <img
-                        src="./icons/rightArrow.svg"
+                        src="/icons/rightArrow.svg"
                         alt="rightArrow"
                         className="w-[6px] ml-auto"
                       />
@@ -386,7 +390,7 @@ export default function Sidebar({
 
         <Box className="h-[150px] flex lg:hidden  flex-col items-center   gap-4 w-full px-[20px] justify-end  pb-10">
           <Button className="bg_linear text-white gap-2 rounded-[10px] font-bold px-5 py-2 w-full ">
-            <img src="./icons/pricing.svg" alt="price" className="w-[20px]" />
+            <img src="/icons/pricing.svg" alt="price" className="w-[20px]" />
             Upgrade to PRO
           </Button>
           {/* <SignUp

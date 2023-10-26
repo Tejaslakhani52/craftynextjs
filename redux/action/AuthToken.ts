@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export const tokenSet = (key: string, value: any) => {
   if (typeof window !== "undefined") {
     localStorage.setItem(key, value);
@@ -5,10 +7,14 @@ export const tokenSet = (key: string, value: any) => {
 };
 
 export const tokenGet = (key: string) => {
-  let value;
-  if (typeof window !== "undefined") {
-    value = localStorage.getItem(key);
-  }
+  const [tokenValue, setTokenValue] = useState<any>("");
 
-  return value;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem(key);
+      setTokenValue(token);
+    }
+  }, []);
+
+  return tokenValue;
 };

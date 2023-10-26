@@ -6,8 +6,12 @@ import { Box, Typography, Button, Skeleton } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TemplatesSkelton from "./TemplatesSkelton";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import { templatesData } from "@/redux/reducer/AuthDataReducer";
 
 export const TemplatesBoxes = ({ item }: any) => {
+  const router = useRouter();
   const uniqueCat =
     item?.category_name === "Latest" ||
     item?.category_name === "Trending" ||
@@ -59,35 +63,36 @@ export const TemplatesBoxes = ({ item }: any) => {
         <Typography className="text-black font-semibold text-[22px]">
           {item?.category_name}
         </Typography>
-        <Box className="normal-case">
-          <Typography className="text-[#2EC6B8] font-semibold text-[16px] flex items-center">
+        <Button
+          className="normal-case"
+          onClick={() => router.push(`/templates/${item?.id_name}`)}
+        >
+          <span className="text-[#2EC6B8] font-semibold text-[16px] flex items-center">
             See all
-          </Typography>
+          </span>
           <img
             src={"./icons/rightActiveArrow.svg"}
             alt="rightActiveArrow"
             className="w-[7px] inline-block ml-3"
           />
-        </Box>
+        </Button>
       </Box>
       <Box
         className="flex items-center overflow-auto scroll_none gap-[15px] "
         id={containerId}
       >
         {showPrevButton && (
-          <div>
-            <Button
-              onClick={handlePrevClick}
-              className="pre_botton left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex"
-              style={{ top: "52%" }}
-            >
-              <img
-                src="./icons/leftArrow.svg"
-                alt="leftArrow"
-                className="w-[8px]"
-              />
-            </Button>
-          </div>
+          <button
+            onClick={handlePrevClick}
+            className="pre_botton left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex"
+            style={{ top: "52%" }}
+          >
+            <img
+              src="./icons/leftArrow.svg"
+              alt="leftArrow"
+              className="w-[8px]"
+            />
+          </button>
         )}
         {item?.template_model?.map((templates: any) => (
           <>
@@ -140,7 +145,7 @@ export const TemplatesBoxes = ({ item }: any) => {
           </>
         ))}
         {showNextButton && (
-          <Button
+          <button
             onClick={handleNextClick}
             className="next_botton right-[-18px] flex "
             style={{ top: "52%" }}
@@ -150,7 +155,7 @@ export const TemplatesBoxes = ({ item }: any) => {
               alt="rightArrow"
               className="w-[8px]"
             />
-          </Button>
+          </button>
         )}
       </Box>
     </Box>
@@ -158,8 +163,11 @@ export const TemplatesBoxes = ({ item }: any) => {
 };
 
 export default function TemplatesBox() {
+  const dispatch = useDispatch();
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  const [data, setData] = useState<getAllTemplatesDataType | null>(null);
+  // const [data, setData] = useState<getAllTemplatesDataType | null>(null);
+
+  const data = useSelector((state: any) => state.auth.templatesData);
 
   useEffect(() => {
     axios
@@ -170,22 +178,19 @@ export default function TemplatesBox() {
       })
       .then((res: any) => {
         console.log("res: ", res);
-        setData(res?.data?.datas);
+        // setData(res?.data?.datas);
+        dispatch(templatesData(res?.data?.datas));
       })
       .catch((err) => consoleShow("err", err));
   }, []);
 
   return (
     <Box className="px-[20px] pb-10">
-      {data?.length > 0 ? (
-        <div>
-          {data?.map((item: any) => (
+      {data?.length > 0
+        ? data?.map((item: any) => (
             <TemplatesBoxes item={item} key={item?.id} />
-          ))}
-        </div>
-      ) : (
-        true && <TemplatesSkelton />
-      )}
+          ))
+        : true && <TemplatesSkelton />}
     </Box>
   );
 }

@@ -82,6 +82,7 @@ export default function Login(props: any) {
 
       toast.success("Success Login");
       tokenSet("userProfile", userCredential?.user?.uid);
+      window.location.reload();
 
       if (remember) {
         Cookies.set(
@@ -158,18 +159,16 @@ export default function Login(props: any) {
           }}
           className=" max-2sm:text-[18px]"
         >
-          <div>
-            <Button
-              onClick={handleClose}
-              className="min-w-[auto] relative left-[-10px] top-[-3px] max-sm:left-[-3px]"
-            >
-              <img
-                src="./icons/leftArrow.svg"
-                alt="leftArrow"
-                className="w-[10px]"
-              />
-            </Button>
-          </div>
+          <Button
+            onClick={handleClose}
+            className="min-w-[auto] relative left-[-10px] top-[-3px] max-sm:left-[-3px]"
+          >
+            <img
+              src="./icons/leftArrow.svg"
+              alt="leftArrow"
+              className="w-[10px]"
+            />
+          </Button>
           {"Welcome Back to CraftyArt!"}
         </DialogTitle>
         <DialogContent sx={{ padding: "35px" }}>
@@ -231,25 +230,24 @@ export default function Login(props: any) {
               </Typography>
             </Box>
           </Box>
-          <div>
-            <Button
-              sx={{
-                textTransform: "unset",
-                fontSize: "14px",
-                fontWeight: "400",
-                color: "white",
-                whiteSpace: "nowrap",
-                opacity: "1",
-                width: "100%",
-                borderRadius: "8px",
-                padding: "12px 10px",
-              }}
-              className="bg_linear"
-              onClick={handleSignIn}
-            >
-              Log in
-            </Button>
-          </div>
+
+          <Button
+            sx={{
+              textTransform: "unset",
+              fontSize: "14px",
+              fontWeight: "400",
+              color: "white",
+              whiteSpace: "nowrap",
+              opacity: "1",
+              width: "100%",
+              borderRadius: "8px",
+              padding: "12px 10px",
+            }}
+            className="bg_linear"
+            onClick={handleSignIn}
+          >
+            Log in
+          </Button>
 
           <Typography className="text-black text-center my-2  max-2sm:text-[13px]">
             New to CraftyArt?
@@ -261,6 +259,7 @@ export default function Login(props: any) {
                 setOpen(false);
               }}
             >
+              {" "}
               Create an account
             </span>
           </Typography>

@@ -83,26 +83,24 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
 
   return (
     <Box className="relative ">
-      <div>
-        <button
-          className={`peer px-3 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap  ${
-            onButtonLeave || onBoxLeave ? "active_text_linear" : "#1C3048"
-          } `}
-          // style={{ color: onButtonLeave || onBoxLeave ? "#2EC6B8" : "#1C3048" }}
-          // onMouseEnter={() => setSelectColor("#2EC6B8")}
-          onMouseEnter={() => setOnButtonLeave(true)}
-          onMouseLeave={() => setOnButtonLeave(false)}
-        >
-          {title}
-          <span className="w-[14px] mx-2">
-            {onButtonLeave || onBoxLeave ? (
-              <img src="./icons/menuIcon.svg" alt="menuIcon" />
-            ) : (
-              <img src="./icons/menuBlackIcon.svg" alt="menuBlackIcon" />
-            )}
-          </span>
-        </button>
-      </div>
+      <button
+        className={`peer px-3 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap  ${
+          onButtonLeave || onBoxLeave ? "active_text_linear" : "#1C3048"
+        } `}
+        // style={{ color: onButtonLeave || onBoxLeave ? "#2EC6B8" : "#1C3048" }}
+        // onMouseEnter={() => setSelectColor("#2EC6B8")}
+        onMouseEnter={() => setOnButtonLeave(true)}
+        onMouseLeave={() => setOnButtonLeave(false)}
+      >
+        {title}
+        <span className="w-[14px] mx-2">
+          {onButtonLeave || onBoxLeave ? (
+            <img src="/icons/menuIcon.svg" alt="menuIcon" />
+          ) : (
+            <img src="/icons/menuBlackIcon.svg" alt="menuBlackIcon" />
+          )}
+        </span>
+      </button>
 
       <Box
         onMouseLeave={() => setOnBoxLeave(false)}
@@ -120,28 +118,26 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
             <Box className="flex flex-col">
               <Typography
                 className={`text-black font-semibold px-4 ${
-                  data?.heading && "pb-3"
+                  data?.heading && " pb-3"
                 }`}
               >
                 {data?.heading}
               </Typography>
               {data?.allName?.map((item: any) => (
-                <div>
-                  <MenuItem
-                    onClick={() => router.push(item.path)}
-                    sx={{
-                      fontSize: "14px",
-                      borderRadius: "4px",
-                      "&:hover": {
-                        backgroundColor: "#EDF0F9",
-                      },
-                      color:
-                        router.pathname === item.path ? "#2EC6B8" : "#1C3048",
-                    }}
-                  >
-                    {item?.name}
-                  </MenuItem>
-                </div>
+                <MenuItem
+                  onClick={() => router.push(item.path)}
+                  sx={{
+                    fontSize: "14px",
+                    borderRadius: "4px",
+                    "&:hover": {
+                      backgroundColor: "#EDF0F9",
+                    },
+                    color:
+                      router.pathname === item.path ? "#2EC6B8" : "#1C3048",
+                  }}
+                >
+                  {item?.name}
+                </MenuItem>
               ))}
             </Box>
           </>
@@ -164,23 +160,22 @@ export default function MenuBox() {
         <BasicMenu title={Templates?.name} itemName={Templates?.subName} />
 
         <button
-          className={` max-xl:hidden px-3 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap   text-[#1C3048] hover:text-[#2EC6B8]`}
+          className={` max-xl:hidden px-3 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
         >
           Custom order
         </button>
 
         <button
-          className={` max-xl:hidden px-4 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap   text-[#1C3048] hover:text-[#2EC6B8]`}
+          className={` max-xl:hidden px-4 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
         >
           Pricing
-          <img src="./icons/pricing.svg" alt="" className="ml-[8px] " />
+          <img src="/icons/pricing.svg" alt="" className="ml-[8px] " />
         </button>
         <Box className=" relative block xl:hidden">
-          <div>
-            <Button className="text-black px-2 min-w-[auto] peer ">
-              <MoreHorizIcon />
-            </Button>
-          </div>
+          <Button className="text-black px-2 min-w-[auto] peer ">
+            <MoreHorizIcon />
+          </Button>
+
           <Box
             className="hidden peer-hover:flex hover:flex
             w-[200px]
@@ -214,7 +209,7 @@ export default function MenuBox() {
             >
               Pricing
               <img
-                src="./icons/pricing.svg"
+                src="/icons/pricing.svg"
                 alt=""
                 className="ml-[8px] w-[20px] "
               />
