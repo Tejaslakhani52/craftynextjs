@@ -9,8 +9,15 @@ import TemplatesSkelton from "./TemplatesSkelton";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { templatesData } from "@/redux/reducer/AuthDataReducer";
+import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import Link from "next/link";
+import {
+  modalClosePath,
+  openTempModal,
+} from "@/redux/reducer/actionDataReducer";
 
-export const TemplatesBoxes = ({ item }: any) => {
+export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
+  const dispatch = useDispatch();
   const router = useRouter();
   const uniqueCat =
     item?.category_name === "Latest" ||
@@ -71,7 +78,7 @@ export const TemplatesBoxes = ({ item }: any) => {
             See all
           </span>
           <img
-            src={"./icons/rightActiveArrow.svg"}
+            src={"/icons/rightActiveArrow.svg"}
             alt="rightActiveArrow"
             className="w-[7px] inline-block ml-3"
           />
@@ -88,7 +95,7 @@ export const TemplatesBoxes = ({ item }: any) => {
             style={{ top: "52%" }}
           >
             <img
-              src="./icons/leftArrow.svg"
+              src="/icons/leftArrow.svg"
               alt="leftArrow"
               className="w-[8px]"
             />
@@ -96,8 +103,12 @@ export const TemplatesBoxes = ({ item }: any) => {
         )}
         {item?.template_model?.map((templates: any) => (
           <>
-            <Box
-              className={` h-auto bg-white ${
+            <Link
+              href={`/?templates=${templates.id_name}`}
+              as={`/templates/p/${templates.id_name}`}
+              scroll={false}
+              shallow={true}
+              className={` h-auto bg-white cursor-pointer ${
                 uniqueCat ? "p-3 min-w-[250px]" : "p-[7px]"
               } rounded-[12px]`}
               key={templates?.template_name}
@@ -115,6 +126,9 @@ export const TemplatesBoxes = ({ item }: any) => {
                         200
                       )}px`,
                   width: uniqueCat ? "auto" : "200px",
+                }}
+                onClick={() => {
+                  dispatch(modalClosePath(`/`));
                 }}
               >
                 <div className="bg-slate-200 w-full h-full rounded-[4px]">
@@ -141,7 +155,7 @@ export const TemplatesBoxes = ({ item }: any) => {
                   {templates?.category_name}
                 </Typography>
               </Box>
-            </Box>
+            </Link>
           </>
         ))}
         {showNextButton && (
@@ -163,7 +177,9 @@ export const TemplatesBoxes = ({ item }: any) => {
 };
 
 export default function TemplatesBox() {
+  const [openModal, setOpenModal] = React.useState(false);
   const dispatch = useDispatch();
+
   const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
   // const [data, setData] = useState<getAllTemplatesDataType | null>(null);
 
@@ -181,14 +197,19 @@ export default function TemplatesBox() {
         // setData(res?.data?.datas);
         dispatch(templatesData(res?.data?.datas));
       })
-      .catch((err) => consoleShow("err", err));
+      .catch((err: any) => consoleShow("err", err));
   }, []);
 
   return (
     <Box className="px-[20px] pb-10">
       {data?.length > 0
         ? data?.map((item: any) => (
-            <TemplatesBoxes item={item} key={item?.id} />
+            <TemplatesBoxes
+              item={item}
+              key={item?.id}
+              openModal={openModal}
+              setOpenModal={setOpenModal}
+            />
           ))
         : true && <TemplatesSkelton />}
     </Box>

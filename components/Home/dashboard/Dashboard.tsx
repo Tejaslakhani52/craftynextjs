@@ -2,21 +2,45 @@ import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
 import TemplatesBox from "./dasahboardComponents/TemplatesBox";
+import { useDispatch } from "react-redux";
+import { openTempModal } from "@/redux/reducer/actionDataReducer";
 
 const bannerCategory = [
-  { image: "./icons/forYou.svg", name: "For you", path: "/trending" },
-  { image: "./icons/invitation.svg", name: "Invitation", path: "/invitation" },
-  { image: "./icons/quotes.svg", name: "Quotes", path: "/quotes" },
-  { image: "./icons/resume.svg", name: "Resume", path: "/resume" },
-  { image: "./icons/videos.svg", name: "Videos", path: "" },
-  { image: "./icons/flyer.svg", name: "Flyer", path: "/flyers" },
-  { image: "./icons/bannerLogo.svg", name: "Logo", path: "/logos" },
-  { image: "./icons/festival.svg", name: "Festival", path: "" },
-  { image: "./icons/more.svg", name: "More", path: "" },
+  { image: "/icons/forYou.svg", name: "For you", path: "/trending" },
+  { image: "/icons/invitation.svg", name: "Invitation", path: "/invitation" },
+  { image: "/icons/quotes.svg", name: "Quotes", path: "/quotes" },
+  { image: "/icons/resume.svg", name: "Resume", path: "/resume" },
+  { image: "/icons/videos.svg", name: "Videos", path: "" },
+  { image: "/icons/flyer.svg", name: "Flyer", path: "/flyers" },
+  { image: "/icons/bannerLogo.svg", name: "Logo", path: "/logos" },
+  { image: "/icons/festival.svg", name: "Festival", path: "" },
+  { image: "/icons/more.svg", name: "More", path: "" },
 ];
 
 export default function Dashboard() {
+  const dispatch = useDispatch();
   const router = useRouter();
+  const id = router.query;
+  console.log("idsacxsacsaca: ", id);
+
+  const handleBrowserButton = () => {
+    dispatch(openTempModal(true));
+  };
+
+  React.useEffect(() => {
+    const handlePopstate = () => {
+      if (id?.templates) {
+        handleBrowserButton();
+      }
+    };
+
+    window.addEventListener("popstate", handlePopstate);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+    };
+  }, [id?.templates]);
+
   return (
     <Box className="bg-[#F4F7FE]">
       <Box className="py-[10px]"></Box>

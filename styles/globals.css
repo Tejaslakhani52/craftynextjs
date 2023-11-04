@@ -241,4 +241,14 @@ li {
     #15d8c5 99.13%,
     #15d8c5 99.13%
   ) !important;
+  color: white !important;
+}
+
+.MuiDialogContent-root::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.body-no-scroll {
+  overflow: hidden;
+  /* padding-right: 50px; */
 }

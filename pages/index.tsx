@@ -8,6 +8,8 @@ import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { tokenValue } from "@/redux/reducer/AuthDataReducer";
 import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/DashBoardSkelton";
+import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,13 +25,6 @@ export default function Home() {
       setIsLoading(false);
     }, 100);
   }, [tokenRedux]);
-
-  useEffect(() => {
-    if (token) {
-      dispatch(openSidebar(true));
-      dispatch(tokenValue(true));
-    }
-  }, [token]);
 
   return (
     <main>

@@ -1,11 +1,20 @@
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/DashBoardSkelton";
 import Breadcrumb from "@/components/common/Breadcrumb";
-import { Box, Button, Pagination, Typography } from "@mui/material";
+import NotFound from "@/components/common/NotFound";
+import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import {
+  modalClosePath,
+  openTempModal,
+  tempId,
+} from "@/redux/reducer/actionDataReducer";
+import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState, useMemo } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const otherData = {
   latestMeta: {
@@ -46,67 +55,82 @@ const otherData = {
 };
 
 export default function index() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const screenWidth = useScreenWidth();
-  console.log("screenWidth: ", screenWidth);
-  const id = router.query;
+  const id: any = router.query;
   const currentPathname = router.asPath;
-  const [data, setData] = useState<any>();
-  const [contentData, setContentData] = useState<any>();
-  const [isNotFix, setIsNotFix] = useState<boolean>(false);
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+  const [openModal, setOpenModal] = useState(false);
+  const [data, setData] = useState<any>();
+  console.log("data: ", data);
+  const [contentData, setContentData] = useState<any>([]);
+  const [isNotFix, setIsNotFix] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [isloading, setIsloading] = React.useState(true);
+  const [notFound, setNotFound] = useState<any>(false);
+  const [loadMore, setLoadMore] = useState<any>(false);
+  const [isLastPage, setIsLastPage] = useState<any>();
 
-  console.log("datasdcsdc: ", contentData);
+  console.log("datasdcsdc: ", notFound);
+
+  const tempIdValue = useSelector((state: any) => state.actions.tempId);
 
   useEffect(() => {
-    axios
-      .post(`https://story.craftyartapp.com/get/datas`, {
-        debug_key: "debug",
-        cat_id:
-          id?.categoryId === "invitation"
-            ? "a4-invitation"
-            : (id?.categoryId as any),
-        limit: 50,
-        page: 1,
-      })
-      .then((res: any) => {
-        console.log("res: ", res);
-        setData(res?.data?.datas);
-        if (id?.categoryId === "latest") {
-          setContentData(otherData.latestMeta);
-        } else if (id?.categoryId === "trending") {
-          setContentData(otherData.trendingData);
-        } else if (id?.categoryId === "invitation") {
-          setContentData(otherData.invitationData);
-        } else setContentData(res?.data);
+    setLoadMore(true);
+    if (id?.categoryId) {
+      axios
+        .post(`https://story.craftyartapp.com/get/datas`, {
+          debug_key: "debug",
+          cat_id:
+            id?.categoryId === "invitation"
+              ? "a4-invitation"
+              : (id?.categoryId as any),
+          limit: 48,
+          page: page,
+        })
+        .then((res: any) => {
+          console.log("res: ", res);
+          setLoadMore(false);
+          setIsLastPage(res?.data?.isLastPage);
+          if (id?.categoryId === "latest") {
+            setContentData(otherData.latestMeta);
+          } else if (id?.categoryId === "trending") {
+            setContentData(otherData.trendingData);
+          } else if (id?.categoryId === "invitation") {
+            setContentData(otherData.invitationData);
+          } else setContentData(res?.data);
 
-        setIsNotFix(res?.data?.cat_id >= 0);
-      })
-      .catch((err) => {
-        console.log("err: ", err);
-      });
-  }, [id]);
+          setIsNotFix(res?.data?.cat_id >= 0);
+          setNotFound(res?.data?.status === 500 ? true : false);
 
-  const multiSize = useMemo(() => {
-    switch (true) {
-      case screenWidth > 1500:
-        return sideBarRedux ? 5 : 6;
-      case screenWidth > 1200:
-        return sideBarRedux ? 4 : 5;
-      case screenWidth > 1000:
-        return sideBarRedux ? 3 : 4;
-      case screenWidth > 800:
-      case screenWidth > 700:
-        return 3;
-      case screenWidth > 600:
-      case screenWidth > 550:
-        return 2;
-      default:
-        return 2;
+          if (id?.page > res?.data?.total_pages || id?.page < 0) {
+            setNotFound(true);
+          }
+
+          if (res?.data?.datas) {
+            setIsloading(false);
+
+            setData((prevData: any) => [
+              ...(prevData || []),
+              ...res?.data?.datas,
+            ]);
+          }
+
+          if (res?.data?.status === 500) {
+            setIsloading(false);
+          }
+        })
+        .catch((err: any) => {
+          console.log("err: ", err);
+        });
     }
-  }, [screenWidth, sideBarRedux]);
+  }, [id, page]);
+
+  useEffect(() => {
+    const element: any = document.getElementById(tempIdValue);
+    element?.scrollIntoView();
+  }, [data]);
 
   const multiSizeFixSize = useMemo(() => {
     switch (true) {
@@ -126,229 +150,243 @@ export default function index() {
     }
   }, [screenWidth, sideBarRedux]);
 
-  const handleChange = (e: any, p: any) => {
-    console.log("p: ", p, page);
-    window.scrollTo(300, 300);
-    if (page !== p) {
-      const modifiedURL = currentPathname.replace(/%20/g, "-");
-      setPage(p);
-      const newUrl = `/templates/${modifiedURL.split("/")[2]}?page=${p}`;
-      window.history.pushState({ path: newUrl }, "", newUrl);
-      setIsloading(true);
-    }
-  };
-
   return (
-    <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
-      <Box className="pt-[15px]">
-        <Breadcrumb
-          data={[
-            { name: "Home", path: "/" },
-            { name: "Templates", path: "/" },
-            { name: id?.categoryId, current: true },
-          ]}
-        />
-      </Box>
+    <>
+      {isloading && <DashBoardSkelton />}
+      {notFound && <NotFound />}
 
-      <Box
-        sx={{
-          background:
-            "linear-gradient(268.03deg, #5961F8 -0.66%, #5961F8 -0.65%, #497DEC 22.41%, #15D8C5 100%, #15D8C5 100%)",
-          display: "flex",
-          alignItems: "center",
-          margin: "10px auto",
-          width: "100%",
-          overflow: "hidden",
-        }}
-        className="lg:pl-[80px]  max-lg:px-[20px] h-auto max-lg:py-[50px] rounded-[8px]"
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-            padding: "10px 0",
-          }}
-          className="w-full lg:w-[57%] max-lg:items-center "
-        >
-          <Typography
-            sx={{
-              color: "#ffffff",
-              width: "100%",
-              fontWeight: "500",
-              lineHeight: "40px",
-            }}
-            className="max-lg:text-center text-[30px] sm:text-[40px]"
-            variant="h1"
-          >
-            {contentData?.h1_tag}
-          </Typography>
-
-          <Typography
-            sx={{
-              fontSize: "18px",
-              color: "#ffff",
-              width: "100%",
-              marginBottom: "10px",
-            }}
-            className="max-lg:text-center"
-          >
-            {contentData?.short_desc}
-          </Typography>
-
-          <Button
-            style={{
-              backgroundColor: "white",
-              width: "162px",
-              textTransform: "unset",
-              boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
-              border: "none",
-              padding: "8px 10px",
-              borderRadius: "10px",
-              fontSize: "16px",
-              fontWeight: "500",
-            }}
-          >
-            <span className="text_linear">Start Design</span>
-          </Button>
+      <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
+        <Box className="pt-[15px]">
+          <Breadcrumb
+            data={[
+              { name: "Home", path: "/" },
+              { name: "Templates", path: "/" },
+              { name: id?.categoryId, current: true },
+            ]}
+          />
         </Box>
+
         <Box
           sx={{
-            width: "43%",
+            background:
+              "linear-gradient(268.03deg, #5961F8 -0.66%, #5961F8 -0.65%, #497DEC 22.41%, #15D8C5 100%, #15D8C5 100%)",
+            display: "flex",
             alignItems: "center",
-            justifyContent: "end",
+            margin: "10px auto",
+            width: "100%",
+            overflow: "hidden",
           }}
-          className="hidden lg:flex"
+          className="lg:pl-[80px]  max-lg:px-[20px] h-auto max-lg:py-[50px] rounded-[8px]"
         >
-          <Box sx={{ width: "400px" }}>
-            <img
-              src={"/images/categoryBanner.png"}
-              alt="resumeBanner"
-              style={{ width: "100%", height: "100%", paddingRight: "0px" }}
-            />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "20px",
+              padding: "10px 0",
+            }}
+            className="w-full lg:w-[57%] max-lg:items-center "
+          >
+            <Typography
+              sx={{
+                color: "#ffffff",
+                width: "100%",
+                fontWeight: "500",
+                lineHeight: "40px",
+              }}
+              className="max-lg:text-center text-[30px] sm:text-[40px]"
+              variant="h1"
+            >
+              {contentData?.h1_tag}
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#ffff",
+                width: "100%",
+                marginBottom: "10px",
+              }}
+              className="max-lg:text-center"
+            >
+              {contentData?.short_desc}
+            </Typography>
+
+            <Button
+              style={{
+                backgroundColor: "white",
+                width: "162px",
+                textTransform: "unset",
+                boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
+                border: "none",
+                padding: "8px 10px",
+                borderRadius: "10px",
+                fontSize: "16px",
+                fontWeight: "500",
+              }}
+            >
+              <span className="text_linear">Start Design</span>
+            </Button>
+          </Box>
+          <Box
+            sx={{
+              width: "43%",
+              alignItems: "center",
+              justifyContent: "end",
+            }}
+            className="hidden lg:flex"
+          >
+            <Box sx={{ width: "400px" }}>
+              <img
+                src={"/images/categoryBanner.png"}
+                alt="resumeBanner"
+                style={{ width: "100%", height: "100%", paddingRight: "0px" }}
+              />
+            </Box>
           </Box>
         </Box>
-      </Box>
 
-      <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
-        {data?.map((templates: any) => (
-          <Box
-            className={`${true && "p-[5px] bg-[bg-[#F4F7FE]] "}  `}
-            style={{
-              width: !isNotFix
-                ? `${100 / multiSize}%`
-                : `${
-                    (screenWidth -
-                      (sideBarRedux && screenWidth > 1023
-                        ? 300
-                        : screenWidth > 630
-                        ? 50
-                        : 37)) /
-                    multiSizeFixSize
-                  }px`,
-            }}
-          >
+        <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
+          {data?.map((templates: any, index: number) => (
             <Box
-              className={` h-auto bg-white ${
-                !isNotFix ? "p-3" : "p-[7px]"
-              } rounded-[12px]`}
-              key={templates?.template_name}
+              className={`${true && "p-[5px] bg-[bg-[#F4F7FE]] "}  `}
+              style={{
+                width: !isNotFix
+                  ? `${100 / multiSizeFixSize}%`
+                  : `${
+                      (screenWidth -
+                        (sideBarRedux && screenWidth > 1023
+                          ? 300
+                          : screenWidth > 630
+                          ? 50
+                          : 37)) /
+                      multiSizeFixSize
+                    }px`,
+              }}
+              id={`content${index}`}
             >
               <Box
-                className={` ${
-                  !isNotFix ? "bg-[#E6E8EE] p-2   " : "p-[0px]"
-                } rounded-[10px]`}
-                style={{
-                  height: !isNotFix
-                    ? `auto`
-                    : `${
-                        calculateHeight(
-                          templates?.width,
-                          templates?.height,
+                className={`cursor-pointer h-auto bg-white ${
+                  !isNotFix ? "p-3" : "p-[7px]"
+                } rounded-[12px]`}
+                key={templates?.template_name}
+                onClick={() => {
+                  // const newPath = `/templates/p/${templates.id_name}`;
+                  // window.history.pushState({}, "", newPath);
+                  // dispatch(openTempModal(true));
+                  dispatch(tempId(`content${index}`));
+                  dispatch(modalClosePath(`templates/${id?.categoryId}`));
+                }}
+              >
+                <Link
+                  // href={{
+                  //   pathname: `/templates/[${id?.categoryId}]?templates=[${templates.id_name}]`,
+                  //   query: { templates: templates.id_name },
+                  // }}
+                  href={`/?templates=${templates.id_name}`}
+                  as={`/templates/p/${templates.id_name}`}
+                  scroll={false}
+                  shallow={true}
+                >
+                  <Box
+                    className={` ${
+                      !isNotFix ? "bg-[#E6E8EE] p-2   " : "p-[0px]"
+                    } rounded-[10px]`}
+                    style={{
+                      height: !isNotFix
+                        ? `auto`
+                        : `${
+                            calculateHeight(
+                              templates?.width,
+                              templates?.height,
+                              (screenWidth -
+                                (sideBarRedux && screenWidth > 1023
+                                  ? 300
+                                  : 50)) /
+                                multiSizeFixSize -
+                                30
+                            ) + 4
+                          }px`,
+                    }}
+                  >
+                    <div
+                      className="bg-slate-200  w-full rounded-[4px] overflow-hidden"
+                      style={{
+                        height: !isNotFix
+                          ? `${
+                              calculateHeight(
+                                500,
+                                500,
+                                (screenWidth -
+                                  (sideBarRedux && screenWidth > 1023
+                                    ? 300
+                                    : 50)) /
+                                  multiSizeFixSize -
+                                  30
+                              ) - (templates.height < 1919 ? 16 : 7)
+                            }px`
+                          : "100%",
+
+                        display: templates.height < 1920 ? "flex" : "block",
+                        alignItems: "center",
+                      }}
+                    >
+                      <img
+                        src={templates?.template_thumb}
+                        alt={templates?.category_name}
+                        className={` w-[auto] ${
+                          !isNotFix ? " max-h-full" : ""
+                        }  mx-auto rounded-[4px]`}
+                      />
+                    </div>
+                  </Box>
+                </Link>
+
+                <Box
+                  className="pt-2"
+                  style={{
+                    width: !isNotFix
+                      ? "auto"
+                      : `${
                           (screenWidth -
                             (sideBarRedux && screenWidth > 1023 ? 300 : 50)) /
                             multiSizeFixSize -
-                            30
-                        ) + 4
-                      }px`,
-                }}
-              >
-                <div
-                  className="bg-slate-200  w-full rounded-[4px] overflow-hidden"
-                  style={{
-                    height: !isNotFix
-                      ? `${
-                          calculateHeight(
-                            500,
-                            500,
-                            (screenWidth -
-                              (sideBarRedux && screenWidth > 1023 ? 300 : 50)) /
-                              multiSizeFixSize -
-                              30
-                          ) - (templates.height < 1919 ? 16 : 7)
-                        }px`
-                      : "100%",
-
-                    display: templates.height < 1920 ? "flex" : "block",
-                    alignItems: "center",
+                          30
+                        }px`,
                   }}
                 >
-                  <img
-                    src={templates?.template_thumb}
-                    alt={templates?.category_name}
-                    className={` w-[auto] ${
-                      !isNotFix ? " max-h-full" : ""
-                    }  mx-auto rounded-[4px]`}
-                  />
-                </div>
-              </Box>
-
-              <Box
-                className="pt-2"
-                style={{
-                  width: !isNotFix
-                    ? "auto"
-                    : `${
-                        (screenWidth -
-                          (sideBarRedux && screenWidth > 1023 ? 300 : 50)) /
-                          multiSizeFixSize -
-                        30
-                      }px`,
-                }}
-              >
-                <Typography className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                  {templates?.template_name}
-                </Typography>
-                <Typography className="text-[#ABB2C7] text-[13px] pb-1">
-                  {templates?.category_name}
-                </Typography>
+                  <Typography className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
+                    {templates?.template_name}
+                  </Typography>
+                  <Typography className="text-[#ABB2C7] text-[13px] pb-1">
+                    {templates?.category_name}
+                  </Typography>
+                </Box>
               </Box>
             </Box>
-          </Box>
-        ))}
-      </Box>
+          ))}
+        </Box>
 
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          padding: "40px 0",
-        }}
-      >
-        <Pagination
-          count={70}
-          size="large"
-          page={Number(page)}
-          variant="outlined"
-          shape="rounded"
-          onChange={handleChange}
-          sx={{
-            "&.Mui-selected": {
-              backgroundColor: "blue",
-            },
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "40px 0",
           }}
-        />
-      </div>
-    </Box>
+        >
+          {loadMore ? (
+            <Box className="text_linear font-[700 text-[20px]">Loading....</Box>
+          ) : (
+            <Button
+              className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+              sx={{ display: isLastPage ? "none" : "block" }}
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              LOAD MORE
+            </Button>
+          )}
+        </div>
+      </Box>
+    </>
   );
 }

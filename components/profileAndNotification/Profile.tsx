@@ -102,13 +102,13 @@ export default function Profile() {
   return (
     <>
       <Box className="flex items-center">
-        <Button className="min-w-[20px] h-[30px]">
+        {/* <Button className="min-w-[20px] h-[30px]">
           <img
             src="/icons/notification.svg"
             alt="notification"
             className="w-[20px]"
           />
-        </Button>
+        </Button> */}
         <Box onClick={handleClick} className="cursor-pointer">
           <Box className="rounded-[50%] w-[40px] h-[40px] overflow-hidden">
             <ProfileImage />
