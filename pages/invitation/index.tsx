@@ -12,32 +12,32 @@ import React from "react";
 
 const sliderTemplate = [
   {
-    img: "./images/invitationwedding.png",
+    img: "/images/invitationwedding.png",
     buttonName: "Wedding Invitation",
     path: "/wedding",
   },
   {
-    img: "./images/invitationFooterBirthday.png",
+    img: "/images/invitationFooterBirthday.png",
     buttonName: "Birthday Invitation",
     path: "/birthday",
   },
   {
-    img: "./images/partyBanner.png",
+    img: "/images/partyBanner.png",
     buttonName: "Party Invitation",
     path: "/party",
   },
   {
-    img: "./images/babyShowerEase.png",
+    img: "/images/babyShowerEase.png",
     buttonName: "Baby Shower Invitation",
     path: "/babyShower",
   },
   {
-    img: "./images/anivversaryEase.png",
+    img: "/images/anivversaryEase.png",
     buttonName: "Anniversary Invitation",
     path: "/anniversary",
   },
   {
-    img: "./images/bridalEase.png",
+    img: "/images/bridalEase.png",
     buttonName: "Bridal Shower Invitation",
     path: "/bridalShower",
   },
@@ -47,7 +47,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/invitationCreateWedding.png"
+        image="/images/invitationCreateWedding.png"
         heading="Let Your Invitation Shine with Our Smooth and Sleek Invitation Maker"
         text=" Make lovely invitations for birthdays, baby showers, weddings, and
         save-the-dates. Regardless of the event, you can make beautiful,
@@ -77,7 +77,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Wedding Invitation"}
-        image="./images/invitationCreateWedding.png"
+        image="/images/invitationCreateWedding.png"
         path="/wedding"
       />
 
@@ -94,7 +94,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find Birthday Invitation"}
-        image="./images/invitationBirthday.png"
+        image="/images/invitationBirthday.png"
         path="/birthday"
       />
 
@@ -111,7 +111,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Party Invitation"}
-        image="./images/invitationDesign.png"
+        image="/images/invitationDesign.png"
         path="/party"
       />
 
@@ -128,7 +128,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Invitation Card"}
-        image="./images/invitationCreate.png"
+        image="/images/invitationCreate.png"
         path="/babyShower"
       />
 
@@ -145,7 +145,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find your Anniversary Invitation"}
-        image="./images/invitationAnniversary.png"
+        image="/images/invitationAnniversary.png"
         path="/anniversary"
       />
 
@@ -162,7 +162,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Bridal Shower Invitation"}
-        image="./images/invitationShower.png"
+        image="/images/invitationShower.png"
         path="/bridalShower"
       />
 

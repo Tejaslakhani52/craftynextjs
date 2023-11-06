@@ -20,7 +20,7 @@ export const MarkText = ({ text }: any) => {
       sx={{ display: "flex", gap: "20px", alignItems: "flex-start", mb: "8px" }}
     >
       <img
-        src={"./images/rightMarks.svg"}
+        src={"/images/rightMarks.svg"}
         alt="rightMark"
         className="w-[20px] max-sm:w-[15px] mt-[5px]"
       />
@@ -103,7 +103,7 @@ export default function LandingPage({ post }: any) {
 
       <Box className="w-[50%] mx-auto mt-[-180px] max-lg:mt-[-125px] max-sm:mt-[-67px] max-lg:w-[80%] max-sm:w-[97%]">
         <img
-          src="./images/landingPageMainVideo.png"
+          src="/images/landingPageMainVideo.png"
           alt="landingPageMainVideo"
         />
       </Box>
@@ -234,7 +234,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Create your Eprofile"}
-        image="./images/order_img (1).png"
+        image="/images/order_img (1).png"
       />
 
       <CustomerSaying />

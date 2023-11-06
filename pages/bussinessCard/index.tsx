@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/bussinessCardDesign.png"
+        image="/images/bussinessCardDesign.png"
         heading={"Design professional business cards with business card maker"}
         text="Impress Your Clients with a High-Quality Business Card - Start Designing Now!"
       />
@@ -25,7 +25,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/bussinessCardBanner.png"}
+              src={"/images/bussinessCardBanner.png"}
               alt="bussinessCardBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -46,7 +46,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
-        image="./images/bussinessCardDesign.png"
+        image="/images/bussinessCardDesign.png"
       />
 
       <RightImageSection
@@ -62,7 +62,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Business Card"}
-        image="./images/bussinessCardCreate.png"
+        image="/images/bussinessCardCreate.png"
       />
 
       <LeftImageSection
@@ -78,7 +78,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
-        image="./images/bussinessCardTrending.png"
+        image="/images/bussinessCardTrending.png"
       />
       <Box
         sx={{

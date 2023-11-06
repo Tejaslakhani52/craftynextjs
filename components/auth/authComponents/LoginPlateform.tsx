@@ -57,7 +57,7 @@ export default function LoginPlateform() {
   // const [userData, setUserData] = useState<any>({ photo_uri: null });
 
   // const location = useLocation();
-  const currentPathname = location.pathname;
+  // const currentPathname = location.pathname;
 
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider).then((data) => {

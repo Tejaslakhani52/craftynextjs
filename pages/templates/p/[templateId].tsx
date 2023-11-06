@@ -10,6 +10,7 @@ import {
 } from "@/redux/reducer/actionDataReducer";
 import { Box, Skeleton, Typography } from "@mui/material";
 import axios from "axios";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -27,6 +28,8 @@ export default function templateId() {
   console.log("template: ", template);
   const openModal = useSelector((state: any) => state.actions.openTempModal);
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
+  const [description, setDescription] = React.useState<string>("");
+  console.log("description: ", description);
 
   var templateIds: any;
   if (typeof window !== "undefined" && !openModal) {
@@ -86,7 +89,7 @@ export default function templateId() {
       });
   };
 
-  React?.useEffect(() => {
+  React.useEffect(() => {
     setTimeout(() => {
       fetchPosterData(templateIds);
     }, 100);
@@ -100,13 +103,13 @@ export default function templateId() {
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
       case screenWidth > 1500:
-        return 7;
+        return 6.5;
       case screenWidth > 1200:
-        return 6;
+        return 5.5;
       case screenWidth > 1023:
-        return 5;
+        return 4.5;
       case screenWidth > 700:
-        return 4;
+        return 3.5;
       case screenWidth > 600:
       case screenWidth > 550:
         return 4;
@@ -120,8 +123,25 @@ export default function templateId() {
     element?.scrollIntoView();
   }, [anotherData]);
 
+  React.useEffect(() => {
+    const formattedText = template?.description
+      ?.replace(/\r\n\r\n/g, "\n\n")
+      ?.replace(/\r\n/g, "\n");
+    // const description = formattedText || "";
+    // const words = description.split(" ");
+    // const truncatedDescription = words.slice(0, 10).join(" ");
+    setDescription(formattedText);
+  }, [template]);
+
   return (
     <Box className="px-[40px] py-2">
+      <Head>
+        <title>{template?.template_name}</title>
+        <meta
+          content="description"
+          name={`Design with ${template?.template_name}: Ignite Your Imagination, Create Unique Art, and Inspire Awe. Start Design Crafting Today with Crafty Art!`}
+        />
+      </Head>
       <Box className="flex h-[450px]  my-[20px] gap-[50px]">
         {isLoading ? (
           <>
@@ -258,7 +278,10 @@ export default function templateId() {
           />
         ) : (
           <Box sx={{ minHeight: "500px" }}>
-            <StackGrid columnWidth={screenWidth / multiSizeFixSize}>
+            <StackGrid
+              columnWidth={screenWidth / multiSizeFixSize}
+              duration={0}
+            >
               {anotherData?.datas
                 ?.filter((t: any) => t.template_id !== template?.template_id)
                 ?.map((templates: any, index: number) => (
@@ -308,9 +331,9 @@ export default function templateId() {
                 {template?.h2_tag}
               </h2>
 
-              <Typography className="text-[15px]">
+              <Typography className="text-[15px] whitespace-pre-line		">
                 {" "}
-                {template?.description}
+                {description}
               </Typography>
             </Box>
           </Box>

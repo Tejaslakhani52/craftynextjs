@@ -5,16 +5,26 @@ import {
 import Skelton from "@/components/common/Skelton";
 import { Box, Skeleton } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function DashBoardSkelton() {
   const screenWidth = useScreenWidth();
+  const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+
   console.log("screenWidth: ", screenWidth);
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 bg-[white] z-[1000]">
       <div className="h-[80px]"></div>
 
       <div className="flex">
-        <div className="" style={{ width: "15%", padding: "13px 10px   " }}>
+        <div
+          className=""
+          style={{
+            width: "15%",
+            padding: "13px 10px   ",
+            display: sideBarRedux ? "block" : "none",
+          }}
+        >
           <div className="flex gap-2 items-center py-2">
             <Skeleton
               variant="rectangular"
@@ -128,7 +138,10 @@ export default function DashBoardSkelton() {
           </div>
         </div>
 
-        <div className="py-2 px-4   " style={{ width: `85%` }}>
+        <div
+          className="py-2 px-4   "
+          style={{ width: sideBarRedux ? `85%` : "100%" }}
+        >
           <Skeleton
             variant="rectangular"
             width={`100%`}

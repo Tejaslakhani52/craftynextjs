@@ -61,9 +61,9 @@ export default function GetTemplates(props: any) {
             color: "white",
           }}
           onClick={() => router.push(props.navigate)}
-          className=" py-[10px] px-[15px] text_linear"
+          className=" py-[10px] px-[15px] "
         >
-          Get All Templates
+          <span className="text_linear"> Get All Templates</span>
         </button>
       </Box>
     </>

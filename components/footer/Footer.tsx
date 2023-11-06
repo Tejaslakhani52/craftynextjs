@@ -25,7 +25,6 @@ export const OptionButton = (props: any) => {
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
-  //   border: `1px solid ${theme.palette.divider}`,
   "&:not(:last-child)": {
     borderBottom: 0,
   },
@@ -195,31 +194,31 @@ export default function Footer() {
             </Typography>
             <Box className="flex flex-col items-start text-white font-normal max-sm:items-center">
               <Box className="cursor-pointer">
-                <img src="./images/playstore.png" alt="playstore" />
+                <img src="/images/playstore.png" alt="playstore" />
               </Box>
               <Box className="flex items-center gap-5 my-8 max-sm:justify-center">
                 <img
-                  src="./icons/facebook.svg"
+                  src="/icons/facebook.svg"
                   alt="facebook"
                   className="w-[25px] h-[25px] cursor-pointer"
                 />
                 <img
-                  src="./icons/instagram.svg"
+                  src="/icons/instagram.svg"
                   alt="instagram"
                   className="w-[25px] h-[25px] cursor-pointer"
                 />
                 <img
-                  src="./icons/pinterest.svg"
+                  src="/icons/pinterest.svg"
                   alt="pinterest"
                   className="w-[25px] h-[25px] cursor-pointer"
                 />
                 <img
-                  src="./icons/twitter.svg"
+                  src="/icons/twitter.svg"
                   alt="twitter"
                   className="w-[25px] h-[25px] cursor-pointer"
                 />
                 <img
-                  src="./icons/youtube.svg"
+                  src="/icons/youtube.svg"
                   alt="youtube"
                   className="w-[25px] h-[25px] cursor-pointer"
                 />

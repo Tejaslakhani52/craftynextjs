@@ -11,10 +11,12 @@ import {
 } from "@/redux/reducer/actionDataReducer";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
+import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import StackGrid from "react-stack-grid";
 
 const otherData = {
   latestMeta: {
@@ -63,7 +65,6 @@ export default function index() {
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState<any>();
-  console.log("data: ", data);
   const [contentData, setContentData] = useState<any>([]);
   const [isNotFix, setIsNotFix] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -71,8 +72,6 @@ export default function index() {
   const [notFound, setNotFound] = useState<any>(false);
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
-
-  console.log("datasdcsdc: ", notFound);
 
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
 
@@ -132,23 +131,26 @@ export default function index() {
     element?.scrollIntoView();
   }, [data]);
 
-  const multiSizeFixSize = useMemo(() => {
+  const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
       case screenWidth > 1500:
-        return sideBarRedux ? 6 : 7;
+        return 6.3;
       case screenWidth > 1200:
-        return sideBarRedux ? 5 : 6;
+        return 5.3;
       case screenWidth > 1023:
-        return sideBarRedux ? 4 : 5;
+        return 4.3;
       case screenWidth > 700:
-        return 4;
-      case screenWidth > 600:
+        return 3.3;
+
       case screenWidth > 550:
-        return 2;
+        return 3.3;
+
+      case screenWidth > 250:
+        return 2.22;
       default:
-        return 2;
+        return 2.2;
     }
-  }, [screenWidth, sideBarRedux]);
+  }, [screenWidth]);
 
   return (
     <>
@@ -156,6 +158,10 @@ export default function index() {
       {notFound && <NotFound />}
 
       <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
+        <Head>
+          <title>{contentData?.meta_title}</title>
+          <meta name="description" content={contentData?.meta_desc} />
+        </Head>
         <Box className="pt-[15px]">
           <Breadcrumb
             data={[
@@ -246,7 +252,52 @@ export default function index() {
           </Box>
         </Box>
 
-        <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
+        <StackGrid columnWidth={screenWidth / multiSizeFixSize} duration={0}>
+          {data?.map((templates: any, index: number) => (
+            <div
+              className=""
+              style={{
+                height: `${calculateHeight(
+                  templates?.width,
+                  templates?.height,
+                  screenWidth / multiSizeFixSize
+                )}px`,
+                width: `${screenWidth / multiSizeFixSize}px`,
+              }}
+              id={`content${index}`}
+            >
+              <Link
+                href={`/?templates=${templates.id_name}`}
+                as={`/templates/p/${templates.id_name}`}
+                scroll={false}
+                shallow={true}
+              >
+                <div className="w-full h-full p-[8px]">
+                  <img
+                    src={templates?.template_thumb}
+                    alt={templates?.category_name}
+                    className={`w-full] rounded-[5px] cursor-pointer`}
+                    style={{
+                      border: "1px solid #80808082",
+                      height: "100%",
+                    }}
+                  />
+
+                  <div className="pt-2">
+                    <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
+                      {templates?.template_name}
+                    </p>
+                    <p className="text-[#ABB2C7] text-[13px] pb-1">
+                      {templates?.category_name}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </StackGrid>
+
+        {/* <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
           {data?.map((templates: any, index: number) => (
             <Box
               className={`${true && "p-[5px] bg-[bg-[#F4F7FE]] "}  `}
@@ -365,7 +416,7 @@ export default function index() {
               </Box>
             </Box>
           ))}
-        </Box>
+        </Box> */}
 
         <div
           style={{

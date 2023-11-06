@@ -10,6 +10,7 @@ import { tokenValue } from "@/redux/reducer/AuthDataReducer";
 import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/DashBoardSkelton";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,15 @@ export default function Home() {
 
   return (
     <main>
+      <Head>
+        <title>
+          Unlock Your Creative Potential with Our All-in-One Graphic Design Tool
+        </title>
+        <meta
+          name="description"
+          content="Discover a powerful all-in-one graphic design tool that streamlines your creative process. Create stunning designs like invitation, logos, social media posts and many more.. with ease."
+        />
+      </Head>
       {isLoading ? (
         <DashBoardSkelton />
       ) : tokenRedux ? (

@@ -12,27 +12,27 @@ import React from "react";
 
 const sliderTemplate = [
   {
-    img: "./images/marketingCreateFlyer.png",
+    img: "/images/marketingCreateFlyer.png",
     buttonName: "Create Flyer",
     path: "/flyers",
   },
   {
-    img: "./images/marketingCreateLogo.png",
+    img: "/images/marketingCreateLogo.png",
     buttonName: "Create Logo",
     path: "/logos",
   },
   {
-    img: "./images/marketingCreateBussiness.png",
+    img: "/images/marketingCreateBussiness.png",
     buttonName: "Create Business Card",
     path: "/bussinessCard",
   },
   {
-    img: "./images/marketingCreatePoster.png",
+    img: "/images/marketingCreatePoster.png",
     buttonName: "Create Poster",
     path: "/posters",
   },
   {
-    img: "./images/marketingCreateBrochure.png",
+    img: "/images/marketingCreateBrochure.png",
     buttonName: "Create Brochure",
     path: "/brochure",
   },

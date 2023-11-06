@@ -254,16 +254,19 @@ export default function searchValue() {
       case screenWidth > 1500:
         return 6.3;
       case screenWidth > 1200:
-        return 6;
+        return 5.3;
       case screenWidth > 1023:
-        return 5;
+        return 4.3;
       case screenWidth > 700:
-        return 4;
-      case screenWidth > 600:
+        return 3.3;
+
       case screenWidth > 550:
-        return 4;
+        return 3.3;
+
+      case screenWidth > 250:
+        return 2.4;
       default:
-        return 3;
+        return 2.2;
     }
   }, [screenWidth]);
 
@@ -282,7 +285,7 @@ export default function searchValue() {
       <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px] pt-[15px]">
         <Box
           sx={{
-            background: "url(/images/searchBanner.svg)",
+            background: "url(/images/searchBanner.png)",
             margin: "10px auto",
             width: "100%",
             overflow: "hidden",

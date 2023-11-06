@@ -18,9 +18,12 @@ export const createUserApi =
         console.log("data: ", data);
         toast.success("Success Login");
         tokenSet("userProfile", data?.user?.uid);
-        window.location.reload();
+
         // navigate(`${currentPathname !== "/login" ? currentPathname : "/"}`);
         router.push(`${"/"}`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);
       })
       .catch((err) => {
         console.log("err: ", err);

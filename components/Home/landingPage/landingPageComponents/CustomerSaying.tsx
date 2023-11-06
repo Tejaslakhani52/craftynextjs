@@ -3,35 +3,122 @@ import React, { useEffect, useState } from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
+const customerComment = [
+  {
+    rating: 5,
+    image: "/images/comment/man1.jpg",
+    name: "Emily Smith",
+    comment:
+      "As a photographer, I rely on Crafty Art Background Remover to quickly separate subjects from their backgrounds. It's fast, accurate, and has saved me a ton of time. Highly recommended",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/man2.jpg",
+    name: "James Johnson",
+    comment:
+      "Crafty Art is a fantastic online caricature tool for creating unique invitations. Its user-friendly interface make easy to design personalized caricatures that bring fun and humor in to my event. With excellent customer support and quick delivery, I prefer to design Caricature invitations with Crafty Art!",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/girl1.jpg",
+    name: "Olivia Davis",
+    comment:
+      "Crafty Art's custom invitations exceeded my expectations. Their user-friendly graphics design tools made it easy to create a unique design. The quality and design of invitation card was outstanding, and their customer service was top-notch. Quick delivery and attention to detail set Crafty Art apart. They made my event extra special!",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/girl2.jpg",
+    name: "Pooja Sharma",
+    comment:
+      "Crafty Art's invitation maker tool is perfect for those last-minute invitations. I used it for a surprise party and had invitations ready within an hour. The templates are so stylish, and you can quickly personalize them with the event details. The speed at which I could create and print the invitations saved the day for me.",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/man3.jpg",
+    name: "Ethan Wilson",
+    comment:
+      "Crafty Art Graphic Design Tool has been a game-changer for my design projects. Here a reasons why Crafty Art has earned my trust and loyalty: User Feedback Integration, Cross-Platform Compatibility, Time-Saving Features, Regular Content Updates, Security and Privacy, Advanced Export Options and Many More…",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/girl3.jpg",
+    name: "Sophia Brown",
+
+    comment:
+      "I run a small business, and the Crafty Art Daily Post Maker has transformed the way I handle my social media marketing. With this tool, I can easily schedule posts in advance, ensuring a consistent online presence for my brand. The convenience it offers is incredible. It has allowed me to grow my online following and connect with my customers in a more meaningful way.  ",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/man4.jpg",
+    name: "Siddharth Reddy",
+
+    comment:
+      "I recently had the pleasure of using the Crafty Art Invitation Card Maker Tool for an upcoming special event, and I couldn't be more delighted with the results. This online platform has truly transformed the way I create invitations, making the process both fun and effortless.",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/man5.jpg",
+    name: "kevin Smith",
+
+    comment:
+      "Crafty Art's invitation maker tool is so versatile. I used it for a baby shower invitation, and it allowed me to add personal photos and text. The final product looked professional and heartwarming. Being able to incorporate pictures of the mom-to-be it made the invitation extra special. ",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/man6.jpg",
+    name: "devid johnson",
+
+    comment:
+      "Crafty Art Logo Maker is a fantastic online tool! I am able to design a stunning logo for my small business in less time. its user-friendly interface and a wide range of logo designs make the process very easy. I impress with the simplicity of the platform, which allowed me to review with various design elements, colors, and fonts until I found the perfect logo that represented my business.",
+  },
+
+  {
+    rating: 5,
+    image: "/images/comment/girl4.jpg",
+    name: "Sophia devis",
+
+    comment:
+      "Crafty Art Flyer Maker is a great tool for quick and easy flyer design. The only downside is the limited export options. I'd love to have more file format choices for my designs, but it's still a solid choice for businesses on a budget.",
+  },
+];
+
 interface props {
   text: string;
   value: number;
+  image: string;
+  name: string;
 }
 
-export const CustomerBox = ({ text, value }: props) => {
+export const CustomerBox = ({ text, value, image, name }: props) => {
   return (
     <Box
       className="w-[32%] bg-white p-8 rounded-[10px] max-lg:w-[100%] min-w-[300px] max-2sm:min-w-[230px]"
       sx={{ boxShadow: "0px 0px 10px 3px rgba(0, 0, 0, 0.1)" }}
     >
+      <Box className="flex items-center space-x-4 mb-2">
+        <Box
+          className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
+          sx={{ backgroundImage: `url(${image})` }}
+        ></Box>
+        <Box className="font-medium dark:text-white">
+          <Box>{name}</Box>
+          {/* <Box className="text-sm text-gray-500 dark:text-gray-400">
+            Growth Hacker, Finter
+          </Box> */}
+        </Box>
+      </Box>
       <Rating name="read-only" value={value} readOnly />
       <Typography className="text-[14px] 2sm:text-[16px] text-black my-4  min-h-[170px] ">
         {text}
       </Typography>
-
-      <Box className="flex items-center space-x-4">
-        <img
-          className="w-12 h-12 rounded-full"
-          src="./images/Ellipse 78.png  "
-          alt="Ellipse"
-        />
-        <Box className="font-medium dark:text-white">
-          <Box>Abel</Box>
-          <Box className="text-sm text-gray-500 dark:text-gray-400">
-            Growth Hacker, Finter
-          </Box>
-        </Box>
-      </Box>
     </Box>
   );
 };
@@ -121,19 +208,14 @@ export default function CustomerSaying() {
           className=" flex  w-full xl:w-[80%] justify-between  z-[1] max-lg:mt-[0]  gap-[30px] overflow-auto scroll_none px-2 sm:px-10 py-5 sm:py-15  mt-5"
           id="customer"
         >
-          {Array(10)
-            .fill("")
-            .map((item) => (
-              <CustomerBox
-                value={5}
-                text="“Lunacy has been a lifesaver and given me
-          more than enough tools to create designs
-          for no cost at all. I used to design on AI
-          Illustrator and spend a fortune on it when I
-          could've been using Lunacy for free.
-          Highly recommend.”"
-              />
-            ))}
+          {customerComment?.map((item: any) => (
+            <CustomerBox
+              value={item?.rating}
+              text={`“${item?.comment}”`}
+              image={item?.image}
+              name={item?.name}
+            />
+          ))}
         </Box>
       </Box>
     </Box>
