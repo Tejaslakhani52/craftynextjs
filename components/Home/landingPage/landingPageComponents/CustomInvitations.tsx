@@ -27,7 +27,7 @@ export default function CustomInvitations() {
   return (
     <Box
       className="h-[516px] sm:h-[693px]   bg-cover bg-no-repeat mt-[-100px]  xl:mt-[-142px] bg-[#F4F7FE] 5xl:bg_linear px-[20px]   bg-top max-2sm:h-auto  max-2sm:pt-[50px]	"
-      sx={{ backgroundImage: "url('/images/customeinvitation.png')" }}
+      sx={{ background: "url(/images/customeinvitation.png)" }}
     >
       {/* <Box className="h-[693px] bg_linear mt-[-171px]  middle_round  bg-center	"> */}
       <Box className="flex flex-col items-center pt-14 gap-5  pt-[230px] max-sm:pt-[169px] max-2sm:pt-[100px]">
