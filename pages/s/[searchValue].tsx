@@ -209,7 +209,6 @@ export default function searchValue() {
   const searchName: any = router?.query?.searchValue;
   const formattedSearchName = searchName?.replace(/-/g, " ");
 
-  console.log("router: ", router.query);
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
   const [data, setData] = useState<any>();
@@ -240,7 +239,6 @@ export default function searchValue() {
           response.data.lastIndexOf("}") + 1
         );
         const getData = JSON.parse(jsonString);
-        console.log("getData_dfscvds: ", getData);
         setIsLastPage(getData?.isLastPage);
         setData((prevData: any) => [...(prevData || []), ...getData?.datas]);
       })
@@ -410,10 +408,10 @@ export default function searchValue() {
               className="flex flex-col items-center justify-center"
               sx={{ minHeight: `${screenHeight - 514}px` }}
             >
-              <img src="/images/ulpoadFile.png" alt="" className="w-[100px]" />
-              <Typography className="text-[18px] font-semibold opacity-70">
+              <img src="/images/NoDataFound.svg" alt="" className="w-[250px]" />
+              {/* <Typography className="text-[18px] font-semibold opacity-70">
                 No Templates Found
-              </Typography>
+              </Typography> */}
             </Box>
           )}
         </Box>

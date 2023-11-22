@@ -23,7 +23,6 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
     item?.category_name === "Latest" ||
     item?.category_name === "Trending" ||
     item?.category_name === "Invitation";
-  console.log("item: ", item);
   const containerId = `carousel-slide-container-${item.category_id}`;
   const [showPrevButton, setShowPrevButton] = useState(true);
   const [showNextButton, setShowNextButton] = useState(true);
@@ -193,8 +192,6 @@ export default function TemplatesBox() {
         count: 0,
       })
       .then((res: any) => {
-        console.log("res: ", res);
-        // setData(res?.data?.datas);
         dispatch(templatesData(res?.data?.datas));
       })
       .catch((err: any) => consoleShow("err", err));

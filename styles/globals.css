@@ -57,6 +57,14 @@ li {
   );
 }
 
+.border_linear {
+  border: 2px solid transparent;
+  background: linear-gradient(to right, #ffffff, #ffffff),
+    linear-gradient(268.03deg, #5961f8 -0.66%, #15d8c5 100%, #15d8c5 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+}
+
 .pre_botton {
   position: absolute;
   top: 40%;
@@ -121,7 +129,7 @@ li {
 }
 
 .custome_invitation_bg {
-  overflow: hidden; /* half circle - top is not visible */
+  overflow: hidden;
   position: relative;
 }
 .custome_invitation_bg::before {
@@ -251,4 +259,135 @@ li {
 .body-no-scroll {
   overflow: hidden;
   /* padding-right: 50px; */
+}
+
+.background_blur {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 5000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.30000001192092896;
+  background: var(--blue, #1c3048);
+}
+
+.report_dialog {
+  border-radius: 10px;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5000001;
+  transition: 0.2s all;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+}
+.separator .line {
+  height: 1px;
+  flex: 1.2;
+  background-color: #abb2c7;
+}
+.separator h2 {
+  padding: 0 1rem;
+  font-weight: 400;
+  font-size: 20px;
+  color: #abb2c7;
+}
+
+.not_found_page {
+  height: auto;
+}
+
+.inner_not_found {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: white;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back_box {
+  text-align: center;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #00000032;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+}
+
+.loader {
+  --loader-size: 50px;
+  --loader-border-size: 4px;
+  --loader-border-color: white;
+  width: var(--loader-size);
+  height: var(--loader-size);
+  border: var(--loader-border-size) solid var(--loader-border-color);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  animation: rotateX 1s infinite linear;
+}
+
+.loader::before {
+  content: "";
+  border: var(--loader-border-size) solid var(--loader-border-color);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  animation: rotateX 0.5s infinite linear reverse;
+}
+
+@keyframes rotateX {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .report_dialog {
+    border-radius: 0px;
+    background: #fff;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    transform: translate(0, 0%);
+    z-index: 5000001;
+    transition: 0.2s all;
+  }
 }

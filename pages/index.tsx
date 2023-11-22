@@ -16,10 +16,19 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const dispatch = useDispatch();
+  const router = useRouter();
   const token = tokenGet("userProfile");
   const tokenRedux = useSelector((state: any) => state.auth.tokenValue);
   console.log("token: ", token);
   const [isLoading, setIsLoading] = useState<any>(true);
+
+  const urlNavigate = tokenGet("navigate");
+
+  useEffect(() => {
+    if (urlNavigate !== null) {
+      router.push(urlNavigate);
+    }
+  }, [urlNavigate]);
 
   useEffect(() => {
     setTimeout(() => {

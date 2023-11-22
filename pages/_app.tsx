@@ -16,13 +16,10 @@ import TemplateModal from "@/components/singleTemplate/TemplateModal";
 export async function getStaticProps() {
   const router = useRouter();
   const res = await fetch(`http://localhost:3000${router.pathname}`);
-  console.log("resss: ", res);
   const html = await res.text();
 
   const parser = new DOMParser();
-  console.log("parser: ", parser);
   const doc = parser.parseFromString(html, "text/html");
-  console.log("doc: ", doc);
 
   const paragraphElement = doc.querySelector("p");
   const paragraphContent = paragraphElement?.textContent;
@@ -40,9 +37,9 @@ export default function App({
 }: AppProps & { paragraphContent: string }) {
   const router = useRouter();
   const id = router.query;
-  console.log("idsdcdsc: ", id);
-  console.log("paragraphContent: ", pageProps.paragraphContent);
   const str = router.pathname.substring(1);
+
+  console.log("str: ", str);
   let words = str.split(" ");
   let convertedWords = words.map(
     (word) => word.charAt(0).toUpperCase() + word.slice(1)
@@ -52,6 +49,14 @@ export default function App({
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const token = tokenGet("userProfile");
+
+  // if (token && str === "login") {
+  //   router.push("/");
+  // }
+
+  // if (typeof window !== "undefined") {
+  //   console.log("burl", window?.location?.pathname);
+  // }
 
   return (
     <>
@@ -91,7 +96,7 @@ export default function App({
             }}
             className="max-lg:ml-0"
           >
-            <div style={{ zIndex: "5000000000" }}>
+            <div style={{ zIndex: "5000000000000000", position: "fixed" }}>
               <Toaster />
             </div>
             <Component {...pageProps} />

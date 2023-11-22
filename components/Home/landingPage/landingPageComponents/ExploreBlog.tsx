@@ -5,13 +5,17 @@ interface props {
   image: string;
   text: string;
   heading: string;
+  path: string;
 }
 
-export const Card = ({ image, heading, text }: props) => {
+export const Card = ({ image, heading, text, path }: props) => {
   return (
-    <Box className="w-full sm:w-[34%] bg-white p-8 rounded-[10px] max-sm:p-0 max-sm:py-5">
+    <Box
+      className="w-full sm:w-[34%] bg-white p-8 rounded-[10px] max-sm:p-0 max-sm:py-5 cursor-pointer"
+      onClick={() => (window.location.href = path)}
+    >
       <Box>
-        <img src={image} alt={image} />
+        <img src={image} alt={image} className="rounded-[10px]" />
       </Box>
       <Typography className="text_linear my-3 text-[14px]">
         {heading}
@@ -37,20 +41,21 @@ export default function ExploreBlog() {
       <Box className="flex lg:w-[80%] justify-between z-[1]  max-sm:flex-col">
         <Card
           image="./images/blogImage1.png"
-          text=" How to Make Online Caricature Photo Effect?"
-          heading=" CARRY CATURE"
+          text="How to Create a Flyer: A Complete Guide to Designing Flyers"
+          heading="FLYER"
+          path="https://www.craftyartapp.com/blog/how-to-create-a-flyer/"
         />
         <Card
           image="./images/blogImage2.png"
-          text="Get Unlimited Free Online Invitation Card
-          Design"
-          heading="CUSTOMIZE INVITATION"
+          text="How To Make A Logo: A Step-by-Step Guide - Crafty Art"
+          heading="LOGO"
+          path="https://www.craftyartapp.com/blog/how-to-make-a-logo-a-step-by-step-guide/"
         />
         <Card
           image="./images/blogImage3.png"
-          text="Top 5 Creative Invitation Card Designs
-          for Your Next Event"
-          heading="CUSTOMIZE INVITATION"
+          text="How to Choose the Best Certificate Size - Crafty Art"
+          heading="CERTIFICATE SIZE"
+          path="https://www.craftyartapp.com/blog/how-to-choose-the-best-certificate-size/"
         />
       </Box>
 
@@ -66,6 +71,9 @@ export default function ExploreBlog() {
           color: "white",
         }}
         className="bg_linear py-[10px] px-[40px]"
+        onClick={() =>
+          (window.location.href = "https://www.craftyartapp.com/blog")
+        }
       >
         {"Explore all Blogs"}
       </Button>

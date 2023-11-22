@@ -50,20 +50,16 @@ export default function TemplateModal({ open, setOpen, currentPathname }: any) {
   const dispatch = useDispatch();
   const router = useRouter();
   const id = router.query;
-  console.log("idsacxsacsacsacsa: ", id);
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
   const [anotherData, setAnotherData] = React.useState<any>([]);
-  console.log("anotherData: ", anotherData);
   const [isLoading, setIsLoading] = React.useState<any>(true);
   const [template, setTemplate] = React.useState<any>({});
   const [templateOpen, setTemplateOpen] = useState<any>(false);
-  console.log("templateOpen: ", template);
   const [anotherTempLoad, setAnotherTempLoad] = useState<any>(true);
 
   const openModal = useSelector((state: any) => state.actions.openTempModal);
   const modalClose = useSelector((state: any) => state.actions.modalClosePath);
-  console.log("modalClose: ", modalClose);
 
   React?.useEffect(() => {
     setAnotherTempLoad(true);
@@ -88,7 +84,6 @@ export default function TemplateModal({ open, setOpen, currentPathname }: any) {
           );
           const getDatas = JSON.parse(jsonString);
           setTemplate(getDatas);
-          console.log("getDatas: ", getDatas);
 
           setTimeout(() => {
             axios
@@ -109,7 +104,6 @@ export default function TemplateModal({ open, setOpen, currentPathname }: any) {
                   response.data.lastIndexOf("}") + 1
                 );
                 const getData = JSON.parse(jsonString);
-                console.log("assaqsa: ", getData);
 
                 // if (getData && getData?.datas?.length > 0) {
                 //   setAnotherData(getData);
@@ -140,8 +134,6 @@ export default function TemplateModal({ open, setOpen, currentPathname }: any) {
         });
     }
   }, [id?.templates]);
-
-  console.log("template: ", template);
 
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {

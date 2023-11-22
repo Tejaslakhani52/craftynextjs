@@ -24,7 +24,6 @@ export default function Profile() {
     setAnchorEl(event.currentTarget);
   };
   const getData = tokenGet("userProfile");
-  console.log("getData: ", getData);
 
   useEffect(() => {
     setuId(getData);
@@ -46,7 +45,6 @@ export default function Profile() {
         email: uId,
       })
       .then(({ data }) => {
-        console.log("data: ", data);
         tokenSet("premium", data?.user?.is_premium === 1 ? "true" : "false");
         setImageBaseUrl(data?.url);
         setUserProfile(data?.user);

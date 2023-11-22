@@ -21,12 +21,9 @@ export default function ExploreTemplates({ category }: props) {
   const { pathname } = router;
   const pathSegments = pathname.split("/");
   const lastSegment = pathSegments[pathSegments.length - 1];
-  console.log("router: ", lastSegment);
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
-  console.log("category: ", category);
   const [data, setData] = useState<getTemplateDataType>();
-  console.log("data: ", data);
 
   useEffect(() => {
     axios

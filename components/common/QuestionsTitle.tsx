@@ -15,7 +15,7 @@ export default function QuestionsTitle({ text1, text2, text3 }: props) {
         fontWeight: "600",
         textAlign: "center",
       }}
-      className="2sm:text-[25px]  lg:text-[32px]   "
+      className="max-sm:text-[22px]  lg:text-[32px]   "
     >
       {text1}
       <span

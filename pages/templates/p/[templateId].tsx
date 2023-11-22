@@ -25,18 +25,15 @@ export default function templateId() {
   const [anotherData, setAnotherData] = React.useState<any>([]);
   const [isLoading, setIsLoading] = React.useState<any>(true);
   const [template, setTemplate] = React.useState<any>({});
-  console.log("template: ", template);
   const openModal = useSelector((state: any) => state.actions.openTempModal);
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
   const [description, setDescription] = React.useState<string>("");
-  console.log("description: ", description);
 
   var templateIds: any;
   if (typeof window !== "undefined" && !openModal) {
     const pathSegments = window.location.pathname.split("/");
     templateIds = pathSegments[pathSegments.length - 1];
   }
-  console.log("templateIds:", templateIds);
 
   const fetchPosterData = (templateIds: any) => {
     axios
@@ -54,7 +51,6 @@ export default function templateId() {
           response.data.lastIndexOf("}") + 1
         );
         const getData = JSON.parse(jsonString);
-        console.log("getData: ", getData);
         setTemplate(getData);
         setIsLoading(false);
       })

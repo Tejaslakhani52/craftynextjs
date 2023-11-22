@@ -4,6 +4,7 @@ import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/D
 import Breadcrumb from "@/components/common/Breadcrumb";
 import NotFound from "@/components/common/NotFound";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { tokenGet } from "@/redux/action/AuthToken";
 import {
   modalClosePath,
   openTempModal,
@@ -72,6 +73,7 @@ export default function index() {
   const [notFound, setNotFound] = useState<any>(false);
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
+  const userLoginStatus = tokenGet("userProfile");
 
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
 
@@ -89,7 +91,6 @@ export default function index() {
           page: page,
         })
         .then((res: any) => {
-          console.log("res: ", res);
           setLoadMore(false);
           setIsLastPage(res?.data?.isLastPage);
           if (id?.categoryId === "latest") {

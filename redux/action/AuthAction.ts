@@ -15,7 +15,6 @@ export const createUserApi =
     axios
       .post("https://story.craftyartapp.com/create/user", props)
       .then(({ data }) => {
-        console.log("data: ", data);
         toast.success("Success Login");
         tokenSet("userProfile", data?.user?.uid);
 

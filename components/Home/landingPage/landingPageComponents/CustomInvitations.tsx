@@ -7,7 +7,6 @@ import React, { useEffect, useState } from "react";
 
 export default function CustomInvitations() {
   const [data, setData] = useState<getTemplateDataType>();
-  console.log("data: ", data);
 
   useEffect(() => {
     axios
@@ -18,7 +17,6 @@ export default function CustomInvitations() {
         page: 1,
       })
       .then((res: any) => {
-        console.log("res: ", res);
         setData(res?.data.datas);
       })
       .catch((err) => consoleShow("err", err));
@@ -68,7 +66,6 @@ export default function CustomInvitations() {
         {data
           ?.filter((e: any, index: number) => index > 0 && index < 6)
           ?.map((item: any, index: number) => {
-            console.log("index: ", index);
             let width;
             switch (true) {
               case index === 1:
@@ -101,7 +98,6 @@ export default function CustomInvitations() {
         {data
           ?.filter((e: any, index: number) => index > 0 && index < 4)
           ?.map((item: any, index: number) => {
-            console.log("index: ", index);
             let width;
             switch (true) {
               case index === 0:

@@ -21,7 +21,6 @@ export default function Dashboard() {
   const dispatch = useDispatch();
   const router = useRouter();
   const id = router.query;
-  console.log("idsacxsacsaca: ", id);
 
   const handleBrowserButton = () => {
     dispatch(openTempModal(true));

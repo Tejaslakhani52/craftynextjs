@@ -11,7 +11,6 @@ export default function DashBoardSkelton() {
   const screenWidth = useScreenWidth();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
 
-  console.log("screenWidth: ", screenWidth);
   return (
     <div className="fixed top-0 left-0 right-0 bottom-0 bg-[white] z-[1000]">
       <div className="h-[80px]"></div>

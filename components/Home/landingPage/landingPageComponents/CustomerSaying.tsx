@@ -145,7 +145,6 @@ export default function CustomerSaying() {
   }, ["customer"]);
 
   const handleNextClick = () => {
-    console.log("handleNextClick: ", "handleNextClick");
     const container = document.getElementById("customer") as HTMLElement;
     if (container) {
       container.scrollBy({

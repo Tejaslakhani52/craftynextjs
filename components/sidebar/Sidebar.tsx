@@ -173,14 +173,13 @@ export default function Sidebar({
   openSignUp,
   setOpenSignUp,
 }: any) {
-  console.log("open: ", open);
   const router = useRouter();
   const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+  console.log("sideBarRedux: ", sideBarRedux);
   const MobileMenuRedux = useSelector(
     (state: any) => state.actions.openMobileMenubar
   );
-  console.log("sideBarRedux: ", sideBarRedux);
   const [screenHeight, setScreenHeight] = useState(0);
   const token = tokenGet("userProfile");
 

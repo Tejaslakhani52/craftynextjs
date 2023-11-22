@@ -148,6 +148,7 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
 }
 
 export default function MenuBox() {
+  const router = useRouter();
   const [selectColor, setSelectColor] = React.useState<string>("#1C3048");
   const [openHideButton, setOpenHideButton] = useState<boolean>(false);
 
@@ -167,9 +168,10 @@ export default function MenuBox() {
 
         <button
           className={` max-xl:hidden px-4 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
+          onClick={() => router.push("/plans")}
         >
           Pricing
-          <img src="/icons/pricing.svg" alt="" className="ml-[8px] " />
+          <img src="/icons/pricing.svg" alt="" className="ml-[8px]" />
         </button>
         <Box className=" relative block xl:hidden">
           <Button className="text-black px-2 min-w-[auto] peer ">

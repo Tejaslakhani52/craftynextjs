@@ -146,10 +146,13 @@ import { tokenGet } from "@/redux/action/AuthToken";
 import { useDispatch, useSelector } from "react-redux";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { tokenValue } from "@/redux/reducer/AuthDataReducer";
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 
 export default function Header({ sidebarOpen, setSidebarOpen }: any) {
+  const screenWidth = useScreenWidth();
   const dispatch = useDispatch();
   const router = useRouter();
+  console.log("router: ", router);
   const token = tokenGet("userProfile");
   const [executed, setExecuted] = useState(false);
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
@@ -162,11 +165,15 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   }, [sideBarRedux]);
 
   useEffect(() => {
-    if (token) {
-      dispatch(openSidebar(true));
+    if (token && router?.pathname !== "/your-account") {
+      if (screenWidth > 991) {
+        dispatch(openSidebar(true));
+      }
       dispatch(tokenValue(true));
     }
   }, [token]);
+
+  const tokenRedux = useSelector((state: any) => state.auth.tokenValue);
 
   return (
     <>
@@ -189,7 +196,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                 className="w-[22px] mx-auto"
               />
             </Button>
-            {token && (
+            {tokenRedux && token && (
               <Button
                 className="py-3 min-w-[30px] px-1 hidden lg:block"
                 onClick={() => {
