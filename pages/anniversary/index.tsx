@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/anivversaryBanner.png"
+        image="/images/anivversaryBanner.png"
         heading={
           "Celebrate your love with a beautiful anniversary invitation card!"
         }
@@ -31,7 +31,7 @@ export default function index() {
         image={
           <Box sx={{ width: "480px" }}>
             <img
-              src={"./images/anivversaryBanner.png"}
+              src={"/images/anivversaryBanner.png"}
               alt="anivversaryBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -52,7 +52,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
-        image="./images/anivversaryInvitation.png"
+        image="/images/anivversaryInvitation.png"
       />
 
       <RightImageSection
@@ -68,7 +68,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Invitation"}
-        image="./images/anivversaryEase.png"
+        image="/images/anivversaryEase.png"
       />
 
       <LeftImageSection
@@ -84,7 +84,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
-        image="./images/anivversaryMinute.png"
+        image="/images/anivversaryMinute.png"
       />
       <Box
         sx={{

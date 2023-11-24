@@ -184,7 +184,7 @@ export default function CustomerSaying() {
             }}
           >
             <img
-              src="./icons/leftArrow.svg"
+              src="/icons/leftArrow.svg"
               alt="leftArrow"
               className="w-[10px]"
             />
@@ -195,7 +195,7 @@ export default function CustomerSaying() {
             sx={{ opacity: !showNextButton ? "0.3" : 1 }}
           >
             <img
-              src="./icons/rightArrow.svg"
+              src="/icons/rightArrow.svg"
               alt="rightArrow"
               className="w-[10px]"
             />

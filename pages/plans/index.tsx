@@ -12,6 +12,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import RazorpayPage from "@/components/payment/Razorpay";
 import { useRouter } from "next/router";
 import { addDays, format } from "date-fns";
+import MainLoaderBox from "@/components/common/MainLoaderBox";
 
 const PUBLIC_KEY =
   "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
@@ -874,6 +875,8 @@ export default function index() {
           </Box>
         </Box>
       </DialogModal>
+
+      <MainLoaderBox />
     </div>
   );
 }

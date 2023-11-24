@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import axios from "axios";
 import { useRouter } from "next/router";
+import PersonalInfo from "./components/PersonalInfo";
+import Subscription from "./components/Subscription";
+import PaymentHistory from "./components/PaymentHistory";
 
 export const sidebarMenu = [
   {
@@ -15,14 +18,14 @@ export const sidebarMenu = [
   },
   {
     name: "Subscription",
-    icons: "/icons/homeIcons.svg",
-    activeIcon: "/icons/homeIconActive.svg",
+    icons: "/icons/premiumPlans/subscribe.svg",
+    activeIcon: "/icons/premiumPlans/subscribeActive.svg",
     path: "/",
   },
   {
     name: "Payment History",
-    icons: "/icons/homeIcons.svg",
-    activeIcon: "/icons/homeIconActive.svg",
+    icons: "/icons/premiumPlans/paymentHistory.svg",
+    activeIcon: "/icons/premiumPlans/paymentHistoryActive.svg",
     path: "/",
   },
 ];
@@ -32,6 +35,10 @@ export default function Account() {
   const getData = tokenGet("userProfile");
   const [userProfile, setUserProfile] = useState<any>(null);
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
+  const [activeTab, setActiveTab] = useState<any>("Personal Info");
+  const [currentPlan, setcurrentPlan] = useState<any>();
+  const [loading, setLoading] = useState<any>(true);
+  console.log("currentPlan: ", currentPlan);
   const screenHeight = useScreenHeight();
 
   const fetchData = async () => {
@@ -100,18 +107,47 @@ export default function Account() {
     );
   };
 
+  useEffect(() => {
+    axios
+      .post(
+        "https://story.craftyartapp.com/my-currentPlan",
+        {
+          key: "qwfsegxdhbxfjhncf",
+          user_id: getData,
+        },
+        { withCredentials: false }
+      )
+      .then((response: any) => {
+        setLoading(false);
+        console.log("response: ", response);
+        const jsonString = response?.data?.substring(
+          response?.data?.indexOf("{"),
+          response?.data?.lastIndexOf("}") + 1
+        );
+        const getDatas = JSON.parse(jsonString);
+        setcurrentPlan(getDatas);
+      })
+      .catch((error) => console.log("error: ", error));
+  }, [getData]);
+
+  const accountComponents: any = {
+    "Personal Info": <PersonalInfo />,
+    Subscription: <Subscription userSubscription={currentPlan} />,
+    "Payment History": <PaymentHistory userSubscription={currentPlan} />,
+  };
+
   return (
-    <div className="">
+    <Box className="">
       <Box
-        className="w-[360px] fixed left-0 top-[72px] bottom-0 "
+        className="2md:w-[320px] max-2md:mx-auto 2md:fixed left-0 top-[72px] bottom-0 "
         sx={{
-          height: `${screenHeight - 65}px`,
-          borderRight: "1px solid #D9D9D9",
+          height: { xs: `auto `, md: `${screenHeight - 65}px` },
+          borderRight: { md: "1px solid #D9D9D9" },
         }}
       >
         <Box
-          sx={{ borderBottom: "1px solid #D9D9D9" }}
-          className="py-[30px] pl-[20px]"
+          sx={{ borderBottom: { md: "1px solid #D9D9D9" } }}
+          className="py-[30px] pl-[20px] max-2md:hidden"
         >
           <Box
             sx={{
@@ -149,37 +185,35 @@ export default function Account() {
             </div>
           </Box>
         </Box>
-        <Box className="py-[20px] px-[15px]">
+        <Box className="pt-[20px] max-2md:px-[8px] gap-2 px-[15px] max-2md:flex justify-between border-b dark:bg-gray-800 overflow-auto scroll_none">
           {sidebarMenu?.map((item) => (
             <Box
-              sx={{
-                borderTop:
-                  item.name === "Refer and earn"
-                    ? "1px dashed #1c304840"
-                    : "none",
-                borderBottom:
-                  item.name === "Refer and earn"
-                    ? "1px dashed  #1c304840"
-                    : "none",
-              }}
+              className={`${
+                activeTab === item?.name && "max-2md:border_b_linear"
+              }`}
             >
               <Box
-                className={`flex cursor-pointer py-3 px-3 w-full hover:bg-[#F4F7FE] ${
-                  router.pathname === item.path && " bg-[#F4F7FE]"
+                className={`flex cursor-pointer px-1 py-3 2md:py-3 2md:px-3 w-full  hover:bg-[#F4F7FE] ${
+                  router.pathname === item.path && " bg-[#F4F7FE] "
                 }    rounded-[4px]`}
-                onClick={() => router.push(item.path)}
+                onClick={() => setActiveTab(item?.name)}
               >
                 {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
-                <Box className="flex gap-5  w-full">
-                  <Box className="w-[20px]">
+                <Box className="flex w-full">
+                  <Box className="w-[40px] max-2md:hidden">
                     <img
-                      src={true ? item.activeIcon : item.icons}
+                      src={
+                        activeTab === item?.name ? item.activeIcon : item.icons
+                      }
                       alt="Icons"
+                      className="max-w-[20px] max-h-[20px]"
                     />
                   </Box>
                   <Typography
-                    className={`text-[15px] font-medium ${
-                      true ? " active_text_linear " : "text-black opacity-60"
+                    className={`text-[15px] font-medium whitespace-nowrap ${
+                      activeTab === item?.name
+                        ? " active_text_linear "
+                        : "text-black opacity-60"
                     }`}
                   >
                     {item.name}
@@ -197,6 +231,16 @@ export default function Account() {
           ))}
         </Box>
       </Box>
-    </div>
+
+      <Box className="2md:ml-[320px] 2md:mt-[70px] px-[10px] 2md:px-[50px] py-[30px]">
+        {accountComponents?.[activeTab]}
+      </Box>
+
+      {loading && (
+        <main className="main">
+          <span className="loader"></span>
+        </main>
+      )}
+    </Box>
   );
 }

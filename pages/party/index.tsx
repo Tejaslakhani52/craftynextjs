@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/partyBirthday.png"
+        image="/images/partyBirthday.png"
         heading={"Create Your Perfect Party Invitation"}
         text="Browse top quality party invitation templates for your next design"
       />
@@ -25,7 +25,7 @@ export default function index() {
         image={
           <Box sx={{ width: "410px" }}>
             <img
-              src={"./images/partyBanner.png"}
+              src={"/images/partyBanner.png"}
               alt="partyBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -46,7 +46,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
-        image="./images/partyBirthday.png"
+        image="/images/partyBirthday.png"
       />
 
       <RightImageSection
@@ -62,7 +62,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Party Invitation"}
-        image="./images/partyEase.png"
+        image="/images/partyEase.png"
       />
 
       <LeftImageSection
@@ -78,7 +78,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
-        image="./images/partyMinutes.png"
+        image="/images/partyMinutes.png"
       />
       <Box
         sx={{

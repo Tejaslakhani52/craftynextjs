@@ -13,7 +13,7 @@ export default function index() {
   return (
     <Box>
       <CustomeHead
-        image="./images/logoCreateLogo.png"
+        image="/images/logoCreateLogo.png"
         heading={"Let Your Brand Shine with Our Custom Logo Design"}
         text="Create a Lasting Impression with a Custom Logo Design That Truly Represents Your Business,
         Begin with custom logos that are simple to create and use."
@@ -27,7 +27,7 @@ export default function index() {
         image={
           <Box sx={{ width: "450px" }}>
             <img
-              src={"./images/logoBanner.png"}
+              src={"/images/logoBanner.png"}
               alt="logoBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -49,7 +49,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create a logo"}
-        image="./images/logoCreateLogo.png"
+        image="/images/logoCreateLogo.png"
       />
 
       <RightImageSection
@@ -64,7 +64,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create a logo"}
-        image="./images/logoCustom.png"
+        image="/images/logoCustom.png"
       />
 
       <LeftImageSection
@@ -79,7 +79,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create a logo"}
-        image="./images/logoStunning.png"
+        image="/images/logoStunning.png"
       />
       <Box
         sx={{

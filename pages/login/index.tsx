@@ -1,5 +1,6 @@
 import ForgotPass from "@/components/auth/authComponents/ForgotPass";
 import LoginContentBox from "@/components/auth/authComponents/LoginContentBox";
+import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { tokenGet } from "@/redux/action/AuthToken";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
@@ -86,6 +87,7 @@ export default function index() {
           </Box>
         </Box>
       )}
+      <MainLoaderBox />
     </Box>
   );
 }

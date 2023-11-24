@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/brouchureDesign.png"
+        image="/images/brouchureDesign.png"
         heading={
           "Effective Brochure Design - Elements to Create a Unique and Engaging Brochure"
         }
@@ -29,7 +29,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/brouchureBanner.png"}
+              src={"/images/brouchureBanner.png"}
               alt="brouchureBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -49,7 +49,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Brochure"}
-        image="./images/brouchureDesign.png"
+        image="/images/brouchureDesign.png"
       />
       <RightImageSection
         title="How to make unique brochures?"
@@ -63,7 +63,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Brochures"}
-        image="./images/brouchureUnique.png"
+        image="/images/brouchureUnique.png"
       />
       <LeftImageSection
         title="5 steps to create a brochure:"
@@ -77,7 +77,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Brochures"}
-        image="./images/brouchureCreate.png"
+        image="/images/brouchureCreate.png"
       />
       {/*  */}{" "}
       <Box

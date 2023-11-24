@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/qoutesDesign.png"
+        image="/images/qoutesDesign.png"
         heading={
           "Best Practices for Designing Quotes Posts that  Engage Your Audience"
         }
@@ -29,7 +29,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/qoutesBanner.png"}
+              src={"/images/qoutesBanner.png"}
               alt="qoutesBanner"
               style={{ width: "100%", height: "100%", paddingRight: "0px" }}
             />
@@ -49,7 +49,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Quotes"}
-        image="./images/qoutesDesign.png"
+        image="/images/qoutesDesign.png"
       />
       <RightImageSection
         title="How to make unique quotes post?"
@@ -63,7 +63,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Qoutes"}
-        image="./images/qoutesUnique.png"
+        image="/images/qoutesUnique.png"
       />
       <LeftImageSection
         title="Top 5 trending designs for quotes post"
@@ -77,7 +77,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Quotes"}
-        image="./images/qoutesTrending.png"
+        image="/images/qoutesTrending.png"
       />
       {/*  */}{" "}
       <Box

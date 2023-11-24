@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/birthdayInvitation.png"
+        image="/images/birthdayInvitation.png"
         heading={
           "Create custom birthday invitations in minutes and make your celebration extra special!"
         }
@@ -29,7 +29,7 @@ export default function index() {
         image={
           <Box sx={{ width: "450px" }}>
             <img
-              src={"./images/birthdayBanner.png"}
+              src={"/images/birthdayBanner.png"}
               alt="birthdayBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -50,7 +50,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Invitation"}
-        image="./images/birthdayInvitation.png"
+        image="/images/birthdayInvitation.png"
       />
 
       <RightImageSection
@@ -66,7 +66,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Card "}
-        image="./images/birthdayEase.png"
+        image="/images/birthdayEase.png"
       />
 
       <LeftImageSection
@@ -82,7 +82,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Choose your Template"}
-        image="./images/birthdayMinute.png"
+        image="/images/birthdayMinute.png"
       />
       <Box
         sx={{

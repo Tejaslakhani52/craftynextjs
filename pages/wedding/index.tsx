@@ -16,7 +16,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/weedingInvitationUnique.png"
+        image="/images/weedingInvitationUnique.png"
         heading={
           "Browse Our Beautiful Collection of Wedding Invitation Templates"
         }
@@ -32,7 +32,7 @@ export default function index() {
         image={
           <Box sx={{ width: "410px" }}>
             <img
-              src={"./images/weddingBanner.png"}
+              src={"/images/weddingBanner.png"}
               alt="weddingBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -54,7 +54,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Invitation"}
-        image="./images/weedingInvitationUnique.png"
+        image="/images/weedingInvitationUnique.png"
       />
 
       <RightImageSection
@@ -70,7 +70,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Card"}
-        image="./images/weddingCard.png"
+        image="/images/weddingCard.png"
       />
 
       <LeftImageSection
@@ -87,7 +87,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Choose your Template"}
-        image="./images/weddingStyle.png"
+        image="/images/weddingStyle.png"
       />
 
       <Box

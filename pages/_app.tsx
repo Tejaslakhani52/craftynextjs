@@ -12,6 +12,7 @@ import { tokenGet } from "@/redux/action/AuthToken";
 import { Toaster } from "react-hot-toast";
 import MainLoader from "@/components/common/MainLoader";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
 
 export async function getStaticProps() {
   const router = useRouter();
@@ -38,6 +39,7 @@ export default function App({
   const router = useRouter();
   const id = router.query;
   const str = router.pathname.substring(1);
+  const screenHeight = useScreenHeight();
 
   console.log("str: ", str);
   let words = str.split(" ");
@@ -79,7 +81,7 @@ export default function App({
             property="og:description"
             content={"Customize your Design in just few Clicks!"}
           />
-          <meta property="og:image" content={"./images/logo.svg"} />
+          <meta property="og:image" content={"/images/logo.svg"} />
           <meta property="og:image:width" content={"200"} />
           <meta property="og:image:height" content={"100"} />
           <meta property="og:image:alt" content={"craftyArt Logo"} />
@@ -93,6 +95,7 @@ export default function App({
               marginLeft: sidebarOpen ? "250px" : "0",
               marginTop: "70px",
               // transition: "0.1s all",
+              minHeight: `${screenHeight - 568}px`,
             }}
             className="max-lg:ml-0"
           >
@@ -196,7 +199,7 @@ export default function App({
 //             property="og:description"
 //             content={"Customize your Design in just few Clicks!"}
 //           />
-//           <meta property="og:image" content={"./images/logo.svg"} />
+//           <meta property="og:image" content={"/images/logo.svg"} />
 //           <meta property="og:image:width" content={"200"} />
 //           <meta property="og:image:height" content={"100"} />
 //           <meta property="og:image:alt" content={"craftyArt Logo"} />

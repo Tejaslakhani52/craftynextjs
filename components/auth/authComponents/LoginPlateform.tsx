@@ -114,7 +114,7 @@ export default function LoginPlateform() {
     <Box className="flex flex-col gap-4 my-5">
       <LoginButton onClick={handleGoogleLogin}>
         <img
-          src="./icons/google1.svg"
+          src="/icons/google1.svg"
           alt="google"
           className="w-[24px] h-[24px]"
         />
@@ -122,7 +122,7 @@ export default function LoginPlateform() {
       </LoginButton>
       {/* <LoginButton>
         <img
-          src="./icons/facebookLogin.svg"
+          src="/icons/facebookLogin.svg"
           alt="facebookLogin"
           className="w-[24px] h-[24px]"
         />
@@ -130,7 +130,7 @@ export default function LoginPlateform() {
       </LoginButton>
       <LoginButton>
         <img
-          src="./icons/mobileLogin.svg"
+          src="/icons/mobileLogin.svg"
           alt="mobileLogin"
           className="w-[24px] h-[24px]"
         />

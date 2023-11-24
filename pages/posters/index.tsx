@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/posterPerfact.png"
+        image="/images/posterPerfact.png"
         heading={"Make attractive posters by using plenty of poster designs."}
         text="Browse Crafty Art's poster design and customise them to communicate your message, and raise your
         brand awareness."
@@ -27,7 +27,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/posterBanner.png"}
+              src={"/images/posterBanner.png"}
               alt="posterBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -47,7 +47,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Poster"}
-        image="./images/posterPerfact.png"
+        image="/images/posterPerfact.png"
       />
       <RightImageSection
         title="Create stunning posters with these
@@ -61,7 +61,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Poster"}
-        image="./images/posterCreate.png"
+        image="/images/posterCreate.png"
       />
       <LeftImageSection
         title="Create professional posters with
@@ -76,7 +76,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Posters"}
-        image="./images/posterEase.png"
+        image="/images/posterEase.png"
       />
       {/*  */}{" "}
       <Box

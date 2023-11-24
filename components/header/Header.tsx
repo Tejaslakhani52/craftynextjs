@@ -136,7 +136,7 @@
 // }
 
 import { Box, Button } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MenuBox from "./headerComponents/Menu";
 import LoginButton from "./headerComponents/LoginButton";
 import { useRouter } from "next/router";
@@ -144,7 +144,11 @@ import Sidebar from "../sidebar/Sidebar";
 import Profile from "../profileAndNotification/Profile";
 import { tokenGet } from "@/redux/action/AuthToken";
 import { useDispatch, useSelector } from "react-redux";
-import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import {
+  enterAccount,
+  mainLoader,
+  openSidebar,
+} from "@/redux/reducer/actionDataReducer";
 import { tokenValue } from "@/redux/reducer/AuthDataReducer";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 
@@ -154,6 +158,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   const router = useRouter();
   console.log("router: ", router);
   const token = tokenGet("userProfile");
+  console.log("token: ", token);
   const [executed, setExecuted] = useState(false);
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
@@ -164,16 +169,41 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
     setSidebarOpen(sideBarRedux);
   }, [sideBarRedux]);
 
+  const hasEffectRun = useRef(false);
+
   useEffect(() => {
-    if (token && router?.pathname !== "/your-account") {
-      if (screenWidth > 991) {
-        dispatch(openSidebar(true));
+    dispatch(mainLoader(true));
+    const timeoutId = setTimeout(() => {
+      if (!hasEffectRun.current) {
+        if (token) {
+          if (screenWidth > 991 && router?.pathname !== "/your-account") {
+            dispatch(openSidebar(true));
+          }
+          dispatch(tokenValue(true));
+        } else if (router?.pathname === "/your-account") {
+          router.push("/");
+        }
+        hasEffectRun.current = true;
+        if (!token) {
+          dispatch(openSidebar(false));
+        }
+        dispatch(mainLoader(false));
       }
-      dispatch(tokenValue(true));
-    }
+    }, 500);
+
+    return () => clearTimeout(timeoutId);
   }, [token]);
 
-  const tokenRedux = useSelector((state: any) => state.auth.tokenValue);
+  useEffect(() => {
+    if (router?.pathname === "/your-account") {
+      dispatch(enterAccount(true));
+    } else dispatch(enterAccount(false));
+  }, [router]);
+
+  const enterYourAccount = useSelector(
+    (state: any) => state.actions.enterAccount
+  );
+  console.log("enterYourAccount: ", enterYourAccount);
 
   return (
     <>
@@ -196,7 +226,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                 className="w-[22px] mx-auto"
               />
             </Button>
-            {tokenRedux && token && (
+            {!enterYourAccount && token && (
               <Button
                 className="py-3 min-w-[30px] px-1 hidden lg:block"
                 onClick={() => {

@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/babyShowerInvitation.png"
+        image="/images/babyShowerInvitation.png"
         heading={
           "Celebrate the upcoming arrival of your little one with beautiful baby shower templates!"
         }
@@ -29,7 +29,7 @@ export default function index() {
         image={
           <Box sx={{ width: "450px" }}>
             <img
-              src={"./images/babyShowerBanner.png"}
+              src={"/images/babyShowerBanner.png"}
               alt="babyShowerBanner"
               style={{ width: "100%", height: "100%", paddingRight: "0px" }}
             />
@@ -50,7 +50,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
-        image="./images/babyShowerInvitation.png"
+        image="/images/babyShowerInvitation.png"
       />
 
       <RightImageSection
@@ -66,7 +66,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Invitation"}
-        image="./images/babyShowerEase.png"
+        image="/images/babyShowerEase.png"
       />
 
       <LeftImageSection
@@ -82,7 +82,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
-        image="./images/babyShowerMinute.png"
+        image="/images/babyShowerMinute.png"
       />
       <Box
         sx={{

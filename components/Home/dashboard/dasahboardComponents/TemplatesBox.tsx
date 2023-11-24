@@ -164,7 +164,7 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
             style={{ top: "52%" }}
           >
             <img
-              src="./icons/rightArrow.svg"
+              src="/icons/rightArrow.svg"
               alt="rightArrow"
               className="w-[8px]"
             />

@@ -185,7 +185,7 @@ export default function SignUpContentBox(props: any) {
               sx={{ display: props?.handleClose ? "inline-block" : "none" }}
             >
               <img
-                src="./icons/leftArrow.svg"
+                src="/icons/leftArrow.svg"
                 alt="leftArrow"
                 className="w-[10px]"
               />

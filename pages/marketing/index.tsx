@@ -42,7 +42,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/marketingCatching.png"
+        image="/images/marketingCatching.png"
         heading="Elevate your marketing game with stunning marketing templates!"
         text="Make an unforgettable impression with custom marketing posters
               created in minutes. Choose from a variety of design templates to
@@ -70,7 +70,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your flyer now"}
-        image="./images/marketingCatching.png"
+        image="/images/marketingCatching.png"
         path="/flyers"
       />
 
@@ -87,7 +87,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find a Business Card"}
-        image="./images/marketingBussinessCard.png"
+        image="/images/marketingBussinessCard.png"
         path="/bussinessCard"
       />
 
@@ -104,7 +104,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Logo"}
-        image="./images/marketingLogoDesign.png"
+        image="/images/marketingLogoDesign.png"
         path="/logos"
       />
 
@@ -121,7 +121,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Poster"}
-        image="./images/marketingEffectivePoster.png"
+        image="/images/marketingEffectivePoster.png"
         path="/posters"
       />
 
@@ -138,7 +138,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Brochure"}
-        image="./images/marketingBrochure.png"
+        image="/images/marketingBrochure.png"
         path="/brochure"
       />
 
@@ -155,7 +155,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Menu"}
-        image="./images/marketingRestaurantMenu.png"
+        image="/images/marketingRestaurantMenu.png"
       />
 
       <RightDetail
@@ -171,7 +171,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your own Infographic"}
-        image="./images/marketingInfoGraphic.png"
+        image="/images/marketingInfoGraphic.png"
       />
 
       <Box

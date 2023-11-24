@@ -4,15 +4,15 @@ import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 const brandIcons = [
-  "./images/brandIcon1.png",
-  "./images/brandIcon2.png",
-  "./images/brandIcon3.png",
-  "./images/brandIcon4.png",
-  "./images/brandIcon5.png",
-  "./images/brandIcon1.png",
-  "./images/brandIcon2.png",
-  "./images/brandIcon3.png",
-  "./images/brandIcon4.png",
+  "/images/brandIcon1.png",
+  "/images/brandIcon2.png",
+  "/images/brandIcon3.png",
+  "/images/brandIcon4.png",
+  "/images/brandIcon5.png",
+  "/images/brandIcon1.png",
+  "/images/brandIcon2.png",
+  "/images/brandIcon3.png",
+  "/images/brandIcon4.png",
 ];
 
 export default function BrandsIconSlider() {
@@ -96,7 +96,7 @@ export default function BrandsIconSlider() {
               }}
             >
               <img
-                src="./icons/leftArrow.svg"
+                src="/icons/leftArrow.svg"
                 alt="leftArrow"
                 className="w-[10px]"
               />
@@ -111,7 +111,7 @@ export default function BrandsIconSlider() {
               }}
             >
               <img
-                src="./icons/rightArrow.svg"
+                src="/icons/rightArrow.svg"
                 alt="rightArrow"
                 className="w-[10px]"
               />

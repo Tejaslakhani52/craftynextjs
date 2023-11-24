@@ -38,7 +38,7 @@ export default function Document() {
               "@type": "Organization",
               name: "CraftyArt",
               url: "https://craftyartapp.com/",
-              logo: "./images/logo.svg",
+              logo: "/images/logo.svg",
               contactPoint: [
                 {
                   "@type": "ContactPoint",

@@ -12,27 +12,27 @@ import React from "react";
 
 const sliderTemplate = [
   {
-    img: "./images/bussinessCreateInvoice.png",
+    img: "/images/bussinessCreateInvoice.png",
     buttonName: "Create Invoice",
     path: "/invoice",
   },
   {
-    img: "./images/bussinessCreateLatterhead.png",
+    img: "/images/bussinessCreateLatterhead.png",
     buttonName: "Create Latterhead",
     path: "/latterhead",
   },
   {
-    img: "./images/bussinessCreateCalendar.png",
+    img: "/images/bussinessCreateCalendar.png",
     buttonName: "Create Calendar",
     path: "/calendar",
   },
   {
-    img: "./images/bussinessCreateResume.png",
+    img: "/images/bussinessCreateResume.png",
     buttonName: "Create Resume",
     path: "/resume",
   },
   {
-    img: "./images/bussinessCreateReport.png",
+    img: "/images/bussinessCreateReport.png",
     buttonName: "Create Bussiness Report",
     path: "/bussinessReport",
   },
@@ -42,7 +42,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/bussinessLetterhead.png"
+        image="/images/bussinessLetterhead.png"
         heading=" Streamline Your Business with Our Essential Template"
         text=" Design Professional and Functional Documents with Ease Using Our
         Template Library"
@@ -66,7 +66,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Letterhead"}
-        image="./images/bussinessLetterhead.png"
+        image="/images/bussinessLetterhead.png"
       />
 
       <LeftDetail
@@ -81,7 +81,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find a Calender"}
-        image="./images/bussinessCalendar.png"
+        image="/images/bussinessCalendar.png"
         path="/calendar"
       />
 
@@ -98,7 +98,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Resume"}
-        image="./images/bussinessResume.png"
+        image="/images/bussinessResume.png"
         path="/resume"
       />
 
@@ -115,7 +115,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design Invoice"}
-        image="./images/bussinessInvoice.png"
+        image="/images/bussinessInvoice.png"
       />
 
       <RightDetail
@@ -131,7 +131,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your report"}
-        image="./images/bussinessReport.png"
+        image="/images/bussinessReport.png"
       />
 
       <Box

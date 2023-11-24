@@ -11,6 +11,7 @@ import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/D
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import MainLoaderBox from "@/components/common/MainLoaderBox";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,10 +20,12 @@ export default function Home() {
   const router = useRouter();
   const token = tokenGet("userProfile");
   const tokenRedux = useSelector((state: any) => state.auth.tokenValue);
-  console.log("token: ", token);
+  const mainLoading = useSelector((state: any) => state.actions.mainLoader);
+  console.log("mainLoading: ", mainLoading);
   const [isLoading, setIsLoading] = useState<any>(true);
 
   const urlNavigate = tokenGet("navigate");
+  console.log("urlNavigate: ", urlNavigate);
 
   useEffect(() => {
     if (urlNavigate !== null) {
@@ -47,8 +50,12 @@ export default function Home() {
           content="Discover a powerful all-in-one graphic design tool that streamlines your creative process. Create stunning designs like invitation, logos, social media posts and many more.. with ease."
         />
       </Head>
-      {isLoading ? (
-        <DashBoardSkelton />
+      {mainLoading || isLoading ? (
+        mainLoading ? (
+          <MainLoaderBox />
+        ) : (
+          <DashBoardSkelton />
+        )
       ) : tokenRedux ? (
         <Dashboard />
       ) : (
@@ -56,4 +63,8 @@ export default function Home() {
       )}
     </main>
   );
+}
+
+{
+  /* <DashBoardSkelton /> */
 }

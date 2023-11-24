@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/bridalShowerBanner.png"
+        image="/images/bridalShowerBanner.png"
         heading={
           "Celebrate the bride-to-be with stunning bridal shower invitations!"
         }
@@ -29,7 +29,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/bridalShowerBanner.png"}
+              src={"/images/bridalShowerBanner.png"}
               alt="bridalShowerBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -50,7 +50,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
-        image="./images/bridalInvitation.png"
+        image="/images/bridalInvitation.png"
       />
 
       <RightImageSection
@@ -66,7 +66,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Invitation"}
-        image="./images/bridalEase.png"
+        image="/images/bridalEase.png"
       />
 
       <LeftImageSection
@@ -82,7 +82,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
-        image="./images/bridalMinute.png"
+        image="/images/bridalMinute.png"
       />
       <Box
         sx={{

@@ -33,6 +33,10 @@ li {
   /* transition: 0.2s all !important; */
 }
 
+input:focus {
+  outline: none;
+}
+
 .openMenu {
   font-family: "Inter";
   font-style: normal;
@@ -59,6 +63,22 @@ li {
 
 .border_linear {
   border: 2px solid transparent;
+  background: linear-gradient(to right, #ffffff, #ffffff),
+    linear-gradient(268.03deg, #5961f8 -0.66%, #15d8c5 100%, #15d8c5 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+}
+
+.border_b_linear {
+  border-bottom: 2px solid transparent;
+  background: linear-gradient(to right, #ffffff, #ffffff),
+    linear-gradient(268.03deg, #5961f8 -0.66%, #15d8c5 100%, #15d8c5 100%);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+}
+
+.border_linear_1px {
+  border: 1px solid transparent;
   background: linear-gradient(to right, #ffffff, #ffffff),
     linear-gradient(268.03deg, #5961f8 -0.66%, #15d8c5 100%, #15d8c5 100%);
   background-clip: padding-box, border-box;

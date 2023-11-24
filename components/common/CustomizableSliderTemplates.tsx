@@ -74,7 +74,7 @@ export default function CustomizableSliderTemplates({ data }: props) {
             }}
           >
             <img
-              src="./icons/leftArrow.svg"
+              src="/icons/leftArrow.svg"
               alt="leftArrow"
               className="w-[10px]"
             />
@@ -85,7 +85,7 @@ export default function CustomizableSliderTemplates({ data }: props) {
             sx={{ opacity: !showNextButton ? "0.3" : 1 }}
           >
             <img
-              src="./icons/rightArrow.svg"
+              src="/icons/rightArrow.svg"
               alt="rightArrow"
               className="w-[10px]"
             />

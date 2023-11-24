@@ -12,13 +12,13 @@ import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import Cookies from "js-cookie";
 
 export default function Profile() {
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useDispatch();
   const open = Boolean(anchorEl);
   const [uId, setuId] = useState<any>("");
   const [userProfile, setUserProfile] = useState<any>(null);
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
-  const router = useRouter();
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -27,10 +27,8 @@ export default function Profile() {
 
   useEffect(() => {
     setuId(getData);
-    // setProfileLoading(true);
   }, [getData]);
 
-  // localStorage.clear();
   useEffect(() => {
     if (uId == "") {
       setUserProfile(null);
@@ -100,13 +98,6 @@ export default function Profile() {
   return (
     <>
       <Box className="flex items-center">
-        {/* <Button className="min-w-[20px] h-[30px]">
-          <img
-            src="/icons/notification.svg"
-            alt="notification"
-            className="w-[20px]"
-          />
-        </Button> */}
         <Box onClick={handleClick} className="cursor-pointer">
           <Box className="rounded-[50%] w-[40px] h-[40px] overflow-hidden">
             <ProfileImage />
@@ -162,21 +153,21 @@ export default function Profile() {
         </MenuItem>
         <Divider />
         <MenuItem
-          //   onClick={() => {
-          //     navigate("/subscriptions", { state: userProfile });
-          //     setAnchorEl(null);
-          //   }}
           className="text-[14px]"
+          onClick={() => {
+            router.push("/your-account");
+            setAnchorEl(null);
+          }}
         >
           My Account
         </MenuItem>
-        {/* <MenuItem className="text-[14px]">My Project</MenuItem> */}
         <MenuItem
           onClick={() => {
+            // tokenSet("navigate", "/");
             localStorage.clear();
-            router.push("/");
             dispatch(openSidebar(false));
             Cookies.remove("rememberMe");
+            // router.push("/");
             window.location.reload();
           }}
           className="text-[14px] mb-3"

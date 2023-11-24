@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/resumeDesign.png"
+        image="/images/resumeDesign.png"
         heading={"Crafting a Winning Resume: Tips and  Best Practices"}
         text="Take your career to the next level with a professional, well-crafted resume."
       />
@@ -25,7 +25,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/resumeBanner.png"}
+              src={"/images/resumeBanner.png"}
               alt="resumeBanner"
               style={{ width: "100%", height: "100%", paddingRight: "0px" }}
             />
@@ -44,7 +44,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Resume"}
-        image="./images/resumeDesign.png"
+        image="/images/resumeDesign.png"
       />
       <RightImageSection
         title="How to structure a resume for
@@ -59,7 +59,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Resume"}
-        image="./images/resumeImpact.png"
+        image="/images/resumeImpact.png"
       />
       <LeftImageSection
         title="How to make a unique resume?"
@@ -73,7 +73,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Resume"}
-        image="./images/resumeUnique.png"
+        image="/images/resumeUnique.png"
       />
       {/*  */}{" "}
       <Box

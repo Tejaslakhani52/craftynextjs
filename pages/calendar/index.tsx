@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/calendarDesign.png"
+        image="/images/calendarDesign.png"
         heading={
           "Stay organized and stylish all year round with our custom calendar maker!"
         }
@@ -29,7 +29,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/calendarBanner.png"}
+              src={"/images/calendarBanner.png"}
               alt="calendarBanner"
               style={{
                 width: "100%",
@@ -54,7 +54,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Calendar"}
-        image="./images/calendarDesign.png"
+        image="/images/calendarDesign.png"
       />
       <RightImageSection
         title="How to make a unique calendar?"
@@ -68,7 +68,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Calendar"}
-        image="./images/calendarUnique.png"
+        image="/images/calendarUnique.png"
       />
 
       <LeftImageSection
@@ -83,7 +83,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Calendar"}
-        image="./images/calendarTrending.png"
+        image="/images/calendarTrending.png"
       />
       <Box
         sx={{

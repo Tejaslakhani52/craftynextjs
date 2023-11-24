@@ -13,6 +13,7 @@ import { NextSeo } from "next-seo";
 import Schema from "@/components/common/Schema";
 import axios from "axios";
 import TrendingFunctionalities from "./landingPageComponents/TrendingFunctionalities";
+import MainLoaderBox from "@/components/common/MainLoaderBox";
 
 export const MarkText = ({ text }: any) => {
   return (

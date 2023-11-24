@@ -13,7 +13,7 @@ export default function index() {
   return (
     <>
       <CustomeHead
-        image="./images/flyersCreate.png"
+        image="/images/flyersCreate.png"
         heading={"Stand out from the crowd with our unique flyers"}
         text="Create eye-catching and unique flyers for your with our easy-to-use flyer maker."
       />
@@ -25,7 +25,7 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"./images/flyersBanner.png"}
+              src={"/images/flyersBanner.png"}
               alt="flyersBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -45,7 +45,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Flyer"}
-        image="./images/flyersCreate.png"
+        image="/images/flyersCreate.png"
       />
       <RightImageSection
         title="The process to make stunning
@@ -60,7 +60,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Flyer"}
-        image="./images/flyersUnique.png"
+        image="/images/flyersUnique.png"
       />
       <LeftImageSection
         title="Create professional posters with
@@ -75,7 +75,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Flyers"}
-        image="./images/flyersStunning.png"
+        image="/images/flyersStunning.png"
       />
       {/*  */}{" "}
       <Box

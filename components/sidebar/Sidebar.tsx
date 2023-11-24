@@ -377,7 +377,7 @@ export default function Sidebar({
             {/* <Box className="flex justify-center py-5 px-3">
               <Button className="bg_linear text-white gap-2 rounded-[10px] font-bold px-5 py-2 w-full ">
                 <img
-                  src="./icons/pricing.svg"
+                  src="/icons/pricing.svg"
                   alt="price"
                   className="w-[20px]"
                 />
