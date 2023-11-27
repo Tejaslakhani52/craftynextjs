@@ -1,6 +1,12 @@
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/DashBoardSkelton";
+import FestivalBanner from "@/components/categoryStaticComponents/FestivalStatic";
+import FlyerStatic from "@/components/categoryStaticComponents/FlyerStatic";
+import InvitationStatic from "@/components/categoryStaticComponents/InvitationStatic";
+import LogoStatic from "@/components/categoryStaticComponents/LogoStatic";
+import QuotesStatic from "@/components/categoryStaticComponents/QuotesStatic";
+import ResumeStatic from "@/components/categoryStaticComponents/ResumeStatic";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import NotFound from "@/components/common/NotFound";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
@@ -57,11 +63,23 @@ const otherData = {
   },
 };
 
+const staticBox: any = {
+  invitation: <InvitationStatic />,
+  "a4-invitation": <InvitationStatic />,
+  flyer: <FlyerStatic />,
+  "quotes-post-square": <QuotesStatic />,
+  "quotes-instagram-story": <QuotesStatic />,
+  logos: <LogoStatic />,
+  "resume-portrait": <ResumeStatic />,
+  latest: <FestivalBanner />,
+};
+
 export default function index() {
   const dispatch = useDispatch();
   const router = useRouter();
   const screenWidth = useScreenWidth();
   const id: any = router.query;
+  console.log("id: ", id?.categoryId);
   const currentPathname = router.asPath;
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openModal, setOpenModal] = useState(false);
@@ -152,6 +170,46 @@ export default function index() {
         return 2.2;
     }
   }, [screenWidth]);
+
+  const [showPrevButton, setShowPrevButton] = useState(true);
+  const [showNextButton, setShowNextButton] = useState(true);
+
+  const handleScroll = (e: Event) => {
+    const container = e.target as HTMLElement;
+    setShowPrevButton(container.scrollLeft > 0);
+    setShowNextButton(
+      container.scrollLeft < container.scrollWidth - container.clientWidth
+    );
+  };
+
+  useEffect(() => {
+    const container = document.getElementById("customer");
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      handleScroll({ target: container } as unknown as Event);
+      return () => container.removeEventListener("scroll", handleScroll);
+    }
+  }, ["customer"]);
+
+  const handleNextClick = () => {
+    const container = document.getElementById("customer") as HTMLElement;
+    if (container) {
+      container.scrollBy({
+        left: container.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handlePrevClick = () => {
+    const container = document.getElementById("customer") as HTMLElement;
+    if (container) {
+      container.scrollBy({
+        left: -container.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <>
@@ -439,6 +497,15 @@ export default function index() {
           )}
         </div>
       </Box>
+
+      {staticBox[id?.categoryId]}
+
+      {/* <InvitationStatic /> */}
+      {/* <FlyerStatic /> */}
+      {/* <QuotesStatic /> */}
+      {/* <FestivalBanner /> */}
+      {/* <LogoStatic /> */}
+      {/* <ResumeStatic /> */}
     </>
   );
 }

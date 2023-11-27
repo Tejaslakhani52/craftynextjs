@@ -88,6 +88,7 @@ export default function App({
           <meta property="og:type" content="website" />
           <meta property="og:url" content={canonicalUrl} />
         </Head>
+
         <Box>
           <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
           <Box

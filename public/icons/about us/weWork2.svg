@@ -1,0 +1,25 @@
+<svg width="40" height="42" viewBox="0 0 40 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="improvement">
+<circle id="Ellipse 81" opacity="0.5" cx="12.5" cy="12.5" r="12.5" fill="url(#paint0_linear_15_2419)"/>
+<g id="Group 35791">
+<g id="Ellipse 82" filter="url(#filter0_b_15_2419)">
+<ellipse cx="25" cy="26.1813" rx="15" ry="15.0129" fill="white" fill-opacity="0.1"/>
+<path d="M39 26.1813C39 33.9212 32.7312 40.1942 25 40.1942C17.2688 40.1942 11 33.9212 11 26.1813C11 18.4414 17.2688 12.1684 25 12.1684C32.7312 12.1684 39 18.4414 39 26.1813Z" stroke="#1C3048" stroke-width="2"/>
+</g>
+<path id="Vector" d="M32.8316 21.022L28.6686 21.3168C28.5356 21.3238 28.4856 21.4069 28.4666 21.4554C28.4476 21.5049 28.4281 21.6 28.5141 21.6871L29.4251 22.6444C29.6156 22.8441 29.6081 23.1604 29.4086 23.351L24.5886 27.96C24.4901 28.0546 24.3576 28.1056 24.2201 28.0981C24.0841 28.0916 23.9556 28.0295 23.8661 27.9259L22.1511 25.9497C21.9906 25.7671 21.7591 25.6535 21.5171 25.6415C21.2731 25.6295 21.0301 25.7175 20.8556 25.8867L16.9141 29.5859C17.1551 30.1624 17.4491 30.7103 17.7846 31.2288L21.0156 28.1937C21.1151 28.1006 21.2401 28.0546 21.3831 28.0586C21.5186 28.0656 21.6456 28.1276 21.7346 28.2302L23.4501 30.2019C23.6121 30.3931 23.8356 30.5032 24.0846 30.5157C24.3306 30.5292 24.5746 30.4391 24.7621 30.2644L30.6526 24.6386C30.8516 24.4485 31.1671 24.455 31.3581 24.6541L32.2031 25.5349C32.2931 25.6295 32.4011 25.6075 32.4431 25.5939C32.4866 25.5794 32.5896 25.5314 32.6056 25.3958L33.0806 21.2797C33.0906 21.1887 33.0436 21.1246 33.0146 21.0946C32.9656 21.0425 32.8966 21.017 32.8306 21.021L32.8316 21.022Z" fill="#1C3048"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_b_15_2419" x="5" y="6.16843" width="40" height="40.0257" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImageFix" stdDeviation="2.5"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_15_2419"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_15_2419" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_15_2419" x1="25.1706" y1="3.80698e-06" x2="-0.829232" y2="0.894398" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5961F8"/>
+<stop offset="1" stop-color="#15D8C5"/>
+<stop offset="1" stop-color="#15D8C5"/>
+</linearGradient>
+</defs>
+</svg>

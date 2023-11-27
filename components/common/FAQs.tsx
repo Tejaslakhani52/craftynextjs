@@ -38,10 +38,10 @@ export default function FaqsBox(props: any) {
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
-        sx={{ width: "100%" }}
+        sx={{ width: "100%", backgroundColor: "transparent" }}
       >
         <AccordionSummary
-          aria-controls="panel1d-content"
+          aria-controls="panel1d-content "
           id="panel1d-header"
           sx={{ borderBottom: open ? "" : "1px solid #D9D9D9" }}
           className="max-lg:px-[0px]"

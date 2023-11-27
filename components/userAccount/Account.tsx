@@ -30,12 +30,12 @@ export const sidebarMenu = [
   },
 ];
 
-export default function Account() {
+export default function Account({ defaultTab }: any) {
   const router = useRouter();
   const getData = tokenGet("userProfile");
   const [userProfile, setUserProfile] = useState<any>(null);
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
-  const [activeTab, setActiveTab] = useState<any>("Personal Info");
+  const [activeTab, setActiveTab] = useState<any>(defaultTab);
   const [currentPlan, setcurrentPlan] = useState<any>();
   const [loading, setLoading] = useState<any>(true);
   console.log("currentPlan: ", currentPlan);

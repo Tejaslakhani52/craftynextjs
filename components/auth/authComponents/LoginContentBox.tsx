@@ -1,29 +1,22 @@
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import * as React from "react";
 
-import { useState } from "react";
+import { tokenSet } from "@/redux/action/AuthToken";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  onAuthStateChanged,
-  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   UserCredential,
 } from "firebase/auth";
-import { toast } from "react-hot-toast";
-import { useRouter } from "next/router";
-import { tokenSet } from "@/redux/action/AuthToken";
 import Cookies from "js-cookie";
-import { useEffect } from "react";
-import LoginPlateform from "./LoginPlateform";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import Input from "./Input";
+import LoginPlateform from "./LoginPlateform";
 import Password from "./Password";
 
 const firebaseConfig = {
@@ -212,7 +205,6 @@ export default function LoginContentBox(props: any) {
               } else router.push("/signup");
             }}
           >
-            {" "}
             Create an account
           </span>
         </Typography>

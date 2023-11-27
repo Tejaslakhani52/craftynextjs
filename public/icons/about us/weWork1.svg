@@ -1,0 +1,13 @@
+<svg width="41" height="39" viewBox="0 0 41 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="like">
+<circle id="Ellipse 81" opacity="0.5" cx="12.5" cy="12.5" r="12.5" fill="url(#paint0_linear_15_2412)"/>
+<path id="Vector" d="M25.93 37.7562C25.42 37.9364 24.58 37.9364 24.07 37.7562C19.72 36.27 10 30.0697 10 19.5606C10 14.9216 13.735 11.1684 18.34 11.1684C21.07 11.1684 23.485 12.4896 25 14.5313C26.515 12.4896 28.945 11.1684 31.66 11.1684C36.265 11.1684 40 14.9216 40 19.5606C40 30.0697 30.28 36.27 25.93 37.7562Z" fill="white" fill-opacity="0.1" stroke="#1C3048" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_15_2412" x1="25.1706" y1="3.80698e-06" x2="-0.829232" y2="0.894398" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5961F8"/>
+<stop offset="1" stop-color="#15D8C5"/>
+<stop offset="1" stop-color="#15D8C5"/>
+</linearGradient>
+</defs>
+</svg>

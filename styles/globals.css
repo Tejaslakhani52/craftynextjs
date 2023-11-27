@@ -127,14 +127,17 @@ input:focus {
 }
 
 .text_linear {
-  background: var(
-    --text-grediant,
-    linear-gradient(268deg, #5765f6 -0.66%, #30a9d9 100%)
+  background: linear-gradient(
+    268deg,
+    #5961f8 -0.66%,
+    #15d8c5 100%,
+    #15d8c5 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-fill-color: transparent;
+  display: inline-block;
 }
 
 .active_text_linear {

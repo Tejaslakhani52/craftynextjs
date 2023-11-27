@@ -111,9 +111,11 @@ export const Company = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <OptionButton>About</OptionButton>
+      <OptionButton onClick={() => router.push("/aboutus")}>About</OptionButton>
       <OptionButton>Career</OptionButton>
-      <OptionButton>Price and plan</OptionButton>
+      <OptionButton onClick={() => router.push("/plans")}>
+        Price and plan
+      </OptionButton>
       <OptionButton>Contact us</OptionButton>
       <OptionButton>Blog</OptionButton>
     </Box>
@@ -125,10 +127,18 @@ export const Legal = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <OptionButton>Privacy policy</OptionButton>
-      <OptionButton>Referal program</OptionButton>
-      <OptionButton>Terms and condition</OptionButton>
-      <OptionButton>Copyright infrigment</OptionButton>
+      <OptionButton onClick={() => router.push("/privacy-policy")}>
+        Privacy policy
+      </OptionButton>
+      <OptionButton onClick={() => router.push("/referal-program")}>
+        Referal program
+      </OptionButton>
+      <OptionButton onClick={() => router.push("/term-condition")}>
+        Terms and condition
+      </OptionButton>
+      <OptionButton onClick={() => router.push("/copyright-infringement")}>
+        Copyright infrigment
+      </OptionButton>
     </Box>
   );
 };

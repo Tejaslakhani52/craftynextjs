@@ -176,11 +176,18 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
     const timeoutId = setTimeout(() => {
       if (!hasEffectRun.current) {
         if (token) {
-          if (screenWidth > 991 && router?.pathname !== "/your-account") {
+          if (
+            screenWidth > 991 &&
+            router?.pathname !== "/your-account" &&
+            router?.pathname !== "/subscriptions"
+          ) {
             dispatch(openSidebar(true));
           }
           dispatch(tokenValue(true));
-        } else if (router?.pathname === "/your-account") {
+        } else if (
+          router?.pathname === "/your-account" ||
+          router?.pathname === "/subscriptions"
+        ) {
           router.push("/");
         }
         hasEffectRun.current = true;
@@ -195,7 +202,10 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   }, [token]);
 
   useEffect(() => {
-    if (router?.pathname === "/your-account") {
+    if (
+      router?.pathname === "/your-account" ||
+      router?.pathname === "/subscriptions"
+    ) {
       dispatch(enterAccount(true));
     } else dispatch(enterAccount(false));
   }, [router]);

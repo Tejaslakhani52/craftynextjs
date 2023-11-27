@@ -1,0 +1,16 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="remove 1">
+<g id="Group">
+<g id="Group_2">
+<path id="Vector" d="M20 8.57153H0V11.4287H20V8.57153Z" fill="url(#paint0_linear_139_285)"/>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_139_285" x1="20.1365" y1="8.57153" x2="0.453307" y2="13.3112" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5961F8"/>
+<stop offset="1" stop-color="#15D8C5"/>
+<stop offset="1" stop-color="#15D8C5"/>
+</linearGradient>
+</defs>
+</svg>

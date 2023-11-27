@@ -28,7 +28,7 @@ export default function index() {
 
   return (
     <div>
-      <Account />
+      <Account defaultTab={"Personal Info"} />
       <MainLoaderBox />
       {/* {loading && (
         <main className="main">

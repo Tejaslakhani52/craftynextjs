@@ -1,13 +1,7 @@
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "@firebase/auth";
 import { Box, Button } from "@mui/material";
-import React from "react";
-import { useEffect, useState } from "react";
-import { GoogleAuthProvider } from "@firebase/auth";
 import firebase from "firebase/compat/app";
-import { getAuth, signInWithPopup } from "@firebase/auth";
-import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-// import { createUserApi } from "@/redux/action/AuthAction";
-import axios from "axios";
 import { createUserApi } from "@/redux/action/AuthAction";
 import { useRouter } from "next/router";
 
@@ -53,15 +47,8 @@ export default function LoginPlateform() {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  // const navigate = useNavigate();
-  // const [userData, setUserData] = useState<any>({ photo_uri: null });
-
-  // const location = useLocation();
-  // const currentPathname = location.pathname;
-
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider).then((data) => {
-      // setUserData(data?.user);
       const userData: any = data?.user;
 
       dispatch(
@@ -80,33 +67,6 @@ export default function LoginPlateform() {
           router
         )
       );
-
-      // axios
-      //   .post("https://story.craftyartapp.com/create/user", {
-      //     key: "qwfsegxdhbxfjhncf",
-      //     user_id: userData?.uid,
-      //     name: userData?.displayName,
-      //     email: userData?.email,
-      //     photo_uri: userData?.photoURL,
-      //     login_type: "google",
-      //     device_id: "",
-      //     utm_medium: "craftyart",
-      //     utm_source: "craftyart",
-      //   })
-      //   .then(({ data }) => {
-      //     console.log("data: ", data);
-      //     toast.success("Success Login");
-      //     localStorage.setItem("userProfile", data?.user?.uid);
-      //     // navigate(`${currentPathname !== "/login" ? currentPathname : "/"}`);
-      //     navigate(`${"/"}`);
-      //   })
-      //   .catch((err) => {
-      //     console.log("err: ", err);
-      //   });
-
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 1000);
     });
   };
 

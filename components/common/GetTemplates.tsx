@@ -33,7 +33,7 @@ export default function GetTemplates(props: any) {
               lineHeight: "41px",
               textAlign: "center",
             }}
-            className="text-[25px] sm:text-[31px]"
+            className="text-[25px] sm:text-[31px] mb-2"
           >
             {props?.heading}
           </Typography>

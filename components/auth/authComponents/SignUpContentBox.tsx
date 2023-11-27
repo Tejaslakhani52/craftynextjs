@@ -53,7 +53,7 @@ export default function SignUpContentBox(props: any) {
             }
           })
           .catch((err: any) => {
-            // alert(err.message);
+            console.log("err: ", err);
           });
       }, 1000);
     }
@@ -97,7 +97,6 @@ export default function SignUpContentBox(props: any) {
 
           setIsLoading(false);
           setEmailDialogShow(true);
-          // const user = res?.user;
         })
       )
       .catch((error) => {
