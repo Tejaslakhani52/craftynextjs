@@ -69,7 +69,7 @@ export default function TemplateModal({ open, setOpen, currentPathname }: any) {
     if (id?.templates && id?.templates !== "") {
       axios
         .post(
-          "https://story.craftyartapp.com/my-posterPage",
+          "/api1/my-posterPage",
           {
             key: "qwfsegxdhbxfjhncf",
             id_name: id?.templates,
@@ -87,7 +87,7 @@ export default function TemplateModal({ open, setOpen, currentPathname }: any) {
 
           setTimeout(() => {
             axios
-              .post("https://story.craftyartapp.com/search-template", {
+              .post("/api1/search-template", {
                 key: "qwfsegxdhbxfjhncf",
                 app_id: "1",
                 cat_id: "-1",
@@ -110,7 +110,7 @@ export default function TemplateModal({ open, setOpen, currentPathname }: any) {
                 //   setAnotherTempLoad(false);
                 // } else
                 //   axios
-                //     .post(`https://story.craftyartapp.com/get/datas`, {
+                //     .post(`/api/get/datas`, {
                 //       debug_key: "debug",
                 //       cat_id: getDatas?.category_id_name as any,
                 //       limit: 48,

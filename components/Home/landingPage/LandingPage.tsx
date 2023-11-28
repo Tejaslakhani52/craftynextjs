@@ -48,7 +48,7 @@ export default function LandingPage({ post }: any) {
     fetchVideoData();
 
     axios
-      .post("https://story.craftyartapp.com/get/main/data", {
+      .post("/api1/get/main/data", {
         key: process.env.KEY as string,
         page: 1,
         count: 0,

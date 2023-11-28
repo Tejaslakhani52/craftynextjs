@@ -85,7 +85,7 @@ input:focus {
   background-origin: padding-box, border-box;
 }
 
-.pre_botton {
+.pre_button {
   position: absolute;
   top: 40%;
   background: white;
@@ -103,7 +103,7 @@ input:focus {
   width: 35px;
   align-items: center;
 }
-.next_botton {
+.next_button {
   position: absolute;
   top: 40%;
   background: white;

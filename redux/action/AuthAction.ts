@@ -13,7 +13,7 @@ export const createUserApi =
   (props: any, router: any): any =>
   async (dispatch: Dispatch<any>) => {
     axios
-      .post("https://story.craftyartapp.com/create/user", props)
+      .post("/api1/create/user", props)
       .then(({ data }) => {
         toast.success("Success Login");
         tokenSet("userProfile", data?.user?.uid);

@@ -1,20 +1,14 @@
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { consoleShow } from "@/commonFunction/console";
-import Skelton from "@/components/common/Skelton";
-import { getAllTemplatesDataType, getTemplateDataType } from "@/pages/api/type";
-import { Box, Typography, Button, Skeleton } from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import TemplatesSkelton from "./TemplatesSkelton";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { templatesData } from "@/redux/reducer/AuthDataReducer";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { modalClosePath } from "@/redux/reducer/actionDataReducer";
+import { Box, Button, Typography } from "@mui/material";
+import axios from "axios";
 import Link from "next/link";
-import {
-  modalClosePath,
-  openTempModal,
-} from "@/redux/reducer/actionDataReducer";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import TemplatesSkelton from "./TemplatesSkelton";
 
 export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
   const dispatch = useDispatch();
@@ -90,7 +84,7 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
         {showPrevButton && (
           <button
             onClick={handlePrevClick}
-            className="pre_botton left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex"
+            className="pre_button left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex"
             style={{ top: "52%" }}
           >
             <img
@@ -115,7 +109,7 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
               <Box
                 className={` ${
                   uniqueCat ? "bg-[#E6E8EE] p-2 h-[165px]" : "p-[0px]"
-                } rounded-[10px]`}
+                } rounded-[10px] relative`}
                 style={{
                   height: uniqueCat
                     ? "auto"
@@ -130,6 +124,13 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
                   dispatch(modalClosePath(`/`));
                 }}
               >
+                {templates.is_premium && (
+                  <img
+                    src="/icons/proIcon.svg"
+                    alt=""
+                    className="w-[28px] absolute right-[5px] top-[5px]"
+                  />
+                )}
                 <div className="bg-slate-200 w-full h-full rounded-[4px]">
                   <img
                     src={templates?.template_thumb}
@@ -160,7 +161,7 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
         {showNextButton && (
           <button
             onClick={handleNextClick}
-            className="next_botton right-[-18px] flex "
+            className="next_button right-[-18px] flex "
             style={{ top: "52%" }}
           >
             <img
@@ -179,14 +180,11 @@ export default function TemplatesBox() {
   const [openModal, setOpenModal] = React.useState(false);
   const dispatch = useDispatch();
 
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
-  // const [data, setData] = useState<getAllTemplatesDataType | null>(null);
-
   const data = useSelector((state: any) => state.auth.templatesData);
 
   useEffect(() => {
     axios
-      .post(`/api/get/main/data`, {
+      .post(`/api1/get/main/data`, {
         key: `qwfsegxdhbxfjhncf`,
         page: 1,
         count: 0,

@@ -43,7 +43,7 @@ export default function Account({ defaultTab }: any) {
 
   const fetchData = async () => {
     axios
-      .post("https://story.craftyartapp.com/get/user", {
+      .post("/api1/get/user", {
         key: "qwfsegxdhbxfjhncf",
         device_id: "",
         email: getData,
@@ -110,7 +110,7 @@ export default function Account({ defaultTab }: any) {
   useEffect(() => {
     axios
       .post(
-        "https://story.craftyartapp.com/my-currentPlan",
+        "/api1/my-currentPlan",
         {
           key: "qwfsegxdhbxfjhncf",
           user_id: getData,

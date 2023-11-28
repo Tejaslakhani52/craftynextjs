@@ -47,7 +47,7 @@ export default function PersonalInfo() {
 
   const fetchData = async () => {
     axios
-      .post("https://story.craftyartapp.com/get/user", {
+      .post("/api1/get/user", {
         key: "qwfsegxdhbxfjhncf",
         device_id: "",
         email: uId,
@@ -76,15 +76,11 @@ export default function PersonalInfo() {
     setLoading(true);
 
     axios
-      .post(
-        "https://panel.craftyartapp.com/templates/api/V3/updateUser",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      .post("/api2/templates/api/V3/updateUser", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
       .then((response) => {
         setTimeout(() => {
           fetchData();

@@ -13,6 +13,7 @@ import { Toaster } from "react-hot-toast";
 import MainLoader from "@/components/common/MainLoader";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
+import MainLoaderBox from "@/components/common/MainLoaderBox";
 
 export async function getStaticProps() {
   const router = useRouter();
@@ -111,6 +112,8 @@ export default function App({
         </Box>
 
         <TemplateModal open={id?.templates ? true : false} />
+
+        <MainLoaderBox />
       </Provider>
     </>
   );

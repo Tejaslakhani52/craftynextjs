@@ -65,7 +65,7 @@ export default function TrendingFunctionalities() {
         <Box className="relative px-[5%] w-[100%] ">
           <button
             onClick={handlePrevClick}
-            className="pre_botton left-[2%] sm:left-[5%] rounded-[0] h-[80px] w-[50px] sm:w-[150px] px-3"
+            className="pre_button left-[2%] sm:left-[5%] rounded-[0] h-[80px] w-[50px] sm:w-[150px] px-3"
             style={{
               background:
                 "linear-gradient(90deg, #F4F7FE 37.05%, rgba(255, 255, 255, 0.00) 69.06%)",
@@ -98,7 +98,7 @@ export default function TrendingFunctionalities() {
 
           <button
             onClick={handleNextClick}
-            className="next_botton  right-[2%] sm:right-[5%] rounded-[0] h-[80px] w-[50px] sm:w-[150px] px-3 text-right"
+            className="next_button  right-[2%] sm:right-[5%] rounded-[0] h-[80px] w-[50px] sm:w-[150px] px-3 text-right"
             style={{
               background:
                 "linear-gradient(90deg, rgba(255, 255, 255, 0.00) ,  #F4F7FE 37.05% 69.06%)",

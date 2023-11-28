@@ -16,8 +16,9 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import Input from "./Input";
-import LoginPlateform from "./LoginPlateform";
 import Password from "./Password";
+import LoginPlatform from "./LoginPlatform";
+import Icons from "@/assets";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQP7F26DBVJvXWNgwS3lerBUCGcbH2z4U",
@@ -35,7 +36,7 @@ export const auth: any = getAuth(app);
 export default function LoginContentBox(props: any) {
   const router = useRouter();
   const [remember, setRemember] = useState<boolean>(false);
-  const [emailPassword, setemailPassword] = useState<any>({
+  const [emailPassword, setEmailPassword] = useState<any>({
     email: "",
     password: "",
   });
@@ -44,7 +45,7 @@ export default function LoginContentBox(props: any) {
     const storedCredentials = Cookies.get("rememberMeCredentials");
     if (storedCredentials) {
       const credentials = JSON.parse(storedCredentials);
-      setemailPassword(credentials);
+      setEmailPassword(credentials);
       setRemember(true);
     }
   }, []);
@@ -64,6 +65,15 @@ export default function LoginContentBox(props: any) {
 
       toast.success("Success Login");
       tokenSet("userProfile", userCredential?.user?.uid);
+
+      // if (typeof document !== "undefined") {
+      //   document.cookie = "token=yourTokenValue";
+      // }
+
+      if (typeof document !== "undefined") {
+        document.cookie = `token=${userCredential?.user?.uid}; `;
+      }
+
       router.push(`${router.pathname}`);
 
       setTimeout(() => {
@@ -104,11 +114,7 @@ export default function LoginContentBox(props: any) {
           className="min-w-[auto] relative left-[-10px] top-[-3px] max-sm:left-[-3px]"
           sx={{ display: props?.handleClose ? "inline-block" : "none" }}
         >
-          <img
-            src="/icons/leftArrow.svg"
-            alt="leftArrow"
-            className="w-[10px]"
-          />
+          <Icons.leftArrowIcon />
         </Button>
         {"Welcome Back to CraftyArt!"}
       </DialogTitle>
@@ -118,7 +124,7 @@ export default function LoginContentBox(props: any) {
         >
           It sure is great to see you again.
         </DialogContentText>
-        <LoginPlateform />
+        <LoginPlatform />
         <Box className="flex items-center justify-between">
           <Box className="w-[45%] h-[1px] bg-[#ABB2C7]"></Box>
           <Typography className="text-black">or</Typography>
@@ -130,7 +136,7 @@ export default function LoginContentBox(props: any) {
             label="Email"
             value={emailPassword?.email}
             onChange={(e: any) =>
-              setemailPassword({
+              setEmailPassword({
                 ...emailPassword,
                 email: e.target.value,
               })
@@ -139,7 +145,7 @@ export default function LoginContentBox(props: any) {
           <Password
             label="Password"
             onChange={(e: any) =>
-              setemailPassword({
+              setEmailPassword({
                 ...emailPassword,
                 password: e.target.value,
               })

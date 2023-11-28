@@ -6,6 +6,8 @@ import MenuItem from "@mui/material/MenuItem";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useRouter } from "next/router";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import { useDispatch } from "react-redux";
 
 export const Product = {
   name: "Product",
@@ -14,7 +16,7 @@ export const Product = {
       heading: "Industry",
       allName: [
         { name: "Marketing", path: "/marketing" },
-        { name: "Bussiness", path: "/bussiness" },
+        { name: "Business", path: "/business" },
         { name: "Card & Invitation", path: "" },
       ],
     },
@@ -77,6 +79,7 @@ export interface BasicMenuProps {
 }
 
 export function BasicMenu({ title, itemName }: BasicMenuProps) {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [onBoxLeave, setOnBoxLeave] = React.useState<boolean>(false);
   const [onButtonLeave, setOnButtonLeave] = React.useState<boolean>(false);
@@ -125,7 +128,10 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
               </Typography>
               {data?.allName?.map((item: any) => (
                 <MenuItem
-                  onClick={() => router.push(item.path)}
+                  onClick={() => {
+                    dispatch(openSidebar(false));
+                    router.push(item.path);
+                  }}
                   sx={{
                     fontSize: "14px",
                     borderRadius: "4px",

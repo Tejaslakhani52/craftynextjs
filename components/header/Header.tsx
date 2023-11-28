@@ -137,7 +137,7 @@
 
 import { Box, Button } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
-import MenuBox from "./headerComponents/Menu";
+import MenuBox, { Product } from "./headerComponents/Menu";
 import LoginButton from "./headerComponents/LoginButton";
 import { useRouter } from "next/router";
 import Sidebar from "../sidebar/Sidebar";
@@ -171,6 +171,11 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
 
   const hasEffectRun = useRef(false);
 
+  const productPaths = Product.subName.flatMap((category) =>
+    category.allName.map((item) => item.path)
+  );
+  console.log("productPaths: ", productPaths);
+
   useEffect(() => {
     dispatch(mainLoader(true));
     const timeoutId = setTimeout(() => {
@@ -179,8 +184,13 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
           if (
             screenWidth > 991 &&
             router?.pathname !== "/your-account" &&
-            router?.pathname !== "/subscriptions"
+            router?.pathname !== "/subscriptions" &&
+            !productPaths.includes(router?.pathname)
           ) {
+            console.log(
+              "productPaths.every((path) => !router?.pathname.includes(path)): "
+            );
+
             dispatch(openSidebar(true));
           }
           dispatch(tokenValue(true));
@@ -191,10 +201,12 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
           router.push("/");
         }
         hasEffectRun.current = true;
-        if (!token) {
+        if (!token || productPaths.includes(router?.pathname)) {
           dispatch(openSidebar(false));
         }
-        dispatch(mainLoader(false));
+        setTimeout(() => {
+          dispatch(mainLoader(false));
+        }, 100);
       }
     }, 500);
 
@@ -204,7 +216,8 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   useEffect(() => {
     if (
       router?.pathname === "/your-account" ||
-      router?.pathname === "/subscriptions"
+      router?.pathname === "/subscriptions" ||
+      productPaths.includes(router?.pathname)
     ) {
       dispatch(enterAccount(true));
     } else dispatch(enterAccount(false));

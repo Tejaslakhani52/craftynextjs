@@ -37,7 +37,7 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
     formData.append("currency", selectPaln?.currency ?? "");
 
     axios
-      .post("https://bgremover.craftyartapp.com/payment/web_razorpay", formData)
+      .post("/ap3/payment/web_razorpay", formData)
       .then((res: any) => {
         const rzp = new (window as any).Razorpay(res.data);
 

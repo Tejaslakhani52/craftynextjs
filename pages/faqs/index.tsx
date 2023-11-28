@@ -1,4 +1,5 @@
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
+import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { faqsList } from "@/constants/faqsList";
 import { Box, Typography, Button } from "@mui/material";
 import React, { useState } from "react";
@@ -72,6 +73,8 @@ export default function Index() {
           </Button>
         </Box>
       </Box>
+
+      <MainLoaderBox />
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
 import CustomeHead from "@/components/common/CustomeHead";
+import MainLoaderBox from "@/components/common/MainLoaderBox";
 
 export default function index() {
   return (

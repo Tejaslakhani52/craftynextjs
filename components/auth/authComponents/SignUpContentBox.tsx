@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import Input from "./Input";
-import LoginPlateform from "./LoginPlateform";
+import LoginPlatform from "./LoginPlatform";
 import Password from "./Password";
 
 export default function SignUpContentBox(props: any) {
@@ -25,10 +25,10 @@ export default function SignUpContentBox(props: any) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<any>(false);
   const [currentUser, setCurrentUser] = useState<any>(null);
-  const [verifiedDone, setverifiedDone] = useState<boolean>(false);
+  const [verifiedDone, setVerifiedDone] = useState<boolean>(false);
   const [emailDialogShow, setEmailDialogShow] = useState<boolean>(false);
   const [finalUser, setFinalUser] = useState<any>(null);
-  const [createAcount, setcreateAcount] = useState<any>({
+  const [createAccount, setCreateAccount] = useState<any>({
     name: "",
     email: "",
     password: "",
@@ -48,7 +48,7 @@ export default function SignUpContentBox(props: any) {
           ?.reload()
           .then(() => {
             if (currentUser?.emailVerified) {
-              setverifiedDone(true);
+              setVerifiedDone(true);
               clearInterval(interval);
             }
           })
@@ -62,37 +62,37 @@ export default function SignUpContentBox(props: any) {
   const handleSubmission = () => {
     setIsLoading(true);
     if (
-      !createAcount.name ||
-      !createAcount.email ||
-      !createAcount.password ||
-      !createAcount.confirmPassword
+      !createAccount.name ||
+      !createAccount.email ||
+      !createAccount.password ||
+      !createAccount.confirmPassword
     ) {
       toast.error("Please fill out all required fields.");
       setIsLoading(false);
       return;
     }
-    if (createAcount?.password !== createAcount?.confirmPassword) {
-      setcreateAcount({ ...createAcount, confirmPassword: "" });
+    if (createAccount?.password !== createAccount?.confirmPassword) {
+      setCreateAccount({ ...createAccount, confirmPassword: "" });
       toast.error("Confirm password not match password");
       setIsLoading(false);
       return;
     }
     createUserWithEmailAndPassword(
       auth,
-      createAcount.email,
-      createAcount.password
+      createAccount.email,
+      createAccount.password
     )
       .then(async (res: any) => {
         const user = res?.user;
         updateProfile(user, {
-          displayName: createAcount.name,
+          displayName: createAccount.name,
         });
         setFinalUser(user);
       })
       .then(() =>
         sendEmailVerification(auth.currentUser).then(async (res: any) => {
           toast.success(
-            `A Verification email has been sent to ${createAcount.email}`
+            `A Verification email has been sent to ${createAccount.email}`
           );
 
           setIsLoading(false);
@@ -156,7 +156,7 @@ export default function SignUpContentBox(props: any) {
               A Verification email has been sent to:
             </Typography>
             <Typography sx={{ fontSize: "15px", textAlign: "center" }}>
-              {createAcount?.email}
+              {createAccount?.email}
             </Typography>
           </Box>
 
@@ -197,7 +197,7 @@ export default function SignUpContentBox(props: any) {
             >
               Sign up now and start your journey with Crafty Art(it's free)!
             </DialogContentText>
-            <LoginPlateform />
+            <LoginPlatform />
             <Box className="flex items-center justify-between">
               <Box className="w-[45%] h-[1px] bg-[#ABB2C7]"></Box>
               <Typography className="text-black">or</Typography>
@@ -207,34 +207,34 @@ export default function SignUpContentBox(props: any) {
             <Box className="flex flex-col gap-4 my-5">
               <Input
                 label="Name"
-                value={createAcount?.name}
+                value={createAccount?.name}
                 onChange={(e: any) =>
-                  setcreateAcount({ ...createAcount, name: e.target.value })
+                  setCreateAccount({ ...createAccount, name: e.target.value })
                 }
               />
               <Input
                 label="Email"
-                value={createAcount?.email}
+                value={createAccount?.email}
                 onChange={(e: any) =>
-                  setcreateAcount({ ...createAcount, email: e.target.value })
+                  setCreateAccount({ ...createAccount, email: e.target.value })
                 }
               />
               <Password
                 label="Password"
-                value={createAcount?.password}
+                value={createAccount?.password}
                 onChange={(e: any) =>
-                  setcreateAcount({
-                    ...createAcount,
+                  setCreateAccount({
+                    ...createAccount,
                     password: e.target.value,
                   })
                 }
               />
               <Password
                 label="Confirm Password"
-                value={createAcount?.confirmPassword}
+                value={createAccount?.confirmPassword}
                 onChange={(e: any) =>
-                  setcreateAcount({
-                    ...createAcount,
+                  setCreateAccount({
+                    ...createAccount,
                     confirmPassword: e.target.value,
                   })
                 }

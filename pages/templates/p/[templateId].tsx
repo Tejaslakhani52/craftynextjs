@@ -25,6 +25,7 @@ export default function templateId() {
   const [anotherData, setAnotherData] = React.useState<any>([]);
   const [isLoading, setIsLoading] = React.useState<any>(true);
   const [template, setTemplate] = React.useState<any>({});
+  console.log("template: ", template);
   const openModal = useSelector((state: any) => state.actions.openTempModal);
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
   const [description, setDescription] = React.useState<string>("");
@@ -38,7 +39,7 @@ export default function templateId() {
   const fetchPosterData = (templateIds: any) => {
     axios
       .post(
-        "https://story.craftyartapp.com/my-posterPage",
+        "/api1/my-posterPage",
         {
           key: "qwfsegxdhbxfjhncf",
           id_name: templateIds,
@@ -61,7 +62,7 @@ export default function templateId() {
 
   const fetchSearchData = () => {
     axios
-      .post("https://story.craftyartapp.com/search-template", {
+      .post("/api1/search-template", {
         key: "qwfsegxdhbxfjhncf",
         app_id: "1",
         cat_id: "-1",
@@ -204,12 +205,18 @@ export default function templateId() {
             />
           ) : (
             <button
-              className="text-white w-full py-[10px] rounded-[6px]"
+              className="text-white w-full py-[10px] rounded-[6px] flex items-center justify-center gap-3"
               style={{
                 background:
                   "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
               }}
             >
+              <img
+                src="/icons/pricing.svg"
+                alt=""
+                className="w-[22px] ml-[8px]"
+                style={{ display: template?.is_premium ? "block" : "none" }}
+              />
               Customize this template
             </button>
           )}

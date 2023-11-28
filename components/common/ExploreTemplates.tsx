@@ -27,7 +27,7 @@ export default function ExploreTemplates({ category }: props) {
 
   useEffect(() => {
     axios
-      .post("https://story.craftyartapp.com/search-template", {
+      .post("/api1/search-template", {
         key: "qwfsegxdhbxfjhncf",
         app_id: "1",
         cat_id: "-1",

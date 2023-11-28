@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { tokenValue } from "@/redux/reducer/AuthDataReducer";
-import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/DashBoardSkelton";
+import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -26,6 +26,15 @@ export default function Home() {
 
   const urlNavigate = tokenGet("navigate");
   console.log("urlNavigate: ", urlNavigate);
+
+  if (typeof document !== "undefined") {
+    const tokenCookie = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("token="));
+
+    const tokens = tokenCookie?.split("=")[1];
+    console.log("tokens: ", tokens);
+  }
 
   useEffect(() => {
     if (urlNavigate !== null) {

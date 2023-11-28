@@ -4,6 +4,7 @@ import firebase from "firebase/compat/app";
 import { useDispatch } from "react-redux";
 import { createUserApi } from "@/redux/action/AuthAction";
 import { useRouter } from "next/router";
+import Icons from "@/assets";
 
 const provider = new GoogleAuthProvider();
 
@@ -43,7 +44,7 @@ export const LoginButton = (props: any) => {
   );
 };
 
-export default function LoginPlateform() {
+export default function LoginPlatform() {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -73,11 +74,7 @@ export default function LoginPlateform() {
   return (
     <Box className="flex flex-col gap-4 my-5">
       <LoginButton onClick={handleGoogleLogin}>
-        <img
-          src="/icons/google1.svg"
-          alt="google"
-          className="w-[24px] h-[24px]"
-        />
+        <Icons.googleIcon />
         Continue with Google
       </LoginButton>
       {/* <LoginButton>

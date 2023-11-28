@@ -1,6 +1,6 @@
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
-import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/DashBoardSkelton";
+import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import FestivalBanner from "@/components/categoryStaticComponents/FestivalStatic";
 import FlyerStatic from "@/components/categoryStaticComponents/FlyerStatic";
 import InvitationStatic from "@/components/categoryStaticComponents/InvitationStatic";
@@ -33,7 +33,7 @@ const otherData = {
     h2_tag: "Dive into Creativity: Latest Template Designs",
     meta_title: "Latest Template Collection for Every Need | Get Started Now!",
     meta_desc:
-      "Enhance your next events with the latest templates. Discover a wide range of Letest Templates for various needs. Get started today!",
+      "Enhance your next events with the latest templates. Discover a wide range of Latest Templates for various needs. Get started today!",
     long_desc:
       "In today's fast-paced digital landscape, staying up-to-date with the latest trends and tools is crucial for any creative endeavor. Whether you're a designer, marketer, blogger, or business owner, having access to the most recent templates can significantly boost your projects' impact and efficiency. This is where the world of Latest Templates comes into play.\n\nThe term Latest Templates encompasses a wide array of design resources that span various industries and purposes. These templates can range from website designs, graphic assets, presentation layouts, email designs, social media graphics, and much more. They serve as pre-designed frameworks that can be customized to suit your specific needs, allowing you to save valuable time while maintaining a professional and polished appearance.\n\nThe beauty of these latest templates lies in their adaptability. No matter the nature of your project, whether it's a cutting-edge tech startup pitch, a cozy corner cafe's promotional materials, or a fashion blog's Instagram posts, there are templates available that align with your vision. With a multitude of styles, color schemes, typography choices, and layouts to choose from, you have the freedom to make each template your own.\n\nOne of the key advantages of utilizing the latest templates is the speed they bring to your workflow. Traditional design processes can be time-consuming, often requiring you to start from scratch. With templates, the foundation is already set, and you're simply adding your unique touch. This expedites the design process, allowing you to meet tight deadlines without compromising quality.\n\nMoreover, these templates often come crafted by experienced designers who understand the principles of aesthetics, visual hierarchy, and user experience. This means you're starting with a design that's not only visually appealing but also strategically effective. Even if you're not a design expert yourself, these templates empower you to create materials that resonate with your audience.\n\nLet's delve into some of the most popular categories where the latest templates prove to be game-changers:\n\nWeb Design Templates: In the digital age, your website is often the first point of contact with potential customers. Utilizing the latest web design templates ensures your site is modern, user-friendly, and responsive across devices.\n\nGraphic Design Templates: From business cards to brochures, these templates cover a wide range of print and digital materials. They help you maintain a consistent brand identity across all touchpoints.\n\nPresentation Templates: Whether for business pitches or educational purposes, presentation templates make your content engaging and impactful. Creative slides and visually appealing graphics keep your audience attentive.\n\nSocial Media Templates: Consistency is key on social platforms. With these templates, you can maintain a cohesive brand presence and share eye-catching content that stops users from scrolling.\n\nEmail Marketing Templates: Crafting effective emails can be challenging. The latest email templates ensure your messages are well-designed and optimized for better open and click-through rates.\n\nE-commerce Templates: If you're an online retailer, e-commerce templates help showcase your products in the best light, leading to higher conversion rates and increased sales.\n\nIn conclusion, the world of Latest Templates opens doors to a universe of creativity and efficiency. Whether you're a design professional or a novice, these templates offer a shortcut to stunning visuals and effective communication. By harnessing the power of the latest templates, you're not just keeping up with trends; you're setting new standards for your projects and leaving a lasting impression on your audience. Explore, customize, and elevate your creations with the ever-evolving realm of the latest templates.",
   },
@@ -87,7 +87,7 @@ export default function index() {
   const [contentData, setContentData] = useState<any>([]);
   const [isNotFix, setIsNotFix] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
-  const [isloading, setIsloading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [notFound, setNotFound] = useState<any>(false);
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
@@ -99,7 +99,7 @@ export default function index() {
     setLoadMore(true);
     if (id?.categoryId) {
       axios
-        .post(`https://story.craftyartapp.com/get/datas`, {
+        .post(`/api1/get/datas`, {
           debug_key: "debug",
           cat_id:
             id?.categoryId === "invitation"
@@ -127,7 +127,7 @@ export default function index() {
           }
 
           if (res?.data?.datas) {
-            setIsloading(false);
+            setIsLoading(false);
 
             setData((prevData: any) => [
               ...(prevData || []),
@@ -136,7 +136,7 @@ export default function index() {
           }
 
           if (res?.data?.status === 500) {
-            setIsloading(false);
+            setIsLoading(false);
           }
         })
         .catch((err: any) => {
@@ -213,7 +213,7 @@ export default function index() {
 
   return (
     <>
-      {isloading && <DashBoardSkelton />}
+      {isLoading && <DashBoardSkelton />}
       {notFound && <NotFound />}
 
       <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
@@ -314,7 +314,7 @@ export default function index() {
         <StackGrid columnWidth={screenWidth / multiSizeFixSize} duration={0}>
           {data?.map((templates: any, index: number) => (
             <div
-              className=""
+              className="relative"
               style={{
                 height: `${calculateHeight(
                   templates?.width,
@@ -332,6 +332,13 @@ export default function index() {
                 shallow={true}
               >
                 <div className="w-full h-full p-[8px]">
+                  {templates.is_premium && (
+                    <img
+                      src="/icons/proIcon.svg"
+                      alt=""
+                      className="w-[28px] absolute right-[13px] top-[13px]"
+                    />
+                  )}
                   <img
                     src={templates?.template_thumb}
                     alt={templates?.category_name}

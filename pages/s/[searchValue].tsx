@@ -16,7 +16,7 @@
 //   const getSearchList = (pages: number) => {
 //     setLoadMore(true);
 //     axios
-//       .post("https://story.craftyartapp.com/search-template", {
+//       .post("/api1/search-template", {
 //         key: "qwfsegxdhbxfjhncf",
 //         app_id: "1",
 //         cat_id: "-1",
@@ -220,7 +220,7 @@ export default function searchValue() {
   const getSearchList = (pages: number) => {
     setLoadMore(true);
     axios
-      .post("https://story.craftyartapp.com/search-template", {
+      .post("/api1/search-template", {
         key: "qwfsegxdhbxfjhncf",
         app_id: "1",
         cat_id: "-1",
@@ -247,7 +247,7 @@ export default function searchValue() {
       });
   };
 
-  const multiSizeFixSize = React.useMemo(() => {
+  const multiSizeFixSize: any = React.useMemo(() => {
     switch (true) {
       case screenWidth > 1500:
         return 6.3;
@@ -339,7 +339,7 @@ export default function searchValue() {
               <StackGrid columnWidth={screenWidth / multiSizeFixSize}>
                 {data?.map((templates: any, index: number) => (
                   <div
-                    className=""
+                    className="relative"
                     style={{
                       height: `${calculateHeight(
                         templates?.width,
@@ -356,6 +356,13 @@ export default function searchValue() {
                       scroll={false}
                       shallow={true}
                     >
+                      {templates.is_premium && (
+                        <img
+                          src="/icons/proIcon.svg"
+                          alt=""
+                          className="w-[28px] absolute right-[15px] top-[15px]"
+                        />
+                      )}
                       <div className="w-full h-full p-[8px]">
                         <img
                           src={templates?.template_thumb}

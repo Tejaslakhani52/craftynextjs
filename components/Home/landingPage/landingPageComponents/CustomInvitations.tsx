@@ -10,7 +10,7 @@ export default function CustomInvitations() {
 
   useEffect(() => {
     axios
-      .post("https://story.craftyartapp.com/get/datas", {
+      .post("/api1/get/datas", {
         debug_key: "debug",
         cat_id: "a4-invitation",
         limit: 10,

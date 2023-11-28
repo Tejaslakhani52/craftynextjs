@@ -37,7 +37,7 @@ export default function Profile() {
 
   const fetchData = async () => {
     axios
-      .post("https://story.craftyartapp.com/get/user", {
+      .post("/api1/get/user", {
         key: "qwfsegxdhbxfjhncf",
         device_id: "",
         email: uId,

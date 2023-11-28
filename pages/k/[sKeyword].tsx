@@ -1,6 +1,6 @@
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
-import DashBoardSkelton from "@/components/Home/dashboard/dasahboardComponents/DashBoardSkelton";
+import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import NotFound from "@/components/common/NotFound";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
@@ -31,7 +31,7 @@ export default function sKeyword() {
   const [data, setData] = useState<any>();
   const [contentData, setContentData] = useState<any>([]);
   const [page, setPage] = useState<number>(1);
-  const [isloading, setIsloading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [notFound, setNotFound] = useState<any>(false);
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
@@ -43,13 +43,10 @@ export default function sKeyword() {
     setLoadMore(true);
     if (formattedSearchName) {
       axios
-        .post(
-          `https://panel.craftyartapp.com/templates/api/getKeyTemplates/?page=${page}`,
-          {
-            key: "qwfsegxdhbxfjhncf",
-            key_name: formattedSearchName,
-          }
-        )
+        .post(`/api2/templates/api/getKeyTemplates/?page=${page}`, {
+          key: "qwfsegxdhbxfjhncf",
+          key_name: formattedSearchName,
+        })
         .then((res: any) => {
           setLoadMore(false);
           setIsLastPage(res?.data?.current_page >= res?.data?.total_page);
@@ -59,7 +56,7 @@ export default function sKeyword() {
           setNotFound(res?.data?.message !== "Loading Success!" ? true : false);
 
           if (res?.data?.datas) {
-            setIsloading(false);
+            setIsLoading(false);
 
             setData((prevData: any) => [
               ...(prevData || []),
@@ -68,7 +65,7 @@ export default function sKeyword() {
           }
 
           if (res?.data?.status === 500) {
-            setIsloading(false);
+            setIsLoading(false);
           }
         })
         .catch((err: any) => {
@@ -124,7 +121,7 @@ export default function sKeyword() {
 
   return (
     <>
-      {isloading && <DashBoardSkelton />}
+      {isLoading && <DashBoardSkelton />}
       {notFound && <NotFound />}
 
       <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
@@ -180,7 +177,7 @@ export default function sKeyword() {
         <StackGrid columnWidth={screenWidth / multiSizeFixSize} duration={0}>
           {data?.map((templates: any, index: number) => (
             <div
-              className=""
+              className="relative"
               style={{
                 height: `${calculateHeight(
                   templates?.width,
@@ -197,6 +194,13 @@ export default function sKeyword() {
                 scroll={false}
                 shallow={true}
               >
+                {templates.is_premium && (
+                  <img
+                    src="/icons/proIcon.svg"
+                    alt=""
+                    className="w-[28px] absolute right-[15px] top-[15px]"
+                  />
+                )}
                 <div className="w-full h-full p-[8px]">
                   <img
                     src={templates?.template_thumb}

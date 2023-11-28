@@ -78,8 +78,8 @@ export default function index() {
   const router = useRouter();
   const uId = tokenGet("userProfile");
   const [planeType, setPlaneType] = useState<string>("mothly");
-  const [pricePlaneData, setpricePlaneData] = useState<any>();
-  const [checkedDataPlane, setcheckedDataPlane] = useState<any>(null);
+  const [pricePlaneData, setPricePlaneData] = useState<any>();
+  const [checkedDataPlane, setCheckedDataPlane] = useState<any>(null);
   const [userCountryCode, setUserCountryCode] = useState("");
   const [isLoading, setIsLoading] = useState<any>(false);
   const [priceShowData, setPriceShowData] = useState<any>();
@@ -122,7 +122,7 @@ export default function index() {
                 response.data.lastIndexOf("}") + 1
               );
               const getData = JSON.parse(jsonString);
-              setpricePlaneData(getData?.subs);
+              setPricePlaneData(getData?.subs);
               setIsLoading(false);
             })
             .catch((error) => {

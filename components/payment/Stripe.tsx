@@ -61,19 +61,16 @@ export default function Stripe({ selectPlan, countryCode }: any) {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response: any = await axios.post(
-          "https://story.craftyartapp.com/payments/stripe",
-          {
-            amount: selectPlan?.price * 100,
-            id,
-            currency: countryCode === "IN" ? "INR" : "USD",
-            userId: uId,
-            packageId: selectPlan?.id,
-            pay_mode: "subs",
-            packageName: selectPlan?.package_name,
-            returnUrl: returnUrl,
-          }
-        );
+        const response: any = await axios.post("/api1/payments/stripe", {
+          amount: selectPlan?.price * 100,
+          id,
+          currency: countryCode === "IN" ? "INR" : "USD",
+          userId: uId,
+          packageId: selectPlan?.id,
+          pay_mode: "subs",
+          packageName: selectPlan?.package_name,
+          returnUrl: returnUrl,
+        });
 
         if (response?.data?.next_action?.redirect_to_url?.url) {
           window.location.href =
