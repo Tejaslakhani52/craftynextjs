@@ -73,6 +73,14 @@ export default function LoginContentBox(props: any) {
       if (typeof document !== "undefined") {
         document.cookie = `token=${userCredential?.user?.uid};`;
       }
+
+      const targetDomain = "https://crafty-old-letest.vercel.app/";
+
+      const messageData = "your-message-data";
+
+      if (typeof window !== "undefined") {
+        window.parent.postMessage(messageData, targetDomain);
+      }
       // if (typeof window !== "undefined") {
       //   const data = { key: userCredential?.user?.uid };
       //   window.postMessage(data, "http://localhost:3001");
