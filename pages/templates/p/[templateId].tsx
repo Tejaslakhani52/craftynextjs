@@ -204,7 +204,9 @@ export default function templateId() {
               }}
             />
           ) : (
-            <button
+            <a
+              href={`https://editor.craftyartapp.com/${template?.id_name}`}
+              target="_blank"
               className="text-white w-full py-[10px] rounded-[6px] flex items-center justify-center gap-3"
               style={{
                 background:
@@ -218,7 +220,7 @@ export default function templateId() {
                 style={{ display: template?.is_premium ? "block" : "none" }}
               />
               Customize this template
-            </button>
+            </a>
           )}
 
           <div className="py-4">

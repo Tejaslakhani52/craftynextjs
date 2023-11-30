@@ -16,6 +16,9 @@ import MainLoaderBox from "@/components/common/MainLoaderBox";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  // if (typeof document !== "undefined") {
+  //   document.cookie = `${"token"}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  // }
   const dispatch = useDispatch();
   const router = useRouter();
   const token = tokenGet("userProfile");
@@ -23,7 +26,6 @@ export default function Home() {
   const mainLoading = useSelector((state: any) => state.actions.mainLoader);
   console.log("mainLoading: ", mainLoading);
   const [isLoading, setIsLoading] = useState<any>(true);
-
   const urlNavigate = tokenGet("navigate");
   console.log("urlNavigate: ", urlNavigate);
 
@@ -47,6 +49,23 @@ export default function Home() {
       setIsLoading(false);
     }, 100);
   }, [tokenRedux]);
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     var bazStorage = createGuest("http://sub.localhost:3000");
+  //     console.log("bazStorage: ", bazStorage);
+  //     bazStorage.get("localStorageKey", function (error: any, value: any) {
+  //       console.log("value: ", value);
+  //       if (error) {
+  //         console.log("value:", error);
+  //       } else {
+  //         console.log("value: ", value);
+  //       }
+  //     });
+  //   }
+  // }, []);
+
+  // "dev2": "next dev --hostname sub.localhost",
 
   return (
     <main>

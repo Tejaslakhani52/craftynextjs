@@ -168,6 +168,11 @@ export default function Profile() {
             dispatch(openSidebar(false));
             Cookies.remove("rememberMe");
             // router.push("/");
+            if (typeof document !== "undefined") {
+              document.cookie = `token=;  SameSite=None; Secure; Domain=https://craftynextjs-al84.vercel.app/`;
+              document.cookie = `token=;  SameSite=None; Secure; Domain=https://crafty-old-letest.vercel.app/`;
+            }
+
             window.location.reload();
           }}
           className="text-[14px] mb-3"

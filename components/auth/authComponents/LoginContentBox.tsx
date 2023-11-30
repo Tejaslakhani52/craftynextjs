@@ -71,8 +71,33 @@ export default function LoginContentBox(props: any) {
       // }
 
       if (typeof document !== "undefined") {
-        document.cookie = `token=${userCredential?.user?.uid}; `;
+        document.cookie = `token=${userCredential?.user?.uid};  SameSite=None; Secure; Domain=https://craftynextjs-al84.vercel.app/`;
+        document.cookie = `token=${userCredential?.user?.uid};  SameSite=None; Secure; Domain=https://crafty-old-letest.vercel.app/`;
       }
+      // if (typeof window !== "undefined") {
+      //   const data = { key: userCredential?.user?.uid };
+      //   window.postMessage(data, "http://localhost:3001");
+      // }
+
+      // var bazStorage = createGuest(
+      //   window.location.href === "http://localhost:3000/"
+      //     ? "http://sub.localhost:3000/"
+      //     : "http://localhost:3000"
+      // );
+
+      // bazStorage.get("localStorageKey", function (error: any, value: any) {
+      //   if (error) {
+      //     console.log(error);
+      //   } else {
+      //     setCrossDomainValue(value);
+      //   }
+      // });
+
+      // Cookies.set("token", userCredential?.user?.uid, {
+      //   domain: "sub.localhost",
+      //   sameSite: "None",
+      //   secure: true,
+      // });
 
       router.push(`${router.pathname}`);
 
