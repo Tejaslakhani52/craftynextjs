@@ -31,7 +31,7 @@ export default function Home() {
 
   if (typeof document !== "undefined") {
     const tokenCookie = document.cookie
-      .split("; ")
+      .split(";")
       .find((row) => row.startsWith("token="));
 
     const tokens = tokenCookie?.split("=")[1];

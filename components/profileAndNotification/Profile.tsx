@@ -169,8 +169,7 @@ export default function Profile() {
             Cookies.remove("rememberMe");
             // router.push("/");
             if (typeof document !== "undefined") {
-              document.cookie = `token=;  SameSite=None; Secure; Domain=https://craftynextjs-al84.vercel.app/`;
-              document.cookie = `token=;  SameSite=None; Secure; Domain=https://crafty-old-letest.vercel.app/`;
+              document.cookie = `token=; `;
             }
 
             window.location.reload();
