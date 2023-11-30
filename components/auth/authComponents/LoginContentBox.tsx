@@ -71,8 +71,7 @@ export default function LoginContentBox(props: any) {
       // }
 
       if (typeof document !== "undefined") {
-        document.cookie = `token=${userCredential?.user?.uid};  SameSite=None; Secure; Domain=https://craftynextjs-al84.vercel.app`;
-        document.cookie = `token=${userCredential?.user?.uid};  SameSite=None; Secure; Domain=https://crafty-old-letest.vercel.app`;
+        document.cookie = `token=${userCredential?.user?.uid};`;
       }
       // if (typeof window !== "undefined") {
       //   const data = { key: userCredential?.user?.uid };
