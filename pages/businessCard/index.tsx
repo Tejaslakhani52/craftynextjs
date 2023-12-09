@@ -26,7 +26,7 @@ export default function index() {
           <Box sx={{ width: "500px" }}>
             <img
               src={"/images/bussinessCardBanner.png"}
-              alt="bussinessCardBanner"
+              alt="businessCardBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
           </Box>
@@ -98,27 +98,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What information should I include on my business card?"
+          heading="1. What information should I include on my business card?"
           text=" Your business card should include your name, job title, company name, phone number, email address, and website URL. You may also choose to include your logo or an image that represents your brand."
         />
 
         <FaqsBox
-          heding="2. How can I make my business card stand out from others?"
+          heading="2. How can I make my business card stand out from others?"
           text=" To make your business card stand out, you can experiment with different sizes, shapes, colours, and materials. You can also use creative graphics or typography that align with your brand identity, or add an interactive element like a QR code or augmented reality."
         />
 
         <FaqsBox
-          heding="3. Do I have to follow a specific design template for my business card?"
+          heading="3. Do I have to follow a specific design template for my business card?"
           text=" No, you don't have to follow a specific template for your business card. However, it's important to keep the design simple and uncluttered, and to use a font and colour scheme that complement your branding."
         />
 
         <FaqsBox
-          heding="4. Why is it important to use high-quality materials and printing techniques for my business card?"
+          heading="4. Why is it important to use high-quality materials and printing techniques for my business card?"
           text=" Using high-quality materials and printing techniques creates a professional look and feel for your business card. It also shows that you put care and attention into your brand and how you present yourself to potential customers or clients."
         />
 
         <FaqsBox
-          heding="5. Are there any design trends I should consider when creating a business card?"
+          heading="5. Are there any design trends I should consider when creating a business card?"
           text=" Yes, some current design trends for business cards include minimalist designs, embossed or debossed text and graphics, metal or wood materials, transparent designs, and die-cut shapes. However, it's important to stay true to your brand identity and choose designs that align with your business goals and values."
         />
       </Box>

@@ -98,7 +98,7 @@ export const Special = () => {
       <OptionButton onClick={() => router.push("/marketing")}>
         Marketing
       </OptionButton>
-      <OptionButton onClick={() => router.push("/bussiness")}>
+      <OptionButton onClick={() => router.push("/business")}>
         Business
       </OptionButton>
       <OptionButton>Card & Invitation</OptionButton>

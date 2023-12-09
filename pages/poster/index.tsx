@@ -97,27 +97,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What types of posters can I create?"
+          heading="1. What types of posters can I create?"
           text="You can create posters for a variety of purposes, including marketing, events, education, and more. Our templates cover a wide range of themes and styles, so you're sure to find something that fits your needs."
         />
 
         <FaqsBox
-          heding="2. How do I choose the right size for my poster?"
+          heading="2. How do I choose the right size for my poster?"
           text="Consider where you'll be displaying your poster design and what type of information you want to include. Standard sizes include 18x24 inches and 24x36 inches, but you can also customise the size to fit your specific needs."
         />
 
         <FaqsBox
-          heding="3. Can I use my own images and graphics?"
+          heading="3. Can I use my own images and graphics?"
           text="Absolutely! You can upload your own images and graphics to make your poster design truly unique. Just make sure they are high-quality and relevant to your message."
         />
 
         <FaqsBox
-          heding="4. How long does it take to create a poster?"
+          heading="4. How long does it take to create a poster?"
           text="With our easy-to-use poster design maker, you can create a professional-looking design in minutes. Of course, the time it takes may vary depending on the complexity of your design and how much customization you want to do."
         />
 
         <FaqsBox
-          heding="5. Can I print my poster at home?"
+          heading="5. Can I print my poster at home?"
           text="Yes, you can print your poster at home as long as you have a printer that can handle large-format printing. Alternatively, you can send your design to a professional printing service for high-quality results."
         />
       </Box>

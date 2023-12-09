@@ -103,27 +103,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What type of calendars do you offer?"
+          heading="1. What type of calendars do you offer?"
           text=" We offer a wide variety of calendars ranging from daily planners to monthly wall calendars. Our products come in various sizes and designs to suit your preferences and needs."
         />
 
         <FaqsBox
-          heding="2. Can I customise my own calendar?"
+          heading="2. Can I customise my own calendar?"
           text=" Absolutely! We provide customization options for most of our products, so you can add your own personal touch to your calendar. You can choose your own images, add important dates, and even include personalised notes."
         />
 
         <FaqsBox
-          heding="3. Can I include my own holidays and important dates on the calendar?"
+          heading="3. Can I include my own holidays and important dates on the calendar?"
           text=" Yes, we offer customization options that allow you to add your own important dates and events to the calendar. You can also choose from a variety of pre-designed holiday sets to include on your calendar."
         />
 
         <FaqsBox
-          heding="4. Can I preview my customised calendar before placing an order?"
+          heading="4. Can I preview my customised calendar before placing an order?"
           text=" Yes, we provide a digital proof of your custom design before printing. This allows you to see how your final product will look and make any necessary adjustments before placing your order."
         />
 
         <FaqsBox
-          heding="5. Do you have any tips for designing a custom calendar?"
+          heading="5. Do you have any tips for designing a custom calendar?"
           text=" When designing your custom calendar, try to use high-quality images and avoid cluttering the design with too much text. Also, consider the overall theme or purpose of the calendar and select appropriate images and colours."
         />
       </Box>

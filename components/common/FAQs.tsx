@@ -60,7 +60,7 @@ export default function FaqsBox(props: any) {
               sx={{ color: "#1C3048", fontWeight: "500", fontSize: "19px" }}
               className="text-[14px] 2sm:text-[17px] sm:text-[19px]"
             >
-              {props?.heding}
+              {props?.heading}
             </Typography>
             <Button sx={{ color: "black" }} onClick={() => setopen(!open)}>
               {open ? (

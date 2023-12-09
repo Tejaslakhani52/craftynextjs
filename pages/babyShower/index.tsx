@@ -102,27 +102,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What are baby shower invitation templates?"
+          heading="1. What are baby shower invitation templates?"
           text="Baby shower invitation templates are pre-designed invitation cards that can be customised and filled out with the necessary information for a baby shower event."
         />
 
         <FaqsBox
-          heding="2. Where can I find baby shower invitation templates?"
+          heading="2. Where can I find baby shower invitation templates?"
           text="There are many websites and online marketplaces that offer free or paid baby shower invitation templates. You can also create your own using design software or hire a graphic designer to create one for you."
         />
 
         <FaqsBox
-          heding="3. How do I customise a baby shower invitation template?"
+          heading="3. How do I customise a baby shower invitation template?"
           text="Most baby shower invitation templates come in editable formats, such as PSD or AI files, which can be opened in graphic design software like Adobe Photoshop or Illustrator. You can then change the text, colours, and images to suit your preferences."
         />
 
         <FaqsBox
-          heding="4. What information should be included in a baby shower invitation?"
+          heading="4. What information should be included in a baby shower invitation?"
           text="A typical baby shower invitation should include the expectant mother's name, date, time, and location of the event, as well as RSVP details and any other relevant information, such as gift registry information or dress code."
         />
 
         <FaqsBox
-          heding="5. Can I print my own baby shower invitations from a template?"
+          heading="5. Can I print my own baby shower invitations from a template?"
           text="Yes, most baby shower invitation templates can be printed at home on a standard printer or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template."
         />
       </Box>

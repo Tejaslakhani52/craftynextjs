@@ -33,7 +33,7 @@ const sliderTemplate = [
   },
   {
     img: "/images/bussinessCreateReport.png",
-    buttonName: "Create Bussiness Report",
+    buttonName: "Create business Report",
     path: "/bussinessReport",
   },
 ];
@@ -152,27 +152,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding=" 1. What are business templates?"
+          heading=" 1. What are business templates?"
           text="Business templates are pre-designed documents or forms that can be customised and used for various business purposes, such as invoices, contracts, business plans, and marketing materials."
         />
 
         <FaqsBox
-          heding=" 2. Are business templates customizable?"
+          heading=" 2. Are business templates customizable?"
           text="Yes, most business templates can be customised to fit the specific needs of your business. You can typically edit text, add or remove sections, and customise the design elements to match your branding."
         />
 
         <FaqsBox
-          heding=" 3. Can I use business templates for personal use?"
+          heading=" 3. Can I use business templates for personal use?"
           text="While business templates are designed for professional use, there's no reason why you couldn't adapt them for personal use. For example, an invoice template could be used for tracking expenses or billing clients for freelance work."
         />
 
         <FaqsBox
-          heding=" 4. Why should I use business templates?"
+          heading=" 4. Why should I use business templates?"
           text="Using business templates can save time and improve efficiency by providing a starting point for commonly used documents and forms. They can also help ensure consistency and professionalism in your business communications."
         />
 
         <FaqsBox
-          heding=" 5. How do I determine which business templates are best suited for my needs?"
+          heading=" 5. How do I determine which business templates are best suited for my needs?"
           text="The types of business templates you'll need will depend on the nature of your business and its specific needs. Consider what documents or forms you use most frequently, and look for templates that are tailored to those needs. You can also ask other professionals in your industry for recommendations or search for templates specific to your field."
         />
       </Box>

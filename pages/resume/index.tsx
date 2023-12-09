@@ -94,27 +94,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What can I do to make my resume stand out?"
+          heading="1. What can I do to make my resume stand out?"
           text="To make your resume stand out, tailor it to the job you're applying for, highlight your achievements using numbers and statistics, use clear and concise language and formatting, and customise your resume for each job application."
         />
 
         <FaqsBox
-          heding="2. How can I structure my resume to showcase my skills and experience effectively?"
+          heading="2. How can I structure my resume to showcase my skills and experience effectively?"
           text="To structure your resume for maximum impact, start with a strong summary statement, organise your resume into clear sections that highlight relevant experiences and skills, emphasise achievements using action verbs, use visual elements strategically to guide the reader's eye, and end with a call-to-action statement."
         />
 
         <FaqsBox
-          heding="3. What are some common mistakes to avoid when creating a resume?"
+          heading="3. What are some common mistakes to avoid when creating a resume?"
           text="Common mistakes to avoid when creating a resume include grammatical errors, typos, generic language that doesn't highlight your unique skills and experiences, not customising your resume for each job application, and not highlighting your achievements using specific numbers or statistics."
         />
 
         <FaqsBox
-          heding="4. What are the key elements that should be included in a resume?"
+          heading="4. What are the key elements that should be included in a resume?"
           text="The key elements that should be included in a resume include a summary statement, education and work experience, skills and qualifications, achievements and accomplishments, and professional references."
         />
 
         <FaqsBox
-          heding="5. How can I make my resume unique and visually appealing?"
+          heading="5. How can I make my resume unique and visually appealing?"
           text="To make your resume unique and visually appealing, consider using a creative format that showcases your personal brand, incorporate visual elements like icons and colours to guide the reader's eye, use storytelling techniques to highlight achievements and creativity, provide links to your online portfolio or social media accounts, and experiment with different design tools and software."
         />
       </Box>

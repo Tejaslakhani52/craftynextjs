@@ -84,6 +84,7 @@ export default function index() {
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState<any>();
+  console.log("data: ", data);
   const [contentData, setContentData] = useState<any>([]);
   const [isNotFix, setIsNotFix] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
@@ -92,6 +93,7 @@ export default function index() {
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
   const userLoginStatus = tokenGet("userProfile");
+  const [idName, setIdName] = useState<any>("");
 
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
 
@@ -99,13 +101,11 @@ export default function index() {
     setLoadMore(true);
     if (id?.categoryId) {
       axios
-        .post(`/api1/get/datas`, {
-          debug_key: "debug",
+        .post(`/api/category`, {
           cat_id:
             id?.categoryId === "invitation"
               ? "a4-invitation"
               : (id?.categoryId as any),
-          limit: 48,
           page: page,
         })
         .then((res: any) => {
@@ -144,6 +144,56 @@ export default function index() {
         });
     }
   }, [id, page]);
+
+  // useEffect(() => {
+  //   setLoadMore(true);
+  //   if (id?.categoryId) {
+  //     axios
+  //       .post(`/api1/get/datas`, {
+  //         cat_id:
+  //           id?.categoryId === "invitation"
+  //             ? "a4-invitation"
+  //             : (id?.categoryId as any),
+  //         page: page,
+  //         debug_key: "debug",
+  //         limit: 48,
+  //       })
+  //       .then((res: any) => {
+  //         setLoadMore(false);
+  //         setIsLastPage(res?.data?.isLastPage);
+  //         if (id?.categoryId === "latest") {
+  //           setContentData(otherData.latestMeta);
+  //         } else if (id?.categoryId === "trending") {
+  //           setContentData(otherData.trendingData);
+  //         } else if (id?.categoryId === "invitation") {
+  //           setContentData(otherData.invitationData);
+  //         } else setContentData(res?.data);
+
+  //         setIsNotFix(res?.data?.cat_id >= 0);
+  //         setNotFound(res?.data?.status === 500 ? true : false);
+
+  //         if (id?.page > res?.data?.total_pages || id?.page < 0) {
+  //           setNotFound(true);
+  //         }
+
+  //         if (res?.data?.datas) {
+  //           setIsLoading(false);
+
+  //           setData((prevData: any) => [
+  //             ...(prevData || []),
+  //             ...res?.data?.datas,
+  //           ]);
+  //         }
+
+  //         if (res?.data?.status === 500) {
+  //           setIsLoading(false);
+  //         }
+  //       })
+  //       .catch((err: any) => {
+  //         console.log("err: ", err);
+  //       });
+  //   }
+  // }, [id, page]);
 
   useEffect(() => {
     const element: any = document.getElementById(tempIdValue);
@@ -325,40 +375,53 @@ export default function index() {
               }}
               id={`content${index}`}
             >
-              <Link
-                href={`/?templates=${templates.id_name}`}
-                as={`/templates/p/${templates.id_name}`}
-                scroll={false}
-                shallow={true}
-              >
-                <div className="w-full h-full p-[8px]">
-                  {templates.is_premium && (
-                    <img
-                      src="/icons/proIcon.svg"
-                      alt=""
-                      className="w-[28px] absolute right-[13px] top-[13px]"
-                    />
-                  )}
-                  <img
-                    src={templates?.template_thumb}
-                    alt={templates?.category_name}
-                    className={`w-full] rounded-[5px] cursor-pointer`}
-                    style={{
-                      border: "1px solid #80808082",
-                      height: "100%",
-                    }}
-                  />
+              {/* <Link
+                href={`/templates/p/${templates.id_name}`}
+                // as={`/templates/p/${templates.id_name}`}
+                // scroll={false}
+                // shallow={true}
+                // replace
+              > */}
+              <div
+                className="w-full h-full p-[8px]"
+                onClick={() => {
+                  setIdName(templates?.id_name);
+                  setOpenModal(true);
 
-                  <div className="pt-2">
-                    <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                      {templates?.template_name}
-                    </p>
-                    <p className="text-[#ABB2C7] text-[13px] pb-1">
-                      {templates?.category_name}
-                    </p>
-                  </div>
+                  window.history.replaceState(
+                    {},
+                    "",
+                    `/templates/p/${templates?.id_name}`
+                  );
+                }}
+              >
+                {templates.is_premium && (
+                  <img
+                    src="/icons/proIcon.svg"
+                    alt=""
+                    className="w-[28px] absolute right-[13px] top-[13px]"
+                  />
+                )}
+                <img
+                  src={templates?.template_thumb}
+                  alt={templates?.category_name}
+                  className={`w-full] rounded-[5px] cursor-pointer`}
+                  style={{
+                    border: "1px solid #80808082",
+                    height: "100%",
+                  }}
+                />
+
+                <div className="pt-2">
+                  <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
+                    {templates?.template_name}
+                  </p>
+                  <p className="text-[#ABB2C7] text-[13px] pb-1">
+                    {templates?.category_name}
+                  </p>
                 </div>
-              </Link>
+              </div>
+              {/* </Link> */}
             </div>
           ))}
         </StackGrid>
@@ -506,6 +569,13 @@ export default function index() {
       </Box>
 
       {staticBox[id?.categoryId]}
+
+      <TemplateModal
+        open={openModal}
+        id={idName}
+        setOpen={setOpenModal}
+        setId={setIdName}
+      />
 
       {/* <InvitationStatic /> */}
       {/* <FlyerStatic /> */}

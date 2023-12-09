@@ -22,9 +22,9 @@ const sliderTemplate = [
     path: "/logos",
   },
   {
-    img: "/images/marketingCreateBussiness.png",
+    img: "/images/marketingCreatebusiness.png",
     buttonName: "Create Business Card",
-    path: "/bussinessCard",
+    path: "/businessCard",
   },
   {
     img: "/images/marketingCreatePoster.png",
@@ -87,8 +87,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Find a Business Card"}
-        image="/images/marketingBussinessCard.png"
-        path="/bussinessCard"
+        image="/images/marketingbussinessCard.png"
+        path="/businessCard"
       />
 
       <RightDetail
@@ -192,26 +192,26 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What are customizable marketing templates?"
+          heading="1. What are customizable marketing templates?"
           text="Customizable marketing templates are pre-designed marketing materials, such as business cards, flyers, logos, posters, brochures, menus, and infographics, that can be edited and filled out with the necessary information for your business or organisation."
         />
         <FaqsBox
-          heding=" 2. Where can I find customizable marketing templates?"
+          heading=" 2. Where can I find customizable marketing templates?"
           text="There are many websites and online marketplaces that offer free or paid customizable marketing templates. You can also create your own using design software or hire a graphic designer to create one for you."
         />
 
         <FaqsBox
-          heding=" 3. How do I customise a marketing template?"
+          heading=" 3. How do I customise a marketing template?"
           text="Most marketing templates come in editable formats, such as PSD or AI files, which can be opened in graphic design software like Adobe Photoshop or Illustrator. You can then change the text, colours, and images to suit your preferences."
         />
 
         <FaqsBox
-          heding=" 4. What information should be included in marketing posters ?"
+          heading=" 4. What information should be included in marketing posters ?"
           text="The type of information included in marketing posters will depend on the purpose of the material. However, common elements include company or organisation name, logo, products or services offered, contact information, and call-to-action."
         />
 
         <FaqsBox
-          heding=" 5. Can I print my own marketing materials from a template?"
+          heading=" 5. Can I print my own marketing materials from a template?"
           text="Yes, most marketing templates can be printed at home or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template."
         />
       </Box>

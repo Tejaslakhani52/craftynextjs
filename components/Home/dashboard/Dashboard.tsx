@@ -1,9 +1,11 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
 import TemplatesBox from "./dashboardComponents/TemplatesBox";
 import { useDispatch } from "react-redux";
 import { openTempModal } from "@/redux/reducer/actionDataReducer";
+import CustomSize from "./dashboardComponents/CustomSize";
+import UploadButton from "./dashboardComponents/UploadButton";
 
 const bannerCategory = [
   { image: "/icons/forYou.svg", name: "For you", path: "/trending" },
@@ -44,9 +46,13 @@ export default function Dashboard() {
     <Box className="bg-[#F4F7FE]">
       <Box className="py-[10px]"></Box>
       <Box className="mx-[20px] bg_linear rounded-[10px] px-[16px]">
+        <Box className="flex justify-end py-[15px] gap-3">
+          <UploadButton />
+          <CustomSize />
+        </Box>
         <Typography
           variant="h1"
-          className="text-[30px] md:text-[47px] font-bold text-center pt-14 text-white "
+          className="text-[30px] md:text-[47px] font-bold text-center  text-white "
         >
           What would you like to create ?
         </Typography>

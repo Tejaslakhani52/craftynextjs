@@ -26,11 +26,12 @@ export default function RightImageSection({
                 width: "fit-content",
                 fontSize: "18px",
                 textTransform: "unset",
-                borderRadius: "10px",
+                borderRadius: "5px",
                 color: "white",
                 fontWeight: "500",
+                padding: "8px 20px",
               }}
-              className="bg_linear py-[10px] px-[10px] ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
+              className="bg_linear  ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
             >
               {buttonName}
             </Button>

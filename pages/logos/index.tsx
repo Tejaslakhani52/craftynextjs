@@ -99,29 +99,29 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What is Logo Design?"
+          heading="1. What is Logo Design?"
           text="Logo design is the process of creating a unique symbol or emblem that visually represents a brand, company, or individual. It involves the use of typography, colours, and graphic elements to create a distinctive visual identity."
         />
         <FaqsBox
-          heding="2. Why is a logo important for my business?"
+          heading="2. Why is a logo important for my business?"
           text="A logo is an essential component of your brand identity. It helps your customers to recognize and remember your
           business, products, and services. A well-designed logo can create a positive impression, build trust, and communicate
           your brand's values and personality."
         />
         <FaqsBox
-          heding="3. How long does it take to design a logo?"
+          heading="3. How long does it take to design a logo?"
           text="The time required to design a logo depends on various factors, such as the complexity of the design, the number of
           revisions needed, and the designer's availability. Typically, it can take anywhere from a few days to a few weeks to
           create a high-quality logo."
         />
         <FaqsBox
-          heding="4. How much should I expect to pay for a logo design?"
+          heading="4. How much should I expect to pay for a logo design?"
           text="The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design,
           and the level of customization required. Generally, you can expect to pay anywhere between $1 to $1000 for a
           professional logo design."
         />
         <FaqsBox
-          heding="5. What should I consider when designing a logo for my business?"
+          heading="5. What should I consider when designing a logo for my business?"
           text="When designing a logo for your business, you should consider several factors to ensure that it reflects your brand
           identity and resonates with your target audience. These factors include selecting appropriate colours that represent
           your brand values and personality, choosing a font style that aligns with your brand messaging, and creating a design

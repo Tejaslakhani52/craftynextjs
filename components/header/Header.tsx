@@ -137,7 +137,11 @@
 
 import { Box, Button } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
-import MenuBox, { Product } from "./headerComponents/Menu";
+import MenuBox, {
+  EditorTools,
+  Product,
+  Templates,
+} from "./headerComponents/Menu";
 import LoginButton from "./headerComponents/LoginButton";
 import { useRouter } from "next/router";
 import Sidebar from "../sidebar/Sidebar";
@@ -174,6 +178,14 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   const productPaths = Product.subName.flatMap((category) =>
     category.allName.map((item) => item.path)
   );
+
+  const editorToolsPaths = EditorTools.subName.flatMap((category) =>
+    category.allName.map((item) => item.path)
+  );
+
+  const templatesPaths = Templates.subName.flatMap((category) =>
+    category.allName.map((item) => item.path)
+  );
   console.log("productPaths: ", productPaths);
 
   useEffect(() => {
@@ -185,7 +197,10 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
             screenWidth > 991 &&
             router?.pathname !== "/your-account" &&
             router?.pathname !== "/subscriptions" &&
-            !productPaths.includes(router?.pathname)
+            router?.pathname !== "/plans" &&
+            !productPaths.includes(router?.pathname) &&
+            !editorToolsPaths.includes(router?.pathname) &&
+            !templatesPaths.includes(router?.pathname)
           ) {
             console.log(
               "productPaths.every((path) => !router?.pathname.includes(path)): "
@@ -201,7 +216,13 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
           router.push("/");
         }
         hasEffectRun.current = true;
-        if (!token || productPaths.includes(router?.pathname)) {
+        if (
+          !token ||
+          router?.pathname === "/plans" ||
+          productPaths.includes(router?.pathname) ||
+          editorToolsPaths.includes(router?.pathname) ||
+          templatesPaths.includes(router?.pathname)
+        ) {
           dispatch(openSidebar(false));
         }
         setTimeout(() => {
@@ -217,7 +238,10 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
     if (
       router?.pathname === "/your-account" ||
       router?.pathname === "/subscriptions" ||
-      productPaths.includes(router?.pathname)
+      router?.pathname === "/plans" ||
+      productPaths.includes(router?.pathname) ||
+      editorToolsPaths.includes(router?.pathname) ||
+      templatesPaths.includes(router?.pathname)
     ) {
       dispatch(enterAccount(true));
     } else dispatch(enterAccount(false));

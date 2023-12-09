@@ -98,27 +98,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What is the purpose of a brochure?"
+          heading="1. What is the purpose of a brochure?"
           text="A brochure is a marketing tool used to communicate information about a product, service, or organisation. Its purpose is to inform and educate potential customers and stakeholders, build brand awareness, and encourage them to take action."
         />
 
         <FaqsBox
-          heding="2. How can I make my brochure stand out?"
+          heading="2. How can I make my brochure stand out?"
           text="To make your brochure stand out, you can use unconventional shapes or sizes, non-traditional materials, creative copywriting techniques, interactive elements, and unique visual experiences. It's important to also ensure that your brochure aligns with your brand identity and effectively communicates your message to your target audience."
         />
 
         <FaqsBox
-          heding="3. What are the key elements of an effective brochure design?"
+          heading="3. What are the key elements of an effective brochure design?"
           text="The key elements of an effective brochure design include a clear and concise headline, visually appealing images and graphics, informative and engaging content, a consistent colour scheme and typography, and a clear call-to-action (CTA). These elements work together to grab attention, communicate your message, and encourage readers to take action."
         />
 
         <FaqsBox
-          heding="4. Can I create a brochure on my own, or do I need professional help?"
+          heading="4. Can I create a brochure on my own, or do I need professional help?"
           text="You can create a brochure on your own using various software programs and online tools. However, if you want a high-quality and professional-looking brochure that effectively communicates your message and aligns with your brand identity, it may be beneficial to seek the help of a professional designer or agency."
         />
 
         <FaqsBox
-          heding="5. How should I distribute my brochure?"
+          heading="5. How should I distribute my brochure?"
           text="There are various channels you can use to distribute your brochure, such as mail, events, or in-person visits. It's important to consider your target audience and their preferred communication methods when choosing your distribution channels. You can also promote your brochure through your website, social media, and other marketing channels to increase visibility."
         />
       </Box>

@@ -98,27 +98,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What kind of party invitation templates do you offer?"
+          heading="1. What kind of party invitation templates do you offer?"
           text="Our party invitation templates cover a wide range of occasions, from casual get-togethers to formal events. We have templates for birthdays, weddings, baby showers, holidays, and more. Each template is professionally designed and customizable to make your event stand out."
         />
 
         <FaqsBox
-          heding="2. Can I customise the party invitation templates to fit my event's theme and style?"
+          heading="2. Can I customise the party invitation templates to fit my event's theme and style?"
           text="Absolutely! Our party invitation templates are fully editable, so you can personalise them to match your event's theme and style. You can change the colours, fonts, and wording to create a unique invitation that reflects your personality and sets the tone for your celebration."
         />
 
         <FaqsBox
-          heding="3. How many guests can I invite with your party invitation templates?"
+          heading="3. How many guests can I invite with your party invitation templates?"
           text="Our party invitation templates are designed to accommodate any number of guests, whether you're planning an intimate gathering or a large-scale event. You can easily adjust the template to include the exact number of guests you'll be inviting, so you never have to worry about overcrowding or leaving anyone out."
         />
 
         <FaqsBox
-          heding="4. Do you have any tips for wording the invitations to make them more exciting and engaging?"
+          heading="4. Do you have any tips for wording the invitations to make them more exciting and engaging?"
           text="Yes! Crafting the perfect invitation is all about striking the right balance between informative and engaging. Be sure to include all the important details, like the date, time, location, and dress code, while also injecting some personality and excitement into the wording. Consider using playful language, puns, or rhymes to make your invitation stand out."
         />
 
         <FaqsBox
-          heding="5.Can I see a preview of the party invitation template before I make a final decision?"
+          heading="5.Can I see a preview of the party invitation template before I make a final decision?"
           text="Yes! We understand that choosing the perfect party invitation is an important decision, so we offer a preview feature that lets you see how your chosen template will look before you finalise your order. This allows you to make any necessary adjustments or changes to ensure that the invitation looks exactly how you want it to."
         />
       </Box>

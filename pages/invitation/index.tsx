@@ -183,27 +183,27 @@ export default function index() {
         />
         <Box sx={{ p: "20px" }}></Box>
         <FaqsBox
-          heding="1. What are the available design templates for invitations?  "
+          heading="1. What are the available design templates for invitations?  "
           text="Our invitation maker offers a wide range of design templates to choose from, including options for birthdays, weddings,
           baby showers, graduations, and more."
         />
         <FaqsBox
-          heding="2. Can I customize the text and images on the invitations?"
+          heading="2. Can I customize the text and images on the invitations?"
           text="Yes, our invitation maker allows you to personalize your invitations with your own text and images. You can also
           experiment with different fonts, colors, and layouts to create a unique look that matches your event."
         />
         <FaqsBox
-          heding="3. How can I share my invitations with guests? "
+          heading="3. How can I share my invitations with guests? "
           text="You can share your invitations via email, social media, or print. Our platform makes it easy to send your invitations
           directly to your guests' inboxes or share them on your social media accounts."
         />
         <FaqsBox
-          heding="4. Can I preview my invitations before sending them out?"
+          heading="4. Can I preview my invitations before sending them out?"
           text="Yes, our invitation maker comes with a preview feature that allows you to see how your finished invitations will look. You
           can make any necessary changes before sending them out to ensure they are error-free and visually appealing."
         />
         <FaqsBox
-          heding="5. Is the invitation maker free to use?"
+          heading="5. Is the invitation maker free to use?"
           text="We offer both free and paid options for using our invitation maker. The free version allows you to access basic features
           and templates, while the paid version offers advanced customization options and premium templates."
         />

@@ -5,6 +5,7 @@ import {
   EditorTools,
   Product,
   Templates,
+  handleClickWhatsapp,
 } from "../header/headerComponents/Menu";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
@@ -288,42 +289,74 @@ export default function Sidebar({
                       : "none",
                 }}
               >
-                <Box
-                  className={`flex cursor-pointer py-3 px-3 w-full hover:bg-[#F4F7FE] ${
-                    router.pathname === item.path && " bg-[#F4F7FE]"
-                  }    rounded-[4px]`}
-                  onClick={() => router.push(item.path)}
-                >
-                  {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
-                  <Box className="flex gap-5  w-full">
-                    <Box className="w-[20px]">
-                      <img
-                        src={
+                {item?.name === "Custom Order" ? (
+                  <Box
+                    className={`flex cursor-pointer py-3 px-3 w-full hover:bg-[#F4F7FE] ${
+                      router.pathname === item.path && " bg-[#F4F7FE]"
+                    }    rounded-[4px]`}
+                    onClick={handleClickWhatsapp}
+                  >
+                    {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
+                    <Box className="flex gap-5  w-full">
+                      <Box className="w-[20px]">
+                        <img
+                          src={
+                            router.pathname === item.path
+                              ? item.activeIcon
+                              : item.icons
+                          }
+                          alt="Icons"
+                        />
+                      </Box>
+                      <Typography
+                        className={`text-[15px] ${
                           router.pathname === item.path
-                            ? item.activeIcon
-                            : item.icons
-                        }
-                        alt="Icons"
-                      />
+                            ? " active_text_linear "
+                            : "text-black opacity-60"
+                        }`}
+                      >
+                        {item.name}
+                      </Typography>
                     </Box>
-                    <Typography
-                      className={`text-[15px] ${
-                        router.pathname === item.path
-                          ? " active_text_linear "
-                          : "text-black opacity-60"
-                      }`}
-                    >
-                      {item.name}
-                    </Typography>
-                    {item.name === "Templates" && (
-                      <img
-                        src="/icons/rightArrow.svg"
-                        alt="rightArrow"
-                        className="w-[6px] ml-auto"
-                      />
-                    )}
                   </Box>
-                </Box>
+                ) : (
+                  <Box
+                    className={`flex cursor-pointer py-3 px-3 w-full hover:bg-[#F4F7FE] ${
+                      router.pathname === item.path && " bg-[#F4F7FE]"
+                    }    rounded-[4px]`}
+                    onClick={() => router.push(item.path)}
+                  >
+                    {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
+                    <Box className="flex gap-5  w-full">
+                      <Box className="w-[20px]">
+                        <img
+                          src={
+                            router.pathname === item.path
+                              ? item.activeIcon
+                              : item.icons
+                          }
+                          alt="Icons"
+                        />
+                      </Box>
+                      <Typography
+                        className={`text-[15px] ${
+                          router.pathname === item.path
+                            ? " active_text_linear "
+                            : "text-black opacity-60"
+                        }`}
+                      >
+                        {item.name}
+                      </Typography>
+                      {item.name === "Templates" && (
+                        <img
+                          src="/icons/rightArrow.svg"
+                          alt="rightArrow"
+                          className="w-[6px] ml-auto"
+                        />
+                      )}
+                    </Box>
+                  </Box>
+                )}
               </Box>
             ))}
             <Typography className="px-3 text-black text-[13px] pb-1">

@@ -104,27 +104,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What are anniversary invitation templates?"
+          heading="1. What are anniversary invitation templates?"
           text="Anniversary invitation templates are pre-designed invitation cards that can be customised and filled out with the necessary information for an anniversary celebration."
         />
 
         <FaqsBox
-          heding="2. Where can I find anniversary invitation templates?"
+          heading="2. Where can I find anniversary invitation templates?"
           text="There are many websites and online marketplaces that offer free or paid anniversary invitation templates. You can also create your own using design software or hire a graphic designer to create one for you."
         />
 
         <FaqsBox
-          heding="3. How do I customise an anniversary invitation template?"
+          heading="3. How do I customise an anniversary invitation template?"
           text="Most anniversary invitation templates come in editable formats, such as PSD or AI files, which can be opened in graphic design software like Adobe Photoshop or Illustrator. You can then change the text, colours, and images to suit your preferences."
         />
 
         <FaqsBox
-          heding="4. What information should be included in an anniversary invitation?"
+          heading="4. What information should be included in an anniversary invitation?"
           text="A typical anniversary invitation should include the names of the couple, date, time, and location of the event, as well as RSVP details and any other relevant information, such as dress code or gift suggestions."
         />
 
         <FaqsBox
-          heding="5. Can I print my own anniversary invitations from a template?"
+          heading="5. Can I print my own anniversary invitations from a template?"
           text="Yes, most anniversary invitation templates can be printed at home on a standard printer or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template."
         />
       </Box>

@@ -393,6 +393,46 @@ input:focus {
   animation: rotateX 0.5s infinite linear reverse;
 }
 
+.button_tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px 20px;
+}
+
+.button_tabs .font {
+  background: linear-gradient(
+    268.03deg,
+    #5961f8 -0.66%,
+    #15d8c5 100%,
+    #15d8c5 100%
+  );
+  box-shadow: 8px 8px 16px rgba(171, 178, 199, 0.5),
+    -10px -10px 16px rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  color: white;
+  width: 48%;
+  font-size: 15px;
+  padding: 0px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.button_tabs .text_style {
+  background: #edf0f9;
+  box-shadow: 8px 8px 16px rgba(171, 178, 199, 0.5),
+    -10px -10px 16px rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  width: 48%;
+  font-size: 15px;
+  padding: 0px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
 @keyframes rotateX {
   from {
     transform: rotateZ(0deg);
@@ -400,6 +440,16 @@ input:focus {
   to {
     transform: rotateZ(360deg);
   }
+}
+
+.carousel-slider {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  width: 100%;
 }
 
 @media screen and (max-width: 767px) {

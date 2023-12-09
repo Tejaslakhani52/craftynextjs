@@ -103,27 +103,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What should be included in a birthday invitation?"
+          heading="1. What should be included in a birthday invitation?"
           text=" A birthday invitation should include the name of the celebrant, date, time, location, and RSVP details. You can also add a dress code, gift preferences, or other relevant information."
         />
 
         <FaqsBox
-          heding="2. When should I send out birthday invitations?"
+          heading="2. When should I send out birthday invitations?"
           text=" It is recommended to send out birthday invitations at least 2-3 weeks before the party date to give guests enough time to plan and RSVP."
         />
 
         <FaqsBox
-          heding="3. Can I create my own custom birthday invitations?"
+          heading="3. Can I create my own custom birthday invitations?"
           text=" Yes, you can create your own custom birthday invitations using various online platforms or software, which provide templates and design tools to personalise your invitations."
         />
 
         <FaqsBox
-          heding="4. Is it necessary to add images or graphics to the birthday invitation?"
+          heading="4. Is it necessary to add images or graphics to the birthday invitation?"
           text=" Adding images or graphics adds a personal touch to the invitation and can make it more visually appealing. However, it's not essential, and you can keep the design simple if you prefer."
         />
 
         <FaqsBox
-          heding="5. How can I ensure that my guests receive the birthday invitation?"
+          heading="5. How can I ensure that my guests receive the birthday invitation?"
           text=" You can send birthday invitations via email, messaging apps, or social media platforms. If you prefer traditional methods, you can print and mail them to the invitees' home address or hand-deliver them. Always confirm receipt of the invitation with your guests."
         />
       </Box>

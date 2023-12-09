@@ -102,27 +102,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What are bridal shower invitation templates?"
+          heading="1. What are bridal shower invitation templates?"
           text="Bridal shower invitation templates are pre-designed invitation cards that can be customised and filled out with the necessary information for a bridal shower event."
         />
 
         <FaqsBox
-          heding="2. Can I customise my bridal shower invitations?"
+          heading="2. Can I customise my bridal shower invitations?"
           text="bride's sYes, you can customise your bridal shower invitations to fit the theme of your event, the tyle, or your personal preferences. Many online invitation services offer customization options, including colour schemes, fonts, and designs."
         />
 
         <FaqsBox
-          heding="3. How do I customise a bridal shower invitation template?"
+          heading="3. How do I customise a bridal shower invitation template?"
           text="Most bridal shower invitation templates come in editable formats, such as PSD or AI files, which can be opened in graphic design software like Adobe Photoshop or Illustrator. You can then change the text, colours, and images to suit your preferences."
         />
 
         <FaqsBox
-          heding="4. What information should be included in a bridal shower invitation?"
+          heading="4. What information should be included in a bridal shower invitation?"
           text="A typical bridal shower invitation should include the bride-to-be's name, date, time, and location of the event, as well as RSVP details and any other relevant information, such as gift registry information or dress code."
         />
 
         <FaqsBox
-          heding="5. Can I print my own bridal shower invitations from a template?"
+          heading="5. Can I print my own bridal shower invitations from a template?"
           text="Yes, most bridal shower invitation templates can be printed at home on a standard printer or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template."
         />
       </Box>

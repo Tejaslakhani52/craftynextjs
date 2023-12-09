@@ -15,19 +15,9 @@ export default function QuestionsTitle({ text1, text2, text3 }: props) {
         fontWeight: "600",
         textAlign: "center",
       }}
-      className="max-sm:text-[22px] text-[32px]   "
+      className="max-sm:text-[22px] text-[32px]"
     >
-      {text1}
-      <span
-        style={{
-          width: "100%",
-          margin: "0 10px",
-        }}
-        className="text_linear"
-      >
-        {text2}
-      </span>
-      {text3}
+      {text1} <span className="text_linear">{text2}</span> {text3}
     </Typography>
   );
 }

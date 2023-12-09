@@ -9,8 +9,14 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TemplatesSkelton from "./TemplatesSkelton";
+import TemplateModal from "@/components/singleTemplate/TemplateModal";
 
-export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
+export const TemplatesBoxes = ({
+  item,
+  openModal,
+  setOpenModal,
+  setIdName,
+}: any) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const uniqueCat =
@@ -58,7 +64,7 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
     }
   };
   return (
-    <Box className="relative ">
+    <Box className="relative">
       <Box className="flex items-center justify-between pt-8 pb-4">
         <Typography className="text-black font-semibold text-[22px]">
           {item?.category_name}
@@ -96,15 +102,26 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
         )}
         {item?.template_model?.map((templates: any) => (
           <>
-            <Link
-              href={`/?templates=${templates.id_name}`}
-              as={`/templates/p/${templates.id_name}`}
-              scroll={false}
-              shallow={true}
+            <Box
+              // href={`/?templates=${templates.id_name}`}
+              // as={`/templates/p/${templates.id_name}`}
+              // scroll={false}
+              // shallow={true}
+
               className={` h-auto bg-white cursor-pointer ${
                 uniqueCat ? "p-3 min-w-[250px]" : "p-[7px]"
               } rounded-[12px]`}
               key={templates?.template_name}
+              onClick={() => {
+                setIdName(templates?.id_name);
+                setOpenModal(true);
+
+                window.history.replaceState(
+                  {},
+                  "",
+                  `/templates/p/${templates?.id_name}`
+                );
+              }}
             >
               <Box
                 className={` ${
@@ -155,7 +172,7 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
                   {templates?.category_name}
                 </Typography>
               </Box>
-            </Link>
+            </Box>
           </>
         ))}
         {showNextButton && (
@@ -178,19 +195,19 @@ export const TemplatesBoxes = ({ item, openModal, setOpenModal }: any) => {
 
 export default function TemplatesBox() {
   const [openModal, setOpenModal] = React.useState(false);
+  const [idName, setIdName] = useState<any>("");
+  const router = useRouter();
+  console.log("router: ", router.asPath);
   const dispatch = useDispatch();
 
   const data = useSelector((state: any) => state.auth.templatesData);
 
   useEffect(() => {
     axios
-      .post(`/api1/get/main/data`, {
-        key: `qwfsegxdhbxfjhncf`,
-        page: 1,
-        count: 0,
-      })
+      .post(`/api/dashboard`)
       .then((res: any) => {
-        dispatch(templatesData(res?.data?.datas));
+        console.log("res: ", res);
+        dispatch(templatesData(res?.data));
       })
       .catch((err: any) => consoleShow("err", err));
   }, []);
@@ -204,9 +221,18 @@ export default function TemplatesBox() {
               key={item?.id}
               openModal={openModal}
               setOpenModal={setOpenModal}
+              setIdName={setIdName}
             />
           ))
         : true && <TemplatesSkelton />}
+
+      <TemplateModal
+        open={openModal}
+        id={idName}
+        setOpen={setOpenModal}
+        setId={setIdName}
+        currentPathname={router?.asPath}
+      />
     </Box>
   );
 }

@@ -27,8 +27,9 @@ export const Product = {
         { name: "Invitation", path: "/invitation" },
         { name: "Quotes", path: "/quotes" },
         { name: "Resume", path: "/resume" },
-        { name: "Flyer", path: "/flyers" },
-        { name: "Festival", path: "" },
+        { name: "Flyer", path: "/flyer" },
+        { name: "Calendar", path: "/calendar" },
+        { name: "Bridal shower", path: "/bridalShower" },
         { name: "Logo", path: "/logos" },
       ],
     },
@@ -41,12 +42,12 @@ export const EditorTools = {
     {
       heading: "",
       allName: [
-        { name: "Background Remover", path: "" },
-        { name: "Brand kit", path: "" },
-        { name: "Resize", path: "" },
-        { name: "Carry Cature", path: "" },
-        { name: "Style kit", path: "" },
-        { name: "Customize Invitation", path: "" },
+        { name: "Background Remover", path: "/background-remover" },
+        { name: "Brand kit", path: "/brand-kit" },
+        { name: "Resize", path: "/resize" },
+        { name: "Carry Cature", path: "/caricature" },
+        { name: "Style kit", path: "/style-kit" },
+        { name: "Customize Invitation", path: "/customize-invitation" },
       ],
     },
   ],
@@ -56,14 +57,33 @@ export const Templates = {
   name: "Templates",
   subName: [
     {
-      heading: "",
+      heading: "Invitation",
       allName: [
-        { name: "Background Remover", path: "" },
-        { name: "Brand kit", path: "" },
-        { name: "Resize", path: "" },
-        { name: "Carry Cature", path: "" },
-        { name: "Style kit", path: "" },
-        { name: "Customize Invitation", path: "" },
+        { name: "Wedding", path: "/wedding" },
+        { name: "Birthday", path: "/birthday" },
+        { name: "Baby & Care", path: "/babyShower" },
+        { name: "Party", path: "/party" },
+        { name: "Brochure", path: "/brochure" },
+      ],
+    },
+
+    {
+      heading: "Social Media",
+      allName: [
+        { name: "Instagram Story", path: "/templates/instagram-post" },
+        { name: "Youtube Thumbnail", path: "/templates/youtube-thumbnail" },
+        { name: "Facebook Post", path: "/templates/insta-fb-portrait" },
+      ],
+    },
+
+    {
+      heading: "Marketing",
+      allName: [
+        { name: "Flyer", path: "/flyer" },
+        { name: "Logo", path: "/logos" },
+        { name: "Business card", path: "/businessCard" },
+        { name: "Poster", path: "/poster" },
+        { name: "Resume", path: "/resume" },
       ],
     },
   ],
@@ -153,7 +173,19 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
   );
 }
 
+export const handleClickWhatsapp = () => {
+  const phoneNumber = "9898978207";
+  const message = "Hello, I want to place a custom order.";
+
+  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    message
+  )}`;
+
+  window.location.href = whatsappLink;
+};
+
 export default function MenuBox() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [selectColor, setSelectColor] = React.useState<string>("#1C3048");
   const [openHideButton, setOpenHideButton] = useState<boolean>(false);
@@ -167,14 +199,17 @@ export default function MenuBox() {
         <BasicMenu title={Templates?.name} itemName={Templates?.subName} />
 
         <button
-          className={` max-xl:hidden px-3 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
+          className={`max-xl:hidden px-3 max-2xl:px-3 py-2 text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
+          onClick={handleClickWhatsapp}
         >
           Custom order
         </button>
-
         <button
           className={` max-xl:hidden px-4 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
-          onClick={() => router.push("/plans")}
+          onClick={() => {
+            dispatch(openSidebar(false));
+            router.push("/plans");
+          }}
         >
           Pricing
           <img src="/icons/pricing.svg" alt="" className="ml-[8px]" />

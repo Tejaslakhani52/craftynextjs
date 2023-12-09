@@ -96,27 +96,27 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. What are flyer templates? "
+          heading="1. What are flyer templates? "
           text="Flyer templates are pre-designed flyers that can be customised and filled out with the necessary information for an event."
         />
 
         <FaqsBox
-          heding="2. Where can I find flyer templates?"
+          heading="2. Where can I find flyer templates?"
           text="Our online flyer maker offers a wide range of free templates that you can customise to create a unique and personalised invitation."
         />
 
         <FaqsBox
-          heding="3. How do I customise a flyer template?"
+          heading="3. How do I customise a flyer template?"
           text="Our flyer maker offers an easy-to-use interface where you can change the text, colours, and images to suit your preferences."
         />
 
         <FaqsBox
-          heding="4. What information should be included in a flyer?"
+          heading="4. What information should be included in a flyer?"
           text="A typical flyer should include the expectant mother's name, date, time, and location of the event, as well as RSVP details and any other relevant information, such as gift registry information or dress code."
         />
 
         <FaqsBox
-          heding="5. Can I print my own flyers from a template?"
+          heading="5. Can I print my own flyers from a template?"
           text="Yes, most  flyer templates can be printed at home on a standard printer or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template."
         />
       </Box>

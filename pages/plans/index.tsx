@@ -760,23 +760,23 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heding="1. Can I use Crafty Art for free?"
+          heading="1. Can I use Crafty Art for free?"
           text="Yes, Crafty Art offers a free online logo maker. To access it, select the Logo Maker option from the main page and
           choose one of the premade templates. You can then add your own images, text, and design elements to customise the
           post. When you’re finished, click Save, and your logo will be ready to download."
         />
         <FaqsBox
-          heding="2. What are the benefits of a premium subscription?"
+          heading="2. What are the benefits of a premium subscription?"
           text="As a premium user you can download unlimited Crafty Art assets, and various services."
         />
 
         <FaqsBox
-          heding="3. Why do i have to purchase Crafty Art Pro?"
+          heading="3. Why do i have to purchase Crafty Art Pro?"
           text="With the premium user, you can access unlimited service of Crafty Art Pro."
         />
 
         <FaqsBox
-          heding="4. Are my downloads unlimited as a premium user?"
+          heading="4. Are my downloads unlimited as a premium user?"
           text="Yes, as a premium user, you have unlimited downloads. There is no limitations on the use of Crafty Art assets, templates,
           and the Background Remover Tool."
         />
