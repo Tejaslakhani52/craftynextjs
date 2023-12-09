@@ -4,7 +4,6 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { getTemplateDataType } from "@/pages/api/type";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
@@ -23,7 +22,7 @@ export default function ExploreTemplates({ category }: props) {
   const lastSegment = pathSegments[pathSegments.length - 1];
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
-  const [data, setData] = useState<getTemplateDataType>();
+  const [data, setData] = useState<any>();
 
   useEffect(() => {
     axios
