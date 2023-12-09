@@ -1,12 +1,10 @@
 import { consoleShow } from "@/commonFunction/console";
-import api from "@/pages/api/api";
-import { getTemplateDataType } from "@/pages/api/type";
 import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function CustomInvitations() {
-  const [data, setData] = useState<getTemplateDataType>();
+  const [data, setData] = useState<any>();
 
   useEffect(() => {
     axios
