@@ -54,7 +54,7 @@ function ImageBox({
     e.preventDefault();
 
     // if (e.target instanceof HTMLImageElement) {
-    //   const imageLink = `http://localhost:3000/templates/p/${templates?.id_name}`;
+    //   const imageLink = `https://craftynextjs-al84sub.vercel.app/templates/p/${templates?.id_name}`;
     //   if (imageLink) {
     //     window.open(imageLink, "_blank");
     //   }

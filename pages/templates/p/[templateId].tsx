@@ -23,14 +23,22 @@ import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 
 export async function getStaticPaths() {
+  const response = await axios.post<any>(
+    "https://story.craftyartapp.com/get/datas",
+    {
+      debug_key: "debug",
+      limit: 5000,
+      cat_id: "latest",
+      page: 1,
+    }
+  );
+
+  const templateIds = response?.data?.datas.map((template: any) => ({
+    params: { templateId: template?.id_name },
+  }));
+
   return {
-    paths: [
-      {
-        params: {
-          templateId: "wppZyJVY-traditional-marati-wedding-invitation-download",
-        },
-      },
-    ],
+    paths: templateIds,
     fallback: false,
   };
 }
@@ -569,7 +577,7 @@ export default function templateId({ templateData }: any) {
                   </h2>
 
                   <Typography className="text-[15px] whitespace-pre-line		">
-                    {description}
+                    {templateData?.description}
                   </Typography>
                 </Box>
               </Box>

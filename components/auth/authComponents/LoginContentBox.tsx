@@ -86,7 +86,7 @@ export default function LoginContentBox(props: any) {
       // }
 
       // var bazStorage = createGuest(
-      //   window.location.href === "http://localhost:3000/"
+      //   window.location.href === "https://craftynextjs-al84sub.vercel.app/"
       //     ? "http://sub.localhost:3000/"
       //     : "http://localhost:3000"
       // );
