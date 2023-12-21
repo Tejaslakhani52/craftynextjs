@@ -27,18 +27,18 @@ export async function getStaticPaths() {
     "https://story.craftyartapp.com/get/datas",
     {
       debug_key: "debug",
-      limit: 5000,
+      limit: 50,
       cat_id: "latest",
       page: 1,
     }
   );
 
   const templateIds = response?.data?.datas.map((template: any) => ({
-    params: { templateId: template?.id_name },
+    params: { templateId: template?.id_name } as any,
   }));
 
   return {
-    paths: templateIds as any,
+    paths: templateIds,
     fallback: false,
   };
 }
