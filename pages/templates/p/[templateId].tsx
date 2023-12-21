@@ -27,7 +27,7 @@ export async function getStaticPaths() {
     "https://story.craftyartapp.com/get/datas",
     {
       debug_key: "debug",
-      limit: 10000,
+      limit: 1000,
       cat_id: "latest",
       page: 1,
     }
