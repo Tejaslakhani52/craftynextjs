@@ -44,27 +44,35 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context: any) {
-  const { params } = context;
+  try {
+    const { params } = context;
 
-  const response = await axios.post(
-    "https://story.craftyartapp.com/my-posterPage",
-    {
-      key: "qwfsegxdhbxfjhncf",
-      id_name: params?.templateId,
-    },
-    { withCredentials: false }
-  );
-  const jsonString = response.data.substring(
-    response.data.indexOf("{"),
-    response.data.lastIndexOf("}") + 1
-  );
-  const templateData = JSON?.parse(jsonString);
+    const response = await axios.post(
+      "https://story.craftyartapp.com/my-posterPage",
+      {
+        key: "qwfsegxdhbxfjhncf",
+        id_name: params?.templateId,
+      },
+      { withCredentials: false }
+    );
+    const jsonString = response.data.substring(
+      response.data.indexOf("{"),
+      response.data.lastIndexOf("}") + 1
+    );
 
-  return {
-    props: {
-      templateData,
-    },
-  };
+    const templateData = JSON.parse(jsonString);
+
+    return {
+      props: {
+        templateData,
+      },
+    };
+  } catch (error) {
+    console.error("Error in getStaticProps:", error);
+    return {
+      notFound: true,
+    };
+  }
 }
 
 export default function templateId({ templateData }: any) {
