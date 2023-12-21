@@ -118,6 +118,7 @@ eliminating the need to manually format each text box."
           </Box>
         }
         buttonName={"Design your Cards"}
+        alt="Brand Kit"
         image="/images/brand/side1.png"
       />
 
@@ -141,6 +142,7 @@ those assets will automatically update, saving you even more time."
           </Box>
         }
         buttonName={"Create a New Card Design"}
+        alt="Brand Kit"
         image="/images/brand/side2.png"
       />
 
@@ -164,6 +166,7 @@ which helps to maintain a consistent brand identity."
           </Box>
         }
         buttonName={"Design your Cards"}
+        alt="Brand Kit"
         image="/images/brand/side3.png"
       />
 

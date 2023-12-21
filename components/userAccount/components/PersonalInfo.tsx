@@ -1,18 +1,18 @@
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function PersonalInfo() {
-  const uId = tokenGet("userProfile");
+  const uId = authCookiesGet();
   const [removeImage, setRemoveImage] = useState<any>(false);
   const [userProfile, setUserProfile] = useState<any>(null);
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
   const [imagePreview, setImagePreview] = useState<any>(null);
   const [editNameInput, setEditNameInput] = useState<any>(false);
   const [loading, setLoading] = useState<any>(false);
-  const [acountDetail, setacountDetail] = useState<any>({
+  const [accountDetail, setAccountDetail] = useState<any>({
     name: "",
     user_id: "",
     updateDp: 0,
@@ -20,8 +20,8 @@ export default function PersonalInfo() {
   });
 
   useEffect(() => {
-    setacountDetail({
-      ...acountDetail,
+    setAccountDetail({
+      ...accountDetail,
       name: userProfile?.name,
       user_id: userProfile?.uid,
     });
@@ -34,22 +34,20 @@ export default function PersonalInfo() {
       if (file) {
         const imageUrl: any = URL.createObjectURL(file);
         setImagePreview(imageUrl);
-        setacountDetail({ ...acountDetail, photo_uri: file, updateDp: 1 });
+        setAccountDetail({ ...accountDetail, photo_uri: file, updateDp: 1 });
       }
     }
   };
 
   const handleFileRemove = () => {
-    setacountDetail({ ...acountDetail, photo_uri: null, updateDp: 1 });
+    setAccountDetail({ ...accountDetail, photo_uri: null, updateDp: 1 });
     setImagePreview(null);
     setRemoveImage(true);
   };
 
   const fetchData = async () => {
     axios
-      .post("/api1/get/user", {
-        key: "qwfsegxdhbxfjhncf",
-        device_id: "",
+      .post("/api/getUserData", {
         email: uId,
       })
       .then(({ data }: any) => {
@@ -61,6 +59,29 @@ export default function PersonalInfo() {
       });
   };
 
+  // const updateFetchData = (event: any) => {
+  //   setLoading(true);
+
+  //   axios
+  //     .post("/api/personalInfo", {
+  //       name: accountDetail?.name,
+  //       user_id: accountDetail?.user_id,
+  //       updateDp: accountDetail?.updateDp,
+  //       photo_uri: accountDetail?.photo_uri,
+  //     })
+  //     .then((response) => {
+  //       setTimeout(() => {
+  //         fetchData();
+  //         toast.success("User updated successfully");
+  //         window.location.reload();
+  //         setLoading(false);
+  //       }, 1000);
+  //     })
+  //     .catch((error) => {
+  //       console.log("error: ", error);
+  //     });
+  // }
+
   useEffect(() => {
     fetchData();
   }, [uId]);
@@ -68,10 +89,10 @@ export default function PersonalInfo() {
   const updateFetchData = (event: any) => {
     const formData = new FormData();
     formData.append("key", "qwfsegxdhbxfjhncf");
-    formData.append("name", acountDetail?.name);
-    formData.append("user_id", acountDetail?.user_id);
-    formData.append("updateDp", acountDetail?.updateDp);
-    formData.append("photo_uri", acountDetail?.photo_uri);
+    formData.append("name", accountDetail?.name);
+    formData.append("user_id", accountDetail?.user_id);
+    formData.append("updateDp", accountDetail?.updateDp);
+    formData.append("photo_uri", accountDetail?.photo_uri);
 
     setLoading(true);
 
@@ -208,17 +229,17 @@ export default function PersonalInfo() {
                   type="text"
                   className="w-full h-[40px] px-[10px] border_linear_1px rounded-[4px]"
                   placeholder="name"
-                  value={acountDetail?.name}
+                  value={accountDetail?.name}
                   onChange={(e) =>
-                    setacountDetail({
-                      ...acountDetail,
+                    setAccountDetail({
+                      ...accountDetail,
                       name: e.target.value,
                     })
                   }
                   autoFocus={true}
                 />
               ) : (
-                <Typography>{acountDetail?.name}</Typography>
+                <Typography>{accountDetail?.name}</Typography>
               )}
             </Box>
 
@@ -228,8 +249,8 @@ export default function PersonalInfo() {
                   className="bg-[#E9EDF6] h-[40px] normal-case px-[20px] text-black"
                   onClick={() => {
                     setEditNameInput(false);
-                    setacountDetail({
-                      ...acountDetail,
+                    setAccountDetail({
+                      ...accountDetail,
                       name: userProfile?.name,
                     });
                   }}

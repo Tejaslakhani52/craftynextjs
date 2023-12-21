@@ -11,7 +11,7 @@ interface DataState {
 }
 
 const initialState: DataState = {
-  openSidebar: true,
+  openSidebar: false,
   openMobileMenubar: false,
   openTempModal: false,
   enterAccount: false,

@@ -73,7 +73,11 @@ export default function TrendingFunctionalities() {
               display: !showPrevButton ? "none" : "block",
             }}
           >
-            <img src="/icons/leftArrow.svg" alt="" className="w-[10px]" />
+            <img
+              src="/icons/leftArrow.svg"
+              alt="leftArrow"
+              className="w-[10px]"
+            />
           </button>
 
           <Box
@@ -87,7 +91,7 @@ export default function TrendingFunctionalities() {
                   boxShadow: "0px 3px 4px 0px rgba(0, 0, 0, 0.10)",
                 }}
               >
-                <img src={item?.image} alt={item?.image} className="w-[30px]" />
+                <img src={item?.image} alt={item?.name} className="w-[30px]" />
 
                 <Typography className="text-[15px] font-[500]">
                   {item?.name}
@@ -108,7 +112,7 @@ export default function TrendingFunctionalities() {
           >
             <img
               src="/icons/rightArrow.svg"
-              alt=""
+              alt="rightArrow"
               className="w-[10px] ml-auto"
             />
           </button>

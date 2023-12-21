@@ -120,11 +120,11 @@ export default function Celebrate() {
           width: "fit-content",
           fontSize: "17px",
           textTransform: "unset",
-          borderRadius: "10px",
+          borderRadius: "5px",
           fontWeight: "500",
           color: "white",
         }}
-        className="bg_linear py-[10px] px-[40px] max-lg:mt-10 ring-out"
+        className="bg_linear py-[7px] px-[40px] max-lg:mt-10 ring-out"
         onClick={() => setOpen(true)}
       >
         {/* <span className="animate-ping absolute inline-flex  w-full rounded-full bg-sky-400 opacity-75 h-[100px] top-0 left-0"></span>

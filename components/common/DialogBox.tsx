@@ -31,7 +31,7 @@ const DialogModal = (props: any) => {
               props.setOpen(false);
             }}
           >
-            <img src="/icons/modalClose.png" alt="" />
+            <img src="/icons/modalClose.png" alt="icon" />
           </button>
 
           {props?.children}

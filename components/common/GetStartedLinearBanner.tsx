@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 import React from "react";
 
 interface props {
@@ -10,6 +11,7 @@ interface props {
 }
 
 export default function GetStartedLinearBanner(props: props) {
+  const router = useRouter();
   return (
     <Box
       sx={{
@@ -66,12 +68,13 @@ export default function GetStartedLinearBanner(props: props) {
             boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
             border: "none",
             padding: "8px 10px",
-            borderRadius: "10px",
+            borderRadius: "5px",
             fontSize: "16px",
             fontWeight: "500",
           }}
+          onClick={() => router.push(props?.navigate)}
         >
-          {props?.buttonName}
+          <span className="text_linear">{props?.buttonName}</span>
         </Button>
       </Box>
       <Box

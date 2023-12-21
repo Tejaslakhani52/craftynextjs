@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/babyShowerInvitation.png"
         heading={
           "Celebrate the upcoming arrival of your little one with beautiful baby shower templates!"
@@ -25,7 +25,7 @@ export default function index() {
         }
         text="Create beautiful and unique invitations for your baby shower with our easy-to-use invitation card maker."
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/baby-Shower"
         image={
           <Box sx={{ width: "450px" }}>
             <img
@@ -50,6 +50,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
+        path="/s/baby-Shower"
+        alt="baby shower invitations"
         image="/images/babyShowerInvitation.png"
       />
 
@@ -66,6 +68,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Invitation"}
+        path="/s/baby-Shower"
+        alt="baby shower invitations"
         image="/images/babyShowerEase.png"
       />
 
@@ -82,6 +86,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
+        path="/s/baby-Shower"
+        alt="baby shower invitations"
         image="/images/babyShowerMinute.png"
       />
       <Box
@@ -130,10 +136,10 @@ export default function index() {
       <GetTemplates
         heading="Unlock The Creativity Of Your Inner Designer With 5000+ Baby Shower Invitation Templates. "
         text="Design your dream baby shower invitations today and celebrate in style!"
-        navigate="/templates/invitation-card"
+        navigate="/s/baby-Shower"
       />
 
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates category="baby Shower" getAll="/s/baby-Shower" />
     </>
   );
 }

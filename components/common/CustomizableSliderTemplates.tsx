@@ -65,7 +65,7 @@ export default function CustomizableSliderTemplates({ data }: props) {
   return (
     <Box className="py-0 max-w-[100%] ">
       <Box className="flex justify-end px-[15%] py-10">
-        <Box className="flex  ">
+        <Box className="flex">
           <Button
             onClick={handlePrevClick}
             disabled={!showPrevButton ? true : false}

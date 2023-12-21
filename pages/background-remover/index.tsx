@@ -1,5 +1,5 @@
-import { Box, Rating, Typography } from "@mui/material";
-import React, { useState, useRef } from "react";
+import { Box, Button, Rating, Typography } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import LeftImageSection from "../wedding/components/LeftImageSection";
@@ -10,6 +10,9 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import FaqsBox from "@/components/common/FAQs";
 import WithCraftyartBanner from "@/components/common/WithCraftyartBanner";
 import CustomerSayingSmall from "@/components/common/CustomerSayingSmall";
+import axios from "axios";
+import { authCookiesGet } from "@/redux/action/AuthToken";
+import { saveAs } from "file-saver";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -45,8 +48,13 @@ function a11yProps(index: number) {
 }
 
 export default function index() {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const user_id = authCookiesGet();
+  const [selectedFile, setSelectedFile] = useState();
+  console.log("selectedFile: ", selectedFile);
   const [isDragOver, setIsDragOver] = useState(false);
+  const [mainLoader, setMainLoader] = useState<any>(false);
+  const [imageTab, setImageTab] = useState<any>("after");
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<any>();
 
   const [value, setValue] = React.useState(0);
   console.log("value: ", value);
@@ -59,6 +67,9 @@ export default function index() {
 
   const handleFileChange = (event: any) => {
     setSelectedFile(event.target.files[0]);
+
+    const imageUrl = URL.createObjectURL(event.target.files[0]);
+    setImagePreviewUrl(imageUrl);
   };
 
   const handleDragOver = (event: any) => {
@@ -79,6 +90,57 @@ export default function index() {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    if (user_id && selectedFile) {
+      axios
+        .post("/api/bgRemove", {
+          user_id: user_id,
+          file: selectedFile,
+        })
+        .then((res) => {
+          console.log("res: ", res?.data);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+    }
+  }, [user_id, selectedFile]);
+
+  const [imageUrl, setImageUrl] = useState<any>(null);
+  console.log("imageUrl: ", imageUrl);
+
+  useEffect(() => {
+    if (user_id && selectedFile) {
+      setMainLoader(true);
+
+      const formData = new FormData();
+      formData.append("user_id", user_id);
+      formData.append("file", selectedFile);
+
+      axios
+        .post("https://bgremover.craftyartapp.com/api/removebg", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          responseType: "blob",
+        })
+        .then((res) => {
+          setMainLoader(false);
+          const imageUrl = URL.createObjectURL(new Blob([res.data]));
+          setImageUrl(imageUrl);
+        })
+        .catch((err) => {
+          console.log("err: ", err);
+        });
+    }
+  }, [selectedFile]);
+
+  const handleDownload = async () => {
+    const blob = await fetch(imageUrl).then((res) => res.blob());
+
+    saveAs(blob, "downloaded_image.png");
+  };
+
   return (
     <div>
       <Box className="bg-[#F4F7FE] py-[50px] max-sm:py-[20px]  px-[15px]">
@@ -89,53 +151,126 @@ export default function index() {
         <Typography className="text-center font-medium text-[20px] ">
           How to Remove Backgrounds Like a Pro? 
         </Typography>
-
-        <Box className="flex items-center gap-[100px] max-sm:gap-[35px] w-[80%] max-sm:w-full  mx-auto py-[50px]  max-sm:py-[20px]  max-md:flex-col">
-          <Box className="flex-1">
-            <img src="/images/bg_remove.png" alt="" />
+        <Box
+          className={` mx-auto py-[50px] ${
+            imageUrl ? "w-[900px] max-sm:w-full " : " w-[80%] max-sm:w-full"
+          }`}
+        >
+          <Box
+            className="gap-1  w-fit p-[2px] bg-[#80808017] rounded-[5px]"
+            sx={{ display: imageUrl ? "flex" : "none" }}
+          >
+            <Button
+              className={`normal-case ${
+                imageTab === "before" ? "bg-white text-black " : "text-[grey]"
+              }`}
+              onClick={() => setImageTab("before")}
+            >
+              Before
+            </Button>
+            <Button
+              className={`normal-case ${
+                imageTab === "after" ? "bg-white text-black " : "text-[grey]"
+              }`}
+              onClick={() => setImageTab("after")}
+            >
+              After
+            </Button>
           </Box>
-          <Box className="flex-1 max-md:w-full">
-            <div
-              className=" mt-[20px] mx-auto flex gap-[15px] flex-col justify-center items-center py-[50px] rounded-[5px] "
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              style={{
-                border: isDragOver ? "1px dashed black" : "1px dashed #ABB2C7",
-                display: selectedFile ? "none" : "flex",
+          <Box
+            className={`flex items-center gap-[100px] max-sm:gap-[35px] max-lg:gap-[30px]  mx-auto pt-[20px]  max-sm:py-[20px]  max-md:flex-col   `}
+          >
+            <Box
+              className="flex-1 rounded-[10px]  "
+              sx={{
+                backgroundImage: imageUrl ? "url(/images/transparent.png)" : "",
+                border: imageUrl ? "3px solid #8080803b" : "",
               }}
             >
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                ref={fileInputRef}
-                style={{ display: "none" }}
-              />
-              <button
-                onClick={handleButtonClick}
-                className="bg_linear text-white px-[50px] py-[10px] rounded-[5px] mb-3"
-              >
-                Upload Image
-              </button>
+              {imageUrl ? (
+                imageTab === "after" ? (
+                  <img src={imageUrl} alt="image" className=" " />
+                ) : (
+                  <img src={imagePreviewUrl} alt="imagePreview" className=" " />
+                )
+              ) : (
+                <img src="/images/bg_remove.png" alt="bg remove" />
+              )}
+            </Box>
+            {imageUrl ? (
+              <Box>
+                <button
+                  className="bg_linear text-white px-[50px] py-[10px] rounded-[5px] mb-3"
+                  onClick={handleDownload}
+                >
+                  Download HD
+                </button>
 
-              <div>
-                <h2 className="font-medium text-center mb-2">
-                  or drag and drop here to remove background
-                </h2>
-
-                <p className="text-center text-[14px]">
-                  {" "}
-                  JPEG, JPG, PNG or WEBP
+                <p className="text-[18px] opacity-70 text-center pb-4">
+                  1200 × 1200 px
                 </p>
-              </div>
-            </div>
 
-            <div className="my-4">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                />
+                <button
+                  onClick={handleButtonClick}
+                  className="bg_linear text-white px-[50px] py-[10px] rounded-[5px] mb-3"
+                >
+                  Upload New
+                </button>
+              </Box>
+            ) : (
+              <Box className="flex-1 max-md:w-full">
+                <div
+                  className=" mt-[20px] mx-auto flex gap-[15px] flex-col justify-center items-center py-[50px] rounded-[5px] "
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  style={{
+                    border: isDragOver
+                      ? "1px dashed black"
+                      : "1px dashed #ABB2C7",
+                    display: selectedFile ? "none" : "flex",
+                  }}
+                >
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    ref={fileInputRef}
+                    style={{ display: "none" }}
+                  />
+                  <button
+                    onClick={handleButtonClick}
+                    className="bg_linear text-white px-[50px] py-[10px] rounded-[5px] mb-3"
+                  >
+                    Upload Image
+                  </button>
+
+                  <div>
+                    <h2 className="font-medium text-center mb-2">
+                      or drag and drop here to remove background
+                    </h2>
+
+                    <p className="text-center text-[14px]">
+                      {" "}
+                      JPEG, JPG, PNG or WEBP
+                    </p>
+                  </div>
+                </div>
+
+                {/* <div className="my-4">
               <Typography className="text-center font-medium">
                 You have no image? Try one of these
               </Typography>
-            </div>
+            </div> */}
+              </Box>
+            )}
           </Box>
         </Box>
       </Box>
@@ -269,21 +404,21 @@ export default function index() {
           <CustomTabPanel value={value} index={0}>
             <img
               src="/images/bgRemove/people.png"
-              alt=""
+              alt="people"
               className="w-[80%] max-md:w-full mx-auto block"
             />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
             <img
               src="/images/bgRemove/graphic.png"
-              alt=""
+              alt="graphic"
               className="w-[80%] max-md:w-full mx-auto block"
             />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={2}>
             <img
               src="/images/bgRemove/car.png"
-              alt=""
+              alt="car"
               className="w-[80%] max-md:w-full mx-auto block"
             />
           </CustomTabPanel>
@@ -291,7 +426,7 @@ export default function index() {
           <CustomTabPanel value={value} index={3}>
             <img
               src="/images/bgRemove/animals.png"
-              alt=""
+              alt="animals"
               className="w-[80%] max-md:w-full mx-auto block"
             />
           </CustomTabPanel>
@@ -299,7 +434,7 @@ export default function index() {
           <CustomTabPanel value={value} index={4}>
             <img
               src="/images/bgRemove/product.png"
-              alt=""
+              alt="product"
               className="w-[80%] max-md:w-full mx-auto block"
             />
           </CustomTabPanel>
@@ -319,7 +454,7 @@ export default function index() {
             <Box className="mt-[-60px]">
               <img
                 src="/images/bgRemove/uploadImage.png"
-                alt=""
+                alt="uploadImage"
                 className="max-h-[200px] w-auto block mx-auto"
               />
             </Box>
@@ -341,7 +476,7 @@ export default function index() {
             <Box className="mt-[-60px]">
               <img
                 src="/images/bgRemove/rb.png"
-                alt=""
+                alt="rb"
                 className="max-h-[200px] w-auto block mx-auto"
               />
             </Box>
@@ -364,7 +499,7 @@ export default function index() {
             <Box className="mt-[-60px]">
               <img
                 src="/images/bgRemove/download.png"
-                alt=""
+                alt="download"
                 className="max-h-[200px] w-auto block mx-auto"
               />
             </Box>
@@ -396,6 +531,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Upload Image"}
+        alt="background remover"
         image="/images/bgRemove/brFeature.png"
       />
 
@@ -412,6 +548,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Upload Image"}
+        alt="background remover"
         image="/images/bgRemove/brImprove.png"
       />
 
@@ -437,6 +574,7 @@ and generating ideas."
           </Box>
         }
         buttonName={"Upload Image"}
+        alt="background remover"
         image="/images/bgRemove/brWork.png"
       />
 
@@ -497,6 +635,12 @@ and generating ideas."
             connection. It's designed to be user-friendly for everyone, whether you're a professional designer, student or marketer."
         />
       </Box>
+
+      {mainLoader && (
+        <main className="main">
+          <span className="loader"></span>
+        </main>
+      )}
     </div>
   );
 }

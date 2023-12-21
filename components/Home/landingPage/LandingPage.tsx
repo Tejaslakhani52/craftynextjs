@@ -1,19 +1,14 @@
 import { Box, Button, Typography } from "@mui/material";
-import React from "react";
-import BrandsIconSlider from "./landingPageComponents/BrandsIconSlider";
-import RightImage from "./landingPageComponents/RightImage";
-import LeftImage from "./landingPageComponents/LeftImage";
+import axios from "axios";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import Celebrate from "./landingPageComponents/Celebrate";
 import CustomInvitations from "./landingPageComponents/CustomInvitations";
 import CustomerSaying from "./landingPageComponents/CustomerSaying";
-import Celebrate from "./landingPageComponents/Celebrate";
 import ExploreBlog from "./landingPageComponents/ExploreBlog";
-import { useState, useEffect } from "react";
-import Head from "next/head";
-import { NextSeo } from "next-seo";
-import Schema from "@/components/common/Schema";
-import axios from "axios";
+import LeftImage from "./landingPageComponents/LeftImage";
+import RightImage from "./landingPageComponents/RightImage";
 import TrendingFunctionalities from "./landingPageComponents/TrendingFunctionalities";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
 
 export const MarkText = ({ text }: any) => {
   return (
@@ -36,6 +31,7 @@ export const MarkText = ({ text }: any) => {
 };
 
 export default function LandingPage({ post }: any) {
+  const router = useRouter();
   const [videoData, setVideoData] = useState(null);
 
   useEffect(() => {
@@ -90,12 +86,13 @@ export default function LandingPage({ post }: any) {
               whiteSpace: "nowrap",
               opacity: "1",
               width: "180px",
-              borderRadius: "8px",
+              borderRadius: "5px",
               "&:hover": {
                 backgroundColor: "white",
               },
             }}
             className="bg-white text-black py-2"
+            onClick={() => router.push("/login")}
           >
             Get Started
           </Button>
@@ -112,10 +109,11 @@ export default function LandingPage({ post }: any) {
         {/* <BrandsIconSlider /> */}
         <TrendingFunctionalities />
       </Box>
-
-      <Typography className="text-[47px] font-bold	text-black text-center text_linear mb-5 max-sm:text-[28px] px-[20px]">
-        Everything you need to create
-      </Typography>
+      <Box className="flex justify-center">
+        <Typography className="text-[47px] font-bold	text-black text-center mx-auto text_linear mb-5 max-sm:text-[28px] px-[20px]">
+          Everything you need to create
+        </Typography>
+      </Box>
 
       <RightImage
         title=" Easily Remove Image Backgrounds"
@@ -129,7 +127,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Explore Background Remover"}
-        video={"./videos/Remove Bg.mp4"}
+        video={"https://assets.craftyart.in/w_assets/remove_bg.mp4"}
       />
 
       <LeftImage
@@ -144,7 +142,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Choose your Brand Kit"}
-        video={"./videos/Brandkit.mp4"}
+        video={"https://assets.craftyart.in/w_assets/brandkit.mp4"}
       />
 
       <RightImage
@@ -159,7 +157,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Resize your Image"}
-        video={"./videos/resize.mp4"}
+        video={"https://assets.craftyart.in/w_assets/resize.mp4"}
       />
 
       <LeftImage
@@ -174,7 +172,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Turn photo to Caricature"}
-        video={"./videos/Caricature.mp4"}
+        video={"https://assets.craftyart.in/w_assets/caricature.mp4"}
       />
 
       <CustomInvitations />
@@ -191,7 +189,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Apply Style Kit"}
-        video={"./videos/Stylekit.mp4"}
+        video={"https://assets.craftyart.in/w_assets/stylekit.mp4"}
       />
 
       <LeftImage
@@ -206,7 +204,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Place your Custom Order"}
-        video={"./videos/Custom Order.mp4"}
+        video={"https://assets.craftyart.in/w_assets/custom_order.mp4"}
       />
       <RightImage
         title=" Schedule Your Post"
@@ -220,7 +218,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Schedule your Post"}
-        video={"./videos/Schedule Post.mp4"}
+        video={"https://assets.craftyart.in/w_assets/schedule_post.mp4"}
       />
 
       <LeftImage
@@ -266,12 +264,13 @@ export default function LandingPage({ post }: any) {
               whiteSpace: "nowrap",
               opacity: "1",
               width: "180px",
-              borderRadius: "8px",
+              borderRadius: "5px",
               "&:hover": {
                 backgroundColor: "white",
               },
             }}
             className="bg-white text-black py-2"
+            onClick={() => router.push("/login")}
           >
             Yes, I’m ready!
           </Button>

@@ -10,6 +10,12 @@ import {
   unLockIcon,
   uploadIcon,
   uploadSmallIcon,
+  homeIcon,
+  homeColorIcon,
+  folderIcon,
+  linearPlusIcon,
+  dashboardIcon,
+  premiumIcon,
 } from "./commonIcon";
 
 class Icons {
@@ -24,5 +30,11 @@ class Icons {
   static CopyIcon = CopyIcon;
   static DeleteIcon = DeleteIcon;
   static RestoreIcon = RestoreIcon;
+  static homeIcon = homeIcon;
+  static homeColorIcon = homeColorIcon;
+  static folderIcon = folderIcon;
+  static linearPlusIcon = linearPlusIcon;
+  static dashboardIcon = dashboardIcon;
+  static premiumIcon = premiumIcon;
 }
 export default Icons;

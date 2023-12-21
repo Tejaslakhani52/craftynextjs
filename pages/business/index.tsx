@@ -1,5 +1,5 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
 import FaqsBox from "@/components/common/FAQs";
 import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
@@ -41,7 +41,7 @@ const sliderTemplate = [
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/bussinessLetterhead.png"
         heading=" Streamline Your Business with Our Essential Template"
         text=" Design Professional and Functional Documents with Ease Using Our
@@ -66,6 +66,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Letterhead"}
+        alt="business template"
         image="/images/bussinessLetterhead.png"
       />
 
@@ -81,6 +82,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find a Calender"}
+        alt="business template"
         image="/images/bussinessCalendar.png"
         path="/calendar"
       />
@@ -98,6 +100,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Resume"}
+        alt="business template"
         image="/images/bussinessResume.png"
         path="/resume"
       />
@@ -115,6 +118,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design Invoice"}
+        alt="business template"
         image="/images/bussinessInvoice.png"
       />
 
@@ -131,6 +135,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your report"}
+        alt="business template"
         image="/images/bussinessReport.png"
       />
 

@@ -1,13 +1,13 @@
 import SignUpContentBox from "@/components/auth/authComponents/SignUpContentBox";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 export default function index() {
   const router = useRouter();
-  const userLoginStatus = tokenGet("userProfile");
+  const userLoginStatus = authCookiesGet();
   const [loading, setLoading] = useState<any>(true);
 
   useEffect(() => {

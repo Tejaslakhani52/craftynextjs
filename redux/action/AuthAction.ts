@@ -2,7 +2,7 @@ import axios from "axios";
 import { Dispatch } from "redux";
 import { ThunkAction } from "redux-thunk";
 import toast from "react-hot-toast";
-import { tokenSet } from "./AuthToken";
+import { authCookiesSet, tokenSet } from "./AuthToken";
 
 type TemplatesAction = {
   type: string;
@@ -16,7 +16,7 @@ export const createUserApi =
       .post("/api1/create/user", props)
       .then(({ data }) => {
         toast.success("Success Login");
-        tokenSet("userProfile", data?.user?.uid);
+        authCookiesSet(data?.user?.uid);
 
         // navigate(`${currentPathname !== "/login" ? currentPathname : "/"}`);
         router.push(`${"/"}`);

@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/flyersCreate.png"
         heading={"Stand out from the crowd with our unique flyers"}
         text="Create eye-catching and unique flyers for your with our easy-to-use flyer maker."
@@ -21,7 +21,7 @@ export default function index() {
         heading={"Stand out from the crowd with our unique flyers"}
         text="Create eye-catching and unique flyers for your with our easy-to-use flyer maker."
         buttonName="Get Started"
-        navigate=""
+        navigate="/templates/flyer"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -45,6 +45,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Flyer"}
+        alt="flyer templates"
+        path="/templates/flyer"
         image="/images/flyersCreate.png"
       />
       <RightImageSection
@@ -60,6 +62,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Flyer"}
+        alt="flyer templates"
+        path="/templates/flyer"
         image="/images/flyersUnique.png"
       />
       <LeftImageSection
@@ -75,6 +79,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Flyers"}
+        alt="flyer templates"
+        path="/templates/flyer"
         image="/images/flyersStunning.png"
       />
       {/*  */}{" "}
@@ -123,9 +129,9 @@ export default function index() {
       <GetTemplates
         heading="Start designing your perfect flyer today with our easy-to-use flyer maker!"
         text="Get ready to take off with our stunning flyers - Order now!"
-        navigate="/templates/invitation-card"
+        navigate="/templates/flyer"
       />
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates getAll={"/templates/flyer"} />
     </>
   );
 }

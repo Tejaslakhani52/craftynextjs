@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 import React from "react";
 import Iframe from "react-iframe";
 
@@ -8,7 +9,9 @@ export default function RightImage({
   image,
   buttonName,
   video,
+  alt,
 }: any) {
+  const router = useRouter();
   return (
     <Box className="flex py-[30px] sm:py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
       <Box className="flex-1 flex justify-center max-lg:order-2  max-lg:w-[100%]">
@@ -27,11 +30,12 @@ export default function RightImage({
               width: "fit-content",
               fontSize: "18px",
               textTransform: "unset",
-              borderRadius: "10px",
+              borderRadius: "5px",
               color: "white",
               fontWeight: "500",
             }}
-            className="bg_linear py-[10px] px-[10px] ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
+            className="bg_linear py-[7px] px-[20px] ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
+            onClick={() => router.push("/login")}
           >
             {buttonName}
           </Button>
@@ -41,7 +45,7 @@ export default function RightImage({
         {image ? (
           <img
             src={image}
-            alt={image}
+            alt={alt}
             className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
           />
         ) : (

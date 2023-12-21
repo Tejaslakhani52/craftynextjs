@@ -16,9 +16,9 @@ export default function LogoStatic() {
         </Typography>
 
         <Typography className="text-center md:w-[70%] mx-auto">
-          The process of designing an invitation with our online utility is
-          simple and straightforward. You can make a beautiful invitation for
-          your event by following the easy set of rules given below.
+          The process of designing an logo with our online utility is simple and
+          straightforward. You can make a beautiful logo for your event by
+          following the easy set of rules given below.
         </Typography>
 
         <Box className="flex gap-5 py-[30px] sm:py-[50px] w-full xl:w-[83%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
@@ -47,13 +47,13 @@ export default function LogoStatic() {
               </Typography>
 
               <Typography className="mb-5 font-semibold text-[20px]">
-                First, Select Logo For Your Brand
+                Browse
               </Typography>
 
               <Typography className="text-[#5C626A] text-[15px]">
-                Get your hands on the exclusive range of high-quality templates
-                designed by professionals the invitation designs that suit your
-                needs.
+                Explore our diverse collection of logo design templates. Filter
+                by industry, style, or color to find options that resonate with
+                your brand.
               </Typography>
             </Box>
 
@@ -66,13 +66,13 @@ export default function LogoStatic() {
               </Typography>
 
               <Typography className="mb-5 font-semibold text-[20px]">
-                First, Select Logo For Your Brand
+                Select
               </Typography>
 
               <Typography className="text-[#5C626A] text-[15px]">
-                Get your hands on the exclusive range of high-quality templates
-                designed by professionals the invitation designs that suit your
-                needs.
+                Once you've found the perfect template, click to view details.
+                See how the design looks in different applications and envision
+                how it can elevate your brand.
               </Typography>
             </Box>
 
@@ -85,13 +85,13 @@ export default function LogoStatic() {
               </Typography>
 
               <Typography className="mb-5 font-semibold text-[20px]">
-                First, Select Logo For Your Brand
+                Customize
               </Typography>
 
               <Typography className="text-[#5C626A] text-[15px]">
-                Get your hands on the exclusive range of high-quality templates
-                designed by professionals the invitation designs that suit your
-                needs.
+                Personalize your chosen template using our intuitive
+                customization tools. Experiment with colors, fonts, and layout
+                until you achieve the desired look.
               </Typography>
             </Box>
 
@@ -104,13 +104,14 @@ export default function LogoStatic() {
               </Typography>
 
               <Typography className="mb-5 font-semibold text-[20px]">
-                First, Select Logo For Your Brand
+                Download
               </Typography>
 
               <Typography className="text-[#5C626A] text-[15px]">
-                Get your hands on the exclusive range of high-quality templates
-                designed by professionals the invitation designs that suit your
-                needs.
+                When you're satisfied with your design, download the
+                high-resolution files. Our templates come in formats compatible
+                with various design software for seamless integration into your
+                branding strategy.
               </Typography>
             </Box>
           </Box>
@@ -118,7 +119,7 @@ export default function LogoStatic() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/category/makeLogo1.png"}
-              alt={""}
+              alt={"logo template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -139,21 +140,27 @@ export default function LogoStatic() {
                 variant="h2"
                 className="text-[#1C3048] text-[30px] max-sm:text-[25px] font-[600] mb-5"
               >
-                Why Choose Logo Design From CraftyArt ?
+                Why Choose Our Logo Design Templates?
               </Typography>
 
               <FaqsBox
-                heading="Entirely Free"
-                text="All Invitation ideas available in the extensive library of Crafty..."
-              />
-              <FaqsBox
-                heading="Invitations Created By Professional Graphic Designers"
-                text="All Invitation ideas are designed by professional graphic desi..."
+                heading="Professional Craftsmanship"
+                text="Our templates are created by skilled designers who understand the nuances of effective logo design. Each template reflects a commitment to quality and professionalism."
               />
 
               <FaqsBox
-                heading="Simple Procedure"
-                text="With our Invitation design ideas, you won’t have to face any ..."
+                heading="Versatility"
+                text="From sleek and modern to classic and timeless, our collection encompasses a wide range of styles. Find the perfect match for your brand's personality, ensuring that your logo stands out in any industry."
+              />
+
+              <FaqsBox
+                heading="Easy Customization"
+                text="Tailor your chosen template to suit your brand with ease. Our templates are fully customizable, allowing you to adjust colors, fonts, and layout to create a logo that truly represents your vision."
+              />
+
+              <FaqsBox
+                heading="Affordable Solutions"
+                text="Hiring a designer for a custom logo can be expensive. Our templates offer a cost-effective alternative without compromising on quality. Invest in your brand without breaking the bank."
               />
             </Box>
           </Box>
@@ -161,7 +168,7 @@ export default function LogoStatic() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/category/chooseLogo.png"}
-              alt={""}
+              alt={"logo template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>

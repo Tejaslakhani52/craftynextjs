@@ -92,7 +92,7 @@ export default function index() {
           >
             <img
               src={"/images/styleKit/bannerSide.png"}
-              alt="resumeBanner"
+              alt="Effortless Design: Create Pro Designs with Style Kit!"
               style={{ width: "70%", height: "auto", paddingRight: "0px" }}
             />
           </Box>
@@ -119,6 +119,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Cards"}
+        alt="Style Kit"
         image="/images/styleKit/side1.png"
       />
 
@@ -142,6 +143,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create a New Card Design"}
+        alt="Style Kit"
         image="/images/styleKit/side2.png"
       />
 
@@ -166,6 +168,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Cards"}
+        alt="Style Kit"
         image="/images/styleKit/side3.png"
       />
 

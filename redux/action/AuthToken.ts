@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 
 export const tokenSet = (key: string, value: any) => {
@@ -17,4 +18,23 @@ export const tokenGet = (key: string) => {
   }, []);
 
   return tokenValue;
+};
+
+export const authCookiesSet = (value: any) => {
+  Cookies.set("sessionId", value, {
+    domain: ".craftyartapp.com",
+  });
+
+  Cookies.set("sessionId", value);
+};
+
+export const authCookiesGet = () => {
+  const value = Cookies.get("sessionId");
+  return value;
+};
+
+export const userPremium = (value: any) => {
+  Cookies.set("premium", String(value), {
+    domain: ".craftyartapp.com",
+  });
 };

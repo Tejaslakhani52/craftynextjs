@@ -13,7 +13,7 @@ import Login from "../auth/Login";
 import SignUp from "../auth/SignUp";
 import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 
 export const sidebarMenu = [
   {
@@ -23,10 +23,10 @@ export const sidebarMenu = [
     path: "/",
   },
   {
-    name: "Eprofile",
+    name: "My Account",
     icons: "/icons/profiile.svg",
     activeIcon: "/icons/profileActive.svg",
-    path: "/profile",
+    path: "/your-account",
   },
   {
     name: "Templates",
@@ -34,24 +34,24 @@ export const sidebarMenu = [
     activeIcon: "/icons/templatesActive.svg",
     path: "/templates",
   },
-  {
-    name: "Brand Kit",
-    icons: "/icons/brandKit.svg",
-    activeIcon: "/icons/brandKitActive.svg",
-    path: "/brandKit",
-  },
-  {
-    name: "Content planner",
-    icons: "/icons/contentPlaner.svg",
-    activeIcon: "/icons/contentPlanerActive.svg",
-    path: "/contentPlanner",
-  },
-  {
-    name: "Schedule post",
-    icons: "/icons/schedulePost.svg",
-    activeIcon: "/icons/schedulePostActive.svg",
-    path: "/schedulePost",
-  },
+  // {
+  //   name: "Brand Kit",
+  //   icons: "/icons/brandKit.svg",
+  //   activeIcon: "/icons/brandKitActive.svg",
+  //   path: "/brandKit",
+  // },
+  // {
+  //   name: "Content planner",
+  //   icons: "/icons/contentPlaner.svg",
+  //   activeIcon: "/icons/contentPlanerActive.svg",
+  //   path: "/contentPlanner",
+  // },
+  // {
+  //   name: "Schedule post",
+  //   icons: "/icons/schedulePost.svg",
+  //   activeIcon: "/icons/schedulePostActive.svg",
+  //   path: "/schedulePost",
+  // },
   {
     name: "Upload",
     icons: "/icons/upload.svg",
@@ -59,22 +59,16 @@ export const sidebarMenu = [
     path: "/upload",
   },
   {
-    name: "Recomendation",
+    name: "Recommendation",
     icons: "/icons/recomendation.svg",
     activeIcon: "/icons/recomendationActive.svg",
-    path: "/recomendation",
+    path: "/recommendation",
   },
   {
     name: "Custom Order",
     icons: "/icons/customOrder.svg",
     activeIcon: "/icons/customOrderIconActive.svg",
     path: "/customOrder",
-  },
-  {
-    name: "Refer and earn",
-    icons: "/icons/refer.svg",
-    activeIcon: "/icons/referActive.svg",
-    path: "/refer",
   },
 ];
 
@@ -182,7 +176,7 @@ export default function Sidebar({
     (state: any) => state.actions.openMobileMenubar
   );
   const [screenHeight, setScreenHeight] = useState(0);
-  const token = tokenGet("userProfile");
+  const token = authCookiesGet();
 
   useEffect(() => {
     const updateScreenHeight = () => {
@@ -276,15 +270,15 @@ export default function Sidebar({
             {sidebarMenu?.map((item) => (
               <Box
                 className={`${
-                  item.name === "Refer and earn" && "py-5 mt-3 mb-3"
+                  item.name === "Custom Order" && "py-5 mt-3 mb-3"
                 }`}
                 sx={{
                   borderTop:
-                    item.name === "Refer and earn"
+                    item.name === "Custom Order"
                       ? "1px dashed #1c304840"
                       : "none",
                   borderBottom:
-                    item.name === "Refer and earn"
+                    item.name === "Custom Order"
                       ? "1px dashed  #1c304840"
                       : "none",
                 }}

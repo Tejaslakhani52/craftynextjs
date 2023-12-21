@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/anivversaryBanner.png"
         heading={
           "Celebrate your love with a beautiful anniversary invitation card!"
@@ -32,7 +32,7 @@ export default function index() {
           <Box sx={{ width: "480px" }}>
             <img
               src={"/images/anivversaryBanner.png"}
-              alt="anivversaryBanner"
+              alt="anniversaryBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
           </Box>

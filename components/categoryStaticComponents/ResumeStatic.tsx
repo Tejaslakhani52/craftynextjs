@@ -75,7 +75,10 @@ export default function ResumeStatic() {
           >
             <Box className="flex max-sm:flex-col gap-4 min-w-full">
               <Box className="bg-[#FFE3E3] rounded-[4px]  flex-1">
-                <img src="/images/category/makeResume1.png" alt="" />
+                <img
+                  src="/images/category/makeResume1.png"
+                  alt="Resume Portrait Templates"
+                />
               </Box>
 
               <Box className="flex-1">
@@ -85,13 +88,13 @@ export default function ResumeStatic() {
 
                 <Box className="bg-[#EDF0F9] py-[30px] px-[20px]  rounded-[4px]">
                   <Typography className="font-semibold text-[20px] mb-2">
-                    Select Resume From CraftyArt
+                    Choose a Template
                   </Typography>
 
                   <Typography className="text-[#5C626A]">
-                    Choose from the wide range of Quotes templates from the
-                    CraftyArt App. Choose from the wide range of Quotes
-                    templates from the CraftyArt App.
+                    Crafty Art resume-building platforms provide a variety of
+                    templates. Choose one that suits your style and the industry
+                    you're applying to.
                   </Typography>
                 </Box>
               </Box>
@@ -99,7 +102,10 @@ export default function ResumeStatic() {
 
             <Box className="flex max-sm:flex-col gap-4 min-w-full">
               <Box className="bg-[#FFE3E3] rounded-[4px]  flex-1">
-                <img src="/images/category/makeResume1.png" alt="" />
+                <img
+                  src="/images/category/makeResume1.png"
+                  alt="Resume Portrait Templates"
+                />
               </Box>
 
               <Box className="flex-1">
@@ -109,13 +115,13 @@ export default function ResumeStatic() {
 
                 <Box className="bg-[#EDF0F9] py-[30px] px-[20px]  rounded-[4px]">
                   <Typography className="font-semibold text-[20px] mb-2">
-                    Select Resume From CraftyArt
+                    Customize for Each Job
                   </Typography>
 
                   <Typography className="text-[#5C626A]">
-                    Choose from the wide range of Quotes templates from the
-                    CraftyArt App. Choose from the wide range of Quotes
-                    templates from the CraftyArt App.
+                    Tailor your resume for each job application by emphasizing
+                    the skills and experiences most relevant to the specific
+                    position.
                   </Typography>
                 </Box>
               </Box>
@@ -123,7 +129,10 @@ export default function ResumeStatic() {
 
             <Box className="flex max-sm:flex-col gap-4 min-w-full">
               <Box className="bg-[#FFE3E3] rounded-[4px]  flex-1">
-                <img src="/images/category/makeResume1.png" alt="" />
+                <img
+                  src="/images/category/makeResume1.png"
+                  alt="Resume Portrait Templates"
+                />
               </Box>
 
               <Box className="flex-1">
@@ -133,13 +142,40 @@ export default function ResumeStatic() {
 
                 <Box className="bg-[#EDF0F9] py-[30px] px-[20px]  rounded-[4px]">
                   <Typography className="font-semibold text-[20px] mb-2">
-                    Select Resume From CraftyArt
+                    Save and Download
                   </Typography>
 
                   <Typography className="text-[#5C626A]">
-                    Choose from the wide range of Quotes templates from the
-                    CraftyArt App. Choose from the wide range of Quotes
-                    templates from the CraftyArt App.
+                    Once you're satisfied with your resume, save your work and
+                    download it in a format supported by CraftyArt or any other
+                    platform (e.g., PDF, Word).
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+
+            <Box className="flex max-sm:flex-col gap-4 min-w-full">
+              <Box className="bg-[#FFE3E3] rounded-[4px]  flex-1">
+                <img
+                  src="/images/category/makeResume1.png"
+                  alt="Resume Portrait Templates"
+                />
+              </Box>
+
+              <Box className="flex-1">
+                <Box className="bg-[#FFE3E3] mb-4 rounded-[4px] h-[134px] w-[134px] text-[50px] flex justify-center items-center">
+                  4
+                </Box>
+
+                <Box className="bg-[#EDF0F9] py-[30px] px-[20px]  rounded-[4px]">
+                  <Typography className="font-semibold text-[20px] mb-2">
+                    Print or Submit Online
+                  </Typography>
+
+                  <Typography className="text-[#5C626A]">
+                    Print physical copies for in-person applications, or submit
+                    your resume online through job portals or directly to
+                    employers.
                   </Typography>
                 </Box>
               </Box>
@@ -203,21 +239,32 @@ export default function ResumeStatic() {
                 variant="h2"
                 className="text-[#1C3048] text-[30px] max-sm:text-[25px] font-[600] mb-4"
               >
-                Why Choose CraftyArt For Festival Banner Designs ?
+                Why Choose Crafty Art For Resume Designs ?
               </Typography>
 
               <FaqsBox
-                heading="Entirely Free"
-                text="All Invitation ideas available in the extensive library of Crafty..."
-              />
-              <FaqsBox
-                heading="Invitations Created By Professional Graphic Designers"
-                text="All Invitation ideas are designed by professional graphic desi..."
+                heading="Creativity "
+                text="Unique and visually appealing templates."
               />
 
               <FaqsBox
-                heading="Simple Procedure"
-                text="With our Invitation design ideas, you won’t have to face any ..."
+                heading="User-Friendly "
+                text="Easy-to-navigate interface for all users."
+              />
+
+              <FaqsBox
+                heading="Versatility "
+                text="Diverse resume and design styles for various industries."
+              />
+
+              <FaqsBox
+                heading="Time Savings "
+                text="Streamlines the resume creation process."
+              />
+
+              <FaqsBox
+                heading="Support "
+                text="Offers feedback and assistance for a positive experience."
               />
             </Box>
           </Box>
@@ -225,7 +272,7 @@ export default function ResumeStatic() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/category/whyChooseFestival.png"}
-              alt={""}
+              alt={"Resume Portrait Templates"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -333,25 +380,28 @@ export default function ResumeStatic() {
           <Box sx={{ p: "20px" }}></Box>
 
           <FaqsBox
-            heading="1. Can I use Crafty Art for free?"
-            text="Yes, Crafty Art offers a free online logo maker. To access it, select the Logo Maker option from the main page and
-          choose one of the premade templates. You can then add your own images, text, and design elements to customise the
-          post. When you’re finished, click Save, and your logo will be ready to download."
-          />
-          <FaqsBox
-            heading="2. What are the benefits of a premium subscription?"
-            text="As a premium user you can download unlimited Crafty Art assets, and various services."
+            heading="What makes CraftyArt unique for resume designs?"
+            text="CraftyArt offers a personalized approach, collaborating closely with clients for unique, industry-aligned resumes."
           />
 
           <FaqsBox
-            heading="3. Why do i have to purchase Crafty Art Pro?"
-            text="With the premium user, you can access unlimited service of Crafty Art Pro."
+            heading="Can CraftyArt cater to different industries?"
+            text="Yes, our diverse team tailors designs to match various professions, ensuring industry relevance."
           />
 
           <FaqsBox
-            heading="4. Are my downloads unlimited as a premium user?"
-            text="Yes, as a premium user, you have unlimited downloads. There is no limitations on the use of Crafty Art assets, templates,
-          and the Background Remover Tool."
+            heading="What design elements does CraftyArt focus on?"
+            text="CraftyArt combines aesthetics with readability, emphasizing clean and professional designs."
+          />
+
+          <FaqsBox
+            heading="How does CraftyArt ensure industry standards are met?"
+            text="Staying updated on trends, CraftyArt aligns resumes with current industry norms."
+          />
+
+          <FaqsBox
+            heading="Can CraftyArt handle traditional and creative designs?"
+            text="Yes, CraftyArt caters to both traditional and creative preferences, adapting to diverse needs."
           />
         </Box>
       </Box>

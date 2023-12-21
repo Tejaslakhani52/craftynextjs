@@ -11,7 +11,7 @@ export default async function handler(
       return;
     }
 
-    const allowedDomain = "craftynextjs-al84.vercel.app";
+    const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || req.headers.referrer;
 
     if (!referer || !referer.includes(allowedDomain)) {

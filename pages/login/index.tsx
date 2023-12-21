@@ -1,14 +1,14 @@
 import ForgotPass from "@/components/auth/authComponents/ForgotPass";
 import LoginContentBox from "@/components/auth/authComponents/LoginContentBox";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 
 export default function index() {
   const router = useRouter();
-  const userLoginStatus = tokenGet("userProfile");
+  const userLoginStatus = authCookiesGet();
   console.log("userLoginStatus: ", userLoginStatus);
   const [forgot, setForgot] = useState<boolean>(false);
   const [loading, setLoading] = useState<any>(true);

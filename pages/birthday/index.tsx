@@ -7,13 +7,13 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/birthdayInvitation.png"
         heading={
           "Create custom birthday invitations in minutes and make your celebration extra special!"
@@ -26,7 +26,7 @@ export default function index() {
         }
         text="Create birthday magic with just a click - personalized invitations made easy!"
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/birthday"
         image={
           <Box sx={{ width: "450px" }}>
             <img
@@ -51,6 +51,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Invitation"}
+        alt="birthday invitations"
+        path="/s/birthday"
         image="/images/birthdayInvitation.png"
       />
 
@@ -67,6 +69,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Card "}
+        alt="birthday invitations"
+        path="/s/birthday"
         image="/images/birthdayEase.png"
       />
 
@@ -83,6 +87,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Choose your Template"}
+        alt="birthday invitations"
+        path="/s/birthday"
         image="/images/birthdayMinute.png"
       />
       <Box
@@ -134,7 +140,7 @@ export default function index() {
         navigate="/templates/invitation-card"
       />
 
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates getAll={"/s/birthday"} />
     </>
   );
 }

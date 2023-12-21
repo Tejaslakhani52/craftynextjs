@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/brouchureDesign.png"
         heading={
           "Effective Brochure Design - Elements to Create a Unique and Engaging Brochure"
@@ -25,7 +25,7 @@ export default function index() {
         }
         text="Crafted with Care: Stunning Brochure Designs That Tell Your Story."
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/brochure"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -49,6 +49,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Brochure"}
+        alt="brochure design"
+        path="/s/brochure"
         image="/images/brouchureDesign.png"
       />
       <RightImageSection
@@ -63,6 +65,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Brochures"}
+        alt="brochure design"
+        path="/s/brochure"
         image="/images/brouchureUnique.png"
       />
       <LeftImageSection
@@ -77,6 +81,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Brochures"}
+        alt="brochure design"
+        path="/s/brochure"
         image="/images/brouchureCreate.png"
       />
       {/*  */}{" "}
@@ -125,9 +131,9 @@ export default function index() {
       <GetTemplates
         heading="Unleash Your Creativity with Brochure Maker - Design & Print Stunning Brochures!"
         text="Design Beautiful Brochures with Ease - No Design Skills Required!"
-        navigate="/templates/invitation-card"
+        navigate="/s/brochure"
       />
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates getAll="/s/brochure" />
     </>
   );
 }

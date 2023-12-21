@@ -28,7 +28,7 @@ export default function FestivalBanner() {
             <Box className=" lg:min-h-[200px]">
               <img
                 src="/images/category/Cfestival1.png"
-                alt=""
+                alt={"Festival"}
                 className="max-h-[200px] w-auto block mx-auto"
               />
             </Box>
@@ -38,9 +38,10 @@ export default function FestivalBanner() {
             </Typography>
 
             <Typography className="text-center ">
-              Get your hands on the exclusive range of high-quality templates
-              designed by professionals the invitation designs that suit your
-              needs.
+              Turn up the volume and set the stage on fire with our Music
+              Festival Madness templates. Bold, dynamic, and pulsating with
+              energy, these designs are perfect for concerts, music festivals,
+              and any event where the beats never stop.
             </Typography>
           </Box>
           <Box
@@ -50,7 +51,7 @@ export default function FestivalBanner() {
             <Box className=" lg:min-h-[200px]">
               <img
                 src="/images/category/Cfestival2.png"
-                alt=""
+                alt={"Festival"}
                 className="max-h-[200px] w-auto block mx-auto"
               />
             </Box>
@@ -60,9 +61,10 @@ export default function FestivalBanner() {
             </Typography>
 
             <Typography className="text-center ">
-              Get your hands on the exclusive range of high-quality templates
-              designed by professionals the invitation designs that suit your
-              needs.
+              Immerse yourself in the rich tapestry of cultures with our
+              Cultural Extravaganza templates. From traditional motifs to modern
+              interpretations, these templates bring the essence of diverse
+              celebrations to your event.
             </Typography>
           </Box>
           <Box
@@ -72,7 +74,7 @@ export default function FestivalBanner() {
             <Box className=" lg:min-h-[200px]">
               <img
                 src="/images/category/Cfestival3.png"
-                alt=""
+                alt={"Festival"}
                 className="max-h-[200px] w-auto block mx-auto"
               />
             </Box>
@@ -82,9 +84,9 @@ export default function FestivalBanner() {
             </Typography>
 
             <Typography className="text-center ">
-              Get your hands on the exclusive range of high-quality templates
-              designed by professionals the invitation designs that suit your
-              needs.
+              After customizing the festival template to your satisfaction,
+              download the final version. Save it in a format that is compatible
+              with your needs, such as PDF or image formats.
             </Typography>
           </Box>
         </Box>
@@ -105,21 +107,27 @@ export default function FestivalBanner() {
                 variant="h2"
                 className="text-[#1C3048] text-[30px] max-sm:text-[25px] font-[600] mb-4"
               >
-                Why Choose CraftyArt For Festival Banner Designs ?
+                Why Choose Our Festival Templates?
               </Typography>
 
               <FaqsBox
-                heading="Entirely Free"
-                text="All Invitation ideas available in the extensive library of Crafty..."
-              />
-              <FaqsBox
-                heading="Invitations Created By Professional Graphic Designers"
-                text="All Invitation ideas are designed by professional graphic desi..."
+                heading="Versatility"
+                text="Our templates are versatile and customizable to suit a variety of festivals and events."
               />
 
               <FaqsBox
-                heading="Simple Procedure"
-                text="With our Invitation design ideas, you won’t have to face any ..."
+                heading="High-Quality Design"
+                text="Each template is crafted with precision, ensuring a visually stunning and professional look."
+              />
+
+              <FaqsBox
+                heading="Easy Customization"
+                text="Customize colors, fonts, and elements effortlessly to match your event theme."
+              />
+
+              <FaqsBox
+                heading="Print-Ready"
+                text="Whether digital or print, our templates are ready for use in various formats."
               />
             </Box>
           </Box>

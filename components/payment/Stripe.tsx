@@ -1,4 +1,4 @@
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Button, Typography } from "@mui/material";
 import {
   CardCvcElement,
@@ -27,7 +27,7 @@ const inputStyle = {
 };
 
 export default function Stripe({ selectPlan, countryCode }: any) {
-  const uId = tokenGet("userProfile");
+  const uId = authCookiesGet();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const stripe = useStripe();
   const elements = useElements();

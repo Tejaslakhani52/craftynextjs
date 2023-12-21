@@ -34,7 +34,7 @@ const Accordion = styled((props: AccordionProps) => (
 }));
 
 export const MobileFooter = (props: any) => {
-  const [open, setopen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const [expanded, setExpanded] = React.useState<string | false>("panel2");
 
@@ -63,7 +63,7 @@ export const MobileFooter = (props: any) => {
             cursor: "pointer",
             width: "100%",
           }}
-          onClick={() => setopen(!open)}
+          onClick={() => setOpen(!open)}
         >
           <Typography
             sx={{ color: "white", fontWeight: "500", fontSize: "19px" }}
@@ -71,7 +71,7 @@ export const MobileFooter = (props: any) => {
           >
             {props?.heading}
           </Typography>
-          <Button sx={{ color: "black" }} onClick={() => setopen(!open)}>
+          <Button sx={{ color: "black" }} onClick={() => setOpen(!open)}>
             {open ? (
               <ExpandLessIcon sx={{ fontSize: "25px", color: "white" }} />
             ) : (

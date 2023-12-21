@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 
 interface props {
   heading: string;
@@ -7,6 +8,7 @@ interface props {
 }
 
 export default function FreeTrialBlackBanner({ heading, text }: props) {
+  const router = useRouter();
   return (
     <Box className="  bg-[url('/images/invitationBanner.png')] bg-cover bg-no-repeat py-14 px-4 ">
       <Box className="flex flex-col items-center   gap-8">
@@ -32,11 +34,12 @@ export default function FreeTrialBlackBanner({ heading, text }: props) {
             opacity: "1",
             width: "180px",
             backgroundColor: "white",
-            borderRadius: "8px",
+            borderRadius: "5px",
             "&:hover": {
               backgroundColor: "white",
             },
           }}
+          onClick={() => router.push("/")}
           className="bg-white text-black py-2"
         >
           Start a free trial

@@ -1,8 +1,20 @@
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import Skelton from "@/components/common/Skelton";
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useMemo } from "react";
 
 export default function TemplatesSkelton() {
+  const screenWidth = useScreenWidth();
+
+  const height = useMemo(() => {
+    let val;
+
+    if (screenWidth < 600) {
+      val = 100;
+    } else val = 250;
+
+    return val;
+  }, [screenWidth]);
   return (
     <Box className="flex flex-col gap-5 py-[50px]">
       {/* <Box className="flex items-center justify-between pt-8 pb-4">
@@ -13,8 +25,8 @@ export default function TemplatesSkelton() {
       </Box> */}
       <Box className="flex items-center overflow-hidden scroll_none gap-[20px]  ">
         <Skelton
-          width="250px"
-          height="200px"
+          width={`${height}px`}
+          height={`${height}px`}
           round="10px"
           fill={20}
           line="row"
@@ -27,8 +39,8 @@ export default function TemplatesSkelton() {
       </Box>
       <Box className="flex  items-center overflow-hidden scroll_none gap-[20px]  ">
         <Skelton
-          width="250px"
-          height="200px"
+          width={`${height}px`}
+          height={`${height}px`}
           round="10px"
           fill={20}
           line="row"
@@ -41,8 +53,8 @@ export default function TemplatesSkelton() {
       </Box>
       <Box className="flex items-center overflow-hidden scroll_none gap-[20px] mb-5 ">
         <Skelton
-          width="250px"
-          height="200px"
+          width={`${height}px`}
+          height={`${height}px`}
           round="10px"
           fill={20}
           line="row"

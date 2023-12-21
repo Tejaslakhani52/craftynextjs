@@ -1,5 +1,5 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
 import FaqsBox from "@/components/common/FAQs";
 import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
@@ -46,7 +46,7 @@ const sliderTemplate = [
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/invitationCreateWedding.png"
         heading="Let Your Invitation Shine with Our Smooth and Sleek Invitation Maker"
         text=" Make lovely invitations for birthdays, baby showers, weddings, and
@@ -65,6 +65,74 @@ export default function index() {
       />
 
       <RightDetail
+        title="Key Features Of Crafty Art Invitation Card Maker"
+        point={
+          <Box>
+            <MarkText text="Simplify Your Event Planning: Our invitation card maker streamlines the process, saving you time and stress." />
+            <MarkText text="Stunning Designs, Effortlessly: Access a vast library of professionally designed templates, ensuring your invitations stand out." />
+            <MarkText text="Personalization Made Easy: Customize every aspect of your invitations, from colors to fonts, to reflect your unique style." />
+            <MarkText text="Budget-Friendly Solutions: Create beautiful invitations without breaking the bank, thanks to our cost-effective options." />
+            <MarkText text="Fast and Easy Download Invitations: We offer quick turnaround times and high-quality flawless invitations." />
+          </Box>
+        }
+        buttonName={"Start Designing"}
+        alt="Invitation Maker"
+        image="/images/perfactInvitation.png"
+        path="/templates/invitation"
+      />
+
+      <LeftDetail
+        title="Our Unique Invitations Selection"
+        point={
+          <Box>
+            <MarkText text="Weddings: Craft the perfect wedding invitation that reflects your love story." />
+            <MarkText text="Corporate Events: Impress clients and partners with professional and creative invites." />
+            <MarkText text="Birthdays: Celebrate another year with invitations that match your style." />
+            <MarkText text="Anniversaries: Commemorate milestones with elegant and personalized designs." />
+            <MarkText text="Special Occasions: From baby showers, house warming to retirements, we have you covered." />
+            <MarkText text="Engagement: Create a Perfect Engagement Invitation Card For Your Special Event." />
+          </Box>
+        }
+        buttonName={"Start Designing"}
+        alt="Invitation Maker"
+        image="/images/invitationSelection.png"
+        path="/templates/invitation"
+      />
+
+      <RightDetail
+        title="Create Stunning Invitations in Minutes, Not Hours!"
+        point={
+          <Box>
+            <MarkText text="Choose from a vast library of customizable invitation templates." />
+            <MarkText text="Personalize every detail, from fonts to colors, to match your event's theme." />
+            <MarkText text="Add your own photos and graphics to make your invitations truly unique." />
+            <MarkText text="No design experience required - it's as easy as drag and drop!" />
+            <MarkText text="Say goodbye to frustrating software crashes and slow loading times." />
+          </Box>
+        }
+        buttonName={"Start Designing"}
+        alt="Invitation Maker"
+        image="/images/stunningInvitation.png"
+        path="/templates/invitation"
+      />
+
+      <LeftDetail
+        title="Make your INVITATION CARD in few minutes"
+        point={
+          <Box>
+            <MarkText text=" Open website and login or signup with your easy method." />
+            <MarkText text=" Search what do you want and select your best invitation card." />
+            <MarkText text=" add your detail's such as your event or style." />
+            <MarkText text=" save your invitation card and export in your preferred way." />
+          </Box>
+        }
+        buttonName={"Start Designing"}
+        alt="Invitation Maker"
+        image="/images/makeInvitation.png"
+        path="/templates/invitation"
+      />
+
+      <RightDetail
         title="How to create a unique wedding invitation
         that perfectly captures your love story?"
         point={
@@ -77,6 +145,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Wedding Invitation"}
+        alt="Invitation Maker"
         image="/images/invitationCreateWedding.png"
         path="/wedding"
       />
@@ -94,6 +163,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find Birthday Invitation"}
+        alt="Invitation Maker"
         image="/images/invitationBirthday.png"
         path="/birthday"
       />
@@ -111,6 +181,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Party Invitation"}
+        alt="Invitation Maker"
         image="/images/invitationDesign.png"
         path="/party"
       />
@@ -128,6 +199,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Invitation Card"}
+        alt="Invitation Maker"
         image="/images/invitationCreate.png"
         path="/babyShower"
       />
@@ -145,6 +217,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find your Anniversary Invitation"}
+        alt="Invitation Maker"
         image="/images/invitationAnniversary.png"
         path="/anniversary"
       />
@@ -162,6 +235,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Bridal Shower Invitation"}
+        alt="Invitation Maker"
         image="/images/invitationShower.png"
         path="/bridalShower"
       />

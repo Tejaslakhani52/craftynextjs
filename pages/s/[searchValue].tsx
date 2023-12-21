@@ -193,7 +193,7 @@
 // }
 
 import { Box, Button, Skeleton, Typography } from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
 import StackGrid from "react-stack-grid";
@@ -203,12 +203,13 @@ import {
 } from "@/commonFunction/screenWidthHeight";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useRouter } from "next/router";
+import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import ImageBox from "@/components/common/ImageBox";
 
 export default function searchValue() {
   const router = useRouter();
   const searchName: any = router?.query?.searchValue;
   const formattedSearchName = searchName?.replace(/-/g, " ");
-
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
   const [data, setData] = useState<any>();
@@ -216,20 +217,15 @@ export default function searchValue() {
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [idName, setIdName] = useState<any>("");
 
   const getSearchList = (pages: number) => {
     setLoadMore(true);
     axios
-      .post("/api1/search-template", {
-        key: "qwfsegxdhbxfjhncf",
-        app_id: "1",
-        cat_id: "-1",
+      .post("/api/searchTemplate", {
         keywords: formattedSearchName,
-        device: "0",
-        refWidth: "1080",
-        refHeight: "1080",
         page: pages,
-        debug: "debug",
       })
       .then((response: any) => {
         setLoading(false);
@@ -281,54 +277,67 @@ export default function searchValue() {
   return (
     <>
       <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px] pt-[15px]">
-        <Box
-          sx={{
-            background: "url(/images/searchBanner.png)",
-            margin: "10px auto",
-            width: "100%",
-            overflow: "hidden",
-            backgroundSize: "cover",
-            py: "50px",
-          }}
-          className="lg:pl-[80px]  max-lg:px-[20px] h-auto max-lg:py-[50px] rounded-[8px]"
-        >
-          <Typography
-            sx={{
-              color: "#ffffff",
-              width: "100%",
-              fontWeight: "500",
-              lineHeight: "40px",
+        {loading ? (
+          <Skeleton
+            variant="rectangular"
+            width={"100%"}
+            height={`250px`}
+            style={{
+              borderRadius: `4px`,
+              margin: "0px 0",
             }}
-            className="text-center text-[30px] sm:text-[35px] "
-            variant="h1"
-          >
-            <span className="capitalize"> {formattedSearchName} </span>{" "}
-            templates
-          </Typography>
-          <Typography
+          />
+        ) : (
+          <Box
             sx={{
-              fontSize: "18px",
-              color: "#ffff",
+              background: "url(/images/searchBanner.png)",
+              margin: "10px auto",
               width: "100%",
-              marginBottom: "10px",
+              overflow: "hidden",
+              backgroundSize: "cover",
+              py: "50px",
+              display: data?.length > 0 ? "block" : "none",
             }}
-            className="text-center py-[10px] w-[70%] mx-auto my-[10px]"
+            className="lg:pl-[80px]  max-lg:px-[20px] h-auto max-lg:py-[50px] rounded-[8px]"
           >
-            Explore High-Quality{" "}
-            <span className="capitalize"> {formattedSearchName} </span>{" "}
-            Templates for Your Next Design Project
-          </Typography>
-        </Box>
+            <Typography
+              sx={{
+                color: "#ffffff",
+                width: "100%",
+                fontWeight: "500",
+                lineHeight: "40px",
+              }}
+              className="text-center text-[30px] sm:text-[35px] "
+              variant="h1"
+            >
+              <span className="capitalize"> {formattedSearchName} </span>{" "}
+              templates
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: "18px",
+                color: "#ffff",
+                width: "100%",
+                marginBottom: "10px",
+              }}
+              className="text-center py-[10px] w-[70%] mx-auto my-[10px]"
+            >
+              Explore High-Quality{" "}
+              <span className="capitalize"> {formattedSearchName} </span>{" "}
+              Templates for Your Next Design Project
+            </Typography>
+          </Box>
+        )}
 
         <Box
           className="py-[50px]"
-          sx={{ minHeight: `${screenHeight - 314}px` }}
+          sx={{ minHeight: `${screenHeight - 340}px` }}
         >
           {loading ? (
             <Skeleton
               variant="rectangular"
               width={"100%"}
-              height={`500px`}
+              height={`${screenHeight - 440}px`}
               style={{
                 borderRadius: `4px`,
                 margin: "10px 0",
@@ -338,53 +347,13 @@ export default function searchValue() {
             <Box>
               <StackGrid columnWidth={screenWidth / multiSizeFixSize}>
                 {data?.map((templates: any, index: number) => (
-                  <div
-                    className="relative"
-                    style={{
-                      height: `${calculateHeight(
-                        templates?.width,
-                        templates?.height,
-                        screenWidth / multiSizeFixSize
-                      )}px`,
-                      width: `${screenWidth / multiSizeFixSize}px`,
-                    }}
-                    id={`content${index}`}
-                  >
-                    <Link
-                      href={`/?templates=${templates.id_name}`}
-                      as={`/templates/p/${templates.id_name}`}
-                      scroll={false}
-                      shallow={true}
-                    >
-                      {templates.is_premium && (
-                        <img
-                          src="/icons/proIcon.svg"
-                          alt=""
-                          className="w-[28px] absolute right-[15px] top-[15px]"
-                        />
-                      )}
-                      <div className="w-full h-full p-[8px]">
-                        <img
-                          src={templates?.template_thumb}
-                          alt={templates?.category_name}
-                          className={`w-full] rounded-[5px] cursor-pointer`}
-                          style={{
-                            border: "1px solid #80808082",
-                            height: "100%",
-                          }}
-                        />
-
-                        <div className="pt-2">
-                          <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                            {templates?.template_name}
-                          </p>
-                          <p className="text-[#ABB2C7] text-[13px] pb-1">
-                            {templates?.category_name}
-                          </p>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
+                  <ImageBox
+                    templates={templates}
+                    screenWidth={screenWidth}
+                    multiSizeFixSize={multiSizeFixSize}
+                    setIdName={setIdName}
+                    setOpenModal={setOpenModal}
+                  />
                 ))}
               </StackGrid>
 
@@ -413,9 +382,13 @@ export default function searchValue() {
           ) : (
             <Box
               className="flex flex-col items-center justify-center"
-              sx={{ minHeight: `${screenHeight - 514}px` }}
+              sx={{ minHeight: `${screenHeight - 187}px` }}
             >
-              <img src="/images/NoDataFound.svg" alt="" className="w-[250px]" />
+              <img
+                src="/images/NoDataFound.svg"
+                alt="NoDataFound"
+                className="w-[250px]"
+              />
               {/* <Typography className="text-[18px] font-semibold opacity-70">
                 No Templates Found
               </Typography> */}
@@ -423,6 +396,13 @@ export default function searchValue() {
           )}
         </Box>
       </Box>
+
+      <TemplateModal
+        open={openModal}
+        id={idName}
+        setOpen={setOpenModal}
+        setId={setIdName}
+      />
     </>
   );
 }

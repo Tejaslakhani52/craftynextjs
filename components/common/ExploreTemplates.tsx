@@ -13,31 +13,28 @@ import StackGrid from "react-stack-grid";
 
 interface props {
   category: string;
+  getAll: string;
 }
 
-export default function ExploreTemplates({ category }: props) {
+export default function ExploreTemplates({ category, getAll }: any) {
   const router = useRouter();
   const { pathname } = router;
   const pathSegments = pathname.split("/");
   const lastSegment = pathSegments[pathSegments.length - 1];
+  console.log("lastSegment: ", lastSegment);
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
   const [data, setData] = useState<any>();
+  console.log("data: ", data);
 
   useEffect(() => {
     axios
-      .post("/api1/search-template", {
-        key: "qwfsegxdhbxfjhncf",
-        app_id: "1",
-        cat_id: "-1",
-        keywords: lastSegment,
-        device: "0",
-        refWidth: "1080",
-        refHeight: "1080",
+      .post("/api/searchTemplate", {
+        keywords: category ?? lastSegment,
         page: 1,
-        debug: "debug",
       })
       .then((response: any) => {
+        console.log("response: ", response);
         const jsonString = response.data.substring(
           response.data.indexOf("{"),
           response.data.lastIndexOf("}") + 1
@@ -92,7 +89,7 @@ export default function ExploreTemplates({ category }: props) {
             mb: "40px",
           }}
         >
-          Get a headstart with fully customizable templates
+          Get a head start with fully customizable templates
         </Typography>
 
         <StackGrid columnWidth={screenWidth / multiSizeFixSize}>
@@ -111,33 +108,38 @@ export default function ExploreTemplates({ category }: props) {
                 }}
                 id={`content${index}`}
               >
-                <Link
+                {/* <Link
                   href={`/?templates=${templates.id_name}`}
                   as={`/templates/p/${templates.id_name}`}
                   scroll={false}
                   shallow={true}
+                > */}
+                <div
+                  className="w-full h-full p-[8px]"
+                  onClick={() =>
+                    router.push(`/templates/p/${templates?.id_name}`)
+                  }
                 >
-                  <div className="w-full h-full p-[8px]">
-                    <img
-                      src={templates?.template_thumb}
-                      alt={templates?.category_name}
-                      className={`w-full] rounded-[5px] cursor-pointer`}
-                      style={{
-                        border: "1px solid #80808082",
-                        height: "100%",
-                      }}
-                    />
+                  <img
+                    src={templates?.template_thumb}
+                    alt={templates?.category_name}
+                    className={`w-full] rounded-[5px] cursor-pointer`}
+                    style={{
+                      border: "1px solid #80808082",
+                      height: "100%",
+                    }}
+                  />
 
-                    <div className="pt-2">
-                      <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                        {templates?.template_name}
-                      </p>
-                      <p className="text-[#ABB2C7] text-[13px] pb-1">
-                        {templates?.category_name}
-                      </p>
-                    </div>
+                  <div className="pt-2">
+                    <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
+                      {templates?.template_name}
+                    </p>
+                    <p className="text-[#ABB2C7] text-[13px] pb-1">
+                      {templates?.category_name}
+                    </p>
                   </div>
-                </Link>
+                </div>
+                {/* </Link> */}
               </div>
             ))}
         </StackGrid>
@@ -150,11 +152,12 @@ export default function ExploreTemplates({ category }: props) {
               width: "fit-content",
               fontSize: "17px",
               textTransform: "unset",
-              borderRadius: "10px",
+              borderRadius: "5px",
               fontWeight: "500",
               color: "white",
             }}
             className="bg_linear py-[10px] px-[15px]"
+            onClick={() => router.push(getAll)}
           >
             Get All Templates
           </button>

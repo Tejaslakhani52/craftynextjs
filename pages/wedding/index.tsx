@@ -10,12 +10,12 @@ import FaqsBox from "@/components/common/FAQs";
 import GetTemplates from "@/components/common/GetTemplates";
 import ExploreTemplates from "@/components/common/ExploreTemplates";
 import RightImageSection from "./components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/weedingInvitationUnique.png"
         heading={
           "Browse Our Beautiful Collection of Wedding Invitation Templates"
@@ -28,7 +28,7 @@ export default function index() {
         }
         text="Explore Our Collection of Beautiful Wedding Invitation Designs"
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/wedding"
         image={
           <Box sx={{ width: "410px" }}>
             <img
@@ -54,6 +54,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Invitation"}
+        alt="wedding Invitation"
+        path="/s/wedding"
         image="/images/weedingInvitationUnique.png"
       />
 
@@ -70,6 +72,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Card"}
+        alt="wedding Invitation"
+        path="/s/wedding"
         image="/images/weddingCard.png"
       />
 
@@ -87,6 +91,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Choose your Template"}
+        alt="wedding Invitation"
+        path="/s/wedding"
         image="/images/weddingStyle.png"
       />
 
@@ -135,10 +141,10 @@ export default function index() {
       <GetTemplates
         heading="Unlock The Creativity Of Your Inner Designer With 5000+ Wedding Templates."
         text="Love is in the air and we want you to be part of our big day! Join us as we begin our forever."
-        navigate="/templates/invitation-card"
+        navigate="/s/wedding"
       />
 
-      <ExploreTemplates category="a4-invitation" />
+      <ExploreTemplates getAll="/s/wedding" />
     </>
   );
 }

@@ -66,11 +66,11 @@ export default function ExploreBlog() {
           width: "fit-content",
           fontSize: "17px",
           textTransform: "unset",
-          borderRadius: "10px",
+          borderRadius: "5px",
           fontWeight: "500",
           color: "white",
         }}
-        className="bg_linear py-[10px] px-[40px]"
+        className="bg_linear py-[7px] px-[40px]"
         onClick={() =>
           (window.location.href = "https://www.craftyartapp.com/blog")
         }

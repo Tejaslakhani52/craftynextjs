@@ -7,21 +7,22 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <Box>
-      <CustomeHead
+      <CustomHead
         image="/images/logoCreateLogo.png"
         heading={"Let Your Brand Shine with Our Custom Logo Design"}
         text="Create a Lasting Impression with a Custom Logo Design That Truly Represents Your Business,
         Begin with custom logos that are simple to create and use."
       />
       <GetStartedLinearBanner
-        heading={"Let Your Brand Shine with Our Custom Logo Design"}
-        text="Create a Lasting Impression with a Custom Logo Design That Truly Represents Your Business,
-        Begin with custom logos that are simple to create and use."
+        heading={
+          "Create Your Own Logo Design with Our Free Logo Maker in Few Clicks"
+        }
+        text="Designing your own logo has never been simpler. With our user-friendly logo maker online for free, you can make logo in just a few clicks. Say goodbye to complicated design software and expensive graphic designers. Create a stunning logo maker for business that truly represents your brand, all for free. Get started now and watch your logo design dreams become a reality!"
         buttonName="Get Started"
         navigate=""
         image={
@@ -36,7 +37,7 @@ export default function index() {
       />
 
       <LeftImageSection
-        title="Craft the perfact logo with ease"
+        title="Design The Perfect Logo To Grow Your Business"
         point={
           <Box>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -44,41 +45,47 @@ export default function index() {
               <MarkText text="Choose from a wide selection of design templates and customise them to suit your needs." />
               <MarkText text="Our intuitive drag-and-drop interface allows you to easily add and edit text, graphics and other design elements." />
               <MarkText text="With our powerful logo creation tools, you can experiment with different fonts, colours and layouts until you find the perfect combination for your brand identity." />
-              <MarkText text="Craft a professional-grade logo that will set your business apart from the competition." />
+              <MarkText text="Craft a professional-grade logo that will set your business apart from the competition." />{" "}
             </Box>
           </Box>
         }
         buttonName={"Create a logo"}
+        alt="Logo Maker"
+        path="/templates/logos"
         image="/images/logoCreateLogo.png"
       />
 
       <RightImageSection
-        title="Make custom logos in minutes"
+        title="Make Custom Logos in Just Few Clicks"
         point={
           <Box>
             <MarkText text="Our online logo maker enables you to create a custom logo for your business in just a few minutes." />
             <MarkText text="Choose from a vast selection of design templates, icons, and fonts to get started." />
-            <MarkText text="Customise your logo by changing the colours, font styles, and layout to fit your brand personality." />
+            <MarkText text="Customise your logo by changing the colors, font styles, and layout to fit your brand personality." />
             <MarkText text="Easily save and download your logo once it's completed." />
             <MarkText text="Our logo maker is accessible from any device, making it easy to create a logo on-the-go." />
           </Box>
         }
         buttonName={"Create a logo"}
+        alt="Logo Maker"
+        path="/templates/logos"
         image="/images/logoCustom.png"
       />
 
       <LeftImageSection
-        title="How to make stunning logo for free"
+        title="How to Make a Stunning Logo with Our Logo Creator"
         point={
           <Box>
             <MarkText text="Our logo maker offers a range of high-quality design tools that help you create stunning logos quickly and easily." />
             <MarkText text="Choose from a range of professionally designed templates, or start from scratch." />
-            <MarkText text="Experiment with a variety of fonts, colours, and graphic elements to create a unique logo that reflects your brand identity." />
+            <MarkText text="Experiment with a variety of fonts, colors, and graphic elements to create a unique logo that reflects your brand identity." />
             <MarkText text="Our user-friendly interface makes it easy to create multiple versions of your logo, so you can choose the one that best fits your needs." />
             <MarkText text="Best of all, our logo maker is completely free, ensuring that you can create a professional-grade logo without breaking the bank." />
           </Box>
         }
         buttonName={"Create a logo"}
+        alt="Logo Maker"
+        path="/templates/logos"
         image="/images/logoStunning.png"
       />
       <Box
@@ -132,10 +139,10 @@ export default function index() {
       <GetTemplates
         heading="Ready to take your branding to the next level? Browse our 5000+ logo designs and find the perfect fit."
         text="Build your own brand identity - start with custom logos."
-        navigate="/templates/invitation-card"
+        navigate="/templates/logos"
       />
 
-      <ExploreTemplates category="logos" />
+      <ExploreTemplates category="logo" getAll="/templates/logos" />
     </Box>
   );
 }

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 
-export default function CustomeHead({ image, robots, text, heading }: any) {
+export default function CustomHead({ image, robots, text, heading }: any) {
   return (
     <Head>
       <meta property="og:title" content={heading} />

@@ -67,7 +67,7 @@ export default function UploadButton() {
     setValue(newValue);
   };
   return (
-    <>
+    <Box>
       <Button
         onClick={handleClick}
         className="bg-[#1C304833] text-white normal-case px-[20px]"
@@ -140,6 +140,6 @@ export default function UploadButton() {
           </Box>
         </Box>
       </Menu>
-    </>
+    </Box>
   );
 }

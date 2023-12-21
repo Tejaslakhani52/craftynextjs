@@ -212,7 +212,7 @@ export default function index() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1">
             <img
               src={"/images/whatCraftyart.png"}
-              alt={""}
+              alt={"whatCraftyart"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -251,7 +251,11 @@ export default function index() {
                 className="flex gap-3 bg_linear  max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
-                <img src={item?.icons} className="max-w-[25px] max-h-[25px]" />
+                <img
+                  src={item?.icons}
+                  alt={item?.name}
+                  className="max-w-[25px] max-h-[25px]"
+                />
                 <Typography className="text-[#ffff] whitespace-nowrap">
                   {item?.name}
                 </Typography>
@@ -265,7 +269,11 @@ export default function index() {
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
-                <img src={item?.icons} className="max-w-[25px] max-h-[25px]" />
+                <img
+                  src={item?.icons}
+                  alt={item?.name}
+                  className="max-w-[25px] max-h-[25px]"
+                />
                 <Typography className="text-[#ffff] whitespace-nowrap">
                   {item?.name}
                 </Typography>
@@ -279,7 +287,11 @@ export default function index() {
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
-                <img src={item?.icons} className="max-w-[25px] max-h-[25px]" />
+                <img
+                  src={item?.icons}
+                  alt={item?.name}
+                  className="max-w-[25px] max-h-[25px]"
+                />
                 <Typography className="text-[#ffff] whitespace-nowrap">
                   {item?.name}
                 </Typography>
@@ -293,7 +305,11 @@ export default function index() {
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
-                <img src={item?.icons} className="max-w-[25px] max-h-[25px]" />
+                <img
+                  src={item?.icons}
+                  alt={item?.name}
+                  className="max-w-[25px] max-h-[25px]"
+                />
                 <Typography className="text-[#ffff] whitespace-nowrap">
                   {item?.name}
                 </Typography>
@@ -307,7 +323,11 @@ export default function index() {
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
-                <img src={item?.icons} className="max-w-[25px] max-h-[25px]" />
+                <img
+                  src={item?.icons}
+                  alt={item?.name}
+                  className="max-w-[25px] max-h-[25px]"
+                />
                 <Typography className="text-[#ffff] whitespace-nowrap">
                   {item?.name}
                 </Typography>
@@ -355,7 +375,7 @@ export default function index() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/ourMission.png"}
-              alt={""}
+              alt={"ourMission"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>

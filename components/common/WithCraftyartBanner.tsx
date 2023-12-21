@@ -22,7 +22,7 @@ export default function WithCraftyartBanner() {
           <a href="https://play.google.com/store/apps/details?id=com.crafty.art">
             <img
               src="/images/bgRemove/playStore.png"
-              alt=""
+              alt="playStore"
               className="w-[180px]"
             />
           </a>

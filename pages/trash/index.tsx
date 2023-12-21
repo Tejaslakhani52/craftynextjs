@@ -3,7 +3,7 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -104,8 +104,7 @@ const DraftBoxes = ({
 
   const handleDelete = (id: string) => {
     axios
-      .post("https://panel.craftyartapp.com/templates/api/mdraft", {
-        key: "qwfsegxdhbxfjhncf",
+      .post("/api/draftAction", {
         id: id,
         user_id: user_id,
         type: "2",
@@ -118,8 +117,7 @@ const DraftBoxes = ({
 
   const restore = (id: string) => {
     axios
-      .post("https://panel.craftyartapp.com/templates/api/mdraft", {
-        key: "qwfsegxdhbxfjhncf",
+      .post("/api/draftAction", {
         id: id,
         user_id: user_id,
         type: "1",
@@ -170,13 +168,18 @@ const DraftBoxes = ({
             className="carousel-slider"
             style={{
               transform: `translateX(-${currentIndex * 100}%)`,
+              height: "100%",
             }}
           >
             {item?.thumbs.map((image: any, index: number) => (
               <div
                 className="carousel-slide"
                 key={index}
-                style={{ display: "flex", justifyContent: "center" }}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
               >
                 <img
                   src={image}
@@ -322,8 +325,7 @@ const DraftBoxesTab2 = ({
 
   const handleDelete = (id: string) => {
     axios
-      .post("https://panel.craftyartapp.com/templates/api/mupload", {
-        key: "qwfsegxdhbxfjhncf",
+      .post("/api/uploadAction", {
         id: id,
         user_id: user_id,
         type: "2",
@@ -336,8 +338,7 @@ const DraftBoxesTab2 = ({
 
   const restore = (id: string) => {
     axios
-      .post("https://panel.craftyartapp.com/templates/api/mupload", {
-        key: "qwfsegxdhbxfjhncf",
+      .post("/api/uploadAction", {
         id: id,
         user_id: user_id,
         type: "1",
@@ -484,7 +485,7 @@ const DraftBoxesTab2 = ({
 export default function index() {
   const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
-  const user_id = tokenGet("userProfile");
+  const user_id = authCookiesGet();
   const screenHeight = useScreenHeight();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
   const [designTrash, setDesignTrash] = useState<any>([]);
@@ -493,8 +494,10 @@ export default function index() {
   const [mouseEnterItem, setMouseEnterItem] = useState<any>("");
   const [loadMore, setLoadMore] = useState<any>(false);
   const [loadMore2, setLoadMore2] = useState<any>(false);
+  console.log("loadMore2: ", loadMore2);
   const [isLastDesignPage, setIsLastDesignPage] = useState<any>(false);
   const [isLastImagesPage, setIsLastImagesPage] = useState<any>(false);
+  console.log("isLastImagesPage: ", isLastImagesPage);
   const [designPage, setDesignPage] = useState<number>(1);
   const [imagesPage, setImagesPage] = useState<number>(1);
   const [value, setValue] = React.useState(0);
@@ -525,50 +528,53 @@ export default function index() {
   console.log("multiSize: ", multiSize);
 
   useEffect(() => {
-    setLoadMore(true);
+    if (user_id) {
+      setLoadMore(true);
 
-    axios
-      .post(`https://panel.craftyartapp.com/templates/api/drafts`, {
-        key: "qwfsegxdhbxfjhncf",
-        user_id: user_id,
-        type: "1",
-        page: designPage,
-      })
-      .then((res: any) => {
-        console.log("res: ", res);
-        setLoadMore(false);
-        setIsLastDesignPage(res?.data?.isLastPage);
-        if (res?.data?.datas) {
-          setDesignTrash((prevData: any) => [
-            ...(prevData || []),
-            ...res?.data?.datas,
-          ]);
-        }
-      })
-      .catch((err: any) => console.log("err: ", err));
+      axios
+        .post(`/api/getDrafts`, {
+          user_id: user_id,
+          type: "1",
+          page: designPage,
+        })
+        .then((res: any) => {
+          setLoadMore(false);
+          if (res?.data?.datas.length > 0) {
+            setDesignTrash((prevData: any) => [
+              ...(prevData || []),
+              ...res?.data?.datas,
+            ]);
+            setIsLastDesignPage(res?.data?.isLastPage);
+          } else setDesignTrash(null);
+        })
+        .catch((err: any) => console.log("err: ", err));
+    }
   }, [user_id, designPage]);
 
   useEffect(() => {
-    setLoadMore2(true);
-    axios
-      .post(`https://panel.craftyartapp.com/templates/api/uploads`, {
-        key: "qwfsegxdhbxfjhncf",
-        user_id: user_id,
-        type: "1",
-        page: imagesPage,
-      })
-      .then((res: any) => {
-        console.log("Imagesres:", res);
-        setLoadMore2(false);
-        setIsLastImagesPage(res?.data?.isLastPage);
-        if (res?.data?.datas) {
-          setImagesTrash((prevData: any) => [
-            ...(prevData || []),
-            ...res?.data?.datas,
-          ]);
-        }
-      })
-      .catch((err: any) => console.log("err: ", err));
+    if (user_id) {
+      setLoadMore2(true);
+      axios
+        .post(`/api/getUploads`, {
+          key: "qwfsegxdhbxfjhncf",
+          user_id: user_id,
+          type: "1",
+          page: imagesPage,
+        })
+        .then((res: any) => {
+          console.log("Imagesres:", res);
+          setLoadMore2(false);
+          if (res?.data?.datas.length > 0) {
+            setImagesTrash((prevData: any) => [
+              ...(prevData || []),
+              ...res?.data?.datas,
+            ]);
+
+            setIsLastImagesPage(res?.data?.isLastPage);
+          } else setImagesTrash(null);
+        })
+        .catch((err: any) => console.log("err: ", err));
+    }
   }, [user_id, imagesPage]);
 
   return (
@@ -641,15 +647,28 @@ export default function index() {
         <Box className=" ">
           <CustomTabPanel value={value} index={0}>
             <div className="flex flex-wrap " style={{ width: screenWidth }}>
-              {designTrash?.map((item: any) => (
-                <DraftBoxes
-                  item={item}
-                  setMouseEnterItem={setMouseEnterItem}
-                  mouseEnterItem={mouseEnterItem}
-                  multiSize={multiSize}
-                  user_id={user_id}
-                />
-              ))}
+              {designTrash
+                ? designTrash?.map((item: any) => (
+                    <DraftBoxes
+                      item={item}
+                      setMouseEnterItem={setMouseEnterItem}
+                      mouseEnterItem={mouseEnterItem}
+                      multiSize={multiSize}
+                      user_id={user_id}
+                    />
+                  ))
+                : !loadMore && (
+                    <div
+                      className="flex justify-center items-center w-full"
+                      style={{ height: `${screenHeight - 330}px` }}
+                    >
+                      <img
+                        src="/images/NoDataFound.svg"
+                        alt="NoDataFound"
+                        className="w-[250px]"
+                      />
+                    </div>
+                  )}
             </div>
 
             <div
@@ -664,27 +683,42 @@ export default function index() {
                   Loading....
                 </Box>
               ) : (
-                <Button
-                  className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-                  sx={{ display: isLastDesignPage ? "none" : "block" }}
-                  onClick={() => setDesignPage((prev) => prev + 1)}
-                >
-                  LOAD MORE
-                </Button>
+                !isLastDesignPage &&
+                designTrash?.length > 0 && (
+                  <Button
+                    className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+                    onClick={() => setDesignPage((prev) => prev + 1)}
+                  >
+                    LOAD MORE
+                  </Button>
+                )
               )}
             </div>
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
             <div className="flex flex-wrap " style={{ width: screenWidth }}>
-              {imagesTrash?.map((item: any) => (
-                <DraftBoxesTab2
-                  item={item}
-                  setMouseEnterItem={setMouseEnterItem}
-                  mouseEnterItem={mouseEnterItem}
-                  multiSize={multiSize}
-                  user_id={user_id}
-                />
-              ))}
+              {imagesTrash
+                ? imagesTrash?.map((item: any) => (
+                    <DraftBoxesTab2
+                      item={item}
+                      setMouseEnterItem={setMouseEnterItem}
+                      mouseEnterItem={mouseEnterItem}
+                      multiSize={multiSize}
+                      user_id={user_id}
+                    />
+                  ))
+                : !loadMore2 && (
+                    <div
+                      className="flex justify-center items-center w-full"
+                      style={{ height: `${screenHeight - 330}px` }}
+                    >
+                      <img
+                        src="/images/NoDataFound.svg"
+                        alt="NoDataFound"
+                        className="w-[250px]"
+                      />
+                    </div>
+                  )}
             </div>
 
             <div
@@ -699,13 +733,16 @@ export default function index() {
                   Loading....
                 </Box>
               ) : (
-                <Button
-                  className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-                  sx={{ display: isLastImagesPage ? "none" : "block" }}
-                  onClick={() => setImagesPage((prev) => prev + 1)}
-                >
-                  LOAD MORE
-                </Button>
+                !isLastImagesPage &&
+                imagesTrash?.length > 0 && (
+                  <Button
+                    className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+                    sx={{ display: !isLastImagesPage ? "none" : "block" }}
+                    onClick={() => setImagesPage((prev) => prev + 1)}
+                  >
+                    LOAD MORE
+                  </Button>
+                )
               )}
             </div>
           </CustomTabPanel>

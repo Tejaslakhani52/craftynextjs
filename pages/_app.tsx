@@ -8,12 +8,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import store from "@/redux/store";
 import { Provider, useSelector } from "react-redux";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Toaster } from "react-hot-toast";
 import MainLoader from "@/components/common/MainLoader";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
+import MobileBottomBar from "@/components/common/MobileBottomBar";
 
 export async function getStaticProps() {
   const router = useRouter();
@@ -51,7 +52,7 @@ export default function App({
   const canonicalUrl = `https://craftyartapp.com${router.asPath}`;
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-  const token = tokenGet("userProfile");
+  const token = authCookiesGet();
 
   // if (token && str === "login") {
   //   router.push("/");
@@ -99,7 +100,7 @@ export default function App({
               // transition: "0.1s all",
               minHeight: `${screenHeight - 568}px`,
             }}
-            className="max-lg:ml-0"
+            className="max-lg:ml-0 max-sm:mb-[80px]"
           >
             <div style={{ zIndex: "5000000000000000", position: "fixed" }}>
               <Toaster />
@@ -114,6 +115,8 @@ export default function App({
         <TemplateModal open={id?.templates ? true : false} />
 
         <MainLoaderBox />
+
+        <MobileBottomBar />
       </Provider>
     </>
   );
@@ -172,7 +175,7 @@ export default function App({
 //   const canonicalUrl = `https://craftyartapp.com${router.asPath}`;
 //   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
-//   const token = tokenGet("userProfile");
+//   const token = authCookiesGet();
 
 //   const [open, setOpen] = useState<any>(false);
 

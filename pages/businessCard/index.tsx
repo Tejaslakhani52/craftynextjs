@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/bussinessCardDesign.png"
         heading={"Design professional business cards with business card maker"}
         text="Impress Your Clients with a High-Quality Business Card - Start Designing Now!"
@@ -21,7 +21,7 @@ export default function index() {
         heading={"Design professional business cards with business card maker"}
         text="Impress Your Clients with a High-Quality Business Card - Start Designing Now!"
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/business-card"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -46,6 +46,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
+        alt="business card maker"
+        path="/s/business-card"
         image="/images/bussinessCardDesign.png"
       />
 
@@ -62,6 +64,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Business Card"}
+        alt="business card maker"
+        path="/s/business-card"
         image="/images/bussinessCardCreate.png"
       />
 
@@ -78,6 +82,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
+        alt="business card maker"
+        path="/s/business-card"
         image="/images/bussinessCardTrending.png"
       />
       <Box
@@ -126,10 +132,10 @@ export default function index() {
       <GetTemplates
         heading="Get Started Now and Create Your Professional Business Card Today!"
         text="Your business card is your first impression – Make it count by creating your own today!"
-        navigate="/templates/invitation-card"
+        navigate="/s/business-card"
       />
 
-      <ExploreTemplates category="business-cards" />
+      <ExploreTemplates category="business card" getAll="/s/business-card" />
     </>
   );
 }

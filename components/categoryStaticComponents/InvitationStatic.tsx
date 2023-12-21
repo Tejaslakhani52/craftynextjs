@@ -11,7 +11,7 @@ export default function InvitationStatic() {
           variant="h2"
           className="text-[#1C3048] text-[30px] max-sm:text-[25px] text-center font-[600] mb-3"
         >
-          How To Customize An Invitation ?
+          How to Make a Invitation on CraftyArt?
         </Typography>
 
         <Typography className="text-center md:w-[70%] mx-auto">
@@ -28,7 +28,7 @@ export default function InvitationStatic() {
             <Box className="md:mt-[-80px] lg:min-h-[300px]">
               <img
                 src="/images/category/Cinvitation1.png"
-                alt=""
+                alt="invitation template"
                 className="max-h-[300px] w-auto block mx-auto"
               />
             </Box>
@@ -38,9 +38,9 @@ export default function InvitationStatic() {
             </Typography>
 
             <Typography className="text-center ">
-              Get your hands on the exclusive range of high-quality templates
-              designed by professionals the invitation designs that suit your
-              needs.
+              Start by selecting a suitable template for your invitation card.
+              Crafty Art offer a variety of templates based on different themes
+              and occasions.
             </Typography>
           </Box>
           <Box
@@ -50,7 +50,7 @@ export default function InvitationStatic() {
             <Box className="md:mt-[-80px] lg:min-h-[300px]">
               <img
                 src="/images/category/Cinvitation2.png"
-                alt=""
+                alt="invitation template"
                 className="max-h-[300px] w-auto block mx-auto"
               />
             </Box>
@@ -60,9 +60,9 @@ export default function InvitationStatic() {
             </Typography>
 
             <Typography className="text-center ">
-              Get your hands on the exclusive range of high-quality templates
-              designed by professionals the invitation designs that suit your
-              needs.
+              Once you've chosen a template, personalize it to fit your event.
+              Modify the text to include essential details such as the event
+              name, date, time, venue, and RSVP information.
             </Typography>
           </Box>
           <Box
@@ -72,7 +72,7 @@ export default function InvitationStatic() {
             <Box className="md:mt-[-80px] lg:min-h-[300px]">
               <img
                 src="/images/category/Cinvitation3.png"
-                alt=""
+                alt="invitation template"
                 className="max-h-[300px] w-auto block mx-auto"
               />
             </Box>
@@ -82,9 +82,9 @@ export default function InvitationStatic() {
             </Typography>
 
             <Typography className="text-center ">
-              Get your hands on the exclusive range of high-quality templates
-              designed by professionals the invitation designs that suit your
-              needs.
+              After customizing the invitation to your satisfaction, download
+              the final version. Save it in a format that is compatible with
+              your needs, such as PDF or image formats.
             </Typography>
           </Box>
         </Box>
@@ -105,21 +105,32 @@ export default function InvitationStatic() {
                 variant="h2"
                 className="text-[#1C3048] text-[30px] max-sm:text-[25px] font-[600] mb-4"
               >
-                Why Choose Invitation Card Design From CraftyArt ?
+                Why Choose CraftyArt For Invitation Designs ?
               </Typography>
 
               <FaqsBox
-                heading="Entirely Free"
-                text="All Invitation ideas available in the extensive library of Crafty..."
-              />
-              <FaqsBox
-                heading="Invitations Created By Professional Graphic Designers"
-                text="All Invitation ideas are designed by professional graphic desi..."
+                heading="Creativity and Uniqueness:"
+                text="CraftyArt offers creative and unique invitation card designs."
               />
 
               <FaqsBox
-                heading="Simple Procedure"
-                text="With our Invitation design ideas, you won’t have to face any ..."
+                heading="Customization Options:"
+                text="Extensive customization options for personalized invitations."
+              />
+
+              <FaqsBox
+                heading="Wide Range of Occasions:"
+                text="Covers diverse occasions, ensuring a suitable design for any event."
+              />
+
+              <FaqsBox
+                heading="Quality Materials:"
+                text="High-quality materials for a premium look and feel."
+              />
+
+              <FaqsBox
+                heading="User-Friendly Platform:"
+                text="Easy-to-navigate platform for a seamless design process."
               />
             </Box>
           </Box>
@@ -127,7 +138,7 @@ export default function InvitationStatic() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/category/whyChooseInvitation.png"}
-              alt={""}
+              alt={"invitation template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -235,25 +246,28 @@ export default function InvitationStatic() {
           <Box sx={{ p: "20px" }}></Box>
 
           <FaqsBox
-            heading="1. Can I use Crafty Art for free?"
-            text="Yes, Crafty Art offers a free online logo maker. To access it, select the Logo Maker option from the main page and
-          choose one of the premade templates. You can then add your own images, text, and design elements to customise the
-          post. When you’re finished, click Save, and your logo will be ready to download."
-          />
-          <FaqsBox
-            heading="2. What are the benefits of a premium subscription?"
-            text="As a premium user you can download unlimited Crafty Art assets, and various services."
+            heading="Why choose CraftyArt for invitation card designs?"
+            text="CraftyArt offers a unique blend of creativity, quality, and customization in every design."
           />
 
           <FaqsBox
-            heading="3. Why do i have to purchase Crafty Art Pro?"
-            text="With the premium user, you can access unlimited service of Crafty Art Pro."
+            heading="Can I customize my invitation cards?"
+            text="Yes, CraftyArt specializes in customization, allowing you to personalize colors, themes, and details."
           />
 
           <FaqsBox
-            heading="4. Are my downloads unlimited as a premium user?"
-            text="Yes, as a premium user, you have unlimited downloads. There is no limitations on the use of Crafty Art assets, templates,
-          and the Background Remover Tool."
+            heading="How do I order custom invitation cards?"
+            text="Visit Crafty Art, choose a design, and contact us to discuss customization and place your order."
+          />
+
+          <FaqsBox
+            heading="What is the turnaround time for customized cards?"
+            text="Turnaround time varies; our team provides an estimated timeline during customization discussions."
+          />
+
+          <FaqsBox
+            heading="Do you offer bulk discounts?"
+            text="Yes, CraftyArt provides competitive pricing and discounts for bulk orders."
           />
         </Box>
       </Box>

@@ -4,10 +4,9 @@ import FaqsBox from "../common/FAQs";
 import QuestionsTitle from "../common/QuestionsTitle";
 
 const howMakeFlyer = [
-  "Choose from the wide range of flyer templates from the CraftyArt App.",
-  "Then start dragging and dropping your logo and images onto the design, or you can just start from scratch.",
-  "Modify and design your flyer by using different fonts, photo effects, stickers, backgrounds and so much more.",
-  "Review, save and then choose the format and size that you want Or you can share it on social media directly.",
+  "Explore our wide range of categories to find the perfect flyer for your needs.  ",
+  "Personalize the flyer with your text, images, and branding elements using easy-to-use editing tools.",
+  "Once satisfied with your design, download it in your preferred format, ready to print or share digitally.",
 ];
 
 export default function FlyerStatic() {
@@ -22,9 +21,9 @@ export default function FlyerStatic() {
         </Typography>
 
         <Typography className="text-center md:w-[70%] mx-auto">
-          The process of designing an invitation with our online utility is
-          simple and straightforward. You can make a beautiful invitation for
-          your event by following the easy set of rules given below.
+          The process of designing an flyer with our online utility is simple
+          and straightforward. You can make a beautiful flyer for your event by
+          following the easy set of rules given below.
         </Typography>
 
         <Box className="flex gap-5 py-[30px] sm:py-[50px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
@@ -45,7 +44,7 @@ export default function FlyerStatic() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/category/makeFlyer.png"}
-              alt={""}
+              alt={"flyer template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -71,17 +70,33 @@ export default function FlyerStatic() {
               </Typography>
 
               <FaqsBox
-                heading="Entirely Free"
-                text="All Invitation ideas available in the extensive library of Crafty..."
-              />
-              <FaqsBox
-                heading="Invitations Created By Professional Graphic Designers"
-                text="All Invitation ideas are designed by professional graphic desi..."
+                heading="Variety"
+                text="Explore an extensive range of flyer designs and templates for every occasion."
               />
 
               <FaqsBox
-                heading="Simple Procedure"
-                text="With our Invitation design ideas, you won’t have to face any ..."
+                heading="Affordability"
+                text="Access high-quality designs without breaking the bank with our free templates."
+              />
+
+              <FaqsBox
+                heading="Ease of Use"
+                text="Our Flyer Creator makes designing a breeze, ensuring a stress-free experience for all users."
+              />
+
+              <FaqsBox
+                heading="Innovation"
+                text="Stay on the cutting edge with our constantly updated collection of trendsetting designs."
+              />
+
+              <FaqsBox
+                heading="Quality Assurance"
+                text="We pride ourselves on delivering top-notch flyer that exceed industry standards."
+              />
+
+              <FaqsBox
+                heading="Customer Satisfaction"
+                text="Your happiness is our priority. Join our community of satisfied customers who have experienced the craftyart's difference."
               />
             </Box>
           </Box>
@@ -89,7 +104,7 @@ export default function FlyerStatic() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/category/whyChooseFlyer.png"}
-              alt={""}
+              alt={"flyer template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>

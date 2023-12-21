@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/bridalShowerBanner.png"
         heading={
           "Celebrate the bride-to-be with stunning bridal shower invitations!"
@@ -25,7 +25,7 @@ export default function index() {
         }
         text="Create beautiful and unique invitations for your bridal shower with our easy-to-use invitation card maker."
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/bridal-Shower"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -50,6 +50,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
+        alt="bridal shower invitations"
+        path="/s/bridal-Shower"
         image="/images/bridalInvitation.png"
       />
 
@@ -66,6 +68,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Invitation"}
+        alt="bridal shower invitations"
+        path="/s/bridal-Shower"
         image="/images/bridalEase.png"
       />
 
@@ -82,6 +86,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
+        alt="bridal shower invitations"
+        path="/s/bridal-Shower"
         image="/images/bridalMinute.png"
       />
       <Box
@@ -133,7 +139,7 @@ export default function index() {
         navigate="/templates/invitation-card"
       />
 
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates category="bridal Shower" getAll={"/s/bridal-Shower"} />
     </>
   );
 }

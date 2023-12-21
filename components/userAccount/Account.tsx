@@ -2,7 +2,12 @@ import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
 import { useEffect, useState } from "react";
-import { tokenGet, tokenSet } from "@/redux/action/AuthToken";
+import {
+  authCookiesGet,
+  tokenGet,
+  tokenSet,
+  userPremium,
+} from "@/redux/action/AuthToken";
 import axios from "axios";
 import { useRouter } from "next/router";
 import PersonalInfo from "./components/PersonalInfo";
@@ -32,24 +37,24 @@ export const sidebarMenu = [
 
 export default function Account({ defaultTab }: any) {
   const router = useRouter();
-  const getData = tokenGet("userProfile");
+  const getData = authCookiesGet();
   const [userProfile, setUserProfile] = useState<any>(null);
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
   const [activeTab, setActiveTab] = useState<any>(defaultTab);
-  const [currentPlan, setcurrentPlan] = useState<any>();
+  const [currentPlan, setCurrentPlan] = useState<any>();
   const [loading, setLoading] = useState<any>(true);
   console.log("currentPlan: ", currentPlan);
   const screenHeight = useScreenHeight();
 
   const fetchData = async () => {
     axios
-      .post("/api1/get/user", {
-        key: "qwfsegxdhbxfjhncf",
-        device_id: "",
+      .post("/api/getUserData", {
         email: getData,
       })
       .then(({ data }) => {
         tokenSet("premium", data?.user?.is_premium === 1 ? "true" : "false");
+        userPremium(`${data?.user?.is_premium}`);
+
         setImageBaseUrl(data?.url);
         setUserProfile(data?.user);
       })
@@ -125,7 +130,7 @@ export default function Account({ defaultTab }: any) {
           response?.data?.lastIndexOf("}") + 1
         );
         const getDatas = JSON.parse(jsonString);
-        setcurrentPlan(getDatas);
+        setCurrentPlan(getDatas);
       })
       .catch((error) => console.log("error: ", error));
   }, [getData]);

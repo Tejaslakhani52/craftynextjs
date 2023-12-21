@@ -53,9 +53,8 @@ export default function GetTemplates(props: any) {
           style={{
             backgroundColor: "white",
             width: "fit-content",
-
             textTransform: "unset",
-            borderRadius: "10px",
+            borderRadius: "5px",
             fontWeight: "500",
             fontSize: "17px",
             color: "white",

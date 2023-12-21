@@ -1,5 +1,5 @@
 // withAuth.js
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
@@ -8,7 +8,7 @@ const withAuth = (WrappedComponent: any) => {
     const router = useRouter();
 
     useEffect(() => {
-      const isAuthenticated = tokenGet("userProfile");
+      const isAuthenticated = authCookiesGet();
 
       if (!isAuthenticated) {
         router.push("/login");

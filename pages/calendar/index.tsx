@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/calendarDesign.png"
         heading={
           "Stay organized and stylish all year round with our custom calendar maker!"
@@ -25,7 +25,7 @@ export default function index() {
         }
         text="Get ready to schedule your way to success with our beautifully designed calendars!"
         buttonName="Get Started"
-        navigate=""
+        navigate="/templates/calendar"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -54,6 +54,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
         image="/images/calendarDesign.png"
       />
       <RightImageSection
@@ -68,6 +70,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
         image="/images/calendarUnique.png"
       />
 
@@ -83,6 +87,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
         image="/images/calendarTrending.png"
       />
       <Box
@@ -131,10 +137,10 @@ export default function index() {
       <GetTemplates
         heading="Stay organised, stay on schedule - with our customizable calendar maker!"
         text="Start planning your days the way you want them - create your perfect calendar today!"
-        navigate="/templates/invitation-card"
+        navigate="/templates/calendar"
       />
 
-      <ExploreTemplates category="resume-portrait" />
+      <ExploreTemplates getAll={"/templates/calendar"} />
     </>
   );
 }

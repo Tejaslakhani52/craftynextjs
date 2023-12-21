@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 import React from "react";
 import Iframe from "react-iframe";
 
@@ -8,7 +9,9 @@ export default function LeftImage({
   image,
   buttonName,
   video,
+  alt,
 }: any) {
+  const router = useRouter();
   return (
     <Box className="  bg-[#F4F7FE]  ">
       <Box className="flex py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
@@ -22,12 +25,12 @@ export default function LeftImage({
           {image ? (
             <img
               src={image}
-              alt={image}
+              alt={alt}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           ) : (
             <video
-              src={video} 
+              src={video}
               controls={false}
               autoPlay
               loop
@@ -52,11 +55,12 @@ export default function LeftImage({
                 width: "fit-content",
                 fontSize: "18px",
                 textTransform: "unset",
-                borderRadius: "10px",
+                borderRadius: "5px",
                 fontWeight: "500",
                 color: "white",
               }}
-              className="bg_linear py-[10px] px-[10px] ml-[40px]  max-lg:mx-auto text-[14px] 2sm:text-[17px]"
+              className="bg_linear py-[7px] px-[20px] ml-[40px]  max-lg:mx-auto text-[14px] 2sm:text-[17px]"
+              onClick={() => router.push("/login")}
             >
               {buttonName}
             </Button>

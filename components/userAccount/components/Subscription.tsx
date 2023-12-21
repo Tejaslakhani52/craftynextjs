@@ -20,7 +20,7 @@ export default function Subscription({ userSubscription }: any) {
         <Box className="w-[350px] mx-auto flex flex-col items-center justify-center">
           <img
             src="/images/subcriptionNote.png"
-            alt=""
+            alt="subcriptionNote"
             className="w-[300px] mb-5"
           />
           <h3 className="text-[18px] pt-5 pb-5 text-[#1C3048] font-medium">

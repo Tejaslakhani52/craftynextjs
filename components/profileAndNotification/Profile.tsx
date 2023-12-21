@@ -5,7 +5,12 @@ import { useDispatch } from "react-redux";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Divider } from "@mui/material";
-import { tokenGet, tokenSet } from "@/redux/action/AuthToken";
+import {
+  authCookiesGet,
+  tokenGet,
+  tokenSet,
+  userPremium,
+} from "@/redux/action/AuthToken";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
@@ -23,7 +28,7 @@ export default function Profile() {
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-  const getData = tokenGet("userProfile");
+  const getData = authCookiesGet();
 
   useEffect(() => {
     setuId(getData);
@@ -37,13 +42,12 @@ export default function Profile() {
 
   const fetchData = async () => {
     axios
-      .post("/api1/get/user", {
-        key: "qwfsegxdhbxfjhncf",
-        device_id: "",
+      .post("/api/getUserData", {
         email: uId,
       })
       .then(({ data }) => {
         tokenSet("premium", data?.user?.is_premium === 1 ? "true" : "false");
+        userPremium(`${data?.user?.is_premium}`);
         setImageBaseUrl(data?.url);
         setUserProfile(data?.user);
       })
@@ -171,6 +175,12 @@ export default function Profile() {
             if (typeof document !== "undefined") {
               document.cookie = `token=; `;
             }
+
+            Cookies.remove("sessionId", { domain: ".craftyartapp.com" });
+            Cookies.remove("premium", { domain: ".craftyartapp.com" });
+
+            Cookies.remove("sessionId");
+            Cookies.remove("premium");
 
             window.location.reload();
           }}

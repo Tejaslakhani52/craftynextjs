@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/posterPerfact.png"
         heading={"Make attractive posters by using plenty of poster designs."}
         text="Browse Crafty Art's poster design and customise them to communicate your message, and raise your
@@ -23,7 +23,7 @@ export default function index() {
         text="Browse Crafty Art's poster design and customise them to communicate your message, and raise your
         brand awareness."
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/poster"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -47,6 +47,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Poster"}
+        alt="poster designs"
+        path="/s/poster"
         image="/images/posterPerfact.png"
       />
       <RightImageSection
@@ -61,6 +63,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Poster"}
+        alt="poster designs"
+        path="/s/poster"
         image="/images/posterCreate.png"
       />
       <LeftImageSection
@@ -76,6 +80,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Posters"}
+        alt="poster designs"
+        path="/s/poster"
         image="/images/posterEase.png"
       />
       {/*  */}{" "}
@@ -124,9 +130,9 @@ export default function index() {
       <GetTemplates
         heading="Unlock your creativity with 5000+ customizable poster templates to choose from."
         text="Design your perfect poster design today with our easy-to-use poster maker!"
-        navigate="/templates/invitation-card"
+        navigate="/s/poster"
       />
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates getAll="/s/poster" />
     </>
   );
 }

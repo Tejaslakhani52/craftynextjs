@@ -5,18 +5,18 @@ import QuestionsTitle from "../common/QuestionsTitle";
 
 const howMakeQuotes = [
   {
-    heading: "Search & Select Quotes Templates",
-    text: "Choose from the wide range of Quotes templates from the CraftyArt App.",
+    heading: "Printable Options:",
+    text: "Some quotes are available in printable formats. Decorate your space or create thoughtful gifts with our printable quote templates.    ",
     icon: "/images/category/searchQuotes.svg",
   },
   {
-    heading: "Edit Quotes to Make Your Own Custom Design",
-    text: "Modify and design your Qoutes by using different fonts, photo effects, stickers, backgrounds and so much more.",
+    heading: " Customization Options:     ",
+    text: "Personalize quotes to match your style or tailor them to specific occasions. Change fonts, colors, and layouts for a unique touch.    ",
     icon: "/images/category/editQuotes.svg",
   },
   {
-    heading: "Download, Share & Print Out",
-    text: "Review, save and then choose the format and size that you want Or you can share it on social media directly.",
+    heading: "Download and Share:   ",
+    text: " Easily download your favorite quotes and share them on social media, in presentations, or with friends and family.    ",
     icon: "/images/category/download.svg",
   },
 ];
@@ -29,7 +29,7 @@ export default function QuotesStatic() {
           variant="h2"
           className="text-[#1C3048] text-[30px] max-sm:text-[25px] text-center font-[600] mb-3"
         >
-          How to Make a Quotes on CraftyArt?
+          How to Use Our Quotes Templates
         </Typography>
 
         <Typography className="text-center md:w-[70%] mx-auto">
@@ -42,7 +42,7 @@ export default function QuotesStatic() {
           <Box className="flex-1  max-lg:pb-5 max-lg:order-1 ">
             <img
               src={"/images/category/makeQuotes.png"}
-              alt={""}
+              alt={"quotes template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -53,7 +53,11 @@ export default function QuotesStatic() {
                 <Box className=" flex gap-3 items-center ">
                   <Box className=" text-[#ABB2C7] text-[23px]">{index + 1}</Box>
 
-                  <img src={item.icon} alt="" className="bg-white" />
+                  <img
+                    src={item.icon}
+                    alt="quotes template"
+                    className="bg-white"
+                  />
                 </Box>
                 <Box className="w-fit">
                   <Typography className="font-semibold">
@@ -89,20 +93,22 @@ export default function QuotesStatic() {
                 variant="h2"
                 className="text-[#1C3048] text-[30px] max-sm:text-[25px] font-[600] mb-4"
               >
-                Why Choose CraftyArt For Quotes Designs ?
+                Why Choose Our Quote Templates?
               </Typography>
 
               <FaqsBox
-                heading="Entirely Free"
-                text="All Invitation ideas available in the extensive library of Crafty..."
+                heading="Quality Content                 "
+                text="Our quotes are carefully curated to ensure relevance, authenticity, and impact.
+                  "
               />
               <FaqsBox
-                heading="Invitations Created By Professional Graphic Designers"
-                text="All Invitation ideas are designed by professional graphic desi..."
+                heading="Diverse Selection                 "
+                text="From classic literature to contemporary thinkers, our collection spans a wide range of sources and themes."
               />
               <FaqsBox
-                heading="Simple Procedure"
-                text="With our Invitation design ideas, you won’t have to face any ..."
+                heading="User-Friendly"
+                text="Easily navigate, download, and customize quotes to suit your needs.
+                "
               />
             </Box>
           </Box>
@@ -110,7 +116,7 @@ export default function QuotesStatic() {
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
               src={"/images/category/whyChooseQuotes.png"}
-              alt={""}
+              alt={"quotes template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -218,25 +224,28 @@ export default function QuotesStatic() {
           <Box sx={{ p: "20px" }}></Box>
 
           <FaqsBox
-            heading="1. Can I use Crafty Art for free?"
-            text="Yes, Crafty Art offers a free online logo maker. To access it, select the Logo Maker option from the main page and
-          choose one of the premade templates. You can then add your own images, text, and design elements to customise the
-          post. When you’re finished, click Save, and your logo will be ready to download."
-          />
-          <FaqsBox
-            heading="2. What are the benefits of a premium subscription?"
-            text="As a premium user you can download unlimited Crafty Art assets, and various services."
+            heading="What is a Quotes Post?"
+            text="A Quotes Post is a curated collection of inspirational, motivational, or thought-provoking quotes presented in a visually appealing format. These posts aim to share wisdom, positivity, and insights with the audience."
           />
 
           <FaqsBox
-            heading="3. Why do i have to purchase Crafty Art Pro?"
-            text="With the premium user, you can access unlimited service of Crafty Art Pro."
+            heading="How can I create a Quotes Post?"
+            text="Creating a Quotes Post is simple. Choose a theme or topic, select relevant quotes, and pair them with engaging visuals. Use graphic design tools or apps to enhance the visual appeal of your post."
           />
 
           <FaqsBox
-            heading="4. Are my downloads unlimited as a premium user?"
-            text="Yes, as a premium user, you have unlimited downloads. There is no limitations on the use of Crafty Art assets, templates,
-          and the Background Remover Tool."
+            heading="Where can I find quotes for my Quotes Post?"
+            text="You can find quotes in Crafty Art Quotes Post Maker."
+          />
+
+          <FaqsBox
+            heading="How can I measure the success of my Quotes Posts?"
+            text="Track engagement metrics such as likes, shares, and comments. Pay attention to the quotes that resonate the most with your audience and adjust your content strategy accordingly."
+          />
+
+          <FaqsBox
+            heading="How do I choose the right quotes for my audience?"
+            text="Consider your audience's interests, values, and preferences. Tailor the quotes to resonate with your audience and align with the overall theme or message of your platform."
           />
         </Box>
       </Box>

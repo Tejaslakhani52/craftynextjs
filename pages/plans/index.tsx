@@ -4,7 +4,7 @@ import FaqsBox from "@/components/common/FAQs";
 import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import Stripe from "@/components/payment/Stripe";
-import { tokenGet, tokenSet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import { Box, Button, Radio, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
@@ -58,7 +58,7 @@ export const MarkTextWrong = ({ text }: any) => {
 export const IconsText = ({ text, image }: any) => {
   return (
     <Box className="flex items-center w-[33%] max-sm:w-[98%] mb-8 gap-2 max-sm:pl-[20px]">
-      <img src={image} alt="" className="w-[30px]" />
+      <img src={image} alt={text} className="w-[30px]" />
 
       <Typography className="mt-[3px]">{text}</Typography>
     </Box>
@@ -76,8 +76,8 @@ const scrollToTop = () => {
 
 export default function index() {
   const router = useRouter();
-  const uId = tokenGet("userProfile");
-  const [planeType, setPlaneType] = useState<string>("mothly");
+  const uId = authCookiesGet();
+  const [planeType, setPlaneType] = useState<string>("monthly");
   const [pricePlaneData, setPricePlaneData] = useState<any>();
   const [checkedDataPlane, setCheckedDataPlane] = useState<any>(null);
   const [userCountryCode, setUserCountryCode] = useState("");
@@ -100,22 +100,18 @@ export default function index() {
 
   const getData = async () => {
     try {
-      const res = await axios.get("https://story.craftyartapp.com/get-ip");
+      const res = await axios.get("/api/getIp");
       const ip = res.data.ip;
 
       const response = await axios
-        .post("https://story.craftyartapp.com/api/getCountryCode", { ip })
+        .post("/api/getCountryCode", { ip: ip })
         .then((res: any) => {
           setUserCountryCode(res?.data?.countryCode);
           axios
-            .post(
-              "https://story.craftyartapp.com/my-api",
-              {
-                user_id: uId,
-                currency: res?.data?.countryCode === "IN" ? "INR" : "USD",
-              },
-              { withCredentials: false }
-            )
+            .post("/api/getPlans", {
+              user_id: uId,
+              currency: res?.data?.countryCode === "IN" ? "INR" : "USD",
+            })
             .then((response: any) => {
               const jsonString = response.data.substring(
                 response.data.indexOf("{"),
@@ -140,7 +136,7 @@ export default function index() {
   }, []);
 
   useEffect(() => {
-    if (planeType == "mothly") {
+    if (planeType == "monthly") {
       setPriceShowData(pricePlaneData?.[1]);
     } else if (planeType == "quarterly") {
       setPriceShowData(pricePlaneData?.[0]);
@@ -241,13 +237,13 @@ export default function index() {
             >
               <Button
                 className={`capitalize text-[17px] px-[10px] sm:px-[20px] ${
-                  planeType === "mothly"
+                  planeType === "monthly"
                     ? "bg-[white] text-[#2EC6B8]"
                     : "bg-[transparent] text-[white]"
                 } `}
-                onClick={() => setPlaneType("mothly")}
+                onClick={() => setPlaneType("monthly")}
               >
-                Mothly
+                Monthly
               </Button>
               <Box className="w-[2px] bg-[#FFF] h-[30px]"></Box>
               <Button
@@ -607,7 +603,7 @@ export default function index() {
           <Box className="flex-1  flex justify-end max-lg:pb-5 max-lg:order-1">
             <img
               src={"/images/whyChooseCraftyart.png"}
-              alt={""}
+              alt={"whyChooseCraftyart"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>

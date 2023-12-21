@@ -49,7 +49,7 @@ export default function CustomInvitations() {
             whiteSpace: "nowrap",
             opacity: "1",
             width: "180px",
-            borderRadius: "8px",
+            borderRadius: "5px",
             "&:hover": {
               backgroundColor: "white",
             },

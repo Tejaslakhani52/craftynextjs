@@ -3,8 +3,8 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { tokenGet } from "@/redux/action/AuthToken";
-import { Box, Button } from "@mui/material";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
+import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,8 +59,7 @@ const DraftBoxes = ({
 
   const moveTrash = (id: string) => {
     axios
-      .post("https://panel.craftyartapp.com/templates/api/mdraft", {
-        key: "qwfsegxdhbxfjhncf",
+      .post("/api/draftAction", {
         id: id,
         user_id: user_id,
         type: "0",
@@ -108,28 +107,40 @@ const DraftBoxes = ({
           onMouseLeave={handleMouseLeave}
         >
           <div
-            className="carousel-slider"
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
+            className="w-full h-full"
+            onClick={() =>
+              window.open(`https://editor.craftyartapp.com/${item?.id}`)
+            }
           >
-            {item?.thumbs.map((image: any, index: number) => (
-              <div
-                className="carousel-slide"
-                key={index}
-                style={{ display: "flex", justifyContent: "center" }}
-              >
-                <img
-                  src={image}
-                  alt={`slide-${index}`}
+            <div
+              className="carousel-slider"
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+                height: "100%",
+              }}
+            >
+              {item?.thumbs.map((image: any, index: number) => (
+                <div
+                  className="carousel-slide"
+                  key={index}
                   style={{
-                    maxWidth: `${multiSize}px`,
-                    maxHeight: "180px",
-                    width: "auto",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
-                />
-              </div>
-            ))}
+                >
+                  <img
+                    src={image}
+                    alt={`slide-${index}`}
+                    style={{
+                      maxWidth: `${multiSize}px`,
+                      maxHeight: "180px",
+                      width: "auto",
+                    }}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
           {mouseEnterItem === item?.id && item?.thumbs.length > 1 && (
@@ -171,6 +182,12 @@ const DraftBoxes = ({
           </Menu>
         </div>
       </Box>
+
+      <div className="pt-2 px-1">
+        <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
+          {item?.name}
+        </p>
+      </div>
     </Box>
   );
 };
@@ -179,14 +196,16 @@ export default function index() {
   const dispatch = useDispatch();
 
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
-  const user_id = tokenGet("userProfile");
+  const user_id = authCookiesGet();
   const screenHeight = useScreenHeight();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
-  const [draftData, setDraftData] = useState<any>();
+  const [draftData, setDraftData] = useState<any>([]);
   console.log("draftData: ", draftData);
   const [mouseEnterItem, setMouseEnterItem] = useState<any>("");
   const [loadMore, setLoadMore] = useState<any>(false);
-  const [isLastPage, setIsLastPage] = useState<any>(false);
+  console.log("loadMore: ", loadMore);
+  const [isLastPage, setIsLastPage] = useState<any>(true);
+  console.log("isLastPage: ", isLastPage);
   const [page, setPage] = useState<number>(1);
 
   const multiSize = useMemo(() => {
@@ -211,42 +230,57 @@ export default function index() {
   console.log("multiSize: ", multiSize);
 
   useEffect(() => {
-    setLoadMore(true);
+    if (user_id) {
+      setLoadMore(true);
 
-    axios
-      .post(`https://panel.craftyartapp.com/templates/api/drafts`, {
-        key: "qwfsegxdhbxfjhncf",
-        user_id: user_id,
-        type: " 0",
-        page: page,
-      })
-      .then((res: any) => {
-        console.log("res: ", res);
-        setLoadMore(false);
-        setIsLastPage(res?.data?.isLastPage);
-        if (res?.data?.datas) {
-          setDraftData((prevData: any) => [
-            ...(prevData || []),
-            ...res?.data?.datas,
-          ]);
-        }
-      })
-      .catch((err: any) => console.log("err: ", err));
+      axios
+        .post(`/api/getDrafts`, {
+          user_id: user_id,
+          type: "0",
+          page: page,
+        })
+        .then((res: any) => {
+          console.log("res: ", res);
+          setLoadMore(false);
+
+          if (res?.data?.datas.length > 0) {
+            setDraftData((prevData: any) => [
+              ...(prevData || []),
+              ...res?.data?.datas,
+            ]);
+            setIsLastPage(res?.data?.isLastPage);
+          }
+        })
+        .catch((err: any) => console.log("err: ", err));
+    }
   }, [user_id, page]);
 
   return (
     <div className="px-[15px]">
       <h1 className="text-[32px] font-medium p-[10px]">Draft</h1>
-      <div className="flex flex-wrap " style={{ width: screenWidth }}>
-        {draftData?.map((item: any) => (
-          <DraftBoxes
-            item={item}
-            setMouseEnterItem={setMouseEnterItem}
-            mouseEnterItem={mouseEnterItem}
-            multiSize={multiSize}
-            user_id={user_id}
-          />
-        ))}
+      <div className="flex flex-wrap" style={{ width: screenWidth }}>
+        {draftData
+          ? draftData?.map((item: any) => (
+              <DraftBoxes
+                item={item}
+                setMouseEnterItem={setMouseEnterItem}
+                mouseEnterItem={mouseEnterItem}
+                multiSize={multiSize}
+                user_id={user_id}
+              />
+            ))
+          : !loadMore && (
+              <div
+                className="flex justify-center items-center w-full"
+                style={{ height: `${screenHeight - 230}px` }}
+              >
+                <img
+                  src="/images/NoDataFound.svg"
+                  alt="NoDataFound"
+                  className="w-[250px]"
+                />
+              </div>
+            )}
       </div>
 
       <div
@@ -259,13 +293,15 @@ export default function index() {
         {loadMore ? (
           <Box className="text_linear font-[700 text-[20px]">Loading....</Box>
         ) : (
-          <Button
-            className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-            sx={{ display: isLastPage ? "none" : "block" }}
-            onClick={() => setPage((prev) => prev + 1)}
-          >
-            LOAD MORE
-          </Button>
+          !isLastPage &&
+          draftData?.length > 0 && (
+            <Button
+              className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              LOAD MORE
+            </Button>
+          )
         )}
       </div>
     </div>

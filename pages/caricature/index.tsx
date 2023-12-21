@@ -112,6 +112,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Cards"}
+        alt="Wedding Invitations"
         image="/images/caricature/side1.png"
       />
 
@@ -129,6 +130,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create a New Card Design"}
+        alt="Wedding Invitations"
         image="/images/caricature/side2.png"
       />
 
@@ -145,6 +147,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Cards"}
+        alt="Wedding Invitations"
         image="/images/caricature/side3.png"
       />
 

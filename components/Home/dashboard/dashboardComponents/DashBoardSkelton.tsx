@@ -4,20 +4,19 @@ import {
 } from "@/commonFunction/screenWidthHeight";
 import Skelton from "@/components/common/Skelton";
 import { Box, Skeleton } from "@mui/material";
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 
-export default function DashBoardSkelton() {
-  const screenWidth = useScreenWidth();
+export default function DashBoardSkelton({ height }: any) {
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
 
   return (
-    <div className="fixed top-0 left-0 right-0 bottom-0 bg-[white] z-[1000]">
-      <div className="h-[80px]"></div>
+    <div className="  bg-[white] z-[1000]">
+      <div className="h-[20px]"></div>
 
       <div className="flex">
         <div
-          className=""
+          className="hidden"
           style={{
             width: "15%",
             padding: "13px 10px   ",
@@ -138,7 +137,7 @@ export default function DashBoardSkelton() {
         </div>
 
         <div
-          className="py-2 px-4   "
+          className="py-2 px-4  w-full "
           style={{ width: sideBarRedux ? `85%` : "100%" }}
         >
           <Skeleton
@@ -150,11 +149,11 @@ export default function DashBoardSkelton() {
               marginBottom: "10px",
             }}
           />
-          <Box className="flex flex-col gap-5 py-[50px]">
+          <Box className="flex flex-col gap-5 pb-[50px]">
             <Box className="flex items-center overflow-hidden scroll_none gap-[20px]  ">
               <Skelton
-                width="250px"
-                height="200px"
+                width={`${height}px`}
+                height={`${height}px`}
                 round="10px"
                 fill={20}
                 line="row"
@@ -167,8 +166,8 @@ export default function DashBoardSkelton() {
             </Box>
             <Box className="flex  items-center overflow-hidden scroll_none gap-[20px]  ">
               <Skelton
-                width="250px"
-                height="200px"
+                width={`${height}px`}
+                height={`${height}px`}
                 round="10px"
                 fill={20}
                 line="row"
@@ -181,8 +180,8 @@ export default function DashBoardSkelton() {
             </Box>
             <Box className="flex items-center overflow-hidden scroll_none gap-[20px] mb-5 ">
               <Skelton
-                width="250px"
-                height="200px"
+                width={`${height}px`}
+                height={`${height}px`}
                 round="10px"
                 fill={20}
                 line="row"

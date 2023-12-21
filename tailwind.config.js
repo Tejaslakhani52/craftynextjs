@@ -20,8 +20,10 @@ module.exports = {
       },
       screens: {
         "5xl": "2000px",
+        muiLG: "1200px",
         "2sm": "350px",
         "2md": "900px",
+        fold: "300px",
       },
     },
   },

@@ -4,7 +4,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { tokenSet } from "@/redux/action/AuthToken";
+import { authCookiesSet, tokenSet } from "@/redux/action/AuthToken";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -64,7 +64,7 @@ export default function LoginContentBox(props: any) {
       );
 
       toast.success("Success Login");
-      tokenSet("userProfile", userCredential?.user?.uid);
+      authCookiesSet(userCredential?.user?.uid);
 
       // if (typeof document !== "undefined") {
       //   document.cookie = "token=yourTokenValue";

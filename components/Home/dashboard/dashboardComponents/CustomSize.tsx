@@ -320,7 +320,7 @@ export default function CustomSize() {
   }, [width, height]);
 
   return (
-    <>
+    <Box>
       <Button
         onClick={handleClick}
         className="bg-[#1C304833] text-white normal-case px-[20px]"
@@ -383,21 +383,27 @@ export default function CustomSize() {
               px
             </Box>
             {/* <CustomizedMenus value={selectedUnit} setValue={setSelectedUnit} /> */}
-
-            <Button
-              className="p-[12px]"
-              onClick={() => setLockAspectRatio(!lockAspectRatio)}
-            >
-              {lockAspectRatio ? <Icons.lockIcon /> : <Icons.unLockIcon />}
-            </Button>
+            <Box>
+              <Button
+                className="p-[12px]"
+                onClick={() => setLockAspectRatio(!lockAspectRatio)}
+              >
+                {lockAspectRatio ? <Icons.lockIcon /> : <Icons.unLockIcon />}
+              </Button>
+            </Box>
           </Box>
           <Box className="py-3 px-[20px]">
-            <Button className="bg_linear text-white w-full py-2 normal-case text-[16px]">
+            <Button
+              className="bg_linear text-white w-full py-2 normal-case text-[16px]"
+              onClick={() =>
+                window.open(`https://editor.craftyartapp.com/${base64String}`)
+              }
+            >
               Create new design
             </Button>
           </Box>
         </Box>
       </Menu>
-    </>
+    </Box>
   );
 }

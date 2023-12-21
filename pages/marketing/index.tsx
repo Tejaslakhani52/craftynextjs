@@ -1,5 +1,5 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
 import FaqsBox from "@/components/common/FAQs";
 import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
@@ -41,7 +41,7 @@ const sliderTemplate = [
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/marketingCatching.png"
         heading="Elevate your marketing game with stunning marketing templates!"
         text="Make an unforgettable impression with custom marketing posters
@@ -70,6 +70,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your flyer now"}
+        alt="marketing templates"
         image="/images/marketingCatching.png"
         path="/flyers"
       />
@@ -87,6 +88,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Find a Business Card"}
+        alt="marketing templates"
         image="/images/marketingbussinessCard.png"
         path="/businessCard"
       />
@@ -104,6 +106,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Logo"}
+        alt="marketing templates"
         image="/images/marketingLogoDesign.png"
         path="/logos"
       />
@@ -121,6 +124,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Poster"}
+        alt="marketing templates"
         image="/images/marketingEffectivePoster.png"
         path="/posters"
       />
@@ -138,6 +142,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Create your Brochure"}
+        alt="marketing templates"
         image="/images/marketingBrochure.png"
         path="/brochure"
       />
@@ -155,6 +160,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Menu"}
+        alt="marketing templates"
         image="/images/marketingRestaurantMenu.png"
       />
 
@@ -171,6 +177,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your own Infographic"}
+        alt="marketing templates"
         image="/images/marketingInfoGraphic.png"
       />
 

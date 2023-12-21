@@ -2,8 +2,8 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import LandingPage from "@/components/Home/landingPage/LandingPage";
 import Dashboard from "@/components/Home/dashboard/Dashboard";
-import { tokenGet } from "@/redux/action/AuthToken";
-import { useEffect, useState } from "react";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
+import { useEffect, useState, useMemo } from "react";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { tokenValue } from "@/redux/reducer/AuthDataReducer";
@@ -12,6 +12,7 @@ import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,13 +22,25 @@ export default function Home() {
   // }
   const dispatch = useDispatch();
   const router = useRouter();
-  const token = tokenGet("userProfile");
+  const token = authCookiesGet();
   const tokenRedux = useSelector((state: any) => state.auth.tokenValue);
   const mainLoading = useSelector((state: any) => state.actions.mainLoader);
   console.log("mainLoading: ", mainLoading);
   const [isLoading, setIsLoading] = useState<any>(true);
   const urlNavigate = tokenGet("navigate");
   console.log("urlNavigate: ", urlNavigate);
+
+  const screenWidth = useScreenWidth();
+
+  const height = useMemo(() => {
+    let val;
+
+    if (screenWidth > 600) {
+      val = 250;
+    } else val = 100;
+
+    return val;
+  }, [screenWidth]);
 
   if (typeof document !== "undefined") {
     const tokenCookie = document.cookie
@@ -82,7 +95,7 @@ export default function Home() {
         mainLoading ? (
           <MainLoaderBox />
         ) : (
-          <DashBoardSkelton />
+          <DashBoardSkelton height={height} />
         )
       ) : tokenRedux ? (
         <Dashboard />

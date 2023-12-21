@@ -8,9 +8,10 @@ import LogoStatic from "@/components/categoryStaticComponents/LogoStatic";
 import QuotesStatic from "@/components/categoryStaticComponents/QuotesStatic";
 import ResumeStatic from "@/components/categoryStaticComponents/ResumeStatic";
 import Breadcrumb from "@/components/common/Breadcrumb";
+import ImageBox from "@/components/common/ImageBox";
 import NotFound from "@/components/common/NotFound";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import {
   modalClosePath,
   openTempModal,
@@ -21,7 +22,7 @@ import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 
@@ -92,9 +93,8 @@ export default function index() {
   const [notFound, setNotFound] = useState<any>(false);
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
-  const userLoginStatus = tokenGet("userProfile");
+  const userLoginStatus = authCookiesGet();
   const [idName, setIdName] = useState<any>("");
-
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
 
   useEffect(() => {
@@ -109,6 +109,7 @@ export default function index() {
           page: page,
         })
         .then((res: any) => {
+          console.log("rescsc: ", res);
           setLoadMore(false);
           setIsLastPage(res?.data?.isLastPage);
           if (id?.categoryId === "latest") {
@@ -261,73 +262,85 @@ export default function index() {
     }
   };
 
+  const height = useMemo(() => {
+    let val;
+
+    if (screenWidth > 600) {
+      val = 250;
+    } else val = 100;
+
+    return val;
+  }, [screenWidth]);
+
   return (
     <>
-      {isLoading && <DashBoardSkelton />}
+      {isLoading && <DashBoardSkelton height={height} />}
       {notFound && <NotFound />}
 
-      <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
-        <Head>
-          <title>{contentData?.meta_title}</title>
-          <meta name="description" content={contentData?.meta_desc} />
-        </Head>
-        <Box className="pt-[15px]">
-          <Breadcrumb
-            data={[
-              { name: "Home", path: "/" },
-              { name: "Templates", path: "/" },
-              { name: id?.categoryId, current: true },
-            ]}
-          />
-        </Box>
+      {!isLoading && (
+        <>
+          <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
+            <Head>
+              <title>{contentData?.meta_title}</title>
+              <meta name="description" content={contentData?.meta_desc} />
+            </Head>
+            <Box className="pt-[15px]">
+              <Breadcrumb
+                data={[
+                  { name: "Home", path: "/" },
+                  { name: "Templates", path: "/" },
+                  { name: id?.categoryId, current: true },
+                ]}
+              />
+            </Box>
 
-        <Box
-          sx={{
-            background:
-              "linear-gradient(268.03deg, #5961F8 -0.66%, #5961F8 -0.65%, #497DEC 22.41%, #15D8C5 100%, #15D8C5 100%)",
-            display: "flex",
-            alignItems: "center",
-            margin: "10px auto",
-            width: "100%",
-            overflow: "hidden",
-          }}
-          className="lg:pl-[80px]  max-lg:px-[20px] h-auto max-lg:py-[50px] rounded-[8px]"
-        >
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              padding: "10px 0",
-            }}
-            className="w-full lg:w-[57%] max-lg:items-center "
-          >
-            <Typography
+            <Box
               sx={{
-                color: "#ffffff",
+                background:
+                  "linear-gradient(268.03deg, #5961F8 -0.66%, #5961F8 -0.65%, #497DEC 22.41%, #15D8C5 100%, #15D8C5 100%)",
+                display: "flex",
+                alignItems: "center",
+                margin: "10px auto",
                 width: "100%",
-                fontWeight: "500",
-                lineHeight: "40px",
+                overflow: "hidden",
               }}
-              className="max-lg:text-center text-[30px] sm:text-[40px]"
-              variant="h1"
+              className="lg:pl-[80px]  max-lg:px-[20px] h-auto max-lg:py-[50px] max-sm:py-[20px] rounded-[8px]"
             >
-              {contentData?.h1_tag}
-            </Typography>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
+                  padding: "10px 0",
+                }}
+                className="w-full lg:w-[57%] max-lg:items-center "
+              >
+                <Typography
+                  sx={{
+                    color: "#ffffff",
+                    width: "100%",
+                    fontWeight: "500",
+                    lineHeight: "40px",
+                  }}
+                  className="max-lg:text-center text-[25px] sm:text-[40px]"
+                  variant="h1"
+                >
+                  {contentData?.h1_tag}
+                </Typography>
 
-            <Typography
-              sx={{
-                fontSize: "18px",
-                color: "#ffff",
-                width: "100%",
-                marginBottom: "10px",
-              }}
-              className="max-lg:text-center"
-            >
-              {contentData?.short_desc}
-            </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "18px",
+                    color: "#ffff",
+                    width: "100%",
+                    marginBottom: "10px",
+                  }}
+                  className="max-lg:text-center max-sm:text-[14px]"
+                >
+                  {contentData?.short_desc}
+                </Typography>
 
-            <Button
+                {/* <Button
               style={{
                 backgroundColor: "white",
                 width: "162px",
@@ -341,92 +354,46 @@ export default function index() {
               }}
             >
               <span className="text_linear">Start Design</span>
-            </Button>
-          </Box>
-          <Box
-            sx={{
-              width: "43%",
-              alignItems: "center",
-              justifyContent: "end",
-            }}
-            className="hidden lg:flex"
-          >
-            <Box sx={{ width: "400px" }}>
-              <img
-                src={"/images/categoryBanner.png"}
-                alt="resumeBanner"
-                style={{ width: "100%", height: "100%", paddingRight: "0px" }}
-              />
-            </Box>
-          </Box>
-        </Box>
-
-        <StackGrid columnWidth={screenWidth / multiSizeFixSize} duration={0}>
-          {data?.map((templates: any, index: number) => (
-            <div
-              className="relative"
-              style={{
-                height: `${calculateHeight(
-                  templates?.width,
-                  templates?.height,
-                  screenWidth / multiSizeFixSize
-                )}px`,
-                width: `${screenWidth / multiSizeFixSize}px`,
-              }}
-              id={`content${index}`}
-            >
-              {/* <Link
-                href={`/templates/p/${templates.id_name}`}
-                // as={`/templates/p/${templates.id_name}`}
-                // scroll={false}
-                // shallow={true}
-                // replace
-              > */}
-              <div
-                className="w-full h-full p-[8px]"
-                onClick={() => {
-                  setIdName(templates?.id_name);
-                  setOpenModal(true);
-
-                  window.history.replaceState(
-                    {},
-                    "",
-                    `/templates/p/${templates?.id_name}`
-                  );
+            </Button> */}
+              </Box>
+              <Box
+                sx={{
+                  width: "43%",
+                  alignItems: "center",
+                  justifyContent: "end",
                 }}
+                className="hidden lg:flex"
               >
-                {templates.is_premium && (
+                <Box sx={{ width: "400px" }}>
                   <img
-                    src="/icons/proIcon.svg"
-                    alt=""
-                    className="w-[28px] absolute right-[13px] top-[13px]"
+                    src={"/images/categoryBanner.png"}
+                    alt={contentData?.h1_tag}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      paddingRight: "0px",
+                    }}
                   />
-                )}
-                <img
-                  src={templates?.template_thumb}
-                  alt={templates?.category_name}
-                  className={`w-full] rounded-[5px] cursor-pointer`}
-                  style={{
-                    border: "1px solid #80808082",
-                    height: "100%",
-                  }}
+                </Box>
+              </Box>
+            </Box>
+
+            <StackGrid
+              columnWidth={screenWidth / multiSizeFixSize}
+              duration={0}
+            >
+              {data?.map((templates: any, index: number) => (
+                <ImageBox
+                  templates={templates}
+                  screenWidth={screenWidth}
+                  multiSizeFixSize={multiSizeFixSize}
+                  setIdName={setIdName}
+                  setOpenModal={setOpenModal}
                 />
+              ))}
+            </StackGrid>
 
-                <div className="pt-2">
-                  <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                    {templates?.template_name}
-                  </p>
-                  <p className="text-[#ABB2C7] text-[13px] pb-1">
-                    {templates?.category_name}
-                  </p>
-                </div>
-              </div>
-              {/* </Link> */}
-            </div>
-          ))}
-        </StackGrid>
-
-        {/* <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
+            {/* <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
           {data?.map((templates: any, index: number) => (
             <Box
               className={`${true && "p-[5px] bg-[bg-[#F4F7FE]] "}  `}
@@ -547,28 +514,31 @@ export default function index() {
           ))}
         </Box> */}
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "40px 0",
-          }}
-        >
-          {loadMore ? (
-            <Box className="text_linear font-[700 text-[20px]">Loading....</Box>
-          ) : (
-            <Button
-              className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-              sx={{ display: isLastPage ? "none" : "block" }}
-              onClick={() => setPage((prev) => prev + 1)}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                padding: "40px 0",
+              }}
             >
-              LOAD MORE
-            </Button>
-          )}
-        </div>
-      </Box>
-
-      {staticBox[id?.categoryId]}
+              {loadMore ? (
+                <Box className="text_linear font-[700 text-[20px]">
+                  Loading....
+                </Box>
+              ) : (
+                <Button
+                  className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+                  sx={{ display: isLastPage ? "none" : "block" }}
+                  onClick={() => setPage((prev) => prev + 1)}
+                >
+                  LOAD MORE
+                </Button>
+              )}
+            </div>
+          </Box>
+          {staticBox[id?.categoryId]}
+        </>
+      )}
 
       <TemplateModal
         open={openModal}
@@ -576,13 +546,6 @@ export default function index() {
         setOpen={setOpenModal}
         setId={setIdName}
       />
-
-      {/* <InvitationStatic /> */}
-      {/* <FlyerStatic /> */}
-      {/* <QuotesStatic /> */}
-      {/* <FestivalBanner /> */}
-      {/* <LogoStatic /> */}
-      {/* <ResumeStatic /> */}
     </>
   );
 }

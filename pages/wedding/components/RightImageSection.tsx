@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function RightImageSection({
@@ -6,7 +7,12 @@ export default function RightImageSection({
   point,
   image,
   buttonName,
+  path,
+  alt,
 }: any) {
+  const router = useRouter();
+  console.log("router: ", router?.asPath.split("/")[1]);
+
   return (
     <Box className="  bg-[#F4F7FE]  ">
       <Box className="flex py-[30px] sm:py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
@@ -32,13 +38,14 @@ export default function RightImageSection({
                 padding: "8px 20px",
               }}
               className="bg_linear  ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
+              onClick={() => router.push(path)}
             >
               {buttonName}
             </Button>
           </Box>
         </Box>
         <Box className="flex-1  flex justify-center">
-          <img src={image} alt={image} className="object-contain w-[500px]" />
+          <img src={image} alt={alt} className="object-contain w-[500px]" />
         </Box>
       </Box>
     </Box>

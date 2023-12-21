@@ -13,7 +13,7 @@
 // export default function Header({ sidebarOpen, setSidebarOpen }: any) {
 //   const dispatch = useDispatch();
 //   const router = useRouter();
-//   const token = tokenGet("userProfile");
+//   const token = authCookiesGet();
 //   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
 //   const [openLogin, setOpenLogin] = useState<boolean>(false);
 //   const [openSignUp, setOpenSignUp] = useState<boolean>(false);
@@ -135,7 +135,7 @@
 //   );
 // }
 
-import { Box, Button } from "@mui/material";
+import { Box, Button, Menu } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
 import MenuBox, {
   EditorTools,
@@ -146,7 +146,7 @@ import LoginButton from "./headerComponents/LoginButton";
 import { useRouter } from "next/router";
 import Sidebar from "../sidebar/Sidebar";
 import Profile from "../profileAndNotification/Profile";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { useDispatch, useSelector } from "react-redux";
 import {
   enterAccount,
@@ -158,11 +158,13 @@ import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 
 export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   const screenWidth = useScreenWidth();
+  console.log("screenWidth: ", screenWidth);
   const dispatch = useDispatch();
   const router = useRouter();
-  console.log("router: ", router);
-  const token = tokenGet("userProfile");
-  console.log("token: ", token);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const token = authCookiesGet();
   const [executed, setExecuted] = useState(false);
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
@@ -211,7 +213,10 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
           dispatch(tokenValue(true));
         } else if (
           router?.pathname === "/your-account" ||
-          router?.pathname === "/subscriptions"
+          router?.pathname === "/subscriptions" ||
+          router?.pathname === "/draft" ||
+          router?.pathname === "/trash" ||
+          router?.pathname === "/upload"
         ) {
           router.push("/");
         }
@@ -252,6 +257,10 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   );
   console.log("enterYourAccount: ", enterYourAccount);
 
+  const handleClick = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   return (
     <>
       <Box
@@ -260,22 +269,9 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
       >
         <Box className="w-[60%] flex items-center justify-start gap-12 max-lg:w-[40%]">
           <Box className="flex items-center justify-start gap-5">
-            <Button
-              className="py-3 min-w-[30px] px-1 block lg:hidden"
-              onClick={() => {
-                dispatch(openSidebar(!sideBarRedux));
-                setSidebarOpen(!sideBarRedux);
-              }}
-            >
-              <img
-                src="/icons/menuOpen.svg"
-                alt="menuOpen"
-                className="w-[22px] mx-auto"
-              />
-            </Button>
-            {!enterYourAccount && token && (
+            <Box>
               <Button
-                className="py-3 min-w-[30px] px-1 hidden lg:block"
+                className="py-3 min-w-[30px] px-1 block lg:hidden"
                 onClick={() => {
                   dispatch(openSidebar(!sideBarRedux));
                   setSidebarOpen(!sideBarRedux);
@@ -287,6 +283,23 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                   className="w-[22px] mx-auto"
                 />
               </Button>
+            </Box>
+            {!enterYourAccount && token && (
+              <Box>
+                <Button
+                  className="py-3 min-w-[30px] px-1 hidden lg:block"
+                  onClick={() => {
+                    dispatch(openSidebar(!sideBarRedux));
+                    setSidebarOpen(!sideBarRedux);
+                  }}
+                >
+                  <img
+                    src="/icons/menuOpen.svg"
+                    alt="menuOpen"
+                    className="w-[22px] mx-auto"
+                  />
+                </Button>
+              </Box>
             )}
             <Box
               className="w-[146px] cursor-pointer "
@@ -328,20 +341,71 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
               onChange={(e) => setSearchValue(e.target.value)}
             />
           </Box>
-          <Box className="w-[16px] flex items-center sm:hidden cursor-pointer">
-            <img src="/icons/SearchIcon.svg" alt="SearchIcon" />
+          <Box
+            className="flex items-center sm:hidden cursor-pointer p-2"
+            onClick={handleClick}
+          >
+            <img
+              src="/icons/SearchIcon.svg"
+              alt="SearchIcon"
+              className="w-[20px]"
+            />
           </Box>
 
-          {token ? (
-            <Profile />
-          ) : (
-            <LoginButton
-              openLogin={openLogin}
-              setOpenLogin={setOpenLogin}
-              openSignUp={openSignUp}
-              setOpenSignUp={setOpenSignUp}
-            />
-          )}
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={() => setAnchorEl(null)}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <Box className="pl-[10px] pr-[10px] flex gap-[10px]">
+              <Box className="w-[250px] bg-[#F4F7FE] px-4 py-[9px] rounded-[6px] flex items-center gap-3  ">
+                <Box className="w-[16px] flex items-center">
+                  <img src="/icons/SearchIcon.svg" alt="SearchIcon" />
+                </Box>
+                <input
+                  type="text"
+                  value={searchValue}
+                  placeholder="Search your content or CraftyArt’s"
+                  className="bg-transparent w-[100%] focus:outline-0 text-[14px]"
+                  onChange={(e) => setSearchValue(e.target.value)}
+                />
+              </Box>
+              <Box>
+                <Button
+                  className="text-white bg_linear normal-case"
+                  onClick={(e: any) => {
+                    const trimmedValue = searchValue?.trim();
+                    const modifiedValue = trimmedValue?.replace(/ /g, "-");
+                    router.push(`/s/${modifiedValue}`);
+                    setAnchorEl(null);
+                  }}
+                >
+                  Search
+                </Button>
+              </Box>
+            </Box>
+          </Menu>
+          <Box className="">
+            {/* <Box className="max-sm:hidden"> */}
+            {token ? (
+              <Box>
+                <Profile />
+              </Box>
+            ) : (
+              <Box>
+                <LoginButton
+                  openLogin={openLogin}
+                  setOpenLogin={setOpenLogin}
+                  openSignUp={openSignUp}
+                  setOpenSignUp={setOpenSignUp}
+                />{" "}
+              </Box>
+            )}
+          </Box>
 
           {/* <Profile /> */}
         </Box>

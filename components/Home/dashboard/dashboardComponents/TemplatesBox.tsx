@@ -6,16 +6,171 @@ import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TemplatesSkelton from "./TemplatesSkelton";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+
+function ImageBox({
+  templates,
+  uniqueCat,
+  height,
+  setIdName,
+  setOpenModal,
+}: any) {
+  const dispatch = useDispatch();
+  const [currentIndex, setCurrentIndex] = useState<any>(0);
+  console.log("currentIndex: ", currentIndex);
+  const [isHovered, setIsHovered] = useState(false);
+  console.log("isHovered: ", isHovered);
+  const intervalRef: any = useRef(null);
+  useEffect(() => {
+    if (isHovered) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(
+          (prevIndex: any) => (prevIndex + 1) % templates?.thumbArray.length
+        );
+      }, 1300);
+    } else {
+      clearInterval(intervalRef.current);
+    }
+
+    return () => {
+      clearInterval(intervalRef.current);
+    };
+  }, [isHovered, templates?.thumbArray]);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setCurrentIndex(0);
+  };
+
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    // if (e.target instanceof HTMLImageElement) {
+    //   const imageLink = `http://localhost:3000/templates/p/${templates?.id_name}`;
+    //   if (imageLink) {
+    //     window.open(imageLink, "_blank");
+    //   }
+    // }
+
+    // href={`/?templates=${templates.id_name}`}
+    // as={`/templates/p/${templates.id_name}`}
+    // scroll={false}
+    // shallow={true}
+  };
+  return (
+    <Box
+      className={`h-auto bg-white cursor-pointer ${
+        uniqueCat
+          ? "p-3 max-sm:p-1 min-w-[250px] max-sm:min-w-[130px]"
+          : "p-[7px] max-sm:p-1"
+      } rounded-[12px]`}
+      key={templates?.template_name}
+      onClick={() => {
+        setIdName(templates?.id_name);
+        setOpenModal(true);
+
+        window.history.replaceState(
+          {},
+          "",
+          `/templates/p/${templates?.id_name}`
+        );
+      }}
+    >
+      <Box
+        className={` ${
+          uniqueCat
+            ? "bg-[#E6E8EE] p-2 max-sm:p-1 h-[165px] max-sm:h-[150px]"
+            : "p-[0px]"
+        } rounded-[10px] relative`}
+        style={{
+          height: uniqueCat
+            ? "auto"
+            : `${calculateHeight(
+                templates?.width,
+                templates?.height,
+                height
+              )}px`,
+          width: uniqueCat ? "auto" : `${height}px`,
+        }}
+        onClick={() => {
+          dispatch(modalClosePath(`/`));
+        }}
+      >
+        {templates.is_premium && (
+          <img
+            src="/icons/proIcon.svg"
+            alt="pro"
+            className="w-[28px] absolute right-[5px] top-[5px] z-[1]"
+          />
+        )}
+
+        <div
+          className="custom-carousel w-full h-full overflow-hidden cursor-pointer rounded-[5px]"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div
+            className="carousel-slider w-full h-full "
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+            }}
+          >
+            {templates?.thumbArray.map((image: any, index: number) => (
+              <div className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide">
+                <img
+                  src={image}
+                  alt={image}
+                  className={` w-[auto] ${
+                    uniqueCat ? "h-[100%]" : ""
+                  }  mx-auto rounded-[4px]`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {isHovered && templates?.thumbArray?.length > 1 && (
+          <p
+            className="absolute bottom-[10px] w-[45px] flex justify-center left-[10px] bg-[#11171d99] font-[600] text-[white] text-[10px] py-[1px] px-[4px] rounded-[8px]"
+            style={{ transition: "0.5s all" }}
+          >
+            <span className="w-[9px]"> {currentIndex + 1} </span> OF{" "}
+            {templates?.thumbArray.length}
+          </p>
+        )}
+      </Box>
+
+      <Box
+        className="pt-2"
+        style={{
+          width: uniqueCat ? "auto" : `${height}px`,
+        }}
+      >
+        <Typography className="text-ellipsis max-sm:text-[12px] w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
+          {templates?.template_name}
+        </Typography>
+        <Typography className="text-[#ABB2C7] text-[13px] pb-1 max-sm:hidden">
+          {templates?.category_name}
+        </Typography>
+      </Box>
+    </Box>
+  );
+}
 
 export const TemplatesBoxes = ({
   item,
   openModal,
   setOpenModal,
   setIdName,
+  height,
 }: any) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -26,6 +181,7 @@ export const TemplatesBoxes = ({
   const containerId = `carousel-slide-container-${item.category_id}`;
   const [showPrevButton, setShowPrevButton] = useState(true);
   const [showNextButton, setShowNextButton] = useState(true);
+  const screenWidth = useScreenWidth();
 
   const handleScroll = (e: Event) => {
     const container = e.target as HTMLElement;
@@ -63,17 +219,18 @@ export const TemplatesBoxes = ({
       });
     }
   };
+
   return (
     <Box className="relative">
-      <Box className="flex items-center justify-between pt-8 pb-4">
-        <Typography className="text-black font-semibold text-[22px]">
+      <Box className="flex items-center justify-between pt-8 pb-4 max-sm:pb-2 max-sm:pt-5">
+        <Typography className="text-black font-semibold text-[22px] max-sm:text-[14px]">
           {item?.category_name}
         </Typography>
         <Button
           className="normal-case"
           onClick={() => router.push(`/templates/${item?.id_name}`)}
         >
-          <span className="text-[#2EC6B8] font-semibold text-[16px] flex items-center">
+          <span className="text-[#2EC6B8] font-semibold text-[16px] max-sm:text-[14px] flex items-center">
             See all
           </span>
           <img
@@ -84,109 +241,49 @@ export const TemplatesBoxes = ({
         </Button>
       </Box>
       <Box
-        className="flex items-center overflow-auto scroll_none gap-[15px] "
+        className="flex items-center overflow-auto scroll_none gap-[15px] max-sm:gap-[10px] "
         id={containerId}
       >
         {showPrevButton && (
-          <button
-            onClick={handlePrevClick}
-            className="pre_button left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex"
-            style={{ top: "52%" }}
-          >
-            <img
-              src="/icons/leftArrow.svg"
-              alt="leftArrow"
-              className="w-[8px]"
-            />
-          </button>
+          <Box>
+            <button
+              onClick={handlePrevClick}
+              className="pre_button z-[1] left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex max-sm:hidden"
+              style={{ top: "52%" }}
+            >
+              <img
+                src="/icons/leftArrow.svg"
+                alt="leftArrow"
+                className="w-[8px]"
+              />
+            </button>
+          </Box>
         )}
         {item?.template_model?.map((templates: any) => (
           <>
-            <Box
-              // href={`/?templates=${templates.id_name}`}
-              // as={`/templates/p/${templates.id_name}`}
-              // scroll={false}
-              // shallow={true}
-
-              className={` h-auto bg-white cursor-pointer ${
-                uniqueCat ? "p-3 min-w-[250px]" : "p-[7px]"
-              } rounded-[12px]`}
-              key={templates?.template_name}
-              onClick={() => {
-                setIdName(templates?.id_name);
-                setOpenModal(true);
-
-                window.history.replaceState(
-                  {},
-                  "",
-                  `/templates/p/${templates?.id_name}`
-                );
-              }}
-            >
-              <Box
-                className={` ${
-                  uniqueCat ? "bg-[#E6E8EE] p-2 h-[165px]" : "p-[0px]"
-                } rounded-[10px] relative`}
-                style={{
-                  height: uniqueCat
-                    ? "auto"
-                    : `${calculateHeight(
-                        templates?.width,
-                        templates?.height,
-                        200
-                      )}px`,
-                  width: uniqueCat ? "auto" : "200px",
-                }}
-                onClick={() => {
-                  dispatch(modalClosePath(`/`));
-                }}
-              >
-                {templates.is_premium && (
-                  <img
-                    src="/icons/proIcon.svg"
-                    alt=""
-                    className="w-[28px] absolute right-[5px] top-[5px]"
-                  />
-                )}
-                <div className="bg-slate-200 w-full h-full rounded-[4px]">
-                  <img
-                    src={templates?.template_thumb}
-                    alt={templates?.category_name}
-                    className={` w-[auto] ${
-                      uniqueCat ? "h-[100%]" : ""
-                    }  mx-auto rounded-[4px]`}
-                  />
-                </div>
-              </Box>
-
-              <Box
-                className="pt-2"
-                style={{
-                  width: uniqueCat ? "auto" : "200px",
-                }}
-              >
-                <Typography className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                  {templates?.template_name}
-                </Typography>
-                <Typography className="text-[#ABB2C7] text-[13px] pb-1">
-                  {templates?.category_name}
-                </Typography>
-              </Box>
-            </Box>
+            <ImageBox
+              templates={templates}
+              uniqueCat={uniqueCat}
+              height={height}
+              setIdName={setIdName}
+              setOpenModal={setOpenModal}
+            />
           </>
         ))}
         {showNextButton && (
-          <button
-            onClick={handleNextClick}
-            className="next_button right-[-18px] flex "
-            style={{ top: "52%" }}
-          >
-            <img
-              src="/icons/rightArrow.svg"
-              alt="rightArrow"
-              className="w-[8px]"
-            />
-          </button>
+          <Box>
+            <button
+              onClick={handleNextClick}
+              className="next_button right-[-18px] flex max-sm:hidden"
+              style={{ top: "52%" }}
+            >
+              <img
+                src="/icons/rightArrow.svg"
+                alt="rightArrow"
+                className="w-[8px]"
+              />
+            </button>
+          </Box>
         )}
       </Box>
     </Box>
@@ -194,6 +291,8 @@ export const TemplatesBoxes = ({
 };
 
 export default function TemplatesBox() {
+  const screenWidth = useScreenWidth();
+
   const [openModal, setOpenModal] = React.useState(false);
   const [idName, setIdName] = useState<any>("");
   const router = useRouter();
@@ -212,8 +311,15 @@ export default function TemplatesBox() {
       .catch((err: any) => consoleShow("err", err));
   }, []);
 
+  const height = useMemo(() => {
+    if (screenWidth > 600) {
+      return 200;
+    } else return 100;
+  }, [screenWidth]);
+  console.log("height: ", height);
+
   return (
-    <Box className="px-[20px] pb-10">
+    <Box className="px-[20px] max-sm:px-[10px] pb-10">
       {data?.length > 0
         ? data?.map((item: any) => (
             <TemplatesBoxes
@@ -222,6 +328,7 @@ export default function TemplatesBox() {
               openModal={openModal}
               setOpenModal={setOpenModal}
               setIdName={setIdName}
+              height={height}
             />
           ))
         : true && <TemplatesSkelton />}

@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/partyBirthday.png"
         heading={"Create Your Perfect Party Invitation"}
         text="Browse top quality party invitation templates for your next design"
@@ -21,7 +21,7 @@ export default function index() {
         heading={"Create Your Perfect Party Invitation"}
         text="Browse top quality party invitation templates for your next design"
         buttonName="Get Started"
-        navigate=""
+        navigate="/s/party-celebration"
         image={
           <Box sx={{ width: "410px" }}>
             <img
@@ -46,6 +46,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Card"}
+        alt="Party Invitation"
+        path="/s/party-celebration"
         image="/images/partyBirthday.png"
       />
 
@@ -62,6 +64,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Party Invitation"}
+        alt="Party Invitation"
+        path="/s/party-celebration"
         image="/images/partyEase.png"
       />
 
@@ -78,6 +82,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Cards"}
+        alt="Party Invitation"
+        path="/s/party-celebration"
         image="/images/partyMinutes.png"
       />
       <Box
@@ -126,10 +132,13 @@ export default function index() {
       <GetTemplates
         heading="Design your dream party invitation with just a few clicks"
         text="start your creative journey today!"
-        navigate="/templates/invitation-card"
+        navigate="/s/party-celebration"
       />
 
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates
+        category="party celebration"
+        getAll="/s/party-celebration"
+      />
     </>
   );
 }

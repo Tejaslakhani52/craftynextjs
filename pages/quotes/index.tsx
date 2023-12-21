@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/qoutesDesign.png"
         heading={
           "Best Practices for Designing Quotes Posts that  Engage Your Audience"
@@ -25,12 +25,12 @@ export default function index() {
         }
         text="Tips and Techniques for Crafting Distinctive and Memorable Quotes Posts"
         buttonName="Get Started"
-        navigate=""
+        navigate="/templates/quotes-post-square"
         image={
           <Box sx={{ width: "500px" }}>
             <img
               src={"/images/qoutesBanner.png"}
-              alt="qoutesBanner"
+              alt="quotesBanner"
               style={{ width: "100%", height: "100%", paddingRight: "0px" }}
             />
           </Box>
@@ -43,13 +43,15 @@ export default function index() {
           <Box>
             <MarkText text="Choose a visually appealing background that complements the quote and your brand identity" />
             <MarkText text=" Select a legible font that is easy to read on any device" />
-            <MarkText text=" Use contrasting colours to make the text stand out from the background" />
+            <MarkText text=" Use contrasting colors to make the text stand out from the background" />
             <MarkText text=" Add a simple yet eye-catching border or frame to the quote" />
             <MarkText text=" Include your logo or website URL to build brand recognition" />
           </Box>
         }
         buttonName={"Design your Quotes"}
+        alt="quotes post design"
         image="/images/qoutesDesign.png"
+        path="/templates/quotes-post-square"
       />
       <RightImageSection
         title="How to make unique quotes post?"
@@ -58,18 +60,20 @@ export default function index() {
             <MarkText text="Use humour or wit to add a unique twist to the quote" />
             <MarkText text="Incorporate trending topics or current events into the quote" />
             <MarkText text="Create custom illustrations or graphics to accompany the quote" />
-            <MarkText text="Experiment with different font styles or colour schemes to create a distinctive look" />
+            <MarkText text="Experiment with different font styles or color schemes to create a distinctive look" />
             <MarkText text="Personalise the quote by using first-person narrative or including a relevant personal story" />
           </Box>
         }
-        buttonName={"Create Your Qoutes"}
+        buttonName={"Create Your Quotes"}
+        alt="quotes post design"
+        path="/templates/quotes-post-square"
         image="/images/qoutesUnique.png"
       />
       <LeftImageSection
         title="Top 5 trending designs for quotes post"
         point={
           <Box>
-            <MarkText text="Minimalist design: using a simple layout with clean lines and a limited colour palette" />
+            <MarkText text="Minimalist design: using a simple layout with clean lines and a limited color palette" />
             <MarkText text="Vintage design: using retro typography and distressed textures to create an old-school vibe" />
             <MarkText text="Typographic design: using creative typography to showcase the quote as the main focus" />
             <MarkText text="Photographic design: using high-quality photos as the background to add visual interest to the quote" />
@@ -77,6 +81,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Quotes"}
+        alt="quotes post design"
+        path="/templates/quotes-post-square"
         image="/images/qoutesTrending.png"
       />
       {/*  */}{" "}
@@ -127,7 +133,7 @@ export default function index() {
         text="Bring your words to life with our quotes post maker"
         navigate="/templates/invitation-card"
       />
-      <ExploreTemplates category="insta-fb-portrait" />
+      <ExploreTemplates getAll={"/templates/quotes-post-square"} />
     </>
   );
 }

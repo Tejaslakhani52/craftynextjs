@@ -113,6 +113,7 @@ export default function index() {
           </Box>
         }
         buttonName={"Resize Your Image"}
+        alt="resize "
         image="/images/resize/resizeYourImage.png"
       />
 
@@ -130,6 +131,7 @@ export feature."
           </Box>
         }
         buttonName={"Resize your Templates"}
+        alt="resize "
         image="/images/resize/designWithoutImage.png"
       />
 
@@ -151,6 +153,7 @@ campaigns."
           </Box>
         }
         buttonName={"All Templates"}
+        alt="resize "
         image="/images/resize/resizeFeature.png"
       />
 

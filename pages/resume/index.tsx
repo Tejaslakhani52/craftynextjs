@@ -7,12 +7,12 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomeHead from "@/components/common/CustomeHead";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   return (
     <>
-      <CustomeHead
+      <CustomHead
         image="/images/resumeDesign.png"
         heading={"Crafting a Winning Resume: Tips and  Best Practices"}
         text="Take your career to the next level with a professional, well-crafted resume."
@@ -21,7 +21,7 @@ export default function index() {
         heading={"Crafting a Winning Resume: Tips and  Best Practices"}
         text="Take your career to the next level with a professional, well-crafted resume."
         buttonName="Get Started"
-        navigate=""
+        navigate="/templates/resume-portrait"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -44,6 +44,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Design your Resume"}
+        alt="Resume"
+        path="/templates/resume-portrait"
         image="/images/resumeDesign.png"
       />
       <RightImageSection
@@ -59,6 +61,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Create Your Resume"}
+        alt="Resume"
+        path="/templates/resume-portrait"
         image="/images/resumeImpact.png"
       />
       <LeftImageSection
@@ -73,6 +77,8 @@ export default function index() {
           </Box>
         }
         buttonName={"Explore Resume"}
+        alt="Resume"
+        path="/templates/resume-portrait"
         image="/images/resumeUnique.png"
       />
       {/*  */}{" "}
@@ -121,9 +127,9 @@ export default function index() {
       <GetTemplates
         heading="Ready to create a standout resume? Get started today!"
         text="Create a standout resume and land your dream job with resume maker"
-        navigate="/templates/invitation-card"
+        navigate="/templates/resume-portrait"
       />
-      <ExploreTemplates category="resume-portrait" />
+      <ExploreTemplates getAll={"/templates/resume-portrait"} />
     </>
   );
 }

@@ -3,7 +3,7 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Button } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -23,22 +23,8 @@ const DraftBoxes = ({
   setMouseEnterItem,
   user_id,
 }: any) => {
-  const theme = useTheme();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
-  console.log("currentIndex: ", currentIndex);
-  const [isHovered, setIsHovered] = useState(false);
-  const intervalRef: any = useRef(null);
   const [removeId, setRemoveId] = useState<string>("");
-  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
-  const [openDeleteBox, setOpenDeleteBox] = React.useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -47,32 +33,9 @@ const DraftBoxes = ({
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClickOpen = () => {
-    setOpenDeleteBox(true);
-  };
-
-  const handleClose = () => {
-    setOpenDeleteBox(false);
-  };
-
-  const handleDelete = (id: string) => {
-    axios
-      .post("https://panel.craftyartapp.com/templates/api/mupload", {
-        key: "qwfsegxdhbxfjhncf",
-        id: id,
-        user_id: user_id,
-        type: "2",
-      })
-      .then((res: any) => {
-        console.log("moveTrash: ", res);
-        setRemoveId(id);
-      });
-  };
-
   const moveTrash = (id: string) => {
     axios
-      .post("https://panel.craftyartapp.com/templates/api/mupload", {
-        key: "qwfsegxdhbxfjhncf",
+      .post("/api/uploadAction", {
         id: id,
         user_id: user_id,
         type: "0",
@@ -80,21 +43,6 @@ const DraftBoxes = ({
       .then((res: any) => {
         console.log("moveTrash: ", res);
         toast.success("Moved to trash");
-        setRemoveId(id);
-      });
-  };
-
-  const restore = (id: string) => {
-    axios
-      .post("https://panel.craftyartapp.com/templates/api/mupload", {
-        key: "qwfsegxdhbxfjhncf",
-        id: id,
-        user_id: user_id,
-        type: "1",
-      })
-      .then((res: any) => {
-        console.log("moveTrash: ", res);
-        toast.success("Moved to your project");
         setRemoveId(id);
       });
   };
@@ -129,11 +77,7 @@ const DraftBoxes = ({
           <Icons.MoreIcon />
         </button>
 
-        <div
-          className=" flex justify-center w-full overflow-hidden cursor-pointer"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className=" flex justify-center w-full overflow-hidden cursor-pointer">
           <img
             src={item?.image}
             alt={`image`}
@@ -160,7 +104,6 @@ const DraftBoxes = ({
             open={open}
             onClose={() => {
               setAnchorEl(null);
-              setIsHovered(false);
               setMouseEnterItem("");
             }}
             MenuListProps={{
@@ -178,45 +121,6 @@ const DraftBoxes = ({
               Move to trash
             </MenuItem>
           </Menu>
-
-          <Dialog
-            fullScreen={fullScreen}
-            open={openDeleteBox}
-            onClose={handleClose}
-            aria-labelledby="responsive-dialog-title"
-          >
-            <div className="py-[20px]">
-              <h3 className="flex gap-[15px] font-semibold  px-[15px] text-[25px]  pb-4">
-                Delete permanently?
-              </h3>
-
-              <p className="px-[15px] pb-[35px]">
-                You're about to delete this design permanently. This can't be
-                undone.
-              </p>
-
-              <div className="button_tabs" style={{ paddingBottom: "0" }}>
-                <button
-                  className={`${"text_style"} `}
-                  onClick={() => setOpenDeleteBox(false)}
-                  style={{ height: "40px" }}
-                >
-                  Cancel
-                </button>
-                <button
-                  className={`font `}
-                  onClick={() => {
-                    setAnchorEl(null);
-                    setOpenDeleteBox(false);
-                    handleDelete(item?.id);
-                  }}
-                  style={{ height: "40px" }}
-                >
-                  Delete permanently
-                </button>
-              </div>
-            </div>
-          </Dialog>
         </div>
       </Box>
     </Box>
@@ -224,17 +128,16 @@ const DraftBoxes = ({
 };
 
 export default function index() {
-  const dispatch = useDispatch();
-
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
-  const user_id = tokenGet("userProfile");
-  const screenHeight = useScreenHeight();
+  const user_id = authCookiesGet();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
-  const [draftData, setDraftData] = useState<any>();
+  const screenHeight = useScreenHeight();
+  const [draftData, setDraftData] = useState<any>([]);
   console.log("draftData: ", draftData);
   const [mouseEnterItem, setMouseEnterItem] = useState<any>("");
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>(false);
+  console.log("isLastPage: ", isLastPage);
   const [page, setPage] = useState<number>(1);
 
   const multiSize = useMemo(() => {
@@ -259,42 +162,59 @@ export default function index() {
   console.log("multiSize: ", multiSize);
 
   useEffect(() => {
-    setLoadMore(true);
+    if (user_id) {
+      setLoadMore(true);
 
-    axios
-      .post(`https://panel.craftyartapp.com/templates/api/uploads`, {
-        key: "qwfsegxdhbxfjhncf",
-        user_id: user_id,
-        type: "0",
-        page: page,
-      })
-      .then((res: any) => {
-        console.log("res: ", res);
-        setLoadMore(false);
-        setIsLastPage(res?.data?.isLastPage);
-        if (res?.data?.datas) {
-          setDraftData((prevData: any) => [
-            ...(prevData || []),
-            ...res?.data?.datas,
-          ]);
-        }
-      })
-      .catch((err: any) => console.log("err: ", err));
+      axios
+        .post(`/api/getUploads`, {
+          key: "qwfsegxdhbxfjhncf",
+          user_id: user_id,
+          type: "0",
+          page: page,
+        })
+        .then((res: any) => {
+          setLoadMore(false);
+
+          if (res?.data?.datas.length > 0) {
+            setDraftData((prevData: any) => [
+              ...(prevData || []),
+              ...res?.data?.datas,
+            ]);
+            setIsLastPage(res?.data?.isLastPage);
+          } else setDraftData(null);
+        })
+        .catch((err: any) => console.log("err: ", err));
+    }
   }, [user_id, page]);
 
   return (
     <div className="px-[15px]">
       <h1 className="text-[32px] font-medium p-[10px]">Upload</h1>
       <div className="flex flex-wrap " style={{ width: screenWidth }}>
-        {draftData?.map((item: any) => (
-          <DraftBoxes
-            item={item}
-            setMouseEnterItem={setMouseEnterItem}
-            mouseEnterItem={mouseEnterItem}
-            multiSize={multiSize}
-            user_id={user_id}
-          />
-        ))}
+        {draftData
+          ? draftData?.map((item: any) => (
+              <DraftBoxes
+                item={item}
+                setMouseEnterItem={setMouseEnterItem}
+                mouseEnterItem={mouseEnterItem}
+                multiSize={multiSize}
+                user_id={user_id}
+              />
+            ))
+          : !loadMore && (
+              <div
+                className="flex justify-center items-center w-full"
+                style={{
+                  height: `${screenHeight - 230}px`,
+                }}
+              >
+                <img
+                  src="/images/NoDataFound.svg"
+                  alt=""
+                  className="w-[250px]"
+                />
+              </div>
+            )}
       </div>
 
       <div
@@ -307,13 +227,16 @@ export default function index() {
         {loadMore ? (
           <Box className="text_linear font-[700 text-[20px]">Loading....</Box>
         ) : (
-          <Button
-            className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-            sx={{ display: isLastPage ? "none" : "block" }}
-            onClick={() => setPage((prev) => prev + 1)}
-          >
-            LOAD MORE
-          </Button>
+          !isLastPage &&
+          draftData?.length > 0 && (
+            <Button
+              className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+              sx={{ display: !isLastPage ? "none" : "block" }}
+              onClick={() => setPage((prev) => prev + 1)}
+            >
+              LOAD MORE
+            </Button>
+          )
         )}
       </div>
     </div>

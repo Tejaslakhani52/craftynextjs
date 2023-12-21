@@ -5,7 +5,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import { auth } from "@/firebase";
-import { tokenSet } from "@/redux/action/AuthToken";
+import { authCookiesSet, tokenSet } from "@/redux/action/AuthToken";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import {
   sendPasswordResetEmail,
@@ -59,7 +59,7 @@ export default function ForgotPass(props: any) {
       );
 
       toast.success("Success Login");
-      tokenSet("userProfile", userCredential?.user?.uid);
+      authCookiesSet(userCredential?.user?.uid);
       router.push("/");
 
       setTimeout(() => {

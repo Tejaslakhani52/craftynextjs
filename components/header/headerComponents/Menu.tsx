@@ -17,7 +17,7 @@ export const Product = {
       allName: [
         { name: "Marketing", path: "/marketing" },
         { name: "Business", path: "/business" },
-        { name: "Card & Invitation", path: "" },
+        // { name: "Card & Invitation", path: "" },
       ],
     },
 
@@ -107,7 +107,7 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
   return (
     <Box className="relative ">
       <button
-        className={`peer px-3 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap  ${
+        className={`peer px-3 max-2xl:px-3 py-2  text-[14px] flex items-center whitespace-nowrap  ${
           onButtonLeave || onBoxLeave ? "active_text_linear" : "#1C3048"
         } `}
         // style={{ color: onButtonLeave || onBoxLeave ? "#2EC6B8" : "#1C3048" }}
@@ -212,7 +212,7 @@ export default function MenuBox() {
           }}
         >
           Pricing
-          <img src="/icons/pricing.svg" alt="" className="ml-[8px]" />
+          <img src="/icons/pricing.svg" alt="pro" className="ml-[8px]" />
         </button>
         <Box className=" relative block xl:hidden">
           <Button className="text-black px-2 min-w-[auto] peer ">

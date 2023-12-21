@@ -5,6 +5,7 @@ import {
 } from "@/commonFunction/screenWidthHeight";
 import {
   modalClosePath,
+  openSidebar,
   openTempModal,
 } from "@/redux/reducer/actionDataReducer";
 import { Box, Skeleton, Typography } from "@mui/material";
@@ -16,6 +17,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 import Link from "next/link";
+import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
+import { Templates } from "../header/headerComponents/Menu";
+import { AnyAaaaRecord } from "dns";
 
 export const IconsText = ({ image, text, isLoading }: any) => {
   return isLoading ? (
@@ -40,7 +44,7 @@ export const IconsText = ({ image, text, isLoading }: any) => {
     </Typography>
   ) : (
     <Typography className="flex text-[#1C3048] text-[14px] gap-3 items-center py-2">
-      <img src={image} alt="" className="w-[20px]" />
+      <img src={image} alt="image" className="w-[20px]" />
       {text}
     </Typography>
   );
@@ -56,7 +60,8 @@ export default function TemplateModal({
   console.log("id: ", id);
   const dispatch = useDispatch();
   const router = useRouter();
-
+  const userPremium = tokenGet("premium");
+  const token = authCookiesGet();
   console.log("router: ", router.asPath);
   // const id = router.query;
   const screenWidth = useScreenWidth();
@@ -64,99 +69,122 @@ export default function TemplateModal({
   const [anotherData, setAnotherData] = React.useState<any>([]);
   const [isLoading, setIsLoading] = React.useState<any>(true);
   const [template, setTemplate] = React.useState<any>({});
+  console.log("template: ", template);
   const [templateOpen, setTemplateOpen] = useState<any>(false);
   const [anotherTempLoad, setAnotherTempLoad] = useState<any>(true);
 
   const openModal = useSelector((state: any) => state.actions.openTempModal);
   const modalClose = useSelector((state: any) => state.actions.modalClosePath);
+  const [showPrevButton, setShowPrevButton] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(true);
+  console.log("showPrevButton: ", showPrevButton, showNextButton);
+  const [showImage, setShowImage] = useState<any>();
+  const containerId = `modalId`;
 
-  React?.useEffect(() => {
-    setAnotherTempLoad(true);
-    setAnotherData(false);
-    setIsLoading(true);
+  React.useEffect(() => {
+    setShowImage(template?.thumbArray?.[0]);
+  }, [template]);
 
-    axios
-      .post(
-        "/api1/my-posterPage",
-        {
-          key: "qwfsegxdhbxfjhncf",
-          id_name: id,
-        },
-        { withCredentials: false }
-      )
-      .then((response: any) => {
-        setIsLoading(false);
-        const jsonString = response.data.substring(
-          response.data.indexOf("{"),
-          response.data.lastIndexOf("}") + 1
-        );
-        const getDatas = JSON.parse(jsonString);
-        setTemplate(getDatas);
+  React.useEffect(() => {
+    const fetchData = async () => {
+      let getData1;
 
-        setTimeout(() => {
-          axios
-            .post("/api1/search-template", {
-              key: "qwfsegxdhbxfjhncf",
-              app_id: "1",
-              cat_id: "-1",
-              keywords: getDatas?.tags?.[0] as any,
-              device: "0",
-              refWidth: "1080",
-              refHeight: "1080",
-              page: 1,
-              debug: "debug",
-            })
-            .then((response: any) => {
-              const jsonString = response.data.substring(
-                response.data.indexOf("{"),
-                response.data.lastIndexOf("}") + 1
-              );
-              const getData = JSON.parse(jsonString);
+      try {
+        setAnotherTempLoad(true);
+        setAnotherData(false);
+        setIsLoading(true);
 
-              // if (getData && getData?.datas?.length > 0) {
-              //   setAnotherData(getData);
-              //   setAnotherTempLoad(false);
-              // } else
-              //   axios
-              //     .post(`/api/get/datas`, {
-              //       debug_key: "debug",
-              //       cat_id: getDatas?.category_id_name as any,
-              //       limit: 48,
-              //       page: 1,
-              //     })
-              //     .then((res: any) => {
-              //       setAnotherData(res?.data);
-              //       setAnotherTempLoad(false);
-              //     });
+        if (id) {
+          const response1 = await axios.post("/api/getSingleTemplate", {
+            id_name: id,
+          });
+          const jsonString1 = response1.data.substring(
+            response1.data.indexOf("{"),
+            response1.data.lastIndexOf("}") + 1
+          );
+          getData1 = JSON.parse(jsonString1);
 
-              setAnotherData(getData);
-              setAnotherTempLoad(false);
-            })
-            .catch((error: any) => {
-              console.log("error: ", error);
-            });
-        }, 100);
-      })
-      .catch((error) => {
-        console.log("error: ", error);
-      });
+          setIsLoading(false);
+          setTemplate(getData1);
+
+          const response2 = await axios.post("/api/searchTemplate", {
+            keywords: getData1?.tags?.[0],
+            page: 1,
+          });
+          const jsonString2 = response2.data.substring(
+            response2.data.indexOf("{"),
+            response2.data.lastIndexOf("}") + 1
+          );
+          const getData2 = JSON.parse(jsonString2);
+
+          setAnotherData(getData2);
+          setAnotherTempLoad(false);
+        }
+      } catch (error) {
+        if (id) {
+          const response1 = await axios.post("/api/getSingleTemplate", {
+            id_name: id,
+          });
+          const jsonString1 = response1.data.substring(
+            response1.data.indexOf("{"),
+            response1.data.lastIndexOf("}") + 1
+          );
+          getData1 = JSON.parse(jsonString1);
+
+          setIsLoading(false);
+          setTemplate(getData1);
+
+          const response2 = await axios.post("/api/searchTemplate", {
+            keywords: getData1?.tags?.[0],
+            page: 1,
+          });
+          const jsonString2 = response2.data.substring(
+            response2.data.indexOf("{"),
+            response2.data.lastIndexOf("}") + 1
+          );
+          const getData2 = JSON.parse(jsonString2);
+
+          setAnotherData(getData2);
+          setAnotherTempLoad(false);
+        }
+
+        try {
+          const response = await axios.post("/api/searchTemplate", {
+            keywords: getData1?.tags?.[0],
+            page: 1,
+          });
+          const jsonString = response.data.substring(
+            response.data.indexOf("{"),
+            response.data.lastIndexOf("}") + 1
+          );
+          const getData = JSON.parse(jsonString);
+
+          setAnotherData(getData);
+          setAnotherTempLoad(false);
+        } catch (error) {
+          console.log("error: ", error);
+        }
+      }
+    };
+
+    fetchData();
   }, [id]);
 
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
       case screenWidth > 1500:
-        return 7;
+        return 6.92;
       case screenWidth > 1200:
-        return 6;
+        return 6.92;
       case screenWidth > 1023:
-        return 5;
+        return 5.92;
       case screenWidth > 700:
-        return 4;
+        return 4.92;
       case screenWidth > 600:
       case screenWidth > 550:
-        return 3;
+        return 2.35;
       default:
-        return 3;
+        return 2.35;
     }
   }, [screenWidth]);
 
@@ -180,6 +208,50 @@ export default function TemplateModal({
     }
   }, [isLoading, template]);
 
+  const handleScroll: React.UIEventHandler<HTMLDivElement> = (e) => {
+    const container = e.target as HTMLDivElement;
+    console.log(
+      "container: ",
+      container.scrollLeft,
+      container.scrollWidth - container.clientWidth
+    );
+    setShowPrevButton(container.scrollLeft > 0);
+    setShowNextButton(
+      container.scrollLeft < container.scrollWidth - container.clientWidth
+    );
+  };
+
+  // React.useEffect(() => {
+  //   const container = document.getElementById(containerId);
+  //   if (container) {
+  //     handleScroll({ target: container } as unknown as Event);
+  //     container.addEventListener("scroll", handleScroll);
+  //     return () => container.removeEventListener("scroll", handleScroll);
+  //   }
+  // }, [containerId]);
+
+  const handleNextClick = () => {
+    const container = document.getElementById(containerId) as HTMLElement;
+    if (container) {
+      handleScroll({ target: container } as any);
+      container.scrollBy({
+        left: container.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handlePrevClick = () => {
+    const container = document.getElementById(containerId) as HTMLElement;
+    if (container) {
+      handleScroll({ target: container } as any);
+      container.scrollBy({
+        left: -container.offsetWidth,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <Box
       className="fixed top-0 bottom-0 left-0 right-0 z-[1000]"
@@ -199,11 +271,11 @@ export default function TemplateModal({
           sx={{
             overflow: "auto",
             background: "white",
-            width: "80%",
+            width: { xs: "100%", lg: "80%" },
             mx: "auto",
-            my: "20px",
             borderRadius: "5px",
           }}
+          className="my-[20px] max-sm:my-[0]"
         >
           {/* <Link
             href={modalClose}
@@ -211,21 +283,21 @@ export default function TemplateModal({
             shallow={true}
             className="fixed right-[8%] w-[30px]"
           > */}
-          <button className="fixed right-[8%] w-[30px]">
-            <img
-              src="/icons/modalClose.svg"
-              alt=""
-              className=""
-              onClick={() => {
-                setId("");
-                setOpen(false);
-                window.history.replaceState({}, "", `${router.asPath}`);
-              }}
-            />
+          <button
+            className="fixed  z-[100] right-[8%] max-muiLG:right-[3%] max-muiLG:top-[3%] bg-white w-[30px] max-sm:w-[35px] max-sm:top-[2%] max-sm:right-[3%] p-[7px] rounded-[50%] max-muiLG:bg-[aliceblue] "
+            onClick={() => {
+              setId("");
+              setTemplate({});
+              setAnotherData([]);
+              setOpen(false);
+              window.history.replaceState({}, "", `${router.asPath}`);
+            }}
+          >
+            <img src="/icons/modalClose.svg" alt="modalClose" />
           </button>
           {/* </Link> */}
-          <DialogContent className="px-[40px]">
-            <Box className="flex h-[450px]  my-[20px] gap-[50px]">
+          <DialogContent className="px-[40px] max-sm:px-[20px]">
+            <Box className="flex my-[20px] gap-[50px] max-2md:flex-col max-2md:h-auto">
               {isLoading ? (
                 <>
                   <Skeleton
@@ -238,16 +310,83 @@ export default function TemplateModal({
                   />
                 </>
               ) : (
-                <Box className="w-[66%] rounded-[4px] bg-[#F4F7FE] flex justify-center items-center">
-                  <img
-                    src={template?.url + template?.template_thumb}
-                    alt=""
-                    className="h-[430px] w-auto rounded-[4px]"
-                    style={{ border: "1px solid #80808059" }}
-                  />
+                <Box className="w-[66%]  max-sm:w-full">
+                  <Box className="rounded-[4px] h-[450px]  bg-[#F4F7FE] flex justify-center items-center">
+                    <img
+                      src={showImage}
+                      alt={template?.template_name}
+                      className="max-md:h-auto h-[430px] w-auto max-sm:w-auto max-sm:max-h-[400px] rounded-[4px]"
+                      style={{ border: "1px solid #80808059" }}
+                    />
+                  </Box>
+
+                  <Box
+                    className="relative"
+                    sx={{
+                      display:
+                        template?.thumbArray?.length > 1 ? "block" : "none",
+                    }}
+                  >
+                    <Box
+                      className="flex items-center justify-center overflow-auto py-[20px] scroll_none   "
+                      id={containerId}
+                      onScroll={handleScroll}
+                    >
+                      {showPrevButton && (
+                        <Box>
+                          <button
+                            onClick={handlePrevClick}
+                            className="pre_button z-[1] left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex max-sm:hidden"
+                            style={{ top: "52%" }}
+                          >
+                            <img
+                              src="/icons/leftArrow.svg"
+                              alt="leftArrow"
+                              className="w-[8px]"
+                            />
+                          </button>
+                        </Box>
+                      )}
+                      {template?.thumbArray?.map((image: any) => (
+                        <Box
+                          className="cursor-pointer p-[1px] mx-[5px] rounded-[5px]"
+                          sx={{
+                            border:
+                              showImage === image
+                                ? "2px solid #2ec6b8"
+                                : "2px solid #ffff",
+                          }}
+                          onClick={() => setShowImage(image)}
+                        >
+                          <Box className="w-[70px] rounded-[5px]">
+                            <img
+                              src={image}
+                              alt={template?.template_name}
+                              className="h-auto rounded-[5px]"
+                            />
+                          </Box>
+                        </Box>
+                      ))}
+                      {showNextButton && (
+                        <Box>
+                          <button
+                            onClick={handleNextClick}
+                            className="next_button right-[-18px] flex max-sm:hidden"
+                            style={{ top: "52%" }}
+                          >
+                            <img
+                              src="/icons/rightArrow.svg"
+                              alt="rightArrow"
+                              className="w-[8px]"
+                            />
+                          </button>
+                        </Box>
+                      )}
+                    </Box>
+                  </Box>
                 </Box>
               )}
-              <Box className="w-[33%]">
+              <Box className="w-[33%] max-2md:w-full">
                 {isLoading ? (
                   <Skeleton
                     variant="rectangular"
@@ -289,16 +428,62 @@ export default function TemplateModal({
                       margin: "10px 0",
                     }}
                   />
+                ) : !token ? (
+                  <Box>
+                    <a
+                      className="text-white w-full py-[10px] rounded-[6px] flex items-center cursor-pointer justify-center gap-3"
+                      style={{
+                        background:
+                          "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
+                      }}
+                      onClick={() => {
+                        tokenSet(
+                          "navigate",
+                          `/templates/p/${template?.id_name}`
+                        );
+                        router.push("/login");
+                      }}
+                    >
+                      <img
+                        src="/icons/pricing.svg"
+                        alt={template?.template_name}
+                        className="w-[22px] ml-[8px]"
+                        style={{
+                          display: template?.is_premium ? "block" : "none",
+                        }}
+                      />
+                      Customize this template
+                    </a>
+                  </Box>
                 ) : (
-                  <button
-                    className="text-white w-full py-[10px] rounded-[6px]"
-                    style={{
-                      background:
-                        "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
-                    }}
-                  >
-                    Customize this template
-                  </button>
+                  <Box>
+                    <button
+                      onClick={() => {
+                        if (template?.is_premium && userPremium !== "true") {
+                          dispatch(openSidebar(false));
+                          router.push("/plans");
+                        } else
+                          window.open(
+                            `https://editor.craftyartapp.com/${template?.id_name}`
+                          );
+                      }}
+                      className="text-white w-full py-[10px] rounded-[6px] flex items-center cursor-pointer justify-center gap-3"
+                      style={{
+                        background:
+                          "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
+                      }}
+                    >
+                      <img
+                        src="/icons/pricing.svg"
+                        alt={template?.template_name}
+                        className="w-[22px] ml-[8px]"
+                        style={{
+                          display: template?.is_premium ? "block" : "none",
+                        }}
+                      />
+                      Customize this template
+                    </button>
+                  </Box>
                 )}
 
                 <div className="py-4">
@@ -322,7 +507,6 @@ export default function TemplateModal({
                     text="Backed by our happiness Guarantee"
                     isLoading={isLoading}
                   />
-
                   <IconsText
                     image="/icons/TmodalAccess.svg"
                     text="Access 10,000+ all inclusive templates"
@@ -378,9 +562,16 @@ export default function TemplateModal({
                             width: `${screenWidth / multiSizeFixSize}px`,
                           }}
                           onClick={() => {
-                            setAnotherData(false);
-                            setTemplate(false);
+                            window.history.replaceState(
+                              {},
+                              "",
+                              `/templates/p/${templates?.id_name}`
+                            );
+                            setId("");
+                            setTemplate({});
+                            setAnotherData([]);
                             setIsLoading(true);
+                            setId(templates?.id_name);
                           }}
                         >
                           {/* <Link
@@ -389,7 +580,14 @@ export default function TemplateModal({
                             scroll={false}
                             shallow={true}
                           > */}
-                          <div className="w-full h-full p-[8px]">
+                          <div className="w-full h-full p-[8px] relative">
+                            {templates.is_premium && (
+                              <img
+                                src="/icons/proIcon.svg"
+                                alt={template?.template_name}
+                                className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
+                              />
+                            )}
                             <img
                               src={templates?.template_thumb}
                               alt={templates?.category_name}
@@ -456,7 +654,7 @@ export default function TemplateModal({
 //     </Typography>
 //   ) : (
 //     <Typography className="flex text-[#1C3048] text-[14px] gap-3 items-center py-2">
-//       <img src={image} alt="" className="w-[20px]" />
+//       <img src={image} alt={template?.template_name}className="w-[20px]" />
 //       {text}
 //     </Typography>
 //   );
@@ -625,7 +823,7 @@ export default function TemplateModal({
 //             shallow={true}
 //             className="fixed right-[8%] w-[30px]"
 //           >
-//             <img src="/icons/modalClose.svg" alt="" className="" />
+//             <img src="/icons/modalClose.svg" alt={template?.template_name}className="" />
 //           </Link>
 //           <DialogContent className="px-[40px]">
 //             <Box className="flex h-[450px]  my-[20px] gap-[50px]">
@@ -644,8 +842,7 @@ export default function TemplateModal({
 //                 <Box className="w-[66%] rounded-[4px] bg-[#F4F7FE] flex justify-center items-center">
 //                   <img
 //                     src={template?.url + template?.template_thumb}
-//                     alt=""
-//                     className="h-[430px] w-auto rounded-[4px]"
+//                     alt={template?.template_name}//                     className="h-[430px] w-auto rounded-[4px]"
 //                     style={{ border: "1px solid #80808059" }}
 //                   />
 //                 </Box>

@@ -1,4 +1,4 @@
-import { tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
@@ -19,7 +19,7 @@ const loadScript = (src: any) => {
 
 export default function RazorpayPage({ selectPaln, setOpen }: any) {
   const [loading, setLoading] = useState<boolean>(false);
-  const uId = tokenGet("userProfile");
+  const uId = authCookiesGet();
 
   useEffect(() => {
     loadScript("https://checkout.razorpay.com/v1/checkout.js");
@@ -60,9 +60,9 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
       });
   };
   return (
-    <>
+    <Box>
       <Button onClick={handleSubmit} className="w-[200px] mx-auto block">
-        <img src="/images/plans/razorpay.png" alt="" />
+        <img src="/images/plans/razorpay.png" alt="razorpay" />
       </Button>
       <Box className="separator">
         <Box className="line" />
@@ -74,6 +74,6 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
           <span className="loader"></span>
         </main>
       )}
-    </>
+    </Box>
   );
 }
