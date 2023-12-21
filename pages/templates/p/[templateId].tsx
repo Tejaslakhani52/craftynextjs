@@ -38,9 +38,7 @@ export async function getStaticPaths() {
   }));
 
   return {
-    paths: templateIds.map((id: string) => ({
-      params: { templateId: id.toString() },
-    })),
+    paths: templateIds as any,
     fallback: false,
   };
 }
