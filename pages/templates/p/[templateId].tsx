@@ -33,12 +33,12 @@ export async function getStaticPaths() {
     }
   );
 
-  const templateIds = response?.data?.datas.map((template: any) => ({
-    params: { templateId: template?.id_name },
-  }));
+  const templateIds = response?.data?.datas.map(
+    (template: any) => template?.id_name
+  );
 
   return {
-    paths: templateIds,
+    paths: templateIds.map((id: string) => ({ params: { templateId: id } })),
     fallback: false,
   };
 }
