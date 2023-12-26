@@ -9,12 +9,76 @@ import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
+import CustomHead from "@/components/common/CustomHead";
+import Head from "next/head";
 
 export default function index() {
   const router = useRouter();
 
   return (
     <div>
+      <CustomHead
+        image="/images/customizeOrder/bannerSide.png"
+        heading={
+          "Customize Invitations for Every Occasion | Personalized Wedding, Baby Shower, Graduation Invites "
+        }
+        text="Design an invitation with ease! Explore customized invitations for weddings, baby showers, graduations, and more. Create unique designs that reflect your style."
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. How do I customize my invitations on your platform?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Our user-friendly customization tool allows you to easily personalize your invitations. Simply choose a design, add your details, and customize elements such as colors and fonts.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can I see a preview of my customized invitation before ordering?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, absolutely! Our platform provides a preview feature, allowing you to see exactly how your customized invitation will look before finalizing your order. This ensures that you are completely satisfied with the design.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. What types of events can I create customized invitations for?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Our platform offers a wide range of design options suitable for various events. Whether it's a birthday, wedding, baby shower, bridal shower, or graduation, you can find customizable templates that fit the theme and mood of your celebration.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. Are there any design limitations or restrictions?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No, there are no design limitations. Our customization tool is designed to give you the freedom to express your creativity. You can customize colors, fonts, and other details to match your unique style. Create invitations that reflect your personality without any constraints.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Is there a cost for using the custom invitation maker on your website?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No, our custom invitation maker is free to use. You can explore the tool, try out different designs, and customize it to your heart's content without any charges. You only pay when you decide to order the final, printed invitations. Enjoy the freedom to design without breaking the bank.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <Box
         sx={{
           background: "#D9EEDE",
@@ -177,6 +241,97 @@ your creative process."
 
       <WithCraftyartBanner />
 
+      <LeftImageSection
+        title="Customize Invitations for Every Occasion"
+        point={
+          <Box>
+            <MarkText text="Tailor your event experience with personalized invitations." />
+            <MarkText text="Explore options for birthdays, weddings, baby showers, graduations, and more." />
+            <MarkText text="Create invitations that uniquely capture the essence of each celebration." />
+            <MarkText text="Express your style through customizable designs." />
+            <MarkText text="Enjoy the flexibility to match your invitations to the theme of your event." />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        image="/images/customizeOrder/side4.png"
+      />
+
+      <RightImageSection
+        title="Customized Invitations for Wedding Bliss
+        "
+        point={
+          <Box>
+            <MarkText text="Browse Crafty Art’s exquisite collection of customized wedding invitations." />
+            <MarkText text="Reflect on the unique beauty of your love story through personalized designs." />
+            <MarkText text="Choose from various themes and styles to set the perfect tone for your special day." />
+            <MarkText text="Add a touch of sophistication with elegantly crafted wedding invitations." />
+            <MarkText text="Guarantee your invitations become appreciated mementos for yourself as well as your visitors." />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        image="/images/customizeOrder/side5.png"
+      />
+
+      <LeftImageSection
+        title="Customized Invitations for Baby and Bridal Showers        "
+        point={
+          <Box>
+            <MarkText text="Celebrate new beginnings with whimsical and customized baby shower invitations." />
+            <MarkText text="Capture the joy of upcoming nuptials with charming bridal shower invitations." />
+            <MarkText text="Choose designs that radiate happiness and anticipation for these special occasions." />
+            <MarkText text="Customize every detail, from colors to wording, to match the theme of your event." />
+            <MarkText text="Make your baby and bridal showers memorable with uniquely crafted invitations." />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        image="/images/customizeOrder/side6.png"
+      />
+
+      <RightImageSection
+        title="Custom Invitations for Your Milestone Achievement"
+        point={
+          <Box>
+            <MarkText text="Commemorate your academic journey with custom graduation invitations." />
+            <MarkText text="Reflect on your achievements with designs that capture the spirit of accomplishment." />
+            <MarkText text="Choose personalized elements to make your graduation celebration truly unique." />
+            <MarkText text="Create invitations that stand out and mark the significance of your milestone." />
+            <MarkText text="Celebrate your educational journey with style through customized graduation invitations." />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        image="/images/customizeOrder/side7.png"
+      />
+
+      <LeftImageSection
+        title="Customize Invitations with Our User-Friendly Tool"
+        point={
+          <Box>
+            <MarkText text="Design invitations effortlessly using our intuitive and user-friendly platform." />
+            <MarkText text="Enjoy a seamless customization process without any design limitations." />
+            <MarkText text="Express your creativity freely with our easy-to-use custom invitation tool." />
+            <MarkText text="Customize invitations at your own pace with no hassle or learning curve." />
+            <MarkText text="Experience the joy of designing invitations with the freedom to bring your ideas to life." />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        image="/images/customizeOrder/side8.png"
+      />
+
+      <RightImageSection
+        title="Custom Invitation Maker for Any Event "
+        point={
+          <Box>
+            <MarkText text="Showcase your unique style and personality with a Crafty Art custom invitation maker." />
+            <MarkText text="Create invitations that reflect your individuality and event theme seamlessly." />
+            <MarkText text="Share your creations with friends and family to gather excitement for your event." />
+            <MarkText text="Ensure your invitations leave a lasting impression with your distinct style." />
+            <MarkText text="Use our custom invitation maker to make the process enjoyable and tailored to your preferences." />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        image="/images/customizeOrder/side9.png"
+      />
+
       <CustomerSayingSmall />
 
       <GetTemplates
@@ -204,32 +359,28 @@ your creative process."
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heading="1. Can I add my own images or photos to the invitation designs? "
-          text="Yes, the graphic design tool allows you to upload and incorporate your own images into the invitation designs, giving
-          them a personal touch."
-        />
-        <FaqsBox
-          heading="2. Are there any limitations on the number of invitations I can order?"
-          text="No, you can order as many invitations as you need. The graphic design tool supports bulk orders, making it suitable for
-          both small gatherings and large events."
+          heading="How do I customize my invitations on your platform?"
+          text="Our user-friendly customization tool allows you to easily personalize your invitations. Simply choose a design, add your details, and customize elements such as colors and fonts."
         />
 
         <FaqsBox
-          heading="3. Can I preview my customised invitation before placing the order?"
-          text="Absolutely! The design editor provides a preview option where you can see how your personalised invitation looks before
-          finalising the order. You can make any necessary adjustments before proceeding."
+          heading="Can I see a preview of my customized invitation before ordering?"
+          text="Yes, absolutely! Our platform provides a preview feature, allowing you to see exactly how your customized invitation will look before finalizing your order. This ensures that you are completely satisfied with the design."
         />
 
         <FaqsBox
-          heading="4. What printing options are available for the invitations?"
-          text="The graphic design tool offers a range of printing options, including different paper types, sizes, and finishes. You can
-          select the one that best suits your needs and budget."
+          heading="What types of events can I create customized invitations for?"
+          text="Our platform offers a wide range of design options suitable for various events. Whether it's a birthday, wedding, baby shower, bridal shower, or graduation, you can find customizable templates that fit the theme and mood of your celebration."
         />
 
         <FaqsBox
-          heading="5. How long does it take to receive the printed invitations after placing an order?"
-          text=" The delivery time may vary depending on your location and the shipping method chosen. However, you can typically
-          expect to receive your printed invitations within a few business days."
+          heading="Are there any design limitations or restrictions?"
+          text="No, there are no design limitations. Our customization tool is designed to give you the freedom to express your creativity. You can customize colors, fonts, and other details to match your unique style. Create invitations that reflect your personality without any constraints."
+        />
+
+        <FaqsBox
+          heading="Is there a cost for using the custom invitation maker on your website?"
+          text="No, our custom invitation maker is free to use. You can explore the tool, try out different designs, and customize it to your heart's content without any charges. You only pay when you decide to order the final, printed invitations. Enjoy the freedom to design without breaking the bank."
         />
       </Box>
     </div>

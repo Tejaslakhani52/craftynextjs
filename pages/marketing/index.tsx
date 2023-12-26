@@ -24,7 +24,7 @@ const sliderTemplate = [
   {
     img: "/images/marketingCreatebusiness.png",
     buttonName: "Create Business Card",
-    path: "/businessCard",
+    path: "/business-card",
   },
   {
     img: "/images/marketingCreatePoster.png",
@@ -34,7 +34,7 @@ const sliderTemplate = [
   {
     img: "/images/marketingCreateBrochure.png",
     buttonName: "Create Brochure",
-    path: "/brochure",
+    path: "/brochure-design",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function index() {
         buttonName={"Find a Business Card"}
         alt="marketing templates"
         image="/images/marketingbussinessCard.png"
-        path="/businessCard"
+        path="/business-card"
       />
 
       <RightDetail
@@ -144,7 +144,7 @@ export default function index() {
         buttonName={"Create your Brochure"}
         alt="marketing templates"
         image="/images/marketingBrochure.png"
-        path="/brochure"
+        path="/brochure-design"
       />
 
       <LeftDetail

@@ -8,16 +8,72 @@ import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
+import Head from "next/head";
+import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 
 export default function index() {
   return (
     <>
       <CustomHead
         image="/images/posterPerfact.png"
-        heading={"Make attractive posters by using plenty of poster designs."}
-        text="Browse Crafty Art's poster design and customise them to communicate your message, and raise your
-        brand awareness."
+        heading={
+          "Poster Design Online: Create Graphic Design Posters with Ease        "
+        }
+        text="Elevate your brand with our online poster design tool. Design custom graphic posters effortlessly, collaborating from anywhere. "
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What types of posters can I create?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "You can create posters for a variety of purposes, including marketing, events, education, and more. Our templates cover a wide range of themes and styles, so you're sure to find something that fits your needs.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. How do I choose the right size for my poster?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Consider where you'll be displaying your poster design and what type of information you want to include. Standard sizes include 18x24 inches and 24x36 inches, but you can also customise the size to fit your specific needs.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. Can I use my own images and graphics?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely! You can upload your own images and graphics to make your poster design truly unique. Just make sure they are high-quality and relevant to your message.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. How long does it take to create a poster?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "With our easy-to-use poster design maker, you can create a professional-looking design in minutes. Of course, the time it takes may vary depending on the complexity of your design and how much customization you want to do.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Can I print my poster at home?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, you can print your poster at home as long as you have a printer that can handle large-format printing. Alternatively, you can send your design to a professional printing service for high-quality results.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
       <GetStartedLinearBanner
         heading={"Make attractive posters by using plenty of poster designs."}
         text="Browse Crafty Art's poster design and customise them to communicate your message, and raise your
@@ -84,7 +140,108 @@ export default function index() {
         path="/s/poster"
         image="/images/posterEase.png"
       />
-      {/*  */}{" "}
+      {/*  */} <ExploreTemplates getAll="/s/poster" />
+      <RightImageSection
+        title="Transform Your Ideas into Stunning Visuals with Poster Design Online
+        "
+        point={
+          <Box>
+            <MarkText text="Unlock Creative Potential: Access an intuitive online platform for poster design." />
+            <MarkText text="Effortless Graphic Design: Craft visually appealing posters without the learning curve." />
+            <MarkText text="Collaborate Anywhere: Work on your designs from anywhere, anytime." />
+            <MarkText text="Customization Options: Tailor your posters to suit your unique vision." />
+            <MarkText text="Time-Saving Features: Streamline the design process with efficient tools." />
+            <MarkText text="Version Control: Easily manage and revert to previous versions of your designs." />
+            <MarkText text="Responsive Design: Ensure your posters look great on various devices." />
+          </Box>
+        }
+        buttonName={"Explore Posters"}
+        alt="poster designs"
+        path="/s/poster"
+        image="/images/poster1.png"
+      />
+      <LeftImageSection
+        title="Graphic Design Posters That Speak Volumes
+        "
+        point={
+          <Box>
+            <MarkText text="Expressive Visuals: Create impactful designs with our extensive graphic design tools." />
+            <MarkText text="Professional Templates: Choose from a diverse range of templates tailored for various themes." />
+            <MarkText text="Print-Ready Output: Download high-resolution files ready for printing or online sharing." />
+            <MarkText text="Font and Color Options: Customize text and color schemes to match your brand or theme." />
+            <MarkText text="Image Editing: Edit and enhance images directly within the design platform." />
+            <MarkText text="Layer Functionality: Arrange and manage design elements with ease." />
+            <MarkText text="Real-Time Previews: See how your poster will look before finalizing your design." />
+          </Box>
+        }
+        buttonName={"Explore Posters"}
+        alt="poster designs"
+        path="/s/poster"
+        image="/images/poster2.png"
+      />
+      <RightImageSection
+        title="Inform and Engage with Innovative Informational Poster Design
+        "
+        point={
+          <Box>
+            <MarkText text="Effective Communication: Design posters that convey information clearly and effectively." />
+            <MarkText text="Data Visualization: Turn complex information into visually appealing graphics." />
+            <MarkText text="Educational Impact: Enhance learning experiences with compelling informational posters." />
+            <MarkText text="Infographic Tools: Utilize built-in tools for creating engaging infographics." />
+            <MarkText text="Content Collaboration: Collaborate with team members to create informative content." />
+            <MarkText text="Interactive Elements: Add clickable elements to engage viewers further." />
+            <MarkText text="Accessibility Features: Ensure your informational posters are accessible to all." />
+          </Box>
+        }
+        buttonName={"Explore Posters"}
+        alt="poster designs"
+        path="/s/poster"
+        image="/images/poster3.png"
+      />
+      <LeftImageSection
+        title="Elevate Your Brand with Striking Custom Poster Designs
+        "
+        point={
+          <Box>
+            <MarkText text="Brand Consistency: Create posters that align seamlessly with your brand identity." />
+            <MarkText text="Unique Aesthetics: Stand out from the crowd with personalized and eye-catching designs." />
+            <MarkText text="Versatile Applications: Perfect for events, promotions, or any marketing campaign." />
+            <MarkText text="Logo Integration: Easily incorporate your logo into your poster designs." />
+            <MarkText text="Social Media Integration: Share your custom posters directly on social media platforms." />
+            <MarkText text="Analytics Tools: Track the performance of your branded posters." />
+            <MarkText text="Printing Options: Explore various printing options for your custom designs." />
+          </Box>
+        }
+        buttonName={"Explore Posters"}
+        alt="poster designs"
+        path="/s/poster"
+        image="/images/poster4.png"
+      />
+      <RightImageSection
+        title="Master the Art of Poster Design with Our User-Friendly Tools
+        "
+        point={
+          <Box>
+            <MarkText text="Intuitive Interface: Easily navigate our platform, even if you're a beginner." />
+            <MarkText text="Time-Efficient: Design posters quickly without compromising quality." />
+            <MarkText text="Feedback Integration: Collaborate seamlessly with others using built-in feedback features." />
+            <MarkText text="Tutorials and Guides: Access resources to master advanced design techniques." />
+            <MarkText text="Undo/Redo Functionality: Easily correct mistakes with comprehensive undo and redo options." />
+            <MarkText text="Export Options: Save and export your designs in various file formats." />
+            <MarkText text="Cross-Platform Compatibility: Access your work across different devices seamlessly." />
+          </Box>
+        }
+        buttonName={"Explore Posters"}
+        alt="poster designs"
+        path="/s/poster"
+        image="/images/poster5.png"
+      />
+      <CustomerSaying />
+      <GetTemplates
+        heading="Unlock your creativity with 5000+ customizable poster templates to choose from."
+        text="Design your perfect poster design today with our easy-to-use poster maker!"
+        navigate="/s/poster"
+      />
       <Box
         sx={{
           mx: "auto",
@@ -127,12 +284,6 @@ export default function index() {
           text="Yes, you can print your poster at home as long as you have a printer that can handle large-format printing. Alternatively, you can send your design to a professional printing service for high-quality results."
         />
       </Box>
-      <GetTemplates
-        heading="Unlock your creativity with 5000+ customizable poster templates to choose from."
-        text="Design your perfect poster design today with our easy-to-use poster maker!"
-        navigate="/s/poster"
-      />
-      <ExploreTemplates getAll="/s/poster" />
     </>
   );
 }

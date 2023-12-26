@@ -135,37 +135,27 @@
 //   );
 // }
 
-import { Box, Button, Menu } from "@mui/material";
-import React, { useState, useEffect, useRef } from "react";
-import MenuBox, {
-  EditorTools,
-  Product,
-  Templates,
-} from "./headerComponents/Menu";
-import LoginButton from "./headerComponents/LoginButton";
-import { useRouter } from "next/router";
-import Sidebar from "../sidebar/Sidebar";
-import Profile from "../profileAndNotification/Profile";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  enterAccount,
-  mainLoader,
-  openSidebar,
-} from "@/redux/reducer/actionDataReducer";
-import { tokenValue } from "@/redux/reducer/AuthDataReducer";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import { authCookiesGet } from "@/redux/action/AuthToken";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import { Box, Button, Menu } from "@mui/material";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Profile from "../profileAndNotification/Profile";
+import Sidebar from "../sidebar/Sidebar";
+import LoginButton from "./headerComponents/LoginButton";
+import MenuBox from "./headerComponents/Menu";
 
 export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   const screenWidth = useScreenWidth();
-  console.log("screenWidth: ", screenWidth);
   const dispatch = useDispatch();
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
   const token = authCookiesGet();
-  const [executed, setExecuted] = useState(false);
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openLogin, setOpenLogin] = useState<boolean>(false);
   const [openSignUp, setOpenSignUp] = useState<boolean>(false);
@@ -175,87 +165,9 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
     setSidebarOpen(sideBarRedux);
   }, [sideBarRedux]);
 
-  const hasEffectRun = useRef(false);
-
-  const productPaths = Product.subName.flatMap((category) =>
-    category.allName.map((item) => item.path)
-  );
-
-  const editorToolsPaths = EditorTools.subName.flatMap((category) =>
-    category.allName.map((item) => item.path)
-  );
-
-  const templatesPaths = Templates.subName.flatMap((category) =>
-    category.allName.map((item) => item.path)
-  );
-  console.log("productPaths: ", productPaths);
-
-  useEffect(() => {
-    dispatch(mainLoader(true));
-    const timeoutId = setTimeout(() => {
-      if (!hasEffectRun.current) {
-        if (token) {
-          if (
-            screenWidth > 991 &&
-            router?.pathname !== "/your-account" &&
-            router?.pathname !== "/subscriptions" &&
-            router?.pathname !== "/plans" &&
-            !productPaths.includes(router?.pathname) &&
-            !editorToolsPaths.includes(router?.pathname) &&
-            !templatesPaths.includes(router?.pathname)
-          ) {
-            console.log(
-              "productPaths.every((path) => !router?.pathname.includes(path)): "
-            );
-
-            dispatch(openSidebar(true));
-          }
-          dispatch(tokenValue(true));
-        } else if (
-          router?.pathname === "/your-account" ||
-          router?.pathname === "/subscriptions" ||
-          router?.pathname === "/draft" ||
-          router?.pathname === "/trash" ||
-          router?.pathname === "/upload"
-        ) {
-          router.push("/");
-        }
-        hasEffectRun.current = true;
-        if (
-          !token ||
-          router?.pathname === "/plans" ||
-          productPaths.includes(router?.pathname) ||
-          editorToolsPaths.includes(router?.pathname) ||
-          templatesPaths.includes(router?.pathname)
-        ) {
-          dispatch(openSidebar(false));
-        }
-        setTimeout(() => {
-          dispatch(mainLoader(false));
-        }, 100);
-      }
-    }, 500);
-
-    return () => clearTimeout(timeoutId);
-  }, [token]);
-
-  useEffect(() => {
-    if (
-      router?.pathname === "/your-account" ||
-      router?.pathname === "/subscriptions" ||
-      router?.pathname === "/plans" ||
-      productPaths.includes(router?.pathname) ||
-      editorToolsPaths.includes(router?.pathname) ||
-      templatesPaths.includes(router?.pathname)
-    ) {
-      dispatch(enterAccount(true));
-    } else dispatch(enterAccount(false));
-  }, [router]);
-
   const enterYourAccount = useSelector(
     (state: any) => state.actions.enterAccount
   );
-  console.log("enterYourAccount: ", enterYourAccount);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
@@ -301,16 +213,13 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                 </Button>
               </Box>
             )}
-            <Box
-              className="w-[146px] cursor-pointer "
-              onClick={() => router.push("/")}
-            >
+            <Link href={"/"} className="w-[146px] cursor-pointer ">
               <img
                 src="/images/logo.svg"
                 alt="logo"
                 className="w-[147px] max-lg:w-[127px]  max-2sm:w-[80px]"
               />
-            </Box>
+            </Link>
           </Box>
 
           <MenuBox />

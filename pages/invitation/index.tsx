@@ -1,6 +1,7 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
 import CustomHead from "@/components/common/CustomHead";
 import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
+import ExploreTemplates from "@/components/common/ExploreTemplates";
 import FaqsBox from "@/components/common/FAQs";
 import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
 import GetTemplates from "@/components/common/GetTemplates";
@@ -8,6 +9,7 @@ import LeftDetail from "@/components/common/LeftDetail";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import RightDetail from "@/components/common/RightDetail";
 import { Box, Button, Typography } from "@mui/material";
+import Head from "next/head";
 import React from "react";
 
 const sliderTemplate = [
@@ -19,17 +21,17 @@ const sliderTemplate = [
   {
     img: "/images/invitationFooterBirthday.png",
     buttonName: "Birthday Invitation",
-    path: "/birthday",
+    path: "/birthday-invitation",
   },
   {
     img: "/images/partyBanner.png",
     buttonName: "Party Invitation",
-    path: "/party",
+    path: "/party-invitation",
   },
   {
     img: "/images/babyShowerEase.png",
     buttonName: "Baby Shower Invitation",
-    path: "/babyShower",
+    path: "/baby-shower-invitation",
   },
   {
     img: "/images/anivversaryEase.png",
@@ -39,7 +41,7 @@ const sliderTemplate = [
   {
     img: "/images/bridalEase.png",
     buttonName: "Bridal Shower Invitation",
-    path: "/bridalShower",
+    path: "/bridal-shower",
   },
 ];
 
@@ -55,6 +57,61 @@ export default function index() {
         finish type, size, and matching envelopes with the invitation
         templates maker."
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What are the available design templates for invitations?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Our invitation maker offers a wide range of design templates to choose from, including options for birthdays, weddings, baby showers, graduations, and more.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can I customize the text and images on the invitations?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, our invitation maker allows you to personalize your invitations with your own text and images. You can also experiment with different fonts, colors, and layouts to create a unique look that matches your event.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. How can I share my invitations with guests?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "You can share your invitations via email, social media, or print. Our platform makes it easy to send your invitations directly to your guests' inboxes or share them on your social media accounts.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. Can I preview my invitations before sending them out?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, our invitation maker comes with a preview feature that allows you to see how your finished invitations will look. You can make any necessary changes before sending them out to ensure they are error-free and visually appealing.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Is the invitation maker free to use?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "We offer both free and paid options for using our invitation maker. The free version allows you to access basic features and templates, while the paid version offers advanced customization options and premium templates.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <FreeTrialBlackBanner
         heading="Let Your Invitation Shine with Our Smooth and Sleek Invitation Maker"
         text=" Make lovely invitations for birthdays, baby showers, weddings, and
@@ -165,7 +222,7 @@ export default function index() {
         buttonName={"Find Birthday Invitation"}
         alt="Invitation Maker"
         image="/images/invitationBirthday.png"
-        path="/birthday"
+        path="/birthday-invitation"
       />
 
       <RightDetail
@@ -183,7 +240,7 @@ export default function index() {
         buttonName={"Design your Party Invitation"}
         alt="Invitation Maker"
         image="/images/invitationDesign.png"
-        path="/party"
+        path="/party-invitation"
       />
 
       <LeftDetail
@@ -203,6 +260,8 @@ export default function index() {
         image="/images/invitationCreate.png"
         path="/babyShower"
       />
+
+      <ExploreTemplates getAll={"/templates/resume-portrait"} />
 
       <RightDetail
         title="How to design an anniversary invitation that
@@ -237,7 +296,7 @@ export default function index() {
         buttonName={"Design your Bridal Shower Invitation"}
         alt="Invitation Maker"
         image="/images/invitationShower.png"
-        path="/bridalShower"
+        path="/bridal-shower"
       />
 
       <Box

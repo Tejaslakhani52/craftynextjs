@@ -10,6 +10,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MuiAccordion, { AccordionProps } from "@mui/material/Accordion";
 import { styled } from "@mui/material/styles";
+import Head from "next/head";
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />

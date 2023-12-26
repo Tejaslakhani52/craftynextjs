@@ -29,6 +29,7 @@ export default function LeftDetail({
               {title}
             </Typography>
             {point}
+
             <Button
               style={{
                 background:

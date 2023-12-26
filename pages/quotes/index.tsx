@@ -8,6 +8,8 @@ import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
+import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import Head from "next/head";
 
 export default function index() {
   return (
@@ -19,6 +21,63 @@ export default function index() {
         }
         text="Tips and Techniques for Crafting Distinctive and Memorable Quotes Posts"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. How can I design a quotes post that resonates with my target audience?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: " To design a quotes post that resonates with your audience, make sure to choose a quote that is relevant to their interests or pain points. Additionally, use colours and fonts that align with your brand identity, and incorporate images or graphics that help convey the message of the quote.",
+                  },
+                },
+
+                {
+                  "@type": "Question",
+                  name: "2. Should I include my logo or website URL in my quotes post design?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: " Yes, including your logo or website URL in your quotes post design can help build brand recognition and drive traffic to your website.",
+                  },
+                },
+
+                {
+                  "@type": "Question",
+                  name: "3. What are some common mistakes to avoid when designing quotes posts?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: " Some common mistakes to avoid when designing quotes posts include using illegible fonts, choosing a background that clashes with the text, and overloading the design with too many elements. It's also important to ensure that the quote you've chosen is accurate and properly attributed.",
+                  },
+                },
+
+                {
+                  "@type": "Question",
+                  name: "4. Can I use quotes from famous people in my quotes posts without permission?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: " No, it's generally not recommended to use quotes from famous people in your quotes posts without first obtaining permission or ensuring that the quote is in the public domain.",
+                  },
+                },
+
+                {
+                  "@type": "Question",
+                  name: "5. How can quotes posts be used to improve conversion rates on landing pages?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: " Quote posts can be used to improve conversion rates on landing pages by providing social proof, building trust, and establishing authority. By incorporating quotes from satisfied customers or industry experts, you can show potential customers that others have had positive experiences with your product or service, which can help increase their confidence in making a purchase.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
       <GetStartedLinearBanner
         heading={
           "Best Practices for Designing Quotes Posts that  Engage Your Audience"
@@ -85,7 +144,71 @@ export default function index() {
         path="/templates/quotes-post-square"
         image="/images/qoutesTrending.png"
       />
-      {/*  */}{" "}
+      {/*  */} <ExploreTemplates getAll={"/templates/quotes-post-square"} />
+      <RightImageSection
+        title="Transform Your Instagram Presence with
+        Powerful Quotes"
+        point={
+          <Box>
+            <MarkText
+              text="Welcome to the ultimate source quote for post on instagram that will elevate your
+profile to new heights."
+            />
+            <MarkText
+              text="Our handpicked selection of inspirational, witty, and thought- provoking quotes will
+captivate your audience and boost your engagement."
+            />
+            <MarkText text="Say goodbye to content struggles and hello to social media success." />
+          </Box>
+        }
+        buttonName={"Create Your Quotes"}
+        alt="quotes post design"
+        path="/templates/quotes-post-square"
+        image="/images/quotesPoweful.png"
+      />
+      <LeftImageSection
+        title="Daily Quotes Is Your Pathway to Inspired
+        Living"
+        point={
+          <Box>
+            <MarkText text="Are you tired of starting your day feeling uninspired?" />
+            <MarkText text="The lack of motivation can lead to unproductive days and missed opportunities." />
+            <MarkText text="Without a daily dose of inspiration, you may struggle to achieve your goals." />
+            <MarkText
+              text="Explore our daily quotes templates to revitalize your spirit, boost your motivation,
+and seize the day."
+            />
+          </Box>
+        }
+        buttonName={"Explore Quotes"}
+        alt="quotes post design"
+        path="/templates/quotes-post-square"
+        image="/images/flyerL.png"
+      />
+      <RightImageSection
+        title="Why Choose Us?"
+        point={
+          <Box>
+            <MarkText text="Daily Inspiration: Get best quotes templates in our Crafty Art." />
+            <MarkText
+              text="Wide Variety: Explore quotes templates on different topics, from good morning to
+              karma."
+            />
+            <MarkText text="Community: Join like-minded individuals on a journey of self-improvement." />
+            <MarkText text="Expert Curation: Our team selects the most impactful quotes to brighten your day." />
+          </Box>
+        }
+        buttonName={"Create Your Quotes"}
+        alt="quotes post design"
+        path="/templates/quotes-post-square"
+        image="/images/flyerWhy.png"
+      />
+      <CustomerSaying />
+      <GetTemplates
+        heading="Boost Engagement with Eye-Catching Quote Posts - Create Custom Designs Now!"
+        text="Bring your words to life with our quotes post maker"
+        navigate="/templates/invitation-card"
+      />
       <Box
         sx={{
           mx: "auto",
@@ -128,12 +251,6 @@ export default function index() {
           text=" Quote posts can be used to improve conversion rates on landing pages by providing social proof, building trust, and establishing authority. By incorporating quotes from satisfied customers or industry experts, you can show potential customers that others have had positive experiences with your product or service, which can help increase their confidence in making a purchase."
         />
       </Box>
-      <GetTemplates
-        heading="Boost Engagement with Eye-Catching Quote Posts - Create Custom Designs Now!"
-        text="Bring your words to life with our quotes post maker"
-        navigate="/templates/invitation-card"
-      />
-      <ExploreTemplates getAll={"/templates/quotes-post-square"} />
     </>
   );
 }

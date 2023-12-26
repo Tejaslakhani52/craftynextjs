@@ -50,102 +50,92 @@ function ImageBox({
     setCurrentIndex(0);
   };
 
-  const handleContextMenu = (e: React.MouseEvent) => {
-    e.preventDefault();
-
-    // if (e.target instanceof HTMLImageElement) {
-    //   const imageLink = `https://craftynextjs-al84sub.vercel.app/templates/p/${templates?.id_name}`;
-    //   if (imageLink) {
-    //     window.open(imageLink, "_blank");
-    //   }
-    // }
-
-    // href={`/?templates=${templates.id_name}`}
-    // as={`/templates/p/${templates.id_name}`}
-    // scroll={false}
-    // shallow={true}
-  };
   return (
-    <Box
+    <Link
       className={`h-auto bg-white cursor-pointer ${
         uniqueCat
           ? "p-3 max-sm:p-1 min-w-[250px] max-sm:min-w-[130px]"
           : "p-[7px] max-sm:p-1"
       } rounded-[12px]`}
       key={templates?.template_name}
-      onClick={() => {
-        setIdName(templates?.id_name);
-        setOpenModal(true);
-
-        window.history.replaceState(
-          {},
-          "",
-          `/templates/p/${templates?.id_name}`
-        );
-      }}
+      href={`/templates/p/${templates.id_name}`}
+      onClick={(e) => e.preventDefault()}
     >
       <Box
-        className={` ${
-          uniqueCat
-            ? "bg-[#E6E8EE] p-2 max-sm:p-1 h-[165px] max-sm:h-[150px]"
-            : "p-[0px]"
-        } rounded-[10px] relative`}
-        style={{
-          height: uniqueCat
-            ? "auto"
-            : `${calculateHeight(
-                templates?.width,
-                templates?.height,
-                height
-              )}px`,
-          width: uniqueCat ? "auto" : `${height}px`,
-        }}
         onClick={() => {
-          dispatch(modalClosePath(`/`));
+          setIdName(templates?.id_name);
+          setOpenModal(true);
+
+          window.history.replaceState(
+            {},
+            "",
+            `/templates/p/${templates?.id_name}`
+          );
         }}
       >
-        {templates.is_premium && (
-          <img
-            src="/icons/proIcon.svg"
-            alt="pro"
-            className="w-[28px] absolute right-[5px] top-[5px] z-[1]"
-          />
-        )}
-
-        <div
-          className="custom-carousel w-full h-full overflow-hidden cursor-pointer rounded-[5px]"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+        <Box
+          className={` ${
+            uniqueCat
+              ? "bg-[#E6E8EE] p-2 max-sm:p-1 h-[165px] max-sm:h-[150px]"
+              : "p-[0px]"
+          } rounded-[10px] relative`}
+          style={{
+            height: uniqueCat
+              ? "auto"
+              : `${calculateHeight(
+                  templates?.width,
+                  templates?.height,
+                  height
+                )}px`,
+            width: uniqueCat ? "auto" : `${height}px`,
+          }}
+          onClick={() => {
+            dispatch(modalClosePath(`/`));
+          }}
         >
-          <div
-            className="carousel-slider w-full h-full "
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
-          >
-            {templates?.thumbArray.map((image: any, index: number) => (
-              <div className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide">
-                <img
-                  src={image}
-                  alt={image}
-                  className={` w-[auto] ${
-                    uniqueCat ? "h-[100%]" : ""
-                  }  mx-auto rounded-[4px]`}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+          {templates.is_premium && (
+            <img
+              src="/icons/proIcon.svg"
+              alt="pro"
+              className="w-[28px] absolute right-[5px] top-[5px] z-[1]"
+            />
+          )}
 
-        {isHovered && templates?.thumbArray?.length > 1 && (
-          <p
-            className="absolute bottom-[10px] w-[45px] flex justify-center left-[10px] bg-[#11171d99] font-[600] text-[white] text-[10px] py-[1px] px-[4px] rounded-[8px]"
-            style={{ transition: "0.5s all" }}
+          <div
+            className="custom-carousel w-full h-full overflow-hidden cursor-pointer rounded-[5px]"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            <span className="w-[9px]"> {currentIndex + 1} </span> OF{" "}
-            {templates?.thumbArray.length}
-          </p>
-        )}
+            <div
+              className="carousel-slider w-full h-full "
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+              }}
+            >
+              {templates?.thumbArray.map((image: any, index: number) => (
+                <div className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide">
+                  <img
+                    src={image}
+                    alt={image}
+                    className={` w-[auto] ${
+                      uniqueCat ? "h-[100%]" : ""
+                    }  mx-auto rounded-[4px]`}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {isHovered && templates?.thumbArray?.length > 1 && (
+            <p
+              className="absolute bottom-[10px] w-[45px] flex justify-center left-[10px] bg-[#11171d99] font-[600] text-[white] text-[10px] py-[1px] px-[4px] rounded-[8px]"
+              style={{ transition: "0.5s all" }}
+            >
+              <span className="w-[9px]"> {currentIndex + 1} </span> OF{" "}
+              {templates?.thumbArray.length}
+            </p>
+          )}
+        </Box>
       </Box>
 
       <Box
@@ -161,7 +151,7 @@ function ImageBox({
           {templates?.category_name}
         </Typography>
       </Box>
-    </Box>
+    </Link>
   );
 }
 
@@ -289,6 +279,34 @@ export const TemplatesBoxes = ({
     </Box>
   );
 };
+
+// export async function getServerSideProps(context: any) {
+//   try {
+//     const { params } = context;
+
+//     const response = await axios.post(
+//       "https://story.craftyartapp.com/get/main/data",
+//       {
+//         key: `qwfsegxdhbxfjhncf`,
+//         page: 1,
+//         count: 0,
+//       }
+//     );
+
+//     const templatesData = response?.daa;
+
+//     return {
+//       props: {
+//         templateData,
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error in getStaticProps:", error);
+//     return {
+//       notFound: true,
+//     };
+//   }
+// }
 
 export default function TemplatesBox() {
   const screenWidth = useScreenWidth();

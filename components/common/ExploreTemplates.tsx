@@ -108,59 +108,50 @@ export default function ExploreTemplates({ category, getAll }: any) {
                 }}
                 id={`content${index}`}
               >
-                {/* <Link
-                  href={`/?templates=${templates.id_name}`}
-                  as={`/templates/p/${templates.id_name}`}
-                  scroll={false}
-                  shallow={true}
-                > */}
-                <div
-                  className="w-full h-full p-[8px]"
-                  onClick={() =>
-                    router.push(`/templates/p/${templates?.id_name}`)
-                  }
-                >
-                  <img
-                    src={templates?.template_thumb}
-                    alt={templates?.category_name}
-                    className={`w-full] rounded-[5px] cursor-pointer`}
-                    style={{
-                      border: "1px solid #80808082",
-                      height: "100%",
-                    }}
-                  />
+                <Link href={`/templates/p/${templates.id_name}`}>
+                  <div className="w-full h-full p-[8px]">
+                    <img
+                      src={templates?.template_thumb}
+                      alt={templates?.category_name}
+                      className={`w-full] rounded-[5px] cursor-pointer`}
+                      style={{
+                        border: "1px solid #80808082",
+                        height: "100%",
+                      }}
+                    />
 
-                  <div className="pt-2">
-                    <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                      {templates?.template_name}
-                    </p>
-                    <p className="text-[#ABB2C7] text-[13px] pb-1">
-                      {templates?.category_name}
-                    </p>
+                    <div className="pt-2">
+                      <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
+                        {templates?.template_name}
+                      </p>
+                      <p className="text-[#ABB2C7] text-[13px] pb-1">
+                        {templates?.category_name}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                {/* </Link> */}
+                </Link>
               </div>
             ))}
         </StackGrid>
 
         <Box sx={{ display: "flex", justifyContent: "center", p: "30px" }}>
-          <button
-            style={{
-              background:
-                "linear-gradient(268.03deg, #5961F8 -0.66%, #15D8C5 100%, #15D8C5 100%)",
-              width: "fit-content",
-              fontSize: "17px",
-              textTransform: "unset",
-              borderRadius: "5px",
-              fontWeight: "500",
-              color: "white",
-            }}
-            className="bg_linear py-[10px] px-[15px]"
-            onClick={() => router.push(getAll)}
-          >
-            Get All Templates
-          </button>
+          <Link href={getAll}>
+            <button
+              style={{
+                background:
+                  "linear-gradient(268.03deg, #5961F8 -0.66%, #15D8C5 100%, #15D8C5 100%)",
+                width: "fit-content",
+                fontSize: "17px",
+                textTransform: "unset",
+                borderRadius: "5px",
+                fontWeight: "500",
+                color: "white",
+              }}
+              className="bg_linear py-[10px] px-[15px]"
+            >
+              Get All Templates
+            </button>
+          </Link>
         </Box>
       </Box>
     </Box>

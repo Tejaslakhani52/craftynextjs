@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 interface props {
   heading: string;
@@ -25,25 +26,26 @@ export default function FreeTrialBlackBanner({ heading, text }: props) {
           </Typography>
         </Box>
 
-        <Button
-          sx={{
-            textTransform: "unset",
-            fontSize: "14px",
-            fontWeight: "600",
-            whiteSpace: "nowrap",
-            opacity: "1",
-            width: "180px",
-            backgroundColor: "white",
-            borderRadius: "5px",
-            "&:hover": {
+        <Link href={"/"}>
+          <Button
+            sx={{
+              textTransform: "unset",
+              fontSize: "14px",
+              fontWeight: "600",
+              whiteSpace: "nowrap",
+              opacity: "1",
+              width: "180px",
               backgroundColor: "white",
-            },
-          }}
-          onClick={() => router.push("/")}
-          className="bg-white text-black py-2"
-        >
-          Start a free trial
-        </Button>
+              borderRadius: "5px",
+              "&:hover": {
+                backgroundColor: "white",
+              },
+            }}
+            className="bg-white text-black py-2"
+          >
+            Start a free trial
+          </Button>
+        </Link>
       </Box>
     </Box>
   );

@@ -8,15 +8,70 @@ import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
+import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import Head from "next/head";
 
 export default function index() {
   return (
     <>
       <CustomHead
         image="/images/resumeDesign.png"
-        heading={"Crafting a Winning Resume: Tips and  Best Practices"}
-        text="Take your career to the next level with a professional, well-crafted resume."
+        heading={"Online Resume Maker | Design Professional Resume for Free"}
+        text="Crafty Art's Resume Maker: Create standout resume designs with our free resume template tool. Design the perfect CV effortlessly. Try Our Resume Maker Now!"
       />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "What is Crafty Art Online Resume Maker?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Crafty Art Online Resume Maker is a platform designed to help individuals create visually appealing and professional resumes through an easy-to-use online tool.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is Crafty Art Online Resume Maker free to use?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, Crafty Art offers a free version with basic features for users to create and download their resumes.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Can I customize the artistic elements of my resume with Crafty Art?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely! Crafty Art provides a variety of artistic templates and customization options, allowing users to personalize the design, colors, and visual elements of their resumes.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Is there guidance on incorporating creative elements into resumes using Crafty Art?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, Crafty Art Online Resume Maker often includes tips and suggestions for integrating creative elements effectively, ensuring resumes stand out in a visually appealing way.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "How secure is Crafty Art in terms of handling personal information?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Crafty Art prioritizes user privacy and employs secure measures to protect personal information entered into the platform.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
       <GetStartedLinearBanner
         heading={"Crafting a Winning Resume: Tips and  Best Practices"}
         text="Take your career to the next level with a professional, well-crafted resume."
@@ -81,7 +136,95 @@ export default function index() {
         path="/templates/resume-portrait"
         image="/images/resumeUnique.png"
       />
-      {/*  */}{" "}
+      {/*  */} <ExploreTemplates getAll={"/templates/resume-portrait"} />
+      <RightImageSection
+        title="Why Choose Our Resume
+        Templates?"
+        point={
+          <Box>
+            <MarkText
+              text="Resume Template Free Download: Our free templates ensure you get a head start
+on your career journey without spending a dime."
+            />
+            <MarkText
+              text="Simple Resume Template: Our templates combine aesthetics with functionality,
+allowing your experience and skills to shine through."
+            />
+            <MarkText
+              text="Resume for Student: We've got templates designed specifically for students.
+Whether you're entering the job market for the first time."
+            />
+            <MarkText
+              text="Professional Resume Template: Impress employers with a professional look. Our
+templates help you present your qualifications seriously in your job search."
+            />
+            <MarkText
+              text="Tailored for Experience: If you have years of experience, our templates will
+highlight your achievements, skills, and expertise."
+            />
+          </Box>
+        }
+        buttonName={"Create Your Resume"}
+        alt="Resume"
+        path="/templates/resume-portrait"
+        image="/images/resumeWhy.png"
+      />
+      <LeftImageSection
+        title="How It Works ?"
+        point={
+          <Box>
+            <MarkText text="Browse: Take your time browsing our extensive collection of resume templates." />
+            <MarkText text="Select: Choose the template that suits your style, experience, and career goals." />
+            <MarkText
+              text="Customize: Easily customize your chosen template with your information,
+experience, and skills."
+            />
+            <MarkText
+              text="Download: Once you're satisfied with your resume, download it for free and start
+applying for your dream job."
+            />
+          </Box>
+        }
+        buttonName={"Explore Resume"}
+        alt="Resume"
+        path="/templates/resume-portrait"
+        image="/images/resumeHow.png"
+      />
+      <RightImageSection
+        title="Why a Well-Designed Resume 
+        Matters"
+        point={
+          <Box>
+            <MarkText
+              text="Crafty Art's Resume Builder is a user-friendly tool that simplifies the resume-
+              making process."
+            />
+            <MarkText
+              text="Whether you're a student or a seasoned professional, our free, downloadable
+              resume templates are here to help."
+            />
+            <MarkText
+              text="Our platform is designed for simplicity, allowing you to create customized resume
+              designs effortlessly."
+            />
+            <MarkText text="You don't need design expertise to create a professional-looking resume with us." />
+            <MarkText
+              text="Crafty Art's Resume Builder is all about making a strong first impression on
+              potential employers. You can easily craft your personalized, free resume here."
+            />
+          </Box>
+        }
+        buttonName={"Create Your Resume"}
+        alt="Resume"
+        path="/templates/resume-portrait"
+        image="/images/resumeM.png"
+      />
+      <CustomerSaying />
+      <GetTemplates
+        heading="Ready to create a standout resume? Get started today!"
+        text="Create a standout resume and land your dream job with resume maker"
+        navigate="/templates/resume-portrait"
+      />
       <Box
         sx={{
           mx: "auto",
@@ -100,36 +243,30 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heading="1. What can I do to make my resume stand out?"
-          text="To make your resume stand out, tailor it to the job you're applying for, highlight your achievements using numbers and statistics, use clear and concise language and formatting, and customise your resume for each job application."
+          heading="What is Crafty Art Online Resume Maker?"
+          text="Crafty Art Online Resume Maker is a platform designed to help individuals create visually appealing and professional resumes through an easy-to-use online tool."
         />
 
         <FaqsBox
-          heading="2. How can I structure my resume to showcase my skills and experience effectively?"
-          text="To structure your resume for maximum impact, start with a strong summary statement, organise your resume into clear sections that highlight relevant experiences and skills, emphasise achievements using action verbs, use visual elements strategically to guide the reader's eye, and end with a call-to-action statement."
+          heading="Is Crafty Art Online Resume Maker free to use?"
+          text="Yes, Crafty Art offers a free version with basic features for users to create and download their resumes."
         />
 
         <FaqsBox
-          heading="3. What are some common mistakes to avoid when creating a resume?"
-          text="Common mistakes to avoid when creating a resume include grammatical errors, typos, generic language that doesn't highlight your unique skills and experiences, not customising your resume for each job application, and not highlighting your achievements using specific numbers or statistics."
+          heading="Can I customize the artistic elements of my resume with Crafty Art?"
+          text="Absolutely! Crafty Art provides a variety of artistic templates and customization options, allowing users to personalize the design, colors, and visual elements of their resumes."
         />
 
         <FaqsBox
-          heading="4. What are the key elements that should be included in a resume?"
-          text="The key elements that should be included in a resume include a summary statement, education and work experience, skills and qualifications, achievements and accomplishments, and professional references."
+          heading="Is there guidance on incorporating creative elements into resumes using Crafty Art?"
+          text="Yes, Crafty Art Online Resume Maker often includes tips and suggestions for integrating creative elements effectively, ensuring resumes stand out in a visually appealing way."
         />
 
         <FaqsBox
-          heading="5. How can I make my resume unique and visually appealing?"
-          text="To make your resume unique and visually appealing, consider using a creative format that showcases your personal brand, incorporate visual elements like icons and colours to guide the reader's eye, use storytelling techniques to highlight achievements and creativity, provide links to your online portfolio or social media accounts, and experiment with different design tools and software."
+          heading="How secure is Crafty Art in terms of handling personal information?"
+          text="Crafty Art prioritizes user privacy and employs secure measures to protect personal information entered into the platform."
         />
       </Box>
-      <GetTemplates
-        heading="Ready to create a standout resume? Get started today!"
-        text="Create a standout resume and land your dream job with resume maker"
-        navigate="/templates/resume-portrait"
-      />
-      <ExploreTemplates getAll={"/templates/resume-portrait"} />
     </>
   );
 }

@@ -23,7 +23,8 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
 
   useEffect(() => {
     loadScript("https://checkout.razorpay.com/v1/checkout.js");
-  });
+  }, []);
+
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     setLoading(true);

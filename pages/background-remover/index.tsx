@@ -13,6 +13,8 @@ import CustomerSayingSmall from "@/components/common/CustomerSayingSmall";
 import axios from "axios";
 import { authCookiesGet } from "@/redux/action/AuthToken";
 import { saveAs } from "file-saver";
+import CustomHead from "@/components/common/CustomHead";
+import Head from "next/head";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -142,7 +144,66 @@ export default function index() {
   };
 
   return (
-    <div>
+    <>
+      <CustomHead
+        image="/images/bg_remove.png"
+        heading={"Background Remover: Eliminate Unwanted Elements Effortlessly"}
+        text="Effortlessly remove unwanted elements from your images with our Background Remover tool. Say goodbye to distractions in just a click!        "
+      />
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. Is the background remover easy to use?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, it's very easy! Just upload your image, select the background remover, highlight the object you want to keep and the background you want to remove, preview and save your image with the new background.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can the background remover handle all types of images?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "It can handle a lot of different types of images but there may be cases where it's not as accurate. However, it uses advanced algorithms to handle complex images with multiple objects and intricate details.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. Will the background remover affect the quality of my image?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No, it won't! You can expect a professional finish with clean edges and no loss of detail. Just ensure that the resolution of your original image is high enough.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. Can I undo or redo my edits in the background remover?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, you can easily undo or redo your edits until you achieve the desired result. You can also manually add or remove portions of the image, giving you full control over the editing process.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Do I need any special skills or software to use the background remover?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "No, you don't need any special skills or software. It's a web-based tool that's accessible from any device with an internet connection. It's designed to be user-friendly for everyone, whether you're a professional designer, student or marketer.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <Box className="bg-[#F4F7FE] py-[50px] max-sm:py-[20px]  px-[15px]">
         <Typography className="text-[50px] max-sm:text-[28px] text-center font-[700] mb-2">
           Instantly Remove Background from Images
@@ -580,6 +641,42 @@ and generating ideas."
 
       <WithCraftyartBanner />
 
+      <LeftImageSection
+        title="Why Crafty Art For Background Remover?
+        "
+        point={
+          <Box>
+            <MarkText text="Precision in Seconds: Remove backgrounds from images swiftly without compromising on accuracy." />
+            <MarkText text="User-Friendly Interface: Intuitive tools for easy navigation and seamless background removal." />
+            <MarkText text="Versatile Solutions: Works on various image formats and allows customization for diverse needs." />
+            <MarkText text="Professional Finish: Obtain clean, polished images perfect for any project or platform." />
+            <MarkText text="Time-Saving Efficiency: Boost productivity with rapid background removal, saving you valuable time." />
+            <MarkText text="No Special Skills Required: No expertise needed effortlessly editing your images like a pro." />
+          </Box>
+        }
+        buttonName={"Upload Image"}
+        alt="background remover"
+        image="/images/bgRemove/bgRemove2.png"
+      />
+
+      <RightImageSection
+        title="Features Of Crafty Art Background Remover
+        "
+        point={
+          <Box>
+            <MarkText text="Advanced Algorithms: Utilize cutting-edge technology for precise and high-quality background removal." />
+            <MarkText text="Customization Options: Tailor backgrounds to fit your vision with adjustable settings and options." />
+            <MarkText text="Bulk Processing: Save time by removing backgrounds from multiple images at once." />
+            <MarkText text="Integration Flexibility: Seamlessly integrate with other editing tools or platforms for enhanced workflow." />
+            <MarkText text="AI-Powered Efficiency: Harness the power of AI for quick and accurate background removal." />
+            <MarkText text="Responsive Support: Access comprehensive guides and support for a smooth user experience." />
+          </Box>
+        }
+        buttonName={"Upload Image"}
+        alt="background remover"
+        image="/images/bgRemove/bgRemove3.png"
+      />
+
       <CustomerSayingSmall />
       <GetTemplates
         heading="Say goodbye to tedious background removal with our powerful and user-friendly
@@ -641,6 +738,6 @@ and generating ideas."
           <span className="loader"></span>
         </main>
       )}
-    </div>
+    </>
   );
 }

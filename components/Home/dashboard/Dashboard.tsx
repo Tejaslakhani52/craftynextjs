@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { openSidebar, openTempModal } from "@/redux/reducer/actionDataReducer";
 import CustomSize from "./dashboardComponents/CustomSize";
 import UploadButton from "./dashboardComponents/UploadButton";
+import Link from "next/link";
 
 const bannerCategory = [
-  { image: "/icons/forYou.svg", name: "For you", path: "/trending" },
+  // { image: "/icons/forYou.svg", name: "For you", path: "/trending" },
   {
     image: "/icons/invitation.svg",
     name: "Invitation",
@@ -101,12 +102,9 @@ export default function Dashboard() {
           </Typography>
           <Box className="flex max-sm:hidden lg:justify-center items-center gap-[30px] md:gap-[50px] py-10 overflow-auto scroll_none">
             {bannerCategory?.map((item) => (
-              <Box
+              <Link
+                href={item?.path}
                 className="flex flex-col items-center cursor-pointer gap-[10px]"
-                onClick={() => {
-                  dispatch(openSidebar(false));
-                  router.push(item?.path);
-                }}
               >
                 <img
                   src={item?.image}
@@ -116,7 +114,7 @@ export default function Dashboard() {
                 <Typography className="text-white text-center text-[14px] whitespace-nowrap">
                   {item?.name}
                 </Typography>
-              </Box>
+              </Link>
             ))}
           </Box>
         </Box>

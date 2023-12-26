@@ -9,12 +9,74 @@ import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
+import CustomHead from "@/components/common/CustomHead";
+import Head from "next/head";
 
 export default function index() {
   const router = useRouter();
 
   return (
     <div>
+      <CustomHead
+        image="/images/caricature/bannerSide.png"
+        heading={"Image Resizer: Resize Images Effortlessly"}
+        text="Effortlessly resize images with an intuitive image resizer tool. Perfectly adjust image dimensions for your needs. Save time and maintain quality effortlessly."
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. Can I resize multiple designs at once?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, you can select multiple designs and use the batch resize feature to adjust them simultaneously.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Is the resize feature easy to use for beginners?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely, the resize feature is designed to be user-friendly and intuitive.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. Can I customize the size of individual design elements?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, you can use the crop and transform features to adjust individual elements within your design.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. How does the resize feature help with responsive design?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "By optimizing your design for different screen sizes, you can ensure that it looks great on any device or platform.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Are there any limitations to the resize feature?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The tool supports resizing up to a certain limit, depending on the file size and complexity of the design.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <Box
         sx={{
           background: "#1C3048",
@@ -60,8 +122,12 @@ export default function index() {
               }}
               className="max-lg:text-center"
             >
-              Harness the Power of Our Intuitive Resizing Feature - Take Your
-              Graphic Design Skills to New Heights with Ease!
+              It helps in changing the resolution, aspect ratio, or overall file
+              size of an image without compromising its quality. This is
+              particularly useful for optimizing images for web pages, social
+              media, or various digital platforms where specific size
+              requirements might be necessary for optimal viewing or faster
+              loading times.
             </Typography>
 
             <Button
@@ -158,6 +224,43 @@ campaigns."
       />
 
       <WithCraftyartBanner />
+
+      <LeftImageSection
+        title="Why Choose Crafty Art For Image Resizer?"
+        point={
+          <Box>
+            <MarkText text="Bulk Resize in Seconds: Upload multiple images at once and resize them effortlessly in a matter of seconds, saving you valuable time." />
+            <MarkText text="Preserve Image Quality: Our advanced algorithms ensure that resizing doesn't compromise image quality. Enjoy sharp, clear visuals after resizing." />
+            <MarkText text="Customize for Any Platform: Tailor images for various platforms effortlessly - social media, websites, emails, and more - with our intuitive resizing options." />
+            <MarkText text="Easy-to-Use Interface: Our user-friendly interface requires no technical expertise. Resize images hassle-free with a few clicks." />
+            <MarkText text="File Format Flexibility: Resize images in any preferred format - JPEG, PNG, GIF, and more - maintaining the integrity of your visuals." />
+            <MarkText text="Mobile-Friendly Resizing: Access our image resizer on-the-go. Resize images conveniently from your mobile device for quick sharing or uploading." />
+          </Box>
+        }
+        buttonName={"All Templates"}
+        alt="resize "
+        image="/images/resize/side1.png"
+      />
+
+      <RightImageSection
+        title="Features Of Our Image Resizer"
+        point={
+          <Box>
+            <MarkText text="Optimal Compatibility: Our tool supports a wide range of resolutions and aspect ratios, ensuring compatibility with various devices and platforms." />
+
+            <MarkText text="Preserve Metadata: Retain essential image details such as EXIF data and timestamps during the resizing process, maintaining the integrity of your visuals." />
+
+            <MarkText text="Cloud-Based Convenience: Access our image resizer from anywhere, anytime, and across different devices, providing flexibility and convenience." />
+
+            <MarkText text="Advanced Filters and Effects: Enhance your images further by applying filters or effects during resizing, adding artistic touches effortlessly." />
+
+            <MarkText text="Secure and Private: We prioritize data security - your images and information remain confidential throughout the resizing process." />
+          </Box>
+        }
+        buttonName={"All Templates"}
+        alt="resize "
+        image="/images/resize/side2.png"
+      />
 
       <CustomerSayingSmall />
 

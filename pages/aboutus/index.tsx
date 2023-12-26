@@ -61,7 +61,7 @@ const dEverything4 = [
   {
     icons: "/icons/about us/bgRemove.svg",
     name: "Business Card",
-    path: "/businessCard",
+    path: "/business-card",
   },
   {
     icons: "/icons/about us/bgRemove.svg",
@@ -94,7 +94,7 @@ const dEverything5 = [
   {
     icons: "/icons/about us/bgRemove.svg",
     name: "birthday",
-    path: "/birthday",
+    path: "/birthday-invitation",
   },
 ];
 

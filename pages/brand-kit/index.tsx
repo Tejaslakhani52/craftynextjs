@@ -9,11 +9,75 @@ import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
+import CustomHead from "@/components/common/CustomHead";
+import Head from "next/head";
 
 export default function index() {
   const router = useRouter();
   return (
     <div>
+      <CustomHead
+        image="/images/caricature/bannerSide.png"
+        heading={
+          "Elevate your brand with a comprehensive brand kit. Explore the tools to establish a distinct and memorable identity."
+        }
+        text="Elevate your brand with a comprehensive Brand Kit. Unify your identity, logo, fonts, colors, and more in a powerful package. Enhance recognition and credibility effortlessly."
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What makes the Brand Kit feature unique compared to other design tools?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The Brand Kit automates formatting of your brand assets for consistency and saves time. You can easily update brand assets in one centralised location.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can I customise my Brand Kit settings?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, you can add or remove brand assets to tailor to your specific needs.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. How does the Brand Kit feature benefit marketers?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Ensures consistency across marketing materials and saves time. Allows marketers to focus on the creative aspects of their designs.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. Will the Brand Kit feature work with any design template?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, it's designed to work with any design template for consistency and to save time.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Is the Brand Kit feature easy to use for beginners?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, it eliminates manual formatting and makes it easier for beginners to create professional-looking designs.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <Box
         sx={{
           background: "#DDD7FD",
@@ -171,6 +235,57 @@ which helps to maintain a consistent brand identity."
       />
 
       <WithCraftyartBanner />
+
+      <LeftImageSection
+        title="Why Use Crafty Art’s Brand Kit?"
+        point={
+          <Box>
+            <MarkText
+              text="Unified Visual Elements : 
+Create a cohesive brand identity with customizable logos, colors, and fonts for a consistent look and feel."
+            />
+
+            <MarkText
+              text="Brand Guidelines & Usage : 
+Access clear guidelines ensuring consistent brand representation across all channels and materials."
+            />
+
+            <MarkText
+              text="Asset Repository & Management : 
+Centralize and manage all brand assets efficiently, ensuring easy access and maintenance."
+            />
+
+            <MarkText
+              text="Customizable Templates : 
+Utilize ready-to-use templates for social media, presentations, and more, aligning with your brand's aesthetics effortlessly."
+            />
+
+            <MarkText
+              text="Collaboration & Sharing : 
+Foster collaboration among teams and seamlessly share brand assets for unified brand communication."
+            />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        alt="Brand Kit"
+        image="/images/brand/side4.png"
+      />
+
+      <RightImageSection
+        title="Features Of Crafty Art Brand Kit."
+        point={
+          <Box>
+            <MarkText text="Unified Visual Identity: Create a cohesive brand presence with logo variations, color palettes, and typography that reflect your essence." />
+            <MarkText text="Consistent Branding Elements: Ensure consistency across platforms with standardized templates for social media, business cards, presentations, and more." />
+            <MarkText text="Brand Guidelines and Documentation: Receive comprehensive guidelines outlining logo usage, color codes, and design specifications for seamless communication of your brand's essence." />
+            <MarkText text="Customizable Assets: Access a suite of customizable design elements like icons, patterns, and graphics tailored to your brand's needs." />
+            <MarkText text="Brand Package Delivery: Receive a curated package of digital assets and files optimized for various platforms and applications." />
+          </Box>
+        }
+        buttonName={"Design your Cards"}
+        alt="Brand Kit"
+        image="/images/brand/side5.png"
+      />
 
       <CustomerSayingSmall />
 

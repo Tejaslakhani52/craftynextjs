@@ -22,28 +22,28 @@ import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 
-export async function getStaticPaths() {
-  const response = await axios.post<any>(
-    "https://story.craftyartapp.com/get/datas",
-    {
-      debug_key: "debug",
-      limit: 1000,
-      cat_id: "latest",
-      page: 1,
-    }
-  );
+// export async function getStaticPaths() {
+//   const response = await axios.post<any>(
+//     "https://story.craftyartapp.com/get/datas",
+//     {
+//       debug_key: "debug",
+//       limit: 1000,
+//       cat_id: "latest",
+//       page: 1,
+//     }
+//   );
 
-  const templateIds = response?.data?.datas.map((template: any) => ({
-    params: { templateId: template?.id_name } as any,
-  }));
+//   const templateIds = response?.data?.datas.map((template: any) => ({
+//     params: { templateId: template?.id_name } as any,
+//   }));
 
-  return {
-    paths: templateIds,
-    fallback: false,
-  };
-}
+//   return {
+//     paths: templateIds,
+//     fallback: false,
+//   };
+// }
 
-export async function getStaticProps(context: any) {
+export async function getServerSideProps(context: any) {
   try {
     const { params } = context;
 
@@ -62,9 +62,30 @@ export async function getStaticProps(context: any) {
 
     const templateData = JSON.parse(jsonString);
 
+    const responseAnother = await axios.post(
+      "https://story.craftyartapp.com/search-template",
+      {
+        key: "qwfsegxdhbxfjhncf",
+        app_id: "1",
+        cat_id: "-1",
+        keywords: templateData?.tags?.[0] as any,
+        device: "0",
+        refWidth: "1080",
+        refHeight: "1080",
+        page: 1,
+        debug: "debug",
+      }
+    );
+    const jsonStringAnother = responseAnother.data.substring(
+      responseAnother.data.indexOf("{"),
+      responseAnother.data.lastIndexOf("}") + 1
+    );
+    const anotherData = JSON.parse(jsonStringAnother);
+
     return {
       props: {
         templateData,
+        anotherData,
       },
     };
   } catch (error) {
@@ -75,7 +96,7 @@ export async function getStaticProps(context: any) {
   }
 }
 
-export default function templateId({ templateData }: any) {
+export default function templateId({ templateData, anotherData }: any) {
   console.log("templateData: ", templateData);
   const screenHeight = useScreenHeight();
   const router = useRouter();
@@ -85,7 +106,7 @@ export default function templateId({ templateData }: any) {
   const currentPathname = router.query;
   console.log("currentPathname: ", currentPathname);
   const screenWidth = useScreenWidth();
-  const [anotherData, setAnotherData] = React.useState<any>([]);
+  // const [anotherData, setAnotherData] = React.useState<any>([]);
   console.log("anotherData: ", anotherData);
   const [isLoading, setIsLoading] = React.useState<any>(false);
   const [template, setTemplate] = React.useState<any>({});
@@ -112,66 +133,12 @@ export default function templateId({ templateData }: any) {
   }
   console.log("templateIds: ", templateIds);
 
-  // const fetchPosterData = (templateIds: any) => {
-  //   if (templateIds) {
-  //     axios
-  //       .post("/api/getSingleTemplate", {
-  //         id_name: templateIds,
-  //       })
-  //       .then((response: any) => {
-  //         const jsonString = response.data.substring(
-  //           response.data.indexOf("{"),
-  //           response.data.lastIndexOf("}") + 1
-  //         );
-  //         const getData = JSON.parse(jsonString);
-  //         setTemplate(getData);
-  //         setIsLoading(false);
-  //       })
-  //       .catch((error) => {
-  //         setNotFound(true);
-  //         setIsLoading(false);
-  //         console.log("error: ", error);
-  //       });
-  //   }
-  // };
-
-  const fetchSearchData = () => {
-    axios
-      .post("/api/searchTemplate", {
-        keywords: templateData?.tags?.[0] as any,
-        page: 1,
-      })
-      .then((response: any) => {
-        const jsonString = response.data.substring(
-          response.data.indexOf("{"),
-          response.data.lastIndexOf("}") + 1
-        );
-        const getData = JSON.parse(jsonString);
-        setAnotherData(getData);
-      })
-      .catch((error: any) => {
-        console.log("error: ", error);
-        // fetchPosterData(currentPathname?.templateId);
-      });
-  };
-
-  // React.useEffect(() => {
-  //   setTimeout(() => {
-  //     fetchPosterData(currentPathname?.templateId);
-  //   }, 100);
-  // }, [currentPathname?.templateId]);
-
-  React.useEffect(() => {
-    // setIsLoading(true);
-    fetchSearchData();
-  }, [templateData]);
-
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
       case screenWidth > 1500:
-        return 6.49;
+        return 6.59;
       case screenWidth > 1200:
-        return 5.49;
+        return 6.49;
       case screenWidth > 1023:
         return 5.49;
       case screenWidth > 700:
@@ -183,10 +150,16 @@ export default function templateId({ templateData }: any) {
     }
   }, [screenWidth]);
 
+  // React.useEffect(() => {
+  //   const element: any = document.getElementById(tempIdValue);
+  //   element?.scrollIntoView();
+  // }, [anotherData]);
+
   React.useEffect(() => {
-    const element: any = document.getElementById(tempIdValue);
-    element?.scrollIntoView();
-  }, [anotherData]);
+    window.scrollTo(0, 0);
+  }, []);
+
+  const containerId = `slider`;
 
   React.useEffect(() => {
     const formattedText = templateData?.description
@@ -201,7 +174,6 @@ export default function templateId({ templateData }: any) {
 
   const handleScroll = (e: Event) => {
     const container = e.target as HTMLElement;
-    console.log("container: ", container.scrollLeft);
     setShowPrevButton(container.scrollLeft > 0);
     setShowNextButton(
       container.scrollLeft < container.scrollWidth - container.clientWidth
@@ -209,18 +181,16 @@ export default function templateId({ templateData }: any) {
   };
 
   React.useEffect(() => {
-    const container = document.getElementById("carousel-slide-container");
+    const container = document.getElementById(containerId);
     if (container) {
       container.addEventListener("scroll", handleScroll);
       handleScroll({ target: container } as unknown as Event);
       return () => container.removeEventListener("scroll", handleScroll);
     }
-  }, []);
+  }, [containerId]);
 
   const handleNextClick = () => {
-    const container = document.getElementById(
-      "carousel-slide-container"
-    ) as HTMLElement;
+    const container = document.getElementById(containerId) as HTMLElement;
     if (container) {
       container.scrollBy({
         left: container.offsetWidth,
@@ -230,9 +200,7 @@ export default function templateId({ templateData }: any) {
   };
 
   const handlePrevClick = () => {
-    const container = document.getElementById(
-      "carousel-slide-container"
-    ) as HTMLElement;
+    const container = document.getElementById(containerId) as HTMLElement;
     if (container) {
       container.scrollBy({
         left: -container.offsetWidth,
@@ -296,14 +264,14 @@ export default function templateId({ templateData }: any) {
                 >
                   <Box
                     className="flex items-center overflow-auto py-[20px] scroll_none gap-[15px] max-sm:gap-[10px] "
-                    id={"carousel-slide-container"}
+                    id={containerId}
                   >
                     {showPrevButton && (
                       <Box>
                         <button
-                          onClick={handlePrevClick}
                           className="pre_button z-[1] left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex max-sm:hidden"
                           style={{ top: "52%" }}
+                          onClick={handlePrevClick}
                         >
                           <img
                             src="/icons/leftArrow.svg"
@@ -315,7 +283,7 @@ export default function templateId({ templateData }: any) {
                     )}
                     {templateData?.thumbArray?.map((image: any) => (
                       <Box
-                        className="cursor-pointer p-[1px]"
+                        className="cursor-pointer rounded-[4px]"
                         sx={{
                           border:
                             showImage === image
@@ -328,7 +296,7 @@ export default function templateId({ templateData }: any) {
                           <img
                             src={image}
                             alt={templateData?.template_name}
-                            className="h-auto"
+                            className="h-auto rounded-[4px]"
                           />
                         </Box>
                       </Box>
@@ -336,9 +304,9 @@ export default function templateId({ templateData }: any) {
                     {showNextButton && (
                       <Box>
                         <button
-                          onClick={handleNextClick}
                           className="next_button right-[-18px] flex max-sm:hidden"
                           style={{ top: "52%" }}
+                          onClick={handleNextClick}
                         >
                           <img
                             src="/icons/rightArrow.svg"
@@ -517,66 +485,60 @@ export default function templateId({ templateData }: any) {
                       (t: any) => t.template_id !== templateData?.template_id
                     )
                     ?.map((templates: any, index: number) => (
-                      <div
-                        className=""
-                        style={{
-                          height: `${calculateHeight(
-                            templates?.width,
-                            templates?.height,
-                            screenWidth / multiSizeFixSize
-                          )}px`,
-                          width: `${screenWidth / multiSizeFixSize}px`,
-                        }}
-                        id={`content${index}`}
-                        onClick={() => {
-                          // const newPath = `/templates/p/${templates.id_name}`;
-                          // window.history.pushState({}, "", newPath);
-                          // dispatch(openTempModal(true));
-
-                          dispatch(tempId(`content${index}`));
-                          dispatch(
-                            modalClosePath(`templates/p/${templateIds}`)
-                          );
-                        }}
+                      <Link
+                        href={`/templates/p/${templates.id_name}`}
+                        onClick={(e) => e.preventDefault()}
                       >
-                        {/* <Link
-                          href={`/?templates=${templates.id_name}`}
-                          as={`/templates/p/${templates.id_name}`}
-                          scroll={false}
-                          shallow={true}
-                        > */}
                         <div
-                          className="w-full h-full p-[8px] relative"
+                          className=""
+                          style={{
+                            height: `${calculateHeight(
+                              templates?.width,
+                              templates?.height,
+                              screenWidth / multiSizeFixSize
+                            )}px`,
+                            width: `${screenWidth / multiSizeFixSize}px`,
+                          }}
+                          id={`content${index}`}
                           onClick={() => {
-                            setIdName(templates?.id_name);
-                            setOpenModal(true);
-
-                            window.history.replaceState(
-                              {},
-                              "",
-                              `/templates/p/${templates?.id_name}`
+                            dispatch(tempId(`content${index}`));
+                            dispatch(
+                              modalClosePath(`templates/p/${templateIds}`)
                             );
                           }}
                         >
-                          {templates.is_premium && (
-                            <img
-                              src="/icons/proIcon.svg"
-                              alt={templateData?.template_name}
-                              className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
-                            />
-                          )}
-                          <img
-                            src={templates?.template_thumb}
-                            alt={templates?.category_name}
-                            className={`w-full] rounded-[5px] cursor-pointer`}
-                            style={{
-                              border: "1px solid #80808082",
-                              height: "100%",
+                          <div
+                            className="w-full h-full p-[8px] relative"
+                            onClick={() => {
+                              setIdName(templates?.id_name);
+                              setOpenModal(true);
+
+                              window.history.replaceState(
+                                {},
+                                "",
+                                `/templates/p/${templates?.id_name}`
+                              );
                             }}
-                          />
+                          >
+                            {templates.is_premium && (
+                              <img
+                                src="/icons/proIcon.svg"
+                                alt={templateData?.template_name}
+                                className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
+                              />
+                            )}
+                            <img
+                              src={templates?.template_thumb}
+                              alt={templates?.category_name}
+                              className={`w-full] rounded-[5px] cursor-pointer`}
+                              style={{
+                                border: "1px solid #80808082",
+                                height: "100%",
+                              }}
+                            />
+                          </div>
                         </div>
-                        {/* </Link> */}
-                      </div>
+                      </Link>
                     ))}
                 </StackGrid>
                 <Box className="my-[50px] w-[100%] mx-auto">

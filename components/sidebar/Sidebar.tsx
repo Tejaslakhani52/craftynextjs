@@ -14,6 +14,7 @@ import SignUp from "../auth/SignUp";
 import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
+import Link from "next/link";
 
 export const sidebarMenu = [
   {
@@ -58,12 +59,12 @@ export const sidebarMenu = [
     activeIcon: "/icons/uploadActive.svg",
     path: "/upload",
   },
-  {
-    name: "Recommendation",
-    icons: "/icons/recomendation.svg",
-    activeIcon: "/icons/recomendationActive.svg",
-    path: "/recommendation",
-  },
+  // {
+  //   name: "Recommendation",
+  //   icons: "/icons/recomendation.svg",
+  //   activeIcon: "/icons/recomendationActive.svg",
+  //   path: "/recommendation",
+  // },
   {
     name: "Custom Order",
     icons: "/icons/customOrder.svg",
@@ -249,19 +250,21 @@ export default function Sidebar({
             <SideBarMenuButton data={Templates} />
             <Button
               className="flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
-              onClick={() => setOpen(!open)}
+              onClick={handleClickWhatsapp}
             >
               <span className="text-black text-[15px]">Custom order</span>
             </Button>
             <Button
               className="flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
-              onClick={() => setOpen(!open)}
+              onClick={() => dispatch(openSidebar(false))}
             >
-              <span className="text-black text-[15px]">Pricing</span>
+              <Link href={"/plans"} className="text-black text-[15px]">
+                Pricing
+              </Link>
               <img
                 src="/icons/pricing.svg"
                 alt="price"
-                className="ml-[8px] w-[20px] "
+                className="ml-[8px] w-[20px]"
               />
             </Button>
           </Box>
@@ -314,11 +317,12 @@ export default function Sidebar({
                     </Box>
                   </Box>
                 ) : (
-                  <Box
+                  <Link
+                    href={item.path}
                     className={`flex cursor-pointer py-3 px-3 w-full hover:bg-[#F4F7FE] ${
                       router.pathname === item.path && " bg-[#F4F7FE]"
                     }    rounded-[4px]`}
-                    onClick={() => router.push(item.path)}
+                    // onClick={() => router.push(item.path)}
                   >
                     {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
                     <Box className="flex gap-5  w-full">
@@ -349,7 +353,7 @@ export default function Sidebar({
                         />
                       )}
                     </Box>
-                  </Box>
+                  </Link>
                 )}
               </Box>
             ))}

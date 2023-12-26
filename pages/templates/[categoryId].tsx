@@ -75,6 +75,38 @@ const staticBox: any = {
   latest: <FestivalBanner />,
 };
 
+// export async function getStaticProps(context: any) {
+//   try {
+//     const { params } = context;
+
+//     const response = await axios.post(
+//       "https://story.craftyartapp.com/my-posterPage",
+//       {
+//         key: "qwfsegxdhbxfjhncf",
+//         id_name: params?.templateId,
+//       },
+//       { withCredentials: false }
+//     );
+//     const jsonString = response.data.substring(
+//       response.data.indexOf("{"),
+//       response.data.lastIndexOf("}") + 1
+//     );
+
+//     const templateData = JSON.parse(jsonString);
+
+//     return {
+//       props: {
+//         templateData,
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error in getStaticProps:", error);
+//     return {
+//       notFound: true,
+//     };
+//   }
+// }
+
 export default function index() {
   const dispatch = useDispatch();
   const router = useRouter();

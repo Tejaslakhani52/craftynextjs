@@ -13,6 +13,7 @@ import RazorpayPage from "@/components/payment/Razorpay";
 import { useRouter } from "next/router";
 import { addDays, format } from "date-fns";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
+import Icons from "@/assets";
 
 const PUBLIC_KEY =
   "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
@@ -74,7 +75,29 @@ const scrollToTop = () => {
   }
 };
 
-export default function index() {
+export async function getServerSideProps() {
+  try {
+    const response = await axios.get("https://story.craftyartapp.com/get-ip");
+    const ip = response.data;
+
+    return {
+      props: {
+        ip,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching API data:", error);
+
+    return {
+      props: {
+        ip: null,
+      },
+    };
+  }
+}
+
+export default function index({ ip }: any) {
+  console.log("ip: ", ip);
   const router = useRouter();
   const uId = authCookiesGet();
   const [planeType, setPlaneType] = useState<string>("monthly");
@@ -100,11 +123,8 @@ export default function index() {
 
   const getData = async () => {
     try {
-      const res = await axios.get("/api/getIp");
-      const ip = res.data.ip;
-
       const response = await axios
-        .post("/api/getCountryCode", { ip: ip })
+        .post("/api/getCountryCode", { ip: ip?.ip })
         .then((res: any) => {
           setUserCountryCode(res?.data?.countryCode);
           axios
@@ -133,7 +153,7 @@ export default function index() {
   useEffect(() => {
     getData();
     setIsLoading(true);
-  }, []);
+  }, [ip]);
 
   useEffect(() => {
     if (planeType == "monthly") {
@@ -208,7 +228,7 @@ export default function index() {
         </Box>
         <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
           <video
-            src={"./videos/Remove Bg.mp4"}
+            src={"https://assets.craftyart.in/w_assets/remove_bg.mp4"}
             controls={false}
             autoPlay
             loop
@@ -451,23 +471,6 @@ export default function index() {
           </Box>
         </Box>
       </Box>
-
-      {/* <Box className="flex flex-col items-center py-[100px] px-[15px]">
-        <img
-          src="/images/refundPolicy.svg"
-          alt=""
-          className="w-[300px] max-sm:w-[200px]"
-        />
-
-        <Typography className="font-medium text-[35px] max-sm:text-[25px] mt-[30px] text-center text-[#1C3048] mb-1">
-          All paid plans include a 7-day Refund Policy guarantee
-        </Typography>
-
-        <Typography className="text-[#ABB2C7] font-medium text-center">
-          You are fully protected by our 100% money back guarantee and give
-          refund in 7 days
-        </Typography>
-      </Box> */}
 
       <Box className="sm:w-[80%] lg:w-[60%] mx-auto px-[15px] mt-[50px]">
         <Typography
@@ -837,10 +840,6 @@ export default function index() {
                 {choosePlan?.offer_price}
               </Typography>
             </Box>
-
-            {/* <Button className="bg_linear text-white w-full mt-[25px] py-[10px] normal-case text-[17px]">
-              Next
-            </Button> */}
           </Box>
 
           <Box className="md:w-[50%] p-[30px] ">
@@ -858,11 +857,8 @@ export default function index() {
               <Typography className="text-[#ABB2C7] font-semibold">
                 Credit Or Debit Card
               </Typography>
-              <img
-                src="/images/plans/credit_debit_card.svg"
-                alt=""
-                className="w-[250px]"
-              />
+
+              <Icons.creditDebitCardIcon />
             </Box>
 
             <Elements stripe={stripeTestPromise}>
@@ -873,6 +869,12 @@ export default function index() {
       </DialogModal>
 
       <MainLoaderBox />
+
+      {isLoading && (
+        <main className="main">
+          <span className="loader"></span>
+        </main>
+      )}
     </div>
   );
 }

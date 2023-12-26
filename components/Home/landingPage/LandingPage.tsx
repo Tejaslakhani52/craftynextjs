@@ -21,7 +21,7 @@ export const MarkText = ({ text }: any) => {
         className="w-[20px] max-sm:w-[15px] mt-[5px]"
       />
       <Typography
-        sx={{ fontSize: "16px", color: "#1C3048", opacity: 1 }}
+        sx={{ color: "#1C3048", opacity: 1 }}
         className="text-[16px]  max-lg:text max-2sm:text-[14px]"
       >
         {text}

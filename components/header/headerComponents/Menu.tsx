@@ -8,6 +8,7 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch } from "react-redux";
+import Link from "next/link";
 
 export const Product = {
   name: "Product",
@@ -29,7 +30,7 @@ export const Product = {
         { name: "Resume", path: "/resume" },
         { name: "Flyer", path: "/flyer" },
         { name: "Calendar", path: "/calendar" },
-        { name: "Bridal shower", path: "/bridalShower" },
+        { name: "Bridal shower", path: "/bridal-shower" },
         { name: "Logo", path: "/logos" },
       ],
     },
@@ -60,10 +61,10 @@ export const Templates = {
       heading: "Invitation",
       allName: [
         { name: "Wedding", path: "/wedding" },
-        { name: "Birthday", path: "/birthday" },
-        { name: "Baby & Care", path: "/babyShower" },
-        { name: "Party", path: "/party" },
-        { name: "Brochure", path: "/brochure" },
+        { name: "Birthday", path: "/birthday-invitation" },
+        { name: "Baby & Care", path: "/baby-shower-invitation" },
+        { name: "Party", path: "/party-invitation" },
+        { name: "Brochure", path: "/brochure-design" },
       ],
     },
 
@@ -81,7 +82,7 @@ export const Templates = {
       allName: [
         { name: "Flyer", path: "/flyer" },
         { name: "Logo", path: "/logos" },
-        { name: "Business card", path: "/businessCard" },
+        { name: "Business card", path: "/business-card" },
         { name: "Poster", path: "/poster" },
         { name: "Resume", path: "/resume" },
       ],
@@ -137,21 +138,22 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
         }}
       >
         {itemName?.map((data: any) => (
-          <>
-            <Box className="flex flex-col">
-              <Typography
-                className={`text-black font-semibold px-4 ${
-                  data?.heading && " pb-3"
-                }`}
+          <Box className="flex flex-col">
+            <Typography
+              className={`text-black font-semibold px-4 ${
+                data?.heading && " pb-3"
+              }`}
+            >
+              {data?.heading}
+            </Typography>
+            {data?.allName?.map((item: any) => (
+              <Link
+                href={item.path}
+                onClick={() => {
+                  dispatch(openSidebar(false));
+                }}
               >
-                {data?.heading}
-              </Typography>
-              {data?.allName?.map((item: any) => (
                 <MenuItem
-                  onClick={() => {
-                    dispatch(openSidebar(false));
-                    router.push(item.path);
-                  }}
                   sx={{
                     fontSize: "14px",
                     borderRadius: "4px",
@@ -164,9 +166,9 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
                 >
                   {item?.name}
                 </MenuItem>
-              ))}
-            </Box>
-          </>
+              </Link>
+            ))}
+          </Box>
         ))}
       </Box>
     </Box>
@@ -206,12 +208,15 @@ export default function MenuBox() {
         </button>
         <button
           className={` max-xl:hidden px-4 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
-          onClick={() => {
-            dispatch(openSidebar(false));
-            router.push("/plans");
-          }}
         >
-          Pricing
+          <Link
+            href={"/plans"}
+            onClick={() => {
+              dispatch(openSidebar(false));
+            }}
+          >
+            Pricing
+          </Link>
           <img src="/icons/pricing.svg" alt="pro" className="ml-[8px]" />
         </button>
         <Box className=" relative block xl:hidden">
@@ -237,6 +242,7 @@ export default function MenuBox() {
                   backgroundColor: "#EDF0F9",
                 },
               }}
+              onClick={handleClickWhatsapp}
             >
               Custom order
             </MenuItem>
@@ -250,7 +256,14 @@ export default function MenuBox() {
                 },
               }}
             >
-              Pricing
+              <Link
+                href={"/plans"}
+                onClick={() => {
+                  dispatch(openSidebar(false));
+                }}
+              >
+                Pricing
+              </Link>
               <img
                 src="/icons/pricing.svg"
                 alt=""

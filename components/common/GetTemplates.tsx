@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 // import { useNavigate } from "react-router-dom";
@@ -49,23 +50,24 @@ export default function GetTemplates(props: any) {
           </Typography>
         </Box>
 
-        <button
-          style={{
-            backgroundColor: "white",
-            width: "fit-content",
-            textTransform: "unset",
-            borderRadius: "5px",
-            fontWeight: "500",
-            fontSize: "17px",
-            color: "white",
-          }}
-          onClick={() => router.push(props.navigate)}
-          className=" py-[10px] px-[15px] "
-        >
-          <span className="text_linear">
-            {props?.bt_name ?? "Get All Templates"}{" "}
-          </span>
-        </button>
+        <Link href={props.navigate}>
+          <button
+            style={{
+              backgroundColor: "white",
+              width: "fit-content",
+              textTransform: "unset",
+              borderRadius: "5px",
+              fontWeight: "500",
+              fontSize: "17px",
+              color: "white",
+            }}
+            className=" py-[10px] px-[15px] "
+          >
+            <span className="text_linear">
+              {props?.bt_name ?? "Get All Templates"}{" "}
+            </span>
+          </button>
+        </Link>
       </Box>
     </>
   );

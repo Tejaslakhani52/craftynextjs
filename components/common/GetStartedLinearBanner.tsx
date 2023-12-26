@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -59,23 +60,25 @@ export default function GetStartedLinearBanner(props: props) {
           {props?.text}
         </Typography>
 
-        <Button
-          style={{
-            backgroundColor: "white",
-            width: "162px",
+        <Link href={props?.navigate}>
+          <Button
+            style={{
+              backgroundColor: "white",
+              width: "162px",
 
-            textTransform: "unset",
-            boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
-            border: "none",
-            padding: "8px 10px",
-            borderRadius: "5px",
-            fontSize: "16px",
-            fontWeight: "500",
-          }}
-          onClick={() => router.push(props?.navigate)}
-        >
-          <span className="text_linear">{props?.buttonName}</span>
-        </Button>
+              textTransform: "unset",
+              boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
+              border: "none",
+              padding: "8px 10px",
+              borderRadius: "5px",
+              fontSize: "16px",
+              fontWeight: "500",
+            }}
+            // onClick={() => router.push(props?.navigate)}
+          >
+            <span className="text_linear">{props?.buttonName}</span>
+          </Button>
+        </Link>
       </Box>
       <Box
         sx={{

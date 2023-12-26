@@ -57,13 +57,10 @@ export default function TemplateModal({
   id,
   setId,
 }: any) {
-  console.log("id: ", id);
   const dispatch = useDispatch();
   const router = useRouter();
   const userPremium = tokenGet("premium");
   const token = authCookiesGet();
-  console.log("router: ", router.asPath);
-  // const id = router.query;
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
   const [anotherData, setAnotherData] = React.useState<any>([]);
@@ -177,7 +174,7 @@ export default function TemplateModal({
       case screenWidth > 1200:
         return 6.92;
       case screenWidth > 1023:
-        return 5.92;
+        return 6.92;
       case screenWidth > 700:
         return 4.92;
       case screenWidth > 600:
@@ -277,25 +274,20 @@ export default function TemplateModal({
           }}
           className="my-[20px] max-sm:my-[0]"
         >
-          {/* <Link
-            href={modalClose}
-            scroll={false}
-            shallow={true}
-            className="fixed right-[8%] w-[30px]"
-          > */}
-          <button
-            className="fixed  z-[100] right-[8%] max-muiLG:right-[3%] max-muiLG:top-[3%] bg-white w-[30px] max-sm:w-[35px] max-sm:top-[2%] max-sm:right-[3%] p-[7px] rounded-[50%] max-muiLG:bg-[aliceblue] "
-            onClick={() => {
-              setId("");
-              setTemplate({});
-              setAnotherData([]);
-              setOpen(false);
-              window.history.replaceState({}, "", `${router.asPath}`);
-            }}
-          >
-            <img src="/icons/modalClose.svg" alt="modalClose" />
-          </button>
-          {/* </Link> */}
+          <>
+            <button
+              className="fixed  z-[100] right-[8%] max-muiLG:right-[3%] max-muiLG:top-[3%] bg-white w-[30px] max-sm:w-[35px] max-sm:top-[2%] max-sm:right-[3%] p-[7px] rounded-[50%] max-muiLG:bg-[aliceblue] "
+              onClick={() => {
+                setId("");
+                setTemplate({});
+                setAnotherData([]);
+                setOpen(false);
+                window.history.replaceState({}, "", `${router.asPath}`);
+              }}
+            >
+              <img src="/icons/modalClose.svg" alt="modalClose" />
+            </button>
+          </>
           <DialogContent className="px-[40px] max-sm:px-[20px]">
             <Box className="flex my-[20px] gap-[50px] max-2md:flex-col max-2md:h-auto">
               {isLoading ? (
@@ -332,7 +324,7 @@ export default function TemplateModal({
                       id={containerId}
                       onScroll={handleScroll}
                     >
-                      {showPrevButton && (
+                      {/* {showPrevButton && (
                         <Box>
                           <button
                             onClick={handlePrevClick}
@@ -346,7 +338,7 @@ export default function TemplateModal({
                             />
                           </button>
                         </Box>
-                      )}
+                      )} */}
                       {template?.thumbArray?.map((image: any) => (
                         <Box
                           className="cursor-pointer p-[1px] mx-[5px] rounded-[5px]"
@@ -358,7 +350,7 @@ export default function TemplateModal({
                           }}
                           onClick={() => setShowImage(image)}
                         >
-                          <Box className="w-[70px] rounded-[5px]">
+                          <Box className="w-[60px] rounded-[5px]">
                             <img
                               src={image}
                               alt={template?.template_name}
@@ -367,7 +359,7 @@ export default function TemplateModal({
                           </Box>
                         </Box>
                       ))}
-                      {showNextButton && (
+                      {/* {showNextButton && (
                         <Box>
                           <button
                             onClick={handleNextClick}
@@ -381,7 +373,7 @@ export default function TemplateModal({
                             />
                           </button>
                         </Box>
-                      )}
+                      )} */}
                     </Box>
                   </Box>
                 </Box>
@@ -551,55 +543,53 @@ export default function TemplateModal({
                         (t: any) => t.template_id !== template?.template_id
                       )
                       ?.map((templates: any, index: number) => (
-                        <div
-                          className=""
-                          style={{
-                            height: `${calculateHeight(
-                              templates?.width,
-                              templates?.height,
-                              screenWidth / multiSizeFixSize
-                            )}px`,
-                            width: `${screenWidth / multiSizeFixSize}px`,
-                          }}
-                          onClick={() => {
-                            window.history.replaceState(
-                              {},
-                              "",
-                              `/templates/p/${templates?.id_name}`
-                            );
-                            setId("");
-                            setTemplate({});
-                            setAnotherData([]);
-                            setIsLoading(true);
-                            setId(templates?.id_name);
-                          }}
+                        <Link
+                          href={`/templates/p/${templates.id_name}`}
+                          onClick={(e) => e.preventDefault()}
                         >
-                          {/* <Link
-                            href={`/?templates=${templates.id_name}`}
-                            as={`/templates/p/${templates.id_name}`}
-                            scroll={false}
-                            shallow={true}
-                          > */}
-                          <div className="w-full h-full p-[8px] relative">
-                            {templates.is_premium && (
+                          <div
+                            className=""
+                            style={{
+                              height: `${calculateHeight(
+                                templates?.width,
+                                templates?.height,
+                                screenWidth / multiSizeFixSize
+                              )}px`,
+                              width: `${screenWidth / multiSizeFixSize}px`,
+                            }}
+                            onClick={() => {
+                              window.history.replaceState(
+                                {},
+                                "",
+                                `/templates/p/${templates?.id_name}`
+                              );
+                              setId("");
+                              setTemplate({});
+                              setAnotherData([]);
+                              setIsLoading(true);
+                              setId(templates?.id_name);
+                            }}
+                          >
+                            <div className="w-full h-full p-[8px] relative">
+                              {templates.is_premium && (
+                                <img
+                                  src="/icons/proIcon.svg"
+                                  alt={template?.template_name}
+                                  className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
+                                />
+                              )}
                               <img
-                                src="/icons/proIcon.svg"
-                                alt={template?.template_name}
-                                className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
+                                src={templates?.template_thumb}
+                                alt={templates?.category_name}
+                                className={`w-full] rounded-[5px] cursor-pointer`}
+                                style={{
+                                  border: "1px solid #80808082",
+                                  height: "100%",
+                                }}
                               />
-                            )}
-                            <img
-                              src={templates?.template_thumb}
-                              alt={templates?.category_name}
-                              className={`w-full] rounded-[5px] cursor-pointer`}
-                              style={{
-                                border: "1px solid #80808082",
-                                height: "100%",
-                              }}
-                            />
+                            </div>
                           </div>
-                          {/* </Link> */}
-                        </div>
+                        </Link>
                       ))}
                   </StackGrid>
                 </Box>

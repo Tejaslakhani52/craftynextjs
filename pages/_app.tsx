@@ -15,6 +15,7 @@ import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import MobileBottomBar from "@/components/common/MobileBottomBar";
+import Index from "@/private/Index";
 
 export async function getStaticProps() {
   const router = useRouter();
@@ -66,7 +67,7 @@ export default function App({
     <>
       <Provider store={store}>
         <Head>
-          <link rel="canonical" href={canonicalUrl} />
+          {/* <link rel="canonical" href={canonicalUrl} />
           <title>
             {router.pathname === "/"
               ? "CraftyArt"
@@ -76,19 +77,19 @@ export default function App({
           <meta
             name="description"
             content={"Customize your Design in just few Clicks!"}
-          />
+          /> */}
           {/* <meta property="og:title" content={router.pathname.substring(1)} /> */}
-          <meta property="og:title" content={"craftyArt"} />
+          {/* <meta property="og:title" content={"craftyArt"} />
           <meta
             property="og:description"
             content={"Customize your Design in just few Clicks!"}
-          />
-          <meta property="og:image" content={"/images/logo.svg"} />
+          /> */}
+          {/* <meta property="og:image" content={"/images/logo.svg"} />
           <meta property="og:image:width" content={"200"} />
           <meta property="og:image:height" content={"100"} />
           <meta property="og:image:alt" content={"craftyArt Logo"} />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content={canonicalUrl} />
+          <meta property="og:url" content={canonicalUrl} /> */}
         </Head>
 
         <Box>
@@ -108,7 +109,7 @@ export default function App({
             <Component {...pageProps} />
             {pageProps.paragraphContent && <p>{pageProps.paragraphContent}</p>}
           </Box>
-          {!token && <Footer />}
+          <Box>{!token && <Footer />}</Box>
           {/* <MainLoader /> */}
         </Box>
 
@@ -117,6 +118,7 @@ export default function App({
         <MainLoaderBox />
 
         <MobileBottomBar />
+        <Index />
       </Provider>
     </>
   );

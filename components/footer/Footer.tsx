@@ -163,7 +163,7 @@ export const Discover = () => {
 export default function Footer() {
   const router = useRouter();
   return (
-    <footer className="  bg-black">
+    <Box className="bg-black">
       <Box className="max-w-[2400px] w-[100%] sm:w-[90%] lg:w-[100%] xl:w-[80%] mx-auto pt-[50px] max-sm:pt-[0px]">
         <Box className="grid grid-cols-1  sm:grid-cols-3  gap-5 xl:gap-8 px-4 py-6 lg:py-8 lg:grid-cols-5  xl:grid-cols-5">
           <Box className="hidden sm:block">
@@ -245,6 +245,6 @@ export default function Footer() {
           Copyright © 2022-2023 by Crafty Art All Rights Reserved.
         </Typography>
       </Box>
-    </footer>
+    </Box>
   );
 }

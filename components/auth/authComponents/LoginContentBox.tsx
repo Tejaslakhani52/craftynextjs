@@ -19,6 +19,7 @@ import Input from "./Input";
 import Password from "./Password";
 import LoginPlatform from "./LoginPlatform";
 import Icons from "@/assets";
+import { NextResponse } from "next/server";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQP7F26DBVJvXWNgwS3lerBUCGcbH2z4U",
@@ -70,40 +71,15 @@ export default function LoginContentBox(props: any) {
       //   document.cookie = "token=yourTokenValue";
       // }
 
-      if (typeof document !== "undefined") {
-        document.cookie = `token=${userCredential?.user?.uid};`;
-      }
+      let response = NextResponse.json(
+        { success: true },
+        { status: 200, headers: { "content-type": "application/json" } }
+      );
 
-      if (typeof window !== "undefined") {
-        const targetDomain = "https://crafty-old-letest.vercel.app/";
-
-        const messageData = "your-message-data";
-        window.parent.postMessage(messageData, targetDomain);
-      }
-      // if (typeof window !== "undefined") {
-      //   const data = { key: userCredential?.user?.uid };
-      //   window.postMessage(data, "http://localhost:3001");
-      // }
-
-      // var bazStorage = createGuest(
-      //   window.location.href === "https://craftynextjs-al84sub.vercel.app/"
-      //     ? "http://sub.localhost:3000/"
-      //     : "http://localhost:3000"
-      // );
-
-      // bazStorage.get("localStorageKey", function (error: any, value: any) {
-      //   if (error) {
-      //     console.log(error);
-      //   } else {
-      //     setCrossDomainValue(value);
-      //   }
-      // });
-
-      // Cookies.set("token", userCredential?.user?.uid, {
-      //   domain: "sub.localhost",
-      //   sameSite: "None",
-      //   secure: true,
-      // });
+      response.cookies.set({
+        name: "sessionId",
+        value: userCredential?.user?.uid,
+      });
 
       router.push(`${router.pathname}`);
 

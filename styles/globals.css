@@ -10,7 +10,9 @@
 
 body {
   font-family: "Inter", sans-serif !important;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  overflow: auto !important;
+  padding: 0 !important;
 }
 
 img {
@@ -286,7 +288,7 @@ input:focus {
 }
 
 .body-no-scroll {
-  overflow: hidden;
+  overflow-y: hidden !important;
   /* padding-right: 50px; */
 }
 
@@ -456,6 +458,10 @@ input:focus {
 .carousel-slide {
   flex: 0 0 100%;
   width: 100%;
+}
+
+nextjs-portal {
+  display: none;
 }
 
 @media screen and (max-width: 767px) {

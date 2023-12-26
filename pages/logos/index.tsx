@@ -4,20 +4,76 @@ import FaqsBox from "@/components/common/FAQs";
 import GetStartedLinearBanner from "@/components/common/GetStartedLinearBanner";
 import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
+import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import Head from "next/head";
 
 export default function index() {
   return (
     <Box>
       <CustomHead
         image="/images/logoCreateLogo.png"
-        heading={"Let Your Brand Shine with Our Custom Logo Design"}
-        text="Create a Lasting Impression with a Custom Logo Design That Truly Represents Your Business,
-        Begin with custom logos that are simple to create and use."
+        heading={" Free Logo | Design Your Own Logo | Create Free Logo"}
+        text=" Looking for Create a Free Logo for Your Own Business? Explore Our 5000+ Logo Designs and Make Logo For Free And Stand Out in Market. Create Business Logo Now!"
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What is Logo Design?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Logo design is the process of creating a unique symbol or emblem that visually represents a brand, company, or individual. It involves the use of typography, colours, and graphic elements to create a distinctive visual identity.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Why is a logo important for my business?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "A logo is an essential component of your brand identity. It helps your customers to recognize and remember your business, products, and services. A well-designed logo can create a positive impression, build trust, and communicate your brand's values and personality.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. How long does it take to design a logo?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The time required to design a logo depends on various factors, such as the complexity of the design, the number of revisions needed, and the designer's availability. Typically, it can take anywhere from a few days to a few weeks to create a high-quality logo.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. How much should I expect to pay for a logo design?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design, and the level of customization required. Generally, you can expect to pay anywhere between $1 to $1000 for a professional logo design.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. What should I consider when designing a logo for my business?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "When designing a logo for your business, you should consider several factors to ensure that it reflects your brand identity and resonates with your target audience. These factors include selecting appropriate colours that represent your brand values and personality, choosing a font style that aligns with your brand messaging, and creating a design that is simple, memorable, and easily recognizable.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <GetStartedLinearBanner
         heading={
           "Create Your Own Logo Design with Our Free Logo Maker in Few Clicks"
@@ -88,6 +144,173 @@ export default function index() {
         path="/templates/logos"
         image="/images/logoStunning.png"
       />
+
+      <ExploreTemplates category="logo" getAll="/templates/logos" />
+
+      <Box className="py-[50px]">
+        <Typography
+          variant="h2"
+          className="text-[#1C3048] text-[30px] text-center font-[600] mb-4"
+        >
+          Features Of Our Logo Creator ?
+        </Typography>
+
+        <Typography className="text-center max-sm:w-[90%] w-[70%] mx-auto text-[15px]">
+          Our Logo Creator is your one-stop destination for designing logos that
+          captivate, engage, and leave a lasting impression. Whether you're a
+          startup on a tight budget or an established business looking to
+          refresh your brand identity, we've got you covered. Explore the
+          remarkable features of our Logo Creator that will set your brand on
+          the path to success.
+        </Typography>
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/logoCreator.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Versatile Design Options:
+              </Typography>
+              <Typography className="font-medium">
+                Our Logo Creator offers a plethora of templates, icons, and
+                fonts, enabling you to craft a logo that truly represents your
+                brand.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                User-Friendly Interface:
+              </Typography>
+              <Typography className="font-medium">
+                Our intuitive interface simplifies the design process, allowing
+                you to experiment with shapes, colors, and typography
+                seamlessly.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                High-Resolution Export:
+              </Typography>
+              <Typography className="font-medium">
+                Your logo deserves to look sharp and crisp on all platforms. Our
+                Logo Creator provides high-resolution export options.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Time-Efficient Branding:
+              </Typography>
+              <Typography className="font-medium">
+                Save time without compromising quality. Our Logo Creator
+                streamlines the logo design process.
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      <RightImageSection
+        title="Why Choose Our Logo Maker?"
+        point={
+          <Box>
+            <MarkText
+              text="Are you searching for a Logo Maker Online that combines quality and convenience?
+              Look no further, because our Logo Maker is your ultimate choice."
+            />
+            <MarkText
+              text="For businesses, a compelling logo is essential. It's the visual representation of your
+              brand, and it must capture the essence of your company."
+            />
+            <MarkText
+              text="Are you in the gaming industry? We've got you covered with our Gaming Logo
+Maker features. Craft a logo that's as dynamic and exciting as your gaming content."
+            />
+            <MarkText
+              text="Not everyone can afford a professional graphic designer, and that's where our
+              Logo Maker steps in, offering affordability without compromising on quality."
+            />
+          </Box>
+        }
+        buttonName={"Create a logo"}
+        alt="Logo Maker"
+        path="/templates/logos"
+        image="/images/logoMaker.png"
+      />
+
+      <LeftImageSection
+        title="Ready to Transform Your Brand?"
+        point={
+          <Box>
+            <MarkText text="Is your current logo failing to make an impact or connect with your audience?" />
+            <MarkText
+              text="You're missing out on potential customers because your logo doesn't resonate with
+              them. You might even be losing credibility in a competitive market."
+            />
+            <MarkText
+              text="With the help of our logos that tell your unique story, boost your brand's visual
+              appeal, and help you stand out in your industry. Don't settle for a forgettable logo,
+              let us help you create a memorable one!"
+            />
+          </Box>
+        }
+        buttonName={"Create a logo"}
+        alt="Logo Maker"
+        path="/templates/logos"
+        image="/images/transformBrand.png"
+      />
+
+      <RightImageSection
+        title="Start Designing Your Logo Today"
+        point={
+          <Box>
+            <MarkText
+              text="Unlock your creativity and bring your vision to life with our logo maker. Whether
+              you need a logo for your business or personal use, our free logo generator tool is
+              here to simplify the logo design process."
+            />
+            <MarkText
+              text="Join the ranks of satisfied users who have transformed their brands and projects
+              with our logo maker."
+            />
+            <MarkText text="Give your brand the identity it deserves with our Logo Maker!" />
+            <MarkText
+              text="Whether you need a business logo, gaming logo, hospital logos, shop logos, store
+logos, fashion logos, gym logos, medical store logos,  our Logo Maker has you
+covered."
+            />
+          </Box>
+        }
+        buttonName={"Create a logo"}
+        alt="Logo Maker"
+        path="/templates/logos"
+        image="/images/logoToday.png"
+      />
+
+      <CustomerSaying />
+
+      <GetTemplates
+        heading="Ready to take your branding to the next level? Browse our 5000+ logo designs and find the perfect fit."
+        text="Build your own brand identity - start with custom logos."
+        navigate="/templates/logos"
+      />
+
       <Box
         sx={{
           mx: "auto",
@@ -135,14 +358,6 @@ export default function index() {
           that is simple, memorable, and easily recognizable."
         />
       </Box>
-
-      <GetTemplates
-        heading="Ready to take your branding to the next level? Browse our 5000+ logo designs and find the perfect fit."
-        text="Build your own brand identity - start with custom logos."
-        navigate="/templates/logos"
-      />
-
-      <ExploreTemplates category="logo" getAll="/templates/logos" />
     </Box>
   );
 }

@@ -8,6 +8,8 @@ import { Box } from "@mui/material";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
+import Head from "next/head";
+import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 
 export default function index() {
   return (
@@ -15,15 +17,71 @@ export default function index() {
       <CustomHead
         image="/images/calendarDesign.png"
         heading={
-          "Stay organized and stylish all year round with our custom calendar maker!"
+          "Create Personalized Calendars with Our Custom Calendar Maker          "
         }
-        text="Get ready to schedule your way to success with our beautifully designed calendars!"
+        text="Design your own unique calendars effortlessly with our custom calendar maker. Choose themes, add photos, and personalize dates for a truly one-of-a-kind calendar experience."
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What customization options are offered for Crafty Art's custom calendars?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Crafty Art's custom calendar maker allows you to personalize with photos, themes, colors, and fonts.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can I use my own photos in the custom calendar?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, you can easily upload and use your own photos to create a unique and personalized calendar.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. What sizes and formats are available for custom calendars?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Crafty Art offers various sizes and formats, including wall, desk, and poster-style calendars.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. Are there bulk order discounts for custom calendars?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Crafty Art offers discounts for bulk orders; check the website or contact support for details.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Is there a limit to the number of photos I can include in my custom calendar?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Crafty Art's custom calendar maker typically allows you to include multiple photos for each month, but there may be a limit based on the chosen design. Check the options during customization.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <GetStartedLinearBanner
         heading={
           "Stay organized and stylish all year round with our custom calendar maker!"
         }
-        text="Get ready to schedule your way to success with our beautifully designed calendars!"
+        text="Create personalized calendars effortlessly with our Custom Calendar Maker. Tailor each month with your favorite photos, events, and themes. Design a unique calendar that reflects your style and memories. Easy-to-use, creative, and perfect for gifts or personal use.
+        "
         buttonName="Get Started"
         navigate="/templates/calendar"
         image={
@@ -91,6 +149,107 @@ export default function index() {
         path="/templates/calendar"
         image="/images/calendarTrending.png"
       />
+
+      <ExploreTemplates getAll={"/templates/calendar"} />
+
+      <RightImageSection
+        title="Unlock Your Creativity with Our Free Calendar Maker!
+        "
+        point={
+          <Box>
+            <MarkText text="Create Personalized Calendars Effortlessly" />
+            <MarkText text="Tailor Your Calendar with Free Customization Options" />
+            <MarkText text="Express Your Style: Design a Calendar That Reflects You" />
+            <MarkText text="No Cost, No Hassle: Enjoy a Seamless Free Calendar-Making Experience" />
+            <MarkText text="Get Started Now: Craft Your Perfect Calendar Online" />
+          </Box>
+        }
+        buttonName={"Create Your Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
+        image="/images/calendar1.png"
+      />
+
+      <LeftImageSection
+        title="Crafting Memories: Making a Custom Calendar Has Never Been Easier!
+        "
+        point={
+          <Box>
+            <MarkText text="Capture Moments: Turn Your Photos into a Custom Calendar" />
+            <MarkText text="Highlight Special Occasions with Personalized Dates" />
+            <MarkText text="Share Your Creations: Gift Custom Calendars to Loved Ones" />
+            <MarkText text="Simple Steps, Stunning Results: Your Unique Calendar Awaits" />
+            <MarkText text="Discover the Joy of Making a Calendar Tailored Just for You" />
+          </Box>
+        }
+        buttonName={"Explore Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
+        image="/images/calendar2.png"
+      />
+
+      <RightImageSection
+        title="Your Vision, Your Calendar: Try Our Online Calendar Maker Today!
+
+        "
+        point={
+          <Box>
+            <MarkText text="Access Anywhere: Design Your Calendar from Any Device" />
+            <MarkText text="Real-Time Editing: Watch Your Calendar Come to Life Instantly" />
+            <MarkText text="Save and Share: Seamlessly Collaborate with Friends and Family" />
+            <MarkText text="User-Friendly Interface: No Design Skills Required" />
+            <MarkText text="Online Convenience: Your Custom Calendar, Anytime, Anywhere" />
+          </Box>
+        }
+        buttonName={"Create Your Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
+        image="/images/calendar3.png"
+      />
+
+      <LeftImageSection
+        title="Express Yourself with Our Free Online Calendar Maker!
+        "
+        point={
+          <Box>
+            <MarkText text="Unlimited Designs: Choose from a Vast Array of Templates" />
+            <MarkText text="Customize Colors, Fonts, and Themes at Your Fingertips" />
+            <MarkText text="Effortless Editing: Drag, Drop, and Design with Ease" />
+            <MarkText text="Stand Out: Create a Calendar as Unique as Your Personality" />
+            <MarkText text="Download and Print: Enjoy Your Custom Calendar in Minutes" />
+          </Box>
+        }
+        buttonName={"Explore Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
+        image="/images/calendar4.png"
+      />
+
+      <RightImageSection
+        title="Transform Ideas into Reality: Experience the Best Calendar Maker Online!        "
+        point={
+          <Box>
+            <MarkText text="Professional Results: Print High-Quality Calendars at Home" />
+            <MarkText text="Time-Saving Templates: Kickstart Your Calendar-Making Journey" />
+            <MarkText text="Free and Easy: No Hidden Costs, No Learning Curve" />
+            <MarkText text="Interactive Design: Make Changes on the Fly with Our Intuitive Tools" />
+            <MarkText text="Start Today: Your Dream Calendar is Just a Click Away!" />
+          </Box>
+        }
+        buttonName={"Explore Calendar"}
+        alt="calendar design"
+        path="/templates/calendar"
+        image="/images/calendar5.png"
+      />
+
+      <CustomerSaying />
+
+      <GetTemplates
+        heading="Stay organised, stay on schedule - with our customizable calendar maker!"
+        text="Start planning your days the way you want them - create your perfect calendar today!"
+        navigate="/templates/calendar"
+      />
+
       <Box
         sx={{
           mx: "auto",
@@ -109,38 +268,30 @@ export default function index() {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heading="1. What type of calendars do you offer?"
-          text=" We offer a wide variety of calendars ranging from daily planners to monthly wall calendars. Our products come in various sizes and designs to suit your preferences and needs."
+          heading="What customization options are offered for Crafty Art's custom calendars?"
+          text="Crafty Art's custom calendar maker allows you to personalize with photos, themes, colors, and fonts."
         />
 
         <FaqsBox
-          heading="2. Can I customise my own calendar?"
-          text=" Absolutely! We provide customization options for most of our products, so you can add your own personal touch to your calendar. You can choose your own images, add important dates, and even include personalised notes."
+          heading="Can I use my own photos in the custom calendar?"
+          text="Yes, you can easily upload and use your own photos to create a unique and personalized calendar."
         />
 
         <FaqsBox
-          heading="3. Can I include my own holidays and important dates on the calendar?"
-          text=" Yes, we offer customization options that allow you to add your own important dates and events to the calendar. You can also choose from a variety of pre-designed holiday sets to include on your calendar."
+          heading="What sizes and formats are available for custom calendars?"
+          text="Crafty Art offers various sizes and formats, including wall, desk, and poster-style calendars."
         />
 
         <FaqsBox
-          heading="4. Can I preview my customised calendar before placing an order?"
-          text=" Yes, we provide a digital proof of your custom design before printing. This allows you to see how your final product will look and make any necessary adjustments before placing your order."
+          heading="Are there bulk order discounts for custom calendars?"
+          text="Crafty Art offers discounts for bulk orders; check the website or contact support for details."
         />
 
         <FaqsBox
-          heading="5. Do you have any tips for designing a custom calendar?"
-          text=" When designing your custom calendar, try to use high-quality images and avoid cluttering the design with too much text. Also, consider the overall theme or purpose of the calendar and select appropriate images and colours."
+          heading="Is there a limit to the number of photos I can include in my custom calendar?"
+          text="Crafty Art's custom calendar maker typically allows you to include multiple photos for each month, but there may be a limit based on the chosen design. Check the options during customization."
         />
       </Box>
-
-      <GetTemplates
-        heading="Stay organised, stay on schedule - with our customizable calendar maker!"
-        text="Start planning your days the way you want them - create your perfect calendar today!"
-        navigate="/templates/calendar"
-      />
-
-      <ExploreTemplates getAll={"/templates/calendar"} />
     </>
   );
 }
