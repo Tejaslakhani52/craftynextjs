@@ -1,14 +1,14 @@
 export interface SvgProps {
-  width: number;
-  height: number;
-  color: string;
-  color1: string;
-  color2: string;
-  fillColor: string;
-  gradientColors: any;
-  circleFillColor: string;
-  pathFillColorStart: string;
-  pathFillColorEnd: string;
+  width?: number;
+  height?: number;
+  color?: string;
+  color1?: string;
+  color2?: string;
+  fillColor?: string;
+  gradientColors?: any;
+  circleFillColor?: string;
+  pathFillColorStart?: string;
+  pathFillColorEnd?: string;
 }
 
 export const googleIcon = ({ svgProps }: { svgProps?: SvgProps }) => {
