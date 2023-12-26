@@ -33,11 +33,11 @@ const sliderTemplate = [
     buttonName: "Baby Shower Invitation",
     path: "/baby-shower-invitation",
   },
-  {
-    img: "/images/anivversaryEase.png",
-    buttonName: "Anniversary Invitation",
-    path: "/anniversary",
-  },
+  // {
+  //   img: "/images/anivversaryEase.png",
+  //   buttonName: "Anniversary Invitation",
+  //   path: "/anniversary",
+  // },
   {
     img: "/images/bridalEase.png",
     buttonName: "Bridal Shower Invitation",
