@@ -1,3 +1,4 @@
+import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -73,11 +74,9 @@ export default function ImageBox({
         >
           {templates.is_premium && (
             <>
-              <img
-                src="/icons/proIcon.svg"
-                alt="pro"
-                className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
-              />
+              <span className="w-[28px] absolute right-[13px] top-[13px] z-[1]">
+                <Icons.proIcon svgProps={{ width: 28 }} />
+              </span>
             </>
           )}
           <div

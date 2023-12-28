@@ -13,12 +13,13 @@ import { useRouter } from "next/router";
 import PersonalInfo from "./components/PersonalInfo";
 import Subscription from "./components/Subscription";
 import PaymentHistory from "./components/PaymentHistory";
+import Icons from "@/assets";
 
 export const sidebarMenu = [
   {
     name: "Personal Info",
-    icons: "/icons/profiile.svg",
-    activeIcon: "/icons/profileActive.svg",
+    icons: "/icons/premiumPlans/profiile.svg",
+    activeIcon: "/icons/premiumPlans/profileActive.svg",
     path: "/profile",
   },
   {
@@ -224,11 +225,7 @@ export default function Account({ defaultTab }: any) {
                     {item.name}
                   </Typography>
                   {item.name === "Templates" && (
-                    <img
-                      src="/icons/rightArrow.svg"
-                      alt="rightArrow"
-                      className="w-[6px] ml-auto"
-                    />
+                    <Icons.rightArrowIcon svgProps={{ width: 6 }} />
                   )}
                 </Box>
               </Box>

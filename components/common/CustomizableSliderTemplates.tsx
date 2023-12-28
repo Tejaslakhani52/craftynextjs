@@ -1,3 +1,4 @@
+import Icons from "@/assets";
 import { Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
@@ -73,22 +74,14 @@ export default function CustomizableSliderTemplates({ data }: props) {
               opacity: !showPrevButton ? "0.3" : 1,
             }}
           >
-            <img
-              src="/icons/leftArrow.svg"
-              alt="leftArrow"
-              className="w-[10px]"
-            />
+            <Icons.leftArrowIcon svgProps={{ width: 10 }} />
           </Button>
           <Button
             onClick={handleNextClick}
             disabled={!showNextButton ? true : false}
             sx={{ opacity: !showNextButton ? "0.3" : 1 }}
           >
-            <img
-              src="/icons/rightArrow.svg"
-              alt="rightArrow"
-              className="w-[10px]"
-            />
+            <Icons.rightArrowIcon svgProps={{ width: 10 }} />
           </Button>
         </Box>
       </Box>

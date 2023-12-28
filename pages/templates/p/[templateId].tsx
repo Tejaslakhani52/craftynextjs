@@ -1,3 +1,4 @@
+import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import {
   useScreenHeight,
@@ -21,27 +22,6 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
-
-// export async function getStaticPaths() {
-//   const response = await axios.post<any>(
-//     "https://story.craftyartapp.com/get/datas",
-//     {
-//       debug_key: "debug",
-//       limit: 1000,
-//       cat_id: "latest",
-//       page: 1,
-//     }
-//   );
-
-//   const templateIds = response?.data?.datas.map((template: any) => ({
-//     params: { templateId: template?.id_name } as any,
-//   }));
-
-//   return {
-//     paths: templateIds,
-//     fallback: false,
-//   };
-// }
 
 export async function getServerSideProps(context: any) {
   try {
@@ -104,14 +84,8 @@ export default function templateId({ templateData, anotherData }: any) {
   const token = authCookiesGet();
   const userPremium = tokenGet("premium");
   const currentPathname = router.query;
-  console.log("currentPathname: ", currentPathname);
   const screenWidth = useScreenWidth();
-  // const [anotherData, setAnotherData] = React.useState<any>([]);
-  console.log("anotherData: ", anotherData);
   const [isLoading, setIsLoading] = React.useState<any>(false);
-  const [template, setTemplate] = React.useState<any>({});
-  console.log("template: ", templateData);
-  // const openModal = useSelector((state: any) => state.actions.openTempModal);
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
   const [description, setDescription] = React.useState<string>("");
   const [notFound, setNotFound] = React.useState<any>(false);
@@ -149,11 +123,6 @@ export default function templateId({ templateData, anotherData }: any) {
         return 2.22;
     }
   }, [screenWidth]);
-
-  // React.useEffect(() => {
-  //   const element: any = document.getElementById(tempIdValue);
-  //   element?.scrollIntoView();
-  // }, [anotherData]);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -273,11 +242,7 @@ export default function templateId({ templateData, anotherData }: any) {
                           style={{ top: "52%" }}
                           onClick={handlePrevClick}
                         >
-                          <img
-                            src="/icons/leftArrow.svg"
-                            alt="leftArrow"
-                            className="w-[8px]"
-                          />
+                          <Icons.leftArrowIcon svgProps={{ width: 8 }} />
                         </button>
                       </Box>
                     )}
@@ -308,11 +273,7 @@ export default function templateId({ templateData, anotherData }: any) {
                           style={{ top: "52%" }}
                           onClick={handleNextClick}
                         >
-                          <img
-                            src="/icons/rightArrow.svg"
-                            alt="rightArrow"
-                            className="w-[8px]"
-                          />
+                          <Icons.rightArrowIcon svgProps={{ width: 8 }} />
                         </button>
                       </Box>
                     )}
@@ -377,14 +338,11 @@ export default function templateId({ templateData, anotherData }: any) {
                     router.push("/login");
                   }}
                 >
-                  <img
-                    src="/icons/pricing.svg"
-                    alt={templateData?.template_name}
-                    className="w-[22px] ml-[8px]"
-                    style={{
-                      display: templateData?.is_premium ? "block" : "none",
-                    }}
-                  />
+                  {templateData?.is_premium && (
+                    <span className="w-[22px] ml-[8px]">
+                      <Icons.pricingIcon svgProps={{ width: 22, height: 21 }} />
+                    </span>
+                  )}
                   Customize this template
                 </a>
               ) : (
@@ -404,42 +362,40 @@ export default function templateId({ templateData, anotherData }: any) {
                       "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
                   }}
                 >
-                  <img
-                    src="/icons/pricing.svg"
-                    alt={templateData?.template_name}
-                    className="w-[22px] ml-[8px]"
-                    style={{
-                      display: templateData?.is_premium ? "block" : "none",
-                    }}
-                  />
+                  {templateData?.is_premium && (
+                    <span className="w-[22px] ml-[8px]">
+                      <Icons.pricingIcon svgProps={{ width: 22, height: 21 }} />
+                    </span>
+                  )}
                   Customize this template
                 </button>
               )}
 
               <div className="py-4">
                 <IconsText
-                  image="/icons/TmodalCustomize.svg"
+                  image={<Icons.tModalCustomizeIcon svgProps={{ width: 20 }} />}
                   text="100% Customize with online editing tools"
                   isLoading={isLoading}
                 />
                 <IconsText
-                  image="/icons/TmodalSmartphone.svg"
+                  image={
+                    <Icons.tModalSmartphoneIcon svgProps={{ width: 20 }} />
+                  }
                   text="Edit and download on the go"
                   isLoading={isLoading}
                 />
                 <IconsText
-                  image="/icons/TmodalPublish.svg"
+                  image={<Icons.tModalPublishIcon svgProps={{ width: 20 }} />}
                   text="Share and publish anywhere"
                   isLoading={isLoading}
                 />
                 <IconsText
-                  image="/icons/TmodalBacked.svg"
+                  image={<Icons.tModalBackedIcon svgProps={{ width: 20 }} />}
                   text="Backed by our happiness Guarantee"
                   isLoading={isLoading}
                 />
-
                 <IconsText
-                  image="/icons/TmodalAccess.svg"
+                  image={<Icons.tModalAccessIcon svgProps={{ width: 20 }} />}
                   text="Access 10,000+ all inclusive templates"
                   isLoading={isLoading}
                 />
@@ -521,11 +477,9 @@ export default function templateId({ templateData, anotherData }: any) {
                             }}
                           >
                             {templates.is_premium && (
-                              <img
-                                src="/icons/proIcon.svg"
-                                alt={templateData?.template_name}
-                                className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
-                              />
+                              <span className="w-[28px] absolute right-[13px] top-[13px] z-[1]">
+                                <Icons.proIcon svgProps={{ width: 28 }} />
+                              </span>
                             )}
                             <img
                               src={templates?.template_thumb}

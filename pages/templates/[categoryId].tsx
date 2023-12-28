@@ -1,4 +1,3 @@
-import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import FestivalBanner from "@/components/categoryStaticComponents/FestivalStatic";
@@ -11,16 +10,9 @@ import Breadcrumb from "@/components/common/Breadcrumb";
 import ImageBox from "@/components/common/ImageBox";
 import NotFound from "@/components/common/NotFound";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
-import {
-  modalClosePath,
-  openTempModal,
-  tempId,
-} from "@/redux/reducer/actionDataReducer";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -75,57 +67,18 @@ const staticBox: any = {
   latest: <FestivalBanner />,
 };
 
-// export async function getStaticProps(context: any) {
-//   try {
-//     const { params } = context;
-
-//     const response = await axios.post(
-//       "https://story.craftyartapp.com/my-posterPage",
-//       {
-//         key: "qwfsegxdhbxfjhncf",
-//         id_name: params?.templateId,
-//       },
-//       { withCredentials: false }
-//     );
-//     const jsonString = response.data.substring(
-//       response.data.indexOf("{"),
-//       response.data.lastIndexOf("}") + 1
-//     );
-
-//     const templateData = JSON.parse(jsonString);
-
-//     return {
-//       props: {
-//         templateData,
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error in getStaticProps:", error);
-//     return {
-//       notFound: true,
-//     };
-//   }
-// }
-
 export default function index() {
-  const dispatch = useDispatch();
   const router = useRouter();
   const screenWidth = useScreenWidth();
   const id: any = router.query;
-  console.log("id: ", id?.categoryId);
-  const currentPathname = router.asPath;
-  const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState<any>();
-  console.log("data: ", data);
   const [contentData, setContentData] = useState<any>([]);
-  const [isNotFix, setIsNotFix] = useState<boolean>(false);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = React.useState(true);
   const [notFound, setNotFound] = useState<any>(false);
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>();
-  const userLoginStatus = authCookiesGet();
   const [idName, setIdName] = useState<any>("");
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
 
@@ -141,7 +94,6 @@ export default function index() {
           page: page,
         })
         .then((res: any) => {
-          console.log("rescsc: ", res);
           setLoadMore(false);
           setIsLastPage(res?.data?.isLastPage);
           if (id?.categoryId === "latest") {
@@ -152,7 +104,6 @@ export default function index() {
             setContentData(otherData.invitationData);
           } else setContentData(res?.data);
 
-          setIsNotFix(res?.data?.cat_id >= 0);
           setNotFound(res?.data?.status === 500 ? true : false);
 
           if (id?.page > res?.data?.total_pages || id?.page < 0) {
@@ -178,55 +129,9 @@ export default function index() {
     }
   }, [id, page]);
 
-  // useEffect(() => {
-  //   setLoadMore(true);
-  //   if (id?.categoryId) {
-  //     axios
-  //       .post(`/api1/get/datas`, {
-  //         cat_id:
-  //           id?.categoryId === "invitation"
-  //             ? "a4-invitation"
-  //             : (id?.categoryId as any),
-  //         page: page,
-  //         debug_key: "debug",
-  //         limit: 48,
-  //       })
-  //       .then((res: any) => {
-  //         setLoadMore(false);
-  //         setIsLastPage(res?.data?.isLastPage);
-  //         if (id?.categoryId === "latest") {
-  //           setContentData(otherData.latestMeta);
-  //         } else if (id?.categoryId === "trending") {
-  //           setContentData(otherData.trendingData);
-  //         } else if (id?.categoryId === "invitation") {
-  //           setContentData(otherData.invitationData);
-  //         } else setContentData(res?.data);
-
-  //         setIsNotFix(res?.data?.cat_id >= 0);
-  //         setNotFound(res?.data?.status === 500 ? true : false);
-
-  //         if (id?.page > res?.data?.total_pages || id?.page < 0) {
-  //           setNotFound(true);
-  //         }
-
-  //         if (res?.data?.datas) {
-  //           setIsLoading(false);
-
-  //           setData((prevData: any) => [
-  //             ...(prevData || []),
-  //             ...res?.data?.datas,
-  //           ]);
-  //         }
-
-  //         if (res?.data?.status === 500) {
-  //           setIsLoading(false);
-  //         }
-  //       })
-  //       .catch((err: any) => {
-  //         console.log("err: ", err);
-  //       });
-  //   }
-  // }, [id, page]);
+  useEffect(() => {
+    setData([]);
+  }, [id]);
 
   useEffect(() => {
     const element: any = document.getElementById(tempIdValue);
@@ -253,46 +158,6 @@ export default function index() {
         return 2.2;
     }
   }, [screenWidth]);
-
-  const [showPrevButton, setShowPrevButton] = useState(true);
-  const [showNextButton, setShowNextButton] = useState(true);
-
-  const handleScroll = (e: Event) => {
-    const container = e.target as HTMLElement;
-    setShowPrevButton(container.scrollLeft > 0);
-    setShowNextButton(
-      container.scrollLeft < container.scrollWidth - container.clientWidth
-    );
-  };
-
-  useEffect(() => {
-    const container = document.getElementById("customer");
-    if (container) {
-      container.addEventListener("scroll", handleScroll);
-      handleScroll({ target: container } as unknown as Event);
-      return () => container.removeEventListener("scroll", handleScroll);
-    }
-  }, ["customer"]);
-
-  const handleNextClick = () => {
-    const container = document.getElementById("customer") as HTMLElement;
-    if (container) {
-      container.scrollBy({
-        left: container.offsetWidth,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const handlePrevClick = () => {
-    const container = document.getElementById("customer") as HTMLElement;
-    if (container) {
-      container.scrollBy({
-        left: -container.offsetWidth,
-        behavior: "smooth",
-      });
-    }
-  };
 
   const height = useMemo(() => {
     let val;
@@ -371,22 +236,6 @@ export default function index() {
                 >
                   {contentData?.short_desc}
                 </Typography>
-
-                {/* <Button
-              style={{
-                backgroundColor: "white",
-                width: "162px",
-                textTransform: "unset",
-                boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
-                border: "none",
-                padding: "8px 10px",
-                borderRadius: "10px",
-                fontSize: "16px",
-                fontWeight: "500",
-              }}
-            >
-              <span className="text_linear">Start Design</span>
-            </Button> */}
               </Box>
               <Box
                 sx={{
@@ -424,127 +273,6 @@ export default function index() {
                 />
               ))}
             </StackGrid>
-
-            {/* <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
-          {data?.map((templates: any, index: number) => (
-            <Box
-              className={`${true && "p-[5px] bg-[bg-[#F4F7FE]] "}  `}
-              style={{
-                width: !isNotFix
-                  ? `${100 / multiSizeFixSize}%`
-                  : `${
-                      (screenWidth -
-                        (sideBarRedux && screenWidth > 1023
-                          ? 300
-                          : screenWidth > 630
-                          ? 50
-                          : 37)) /
-                      multiSizeFixSize
-                    }px`,
-              }}
-              id={`content${index}`}
-            >
-              <Box
-                className={`cursor-pointer h-auto bg-white ${
-                  !isNotFix ? "p-3" : "p-[7px]"
-                } rounded-[12px]`}
-                key={templates?.template_name}
-                onClick={() => {
-                  // const newPath = `/templates/p/${templates.id_name}`;
-                  // window.history.pushState({}, "", newPath);
-                  // dispatch(openTempModal(true));
-                  dispatch(tempId(`content${index}`));
-                  dispatch(modalClosePath(`templates/${id?.categoryId}`));
-                }}
-              >
-                <Link
-                  // href={{
-                  //   pathname: `/templates/[${id?.categoryId}]?templates=[${templates.id_name}]`,
-                  //   query: { templates: templates.id_name },
-                  // }}
-                  href={`/?templates=${templates.id_name}`}
-                  as={`/templates/p/${templates.id_name}`}
-                  scroll={false}
-                  shallow={true}
-                >
-                  <Box
-                    className={` ${
-                      !isNotFix ? "bg-[#E6E8EE] p-2   " : "p-[0px]"
-                    } rounded-[10px]`}
-                    style={{
-                      height: !isNotFix
-                        ? `auto`
-                        : `${
-                            calculateHeight(
-                              templates?.width,
-                              templates?.height,
-                              (screenWidth -
-                                (sideBarRedux && screenWidth > 1023
-                                  ? 300
-                                  : 50)) /
-                                multiSizeFixSize -
-                                30
-                            ) + 4
-                          }px`,
-                    }}
-                  >
-                    <div
-                      className="bg-slate-200  w-full rounded-[4px] overflow-hidden"
-                      style={{
-                        height: !isNotFix
-                          ? `${
-                              calculateHeight(
-                                500,
-                                500,
-                                (screenWidth -
-                                  (sideBarRedux && screenWidth > 1023
-                                    ? 300
-                                    : 50)) /
-                                  multiSizeFixSize -
-                                  30
-                              ) - (templates.height < 1919 ? 16 : 7)
-                            }px`
-                          : "100%",
-
-                        display: templates.height < 1920 ? "flex" : "block",
-                        alignItems: "center",
-                      }}
-                    >
-                      <img
-                        src={templates?.template_thumb}
-                        alt={templates?.category_name}
-                        className={` w-[auto] ${
-                          !isNotFix ? " max-h-full" : ""
-                        }  mx-auto rounded-[4px]`}
-                      />
-                    </div>
-                  </Box>
-                </Link>
-
-                <Box
-                  className="pt-2"
-                  style={{
-                    width: !isNotFix
-                      ? "auto"
-                      : `${
-                          (screenWidth -
-                            (sideBarRedux && screenWidth > 1023 ? 300 : 50)) /
-                            multiSizeFixSize -
-                          30
-                        }px`,
-                  }}
-                >
-                  <Typography className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                    {templates?.template_name}
-                  </Typography>
-                  <Typography className="text-[#ABB2C7] text-[13px] pb-1">
-                    {templates?.category_name}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          ))}
-        </Box> */}
 
             <div
               style={{

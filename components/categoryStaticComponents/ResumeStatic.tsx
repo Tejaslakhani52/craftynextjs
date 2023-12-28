@@ -4,6 +4,11 @@ import FaqsBox from "../common/FAQs";
 import QuestionsTitle from "../common/QuestionsTitle";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import RightImageSection from "@/pages/wedding/components/RightImageSection";
+import { MarkText } from "../Home/landingPage/LandingPage";
+import CustomHead from "../common/CustomHead";
+import Head from "next/head";
+import Icons from "@/assets";
 
 export default function ResumeStatic() {
   const [showPrevButton, setShowPrevButton] = useState(true);
@@ -192,11 +197,7 @@ export default function ResumeStatic() {
                 minWidth: "auto",
               }}
             >
-              <img
-                src="/icons/leftArrow.svg"
-                alt="leftArrow"
-                className="w-[10px]"
-              />
+              <Icons.leftArrowIcon />
             </Button>
             <Button
               onClick={handleNextClick}
@@ -207,11 +208,7 @@ export default function ResumeStatic() {
                 minWidth: "auto",
               }}
             >
-              <img
-                src="/icons/rightArrow.svg"
-                alt="rightArrow"
-                className="w-[10px]"
-              />
+              <Icons.leftArrowIcon />
             </Button>
           </Box>
 
@@ -275,6 +272,160 @@ export default function ResumeStatic() {
               alt={"Resume Portrait Templates"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className="pt-[10px]">
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/resumeC/img1.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Free Resume Templates
+              </Typography>
+              <Typography className="font-medium">
+                Unlock your potential with our diverse collection of
+                professionally designed, aesthetically pleasing resume
+                templates. From traditional to modern, choose a layout that
+                suits your style and showcases your unique strengths. These
+                templates are not just visually appealing but also optimized to
+                meet the current industry standards.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Resume Generator - Free and Easy
+              </Typography>
+              <Typography className="font-medium">
+                Experience the simplicity of our online resume generator. Our
+                user-friendly interface makes it a breeze to create a tailored
+                resume in minutes. Input your details, choose a template, and
+                let our platform guide you through the process. No design skills
+                required – just focus on your accomplishments, and we'll handle
+                the rest.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Resume Maker - Anytime, Anywhere
+              </Typography>
+              <Typography className="font-medium">
+                Say goodbye to the hassle of desktop applications. Our online
+                resume maker allows you to craft or update your resume from the
+                comfort of your web browser. Access your work-in-progress from
+                any device, ensuring you have the flexibility to refine your
+                resume on the go.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Unleash Your Potential
+              </Typography>
+              <Typography className="font-medium">
+                Your resume is more than a document; it's your personal brand.
+                Our platform empowers you to present your skills, experience,
+                and achievements in a compelling way. Whether you're applying
+                for your dream job, making a career change, or seeking new
+                opportunities, we've got you covered.
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      <RightImageSection
+        title="How to Get Started"
+        point={
+          <Box>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <MarkText text="Browse our Collection: Explore our diverse range of professional resume templates. Find the one that aligns with your career goals and industry." />
+              <MarkText text="Customize Your Template: Once you've chosen a template, personalize it with your information. Add your professional experience, skills, and education details effortlessly." />
+              <MarkText text="Download and Share: Download your polished resume in various formats, such as PDF or Word. Share it with potential employers or upload it to job search platforms." />
+            </Box>
+          </Box>
+        }
+        buttonName={"Create a Resume"}
+        alt="Resume Maker"
+        path="/templates/resume-portrait"
+        image="/images/resumeC/img2.png"
+      />
+
+      <Box className="pt-[10px]">
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/resumeC/img3.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Success Stories
+              </Typography>
+              <Typography className="font-medium">
+                Our resume templates have helped countless individuals secure
+                interviews and land their desired positions. Read our success
+                stories to see how our users have transformed their job search
+                experience with our professional templates.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Customer Support
+              </Typography>
+              <Typography className="font-medium">
+                Have questions or need assistance? Our dedicated customer
+                support team is here to help. Contact us for any inquiries
+                regarding template selection, customization, or troubleshooting.
+                We are committed to ensuring your experience with our resume
+                templates is seamless and successful.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Start Building Your Future Today!
+              </Typography>
+              <Typography className="font-medium">
+                Invest in your professional future by choosing a resume template
+                that speaks to your unique qualifications and aspirations. Stand
+                out from the competition and make a lasting impression with a
+                professionally crafted resume. Your dream job awaits – get
+                started now!
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -405,6 +556,68 @@ export default function ResumeStatic() {
           />
         </Box>
       </Box>
+
+      <CustomHead
+        image="/images/logoC/img1.png"
+        heading={
+          "Professional Resume Templates for Every Career | Editable CV Formats"
+        }
+        text="Discover tailored resume templates for diverse careers. Download editable formats for a standout CV. Impress employers and secure your dream job with our professional designs."
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What makes CraftyArt unique for resume designs?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "CraftyArt offers a personalized approach, collaborating closely with clients for unique, industry-aligned resumes.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can CraftyArt cater to different industries?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, our diverse team tailors designs to match various professions, ensuring industry relevance.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. What design elements does CraftyArt focus on?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "CraftyArt combines aesthetics with readability, emphasizing clean and professional designs.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. How does CraftyArt ensure industry standards are met?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Staying updated on trends, CraftyArt aligns resumes with current industry norms.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Can CraftyArt handle traditional and creative designs?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, CraftyArt caters to both traditional and creative preferences, adapting to diverse needs.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
     </div>
   );
 }

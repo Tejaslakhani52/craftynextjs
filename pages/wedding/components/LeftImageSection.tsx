@@ -1,3 +1,4 @@
+import { authCookiesGet } from "@/redux/action/AuthToken";
 import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
@@ -11,6 +12,8 @@ export default function LeftImageSection({
   alt,
 }: any) {
   const router = useRouter();
+  const token = authCookiesGet();
+
   return (
     <Box className="flex py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
       <Box className="flex-1 flex justify-center">
@@ -41,7 +44,11 @@ export default function LeftImageSection({
               color: "white",
               padding: "8px 20px",
             }}
-            onClick={() => router.push(path)}
+            onClick={() => {
+              if (token) {
+                router.push(path);
+              } else router.push("/login");
+            }}
             className="bg_linear  ml-[40px]  max-lg:mx-auto text-[14px] 2sm:text-[17px]"
           >
             {buttonName}

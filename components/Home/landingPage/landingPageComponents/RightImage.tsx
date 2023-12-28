@@ -10,6 +10,7 @@ export default function RightImage({
   buttonName,
   video,
   alt,
+  path,
 }: any) {
   const router = useRouter();
   return (
@@ -35,7 +36,11 @@ export default function RightImage({
               fontWeight: "500",
             }}
             className="bg_linear py-[7px] px-[20px] ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
-            onClick={() => router.push("/login")}
+            onClick={() => {
+              if (path) {
+                router.push(path);
+              } else router.push("/login");
+            }}
           >
             {buttonName}
           </Button>

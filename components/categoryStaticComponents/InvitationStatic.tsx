@@ -2,6 +2,11 @@ import { Box, Rating, Typography } from "@mui/material";
 import React from "react";
 import FaqsBox from "../common/FAQs";
 import QuestionsTitle from "../common/QuestionsTitle";
+import LeftImageSection from "@/pages/wedding/components/LeftImageSection";
+import { MarkText } from "../Home/landingPage/LandingPage";
+import RightImageSection from "@/pages/wedding/components/RightImageSection";
+import Head from "next/head";
+import CustomHead from "../common/CustomHead";
 
 export default function InvitationStatic() {
   return (
@@ -145,6 +150,143 @@ export default function InvitationStatic() {
         </Box>
       </Box>
 
+      <LeftImageSection
+        title="Wedding Invitations"
+        point={
+          <Box>
+            <MarkText text="Celebrate the most special day of your life with our elegant wedding invitation card templates." />
+            <MarkText text="From classic and timeless designs to modern and chic styles, we have a variety of options to match your wedding theme and color scheme." />
+            <MarkText text="Personalize your invites with your names, event details, and a touch of your unique love story." />
+          </Box>
+        }
+        buttonName={"Design your Invitation"}
+        alt="calendar design"
+        path="/templates/invitation"
+        image="/images/InvitationC/img1.png"
+      />
+
+      <RightImageSection
+        title="Birthday Party Invites"
+        point={
+          <Box>
+            <MarkText text="Make your birthday celebration unforgettable with our vibrant and fun birthday party invitation templates." />
+            <MarkText text="Whether you're throwing a milestone birthday bash or hosting a themed party, our collection has designs that cater to all ages." />
+            <MarkText text="Add your party details and choose colors that reflect the joyous spirit of the occasion." />
+          </Box>
+        }
+        buttonName={"Design your Invitation"}
+        alt="calendar design"
+        path="/templates/invitation"
+        image="/images/InvitationC/img2.png"
+      />
+
+      <LeftImageSection
+        title="Baby Shower Invitations"
+        point={
+          <Box>
+            <MarkText text="Welcome the newest member of your family with adorable baby shower invitation card templates." />
+            <MarkText text="Our cute and customizable designs capture the excitement of the upcoming arrival." />
+            <MarkText text="Customize the invites with the baby's name, shower details, and choose from soft pastels to lively patterns for a perfect touch." />
+          </Box>
+        }
+        buttonName={"Design your Invitation"}
+        alt="calendar design"
+        path="/templates/invitation"
+        image="/images/InvitationC/img3.png"
+      />
+
+      <RightImageSection
+        title="Special Events"
+        point={
+          <Box>
+            <MarkText text="For all other special events and occasions, explore our diverse range of invitation card templates." />
+            <MarkText text="From engagement parties and anniversaries to holiday gatherings and corporate events, we have designs that suit every type of celebration." />
+            <MarkText text="Personalize the templates to make your event invitations truly one-of-a-kind." />
+          </Box>
+        }
+        buttonName={"Design your Invitation"}
+        alt="calendar design"
+        path="/templates/invitation"
+        image="/images/InvitationC/img4.png"
+      />
+
+      <LeftImageSection
+        title="How It Works"
+        point={
+          <Box>
+            <MarkText text="Browse: Explore our collection and choose the category that matches your event." />
+            <MarkText text="Select: Click on your preferred template and view the details." />
+            <MarkText text="Personalize: Add your event information, customize colors, and choose fonts." />
+            <MarkText text="Download: Once satisfied, download your customized invitation for printing or digital sharing." />
+          </Box>
+        }
+        buttonName={"Design your Invitation"}
+        alt="calendar design"
+        path="/templates/invitation"
+        image="/images/InvitationC/img5.png"
+      />
+
+      <RightImageSection
+        title="Tips for Customization"
+        point={
+          <Box>
+            <MarkText text="Colors: Match your invitation to your event's color scheme. Experiment with different shades and combinations to find the perfect palette that resonates with your theme." />
+            <MarkText text="Fonts: Choose fonts that complement the style of your event. Whether it's formal and traditional or casual and contemporary, we offer a variety of font options to suit your preferences." />
+            <MarkText text="Photos: Some templates allow you to add personal photos. Showcase engagement pictures for wedding invitations or baby bump photos for baby showers, adding a personal touch to your invites." />
+            <MarkText text="Details: Double-check all event details, including date, time, venue, and any additional information. Ensure accuracy to avoid confusion and make your invitation informative and clear." />
+          </Box>
+        }
+        buttonName={"Design your Invitation"}
+        alt="calendar design"
+        path="/templates/invitation"
+        image="/images/InvitationC/img6.png"
+      />
+
+      <Box className="pt-[50px]">
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/InvitationC/img7.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Print or Digital Options
+              </Typography>
+              <Typography className="font-medium">
+                Selecting the right format for your invitations is essential.
+                Choose between traditional printed cards or go for a modern
+                digital approach. Our templates are designed to accommodate
+                both, giving you the flexibility to print at home, use a
+                professional printing service, or share digital invitations via
+                email or social media.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                RSVP and Additional Inserts
+              </Typography>
+              <Typography className="font-medium">
+                Enhance your invitation with matching RSVP cards and additional
+                inserts. Encourage your guests to respond promptly and include
+                any extra information, such as accommodation details,
+                directions, or gift registry information, to make the planning
+                process smoother.
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
       <Box className="pt-[70px] pb-[20px]  px-[20px]">
         <Typography
           variant="h2"
@@ -271,6 +413,68 @@ export default function InvitationStatic() {
           />
         </Box>
       </Box>
+
+      <CustomHead
+        image="/images/InvitationC/img7.png"
+        heading={
+          "Create Stunning Invitation Cards with Our Elegant Templates | Customize for Every Occasion        "
+        }
+        text="Create unforgettable moments with our stylish invitation card templates. Perfect for weddings, birthdays, and more. Customize with ease and celebrate in unique style. Start designing now!"
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. Why choose CraftyArt for invitation card designs?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "CraftyArt offers a unique blend of creativity, quality, and customization in every design.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can I customize my invitation cards?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, CraftyArt specializes in customization, allowing you to personalize colors, themes, and details.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. How do I order custom invitation cards?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Visit Crafty Art, choose a design, and contact us to discuss customization and place your order.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. What is the turnaround time for customized cards?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Turnaround time varies; our team provides an estimated timeline during customization discussions.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Do you offer bulk discounts?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, CraftyArt provides competitive pricing and discounts for bulk orders.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
     </div>
   );
 }

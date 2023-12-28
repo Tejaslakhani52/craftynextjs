@@ -1,3 +1,4 @@
+import Icons from "@/assets";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -16,11 +17,9 @@ export default function Breadcrumb({ data }: any) {
             {item?.name}
           </button>
           {!item?.current && (
-            <img
-              src="/icons/rightArrow.svg"
-              alt="leftArrow"
-              className="w-[6px] mx-2 mt-[1.px] opacity-50"
-            />
+            <span className="w-[6px] mx-2 mt-[1.px] opacity-50">
+              <Icons.rightArrowIcon svgProps={{ width: 6 }} />
+            </span>
           )}
         </>
       ))}

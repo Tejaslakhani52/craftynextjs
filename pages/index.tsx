@@ -42,15 +42,6 @@ export default function Home() {
     return val;
   }, [screenWidth]);
 
-  if (typeof document !== "undefined") {
-    const tokenCookie = document.cookie
-      .split(";")
-      .find((row) => row.startsWith("token="));
-
-    const tokens = tokenCookie?.split("=")[1];
-    console.log("tokens: ", tokens);
-  }
-
   useEffect(() => {
     if (urlNavigate !== null) {
       router.push(urlNavigate);
@@ -92,12 +83,8 @@ export default function Home() {
         />
       </Head>
       {mainLoading || isLoading ? (
-        mainLoading ? (
-          <MainLoaderBox />
-        ) : (
-          <DashBoardSkelton height={height} />
-        )
-      ) : tokenRedux ? (
+        <MainLoaderBox />
+      ) : token ? (
         <Dashboard />
       ) : (
         <LandingPage />
@@ -106,6 +93,16 @@ export default function Home() {
   );
 }
 
-{
-  /* <DashBoardSkelton /> */
-}
+// {
+//   mainLoading || isLoading ? (
+//     mainLoading ? (
+//       <MainLoaderBox />
+//     ) : (
+//       <DashBoardSkelton height={height} />
+//     )
+//   ) : tokenRedux ? (
+//     <Dashboard />
+//   ) : (
+//     <LandingPage />
+//   );
+// }

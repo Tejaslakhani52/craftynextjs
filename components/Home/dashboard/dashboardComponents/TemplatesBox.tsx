@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import TemplatesSkelton from "./TemplatesSkelton";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import Icons from "@/assets";
 
 function ImageBox({
   templates,
@@ -94,11 +95,9 @@ function ImageBox({
           }}
         >
           {templates.is_premium && (
-            <img
-              src="/icons/proIcon.svg"
-              alt="pro"
-              className="w-[28px] absolute right-[5px] top-[5px] z-[1]"
-            />
+            <span className="w-[28px] absolute right-[5px] top-[5px] z-[1]">
+              <Icons.proIcon svgProps={{ width: 28 }} />
+            </span>
           )}
 
           <div
@@ -223,11 +222,10 @@ export const TemplatesBoxes = ({
           <span className="text-[#2EC6B8] font-semibold text-[16px] max-sm:text-[14px] flex items-center">
             See all
           </span>
-          <img
-            src={"/icons/rightActiveArrow.svg"}
-            alt="rightActiveArrow"
-            className="w-[7px] inline-block ml-3"
-          />
+
+          <span className="w-[7px] inline-block ml-3">
+            <Icons.rightActiveArrowIcon svgProps={{ width: 7 }} />
+          </span>
         </Button>
       </Box>
       <Box
@@ -241,11 +239,7 @@ export const TemplatesBoxes = ({
               className="pre_button z-[1] left-[-18px] max-md:left-[20px] max-sm:top-[100px]  max-sm:left-[30%] flex max-sm:hidden"
               style={{ top: "52%" }}
             >
-              <img
-                src="/icons/leftArrow.svg"
-                alt="leftArrow"
-                className="w-[8px]"
-              />
+              <Icons.leftArrowIcon svgProps={{ width: 8 }} />
             </button>
           </Box>
         )}
@@ -267,11 +261,9 @@ export const TemplatesBoxes = ({
               className="next_button right-[-18px] flex max-sm:hidden"
               style={{ top: "52%" }}
             >
-              <img
-                src="/icons/rightArrow.svg"
-                alt="rightArrow"
-                className="w-[8px]"
-              />
+              <span>
+                <Icons.rightArrowIcon svgProps={{ width: 8 }} />
+              </span>
             </button>
           </Box>
         )}

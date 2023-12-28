@@ -1,3 +1,4 @@
+import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
@@ -86,11 +87,9 @@ const ImageBox = ({
         }}
       >
         {templates.is_premium && (
-          <img
-            src="/icons/proIcon.svg"
-            alt=""
-            className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
-          />
+          <span className="w-[28px] absolute right-[13px] top-[13px] z-[1]">
+            <Icons.proIcon svgProps={{ width: 28 }} />
+          </span>
         )}
         <div
           className="custom-carousel w-full h-full overflow-hidden cursor-pointer"
@@ -163,9 +162,6 @@ export default function sKeyword() {
   const searchName: any = router?.query?.sKeyword;
   const formattedSearchName = searchName?.replace(/\s+/g, "-").toLowerCase();
   const screenWidth = useScreenWidth();
-  const id: any = router.query;
-  const currentPathname = router.asPath;
-  const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState<any>();
   const [contentData, setContentData] = useState<any>([]);
@@ -183,9 +179,9 @@ export default function sKeyword() {
     setLoadMore(true);
     if (formattedSearchName) {
       axios
-        .post(`/api2/templates/api/getKeyTemplates/?page=${page}`, {
-          key: "qwfsegxdhbxfjhncf",
+        .post(`/api/specialKeyword`, {
           key_name: formattedSearchName,
+          page: page,
         })
         .then((res: any) => {
           setLoadMore(false);
@@ -327,58 +323,6 @@ export default function sKeyword() {
               </Typography>
             </Box>
 
-            {/* <StackGrid columnWidth={screenWidth / multiSizeFixSize} duration={0}>
-          {data?.map((templates: any, index: number) => (
-            <div
-              className="relative"
-              style={{
-                height: `${calculateHeight(
-                  templates?.width,
-                  templates?.height,
-                  screenWidth / multiSizeFixSize
-                )}px`,
-                width: `${screenWidth / multiSizeFixSize}px`,
-              }}
-              id={`content${index}`}
-            >
-              <Link
-                href={`/?templates=${templates.id_name}`}
-                as={`/templates/p/${templates.id_name}`}
-                scroll={false}
-                shallow={true}
-              >
-                {templates.is_premium && (
-                  <img
-                    src="/icons/proIcon.svg"
-                    alt=""
-                    className="w-[28px] absolute right-[15px] top-[15px]"
-                  />
-                )}
-                <div className="w-full h-full p-[8px]">
-                  <img
-                    src={templates?.template_thumb}
-                    alt={templates?.category_name}
-                    className={`w-full] rounded-[5px] cursor-pointer`}
-                    style={{
-                      border: "1px solid #80808082",
-                      height: "100%",
-                    }}
-                  />
-
-                  <div className="pt-2">
-                    <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                      {templates?.template_name}
-                    </p>
-                    <p className="text-[#ABB2C7] text-[13px] pb-1">
-                      {templates?.category_name}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </StackGrid> */}
-
             <StackGrid
               columnWidth={screenWidth / multiSizeFixSize}
               duration={0}
@@ -393,127 +337,6 @@ export default function sKeyword() {
                 />
               ))}
             </StackGrid>
-
-            {/* <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
-          {data?.map((templates: any, index: number) => (
-            <Box
-              className={`${true && "p-[5px] bg-[bg-[#F4F7FE]] "}  `}
-              style={{
-                width: !isNotFix
-                  ? `${100 / multiSizeFixSize}%`
-                  : `${
-                      (screenWidth -
-                        (sideBarRedux && screenWidth > 1023
-                          ? 300
-                          : screenWidth > 630
-                          ? 50
-                          : 37)) /
-                      multiSizeFixSize
-                    }px`,
-              }}
-              id={`content${index}`}
-            >
-              <Box
-                className={`cursor-pointer h-auto bg-white ${
-                  !isNotFix ? "p-3" : "p-[7px]"
-                } rounded-[12px]`}
-                key={templates?.template_name}
-                onClick={() => {
-                  // const newPath = `/templates/p/${templates.id_name}`;
-                  // window.history.pushState({}, "", newPath);
-                  // dispatch(openTempModal(true));
-                  dispatch(tempId(`content${index}`));
-                  dispatch(modalClosePath(`templates/${id?.categoryId}`));
-                }}
-              >
-                <Link
-                  // href={{
-                  //   pathname: `/templates/[${id?.categoryId}]?templates=[${templates.id_name}]`,
-                  //   query: { templates: templates.id_name },
-                  // }}
-                  href={`/?templates=${templates.id_name}`}
-                  as={`/templates/p/${templates.id_name}`}
-                  scroll={false}
-                  shallow={true}
-                >
-                  <Box
-                    className={` ${
-                      !isNotFix ? "bg-[#E6E8EE] p-2   " : "p-[0px]"
-                    } rounded-[10px]`}
-                    style={{
-                      height: !isNotFix
-                        ? `auto`
-                        : `${
-                            calculateHeight(
-                              templates?.width,
-                              templates?.height,
-                              (screenWidth -
-                                (sideBarRedux && screenWidth > 1023
-                                  ? 300
-                                  : 50)) /
-                                multiSizeFixSize -
-                                30
-                            ) + 4
-                          }px`,
-                    }}
-                  >
-                    <div
-                      className="bg-slate-200  w-full rounded-[4px] overflow-hidden"
-                      style={{
-                        height: !isNotFix
-                          ? `${
-                              calculateHeight(
-                                500,
-                                500,
-                                (screenWidth -
-                                  (sideBarRedux && screenWidth > 1023
-                                    ? 300
-                                    : 50)) /
-                                  multiSizeFixSize -
-                                  30
-                              ) - (templates.height < 1919 ? 16 : 7)
-                            }px`
-                          : "100%",
-
-                        display: templates.height < 1920 ? "flex" : "block",
-                        alignItems: "center",
-                      }}
-                    >
-                      <img
-                        src={templates?.template_thumb}
-                        alt={templates?.category_name}
-                        className={` w-[auto] ${
-                          !isNotFix ? " max-h-full" : ""
-                        }  mx-auto rounded-[4px]`}
-                      />
-                    </div>
-                  </Box>
-                </Link>
-
-                <Box
-                  className="pt-2"
-                  style={{
-                    width: !isNotFix
-                      ? "auto"
-                      : `${
-                          (screenWidth -
-                            (sideBarRedux && screenWidth > 1023 ? 300 : 50)) /
-                            multiSizeFixSize -
-                          30
-                        }px`,
-                  }}
-                >
-                  <Typography className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                    {templates?.template_name}
-                  </Typography>
-                  <Typography className="text-[#ABB2C7] text-[13px] pb-1">
-                    {templates?.category_name}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          ))}
-        </Box> */}
 
             <div
               style={{

@@ -9,6 +9,7 @@ import ExploreBlog from "./landingPageComponents/ExploreBlog";
 import LeftImage from "./landingPageComponents/LeftImage";
 import RightImage from "./landingPageComponents/RightImage";
 import TrendingFunctionalities from "./landingPageComponents/TrendingFunctionalities";
+import Icons from "@/assets";
 
 export const MarkText = ({ text }: any) => {
   return (
@@ -20,6 +21,7 @@ export const MarkText = ({ text }: any) => {
         alt="rightMark"
         className="w-[20px] max-sm:w-[15px] mt-[5px]"
       />
+
       <Typography
         sx={{ color: "#1C3048", opacity: 1 }}
         className="text-[16px]  max-lg:text max-2sm:text-[14px]"
@@ -32,30 +34,6 @@ export const MarkText = ({ text }: any) => {
 
 export default function LandingPage({ post }: any) {
   const router = useRouter();
-  const [videoData, setVideoData] = useState(null);
-
-  useEffect(() => {
-    const fetchVideoData = async () => {
-      const response = await fetch("/videos/bgRemove.json");
-      const data = await response.json();
-      setVideoData(data);
-    };
-
-    fetchVideoData();
-
-    axios
-      .post("/api1/get/main/data", {
-        key: process.env.KEY as string,
-        page: 1,
-        count: 0,
-      })
-      .then(({ data }) => {
-        console.log("datadscsdc: ", data);
-      })
-      .catch((err) => {
-        console.log("err: ", err);
-      });
-  }, []);
 
   return (
     <>
@@ -128,6 +106,7 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Explore Background Remover"}
         video={"https://assets.craftyart.in/w_assets/remove_bg.mp4"}
+        path="/background-remover"
       />
 
       <LeftImage
@@ -143,6 +122,7 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Choose your Brand Kit"}
         video={"https://assets.craftyart.in/w_assets/brandkit.mp4"}
+        path="/brand-kit"
       />
 
       <RightImage
@@ -158,6 +138,7 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Resize your Image"}
         video={"https://assets.craftyart.in/w_assets/resize.mp4"}
+        path="/resize"
       />
 
       <LeftImage
@@ -173,6 +154,7 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Turn photo to Caricature"}
         video={"https://assets.craftyart.in/w_assets/caricature.mp4"}
+        path="/caricature"
       />
 
       <CustomInvitations />
@@ -190,10 +172,11 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Apply Style Kit"}
         video={"https://assets.craftyart.in/w_assets/stylekit.mp4"}
+        path="/style-kit"
       />
 
       <LeftImage
-        title="  Place Your Custom Order"
+        title=" Place Your Custom Order"
         point={
           <Box>
             <MarkText text=" From the main menu, select Services." />
@@ -205,6 +188,7 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Place your Custom Order"}
         video={"https://assets.craftyart.in/w_assets/custom_order.mp4"}
+        whatsapp
       />
       <RightImage
         title=" Schedule Your Post"

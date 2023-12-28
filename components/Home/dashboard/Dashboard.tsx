@@ -7,59 +7,88 @@ import { openSidebar, openTempModal } from "@/redux/reducer/actionDataReducer";
 import CustomSize from "./dashboardComponents/CustomSize";
 import UploadButton from "./dashboardComponents/UploadButton";
 import Link from "next/link";
+import Icons from "@/assets";
 
 const bannerCategory = [
   // { image: "/icons/forYou.svg", name: "For you", path: "/trending" },
   {
-    image: "/icons/invitation.svg",
+    image: <Icons.invitationIcon svgProps={{ width: 50 }} />,
     name: "Invitation",
     path: "/templates/invitation",
   },
   {
-    image: "/icons/quotes.svg",
+    image: <Icons.quotesIcon svgProps={{ width: 50 }} />,
     name: "Quotes",
     path: "/templates/quotes-instagram-story",
   },
   {
-    image: "/icons/resume.svg",
+    image: <Icons.resumeIcon svgProps={{ width: 50 }} />,
     name: "Resume",
     path: "/templates/resume-portrait",
   },
-  { image: "/icons/flyer.svg", name: "Flyer", path: "/templates/flyer" },
-  { image: "/icons/bannerLogo.svg", name: "Logo", path: "/templates/logos" },
   {
-    image: "/icons/festival.svg",
+    image: <Icons.flyerIcon svgProps={{ width: 50 }} />,
+    name: "Flyer",
+    path: "/templates/flyer",
+  },
+  {
+    image: <Icons.bannerLogoIcon svgProps={{ width: 50 }} />,
+    name: "Logo",
+    path: "/templates/logos",
+  },
+  {
+    image: <Icons.festivalIcon svgProps={{ width: 50 }} />,
     name: "Calendar",
     path: "/templates/calendar",
   },
-  { image: "/icons/more.svg", name: "More", path: "/templates" },
+  {
+    image: <Icons.moreIcon svgProps={{ width: 50 }} />,
+    name: "More",
+    path: "/templates",
+  },
 ];
 
 const bannerCategoryM = [
-  { image: "/icons/forYouM.svg", name: "For you", path: "/trending" },
+  // {
+  //   image: <Icons.forYouMIcon svgProps={{ width: 50 }} />,
+  //   name: "For you",
+  //   path: "/trending",
+  // },
   {
-    image: "/icons/invitationM.svg",
+    image: <Icons.invitationMIcon svgProps={{ width: 50 }} />,
     name: "Invitation",
     path: "/templates/invitation",
   },
   {
-    image: "/icons/quotesM.svg",
+    image: <Icons.quotesMIcon svgProps={{ width: 50 }} />,
     name: "Quotes",
     path: "/templates/quotes-instagram-story",
   },
   {
-    image: "/icons/resumeM.svg",
+    image: <Icons.resumeMIcon svgProps={{ width: 50 }} />,
     name: "Resume",
     path: "/templates/resume-portrait",
   },
-  { image: "/icons/flyerM.svg", name: "Flyer", path: "/templates/flyer" },
-  { image: "/icons/LogoM.svg", name: "Logo", path: "/templates/logos" },
   {
-    image: "/icons/festivalM.svg",
+    image: <Icons.flyerMIcon svgProps={{ width: 50 }} />,
+    name: "Flyer",
+    path: "/templates/flyer",
+  },
+  {
+    image: <Icons.logoMIcon svgProps={{ width: 50 }} />,
+    name: "Logo",
+    path: "/templates/logos",
+  },
+  {
+    image: <Icons.festivalMIcon svgProps={{ width: 50 }} />,
     name: "Calendar",
     path: "/templates/calendar",
   },
-  { image: "/icons/moreM.svg", name: "More", path: "/templates" },
+  {
+    image: <Icons.moreMIcon svgProps={{ width: 50 }} />,
+    name: "More",
+    path: "/templates",
+  },
 ];
 
 export default function Dashboard() {
@@ -106,11 +135,8 @@ export default function Dashboard() {
                 href={item?.path}
                 className="flex flex-col items-center cursor-pointer gap-[10px]"
               >
-                <img
-                  src={item?.image}
-                  alt={item?.name}
-                  className="w-[50px] max-w-[50px]"
-                />
+                {item?.image}
+
                 <Typography className="text-white text-center text-[14px] whitespace-nowrap">
                   {item?.name}
                 </Typography>
@@ -180,11 +206,7 @@ export default function Dashboard() {
               router.push(item?.path);
             }}
           >
-            <img
-              src={item?.image}
-              alt={item?.name}
-              className="w-[50px] max-w-[50px]"
-            />
+            {item?.image}
             <Typography className="text-center text-[12px] whitespace-nowrap ">
               {item?.name}
             </Typography>

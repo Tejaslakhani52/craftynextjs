@@ -10,6 +10,8 @@ export default function LeftImage({
   buttonName,
   video,
   alt,
+  path,
+  whatsapp,
 }: any) {
   const router = useRouter();
   return (
@@ -60,7 +62,20 @@ export default function LeftImage({
                 color: "white",
               }}
               className="bg_linear py-[7px] px-[20px] ml-[40px]  max-lg:mx-auto text-[14px] 2sm:text-[17px]"
-              onClick={() => router.push("/login")}
+              onClick={() => {
+                if (whatsapp) {
+                  const phoneNumber = "9898978207";
+                  const message = "Hello, I want to place a custom order.";
+
+                  const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+                    message
+                  )}`;
+
+                  window.location.href = whatsappLink;
+                } else if (path) {
+                  router.push(path);
+                } else router.push("/login");
+              }}
             >
               {buttonName}
             </Button>

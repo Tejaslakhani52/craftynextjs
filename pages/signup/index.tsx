@@ -1,3 +1,4 @@
+import Icons from "@/assets";
 import SignUpContentBox from "@/components/auth/authComponents/SignUpContentBox";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
@@ -47,11 +48,11 @@ export default function index() {
             </h1>
 
             <Box className="flex gap-3 items-start mb-2">
-              <img src="/icons/setting_1.svg" alt="" className="w-[20px]" />
+              <Icons.setting1Icon svgProps={{ width: 20 }} />
               <p className="text-[#fff]">All in One Graphic Design Tool</p>
             </Box>
             <Box className="flex gap-3 items-start mb-2">
-              <img src="/icons/pen-tool_1.svg" alt="" className="w-[20px]" />
+              <Icons.penToolIcon svgProps={{ width: 20 }} />
               <p className="text-[#fff]">
                 Discover Limitless Possibilities with Crafty Art Graphic Design
                 Tool
@@ -59,20 +60,12 @@ export default function index() {
             </Box>
 
             <Box className="flex gap-3 items-start mb-2">
-              <img
-                src="/icons/customization_1.svg"
-                alt=""
-                className="w-[20px]"
-              />
+              <Icons.customization1Icon svgProps={{ width: 20 }} />
               <p className="text-[#fff]">Ready To Use Customizable Templates</p>
             </Box>
 
             <Box className="flex gap-3 items-start mb-2">
-              <img
-                src="/icons/drag-and-drop_1.svg"
-                alt=""
-                className="w-[20px]"
-              />
+              <Icons.dragAndDropIcon svgProps={{ width: 20 }} />
               <p className="text-[#fff]">
                 User Friendly Drag-and-Drop Interface
               </p>

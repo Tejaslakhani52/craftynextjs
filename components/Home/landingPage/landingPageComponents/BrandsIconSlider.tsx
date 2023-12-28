@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Icons from "@/assets";
 
 const brandIcons = [
   "/images/brandIcon1.png",
@@ -95,11 +96,7 @@ export default function BrandsIconSlider() {
                 minWidth: "auto",
               }}
             >
-              <img
-                src="/icons/leftArrow.svg"
-                alt="leftArrow"
-                className="w-[10px]"
-              />
+              <Icons.leftArrowIcon svgProps={{ width: 10 }} />
             </Button>
             <Button
               onClick={handleNextClick}
@@ -110,11 +107,7 @@ export default function BrandsIconSlider() {
                 minWidth: "auto",
               }}
             >
-              <img
-                src="/icons/rightArrow.svg"
-                alt="rightArrow"
-                className="w-[10px]"
-              />
+              <Icons.rightArrowIcon svgProps={{ width: 10 }} />
             </Button>
           </Box>
 

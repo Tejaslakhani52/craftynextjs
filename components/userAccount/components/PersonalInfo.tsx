@@ -59,29 +59,6 @@ export default function PersonalInfo() {
       });
   };
 
-  // const updateFetchData = (event: any) => {
-  //   setLoading(true);
-
-  //   axios
-  //     .post("/api/personalInfo", {
-  //       name: accountDetail?.name,
-  //       user_id: accountDetail?.user_id,
-  //       updateDp: accountDetail?.updateDp,
-  //       photo_uri: accountDetail?.photo_uri,
-  //     })
-  //     .then((response) => {
-  //       setTimeout(() => {
-  //         fetchData();
-  //         toast.success("User updated successfully");
-  //         window.location.reload();
-  //         setLoading(false);
-  //       }, 1000);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error: ", error);
-  //     });
-  // }
-
   useEffect(() => {
     fetchData();
   }, [uId]);
@@ -138,8 +115,6 @@ export default function PersonalInfo() {
                 overflow: "hidden",
               }}
             >
-              {/* {profilePhoto} */}
-
               {imagePreview && (
                 <img
                   src={imagePreview}
@@ -255,7 +230,7 @@ export default function PersonalInfo() {
                     });
                   }}
                 >
-                  Cancle
+                  Cancel
                 </Button>
 
                 <Button

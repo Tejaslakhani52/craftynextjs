@@ -20,6 +20,7 @@ import Link from "next/link";
 import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import { Templates } from "../header/headerComponents/Menu";
 import { AnyAaaaRecord } from "dns";
+import Icons from "@/assets";
 
 export const IconsText = ({ image, text, isLoading }: any) => {
   return isLoading ? (
@@ -44,7 +45,7 @@ export const IconsText = ({ image, text, isLoading }: any) => {
     </Typography>
   ) : (
     <Typography className="flex text-[#1C3048] text-[14px] gap-3 items-center py-2">
-      <img src={image} alt="image" className="w-[20px]" />
+      {image}
       {text}
     </Typography>
   );
@@ -276,7 +277,7 @@ export default function TemplateModal({
         >
           <>
             <button
-              className="fixed  z-[100] right-[8%] max-muiLG:right-[3%] max-muiLG:top-[3%] bg-white w-[30px] max-sm:w-[35px] max-sm:top-[2%] max-sm:right-[3%] p-[7px] rounded-[50%] max-muiLG:bg-[aliceblue] "
+              className="fixed  z-[100] right-[8%] max-muiLG:right-[3%] max-muiLG:top-[3%] bg-white w-[30px] h-[30px] max-sm:w-[35px] max-sm:top-[2%] max-sm:right-[3%] p-[5px] rounded-[50%] max-muiLG:bg-[aliceblue] "
               onClick={() => {
                 setId("");
                 setTemplate({});
@@ -285,7 +286,7 @@ export default function TemplateModal({
                 window.history.replaceState({}, "", `${router.asPath}`);
               }}
             >
-              <img src="/icons/modalClose.svg" alt="modalClose" />
+              <Icons.modalCloseIcon svgProps={{ width: 20 }} />
             </button>
           </>
           <DialogContent className="px-[40px] max-sm:px-[20px]">
@@ -436,14 +437,13 @@ export default function TemplateModal({
                         router.push("/login");
                       }}
                     >
-                      <img
-                        src="/icons/pricing.svg"
-                        alt={template?.template_name}
-                        className="w-[22px] ml-[8px]"
-                        style={{
-                          display: template?.is_premium ? "block" : "none",
-                        }}
-                      />
+                      {template?.is_premium && (
+                        <span className="w-[22px] ml-[8px]">
+                          <Icons.pricingIcon
+                            svgProps={{ width: 22, height: 21 }}
+                          />
+                        </span>
+                      )}
                       Customize this template
                     </a>
                   </Box>
@@ -465,14 +465,13 @@ export default function TemplateModal({
                           "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
                       }}
                     >
-                      <img
-                        src="/icons/pricing.svg"
-                        alt={template?.template_name}
-                        className="w-[22px] ml-[8px]"
-                        style={{
-                          display: template?.is_premium ? "block" : "none",
-                        }}
-                      />
+                      {template?.is_premium && (
+                        <span className="w-[22px] ml-[8px]">
+                          <Icons.pricingIcon
+                            svgProps={{ width: 22, height: 21 }}
+                          />
+                        </span>
+                      )}
                       Customize this template
                     </button>
                   </Box>
@@ -480,27 +479,31 @@ export default function TemplateModal({
 
                 <div className="py-4">
                   <IconsText
-                    image="/icons/TmodalCustomize.svg"
+                    image={
+                      <Icons.tModalCustomizeIcon svgProps={{ width: 20 }} />
+                    }
                     text="100% Customize with online editing tools"
                     isLoading={isLoading}
                   />
                   <IconsText
-                    image="/icons/TmodalSmartphone.svg"
+                    image={
+                      <Icons.tModalSmartphoneIcon svgProps={{ width: 20 }} />
+                    }
                     text="Edit and download on the go"
                     isLoading={isLoading}
                   />
                   <IconsText
-                    image="/icons/TmodalPublish.svg"
+                    image={<Icons.tModalPublishIcon svgProps={{ width: 20 }} />}
                     text="Share and publish anywhere"
                     isLoading={isLoading}
                   />
                   <IconsText
-                    image="/icons/TmodalBacked.svg"
+                    image={<Icons.tModalBackedIcon svgProps={{ width: 20 }} />}
                     text="Backed by our happiness Guarantee"
                     isLoading={isLoading}
                   />
                   <IconsText
-                    image="/icons/TmodalAccess.svg"
+                    image={<Icons.tModalAccessIcon svgProps={{ width: 20 }} />}
                     text="Access 10,000+ all inclusive templates"
                     isLoading={isLoading}
                   />
@@ -572,11 +575,9 @@ export default function TemplateModal({
                           >
                             <div className="w-full h-full p-[8px] relative">
                               {templates.is_premium && (
-                                <img
-                                  src="/icons/proIcon.svg"
-                                  alt={template?.template_name}
-                                  className="w-[28px] absolute right-[13px] top-[13px] z-[1]"
-                                />
+                                <span className="w-[28px] absolute right-[13px] top-[13px] z-[1]">
+                                  <Icons.proIcon svgProps={{ width: 28 }} />
+                                </span>
                               )}
                               <img
                                 src={templates?.template_thumb}

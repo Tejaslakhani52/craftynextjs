@@ -1,3 +1,4 @@
+import Icons from "@/assets";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { faqsList } from "@/constants/faqsList";
@@ -34,17 +35,9 @@ export default function Index() {
                 sx={{ marginBottom: openFaqs === index + 1 ? "10px" : "0" }}
               >
                 {openFaqs === index + 1 ? (
-                  <img
-                    src="/icons/faqMinusIcon.svg"
-                    alt=""
-                    className="w-[20px]"
-                  />
+                  <Icons.faqMinusIcon svgProps={{ width: 20 }} />
                 ) : (
-                  <img
-                    src="/icons/faqPlusIcon.svg"
-                    alt=""
-                    className="w-[20px]"
-                  />
+                  <Icons.faqPlusIcon svgProps={{ width: 20 }} />
                 )}
 
                 {item?.title}

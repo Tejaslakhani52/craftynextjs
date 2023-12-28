@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
+import Icons from "@/assets";
 
 export const Product = {
   name: "Product",
@@ -119,9 +120,9 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
         {title}
         <span className="w-[14px] mx-2">
           {onButtonLeave || onBoxLeave ? (
-            <img src="/icons/menuIcon.svg" alt="menuIcon" />
+            <Icons.menuIcon svgProps={{ width: 14 }} />
           ) : (
-            <img src="/icons/menuBlackIcon.svg" alt="menuBlackIcon" />
+            <Icons.menuBlackIcon svgProps={{ width: 14 }} />
           )}
         </span>
       </button>
@@ -217,7 +218,9 @@ export default function MenuBox() {
           >
             Pricing
           </Link>
-          <img src="/icons/pricing.svg" alt="pro" className="ml-[8px]" />
+          <span className="ml-[8px]">
+            <Icons.pricingIcon />
+          </span>
         </button>
         <Box className=" relative block xl:hidden">
           <Button className="text-black px-2 min-w-[auto] peer ">
@@ -264,11 +267,10 @@ export default function MenuBox() {
               >
                 Pricing
               </Link>
-              <img
-                src="/icons/pricing.svg"
-                alt=""
-                className="ml-[8px] w-[20px] "
-              />
+
+              <span className="ml-[8px] w-[20px]">
+                <Icons.pricingIcon svgProps={{ width: 20 }} />
+              </span>
             </MenuItem>
           </Box>
         </Box>

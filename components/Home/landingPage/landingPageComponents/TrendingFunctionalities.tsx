@@ -2,17 +2,33 @@ import React, { useEffect, useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Icons from "@/assets";
 
 const brandIcons = [
-  { image: "/icons/Background.svg", name: "Background Remover" },
-  { image: "/icons/Brand Kit.svg", name: "Brand Kit" },
-  { image: "/icons/resize.svg", name: "Resize Options" },
-  { image: "/icons/post.svg", name: "Schedule Post" },
-  { image: "/icons/text-editor.svg", name: "Style kit" },
-  { image: "/icons/couple.svg", name: "Caricature" },
-  { image: "/icons/love-letter 1.svg", name: "Customize Invitation" },
-  { image: "/icons/processing.svg", name: "Custom Order" },
-  { image: "/icons/cv.svg", name: "Eprofile" },
+  {
+    image: <Icons.backgroundIcon svgProps={{ width: 30 }} />,
+    name: "Background Remover",
+  },
+  { image: <Icons.brandKitIcon svgProps={{ width: 30 }} />, name: "Brand Kit" },
+  {
+    image: <Icons.resizeIcon svgProps={{ width: 30 }} />,
+    name: "Resize Options",
+  },
+  { image: <Icons.postIcon svgProps={{ width: 30 }} />, name: "Schedule Post" },
+  {
+    image: <Icons.textEditorIcon svgProps={{ width: 30 }} />,
+    name: "Style kit",
+  },
+  { image: <Icons.coupleIcon svgProps={{ width: 30 }} />, name: "Caricature" },
+  {
+    image: <Icons.loveLetterIcon svgProps={{ width: 30 }} />,
+    name: "Customize Invitation",
+  },
+  {
+    image: <Icons.processingIcon svgProps={{ width: 30 }} />,
+    name: "Custom Order",
+  },
+  { image: <Icons.cvIcon svgProps={{ width: 30 }} />, name: "Eprofile" },
 ];
 
 export default function TrendingFunctionalities() {
@@ -73,11 +89,7 @@ export default function TrendingFunctionalities() {
               display: !showPrevButton ? "none" : "block",
             }}
           >
-            <img
-              src="/icons/leftArrow.svg"
-              alt="leftArrow"
-              className="w-[10px]"
-            />
+            <Icons.leftArrowIcon svgProps={{ width: 10 }} />
           </button>
 
           <Box
@@ -91,7 +103,7 @@ export default function TrendingFunctionalities() {
                   boxShadow: "0px 3px 4px 0px rgba(0, 0, 0, 0.10)",
                 }}
               >
-                <img src={item?.image} alt={item?.name} className="w-[30px]" />
+                {item?.image}
 
                 <Typography className="text-[15px] font-[500]">
                   {item?.name}
@@ -110,11 +122,9 @@ export default function TrendingFunctionalities() {
               display: !showNextButton ? "none" : "block",
             }}
           >
-            <img
-              src="/icons/rightArrow.svg"
-              alt="rightArrow"
-              className="w-[10px] ml-auto"
-            />
+            <span className="w-[10px] ml-auto">
+              <Icons.rightArrowIcon svgProps={{ width: 10 }} />
+            </span>
           </button>
         </Box>
       </Box>

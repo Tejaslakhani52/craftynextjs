@@ -2,20 +2,22 @@ import { Box, Rating, Typography } from "@mui/material";
 import React from "react";
 import FaqsBox from "../common/FAQs";
 import QuestionsTitle from "../common/QuestionsTitle";
+import Head from "next/head";
+import CustomHead from "../common/CustomHead";
 
 const howMakeQuotes = [
   {
-    heading: "Printable Options:",
+    heading: "Printable Options: ",
     text: "Some quotes are available in printable formats. Decorate your space or create thoughtful gifts with our printable quote templates.    ",
     icon: "/images/category/searchQuotes.svg",
   },
   {
-    heading: " Customization Options:     ",
+    heading: " Customization Options: ",
     text: "Personalize quotes to match your style or tailor them to specific occasions. Change fonts, colors, and layouts for a unique touch.    ",
     icon: "/images/category/editQuotes.svg",
   },
   {
-    heading: "Download and Share:   ",
+    heading: "Download and Share: ",
     text: " Easily download your favorite quotes and share them on social media, in presentations, or with friends and family.    ",
     icon: "/images/category/download.svg",
   },
@@ -119,6 +121,213 @@ export default function QuotesStatic() {
               alt={"quotes template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className="pt-[50px]">
+        <Typography
+          variant="h2"
+          className="text-[#1C3048] text-[30px] text-center font-[600] mb-4"
+        >
+          Explore Our Categories
+        </Typography>
+
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/quotesC/img1.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Motivational Quotes
+              </Typography>
+              <Typography className="font-medium">
+                Fuel your determination and inspire others with our handpicked
+                selection of motivational quotes. From success to perseverance,
+                find the words that drive you to achieve your goals.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Inspirational Quotes
+              </Typography>
+              <Typography className="font-medium">
+                Discover a treasure trove of inspirational quotes that ignite
+                creativity and spark positive change. Perfect for personal
+                reflection or sharing encouragement with friends and family.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Love and Relationship Quotes
+              </Typography>
+              <Typography className="font-medium">
+                Express your emotions with eloquence using our love and
+                relationship quotes. Whether it's a romantic gesture or words of
+                comfort, find the perfect quote for any relationship.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Wisdom and Life Lessons
+              </Typography>
+              <Typography className="font-medium">
+                Gain insights and wisdom from our collection of quotes that
+                distill the essence of life's lessons. Timeless advice and
+                profound thoughts to guide you on your journey.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Funny and Witty Quotes
+              </Typography>
+              <Typography className="font-medium">
+                Bring a smile to your face and others with our collection of
+                funny and witty quotes. Perfect for lightening the mood and
+                adding a touch of humor to your day.
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className="pt-[50px]  bg-[#F4F7FE]">
+        <Typography
+          variant="h2"
+          className="text-[#1C3048] text-[30px] text-center font-[600] mb-4 "
+        >
+          Creative Ways to Use Quotes Templates
+        </Typography>
+
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Social Media Engagement:
+              </Typography>
+              <Typography className="font-medium">
+                Boost your social media presence by sharing insightful quotes.
+                Engage your audience with meaningful content that sparks
+                conversations and connections.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Presentation Enhancement:
+              </Typography>
+              <Typography className="font-medium">
+                Elevate your presentations with impactful quotes. Whether it's a
+                business meeting or a creative project, quotes add depth and
+                resonance to your message.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Journaling and Scrapbooking:
+              </Typography>
+              <Typography className="font-medium">
+                Enrich your personal journals or scrapbooks with quotes that
+                capture the essence of your experiences. Create beautiful
+                keepsakes filled with wisdom and memories.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Event Decor:
+              </Typography>
+              <Typography className="font-medium">
+                Whether it's a wedding, birthday party, or corporate event, use
+                quotes as decorative elements. Frame them or incorporate them
+                into event materials for a touch of sophistication.
+              </Typography>
+            </Box>
+          </Box>
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/quotesC/img2.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className="pt-[50px]">
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/quotesC/img1.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Our Commitment to Quality
+              </Typography>
+              <Typography className="font-medium">
+                At Crafty Art, we are committed to delivering not just words,
+                but an experience. Our team of curators ensures that each quote
+                is a gem, chosen for its depth, relevance, and universal appeal.
+                We believe in the transformative power of language and strive to
+                provide you with quotes that resonate, motivate, and inspire.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Crafty Art - Where Words Come to Life.
+              </Typography>
+              <Typography className="font-medium">
+                Let the power of words elevate your moments. Dive into our
+                Quotes Templates collection and discover the perfect expression
+                for every emotion and occasion. Feel free to explore and share
+                the wisdom encapsulated in these beautifully crafted quotes.
+              </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>
@@ -249,6 +458,66 @@ export default function QuotesStatic() {
           />
         </Box>
       </Box>
+
+      <CustomHead
+        image="/images/quotesC/img1.png"
+        heading={"Unlock Creativity with Inspiring Quotes Templates"}
+        text="Explore our curated collection of Quotes Templates for a daily dose of inspiration. Elevate your content effortlessly!        "
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What is a Quotes Post?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "A Quotes Post is a curated collection of inspirational, motivational, or thought-provoking quotes presented in a visually appealing format. These posts aim to share wisdom, positivity, and insights with the audience.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. How can I create a Quotes Post?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Creating a Quotes Post is simple. Choose a theme or topic, select relevant quotes, and pair them with engaging visuals. Use graphic design tools or apps to enhance the visual appeal of your post.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. Where can I find quotes for my Quotes Post?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "You can find quotes in Crafty Art Quotes Post Maker.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. How can I measure the success of my Quotes Posts?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Track engagement metrics such as likes, shares, and comments. Pay attention to the quotes that resonate the most with your audience and adjust your content strategy accordingly.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. How do I choose the right quotes for my audience?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Consider your audience's interests, values, and preferences. Tailor the quotes to resonate with your audience and align with the overall theme or message of your platform.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
     </div>
   );
 }

@@ -23,11 +23,7 @@ const stripeTestPromise = loadStripe(PUBLIC_KEY);
 export const MarkTextRight = ({ text }: any) => {
   return (
     <Box sx={{ display: "flex", gap: "10px", alignItems: "center", mb: "9px" }}>
-      <img
-        src={"/icons/rightMarkGreen.svg"}
-        alt="rightMark"
-        className="w-[18px] max-sm:w-[15px]"
-      />
+      <Icons.rightMarkGreenIcon svgProps={{ width: 18 }} />
       <Typography
         sx={{ color: "#1C3048", opacity: 1 }}
         className="text-[15px] max-sm:text-[14px]"
@@ -41,11 +37,7 @@ export const MarkTextRight = ({ text }: any) => {
 export const MarkTextWrong = ({ text }: any) => {
   return (
     <Box sx={{ display: "flex", gap: "10px", alignItems: "center", mb: "9px" }}>
-      <img
-        src={"/icons/wrongMarkRed.svg"}
-        alt="rightMark"
-        className="w-[18px] max-sm:w-[15px]  "
-      />
+      <Icons.wrongMarkRedIcon svgProps={{ width: 18 }} />
       <Typography
         sx={{ color: "#1C3048", opacity: 1 }}
         className="text-[15px] max-sm:text-[14px]"
@@ -388,7 +380,7 @@ export default function index({ ip }: any) {
               className="text-[#1C3048] text-[24px] font-[600] pb-[20px] flex items-center gap-3"
             >
               CraftyArt Pro
-              <img src="/icons/pricing.svg" alt="" className=" w-[30px]" />
+              <Icons.pricingIcon svgProps={{ width: 30 }} />
             </Typography>
 
             <Typography className="mb-8 max-sm:text-[14px]">

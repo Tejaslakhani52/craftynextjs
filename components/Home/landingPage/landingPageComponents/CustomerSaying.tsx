@@ -2,6 +2,7 @@ import { Box, Rating, Typography, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import Icons from "@/assets";
 
 const customerComment = [
   {
@@ -183,22 +184,14 @@ export default function CustomerSaying() {
               opacity: !showPrevButton ? "0.3" : 1,
             }}
           >
-            <img
-              src="/icons/leftArrow.svg"
-              alt="leftArrow"
-              className="w-[10px]"
-            />
+            <Icons.leftArrowIcon svgProps={{ width: 10 }} />
           </Button>
           <Button
             onClick={handleNextClick}
             disabled={!showNextButton ? true : false}
             sx={{ opacity: !showNextButton ? "0.3" : 1 }}
           >
-            <img
-              src="/icons/rightArrow.svg"
-              alt="rightArrow"
-              className="w-[10px]"
-            />
+            <Icons.rightArrowIcon svgProps={{ width: 10 }} />
           </Button>
         </Box>
       </Box>

@@ -19,6 +19,7 @@ import { useDispatch } from "react-redux";
 import Input from "./Input";
 import LoginPlatform from "./LoginPlatform";
 import Password from "./Password";
+import Icons from "@/assets";
 
 export default function SignUpContentBox(props: any) {
   const dispatch = useDispatch();
@@ -183,11 +184,7 @@ export default function SignUpContentBox(props: any) {
               className="min-w-[auto] relative left-[-20px]"
               sx={{ display: props?.handleClose ? "inline-block" : "none" }}
             >
-              <img
-                src="/icons/leftArrow.svg"
-                alt="leftArrow"
-                className="w-[10px]"
-              />
+              <Icons.leftArrowIcon />
             </Button>
             {"Create an Account"}
           </DialogTitle>

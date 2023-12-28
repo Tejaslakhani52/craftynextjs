@@ -1,9 +1,11 @@
 import { consoleShow } from "@/commonFunction/console";
 import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 export default function CustomInvitations() {
+  const router = useRouter();
   const [data, setData] = useState<any>();
 
   useEffect(() => {
@@ -55,6 +57,7 @@ export default function CustomInvitations() {
             },
           }}
           className="bg-white text-black py-2"
+          onClick={() => router.push("/login")}
         >
           Get Started
         </Button>

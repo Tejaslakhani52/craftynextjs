@@ -147,6 +147,7 @@ import Profile from "../profileAndNotification/Profile";
 import Sidebar from "../sidebar/Sidebar";
 import LoginButton from "./headerComponents/LoginButton";
 import MenuBox from "./headerComponents/Menu";
+import Icons from "@/assets";
 
 export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   const screenWidth = useScreenWidth();
@@ -189,11 +190,9 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                   setSidebarOpen(!sideBarRedux);
                 }}
               >
-                <img
-                  src="/icons/menuOpen.svg"
-                  alt="menuOpen"
-                  className="w-[22px] mx-auto"
-                />
+                <span className="cursor-pointer mx-auto">
+                  <Icons.menuOpenIcon svgProps={{ width: 22 }} />
+                </span>
               </Button>
             </Box>
             {!enterYourAccount && token && (
@@ -205,11 +204,9 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                     setSidebarOpen(!sideBarRedux);
                   }}
                 >
-                  <img
-                    src="/icons/menuOpen.svg"
-                    alt="menuOpen"
-                    className="w-[22px] mx-auto"
-                  />
+                  <span className="cursor-pointer mx-auto">
+                    <Icons.menuOpenIcon svgProps={{ width: 22 }} />
+                  </span>
                 </Button>
               </Box>
             )}
@@ -240,7 +237,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
         >
           <Box className="w-[80%] bg-[#F4F7FE] px-4 py-[9px] rounded-[6px] flex items-center gap-3 max-sm:hidden">
             <Box className="w-[16px] flex items-center">
-              <img src="/icons/SearchIcon.svg" alt="SearchIcon" />
+              <Icons.searchIcon />
             </Box>
             <input
               type="text"
@@ -254,11 +251,9 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
             className="flex items-center sm:hidden cursor-pointer p-2"
             onClick={handleClick}
           >
-            <img
-              src="/icons/SearchIcon.svg"
-              alt="SearchIcon"
-              className="w-[20px]"
-            />
+            <span className="cursor-pointer mx-auto">
+              <Icons.searchIcon svgProps={{ width: 20 }} />
+            </span>
           </Box>
 
           <Menu
@@ -273,7 +268,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
             <Box className="pl-[10px] pr-[10px] flex gap-[10px]">
               <Box className="w-[250px] bg-[#F4F7FE] px-4 py-[9px] rounded-[6px] flex items-center gap-3  ">
                 <Box className="w-[16px] flex items-center">
-                  <img src="/icons/SearchIcon.svg" alt="SearchIcon" />
+                  <Icons.searchIcon svgProps={{ width: 16 }} />
                 </Box>
                 <input
                   type="text"

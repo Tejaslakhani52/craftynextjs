@@ -90,10 +90,8 @@ export default function index() {
   useEffect(() => {
     setLoadMore(true);
     axios
-      .post(`/api1/get/datas`, {
-        debug_key: "debug",
+      .post(`/api/category`, {
         cat_id: "latest",
-        limit: 48,
         page: page,
       })
       .then((res: any) => {
@@ -290,127 +288,6 @@ export default function index() {
                 />
               ))}
             </StackGrid>
-
-            {/* <Box className=" flex items-center flex-wrap justify-center sm:justify-start">
-          {data?.map((templates: any, index: number) => (
-            <Box
-              className={`${true && "p-[5px] bg-[bg-[#F4F7FE]] "}  `}
-              style={{
-                width: !isNotFix
-                  ? `${100 / multiSizeFixSize}%`
-                  : `${
-                      (screenWidth -
-                        (sideBarRedux && screenWidth > 1023
-                          ? 300
-                          : screenWidth > 630
-                          ? 50
-                          : 37)) /
-                      multiSizeFixSize
-                    }px`,
-              }}
-              id={`content${index}`}
-            >
-              <Box
-                className={`cursor-pointer h-auto bg-white ${
-                  !isNotFix ? "p-3" : "p-[7px]"
-                } rounded-[12px]`}
-                key={templates?.template_name}
-                onClick={() => {
-                  // const newPath = `/templates/p/${templates.id_name}`;
-                  // window.history.pushState({}, "", newPath);
-                  // dispatch(openTempModal(true));
-                  dispatch(tempId(`content${index}`));
-                  dispatch(modalClosePath(`templates/${id?.categoryId}`));
-                }}
-              >
-                <Link
-                  // href={{
-                  //   pathname: `/templates/[${id?.categoryId}]?templates=[${templates.id_name}]`,
-                  //   query: { templates: templates.id_name },
-                  // }}
-                  href={`/?templates=${templates.id_name}`}
-                  as={`/templates/p/${templates.id_name}`}
-                  scroll={false}
-                  shallow={true}
-                >
-                  <Box
-                    className={` ${
-                      !isNotFix ? "bg-[#E6E8EE] p-2   " : "p-[0px]"
-                    } rounded-[10px]`}
-                    style={{
-                      height: !isNotFix
-                        ? `auto`
-                        : `${
-                            calculateHeight(
-                              templates?.width,
-                              templates?.height,
-                              (screenWidth -
-                                (sideBarRedux && screenWidth > 1023
-                                  ? 300
-                                  : 50)) /
-                                multiSizeFixSize -
-                                30
-                            ) + 4
-                          }px`,
-                    }}
-                  >
-                    <div
-                      className="bg-slate-200  w-full rounded-[4px] overflow-hidden"
-                      style={{
-                        height: !isNotFix
-                          ? `${
-                              calculateHeight(
-                                500,
-                                500,
-                                (screenWidth -
-                                  (sideBarRedux && screenWidth > 1023
-                                    ? 300
-                                    : 50)) /
-                                  multiSizeFixSize -
-                                  30
-                              ) - (templates.height < 1919 ? 16 : 7)
-                            }px`
-                          : "100%",
-
-                        display: templates.height < 1920 ? "flex" : "block",
-                        alignItems: "center",
-                      }}
-                    >
-                      <img
-                        src={templates?.template_thumb}
-                        alt={templates?.category_name}
-                        className={` w-[auto] ${
-                          !isNotFix ? " max-h-full" : ""
-                        }  mx-auto rounded-[4px]`}
-                      />
-                    </div>
-                  </Box>
-                </Link>
-
-                <Box
-                  className="pt-2"
-                  style={{
-                    width: !isNotFix
-                      ? "auto"
-                      : `${
-                          (screenWidth -
-                            (sideBarRedux && screenWidth > 1023 ? 300 : 50)) /
-                            multiSizeFixSize -
-                          30
-                        }px`,
-                  }}
-                >
-                  <Typography className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
-                    {templates?.template_name}
-                  </Typography>
-                  <Typography className="text-[#ABB2C7] text-[13px] pb-1">
-                    {templates?.category_name}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          ))}
-        </Box> */}
 
             <div
               style={{

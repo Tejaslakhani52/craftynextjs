@@ -15,60 +15,61 @@ import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import Link from "next/link";
+import Icons from "@/assets";
 
 export const sidebarMenu = [
   {
     name: "Home",
-    icons: "/icons/homeIcons.svg",
-    activeIcon: "/icons/homeIconActive.svg",
+    icons: <Icons.homeIcons svgProps={{ width: 20 }} />,
+    activeIcon: <Icons.homeActiveIcon svgProps={{ width: 20 }} />,
     path: "/",
   },
   {
     name: "My Account",
-    icons: "/icons/profiile.svg",
-    activeIcon: "/icons/profileActive.svg",
+    icons: <Icons.profileIcon svgProps={{ width: 20 }} />,
+    activeIcon: <Icons.profileActiveIcon svgProps={{ width: 20 }} />,
     path: "/your-account",
   },
   {
     name: "Templates",
-    icons: "/icons/templates.svg",
-    activeIcon: "/icons/templatesActive.svg",
+    icons: <Icons.templatesIcon svgProps={{ width: 20 }} />,
+    activeIcon: <Icons.templatesActiveIcon svgProps={{ width: 20 }} />,
     path: "/templates",
   },
   // {
   //   name: "Brand Kit",
-  //   icons: "/icons/brandKit.svg",
-  //   activeIcon: "/icons/brandKitActive.svg",
+  //   icons: <Icons.brandKitIconsvgProps={{width: 20}}/>,
+  //   activeIcon: <Icons.brandKitActiveIconsvgProps={{width: 20}}/>,
   //   path: "/brandKit",
   // },
   // {
   //   name: "Content planner",
-  //   icons: "/icons/contentPlaner.svg",
-  //   activeIcon: "/icons/contentPlanerActive.svg",
+  //   icons: <Icons.contentPlanerIconsvgProps={{width: 20}}/>,
+  //   activeIcon: <Icons.contentPlanerActiveIconsvgProps={{width: 20}}/>,
   //   path: "/contentPlanner",
   // },
   // {
   //   name: "Schedule post",
-  //   icons: "/icons/schedulePost.svg",
-  //   activeIcon: "/icons/schedulePostActive.svg",
+  //   icons: <Icons.schedulePostIconsvgProps={{width: 20}}/>,
+  //   activeIcon: <Icons.schedulePostActiveIconsvgProps={{width: 20}}/>,
   //   path: "/schedulePost",
   // },
   {
     name: "Upload",
-    icons: "/icons/upload.svg",
-    activeIcon: "/icons/uploadActive.svg",
+    icons: <Icons.upload2Icon svgProps={{ width: 20 }} />,
+    activeIcon: <Icons.uploadActiveIcon svgProps={{ width: 20 }} />,
     path: "/upload",
   },
   // {
   //   name: "Recommendation",
-  //   icons: "/icons/recomendation.svg",
-  //   activeIcon: "/icons/recomendationActive.svg",
+  //   icons: <Icons.recomendationIconsvgProps={{width: 20}}/>,
+  //   activeIcon: <Icons.recomendationActiveIconsvgProps={{width: 20}}/>,
   //   path: "/recommendation",
   // },
   {
     name: "Custom Order",
-    icons: "/icons/customOrder.svg",
-    activeIcon: "/icons/customOrderIconActive.svg",
+    icons: <Icons.customOrderIcon svgProps={{ width: 20 }} />,
+    activeIcon: <Icons.customOrderActiveIcon svgProps={{ width: 20 }} />,
     path: "/customOrder",
   },
 ];
@@ -76,14 +77,14 @@ export const sidebarMenu = [
 const option = [
   {
     name: "Draft",
-    icons: "/icons/draft.svg",
-    activeIcon: "/icons/draftActive.svg",
+    icons: <Icons.draftIcon svgProps={{ width: 20 }} />,
+    activeIcon: <Icons.draftActiveIcon svgProps={{ width: 20 }} />,
     path: "/draft",
   },
   {
     name: "Trash",
-    icons: "/icons/trash.svg",
-    activeIcon: "/icons/trashActive.svg",
+    icons: <Icons.trashIcon svgProps={{ width: 20 }} />,
+    activeIcon: <Icons.trashActiveIcon svgProps={{ width: 20 }} />,
     path: "/trash",
   },
 ];
@@ -107,12 +108,7 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
           // sx={{ borderBottom: "1px solid #394c6026" }}
         >
           <Button onClick={() => setOpens(false)} className="min-w-[auto]">
-            {/* <KeyboardArrowLeftIcon className="text-black text-[30px]" /> */}
-            <img
-              src="/icons/leftArrow.svg"
-              alt="leftArrow"
-              className="w-[8px]"
-            />
+            <Icons.leftArrowIcon svgProps={{ width: 8 }} />
           </Button>
 
           <span className="text-black text-[20px] font-semibold">
@@ -199,12 +195,8 @@ export default function Sidebar({
           onClick={() => setOpens(!open)}
         >
           <span className="text-black text-[15px]">{data?.name}</span>
-          {/* <ChevronRightIcon className="text-black" /> */}
-          <img
-            src="/icons/rightArrow.svg"
-            alt="rightArrow"
-            className="w-[7px]"
-          />
+
+          <Icons.rightArrowIcon svgProps={{ width: 7 }} />
         </Button>
         <div>
           <InnerButton
@@ -261,11 +253,10 @@ export default function Sidebar({
               <Link href={"/plans"} className="text-black text-[15px]">
                 Pricing
               </Link>
-              <img
-                src="/icons/pricing.svg"
-                alt="price"
-                className="ml-[8px] w-[20px]"
-              />
+
+              <span className="ml-[8px] w-[20px]">
+                <Icons.pricingIcon svgProps={{ width: 20 }} />
+              </span>
             </Button>
           </Box>
           <Divider className="hidden max-lg:block" />
@@ -296,14 +287,9 @@ export default function Sidebar({
                     {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
                     <Box className="flex gap-5  w-full">
                       <Box className="w-[20px]">
-                        <img
-                          src={
-                            router.pathname === item.path
-                              ? item.activeIcon
-                              : item.icons
-                          }
-                          alt="Icons"
-                        />
+                        {router.pathname === item.path
+                          ? item.activeIcon
+                          : item.icons}
                       </Box>
                       <Typography
                         className={`text-[15px] ${
@@ -327,14 +313,9 @@ export default function Sidebar({
                     {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
                     <Box className="flex gap-5  w-full">
                       <Box className="w-[20px]">
-                        <img
-                          src={
-                            router.pathname === item.path
-                              ? item.activeIcon
-                              : item.icons
-                          }
-                          alt="Icons"
-                        />
+                        {router.pathname === item.path
+                          ? item.activeIcon
+                          : item.icons}
                       </Box>
                       <Typography
                         className={`text-[15px] ${
@@ -346,11 +327,9 @@ export default function Sidebar({
                         {item.name}
                       </Typography>
                       {item.name === "Templates" && (
-                        <img
-                          src="/icons/rightArrow.svg"
-                          alt="rightArrow"
-                          className="w-[6px] ml-auto"
-                        />
+                        <span className="w-[6px] ml-auto">
+                          <Icons.rightArrowIcon svgProps={{ width: 6 }} />
+                        </span>
                       )}
                     </Box>
                   </Link>
@@ -383,14 +362,9 @@ export default function Sidebar({
                   {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
                   <Box className="flex gap-5">
                     <Box className="w-[20px]">
-                      <img
-                        src={
-                          router.pathname === item.path
-                            ? item.activeIcon
-                            : item.icons
-                        }
-                        alt="Icons"
-                      />
+                      {router.pathname === item.path
+                        ? item.activeIcon
+                        : item.icons}
                     </Box>
                     <Typography
                       className={`text-[15px] ${
@@ -420,7 +394,7 @@ export default function Sidebar({
 
         <Box className="h-[150px] flex lg:hidden  flex-col items-center   gap-4 w-full px-[20px] justify-end  pb-10">
           <Button className="bg_linear text-white gap-2 rounded-[10px] font-bold px-5 py-2 w-full ">
-            <img src="/icons/pricing.svg" alt="price" className="w-[20px]" />
+            <Icons.pricingIcon svgProps={{ width: 20 }} />
             Upgrade to PRO
           </Button>
           {/* <SignUp

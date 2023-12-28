@@ -102,6 +102,7 @@ import {
   videosIcon,
   wrongMarkRedIcon,
   youtubeIcon,
+  templatesActiveIcon,
 } from "./commonIcon";
 
 class Icons {
@@ -208,5 +209,6 @@ class Icons {
   static videosIcon = videosIcon;
   static wrongMarkRedIcon = wrongMarkRedIcon;
   static youtubeIcon = youtubeIcon;
+  static templatesActiveIcon = templatesActiveIcon;
 }
 export default Icons;

@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import Icons from "@/assets";
 
 export const OptionButton = (props: any) => {
   return (
@@ -207,31 +208,25 @@ export default function Footer() {
                 <img src="/images/playstore.png" alt="playstore" />
               </Box>
               <Box className="flex items-center gap-5 my-8 max-sm:justify-center">
-                <img
-                  src="/icons/facebook.svg"
-                  alt="facebook"
-                  className="w-[25px] h-[25px] cursor-pointer"
-                />
-                <img
-                  src="/icons/instagram.svg"
-                  alt="instagram"
-                  className="w-[25px] h-[25px] cursor-pointer"
-                />
-                <img
-                  src="/icons/pinterest.svg"
-                  alt="pinterest"
-                  className="w-[25px] h-[25px] cursor-pointer"
-                />
-                <img
-                  src="/icons/twitter.svg"
-                  alt="twitter"
-                  className="w-[25px] h-[25px] cursor-pointer"
-                />
-                <img
-                  src="/icons/youtube.svg"
-                  alt="youtube"
-                  className="w-[25px] h-[25px] cursor-pointer"
-                />
+                <span className="cursor-pointer">
+                  <Icons.facebookIcon svgProps={{ width: 25, height: 25 }} />
+                </span>
+
+                <span className="cursor-pointer">
+                  <Icons.instagramIcon svgProps={{ width: 25, height: 25 }} />
+                </span>
+
+                <span className="cursor-pointer">
+                  <Icons.pinterestIcon svgProps={{ width: 25, height: 25 }} />
+                </span>
+
+                <span className="cursor-pointer">
+                  <Icons.twitterIcon svgProps={{ width: 25, height: 25 }} />
+                </span>
+
+                <span className="cursor-pointer">
+                  <Icons.youtubeIcon svgProps={{ width: 25, height: 25 }} />
+                </span>
               </Box>
             </Box>
           </Box>

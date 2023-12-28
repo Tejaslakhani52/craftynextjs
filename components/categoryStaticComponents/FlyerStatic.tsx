@@ -2,6 +2,11 @@ import { Box, Rating, Typography } from "@mui/material";
 import React from "react";
 import FaqsBox from "../common/FAQs";
 import QuestionsTitle from "../common/QuestionsTitle";
+import LeftImageSection from "@/pages/wedding/components/LeftImageSection";
+import { MarkText } from "../Home/landingPage/LandingPage";
+import RightImageSection from "@/pages/wedding/components/RightImageSection";
+import CustomHead from "../common/CustomHead";
+import Head from "next/head";
 
 const howMakeFlyer = [
   "Explore our wide range of categories to find the perfect flyer for your needs.  ",
@@ -26,7 +31,14 @@ export default function FlyerStatic() {
           following the easy set of rules given below.
         </Typography>
 
-        <Box className="flex gap-5 py-[30px] sm:py-[50px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+        <Box className="flex justify-center gap-5 py-[30px] sm:py-[50px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-center">
+            <img
+              src={"/images/category/makeFlyer.png"}
+              alt={"flyer template"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
           <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
             {howMakeFlyer?.map((item, index) => (
               <Box className="flex gap-3 mb-5">
@@ -40,76 +52,217 @@ export default function FlyerStatic() {
               </Box>
             ))}
           </Box>
-
-          <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
-            <img
-              src={"/images/category/makeFlyer.png"}
-              alt={"flyer template"}
-              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
-            />
-          </Box>
         </Box>
       </Box>
 
-      <Box className="py-[20px] bg-[#F4F7FE]   ">
-        <Box className="flex gap-5 py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+      <Box className="pt-[50px]  bg-[#F4F7FE]">
+        <Typography
+          variant="h2"
+          className="text-[#1C3048] text-[30px] text-center font-[600] mb-4 "
+        >
+          Explore Our Categories
+        </Typography>
+
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
-            <Box
-              sx={{
-                mx: "auto",
-                display: "flex",
-                alignItems: "center",
-                flexDirection: "column",
-              }}
-            >
+            <Box className="mb-5">
               <Typography
-                variant="h2"
-                className="text-[#1C3048] text-[30px] max-sm:text-[25px] font-[600] mb-4"
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
               >
-                Why Choose CraftyArt For Flyer Designs ?
+                Event Flyers
               </Typography>
+              <Typography className="font-medium">
+                From concerts and parties to corporate gatherings, find the
+                perfect design to capture the essence of your event.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Business Promotion
+              </Typography>
+              <Typography className="font-medium">
+                Make your business shine with eye-catching flyers designed for
+                marketing, promotions, and special offers.
+              </Typography>
+            </Box>
 
-              <FaqsBox
-                heading="Variety"
-                text="Explore an extensive range of flyer designs and templates for every occasion."
-              />
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Product Launch
+              </Typography>
+              <Typography className="font-medium">
+                Introduce your latest products in style with attention-grabbing
+                templates tailored for successful launches.
+              </Typography>
+            </Box>
 
-              <FaqsBox
-                heading="Affordability"
-                text="Access high-quality designs without breaking the bank with our free templates."
-              />
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Educational Flyers
+              </Typography>
+              <Typography className="font-medium">
+                Promote your school, courses, workshops, or educational events
+                with designs that convey professionalism and credibility.
+              </Typography>
+            </Box>
 
-              <FaqsBox
-                heading="Ease of Use"
-                text="Our Flyer Creator makes designing a breeze, ensuring a stress-free experience for all users."
-              />
-
-              <FaqsBox
-                heading="Innovation"
-                text="Stay on the cutting edge with our constantly updated collection of trendsetting designs."
-              />
-
-              <FaqsBox
-                heading="Quality Assurance"
-                text="We pride ourselves on delivering top-notch flyer that exceed industry standards."
-              />
-
-              <FaqsBox
-                heading="Customer Satisfaction"
-                text="Your happiness is our priority. Join our community of satisfied customers who have experienced the craftyart's difference."
-              />
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Real Estate
+              </Typography>
+              <Typography className="font-medium">
+                Showcase properties and attract potential buyers with visually
+                appealing flyers for real estate listings and open houses
+              </Typography>
             </Box>
           </Box>
-
-          <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/category/whyChooseFlyer.png"}
-              alt={"flyer template"}
+              src={"/images/flyerC/img2.png"}
+              alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
         </Box>
       </Box>
+
+      <Box className="pt-[10px]">
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/flyerC/img1.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Dazzling Flyer Designs
+              </Typography>
+              <Typography className="font-medium">
+                Explore a world of captivating designs that cater to every
+                occasion. From events and parties to business promotions, our
+                collection boasts a diverse array of visually striking flyers.
+                Let your imagination run wild as you discover designs that make
+                a lasting impression.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Free Flyer Templates
+              </Typography>
+              <Typography className="font-medium">
+                Budget-friendly brilliance awaits with our range of free flyer
+                templates. Access a treasure trove of professionally crafted
+                designs without breaking the bank. Perfect for small businesses,
+                startups, or anyone looking for high-quality designs at no cost.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Flyer Creator Extraordinaire
+              </Typography>
+              <Typography className="font-medium">
+                Ready to be the master of your own design destiny? Our intuitive
+                Flyer Creator empowers you to customize templates, add your
+                personal touch, and bring your vision to life. No graphic design
+                skills? No problem! Our user-friendly interface ensures a
+                seamless design experience for everyone.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Cutting-Edge Flyer Template Designs
+              </Typography>
+              <Typography className="font-medium">
+                Stay ahead of the curve with our trendsetting flyer template
+                designs. Whether you're aiming for modern minimalism, vintage
+                vibes, or bold and vibrant aesthetics, we have templates that
+                cater to every taste and style.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Flyer Design Online
+              </Typography>
+              <Typography className="font-medium">
+                Embrace the convenience of designing on the go with our online
+                flyer design platform. No need for complicated software—create,
+                edit, and download your masterpiece directly from your browser.
+                Effortless, efficient, and designed to suit your busy lifestyle.
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      <RightImageSection
+        title="Why Choose CraftyArt For Flyer Designs ?"
+        point={
+          <Box>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <MarkText text="Variety: Explore an extensive range of flyer designs and templates for every occasion." />
+              <MarkText text="Affordability: Access high-quality designs without breaking the bank with our free templates." />
+              <MarkText text="Ease of Use: Our Flyer Creator makes designing a breeze, ensuring a stress-free experience for all users." />
+              <MarkText text="Innovation: Stay on the cutting edge with our constantly updated collection of trendsetting designs." />
+              <MarkText text="Quality Assurance: We pride ourselves on delivering top-notch [products/services] that exceed industry standards." />
+            </Box>
+          </Box>
+        }
+        buttonName={"Create a flyer"}
+        alt="flyer Maker"
+        path="/templates/flyer"
+        image="/images/category/whyChooseFlyer.png"
+      />
+
+      <LeftImageSection
+        title="How It Works"
+        point={
+          <Box>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <MarkText text="Browse: Explore our wide range of categories to find the perfect template for your needs." />
+              <MarkText text="Customize: Personalize the template with your text, images, and branding elements using easy-to-use editing tools." />
+              <MarkText text="Download: Once satisfied with your design, download it in your preferred format, ready to print or share digitally." />
+            </Box>
+          </Box>
+        }
+        buttonName={"Create a flyer"}
+        alt="flyer Maker"
+        path="/templates/flyer"
+        image="/images/flyerC/img3.png"
+      />
 
       <Box className="pt-[70px] pb-[20px]  px-[20px]">
         <Typography
@@ -234,6 +387,60 @@ export default function FlyerStatic() {
           />
         </Box>
       </Box>
+
+      <CustomHead
+        image="/images/flyerC/img1.png"
+        heading={
+          "Stand Out with Impact: Our Designs, Your Message - Unforgettable Flyers for Every Occasion! "
+        }
+        text="Elevate your event with captivating flyer designs that leave a lasting impression. Our creative solutions make your message stand out!"
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. Can I use Crafty Art for free?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, Crafty Art offers a free online logo maker. To access it, select the Logo Maker option from the main page and choose one of the premade templates. You can then add your own images, text, and design elements to customise the post. When you’re finished, click Save, and your logo will be ready to download.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. What are the benefits of a premium subscription?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "As a premium user, you can download unlimited Crafty Art assets and enjoy various premium services.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. Why do I have to purchase Crafty Art Pro?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Purchasing Crafty Art Pro provides premium users with unlimited access to Crafty Art Pro services.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. Are my downloads unlimited as a premium user?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, as a premium user, you have unlimited downloads. There are no limitations on the use of Crafty Art assets, templates, and the Background Remover Tool.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
     </div>
   );
 }

@@ -11,9 +11,12 @@ import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
+import { authCookiesGet } from "@/redux/action/AuthToken";
 
 export default function index() {
   const router = useRouter();
+  const token = authCookiesGet();
+
   return (
     <div>
       <CustomHead
@@ -140,7 +143,11 @@ export default function index() {
                 color: "white",
               }}
               className="bg_linear"
-              onClick={() => router.push("/")}
+              onClick={() => {
+                if (token) {
+                  router.push("/");
+                } else router.push("/login");
+              }}
             >
               Create Brandkit
             </Button>

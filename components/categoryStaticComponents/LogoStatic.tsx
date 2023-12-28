@@ -2,6 +2,10 @@ import { Box, Rating, Typography } from "@mui/material";
 import React, { useState } from "react";
 import FaqsBox from "../common/FAQs";
 import QuestionsTitle from "../common/QuestionsTitle";
+import LeftImageSection from "@/pages/wedding/components/LeftImageSection";
+import { MarkText } from "../Home/landingPage/LandingPage";
+import Head from "next/head";
+import CustomHead from "../common/CustomHead";
 
 export default function LogoStatic() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -175,6 +179,163 @@ export default function LogoStatic() {
         </Box>
       </Box>
 
+      <LeftImageSection
+        title="How It Works"
+        point={
+          <Box>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+              <MarkText text="Browse:  Explore our diverse collection of logo design templates. Filter by industry, style, or color to find options that resonate with your brand." />
+              <MarkText text="Select:  Once you've found the perfect template, click to view details. See how the design looks in different applications and envision how it can elevate your brand." />
+              <MarkText text="Customize:  Personalize your chosen template using our intuitive customization tools. Experiment with colors, fonts, and layout until you achieve the desired look." />
+              <MarkText text="Download:  When you're satisfied with your design, download the high-resolution files. Our templates come in formats compatible with various design software for seamless integration into your branding strategy." />
+            </Box>
+          </Box>
+        }
+        buttonName={"Create a logos"}
+        alt="flyer Maker"
+        path="/templates/logos"
+        image="/images/logoC/img1.png"
+      />
+
+      <Box className="pt-[50px]  bg-[#F4F7FE]">
+        <Typography
+          variant="h2"
+          className="text-[#1C3048] text-[30px] text-center font-[600] mb-4 "
+        >
+          Customization Features
+        </Typography>
+
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Color Palettes
+              </Typography>
+              <Typography className="font-medium">
+                Experiment with a spectrum of colors to find the perfect palette
+                for your brand. Whether you want to convey trust, energy, or
+                sophistication, our customization options make it easy.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Font Selection
+              </Typography>
+              <Typography className="font-medium">
+                Choose from a curated selection of fonts to complement your
+                logo. Find the perfect balance between readability and style to
+                make your brand name memorable.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Layout Flexibility
+              </Typography>
+              <Typography className="font-medium">
+                Adjust the layout to suit different applications. Whether it's a
+                compact square for social media avatars or a horizontal layout
+                for website headers, our templates are adaptable to your needs.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                File Formats for Every Occasion
+              </Typography>
+              <Typography className="font-medium">
+                Download your logo in a variety of file formats, ensuring
+                compatibility with all your branding needs. From high-resolution
+                print files to web-friendly formats, we've got you covered.
+              </Typography>
+            </Box>
+          </Box>
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/logoC/img2.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className="pt-[50px]   ">
+        <Typography
+          variant="h2"
+          className="text-[#1C3048] text-[30px] text-center font-[600] mb-4 "
+        >
+          Your Brand, Your Journey
+        </Typography>
+
+        <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
+          <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
+            <img
+              src={"/images/logoC/img3.png"}
+              alt={"Logo Maker"}
+              className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+            />
+          </Box>
+          <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Inspiration Hub
+              </Typography>
+              <Typography className="font-medium">
+                Stuck in the creative process? Explore our Inspiration Hub for
+                design tips, case studies, and success stories. Get inspired by
+                how other businesses have leveraged our logo design templates to
+                create memorable brand identities.
+              </Typography>
+            </Box>
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Educational Resources
+              </Typography>
+              <Typography className="font-medium">
+                Enhance your branding knowledge with our educational resources.
+                From logo design basics to branding strategy tips, empower
+                yourself to make informed decisions about your brand's visual
+                representation.
+              </Typography>
+            </Box>
+
+            <Box className="mb-5">
+              <Typography
+                className="text-[18px] text_linear font-semibold text-black max-lg:text-[18px]  mb-2 "
+                variant="h3"
+              >
+                Start Building Your Legacy
+              </Typography>
+              <Typography className="font-medium">
+                Your brand deserves more than just a logo; it deserves a visual
+                legacy that resonates with your audience. Begin your journey
+                with Crafty Art’s Logo Design Templates. Explore, customize, and
+                leave your mark on the world.
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
       <Box className="pt-[70px] pb-[20px]  px-[20px]">
         <Typography
           variant="h2"
@@ -276,28 +437,90 @@ export default function LogoStatic() {
           <Box sx={{ p: "20px" }}></Box>
 
           <FaqsBox
-            heading="1. Can I use Crafty Art for free?"
-            text="Yes, Crafty Art offers a free online logo maker. To access it, select the Logo Maker option from the main page and
-          choose one of the premade templates. You can then add your own images, text, and design elements to customise the
-          post. When you’re finished, click Save, and your logo will be ready to download."
+            heading="1. What is Logo Design?"
+            text="Logo design is the process of creating a unique symbol or emblem that visually represents a brand, company, or individual. It involves the use of typography, colours, and graphic elements to create a distinctive visual identity."
           />
           <FaqsBox
-            heading="2. What are the benefits of a premium subscription?"
-            text="As a premium user you can download unlimited Crafty Art assets, and various services."
+            heading="2. Why is a logo important for my business?"
+            text="A logo is an essential component of your brand identity. It helps your customers to recognize and remember your
+          business, products, and services. A well-designed logo can create a positive impression, build trust, and communicate
+          your brand's values and personality."
           />
-
           <FaqsBox
-            heading="3. Why do i have to purchase Crafty Art Pro?"
-            text="With the premium user, you can access unlimited service of Crafty Art Pro."
+            heading="3. How long does it take to design a logo?"
+            text="The time required to design a logo depends on various factors, such as the complexity of the design, the number of
+          revisions needed, and the designer's availability. Typically, it can take anywhere from a few days to a few weeks to
+          create a high-quality logo."
           />
-
           <FaqsBox
-            heading="4. Are my downloads unlimited as a premium user?"
-            text="Yes, as a premium user, you have unlimited downloads. There is no limitations on the use of Crafty Art assets, templates,
-          and the Background Remover Tool."
+            heading="4. How much should I expect to pay for a logo design?"
+            text="The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design,
+          and the level of customization required. Generally, you can expect to pay anywhere between $1 to $1000 for a
+          professional logo design."
+          />
+          <FaqsBox
+            heading="5. What should I consider when designing a logo for my business?"
+            text="When designing a logo for your business, you should consider several factors to ensure that it reflects your brand
+          identity and resonates with your target audience. These factors include selecting appropriate colours that represent
+          your brand values and personality, choosing a font style that aligns with your brand messaging, and creating a design
+          that is simple, memorable, and easily recognizable."
           />
         </Box>
       </Box>
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What is Logo Design?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Logo design is the process of creating a unique symbol or emblem that visually represents a brand, company, or individual. It involves the use of typography, colours, and graphic elements to create a distinctive visual identity.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Why is a logo important for my business?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "A logo is an essential component of your brand identity. It helps your customers to recognize and remember your business, products, and services. A well-designed logo can create a positive impression, build trust, and communicate your brand's values and personality.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. How long does it take to design a logo?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The time required to design a logo depends on various factors, such as the complexity of the design, the number of revisions needed, and the designer's availability. Typically, it can take anywhere from a few days to a few weeks to create a high-quality logo.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. How much should I expect to pay for a logo design?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design, and the level of customization required. Generally, you can expect to pay anywhere between $1 to $1000 for a professional logo design.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. What should I consider when designing a logo for my business?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "When designing a logo for your business, you should consider several factors to ensure that it reflects your brand identity and resonates with your target audience. These factors include selecting appropriate colours that represent your brand values and personality, choosing a font style that aligns with your brand messaging, and creating a design that is simple, memorable, and easily recognizable.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
     </div>
   );
 }

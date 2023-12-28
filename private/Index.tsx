@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function Index() {
   const screenWidth = useScreenWidth();
+  console.log("screenWidth: ", screenWidth);
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -77,6 +78,9 @@ export default function Index() {
         ) {
           dispatch(openSidebar(false));
         }
+        //  else if (screenWidth > 1200) {
+        //   dispatch(openSidebar(true));
+        // }
         setTimeout(() => {
           dispatch(mainLoader(false));
         }, 100);
