@@ -16,7 +16,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/birthdayInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayInvitation.png"
         heading={
           "Discover Stylish Birthday Invitation Templates | Personalize Your Celebration          "
         }
@@ -87,7 +87,9 @@ export default function index() {
         image={
           <Box sx={{ width: "450px" }}>
             <img
-              src={"/images/birthdayBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/birthdayBanner.png"
+              }
               alt="birthdayBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -110,7 +112,7 @@ export default function index() {
         buttonName={"Design your Invitation"}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayInvitation.png"
       />
 
       <RightImageSection
@@ -128,7 +130,7 @@ export default function index() {
         buttonName={"Create your Card "}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayEase.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayEase.png"
       />
 
       <LeftImageSection
@@ -146,7 +148,7 @@ export default function index() {
         buttonName={"Choose your Template"}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayMinute.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayMinute.png"
       />
 
       <ExploreTemplates getAll={"/s/birthday"} category="birthday" />
@@ -167,7 +169,7 @@ export default function index() {
         buttonName={"Design your Invitation"}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayInvitation2.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayInvitation2.png"
       />
 
       <RightImageSection
@@ -184,7 +186,7 @@ export default function index() {
         buttonName={"Create your Card "}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayEase2.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayEase2.png"
       />
 
       <LeftImageSection
@@ -201,7 +203,7 @@ export default function index() {
         buttonName={"Choose your Template"}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayMinute2.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayMinute2.png"
       />
 
       <RightImageSection
@@ -220,7 +222,7 @@ export default function index() {
         buttonName={"Create your Card "}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayEase3.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayEase3.png"
       />
 
       <LeftImageSection
@@ -237,7 +239,7 @@ export default function index() {
         buttonName={"Choose your Template"}
         alt="birthday invitations"
         path="/s/birthday"
-        image="/images/birthdayMinute3.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayMinute3.png"
       />
 
       <CustomerSaying />

@@ -18,7 +18,7 @@ export default function index() {
   return (
     <div>
       <CustomHead
-        image="/images/caricature/bannerSide.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/bannerSide.png"
         heading={"Caricature - Make Caricature From Photo "}
         text="Explore the world of caricature art with Crafty Art! Create funny caricatures with our free Caricature maker, and craft personalized cartoons. Unleash your creativity today!"
       />
@@ -143,7 +143,7 @@ export default function index() {
               className="bg_linear"
               onClick={() => router.push("/")}
             >
-              Create your caricature
+              Create your Caricature
             </Button>
           </Box>
           <Box
@@ -155,7 +155,9 @@ export default function index() {
             className="hidden lg:flex"
           >
             <img
-              src={"/images/caricature/bannerSide.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/caricature/bannerSide.png"
+              }
               alt="resumeBanner"
               style={{ width: "auto", height: "100%", paddingRight: "0px" }}
             />
@@ -175,9 +177,8 @@ export default function index() {
             <MarkText text="Save the final design as a high-resolution image or PDF file." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side1.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side1.png"
       />
       <RightImageSection
         title="Tips for Creating Stylish and
@@ -192,9 +193,8 @@ export default function index() {
             <MarkText text="Get feedback from the couple and trusted friends or family." />
           </Box>
         }
-        buttonName={"Create a New Card Design"}
         alt="Wedding Invitations"
-        image="/images/caricature/side2.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side2.png"
       />
       <LeftImageSection
         title="Process to Make a Caricature:"
@@ -208,9 +208,8 @@ export default function index() {
             <MarkText text="Download an invitation card with a caricature." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side3.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side3.png"
       />
       <WithCraftyartBanner />
       <LeftImageSection
@@ -225,9 +224,8 @@ export default function index() {
             <MarkText text="Turn any photo into a personalized caricature masterpiece." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side4.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side4.png"
       />
 
       <RightImageSection
@@ -242,9 +240,8 @@ export default function index() {
             <MarkText text="Transform mundane photos into captivating caricature pictures effortlessly." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side5.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side5.png"
       />
 
       <LeftImageSection
@@ -258,9 +255,8 @@ export default function index() {
             <MarkText text="Craft funny and captivating caricatures without breaking the bank." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side6.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side6.png"
       />
 
       <RightImageSection
@@ -274,9 +270,8 @@ export default function index() {
             <MarkText text="Unleash your inner cartoonist and make every photo an animated masterpiece." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side7.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side7.png"
       />
 
       <LeftImageSection
@@ -291,9 +286,8 @@ export default function index() {
             <MarkText text="Make every moment memorable with caricature transformations." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side8.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side8.png"
       />
 
       <RightImageSection
@@ -308,9 +302,8 @@ export default function index() {
             <MarkText text="Discover the joy of laughter through the lens of personalized caricature humor." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side9.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side9.png"
       />
 
       <LeftImageSection
@@ -325,16 +318,15 @@ export default function index() {
             <MarkText text="Leave a lasting impression on your guests by turning your invitations into cherished mementos" />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Wedding Invitations"
-        image="/images/caricature/side10.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/side10.png"
       />
 
       <CustomerSayingSmall />
       <GetTemplates
         heading="Add a Personal Touch to Your Wedding Invitations with Custom Caricatures "
         text="Make Your Wedding Invitations Truly Unique - Get Custom Caricatures Today!"
-        bt_name="Design your Invitation"
+        bt_name="Create your Caricature"
         navigate="/"
       />
       <Box

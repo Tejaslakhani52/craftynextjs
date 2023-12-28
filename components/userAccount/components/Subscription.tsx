@@ -19,7 +19,7 @@ export default function Subscription({ userSubscription }: any) {
       >
         <Box className="w-[350px] mx-auto flex flex-col items-center justify-center">
           <img
-            src="/images/subcriptionNote.png"
+            src="https://assets.craftyart.in/w_assets/images/subcriptionNote.png"
             alt="subcriptionNote"
             className="w-[300px] mb-5"
           />

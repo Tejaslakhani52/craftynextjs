@@ -7,7 +7,7 @@ import Icons from "@/assets";
 const customerComment = [
   {
     rating: 5,
-    image: "/images/comment/man1.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/man1.jpg",
     name: "Emily Smith",
     comment:
       "As a photographer, I rely on Crafty Art Background Remover to quickly separate subjects from their backgrounds. It's fast, accurate, and has saved me a ton of time. Highly recommended",
@@ -15,7 +15,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/man2.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/man2.jpg",
     name: "James Johnson",
     comment:
       "Crafty Art is a fantastic online caricature tool for creating unique invitations. Its user-friendly interface make easy to design personalized caricatures that bring fun and humor in to my event. With excellent customer support and quick delivery, I prefer to design Caricature invitations with Crafty Art!",
@@ -23,7 +23,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/girl1.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/girl1.jpg",
     name: "Olivia Davis",
     comment:
       "Crafty Art's custom invitations exceeded my expectations. Their user-friendly graphics design tools made it easy to create a unique design. The quality and design of invitation card was outstanding, and their customer service was top-notch. Quick delivery and attention to detail set Crafty Art apart. They made my event extra special!",
@@ -31,7 +31,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/girl2.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/girl2.jpg",
     name: "Pooja Sharma",
     comment:
       "Crafty Art's invitation maker tool is perfect for those last-minute invitations. I used it for a surprise party and had invitations ready within an hour. The templates are so stylish, and you can quickly personalize them with the event details. The speed at which I could create and print the invitations saved the day for me.",
@@ -39,7 +39,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/man3.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/man3.jpg",
     name: "Ethan Wilson",
     comment:
       "Crafty Art Graphic Design Tool has been a game-changer for my design projects. Here a reasons why Crafty Art has earned my trust and loyalty: User Feedback Integration, Cross-Platform Compatibility, Time-Saving Features, Regular Content Updates, Security and Privacy, Advanced Export Options and Many More…",
@@ -47,7 +47,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/girl3.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/girl3.jpg",
     name: "Sophia Brown",
 
     comment:
@@ -56,7 +56,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/man4.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/man4.jpg",
     name: "Siddharth Reddy",
 
     comment:
@@ -65,7 +65,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/man5.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/man5.jpg",
     name: "kevin Smith",
 
     comment:
@@ -74,7 +74,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/man6.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/man6.jpg",
     name: "devid johnson",
 
     comment:
@@ -83,7 +83,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "/images/comment/girl4.jpg",
+    image: "https://assets.craftyart.in/w_assets/images/comment/girl4.jpg",
     name: "Sophia devis",
 
     comment:

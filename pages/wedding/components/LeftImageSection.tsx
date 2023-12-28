@@ -32,6 +32,7 @@ export default function LeftImageSection({
             {title}
           </Typography>
           {point}
+
           <Button
             style={{
               background:
@@ -43,6 +44,7 @@ export default function LeftImageSection({
               fontWeight: "500",
               color: "white",
               padding: "8px 20px",
+              display: buttonName ? "block" : "none",
             }}
             onClick={() => {
               if (token) {

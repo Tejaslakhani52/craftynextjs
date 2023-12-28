@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/resumeDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/resumeDesign.png"
         heading={"Online Resume Maker | Design Professional Resume for Free"}
         text="Crafty Art's Resume Maker: Create standout resume designs with our free resume template tool. Design the perfect CV effortlessly. Try Our Resume Maker Now!"
       />
@@ -80,7 +80,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/resumeBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/resumeBanner.png"
+              }
               alt="resumeBanner"
               style={{ width: "100%", height: "100%", paddingRight: "0px" }}
             />
@@ -95,13 +97,12 @@ export default function index() {
             <MarkText text="Use clear and concise language and formatting." />
             <MarkText text="Highlight achievements and quantify them with numbers or statistics." />
             <MarkText text="Customise your resume for each job application using keywords from the job posting." />
-            <MarkText text="Proofread carefully." />
           </Box>
         }
         buttonName={"Design your Resume"}
         alt="Resume"
         path="/templates/resume-portrait"
-        image="/images/resumeDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/resumeDesign.png"
       />
       <RightImageSection
         title="How to structure a resume for
@@ -118,7 +119,7 @@ export default function index() {
         buttonName={"Create Your Resume"}
         alt="Resume"
         path="/templates/resume-portrait"
-        image="/images/resumeImpact.png"
+        image="https://assets.craftyart.in/w_assets/images/resumeImpact.png"
       />
       <LeftImageSection
         title="How to make a unique resume?"
@@ -134,7 +135,7 @@ export default function index() {
         buttonName={"Explore Resume"}
         alt="Resume"
         path="/templates/resume-portrait"
-        image="/images/resumeUnique.png"
+        image="https://assets.craftyart.in/w_assets/images/resumeUnique.png"
       />
       {/*  */} <ExploreTemplates getAll={"/templates/resume-portrait"} />
       <RightImageSection
@@ -167,7 +168,7 @@ highlight your achievements, skills, and expertise."
         buttonName={"Create Your Resume"}
         alt="Resume"
         path="/templates/resume-portrait"
-        image="/images/resumeWhy.png"
+        image="https://assets.craftyart.in/w_assets/images/resumeWhy.png"
       />
       <LeftImageSection
         title="How It Works ?"
@@ -188,7 +189,7 @@ applying for your dream job."
         buttonName={"Explore Resume"}
         alt="Resume"
         path="/templates/resume-portrait"
-        image="/images/resumeHow.png"
+        image="https://assets.craftyart.in/w_assets/images/resumeHow.png"
       />
       <RightImageSection
         title="Why a Well-Designed Resume 
@@ -217,7 +218,7 @@ applying for your dream job."
         buttonName={"Create Your Resume"}
         alt="Resume"
         path="/templates/resume-portrait"
-        image="/images/resumeM.png"
+        image="https://assets.craftyart.in/w_assets/images/resumeM.png"
       />
       <CustomerSaying />
       <GetTemplates

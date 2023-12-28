@@ -12,29 +12,29 @@ import React from "react";
 
 const sliderTemplate = [
   {
-    img: "/images/bussinessCreateInvoice.png",
+    img: "https://assets.craftyart.in/w_assets/images/bussinessCreateInvoice.png",
     buttonName: "Create Invoice",
-    path: "/invoice",
+    path: "/",
   },
   {
-    img: "/images/bussinessCreateLatterhead.png",
+    img: "https://assets.craftyart.in/w_assets/images/bussinessCreateLatterhead.png",
     buttonName: "Create Latterhead",
-    path: "/latterhead",
+    path: "/",
   },
   {
-    img: "/images/bussinessCreateCalendar.png",
+    img: "https://assets.craftyart.in/w_assets/images/bussinessCreateCalendar.png",
     buttonName: "Create Calendar",
     path: "/calendar",
   },
   {
-    img: "/images/bussinessCreateResume.png",
+    img: "https://assets.craftyart.in/w_assets/images/bussinessCreateResume.png",
     buttonName: "Create Resume",
     path: "/resume",
   },
   {
-    img: "/images/bussinessCreateReport.png",
+    img: "https://assets.craftyart.in/w_assets/images/bussinessCreateReport.png",
     buttonName: "Create business Report",
-    path: "/bussinessReport",
+    path: "/",
   },
 ];
 
@@ -42,15 +42,16 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/bussinessLetterhead.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessLetterhead.png"
         heading=" Streamline Your Business with Our Essential Template"
         text=" Design Professional and Functional Documents with Ease Using Our
         Template Library"
       />
       <FreeTrialBlackBanner
-        heading=" Streamline Your Business with Our Essential Template"
+        heading="Streamline Your Business with Our Essential Template"
         text=" Design Professional and Functional Documents with Ease Using Our
         Template Library"
+        path="/s/business"
       />
 
       <RightDetail
@@ -65,9 +66,8 @@ export default function index() {
             <MarkText text=" Ensure legal compliance by including any mandated information such as tax registration numbers or legal disclaimers." />
           </Box>
         }
-        buttonName={"Create your Letterhead"}
         alt="business template"
-        image="/images/bussinessLetterhead.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessLetterhead.png"
       />
 
       <LeftDetail
@@ -83,7 +83,7 @@ export default function index() {
         }
         buttonName={"Find a Calender"}
         alt="business template"
-        image="/images/bussinessCalendar.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCalendar.png"
         path="/calendar"
       />
 
@@ -101,7 +101,7 @@ export default function index() {
         }
         buttonName={"Create your Resume"}
         alt="business template"
-        image="/images/bussinessResume.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessResume.png"
         path="/resume"
       />
 
@@ -117,9 +117,8 @@ export default function index() {
             <MarkText text="Ensure the invoice is accurate and error-free before sending it to your clients." />
           </Box>
         }
-        buttonName={"Design Invoice"}
         alt="business template"
-        image="/images/bussinessInvoice.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessInvoice.png"
       />
 
       <RightDetail
@@ -134,9 +133,8 @@ export default function index() {
             <MarkText text="Proofread and edit the report for clarity, coherence, and accuracy." />
           </Box>
         }
-        buttonName={"Create your report"}
         alt="business template"
-        image="/images/bussinessReport.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessReport.png"
       />
 
       <Box
@@ -185,7 +183,7 @@ export default function index() {
       <GetTemplates
         heading="Unlock the Power of Templates with 5000+ Business Document Templates."
         text="Design your business documents effortlessly and transform your workflow today!"
-        navigate="/templates/invitation-card"
+        navigate="/s/business"
       />
       <Box
         sx={{

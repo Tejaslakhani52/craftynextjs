@@ -21,7 +21,7 @@ export default function WithCraftyartBanner() {
         <div className="flex justify-center pt-[30px]">
           <a href="https://play.google.com/store/apps/details?id=com.crafty.art">
             <img
-              src="/images/bgRemove/playStore.png"
+              src="https://assets.craftyart.in/w_assets/images/bgRemove/playStore.png"
               alt="playStore"
               className="w-[180px]"
             />
@@ -31,7 +31,10 @@ export default function WithCraftyartBanner() {
 
       <div className="flex-1 py-[40px]">
         <div className="mr-[-42px] max-lg:mr-0">
-          <img src="/images/bgRemove/goHead.png" alt="" />
+          <img
+            src="https://assets.craftyart.in/w_assets/images/bgRemove/goHead.png"
+            alt=""
+          />
         </div>
       </div>
     </div>

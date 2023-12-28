@@ -47,7 +47,7 @@ export const EditorTools = {
         { name: "Background Remover", path: "/background-remover" },
         { name: "Brand kit", path: "/brand-kit" },
         { name: "Resize", path: "/resize" },
-        { name: "Carry Cature", path: "/caricature" },
+        { name: "Caricature", path: "/caricature" },
         { name: "Style kit", path: "/style-kit" },
         { name: "Customize Invitation", path: "/customize-invitation" },
       ],
@@ -72,7 +72,7 @@ export const Templates = {
     {
       heading: "Social Media",
       allName: [
-        { name: "Instagram Story", path: "/templates/instagram-post" },
+        { name: "Instagram Post", path: "/templates/instagram-post" },
         { name: "Youtube Thumbnail", path: "/templates/youtube-thumbnail" },
         { name: "Facebook Post", path: "/templates/insta-fb-portrait" },
       ],
@@ -110,8 +110,9 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
     <Box className="relative ">
       <button
         className={`peer px-3 max-2xl:px-3 py-2  text-[14px] flex items-center whitespace-nowrap  ${
-          onButtonLeave || onBoxLeave ? "active_text_linear" : "#1C3048"
+          onButtonLeave || onBoxLeave ? " text-[#2EC6B8]" : "#1C3048"
         } `}
+        // active_text_linear
         // style={{ color: onButtonLeave || onBoxLeave ? "#2EC6B8" : "#1C3048" }}
         // onMouseEnter={() => setSelectColor("#2EC6B8")}
         onMouseEnter={() => setOnButtonLeave(true)}
@@ -198,7 +199,6 @@ export default function MenuBox() {
       <Box className="flex w-[auto] justify-between items-center  max-lg:hidden">
         <BasicMenu title={Product?.name} itemName={Product?.subName} />
         <BasicMenu title={EditorTools?.name} itemName={EditorTools?.subName} />
-
         <BasicMenu title={Templates?.name} itemName={Templates?.subName} />
 
         <button

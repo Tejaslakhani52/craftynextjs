@@ -31,6 +31,7 @@ export default function RightDetail({
               borderRadius: "5px",
               color: "white",
               fontWeight: "500",
+              display: buttonName ? "block" : "none",
             }}
             className="bg_linear py-[7px] px-[20px] ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
             onClick={() => router.push(path)}

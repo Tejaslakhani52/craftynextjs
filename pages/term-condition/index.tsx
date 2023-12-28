@@ -720,8 +720,6 @@ export default function index() {
           </Typography>
         </Box>
       </Box>
-
-      <MainLoaderBox />
     </div>
   );
 }

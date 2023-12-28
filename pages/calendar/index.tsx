@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/calendarDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/calendarDesign.png"
         heading={
           "Create Personalized Calendars with Our Custom Calendar Maker          "
         }
@@ -87,7 +87,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/calendarBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/calendarBanner.png"
+              }
               alt="calendarBanner"
               style={{
                 width: "100%",
@@ -114,7 +116,7 @@ export default function index() {
         buttonName={"Design your Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendarDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/calendarDesign.png"
       />
       <RightImageSection
         title="How to make a unique calendar?"
@@ -130,7 +132,7 @@ export default function index() {
         buttonName={"Create Your Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendarUnique.png"
+        image="https://assets.craftyart.in/w_assets/images/calendarUnique.png"
       />
 
       <LeftImageSection
@@ -147,7 +149,7 @@ export default function index() {
         buttonName={"Explore Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendarTrending.png"
+        image="https://assets.craftyart.in/w_assets/images/calendarTrending.png"
       />
 
       <ExploreTemplates getAll={"/templates/calendar"} />
@@ -167,7 +169,7 @@ export default function index() {
         buttonName={"Create Your Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendar1.png"
+        image="https://assets.craftyart.in/w_assets/images/calendar1.png"
       />
 
       <LeftImageSection
@@ -185,7 +187,7 @@ export default function index() {
         buttonName={"Explore Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendar2.png"
+        image="https://assets.craftyart.in/w_assets/images/calendar2.png"
       />
 
       <RightImageSection
@@ -204,7 +206,7 @@ export default function index() {
         buttonName={"Create Your Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendar3.png"
+        image="https://assets.craftyart.in/w_assets/images/calendar3.png"
       />
 
       <LeftImageSection
@@ -222,7 +224,7 @@ export default function index() {
         buttonName={"Explore Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendar4.png"
+        image="https://assets.craftyart.in/w_assets/images/calendar4.png"
       />
 
       <RightImageSection
@@ -239,7 +241,7 @@ export default function index() {
         buttonName={"Explore Calendar"}
         alt="calendar design"
         path="/templates/calendar"
-        image="/images/calendar5.png"
+        image="https://assets.craftyart.in/w_assets/images/calendar5.png"
       />
 
       <CustomerSaying />

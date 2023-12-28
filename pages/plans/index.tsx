@@ -597,8 +597,10 @@ export default function index({ ip }: any) {
           </Box>
           <Box className="flex-1  flex justify-end max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/whyChooseCraftyart.png"}
-              alt={"whyChooseCraftyart"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/whyChooseCraftyArt.png"
+              }
+              alt={"whyChooseCraftyArt"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
           </Box>
@@ -616,7 +618,7 @@ export default function index({ ip }: any) {
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center flex-wrap gap-[20px]">
           <Box className="flex-1 bg-[#F4F7FE] p-[15px] rounded-[10px] mb-2 max-lg:min-h-[270px] min-w-[150px]">
             <img
-              src="/images/plans/adF1.png"
+              src="https://assets.craftyart.in/w_assets/images/plans/adF1.png"
               alt=""
               className="w-auto max-h-[140px] block mx-auto mb-3"
             />
@@ -635,7 +637,7 @@ export default function index({ ip }: any) {
           </Box>
           <Box className="flex-1 bg-[#F4F7FE] p-[15px] rounded-[10px] mb-2 max-lg:min-h-[270px] min-w-[150px]">
             <img
-              src="/images/plans/adF2.png"
+              src="https://assets.craftyart.in/w_assets/images/plans/adF2.png"
               alt=""
               className="w-auto max-h-[140px] block mx-auto mb-3"
             />
@@ -653,7 +655,7 @@ export default function index({ ip }: any) {
           </Box>
           <Box className="flex-1 bg-[#F4F7FE] p-[15px] rounded-[10px] mb-2 max-lg:min-h-[270px] min-w-[150px]">
             <img
-              src="/images/plans/adF3.png"
+              src="https://assets.craftyart.in/w_assets/images/plans/adF3.png"
               alt=""
               className="w-auto max-h-[140px] block mx-auto mb-3"
             />
@@ -672,7 +674,7 @@ export default function index({ ip }: any) {
           </Box>
           <Box className="flex-1 bg-[#F4F7FE] p-[15px] rounded-[10px] mb-2 max-lg:min-h-[270px] min-w-[150px]">
             <img
-              src="/images/plans/adF4.png"
+              src="https://assets.craftyart.in/w_assets/images/plans/adF4.png"
               alt=""
               className="w-auto max-h-[140px] block mx-auto mb-3"
             />
@@ -719,7 +721,7 @@ export default function index({ ip }: any) {
           </Box>
           <Box className="flex-1  flex justify-end max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/plans/rgd.png"}
+              src={"https://assets.craftyart.in/w_assets/images/plans/rgd.png"}
               alt={""}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -859,8 +861,6 @@ export default function index({ ip }: any) {
           </Box>
         </Box>
       </DialogModal>
-
-      <MainLoaderBox />
 
       {isLoading && (
         <main className="main">

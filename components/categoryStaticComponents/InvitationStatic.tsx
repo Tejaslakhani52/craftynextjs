@@ -32,7 +32,7 @@ export default function InvitationStatic() {
           >
             <Box className="md:mt-[-80px] lg:min-h-[300px]">
               <img
-                src="/images/category/Cinvitation1.png"
+                src="https://assets.craftyart.in/w_assets/images/category/Cinvitation1.png"
                 alt="invitation template"
                 className="max-h-[300px] w-auto block mx-auto"
               />
@@ -54,7 +54,7 @@ export default function InvitationStatic() {
           >
             <Box className="md:mt-[-80px] lg:min-h-[300px]">
               <img
-                src="/images/category/Cinvitation2.png"
+                src="https://assets.craftyart.in/w_assets/images/category/Cinvitation2.png"
                 alt="invitation template"
                 className="max-h-[300px] w-auto block mx-auto"
               />
@@ -76,7 +76,7 @@ export default function InvitationStatic() {
           >
             <Box className="md:mt-[-80px] lg:min-h-[300px]">
               <img
-                src="/images/category/Cinvitation3.png"
+                src="https://assets.craftyart.in/w_assets/images/category/Cinvitation3.png"
                 alt="invitation template"
                 className="max-h-[300px] w-auto block mx-auto"
               />
@@ -142,7 +142,9 @@ export default function InvitationStatic() {
 
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
-              src={"/images/category/whyChooseInvitation.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/category/whyChooseInvitation.png"
+              }
               alt={"invitation template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -162,7 +164,7 @@ export default function InvitationStatic() {
         buttonName={"Design your Invitation"}
         alt="calendar design"
         path="/templates/invitation"
-        image="/images/InvitationC/img1.png"
+        image="https://assets.craftyart.in/w_assets/images/InvitationC/img1.png"
       />
 
       <RightImageSection
@@ -177,7 +179,7 @@ export default function InvitationStatic() {
         buttonName={"Design your Invitation"}
         alt="calendar design"
         path="/templates/invitation"
-        image="/images/InvitationC/img2.png"
+        image="https://assets.craftyart.in/w_assets/images/InvitationC/img2.png"
       />
 
       <LeftImageSection
@@ -192,7 +194,7 @@ export default function InvitationStatic() {
         buttonName={"Design your Invitation"}
         alt="calendar design"
         path="/templates/invitation"
-        image="/images/InvitationC/img3.png"
+        image="https://assets.craftyart.in/w_assets/images/InvitationC/img3.png"
       />
 
       <RightImageSection
@@ -207,7 +209,7 @@ export default function InvitationStatic() {
         buttonName={"Design your Invitation"}
         alt="calendar design"
         path="/templates/invitation"
-        image="/images/InvitationC/img4.png"
+        image="https://assets.craftyart.in/w_assets/images/InvitationC/img4.png"
       />
 
       <LeftImageSection
@@ -223,7 +225,7 @@ export default function InvitationStatic() {
         buttonName={"Design your Invitation"}
         alt="calendar design"
         path="/templates/invitation"
-        image="/images/InvitationC/img5.png"
+        image="https://assets.craftyart.in/w_assets/images/InvitationC/img5.png"
       />
 
       <RightImageSection
@@ -239,14 +241,16 @@ export default function InvitationStatic() {
         buttonName={"Design your Invitation"}
         alt="calendar design"
         path="/templates/invitation"
-        image="/images/InvitationC/img6.png"
+        image="https://assets.craftyart.in/w_assets/images/InvitationC/img6.png"
       />
 
       <Box className="pt-[50px]">
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/InvitationC/img7.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/InvitationC/img7.png"
+              }
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -307,7 +311,9 @@ export default function InvitationStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/girl1.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/girl1.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Olivia Davis</Box>
@@ -330,7 +336,9 @@ export default function InvitationStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man3.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man3.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Ethan Wilson</Box>
@@ -352,7 +360,9 @@ export default function InvitationStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man2.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man2.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>James Johnson</Box>
@@ -415,7 +425,7 @@ export default function InvitationStatic() {
       </Box>
 
       <CustomHead
-        image="/images/InvitationC/img7.png"
+        image="https://assets.craftyart.in/w_assets/images/InvitationC/img7.png"
         heading={
           "Create Stunning Invitation Cards with Our Elegant Templates | Customize for Every Occasion        "
         }

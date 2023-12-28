@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/bridalShowerBanner.png"
+        image="https://assets.craftyart.in/w_assets/images/bridalShowerBanner.png"
         heading={"Bridal Shower Invitations - Rustic, Floral, and Beach Themes"}
         text="Explore our collection of custom bridal shower invitations at Crafty Art. Create picture-perfect moments with free, digital, and elegantly designed invites for a unique celebration."
       />
@@ -85,7 +85,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/bridalShowerBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/bridalShowerBanner.png"
+              }
               alt="bridalShowerBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -108,7 +110,7 @@ export default function index() {
         buttonName={"Design your Card"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridalInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/bridalInvitation.png"
       />
 
       <RightImageSection
@@ -126,7 +128,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridalEase.png"
+        image="https://assets.craftyart.in/w_assets/images/bridalEase.png"
       />
 
       <LeftImageSection
@@ -144,7 +146,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridalMinute.png"
+        image="https://assets.craftyart.in/w_assets/images/bridalMinute.png"
       />
 
       <ExploreTemplates category="bridal Shower" getAll={"/s/bridal-Shower"} />
@@ -163,7 +165,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridal1.png"
+        image="https://assets.craftyart.in/w_assets/images/bridal1.png"
       />
 
       <LeftImageSection
@@ -180,7 +182,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridal2.png"
+        image="https://assets.craftyart.in/w_assets/images/bridal2.png"
       />
 
       <RightImageSection
@@ -197,7 +199,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridal3.png"
+        image="https://assets.craftyart.in/w_assets/images/bridal3.png"
       />
 
       <LeftImageSection
@@ -214,7 +216,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridal4.png"
+        image="https://assets.craftyart.in/w_assets/images/bridal4.png"
       />
 
       <RightImageSection
@@ -231,7 +233,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridal5.png"
+        image="https://assets.craftyart.in/w_assets/images/bridal5.png"
       />
 
       <LeftImageSection
@@ -248,7 +250,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridal6.png"
+        image="https://assets.craftyart.in/w_assets/images/bridal6.png"
       />
 
       <RightImageSection
@@ -265,7 +267,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         alt="bridal shower invitations"
         path="/s/bridal-Shower"
-        image="/images/bridal7.png"
+        image="https://assets.craftyart.in/w_assets/images/bridal7.png"
       />
 
       <CustomerSaying />

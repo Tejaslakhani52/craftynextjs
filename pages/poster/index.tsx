@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/posterPerfact.png"
+        image="https://assets.craftyart.in/w_assets/images/posterPerfact.png"
         heading={
           "Poster Design Online: Create Graphic Design Posters with Ease        "
         }
@@ -83,7 +83,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/posterBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/posterBanner.png"
+              }
               alt="posterBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -105,7 +107,7 @@ export default function index() {
         buttonName={"Design your Poster"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/posterPerfact.png"
+        image="https://assets.craftyart.in/w_assets/images/posterPerfact.png"
       />
       <RightImageSection
         title="Create stunning posters with these
@@ -121,7 +123,7 @@ export default function index() {
         buttonName={"Create Your Poster"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/posterCreate.png"
+        image="https://assets.craftyart.in/w_assets/images/posterCreate.png"
       />
       <LeftImageSection
         title="Create professional posters with
@@ -138,7 +140,7 @@ export default function index() {
         buttonName={"Explore Posters"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/posterEase.png"
+        image="https://assets.craftyart.in/w_assets/images/posterEase.png"
       />
       {/*  */} <ExploreTemplates getAll="/s/poster" />
       <RightImageSection
@@ -158,7 +160,7 @@ export default function index() {
         buttonName={"Explore Posters"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/poster1.png"
+        image="https://assets.craftyart.in/w_assets/images/poster1.png"
       />
       <LeftImageSection
         title="Graphic Design Posters That Speak Volumes
@@ -177,7 +179,7 @@ export default function index() {
         buttonName={"Explore Posters"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/poster2.png"
+        image="https://assets.craftyart.in/w_assets/images/poster2.png"
       />
       <RightImageSection
         title="Inform and Engage with Innovative Informational Poster Design
@@ -196,7 +198,7 @@ export default function index() {
         buttonName={"Explore Posters"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/poster3.png"
+        image="https://assets.craftyart.in/w_assets/images/poster3.png"
       />
       <LeftImageSection
         title="Elevate Your Brand with Striking Custom Poster Designs
@@ -215,7 +217,7 @@ export default function index() {
         buttonName={"Explore Posters"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/poster4.png"
+        image="https://assets.craftyart.in/w_assets/images/poster4.png"
       />
       <RightImageSection
         title="Master the Art of Poster Design with Our User-Friendly Tools
@@ -234,7 +236,7 @@ export default function index() {
         buttonName={"Explore Posters"}
         alt="poster designs"
         path="/s/poster"
-        image="/images/poster5.png"
+        image="https://assets.craftyart.in/w_assets/images/poster5.png"
       />
       <CustomerSaying />
       <GetTemplates

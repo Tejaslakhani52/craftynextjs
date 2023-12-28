@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/brouchureDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchureDesign.png"
         heading={"Brochure Design: Creative Brochure Designs Online"}
         text="Explore Crafty Art's innovative brochure design. From captivating covers to modern concepts, our designs tell your brand story. Get started today!
         "
@@ -84,7 +84,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/brouchureBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/brouchureBanner.png"
+              }
               alt="brouchureBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -106,7 +108,7 @@ export default function index() {
         buttonName={"Design your Brochure"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchureDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchureDesign.png"
       />
       <RightImageSection
         title="How to make unique brochures?"
@@ -122,7 +124,7 @@ export default function index() {
         buttonName={"Create Your Brochures"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchureUnique.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchureUnique.png"
       />
       <LeftImageSection
         title="5 steps to create a brochure:"
@@ -138,7 +140,7 @@ export default function index() {
         buttonName={"Explore Brochures"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchureCreate.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchureCreate.png"
       />
       {/*  */} <ExploreTemplates getAll="/s/brochure" category="brochure" />
       <RightImageSection
@@ -156,7 +158,7 @@ export default function index() {
         buttonName={"Create Your Brochures"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchure2.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchure2.png"
       />
       <LeftImageSection
         title="Your Business, Your Story: Tailored Brochure Designs by Crafty Art
@@ -173,7 +175,7 @@ export default function index() {
         buttonName={"Explore Brochures"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchure3.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchure3.png"
       />
       <RightImageSection
         title="Innovative Brochure Design: Where
@@ -190,7 +192,7 @@ export default function index() {
         buttonName={"Create Your Brochures"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchure4.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchure4.png"
       />
       <LeftImageSection
         title="Crafting Connections: The Art of
@@ -207,7 +209,7 @@ export default function index() {
         buttonName={"Explore Brochures"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchure5.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchure5.png"
       />
       <RightImageSection
         title="Free Your Imagination: Crafty Art's Brochure Design Unleashed
@@ -224,7 +226,7 @@ export default function index() {
         buttonName={"Create Your Brochures"}
         alt="brochure design"
         path="/s/brochure"
-        image="/images/brouchure6.png"
+        image="https://assets.craftyart.in/w_assets/images/brouchure6.png"
       />
       <CustomerSaying />
       <GetTemplates

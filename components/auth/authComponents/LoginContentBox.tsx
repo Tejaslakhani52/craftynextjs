@@ -83,9 +83,7 @@ export default function LoginContentBox(props: any) {
 
       router.push(`${router.pathname}`);
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
+      // window.location.reload();
 
       if (remember) {
         Cookies.set(

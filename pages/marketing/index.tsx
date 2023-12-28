@@ -12,27 +12,27 @@ import React from "react";
 
 const sliderTemplate = [
   {
-    img: "/images/marketingCreateFlyer.png",
+    img: "https://assets.craftyart.in/w_assets/images/marketingCreateFlyer.png",
     buttonName: "Create Flyer",
-    path: "/flyers",
+    path: "/flyer",
   },
   {
-    img: "/images/marketingCreateLogo.png",
+    img: "https://assets.craftyart.in/w_assets/images/marketingCreateLogo.png",
     buttonName: "Create Logo",
     path: "/logos",
   },
   {
-    img: "/images/marketingCreatebusiness.png",
+    img: "https://assets.craftyart.in/w_assets/images/marketingCreateBussiness.png",
     buttonName: "Create Business Card",
     path: "/business-card",
   },
   {
-    img: "/images/marketingCreatePoster.png",
+    img: "https://assets.craftyart.in/w_assets/images/marketingCreatePoster.png",
     buttonName: "Create Poster",
-    path: "/posters",
+    path: "/poster",
   },
   {
-    img: "/images/marketingCreateBrochure.png",
+    img: "https://assets.craftyart.in/w_assets/images/marketingCreateBrochure.png",
     buttonName: "Create Brochure",
     path: "/brochure-design",
   },
@@ -42,7 +42,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/marketingCatching.png"
+        image="https://assets.craftyart.in/w_assets/images/marketingCatching.png"
         heading="Elevate your marketing game with stunning marketing templates!"
         text="Make an unforgettable impression with custom marketing posters
               created in minutes. Choose from a variety of design templates to
@@ -71,8 +71,8 @@ export default function index() {
         }
         buttonName={"Create your flyer now"}
         alt="marketing templates"
-        image="/images/marketingCatching.png"
-        path="/flyers"
+        image="https://assets.craftyart.in/w_assets/images/marketingCatching.png"
+        path="/flyer"
       />
 
       <LeftDetail
@@ -89,7 +89,7 @@ export default function index() {
         }
         buttonName={"Find a Business Card"}
         alt="marketing templates"
-        image="/images/marketingbussinessCard.png"
+        image="https://assets.craftyart.in/w_assets/images/marketingBussinessCard.png"
         path="/business-card"
       />
 
@@ -107,7 +107,7 @@ export default function index() {
         }
         buttonName={"Create your Logo"}
         alt="marketing templates"
-        image="/images/marketingLogoDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/marketingLogoDesign.png"
         path="/logos"
       />
 
@@ -125,8 +125,8 @@ export default function index() {
         }
         buttonName={"Create Poster"}
         alt="marketing templates"
-        image="/images/marketingEffectivePoster.png"
-        path="/posters"
+        image="https://assets.craftyart.in/w_assets/images/marketingEffectivePoster.png"
+        path="/poster"
       />
 
       <RightDetail
@@ -143,7 +143,7 @@ export default function index() {
         }
         buttonName={"Create your Brochure"}
         alt="marketing templates"
-        image="/images/marketingBrochure.png"
+        image="https://assets.craftyart.in/w_assets/images/marketingBrochure.png"
         path="/brochure-design"
       />
 
@@ -161,7 +161,8 @@ export default function index() {
         }
         buttonName={"Design your Menu"}
         alt="marketing templates"
-        image="/images/marketingRestaurantMenu.png"
+        image="https://assets.craftyart.in/w_assets/images/marketingRestaurantMenu.png"
+        path="/s/menu"
       />
 
       <RightDetail
@@ -178,7 +179,8 @@ export default function index() {
         }
         buttonName={"Design your own Infographic"}
         alt="marketing templates"
-        image="/images/marketingInfoGraphic.png"
+        image="https://assets.craftyart.in/w_assets/images/marketingInfoGraphic.png"
+        path="/s/infographic"
       />
 
       <Box
@@ -226,7 +228,7 @@ export default function index() {
       <GetTemplates
         heading="Design your dream marketing posters today and take your brand to the next level!"
         text="Get started now with our customizable templates."
-        navigate="/templates/invitation-card"
+        navigate="/s/marketing"
       />
       <Box
         sx={{

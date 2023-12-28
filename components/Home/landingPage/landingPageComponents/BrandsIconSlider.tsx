@@ -5,15 +5,15 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Icons from "@/assets";
 
 const brandIcons = [
-  "/images/brandIcon1.png",
-  "/images/brandIcon2.png",
-  "/images/brandIcon3.png",
-  "/images/brandIcon4.png",
-  "/images/brandIcon5.png",
-  "/images/brandIcon1.png",
-  "/images/brandIcon2.png",
-  "/images/brandIcon3.png",
-  "/images/brandIcon4.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon1.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon2.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon3.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon4.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon5.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon1.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon2.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon3.png",
+  "https://assets.craftyart.in/w_assets/images/brandIcon4.png",
 ];
 
 export default function BrandsIconSlider() {

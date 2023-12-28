@@ -15,7 +15,6 @@ export default function index() {
   return (
     <div>
       <Account defaultTab={"Subscription"} />
-      <MainLoaderBox />
     </div>
   );
 }

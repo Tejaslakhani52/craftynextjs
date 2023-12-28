@@ -35,7 +35,8 @@ export default function index() {
         <Box
           className="fixed top-0 left-0 right-0 bottom-0 bg-[#fff] z-[10002] bg-cover bg-left flex items-center"
           style={{
-            backgroundImage: "url(/images/loginBanner.png)",
+            backgroundImage:
+              "url(https://assets.craftyart.in/w_assets/images/loginBanner.png)",
           }}
         >
           <Box
@@ -80,7 +81,6 @@ export default function index() {
           </Box>
         </Box>
       )}
-      <MainLoaderBox />
     </Box>
   );
 }

@@ -17,7 +17,7 @@ export default function Celebrate() {
     };
   }, [open]);
   return (
-    <Box className="bg-[url('/images/celebrateBackground.png')] py-[70px] flex flex-col gap-20 max-lg:gap-5 items-center max-w-[2400px] mx-auto px-[20px] relative overflow-hidden">
+    <Box className="bg-[url('https://assets.craftyart.in/w_assets/images/celebrateBackground.png')] py-[70px] flex flex-col gap-20 max-lg:gap-5 items-center max-w-[2400px] mx-auto px-[20px] relative overflow-hidden">
       <Box
         className="w-[80%]  py-5 rounded-[10px] bg-white flex  max-xl:w-[100%] max-lg:hidden"
         sx={{ boxShadow: "0px 0px 8px 4px rgba(28, 48, 72, 0.1)" }}

@@ -9,23 +9,18 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        {/* <urlset
-          xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-          xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        ></urlset> */}
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=UA-263582766-1"
+          src="https://www.googletagmanager.com/gtag/js?id=G-FV7CT0VRZM"
         ></script>
+
         <script
           dangerouslySetInnerHTML={{
             __html: ` 
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'UA-263582766-1');
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FV7CT0VRZM');
               `,
           }}
         ></script>
@@ -49,7 +44,29 @@ export default function Document() {
             }),
           }}
         />
-        <title>Crafty Art</title>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "http://schema.org",
+              "@type": "Organization",
+              name: "Crafty Art App",
+              alternateName: "Crafty Art App",
+              url: "https://www.craftyartapp.com/",
+              logo: "https://panel.craftyartapp.com/templates/uploadedFiles/crafty_assets/Mlogo.svg",
+              description:
+                "Crafty Art App is easy-to-use online graphics design tool that helps you to create invitation, flyer, brochures,business-cards,logo,social media graphics, posters & banners.",
+              sameAs: [
+                "https://www.facebook.com/craftyartapp",
+                "https://twitter.com/craftyartstudio",
+                "https://www.instagram.com/craftyart_official/",
+                "https://www.youtube.com/channel/UCVt1DA8bQrM7YunIIrK-gSg",
+                "https://in.pinterest.com/craftyart_official/",
+              ],
+            }),
+          }}
+        ></script>
       </Head>
       <body>
         <Main />

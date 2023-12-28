@@ -37,6 +37,7 @@ export default function RightImageSection({
                 color: "white",
                 fontWeight: "500",
                 padding: "8px 20px",
+                display: buttonName ? "block" : "none",
               }}
               className="bg_linear  ml-[40px] max-lg:mx-auto text-[14px] 2sm:text-[17px]"
               onClick={() => {

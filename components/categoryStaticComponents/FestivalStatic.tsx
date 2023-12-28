@@ -29,7 +29,7 @@ export default function FestivalBanner() {
           >
             <Box className=" lg:min-h-[200px]">
               <img
-                src="/images/category/Cfestival1.png"
+                src="https://assets.craftyart.in/w_assets/images/category/Cfestival1.png"
                 alt={"Festival"}
                 className="max-h-[200px] w-auto block mx-auto"
               />
@@ -52,7 +52,7 @@ export default function FestivalBanner() {
           >
             <Box className=" lg:min-h-[200px]">
               <img
-                src="/images/category/Cfestival2.png"
+                src="https://assets.craftyart.in/w_assets/images/category/Cfestival2.png"
                 alt={"Festival"}
                 className="max-h-[200px] w-auto block mx-auto"
               />
@@ -75,7 +75,7 @@ export default function FestivalBanner() {
           >
             <Box className=" lg:min-h-[200px]">
               <img
-                src="/images/category/Cfestival3.png"
+                src="https://assets.craftyart.in/w_assets/images/category/Cfestival3.png"
                 alt={"Festival"}
                 className="max-h-[200px] w-auto block mx-auto"
               />
@@ -136,7 +136,9 @@ export default function FestivalBanner() {
 
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
-              src={"/images/category/whyChooseFestival.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/category/whyChooseFestival.png"
+              }
               alt={""}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -155,7 +157,9 @@ export default function FestivalBanner() {
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/festivalC/img1.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/festivalC/img1.png"
+              }
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -286,7 +290,9 @@ export default function FestivalBanner() {
           </Box>
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/festivalC/img2.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/festivalC/img2.png"
+              }
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -444,7 +450,9 @@ export default function FestivalBanner() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/girl1.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/girl1.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Olivia Davis</Box>
@@ -467,7 +475,9 @@ export default function FestivalBanner() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man3.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man3.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Ethan Wilson</Box>
@@ -489,7 +499,9 @@ export default function FestivalBanner() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man2.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man2.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>James Johnson</Box>
@@ -549,7 +561,7 @@ export default function FestivalBanner() {
       </Box>
 
       <CustomHead
-        image="/images/festivalC/img2.png"
+        image="https://assets.craftyart.in/w_assets/images/festivalC/img2.png"
         heading={
           "Dazzle Your Celebrations with Festive Vibes: Festival Templates for Memorable Events "
         }

@@ -43,7 +43,7 @@ export default function ExploreTemplates({ category, getAll }: any) {
         setData(getData?.datas);
       })
       .catch((err) => consoleShow("err", err));
-  }, [lastSegment]);
+  }, []);
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
       case screenWidth > 1500:

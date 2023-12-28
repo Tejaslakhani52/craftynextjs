@@ -1,6 +1,9 @@
 import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
-import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import {
+  useScreenHeight,
+  useScreenWidth,
+} from "@/commonFunction/screenWidthHeight";
 import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import Breadcrumb from "@/components/common/Breadcrumb";
 import NotFound from "@/components/common/NotFound";
@@ -156,21 +159,65 @@ const ImageBox = ({
   );
 };
 
-export default function sKeyword() {
-  const dispatch = useDispatch();
+export async function getServerSideProps(context: any) {
+  try {
+    const { params } = context;
+
+    const response = await axios.post(
+      "https://panel.craftyartapp.com/templates/api/getKeyTemplates/",
+      {
+        key: "qwfsegxdhbxfjhncf",
+        key_name: params?.sKeyword,
+        page: 1,
+      }
+    );
+    let serverData = response?.data;
+    let updatedLines;
+
+    const formattedText = response?.data?.long_desc;
+    const lines = formattedText?.split(/\n/g);
+
+    const keyword = "wedding invitation template";
+    if (lines && keyword) {
+      const link = `
+        <a href="https://www.craftyartapp.com/k/wedding-invitation-template" target="_blank" rel="noopener" style="text-decoration: none;  " class="text_linear">
+          Wedding Invitation Template
+        </a>
+      `;
+      const keywordRegExp = new RegExp(keyword, "gi");
+      updatedLines = lines.map((line: any) =>
+        line.replace(keywordRegExp, link)
+      );
+    }
+
+    return {
+      props: {
+        serverData,
+        updatedLines,
+      },
+    };
+  } catch (error) {
+    console.error("Error in getStaticProps:", error);
+    return {
+      notFound: true,
+    };
+  }
+}
+
+export default function sKeyword({ serverData, updatedLines }: any) {
+  console.log("serverData: ", updatedLines);
   const router = useRouter();
   const searchName: any = router?.query?.sKeyword;
   const formattedSearchName = searchName?.replace(/\s+/g, "-").toLowerCase();
   const screenWidth = useScreenWidth();
+  const screenHeight = useScreenHeight();
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState<any>();
   const [contentData, setContentData] = useState<any>([]);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = React.useState(true);
-  const [notFound, setNotFound] = useState<any>(false);
-  const [loadMore, setLoadMore] = useState<any>(false);
+  const [loadMore, setLoadMore] = useState<any>(true);
   const [isLastPage, setIsLastPage] = useState<any>();
-  const [description, setDescription] = useState<string[]>([]);
   const [idName, setIdName] = useState<any>("");
 
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
@@ -189,8 +236,6 @@ export default function sKeyword() {
 
           setContentData(res?.data);
 
-          setNotFound(res?.data?.message !== "Loading Success!" ? true : false);
-
           if (res?.data?.datas) {
             setIsLoading(false);
 
@@ -204,9 +249,7 @@ export default function sKeyword() {
             setIsLoading(false);
           }
         })
-        .catch((err: any) => {
-          setNotFound(true);
-        });
+        .catch((err: any) => {});
     }
   }, [formattedSearchName, page]);
 
@@ -236,47 +279,14 @@ export default function sKeyword() {
     }
   }, [screenWidth]);
 
-  useEffect(() => {
-    const formattedText = contentData?.long_desc;
-    const lines = formattedText?.split(/\n/g);
-
-    const keyword = "wedding invitation template";
-    if (lines && keyword) {
-      const link = `
-        <a href="https://www.craftyartapp.com/k/wedding-invitation-template" target="_blank" rel="noopener" style="text-decoration: none;  " class="text_linear">
-          Wedding Invitation Template
-        </a>
-      `;
-      const keywordRegExp = new RegExp(keyword, "gi");
-      const updatedLines = lines.map((line: any) =>
-        line.replace(keywordRegExp, link)
-      );
-      setDescription(updatedLines);
-    }
-  }, [contentData]);
-
-  const height = useMemo(() => {
-    let val;
-
-    if (screenWidth > 600) {
-      val = 250;
-    } else val = 100;
-
-    return val;
-  }, [screenWidth]);
-
   return (
     <>
-      {isLoading && <DashBoardSkelton height={height} />}
-      {notFound && <NotFound />}
-
-      {!isLoading && (
+      {serverData?.datas && (
         <>
-          {" "}
           <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
             <Head>
-              <title>{contentData?.meta_title}</title>
-              <meta name="description" content={contentData?.meta_desc} />
+              <title>{serverData?.meta_title}</title>
+              <meta name="description" content={serverData?.meta_desc} />
             </Head>
             <Box className="pt-[15px]">
               <Breadcrumb
@@ -289,7 +299,8 @@ export default function sKeyword() {
 
             <Box
               sx={{
-                background: "url(/images/sKeywordBanner.png)",
+                background:
+                  "url(https://assets.craftyart.in/w_assets/images/sKeywordBanner.png)",
                 margin: "10px auto",
                 width: "100%",
                 overflow: "hidden",
@@ -308,7 +319,7 @@ export default function sKeyword() {
                 className="text-center text-[25px] sm:text-[35px] "
                 variant="h1"
               >
-                {contentData?.title}
+                {serverData?.title}
               </Typography>
               <Typography
                 sx={{
@@ -319,46 +330,48 @@ export default function sKeyword() {
                 }}
                 className="text-center max-sm:text-[15px] py-[10px] w-[95%] sm:w-[70%] mx-auto my-[10px]"
               >
-                {contentData?.short_desc}
+                {serverData?.short_desc}
               </Typography>
             </Box>
 
-            <StackGrid
-              columnWidth={screenWidth / multiSizeFixSize}
-              duration={0}
-            >
-              {data?.map((templates: any, index: number) => (
-                <ImageBox
-                  templates={templates}
-                  screenWidth={screenWidth}
-                  multiSizeFixSize={multiSizeFixSize}
-                  setIdName={setIdName}
-                  setOpenModal={setOpenModal}
-                />
-              ))}
-            </StackGrid>
+            <Box sx={{ minHeight: `700px` }}>
+              <StackGrid
+                columnWidth={screenWidth / multiSizeFixSize}
+                duration={0}
+              >
+                {data?.map((templates: any, index: number) => (
+                  <ImageBox
+                    templates={templates}
+                    screenWidth={screenWidth}
+                    multiSizeFixSize={multiSizeFixSize}
+                    setIdName={setIdName}
+                    setOpenModal={setOpenModal}
+                  />
+                ))}
+              </StackGrid>
 
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "40px 0 70px",
-              }}
-            >
-              {loadMore ? (
-                <Box className="text_linear font-[700 text-[20px]">
-                  Loading....
-                </Box>
-              ) : (
-                <Button
-                  className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-                  sx={{ display: isLastPage ? "none" : "block" }}
-                  onClick={() => setPage((prev) => prev + 1)}
-                >
-                  LOAD MORE
-                </Button>
-              )}
-            </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "40px 0 70px",
+                }}
+              >
+                {loadMore ? (
+                  <Box className="text_linear font-[700 text-[20px]">
+                    Loading....
+                  </Box>
+                ) : (
+                  <Button
+                    className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+                    sx={{ display: isLastPage ? "none" : "block" }}
+                    onClick={() => setPage((prev) => prev + 1)}
+                  >
+                    LOAD MORE
+                  </Button>
+                )}
+              </div>
+            </Box>
 
             <Box
               sx={{
@@ -378,11 +391,11 @@ export default function sKeyword() {
                 }}
                 variant="h2"
               >
-                {contentData?.h2_tag}
+                {serverData?.h2_tag}
               </Typography>
 
               <div>
-                {description.map((line, index) => (
+                {updatedLines.map((line: any, index: number) => (
                   <p
                     key={index}
                     dangerouslySetInnerHTML={{ __html: line }}

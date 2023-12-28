@@ -18,7 +18,7 @@ export default function index() {
   return (
     <div>
       <CustomHead
-        image="/images/caricature/bannerSide.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/bannerSide.png"
         heading={"Image Resizer: Resize Images Effortlessly"}
         text="Effortlessly resize images with an intuitive image resizer tool. Perfectly adjust image dimensions for your needs. Save time and maintain quality effortlessly."
       />
@@ -158,7 +158,9 @@ export default function index() {
           >
             <Box sx={{ width: "526px" }}>
               <img
-                src={"/images/resize/resizeBanner.png"}
+                src={
+                  "https://assets.craftyart.in/w_assets/images/resize/resizeBanner.png"
+                }
                 alt="resumeBanner"
                 style={{ width: "100%", height: "100%", paddingRight: "0px" }}
               />
@@ -178,9 +180,8 @@ export default function index() {
             <MarkText text="Preview your resized design and save it to your device or cloud storage." />
           </Box>
         }
-        buttonName={"Resize Your Image"}
         alt="resize "
-        image="/images/resize/resizeYourImage.png"
+        image="https://assets.craftyart.in/w_assets/images/resize/resizeYourImage.png"
       />
 
       <RightImageSection
@@ -196,9 +197,8 @@ export feature."
             <MarkText text="This ensures that your design looks great no matter where it's viewed." />
           </Box>
         }
-        buttonName={"Resize your Templates"}
         alt="resize "
-        image="/images/resize/designWithoutImage.png"
+        image="https://assets.craftyart.in/w_assets/images/resize/designWithoutImage.png"
       />
 
       <LeftImageSection
@@ -218,9 +218,8 @@ campaigns."
             />
           </Box>
         }
-        buttonName={"All Templates"}
         alt="resize "
-        image="/images/resize/resizeFeature.png"
+        image="https://assets.craftyart.in/w_assets/images/resize/resizeFeature.png"
       />
 
       <WithCraftyartBanner />
@@ -237,9 +236,8 @@ campaigns."
             <MarkText text="Mobile-Friendly Resizing: Access our image resizer on-the-go. Resize images conveniently from your mobile device for quick sharing or uploading." />
           </Box>
         }
-        buttonName={"All Templates"}
         alt="resize "
-        image="/images/resize/side1.png"
+        image="https://assets.craftyart.in/w_assets/images/resize/side1.png"
       />
 
       <RightImageSection
@@ -257,9 +255,8 @@ campaigns."
             <MarkText text="Secure and Private: We prioritize data security - your images and information remain confidential throughout the resizing process." />
           </Box>
         }
-        buttonName={"All Templates"}
         alt="resize "
-        image="/images/resize/side2.png"
+        image="https://assets.craftyart.in/w_assets/images/resize/side2.png"
       />
 
       <CustomerSayingSmall />
@@ -267,7 +264,7 @@ campaigns."
       <GetTemplates
         heading="Create Stunning Designs with the Best Resizing Tool Available!"
         text="Resize Like a Pro - Start Designing Today!"
-        bt_name="Resize Templates"
+        bt_name="Resize your Photos"
         navigate="/"
       />
 

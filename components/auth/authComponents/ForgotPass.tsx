@@ -62,9 +62,9 @@ export default function ForgotPass(props: any) {
       authCookiesSet(userCredential?.user?.uid);
       router.push("/");
 
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 100);
     } catch (error: any) {
       toast.error(error?.code.split("auth/")[1]);
     }

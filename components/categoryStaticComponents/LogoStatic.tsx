@@ -122,7 +122,9 @@ export default function LogoStatic() {
 
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
-              src={"/images/category/makeLogo1.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/category/makeLogo1.png"
+              }
               alt={"logo template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -171,7 +173,9 @@ export default function LogoStatic() {
 
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
-              src={"/images/category/chooseLogo.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/category/chooseLogo.png"
+              }
               alt={"logo template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -194,7 +198,7 @@ export default function LogoStatic() {
         buttonName={"Create a logos"}
         alt="flyer Maker"
         path="/templates/logos"
-        image="/images/logoC/img1.png"
+        image="https://assets.craftyart.in/w_assets/images/logoC/img1.png"
       />
 
       <Box className="pt-[50px]  bg-[#F4F7FE]">
@@ -264,7 +268,7 @@ export default function LogoStatic() {
           </Box>
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/logoC/img2.png"}
+              src={"https://assets.craftyart.in/w_assets/images/logoC/img2.png"}
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -283,7 +287,7 @@ export default function LogoStatic() {
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/logoC/img3.png"}
+              src={"https://assets.craftyart.in/w_assets/images/logoC/img3.png"}
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -356,7 +360,9 @@ export default function LogoStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/girl1.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/girl1.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Olivia Davis</Box>
@@ -379,7 +385,9 @@ export default function LogoStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man3.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man3.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Ethan Wilson</Box>
@@ -401,7 +409,9 @@ export default function LogoStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man2.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man2.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>James Johnson</Box>

@@ -14,7 +14,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/partyBirthday.png"
+        image="https://assets.craftyart.in/w_assets/images/partyBirthday.png"
         heading="Party Invitation Template: Customize Now!"
         text="Discover stunning party invitation templates. Personalize your event effortlessly. Get started!"
       />
@@ -81,7 +81,9 @@ export default function index() {
         image={
           <Box sx={{ width: "410px" }}>
             <img
-              src={"/images/partyBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/partyBanner.png"
+              }
               alt="partyBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -104,7 +106,7 @@ export default function index() {
         buttonName={"Design your Card"}
         alt="Party Invitation"
         path="/s/party-celebration"
-        image="/images/partyBirthday.png"
+        image="https://assets.craftyart.in/w_assets/images/partyBirthday.png"
       />
 
       <RightImageSection
@@ -122,7 +124,7 @@ export default function index() {
         buttonName={"Party Invitation"}
         alt="Party Invitation"
         path="/s/party-celebration"
-        image="/images/partyEase.png"
+        image="https://assets.craftyart.in/w_assets/images/partyEase.png"
       />
 
       <LeftImageSection
@@ -140,7 +142,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="Party Invitation"
         path="/s/party-celebration"
-        image="/images/partyMinutes.png"
+        image="https://assets.craftyart.in/w_assets/images/partyMinutes.png"
       />
 
       <ExploreTemplates
@@ -164,7 +166,7 @@ export default function index() {
         buttonName={"Party Invitation"}
         alt="Party Invitation"
         path="/s/party-celebration"
-        image="/images/party.png"
+        image="https://assets.craftyart.in/w_assets/images/party.png"
       />
 
       <LeftImageSection
@@ -184,7 +186,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="Party Invitation"
         path="/s/party-celebration"
-        image="/images/party2.png"
+        image="https://assets.craftyart.in/w_assets/images/party2.png"
       />
 
       <GetTemplates

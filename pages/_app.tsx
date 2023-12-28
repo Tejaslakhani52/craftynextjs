@@ -115,7 +115,7 @@ export default function App({
 
         <TemplateModal open={id?.templates ? true : false} />
 
-        <MainLoaderBox />
+        {/* <MainLoaderBox /> */}
 
         <MobileBottomBar />
         <Index />

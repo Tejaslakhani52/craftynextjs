@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/babyShowerInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShowerInvitation.png"
         heading={
           "Baby Shower Invitations: Create Magical Moments with Personalized Delight"
         }
@@ -88,7 +88,9 @@ export default function index() {
         image={
           <Box sx={{ width: "450px" }}>
             <img
-              src={"/images/babyShowerBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/babyShowerBanner.png"
+              }
               alt="babyShowerBanner"
               style={{ width: "100%", height: "100%", paddingRight: "0px" }}
             />
@@ -104,14 +106,14 @@ export default function index() {
             <MarkText text="Choose a theme that reflects the personality of the parents-to-be and the gender of the baby." />
             <MarkText text="Select colours that match the theme, from pastels to bold and bright hues." />
             <MarkText text="Include personal details like names, date, time, and location, along with fun elements like photos or ultrasound images." />
-            <MarkText text="Use high-quality paper for a professional look and durability." />
+            <MarkText text="Use high-quality Images for a professional look and durability." />
             <MarkText text="Keep it simple with easy-to-read fonts and clear messaging." />
           </Box>
         }
         buttonName={"Design your Card"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShowerInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShowerInvitation.png"
       />
 
       <RightImageSection
@@ -129,7 +131,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShowerEase.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShowerEase.png"
       />
 
       <LeftImageSection
@@ -147,7 +149,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShowerMinute.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShowerMinute.png"
       />
 
       <ExploreTemplates category="baby Shower" getAll="/s/baby-Shower" />
@@ -167,7 +169,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShower.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShower.png"
       />
 
       <LeftImageSection
@@ -184,7 +186,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShower2.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShower2.png"
       />
 
       <RightImageSection
@@ -201,7 +203,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShower3.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShower3.png"
       />
 
       <LeftImageSection
@@ -218,7 +220,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShower4.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShower4.png"
       />
 
       <RightImageSection
@@ -235,7 +237,7 @@ export default function index() {
         buttonName={"Create Invitation"}
         path="/s/baby-Shower"
         alt="baby shower invitations"
-        image="/images/babyShower5.png"
+        image="https://assets.craftyart.in/w_assets/images/babyShower5.png"
       />
 
       <CustomerSaying />

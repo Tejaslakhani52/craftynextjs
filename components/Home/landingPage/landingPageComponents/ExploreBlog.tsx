@@ -40,19 +40,19 @@ export default function ExploreBlog() {
 
       <Box className="flex lg:w-[80%] justify-between z-[1]  max-sm:flex-col">
         <Card
-          image="/images/blogImage1.png"
+          image="https://assets.craftyart.in/w_assets/images/blogImage1.png"
           text="How to Create a Flyer: A Complete Guide to Designing Flyers"
           heading="FLYER"
           path="https://www.craftyartapp.com/blog/how-to-create-a-flyer/"
         />
         <Card
-          image="/images/blogImage2.png"
+          image="https://assets.craftyart.in/w_assets/images/blogImage2.png"
           text="How To Make A Logo: A Step-by-Step Guide - Crafty Art"
           heading="LOGO"
           path="https://www.craftyartapp.com/blog/how-to-make-a-logo-a-step-by-step-guide/"
         />
         <Card
-          image="/images/blogImage3.png"
+          image="https://assets.craftyart.in/w_assets/images/blogImage3.png"
           text="How to Choose the Best Certificate Size - Crafty Art"
           heading="CERTIFICATE SIZE"
           path="https://www.craftyartapp.com/blog/how-to-choose-the-best-certificate-size/"

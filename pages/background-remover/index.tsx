@@ -146,7 +146,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/bg_remove.png"
+        image="https://assets.craftyart.in/w_assets/images/bg_remove.png"
         heading={"Background Remover: Eliminate Unwanted Elements Effortlessly"}
         text="Effortlessly remove unwanted elements from your images with our Background Remover tool. Say goodbye to distractions in just a click!        "
       />
@@ -205,7 +205,10 @@ export default function index() {
       </Head>
 
       <Box className="bg-[#F4F7FE] py-[50px] max-sm:py-[20px]  px-[15px]">
-        <Typography className="text-[50px] max-sm:text-[28px] text-center font-[700] mb-2">
+        <Typography
+          className="text-[50px] max-sm:text-[28px] text-center font-[700] mb-2"
+          variant="h1"
+        >
           Instantly Remove Background from Images
         </Typography>
 
@@ -244,7 +247,9 @@ export default function index() {
             <Box
               className="flex-1 rounded-[10px]  "
               sx={{
-                backgroundImage: imageUrl ? "url(/images/transparent.png)" : "",
+                backgroundImage: imageUrl
+                  ? "url(https://assets.craftyart.in/w_assets/images/transparent.png)"
+                  : "",
                 border: imageUrl ? "3px solid #8080803b" : "",
               }}
             >
@@ -255,7 +260,10 @@ export default function index() {
                   <img src={imagePreviewUrl} alt="imagePreview" className=" " />
                 )
               ) : (
-                <img src="/images/bg_remove.png" alt="bg remove" />
+                <img
+                  src="https://assets.craftyart.in/w_assets/images/bg_remove.png"
+                  alt="bg remove"
+                />
               )}
             </Box>
             {imageUrl ? (
@@ -464,21 +472,21 @@ export default function index() {
         <Box className=" ">
           <CustomTabPanel value={value} index={0}>
             <img
-              src="/images/bgRemove/people.png"
+              src="https://assets.craftyart.in/w_assets/images/bgRemove/people.png"
               alt="people"
               className="w-[80%] max-md:w-full mx-auto block"
             />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={1}>
             <img
-              src="/images/bgRemove/graphic.png"
+              src="https://assets.craftyart.in/w_assets/images/bgRemove/graphic.png"
               alt="graphic"
               className="w-[80%] max-md:w-full mx-auto block"
             />
           </CustomTabPanel>
           <CustomTabPanel value={value} index={2}>
             <img
-              src="/images/bgRemove/car.png"
+              src="https://assets.craftyart.in/w_assets/images/bgRemove/car.png"
               alt="car"
               className="w-[80%] max-md:w-full mx-auto block"
             />
@@ -486,7 +494,7 @@ export default function index() {
 
           <CustomTabPanel value={value} index={3}>
             <img
-              src="/images/bgRemove/animals.png"
+              src="https://assets.craftyart.in/w_assets/images/bgRemove/animals.png"
               alt="animals"
               className="w-[80%] max-md:w-full mx-auto block"
             />
@@ -494,7 +502,7 @@ export default function index() {
 
           <CustomTabPanel value={value} index={4}>
             <img
-              src="/images/bgRemove/product.png"
+              src="https://assets.craftyart.in/w_assets/images/bgRemove/product.png"
               alt="product"
               className="w-[80%] max-md:w-full mx-auto block"
             />
@@ -514,7 +522,7 @@ export default function index() {
           >
             <Box className="mt-[-60px]">
               <img
-                src="/images/bgRemove/uploadImage.png"
+                src="https://assets.craftyart.in/w_assets/images/bgRemove/uploadImage.png"
                 alt="uploadImage"
                 className="max-h-[200px] w-auto block mx-auto"
               />
@@ -536,7 +544,7 @@ export default function index() {
           >
             <Box className="mt-[-60px]">
               <img
-                src="/images/bgRemove/rb.png"
+                src="https://assets.craftyart.in/w_assets/images/bgRemove/rb.png"
                 alt="rb"
                 className="max-h-[200px] w-auto block mx-auto"
               />
@@ -559,7 +567,7 @@ export default function index() {
           >
             <Box className="mt-[-60px]">
               <img
-                src="/images/bgRemove/download.png"
+                src="https://assets.craftyart.in/w_assets/images/bgRemove/download.png"
                 alt="download"
                 className="max-h-[200px] w-auto block mx-auto"
               />
@@ -584,16 +592,14 @@ export default function index() {
           handle complex backgrounds?"
         point={
           <Box>
-            <MarkText text="Can handle complex backgrounds, but accuracy may vary" />
-            <MarkText text="May struggle with similar colours or patterns between foreground and background" />
-            <MarkText text="Can handle multiple foreground elements if distinguishable from background" />
-            <MarkText text="May require manual refinements or adjustments to achieve accurate results" />
-            <MarkText text="May take longer to process images with complex backgrounds" />
+            <MarkText text="May struggle with similar colours or patterns between foreground and background." />
+            <MarkText text="Can handle multiple foreground elements if distinguishable from background." />
+            <MarkText text="May require manual refinements or adjustments to achieve accurate results." />
+            <MarkText text="May take longer to process images with complex backgrounds." />
           </Box>
         }
-        buttonName={"Upload Image"}
         alt="background remover"
-        image="/images/bgRemove/brFeature.png"
+        image="https://assets.craftyart.in/w_assets/images/bgRemove/brFeature.png"
       />
 
       <RightImageSection
@@ -601,16 +607,15 @@ export default function index() {
           the background remover feature?"
         point={
           <Box>
-            <MarkText text="Use high-resolution images with clear contrast " />
-            <MarkText text="Choose images with solid colours or simple patterns in background" />
-            <MarkText text="Manually refine selection with brush tool or adjust threshold settings" />
-            <MarkText text="Use additional features or plugins, such as edge refinement or colour adjustment tools" />
-            <MarkText text="Can fine-tune selection and eliminate any remaining artefacts or noise" />
+            <MarkText text="Use high-resolution images with clear contrast ." />
+            <MarkText text="Choose images with solid colours or simple patterns in background." />
+            <MarkText text="Manually refine selection with brush tool or adjust threshold settings." />
+            <MarkText text="Use additional features or plugins, such as edge refinement or colour adjustment tools." />
+            <MarkText text="Can fine-tune selection and eliminate any remaining artefacts or noise." />
           </Box>
         }
-        buttonName={"Upload Image"}
         alt="background remover"
-        image="/images/bgRemove/brImprove.png"
+        image="https://assets.craftyart.in/w_assets/images/bgRemove/brImprove.png"
       />
 
       <LeftImageSection
@@ -634,9 +639,8 @@ and generating ideas."
             />
           </Box>
         }
-        buttonName={"Upload Image"}
         alt="background remover"
-        image="/images/bgRemove/brWork.png"
+        image="https://assets.craftyart.in/w_assets/images/bgRemove/brWork.png"
       />
 
       <WithCraftyartBanner />
@@ -654,9 +658,8 @@ and generating ideas."
             <MarkText text="No Special Skills Required: No expertise needed effortlessly editing your images like a pro." />
           </Box>
         }
-        buttonName={"Upload Image"}
         alt="background remover"
-        image="/images/bgRemove/bgRemove2.png"
+        image="https://assets.craftyart.in/w_assets/images/bgRemove/bgRemove2.png"
       />
 
       <RightImageSection
@@ -672,9 +675,8 @@ and generating ideas."
             <MarkText text="Responsive Support: Access comprehensive guides and support for a smooth user experience." />
           </Box>
         }
-        buttonName={"Upload Image"}
         alt="background remover"
-        image="/images/bgRemove/bgRemove3.png"
+        image="https://assets.craftyart.in/w_assets/images/bgRemove/bgRemove3.png"
       />
 
       <CustomerSayingSmall />

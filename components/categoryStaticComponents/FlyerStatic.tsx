@@ -34,7 +34,9 @@ export default function FlyerStatic() {
         <Box className="flex justify-center gap-5 py-[30px] sm:py-[50px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-center">
             <img
-              src={"/images/category/makeFlyer.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/category/makeFlyer.png"
+              }
               alt={"flyer template"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -131,7 +133,9 @@ export default function FlyerStatic() {
           </Box>
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/flyerC/img2.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/flyerC/img2.png"
+              }
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -143,7 +147,9 @@ export default function FlyerStatic() {
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/flyerC/img1.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/flyerC/img1.png"
+              }
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -244,7 +250,7 @@ export default function FlyerStatic() {
         buttonName={"Create a flyer"}
         alt="flyer Maker"
         path="/templates/flyer"
-        image="/images/category/whyChooseFlyer.png"
+        image="https://assets.craftyart.in/w_assets/images/category/whyChooseFlyer.png"
       />
 
       <LeftImageSection
@@ -261,7 +267,7 @@ export default function FlyerStatic() {
         buttonName={"Create a flyer"}
         alt="flyer Maker"
         path="/templates/flyer"
-        image="/images/flyerC/img3.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerC/img3.png"
       />
 
       <Box className="pt-[70px] pb-[20px]  px-[20px]">
@@ -284,7 +290,9 @@ export default function FlyerStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/girl1.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/girl1.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Olivia Davis</Box>
@@ -307,7 +315,9 @@ export default function FlyerStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man3.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man3.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>Ethan Wilson</Box>
@@ -329,7 +339,9 @@ export default function FlyerStatic() {
             <Box className="flex items-center space-x-4 mb-2">
               <Box
                 className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                sx={{ backgroundImage: `url(/images/comment/man2.jpg)` }}
+                sx={{
+                  backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man2.jpg)`,
+                }}
               ></Box>
               <Box className="font-medium dark:text-white">
                 <Box>James Johnson</Box>
@@ -389,7 +401,7 @@ export default function FlyerStatic() {
       </Box>
 
       <CustomHead
-        image="/images/flyerC/img1.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerC/img1.png"
         heading={
           "Stand Out with Impact: Our Designs, Your Message - Unforgettable Flyers for Every Occasion! "
         }

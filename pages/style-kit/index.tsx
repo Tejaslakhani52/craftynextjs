@@ -91,7 +91,9 @@ export default function index() {
             className="hidden lg:flex"
           >
             <img
-              src={"/images/styleKit/bannerSide.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/styleKit/bannerSide.png"
+              }
               alt="Effortless Design: Create Pro Designs with Style Kit!"
               style={{ width: "70%", height: "auto", paddingRight: "0px" }}
             />
@@ -118,9 +120,8 @@ export default function index() {
             />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Style Kit"
-        image="/images/styleKit/side1.png"
+        image="https://assets.craftyart.in/w_assets/images/styleKit/side1.png"
       />
 
       <RightImageSection
@@ -142,9 +143,8 @@ export default function index() {
             />
           </Box>
         }
-        buttonName={"Create a New Card Design"}
         alt="Style Kit"
-        image="/images/styleKit/side2.png"
+        image="https://assets.craftyart.in/w_assets/images/styleKit/side2.png"
       />
 
       <LeftImageSection
@@ -167,9 +167,8 @@ export default function index() {
             />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Style Kit"
-        image="/images/styleKit/side3.png"
+        image="https://assets.craftyart.in/w_assets/images/styleKit/side3.png"
       />
 
       <WithCraftyartBanner />
@@ -179,7 +178,7 @@ export default function index() {
       <GetTemplates
         heading=" Take Your Designs to the Next Level with Style Kit - Start Creating Now!"
         text="Make Design with Predetermined Colours and Fonts"
-        bt_name="Design your Invitation"
+        bt_name="Create your Style kit"
         navigate="/"
       />
 

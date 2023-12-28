@@ -155,7 +155,8 @@ export default function index() {
 
       <Box
         sx={{
-          background: "url(/images/aboutusBanner.png)",
+          background:
+            "url(https://assets.craftyart.in/w_assets/images/aboutusBanner.png)",
           display: "flex",
           justifyContent: "center",
         }}
@@ -211,7 +212,9 @@ export default function index() {
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/whatCraftyart.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/whatCraftyart.png"
+              }
               alt={"whatCraftyart"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -374,7 +377,7 @@ export default function index() {
 
           <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
             <img
-              src={"/images/ourMission.png"}
+              src={"https://assets.craftyart.in/w_assets/images/ourMission.png"}
               alt={"ourMission"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -423,8 +426,6 @@ export default function index() {
       />
 
       <CustomerSaying />
-
-      <MainLoaderBox />
     </>
   );
 }

@@ -14,32 +14,32 @@ import React from "react";
 
 const sliderTemplate = [
   {
-    img: "/images/invitationwedding.png",
+    img: "https://assets.craftyart.in/w_assets/images/invitationwedding.png",
     buttonName: "Wedding Invitation",
     path: "/wedding",
   },
   {
-    img: "/images/invitationFooterBirthday.png",
+    img: "https://assets.craftyart.in/w_assets/images/invitationFooterBirthday.png",
     buttonName: "Birthday Invitation",
     path: "/birthday-invitation",
   },
   {
-    img: "/images/partyBanner.png",
+    img: "https://assets.craftyart.in/w_assets/images/partyBanner.png",
     buttonName: "Party Invitation",
     path: "/party-invitation",
   },
   {
-    img: "/images/babyShowerEase.png",
+    img: "https://assets.craftyart.in/w_assets/images/babyShowerEase.png",
     buttonName: "Baby Shower Invitation",
     path: "/baby-shower-invitation",
   },
   // {
-  //   img: "/images/anivversaryEase.png",
+  //   img: "https://assets.craftyart.in/w_assets/images/anivversaryEase.png",
   //   buttonName: "Anniversary Invitation",
   //   path: "/anniversary",
   // },
   {
-    img: "/images/bridalEase.png",
+    img: "https://assets.craftyart.in/w_assets/images/bridalEase.png",
     buttonName: "Bridal Shower Invitation",
     path: "/bridal-shower",
   },
@@ -49,13 +49,9 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/invitationCreateWedding.png"
+        image="https://assets.craftyart.in/w_assets/images/invitationCreateWedding.png"
         heading="Let Your Invitation Shine with Our Smooth and Sleek Invitation Maker"
-        text=" Make lovely invitations for birthdays, baby showers, weddings, and
-        save-the-dates. Regardless of the event, you can make beautiful,
-        personalized invites and shop with confidence by choosing the
-        finish type, size, and matching envelopes with the invitation
-        templates maker."
+        text="Create Stunning Invitations Now! Design & Personalize with our Invitation Card Maker - Easy & Fun! Don't Miss Out!"
       />
 
       <Head>
@@ -119,22 +115,23 @@ export default function index() {
         personalized invites and shop with confidence by choosing the
         finish type, size, and matching envelopes with the invitation
         templates maker. "
+        path="/templates/invitation"
       />
 
       <RightDetail
         title="Key Features Of Crafty Art Invitation Card Maker"
         point={
           <Box>
-            <MarkText text="Simplify Your Event Planning: Our invitation card maker streamlines the process, saving you time and stress." />
-            <MarkText text="Stunning Designs, Effortlessly: Access a vast library of professionally designed templates, ensuring your invitations stand out." />
-            <MarkText text="Personalization Made Easy: Customize every aspect of your invitations, from colors to fonts, to reflect your unique style." />
-            <MarkText text="Budget-Friendly Solutions: Create beautiful invitations without breaking the bank, thanks to our cost-effective options." />
-            <MarkText text="Fast and Easy Download Invitations: We offer quick turnaround times and high-quality flawless invitations." />
+            <MarkText text="Our invitation card maker streamlines the process, saving you time and stress." />
+            <MarkText text="Access a vast library of professionally designed templates, ensuring your invitations stand out." />
+            <MarkText text="Customize every aspect of your invitations, from colors to fonts, to reflect your unique style." />
+            <MarkText text="Create beautiful invitations without breaking the bank, thanks to our cost-effective options." />
+            <MarkText text="We offer quick turnaround times and high-quality flawless invitations." />
           </Box>
         }
         buttonName={"Start Designing"}
         alt="Invitation Maker"
-        image="/images/perfactInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/perfactInvitation.png"
         path="/templates/invitation"
       />
 
@@ -142,17 +139,17 @@ export default function index() {
         title="Our Unique Invitations Selection"
         point={
           <Box>
-            <MarkText text="Weddings: Craft the perfect wedding invitation that reflects your love story." />
-            <MarkText text="Corporate Events: Impress clients and partners with professional and creative invites." />
-            <MarkText text="Birthdays: Celebrate another year with invitations that match your style." />
-            <MarkText text="Anniversaries: Commemorate milestones with elegant and personalized designs." />
-            <MarkText text="Special Occasions: From baby showers, house warming to retirements, we have you covered." />
-            <MarkText text="Engagement: Create a Perfect Engagement Invitation Card For Your Special Event." />
+            <MarkText text="Craft the perfect wedding invitation that reflects your love story." />
+            <MarkText text="Impress clients and partners with professional and creative invites." />
+            <MarkText text="Celebrate another year with invitations that match your style." />
+            <MarkText text="Commemorate milestones with elegant and personalized designs." />
+            <MarkText text="From baby showers, house warming to retirements, we have you covered." />
+            <MarkText text="Create a Perfect Engagement Invitation Card For Your Special Event." />
           </Box>
         }
         buttonName={"Start Designing"}
         alt="Invitation Maker"
-        image="/images/invitationSelection.png"
+        image="https://assets.craftyart.in/w_assets/images/invitationSelection.png"
         path="/templates/invitation"
       />
 
@@ -169,23 +166,23 @@ export default function index() {
         }
         buttonName={"Start Designing"}
         alt="Invitation Maker"
-        image="/images/stunningInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/stunningInvitation.png"
         path="/templates/invitation"
       />
 
       <LeftDetail
-        title="Make your INVITATION CARD in few minutes"
+        title="Make your Invitation Card in few minutes"
         point={
           <Box>
-            <MarkText text=" Open website and login or signup with your easy method." />
-            <MarkText text=" Search what do you want and select your best invitation card." />
-            <MarkText text=" add your detail's such as your event or style." />
-            <MarkText text=" save your invitation card and export in your preferred way." />
+            <MarkText text="Open website and login or signup with your easy method." />
+            <MarkText text="Search what do you want and select your best invitation card." />
+            <MarkText text="add your detail's such as your event or style." />
+            <MarkText text="save your invitation card and export in your preferred way." />
           </Box>
         }
         buttonName={"Start Designing"}
         alt="Invitation Maker"
-        image="/images/makeInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/makeInvitation.png"
         path="/templates/invitation"
       />
 
@@ -203,7 +200,7 @@ export default function index() {
         }
         buttonName={"Create your Wedding Invitation"}
         alt="Invitation Maker"
-        image="/images/invitationCreateWedding.png"
+        image="https://assets.craftyart.in/w_assets/images/invitationCreateWedding.png"
         path="/wedding"
       />
 
@@ -221,7 +218,7 @@ export default function index() {
         }
         buttonName={"Find Birthday Invitation"}
         alt="Invitation Maker"
-        image="/images/invitationBirthday.png"
+        image="https://assets.craftyart.in/w_assets/images/invitationBirthday.png"
         path="/birthday-invitation"
       />
 
@@ -239,7 +236,7 @@ export default function index() {
         }
         buttonName={"Design your Party Invitation"}
         alt="Invitation Maker"
-        image="/images/invitationDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/invitationDesign.png"
         path="/party-invitation"
       />
 
@@ -257,8 +254,8 @@ export default function index() {
         }
         buttonName={"Create Your Invitation Card"}
         alt="Invitation Maker"
-        image="/images/invitationCreate.png"
-        path="/babyShower"
+        image="https://assets.craftyart.in/w_assets/images/invitationCreate.png"
+        path="/baby-shower-invitation"
       />
 
       <ExploreTemplates getAll={"/templates/resume-portrait"} />
@@ -277,12 +274,12 @@ export default function index() {
         }
         buttonName={"Find your Anniversary Invitation"}
         alt="Invitation Maker"
-        image="/images/invitationAnniversary.png"
-        path="/anniversary"
+        image="https://assets.craftyart.in/w_assets/images/invitationAnniversary.png"
+        path="/s/anniversary"
       />
 
       <LeftDetail
-        title="How to create a chic bridal shower invitation
+        title="How to create a bridal shower invitation
         that sets the tone for a stylish celebration?"
         point={
           <Box>
@@ -295,7 +292,7 @@ export default function index() {
         }
         buttonName={"Design your Bridal Shower Invitation"}
         alt="Invitation Maker"
-        image="/images/invitationShower.png"
+        image="https://assets.craftyart.in/w_assets/images/invitationShower.png"
         path="/bridal-shower"
       />
 

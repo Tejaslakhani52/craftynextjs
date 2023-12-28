@@ -171,10 +171,6 @@ export default function Profile() {
             localStorage.clear();
             dispatch(openSidebar(false));
             Cookies.remove("rememberMe");
-            // router.push("/");
-            if (typeof document !== "undefined") {
-              document.cookie = `token=; `;
-            }
 
             Cookies.remove("sessionId", { domain: ".craftyartapp.com" });
             Cookies.remove("premium", { domain: ".craftyartapp.com" });

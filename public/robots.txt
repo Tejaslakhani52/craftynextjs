@@ -1,0 +1,7 @@
+Sitemap: https://www.craftyartapp.com/sitemap.xml
+User-agent: *
+Disallow: /editor.craftyartapp.com
+Disallow: /craftyartapp.com/s/
+Disallow: /craftyartapp.com/upload/
+Disallow: /craftyartapp.com/trash/
+Disallow: /craftyartapp.com/draft/

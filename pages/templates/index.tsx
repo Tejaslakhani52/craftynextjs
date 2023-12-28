@@ -262,7 +262,9 @@ export default function index() {
               >
                 <Box sx={{ width: "400px" }}>
                   <img
-                    src={"/images/categoryBanner.png"}
+                    src={
+                      "https://assets.craftyart.in/w_assets/images/categoryBanner.png"
+                    }
                     alt=" Latest Free Templates For You"
                     style={{
                       width: "100%",
@@ -335,7 +337,7 @@ export default function index() {
                 >
                   <Box className="md:mt-[-80px] lg:min-h-[300px]">
                     <img
-                      src="/images/category/Cinvitation1.png"
+                      src="https://assets.craftyart.in/w_assets/images/category/Cinvitation1.png"
                       alt=" Latest Free Templates For You"
                       className="max-h-[300px] w-auto block mx-auto"
                     />
@@ -358,7 +360,7 @@ export default function index() {
                 >
                   <Box className="md:mt-[-80px] lg:min-h-[300px]">
                     <img
-                      src="/images/category/Cinvitation2.png"
+                      src="https://assets.craftyart.in/w_assets/images/category/Cinvitation2.png"
                       alt=" Latest Free Templates For You"
                       className="max-h-[300px] w-auto block mx-auto"
                     />
@@ -382,7 +384,7 @@ export default function index() {
                 >
                   <Box className="md:mt-[-80px] lg:min-h-[300px]">
                     <img
-                      src="/images/category/Cinvitation3.png"
+                      src="https://assets.craftyart.in/w_assets/images/category/Cinvitation3.png"
                       alt=" Latest Free Templates For You"
                       className="max-h-[300px] w-auto block mx-auto"
                     />
@@ -436,7 +438,9 @@ export default function index() {
 
                 <Box className="flex-1  flex  max-lg:pb-5 max-lg:order-1 justify-end">
                   <img
-                    src={"/images/category/whyChooseInvitation.png"}
+                    src={
+                      "https://assets.craftyart.in/w_assets/images/category/whyChooseInvitation.png"
+                    }
                     alt={" Latest Free Templates For You"}
                     className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
                   />
@@ -464,7 +468,9 @@ export default function index() {
                   <Box className="flex items-center space-x-4 mb-2">
                     <Box
                       className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                      sx={{ backgroundImage: `url(/images/comment/girl1.jpg)` }}
+                      sx={{
+                        backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/girl1.jpg)`,
+                      }}
                     ></Box>
                     <Box className="font-medium dark:text-white">
                       <Box>Olivia Davis</Box>
@@ -487,7 +493,9 @@ export default function index() {
                   <Box className="flex items-center space-x-4 mb-2">
                     <Box
                       className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                      sx={{ backgroundImage: `url(/images/comment/man3.jpg)` }}
+                      sx={{
+                        backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man3.jpg)`,
+                      }}
                     ></Box>
                     <Box className="font-medium dark:text-white">
                       <Box>Ethan Wilson</Box>
@@ -510,7 +518,9 @@ export default function index() {
                   <Box className="flex items-center space-x-4 mb-2">
                     <Box
                       className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-                      sx={{ backgroundImage: `url(/images/comment/man2.jpg)` }}
+                      sx={{
+                        backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man2.jpg)`,
+                      }}
                     ></Box>
                     <Box className="font-medium dark:text-white">
                       <Box>James Johnson</Box>

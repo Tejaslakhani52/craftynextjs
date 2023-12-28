@@ -15,26 +15,9 @@ export default function index() {
     dispatch(openSidebar(false));
   }, []);
 
-  // const [loading, setLoading] = useState<any>(true);
-
-  // useEffect(() => {
-  //   if (!userLoginStatus) {
-  //     router.push("/");
-  //   }
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 500);
-  // }, [userLoginStatus]);
-
   return (
     <div>
       <Account defaultTab={"Personal Info"} />
-      <MainLoaderBox />
-      {/* {loading && (
-        <main className="main">
-          <span className="loader"></span>
-        </main>
-      )} */}
     </div>
   );
 }

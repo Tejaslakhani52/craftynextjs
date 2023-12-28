@@ -13,13 +13,33 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import Cookies from "js-cookie";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  // if (typeof document !== "undefined") {
-  //   document.cookie = `${"token"}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  // }
+export async function getServerSideProps(context: any) {
+  const cookiesString = context.req.headers.cookie || "";
+
+  const sessionId = extractCookieValue(cookiesString, "sessionId");
+
+  return {
+    props: {
+      sessionId: sessionId || null,
+    },
+  };
+}
+
+const extractCookieValue = (cookiesString: any, cookieName: any) => {
+  const cookieRegex = new RegExp(
+    `(?:(?:^|.*;\\s*)${cookieName}\\s*\\=\\s*([^;]*).*$)|^.*$`
+  );
+  const match = cookiesString.match(cookieRegex);
+  return match ? match[1] || null : null;
+};
+
+export default function Home({ sessionId }: any) {
+  console.log("initialCookieValue: ", sessionId);
+
   const dispatch = useDispatch();
   const router = useRouter();
   const token = authCookiesGet();
@@ -82,13 +102,7 @@ export default function Home() {
           content="Discover a powerful all-in-one graphic design tool that streamlines your creative process. Create stunning designs like invitation, logos, social media posts and many more.. with ease."
         />
       </Head>
-      {mainLoading || isLoading ? (
-        <MainLoaderBox />
-      ) : token ? (
-        <Dashboard />
-      ) : (
-        <LandingPage />
-      )}
+      {sessionId ? <Dashboard /> : <LandingPage />}
     </main>
   );
 }

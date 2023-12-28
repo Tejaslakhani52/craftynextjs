@@ -205,7 +205,10 @@ export default function Footer() {
             </Typography>
             <Box className="flex flex-col items-start text-white font-normal max-sm:items-center">
               <Box className="cursor-pointer">
-                <img src="/images/playstore.png" alt="playstore" />
+                <img
+                  src="https://assets.craftyart.in/w_assets/images/playstore.png"
+                  alt="playstore"
+                />
               </Box>
               <Box className="flex items-center gap-5 my-8 max-sm:justify-center">
                 <span className="cursor-pointer">

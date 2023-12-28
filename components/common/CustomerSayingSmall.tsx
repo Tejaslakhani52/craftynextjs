@@ -23,7 +23,9 @@ export default function CustomerSayingSmall() {
           <Box className="flex items-center space-x-4 mb-2">
             <Box
               className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-              sx={{ backgroundImage: `url(/images/comment/girl1.jpg)` }}
+              sx={{
+                backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/girl1.jpg)`,
+              }}
             ></Box>
             <Box className="font-medium dark:text-white">
               <Box>Olivia Davis</Box>
@@ -46,7 +48,9 @@ export default function CustomerSayingSmall() {
           <Box className="flex items-center space-x-4 mb-2">
             <Box
               className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-              sx={{ backgroundImage: `url(/images/comment/man3.jpg)` }}
+              sx={{
+                backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man3.jpg)`,
+              }}
             ></Box>
             <Box className="font-medium dark:text-white">
               <Box>Ethan Wilson</Box>
@@ -68,7 +72,9 @@ export default function CustomerSayingSmall() {
           <Box className="flex items-center space-x-4 mb-2">
             <Box
               className="w-12 h-12 rounded-full overflow-hidden bg-cover bg-center"
-              sx={{ backgroundImage: `url(/images/comment/man2.jpg)` }}
+              sx={{
+                backgroundImage: `url(https://assets.craftyart.in/w_assets/images/comment/man2.jpg)`,
+              }}
             ></Box>
             <Box className="font-medium dark:text-white">
               <Box>James Johnson</Box>

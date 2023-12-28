@@ -37,7 +37,7 @@ export default function LandingPage({ post }: any) {
 
   return (
     <>
-      <Box className="h-[463px] bg-[url('/images/landingPageBanner.png')] bg-cover bg-no-repeat max-lg:px-[20px] max-sm:h-auto max-sm:pb-[100px]">
+      <Box className="h-[463px] bg-[url('https://assets.craftyart.in/w_assets/images/landingPageBanner.png')] bg-cover bg-no-repeat max-lg:px-[20px] max-sm:h-auto max-sm:pb-[100px]">
         <Box className="flex flex-col items-center pt-14 gap-5">
           <Typography
             className="text-[47px] font-bold	text-white text-center max-sm:text-[30px]"
@@ -79,7 +79,7 @@ export default function LandingPage({ post }: any) {
 
       <Box className="w-[50%] mx-auto mt-[-180px] max-lg:mt-[-125px] max-sm:mt-[-67px] max-lg:w-[80%] max-sm:w-[97%]">
         <img
-          src="/images/landingPageMainVideo.png"
+          src="https://assets.craftyart.in/w_assets/images/landingPageMainVideo.png"
           alt="landingPageMainVideo"
         />
       </Box>
@@ -217,17 +217,17 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Create your Eprofile"}
-        image="/images/order_img (1).png"
+        image="https://assets.craftyart.in/w_assets/images/order_img (1).png"
       />
 
       <CustomerSaying />
       <Celebrate />
 
-      <Box className="h-[650px] sm:h-[430px] 2sm:h-[500px] bg-[url('/images/bottomRounded.png')]  bg-cover bg-no-repeat bg-bottom px-[20px]">
+      <Box className="h-[650px] sm:h-[430px] 2sm:h-[500px] bg-[url('https://assets.craftyart.in/w_assets/images/bottomRounded.png')]  bg-cover bg-no-repeat bg-bottom px-[20px]">
         <Box className="flex flex-col items-center pt-14 gap-5   ">
           <Typography
             className="text-[30px] sm:text-[47px] font-bold text-white text-center "
-            variant="h1"
+            variant="h2"
           >
             What are you waiting for?
           </Typography>

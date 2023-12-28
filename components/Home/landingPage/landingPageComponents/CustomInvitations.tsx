@@ -25,13 +25,16 @@ export default function CustomInvitations() {
   return (
     <div
       className="h-[516px] sm:h-[693px]   bg-cover bg-no-repeat mt-[-100px]  xl:mt-[-142px] bg-[#F4F7FE] 5xl:bg_linear px-[20px]   bg-top max-2sm:h-auto  max-2sm:pt-[50px]	"
-      style={{ background: "url(/images/customeInvitationBanner.png)" }}
+      style={{
+        background:
+          "url(https://assets.craftyart.in/w_assets/images/customeInvitationBanner.png)",
+      }}
     >
       {/* <Box className="h-[693px] bg_linear mt-[-171px]  middle_round  bg-center	"> */}
       <Box className="flex flex-col items-center pt-14 gap-5  pt-[230px] max-sm:pt-[169px] max-2sm:pt-[100px]">
         <Typography
           className="text-[47px] font-bold text-white text-center max-sm:text-[28px]"
-          variant="h1"
+          variant="h2"
         >
           Create Custom Invitations with Ease
         </Typography>

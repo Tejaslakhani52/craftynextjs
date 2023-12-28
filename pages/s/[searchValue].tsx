@@ -70,7 +70,7 @@
 //       <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px] pt-[15px]">
 //         <Box
 //           sx={{
-//             background: "url(/images/searchBanner.svg)",
+//             background: "url(https://assets.craftyart.in/w_assets/images/searchBanner.svg)",
 //             margin: "10px auto",
 //             width: "100%",
 //             overflow: "hidden",
@@ -290,7 +290,8 @@ export default function searchValue() {
         ) : (
           <Box
             sx={{
-              background: "url(/images/searchBanner.png)",
+              background:
+                "url(https://assets.craftyart.in/w_assets/images/searchBanner.png)",
               margin: "10px auto",
               width: "100%",
               overflow: "hidden",

@@ -24,14 +24,16 @@ const Accordion = styled((props: AccordionProps) => (
   },
 }));
 
-export default function FaqsBox(props: any) {
-  const [open, setopen] = useState<boolean>(false);
+// ... (imports and other code)
 
-  const [expanded, setExpanded] = React.useState<string | false>("panel2");
+export default function FaqsBox(props: any) {
+  const [open, setOpen] = useState<boolean>(false);
+  const [expanded, setExpanded] = React.useState<string | false>("panel1");
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
+      setOpen(!open); // Toggle the 'open' state
     };
 
   return (
@@ -44,8 +46,10 @@ export default function FaqsBox(props: any) {
         <AccordionSummary
           aria-controls="panel1d-content "
           id="panel1d-header"
-          sx={{ borderBottom: open ? "" : "1px solid #D9D9D9" }}
-          className="max-lg:px-[0px]"
+          sx={{
+            borderBottom: open ? "1px solid #D9D9D9" : "",
+            maxlg: { px: "[0px]" },
+          }}
         >
           <Box
             sx={{
@@ -55,7 +59,6 @@ export default function FaqsBox(props: any) {
               cursor: "pointer",
               width: "100%",
             }}
-            onClick={() => setopen(!open)}
           >
             <Typography
               sx={{ color: "#1C3048", fontWeight: "500", fontSize: "19px" }}
@@ -63,7 +66,7 @@ export default function FaqsBox(props: any) {
             >
               {props?.heading}
             </Typography>
-            <Button sx={{ color: "black" }} onClick={() => setopen(!open)}>
+            <Button sx={{ color: "black" }} onClick={() => setOpen(!open)}>
               {open ? (
                 <ExpandLessIcon sx={{ fontSize: "25px" }} />
               ) : (
@@ -73,8 +76,7 @@ export default function FaqsBox(props: any) {
           </Box>
         </AccordionSummary>
         <AccordionDetails
-          sx={{ borderBottom: "1px solid #D9D9D9" }}
-          className="max-lg:px-[0px]"
+          sx={{ borderBottom: open ? "" : "1px solid #D9D9D9" }}
         >
           <Typography className="text-black max-sm:text-[15px] max-2sm:text-[13px]">
             {props?.text}

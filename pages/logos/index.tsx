@@ -15,7 +15,7 @@ export default function index() {
   return (
     <Box>
       <CustomHead
-        image="/images/logoCreateLogo.png"
+        image="https://assets.craftyart.in/w_assets/images/logoCreateLogo.png"
         heading={" Free Logo | Design Your Own Logo | Create Free Logo"}
         text=" Looking for Create a Free Logo for Your Own Business? Explore Our 5000+ Logo Designs and Make Logo For Free And Stand Out in Market. Create Business Logo Now!"
       />
@@ -78,13 +78,13 @@ export default function index() {
         heading={
           "Create Your Own Logo Design with Our Free Logo Maker in Few Clicks"
         }
-        text="Designing your own logo has never been simpler. With our user-friendly logo maker online for free, you can make logo in just a few clicks. Say goodbye to complicated design software and expensive graphic designers. Create a stunning logo maker for business that truly represents your brand, all for free. Get started now and watch your logo design dreams become a reality!"
+        text="Designing your own logo has never been simpler. With our user-friendly logo maker online for free, you can make logo in just a few clicks. Say goodbye to complicated design software and expensive graphic designers."
         buttonName="Get Started"
-        navigate=""
+        navigate="/templates/logos"
         image={
           <Box sx={{ width: "450px" }}>
             <img
-              src={"/images/logoBanner.png"}
+              src={"https://assets.craftyart.in/w_assets/images/logoBanner.png"}
               alt="logoBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -97,7 +97,7 @@ export default function index() {
         point={
           <Box>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <MarkText text="Our user-friendly logo crafting tool simplifies the process of creating the perfect logo for your brand" />
+              <MarkText text="Our user-friendly logo crafting tool simplifies the process of creating the perfect logo for your brand." />
               <MarkText text="Choose from a wide selection of design templates and customise them to suit your needs." />
               <MarkText text="Our intuitive drag-and-drop interface allows you to easily add and edit text, graphics and other design elements." />
               <MarkText text="With our powerful logo creation tools, you can experiment with different fonts, colours and layouts until you find the perfect combination for your brand identity." />
@@ -108,7 +108,7 @@ export default function index() {
         buttonName={"Create a logo"}
         alt="Logo Maker"
         path="/templates/logos"
-        image="/images/logoCreateLogo.png"
+        image="https://assets.craftyart.in/w_assets/images/logoCreateLogo.png"
       />
 
       <RightImageSection
@@ -125,7 +125,7 @@ export default function index() {
         buttonName={"Create a logo"}
         alt="Logo Maker"
         path="/templates/logos"
-        image="/images/logoCustom.png"
+        image="https://assets.craftyart.in/w_assets/images/logoCustom.png"
       />
 
       <LeftImageSection
@@ -142,7 +142,7 @@ export default function index() {
         buttonName={"Create a logo"}
         alt="Logo Maker"
         path="/templates/logos"
-        image="/images/logoStunning.png"
+        image="https://assets.craftyart.in/w_assets/images/logoStunning.png"
       />
 
       <ExploreTemplates category="logo" getAll="/templates/logos" />
@@ -166,7 +166,9 @@ export default function index() {
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/logoCreator.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/logoCreator.png"
+              }
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />
@@ -251,7 +253,7 @@ Maker features. Craft a logo that's as dynamic and exciting as your gaming conte
         buttonName={"Create a logo"}
         alt="Logo Maker"
         path="/templates/logos"
-        image="/images/logoMaker.png"
+        image="https://assets.craftyart.in/w_assets/images/logoMaker.png"
       />
 
       <LeftImageSection
@@ -273,7 +275,7 @@ Maker features. Craft a logo that's as dynamic and exciting as your gaming conte
         buttonName={"Create a logo"}
         alt="Logo Maker"
         path="/templates/logos"
-        image="/images/transformBrand.png"
+        image="https://assets.craftyart.in/w_assets/images/transformBrand.png"
       />
 
       <RightImageSection
@@ -300,7 +302,7 @@ covered."
         buttonName={"Create a logo"}
         alt="Logo Maker"
         path="/templates/logos"
-        image="/images/logoToday.png"
+        image="https://assets.craftyart.in/w_assets/images/logoToday.png"
       />
 
       <CustomerSaying />

@@ -66,8 +66,6 @@ export default function Index() {
           </Button>
         </Box>
       </Box>
-
-      <MainLoaderBox />
     </div>
   );
 }

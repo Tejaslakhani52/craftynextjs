@@ -18,7 +18,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/weedingInvitationUnique.png"
+        image="https://assets.craftyart.in/w_assets/images/weedingInvitationUnique.png"
         heading={
           "Wedding Invitation Template Designs for Every Style and Theme          "
         }
@@ -90,7 +90,9 @@ export default function index() {
         image={
           <Box sx={{ width: "410px" }}>
             <img
-              src={"/images/weddingBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/weddingBanner.png"
+              }
               alt="weddingBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -114,7 +116,7 @@ export default function index() {
         buttonName={"Design your Invitation"}
         alt="wedding Invitation"
         path="/s/wedding"
-        image="/images/weedingInvitationUnique.png"
+        image="https://assets.craftyart.in/w_assets/images/weedingInvitationUnique.png"
       />
 
       <RightImageSection
@@ -132,7 +134,7 @@ export default function index() {
         buttonName={"Create your Card"}
         alt="wedding Invitation"
         path="/s/wedding"
-        image="/images/weddingCard.png"
+        image="https://assets.craftyart.in/w_assets/images/weddingCard.png"
       />
 
       <LeftImageSection
@@ -151,7 +153,7 @@ export default function index() {
         buttonName={"Choose your Template"}
         alt="wedding Invitation"
         path="/s/wedding"
-        image="/images/weddingStyle.png"
+        image="https://assets.craftyart.in/w_assets/images/weddingStyle.png"
       />
 
       <ExploreTemplates getAll="/s/wedding" />
@@ -169,7 +171,7 @@ export default function index() {
         buttonName={"Create your Card"}
         alt="wedding Invitation"
         path="/s/wedding"
-        image="/images/weddingCard2.png"
+        image="https://assets.craftyart.in/w_assets/images/weddingCard2.png"
       />
 
       <LeftImageSection
@@ -186,7 +188,7 @@ export default function index() {
         buttonName={"Choose your Template"}
         alt="wedding Invitation"
         path="/s/wedding"
-        image="/images/weddingCard3.png"
+        image="https://assets.craftyart.in/w_assets/images/weddingCard3.png"
       />
 
       <Box className="py-[50px]">
@@ -204,7 +206,9 @@ export default function index() {
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
           <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
             <img
-              src={"/images/weddingCard4.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/weddingCard4.png"
+              }
               alt={"Logo Maker"}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
             />

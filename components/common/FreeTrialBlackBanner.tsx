@@ -6,12 +6,13 @@ import Link from "next/link";
 interface props {
   heading: string;
   text: string;
+  path?: string;
 }
 
-export default function FreeTrialBlackBanner({ heading, text }: props) {
+export default function FreeTrialBlackBanner({ heading, text, path }: props) {
   const router = useRouter();
   return (
-    <Box className="  bg-[url('/images/invitationBanner.png')] bg-cover bg-no-repeat py-14 px-4 ">
+    <Box className="  bg-[url('https://assets.craftyart.in/w_assets/images/invitationBanner.png')] bg-cover bg-no-repeat py-14 px-4 ">
       <Box className="flex flex-col items-center   gap-8">
         <Typography
           className="text-[28px] sm:text-[47px] font-bold	text-white w-full lg:w-[60%] text-center"
@@ -22,30 +23,52 @@ export default function FreeTrialBlackBanner({ heading, text }: props) {
         <Box className="flex flex-col items-center gap-2 ">
           <Typography className="text-[15px] sm:text-[18px] font-medium	text-white w-full lg:w-[60%] text-center">
             {text}
-            Template Library
           </Typography>
         </Box>
 
-        <Link href={"/"}>
-          <Button
-            sx={{
-              textTransform: "unset",
-              fontSize: "14px",
-              fontWeight: "600",
-              whiteSpace: "nowrap",
-              opacity: "1",
-              width: "180px",
-              backgroundColor: "white",
-              borderRadius: "5px",
-              "&:hover": {
+        {path ? (
+          <Link href={path}>
+            <Button
+              sx={{
+                textTransform: "unset",
+                fontSize: "14px",
+                fontWeight: "600",
+                whiteSpace: "nowrap",
+                opacity: "1",
+                width: "180px",
                 backgroundColor: "white",
-              },
-            }}
-            className="bg-white text-black py-2"
-          >
-            Start a free trial
-          </Button>
-        </Link>
+                borderRadius: "5px",
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+              className="bg-white text-black py-2"
+            >
+              Start a free trial
+            </Button>
+          </Link>
+        ) : (
+          <Link href={"/"}>
+            <Button
+              sx={{
+                textTransform: "unset",
+                fontSize: "14px",
+                fontWeight: "600",
+                whiteSpace: "nowrap",
+                opacity: "1",
+                width: "180px",
+                backgroundColor: "white",
+                borderRadius: "5px",
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+              className="bg-white text-black py-2"
+            >
+              Start a free trial
+            </Button>
+          </Link>
+        )}
       </Box>
     </Box>
   );

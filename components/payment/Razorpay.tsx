@@ -63,7 +63,10 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
   return (
     <Box>
       <Button onClick={handleSubmit} className="w-[200px] mx-auto block">
-        <img src="/images/plans/razorpay.png" alt="razorpay" />
+        <img
+          src="https://assets.craftyart.in/w_assets/images/plans/razorpay.png"
+          alt="razorpay"
+        />
       </Button>
       <Box className="separator">
         <Box className="line" />

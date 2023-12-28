@@ -20,7 +20,7 @@ export default function index() {
   return (
     <div>
       <CustomHead
-        image="/images/caricature/bannerSide.png"
+        image="https://assets.craftyart.in/w_assets/images/caricature/bannerSide.png"
         heading={
           "Elevate your brand with a comprehensive brand kit. Explore the tools to establish a distinct and memorable identity."
         }
@@ -161,7 +161,9 @@ export default function index() {
             className="hidden lg:flex "
           >
             <img
-              src={"/images/brand/bannerSide.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/brand/bannerSide.png"
+              }
               alt="resumeBanner"
               style={{ width: "70%", height: "auto", paddingRight: "0px" }}
             />
@@ -188,9 +190,8 @@ eliminating the need to manually format each text box."
             />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Brand Kit"
-        image="/images/brand/side1.png"
+        image="https://assets.craftyart.in/w_assets/images/brand/side1.png"
       />
 
       <RightImageSection
@@ -212,9 +213,8 @@ those assets will automatically update, saving you even more time."
             />
           </Box>
         }
-        buttonName={"Create a New Card Design"}
         alt="Brand Kit"
-        image="/images/brand/side2.png"
+        image="https://assets.craftyart.in/w_assets/images/brand/side2.png"
       />
 
       <LeftImageSection
@@ -236,9 +236,8 @@ which helps to maintain a consistent brand identity."
             />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Brand Kit"
-        image="/images/brand/side3.png"
+        image="https://assets.craftyart.in/w_assets/images/brand/side3.png"
       />
 
       <WithCraftyartBanner />
@@ -273,9 +272,8 @@ Foster collaboration among teams and seamlessly share brand assets for unified b
             />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Brand Kit"
-        image="/images/brand/side4.png"
+        image="https://assets.craftyart.in/w_assets/images/brand/side4.png"
       />
 
       <RightImageSection
@@ -289,9 +287,8 @@ Foster collaboration among teams and seamlessly share brand assets for unified b
             <MarkText text="Brand Package Delivery: Receive a curated package of digital assets and files optimized for various platforms and applications." />
           </Box>
         }
-        buttonName={"Design your Cards"}
         alt="Brand Kit"
-        image="/images/brand/side5.png"
+        image="https://assets.craftyart.in/w_assets/images/brand/side5.png"
       />
 
       <CustomerSayingSmall />
@@ -299,7 +296,7 @@ Foster collaboration among teams and seamlessly share brand assets for unified b
       <GetTemplates
         heading="Streamline your design process with the efficient editing power of Brand Kit"
         text="The unique and stylish tool for effortless design creation"
-        bt_name="Design your Invitation"
+        bt_name="Create your Brand kit"
         navigate="/"
       />
 

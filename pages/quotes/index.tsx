@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/qoutesDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/qoutesDesign.png"
         heading={
           "Best Practices for Designing Quotes Posts that  Engage Your Audience"
         }
@@ -88,7 +88,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/qoutesBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/qoutesBanner.png"
+              }
               alt="quotesBanner"
               style={{ width: "100%", height: "100%", paddingRight: "0px" }}
             />
@@ -109,7 +111,7 @@ export default function index() {
         }
         buttonName={"Design your Quotes"}
         alt="quotes post design"
-        image="/images/qoutesDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/qoutesDesign.png"
         path="/templates/quotes-post-square"
       />
       <RightImageSection
@@ -126,7 +128,7 @@ export default function index() {
         buttonName={"Create Your Quotes"}
         alt="quotes post design"
         path="/templates/quotes-post-square"
-        image="/images/qoutesUnique.png"
+        image="https://assets.craftyart.in/w_assets/images/qoutesUnique.png"
       />
       <LeftImageSection
         title="Top 5 trending designs for quotes post"
@@ -142,7 +144,7 @@ export default function index() {
         buttonName={"Explore Quotes"}
         alt="quotes post design"
         path="/templates/quotes-post-square"
-        image="/images/qoutesTrending.png"
+        image="https://assets.craftyart.in/w_assets/images/qoutesTrending.png"
       />
       {/*  */} <ExploreTemplates getAll={"/templates/quotes-post-square"} />
       <RightImageSection
@@ -164,7 +166,7 @@ captivate your audience and boost your engagement."
         buttonName={"Create Your Quotes"}
         alt="quotes post design"
         path="/templates/quotes-post-square"
-        image="/images/quotesPoweful.png"
+        image="https://assets.craftyart.in/w_assets/images/quotesPoweful.png"
       />
       <LeftImageSection
         title="Daily Quotes Is Your Pathway to Inspired
@@ -183,7 +185,7 @@ and seize the day."
         buttonName={"Explore Quotes"}
         alt="quotes post design"
         path="/templates/quotes-post-square"
-        image="/images/flyerL.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerL.png"
       />
       <RightImageSection
         title="Why Choose Us?"
@@ -201,7 +203,7 @@ and seize the day."
         buttonName={"Create Your Quotes"}
         alt="quotes post design"
         path="/templates/quotes-post-square"
-        image="/images/flyerWhy.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerWhy.png"
       />
       <CustomerSaying />
       <GetTemplates

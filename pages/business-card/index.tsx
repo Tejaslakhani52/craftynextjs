@@ -15,7 +15,7 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/bussinessCardDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCardDesign.png"
         heading={
           "Business Card Maker Online - Design Professional Cards for Business"
         }
@@ -85,7 +85,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/bussinessCardBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/bussinessCardBanner.png"
+              }
               alt="businessCardBanner"
               style={{ width: "100%", height: "100%", paddingRight: "100px" }}
             />
@@ -108,7 +110,7 @@ export default function index() {
         buttonName={"Design your Card"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCardDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCardDesign.png"
       />
 
       <RightImageSection
@@ -126,7 +128,7 @@ export default function index() {
         buttonName={"Create Your Business Card"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCardCreate.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCardCreate.png"
       />
 
       <LeftImageSection
@@ -144,7 +146,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCardTrending.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCardTrending.png"
       />
 
       <ExploreTemplates category="business card" getAll="/s/business-card" />
@@ -164,7 +166,7 @@ export default function index() {
         buttonName={"Create Your Business Card"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard.png"
       />
 
       <LeftImageSection
@@ -181,7 +183,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard2.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard2.png"
       />
 
       <RightImageSection
@@ -198,7 +200,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard3.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard3.png"
       />
 
       <LeftImageSection
@@ -216,7 +218,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard4.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard4.png"
       />
 
       <RightImageSection
@@ -234,7 +236,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard5.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard5.png"
       />
 
       <LeftImageSection
@@ -251,7 +253,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard6.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard6.png"
       />
 
       <RightImageSection
@@ -269,7 +271,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard7.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard7.png"
       />
 
       <LeftImageSection
@@ -286,7 +288,7 @@ export default function index() {
         buttonName={"Explore Cards"}
         alt="business card maker"
         path="/s/business-card"
-        image="/images/bussinessCard8.png"
+        image="https://assets.craftyart.in/w_assets/images/bussinessCard8.png"
       />
 
       <CustomerSaying />

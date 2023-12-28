@@ -18,7 +18,7 @@ export default function index() {
   return (
     <div>
       <CustomHead
-        image="/images/customizeOrder/bannerSide.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/bannerSide.png"
         heading={
           "Customize Invitations for Every Occasion | Personalized Wedding, Baby Shower, Graduation Invites "
         }
@@ -155,7 +155,9 @@ export default function index() {
           >
             <Box sx={{ width: "100%" }}>
               <img
-                src={"/images/customizeOrder/bannerSide.png"}
+                src={
+                  "https://assets.craftyart.in/w_assets/images/customizeOrder/bannerSide.png"
+                }
                 alt="resumeBanner"
                 style={{ width: "100%", height: "100%", paddingRight: "0px" }}
               />
@@ -179,8 +181,7 @@ your order and proceed to payment."
             />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side1.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side1.png"
       />
 
       <RightImageSection
@@ -210,8 +211,7 @@ your creative process."
             />
           </Box>
         }
-        buttonName={"Create a New Card Design"}
-        image="/images/customizeOrder/side2.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side2.png"
       />
 
       <LeftImageSection
@@ -235,8 +235,7 @@ your creative process."
             />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side3.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side3.png"
       />
 
       <WithCraftyartBanner />
@@ -252,8 +251,7 @@ your creative process."
             <MarkText text="Enjoy the flexibility to match your invitations to the theme of your event." />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side4.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side4.png"
       />
 
       <RightImageSection
@@ -268,8 +266,7 @@ your creative process."
             <MarkText text="Guarantee your invitations become appreciated mementos for yourself as well as your visitors." />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side5.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side5.png"
       />
 
       <LeftImageSection
@@ -283,8 +280,7 @@ your creative process."
             <MarkText text="Make your baby and bridal showers memorable with uniquely crafted invitations." />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side6.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side6.png"
       />
 
       <RightImageSection
@@ -298,8 +294,7 @@ your creative process."
             <MarkText text="Celebrate your educational journey with style through customized graduation invitations." />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side7.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side7.png"
       />
 
       <LeftImageSection
@@ -313,8 +308,7 @@ your creative process."
             <MarkText text="Experience the joy of designing invitations with the freedom to bring your ideas to life." />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side8.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side8.png"
       />
 
       <RightImageSection
@@ -328,8 +322,7 @@ your creative process."
             <MarkText text="Use our custom invitation maker to make the process enjoyable and tailored to your preferences." />
           </Box>
         }
-        buttonName={"Design your Cards"}
-        image="/images/customizeOrder/side9.png"
+        image="https://assets.craftyart.in/w_assets/images/customizeOrder/side9.png"
       />
 
       <CustomerSayingSmall />
@@ -337,7 +330,7 @@ your creative process."
       <GetTemplates
         heading="Design the Perfect Invitation, Your Way!"
         text="Craft Personalized Invitations Tailored to Your Vision"
-        bt_name="Design your Invitation"
+        bt_name="Customize your Invitation"
         navigate="/"
       />
 

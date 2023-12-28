@@ -15,12 +15,9 @@ export default function index() {
   return (
     <>
       <CustomHead
-        image="/images/flyersCreate.png"
-        heading={
-          "Create Stunning Flyers with Our Easy-to-Use Templates        "
-        }
-        text="Catch the Eye with Our Flyer Templates Collection! Stand Out and Impress 🌟 Explore 1500+ Designs Here!
-        "
+        image="https://assets.craftyart.in/w_assets/images/flyersCreate.png"
+        heading={"Create Stunning Flyers with Our Easy-to-Use Templates"}
+        text="Catch the Eye with Our Flyer Templates Collection! Stand Out and Impress 🌟 Explore 1500+ Designs Here!"
       />
 
       <Head>
@@ -89,7 +86,9 @@ export default function index() {
         image={
           <Box sx={{ width: "500px" }}>
             <img
-              src={"/images/flyersBanner.png"}
+              src={
+                "https://assets.craftyart.in/w_assets/images/flyersBanner.png"
+              }
               alt="flyersBanner"
               style={{ width: "100%", height: "100%", paddingRight: "80px" }}
             />
@@ -111,7 +110,7 @@ export default function index() {
         buttonName={"Design your Flyer"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyersCreate.png"
+        image="https://assets.craftyart.in/w_assets/images/flyersCreate.png"
       />
       <RightImageSection
         title="What makes your flyers unique?"
@@ -130,7 +129,7 @@ with limited budgets."
         buttonName={"Create Your Flyer"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyersUnique.png"
+        image="https://assets.craftyart.in/w_assets/images/flyersUnique.png"
       />
       <LeftImageSection
         title="The process to make stunning
@@ -147,7 +146,7 @@ with limited budgets."
         buttonName={"Explore Flyers"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyersStunning.png"
+        image="https://assets.craftyart.in/w_assets/images/flyersStunning.png"
       />
       <RightImageSection
         title="Elevate Your Designs with Flyer
@@ -174,7 +173,7 @@ need them."
         buttonName={"Create Your Flyer"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyerDesign.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerDesign.png"
       />
 
       <LeftImageSection
@@ -201,7 +200,7 @@ limited design experience."
         buttonName={"Explore Flyers"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyerTemplate.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerTemplate.png"
       />
 
       <ExploreTemplates getAll={"/templates/flyer"} />
@@ -234,7 +233,7 @@ offer pre-made layouts, so you can focus on delivering your message effectively.
         buttonName={"Explore Flyers"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyerFree.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerFree.png"
       />
 
       <RightImageSection
@@ -260,7 +259,7 @@ backgrounds."
         buttonName={"Create Your Flyer"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyerRbg.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerRbg.png"
       />
 
       <LeftImageSection
@@ -286,7 +285,7 @@ backgrounds."
         buttonName={"Explore Flyers"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyerRevolution.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerRevolution.png"
       />
 
       <RightImageSection
@@ -312,7 +311,7 @@ backgrounds."
         buttonName={"Create Your Flyer"}
         alt="flyer templates"
         path="/templates/flyer"
-        image="/images/flyerC.png"
+        image="https://assets.craftyart.in/w_assets/images/flyerC.png"
       />
 
       <CustomerSaying />
