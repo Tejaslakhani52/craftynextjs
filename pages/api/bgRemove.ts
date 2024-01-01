@@ -55,21 +55,22 @@ export default async function handler(
       formData.append("file", fileBlob, req.file.originalname);
     }
 
-    const response = await axios.post<any>(
+    const response = await axios.post<ArrayBuffer>(
       `https://bgremover.craftyartapp.com/api/removebg`,
       formData,
       {
         headers: {
           "Content-Type": "multipart/form-data",
         },
-        responseType: "blob",
+        responseType: "arraybuffer",
       }
     );
-    console.log("apiRes: ", response);
 
-    res.status(200).json(encryptData(JSON.stringify(response.data)));
+    const bufferData = Buffer.from(response.data);
+
+    res.status(200).end(bufferData, "binary");
   } catch (error) {
-    console.error(error);
+    console.error("error", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }

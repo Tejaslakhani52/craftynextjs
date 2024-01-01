@@ -104,19 +104,13 @@ export default function index() {
           headers: {
             "Content-Type": "multipart/form-data",
           },
+          responseType: "blob",
         })
-        .then((res) => {
-          console.log("res: ", res);
-          const response = JSON.parse(decryptData(res?.data));
-          console.log("response: ", response);
-          const blob = new Blob([response], { type: "image/png" });
-
-          console.log("blob: ", blob);
-
-          const imageUrl = URL.createObjectURL(response);
-
+        .then((res: any) => {
+          console.log("res1: ", res);
+          const blob = new Blob([res?.data], { type: "image/png" });
+          const imageUrl = URL.createObjectURL(new Blob([blob]));
           console.log("imageUrl: ", imageUrl);
-
           setMainLoader(false);
           setImageUrl(imageUrl);
         })
@@ -125,34 +119,6 @@ export default function index() {
         });
     }
   }, [selectedFile]);
-
-  // useEffect(() => {
-  //   if (user_id && selectedFile) {
-  //     setMainLoader(true);
-
-  //     const formData = new FormData();
-  //     formData.append("user_id", user_id);
-  //     formData.append("file", selectedFile);
-
-  //     axios
-  //       .post("https://bgremover.craftyartapp.com/api/removebg", formData, {
-  //         headers: {
-  //           "Content-Type": "multipart/form-data",
-  //         },
-  //         responseType: "blob",
-  //       })
-  //       .then((res) => {
-  //         console.log("res: ", res);
-
-  //         setMainLoader(false);
-  //         const imageUrl = URL.createObjectURL(new Blob([res?.data]));
-  //         setImageUrl(imageUrl);
-  //       })
-  //       .catch((err) => {
-  //         // console.log("err: ", err);
-  //       });
-  //   }
-  // }, [selectedFile]);
 
   const handleDownload = async () => {
     const blob = await fetch(imageUrl).then((res) => res.blob());

@@ -97,6 +97,12 @@ export default function templateId({ templateData, anotherData }: any) {
 
   const [showImage, setShowImage] = React.useState<any>();
 
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   React.useEffect(() => {
     setShowImage(templateData?.thumbArray?.[0]);
   }, [templateData]);
@@ -217,11 +223,22 @@ export default function templateId({ templateData, anotherData }: any) {
             ) : (
               <Box className="w-[66%]  max-sm:w-full">
                 <Box className="rounded-[4px] h-[450px]  bg-[#F4F7FE] flex justify-center items-center">
+                  {imageLoaded ? (
+                    <img
+                      src={showImage}
+                      alt={templateData?.template_name}
+                      className="max-md:h-auto h-[430px] w-auto max-sm:w-auto max-sm:max-h-[400px] rounded-[4px]"
+                      style={{ border: "1px solid #80808059" }}
+                    />
+                  ) : (
+                    <div>Loading...</div>
+                  )}
+
                   <img
+                    onLoad={handleImageLoad}
                     src={showImage}
                     alt={templateData?.template_name}
-                    className="max-md:h-auto h-[430px] w-auto max-sm:w-auto max-sm:max-h-[400px] rounded-[4px]"
-                    style={{ border: "1px solid #80808059" }}
+                    style={{ display: "none" }}
                   />
                 </Box>
 
@@ -375,14 +392,14 @@ export default function templateId({ templateData, anotherData }: any) {
               <div className="py-4">
                 <IconsText
                   image={<Icons.tModalCustomizeIcon svgProps={{ width: 20 }} />}
-                  text="100% Customize with online editing tools"
+                  text={`Customize ${templateData.category_name} with our online editing tool`}
                   isLoading={isLoading}
                 />
                 <IconsText
                   image={
                     <Icons.tModalSmartphoneIcon svgProps={{ width: 20 }} />
                   }
-                  text="Edit and download on the go"
+                  text="Edit and Download"
                   isLoading={isLoading}
                 />
                 <IconsText
@@ -390,16 +407,14 @@ export default function templateId({ templateData, anotherData }: any) {
                   text="Share and publish anywhere"
                   isLoading={isLoading}
                 />
-                <IconsText
-                  image={<Icons.tModalBackedIcon svgProps={{ width: 20 }} />}
-                  text="Backed by our happiness Guarantee"
-                  isLoading={isLoading}
-                />
-                <IconsText
-                  image={<Icons.tModalAccessIcon svgProps={{ width: 20 }} />}
-                  text="Access 10,000+ all inclusive templates"
-                  isLoading={isLoading}
-                />
+
+                {templateData?.is_premium && (
+                  <IconsText
+                    image={<Icons.premiumIcon svgProps={{ width: 20 }} />}
+                    text="This Template contains paid elements"
+                    isLoading={isLoading}
+                  />
+                )}
               </div>
             </Box>
           </Box>

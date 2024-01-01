@@ -43,14 +43,10 @@ export default function RightDetail({
         </Box>
       </Box>
       <Box className="flex-1  flex justify-center   max-lg:pt-10">
-        <Image
+        <img
           src={image}
           alt={alt}
           className="object-contain w-[450px] max-sm:w-[90%] "
-          width={500}
-          height={500}
-          quality={80}
-          priority={true}
         />
       </Box>
     </Box>

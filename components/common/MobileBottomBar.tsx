@@ -16,7 +16,7 @@ const data = [
     name: "folder",
     icon: <Icons.folderIcon svgProps={{ width: 25, height: 25, color: "" }} />,
     activeIcon: (
-      <Icons.folderIcon svgProps={{ width: 25, height: 25, color: "" }} />
+      <Icons.folderActiveIcon svgProps={{ width: 25, height: 25, color: "" }} />
     ),
     path: "/draft",
   },
@@ -38,7 +38,9 @@ const data = [
       <Icons.dashboardIcon svgProps={{ width: 25, height: 25, color: "" }} />
     ),
     activeIcon: (
-      <Icons.dashboardIcon svgProps={{ width: 25, height: 25, color: "" }} />
+      <Icons.dashboardActiveIcon
+        svgProps={{ width: 25, height: 25, color: "" }}
+      />
     ),
     path: "/templates",
   },
@@ -46,7 +48,9 @@ const data = [
     name: "premium",
     icon: <Icons.premiumIcon svgProps={{ width: 25, height: 25, color: "" }} />,
     activeIcon: (
-      <Icons.premiumIcon svgProps={{ width: 25, height: 25, color: "" }} />
+      <Icons.premiumActiveIcon
+        svgProps={{ width: 25, height: 25, color: "" }}
+      />
     ),
     path: "/plans",
   },

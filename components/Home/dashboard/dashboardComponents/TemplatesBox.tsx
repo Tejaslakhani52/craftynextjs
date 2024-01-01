@@ -331,9 +331,15 @@ export default function TemplatesBox({ apiData }: any) {
   }, []);
 
   const height = useMemo(() => {
-    if (screenWidth > 600) {
-      return 200;
-    } else return 100;
+    let val;
+
+    if (screenWidth) {
+      if (screenWidth < 600) {
+        val = 100;
+      } else val = 200;
+    }
+
+    return val;
   }, [screenWidth]);
 
   return (

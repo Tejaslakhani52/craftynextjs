@@ -26,13 +26,10 @@ export default function LeftImage({
           /> */}
 
           {image ? (
-            <Image
+            <img
               src={image}
               alt={alt}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
-              width={500}
-              height={500}
-              quality={80}
             />
           ) : (
             <video

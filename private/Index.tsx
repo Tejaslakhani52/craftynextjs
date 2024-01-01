@@ -15,7 +15,29 @@ import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Index() {
+export async function getServerSideProps(context: any) {
+  const cookiesString = context.req.headers.cookie || "";
+
+  const sessionId = extractCookieValue(cookiesString, "_sdf");
+
+  return {
+    props: {
+      sessionId: sessionId || null,
+    },
+  };
+}
+
+export const extractCookieValue = (cookiesString: any, cookieName: any) => {
+  const cookieRegex = new RegExp(
+    `(?:(?:^|.*;\\s*)${cookieName}\\s*\\=\\s*([^;]*).*$)|^.*$`
+  );
+
+  const match = cookiesString.match(cookieRegex);
+  return match ? match[1] || null : null;
+};
+
+export default function Index({ sessionId }: any) {
+  console.log("sessionId: ", sessionId);
   const screenWidth = useScreenWidth();
   console.log("screenWidth: ", screenWidth);
   const dispatch = useDispatch();

@@ -103,6 +103,9 @@ import {
   wrongMarkRedIcon,
   youtubeIcon,
   templatesActiveIcon,
+  folderActiveIcon,
+  dashboardActiveIcon,
+  premiumActiveIcon,
 } from "./commonIcon";
 
 class Icons {
@@ -210,5 +213,8 @@ class Icons {
   static wrongMarkRedIcon = wrongMarkRedIcon;
   static youtubeIcon = youtubeIcon;
   static templatesActiveIcon = templatesActiveIcon;
+  static folderActiveIcon = folderActiveIcon;
+  static dashboardActiveIcon = dashboardActiveIcon;
+  static premiumActiveIcon = premiumActiveIcon;
 }
 export default Icons;

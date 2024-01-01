@@ -69,6 +69,7 @@ export default function TemplateModal({
   const [anotherData, setAnotherData] = React.useState<any>([]);
   const [isLoading, setIsLoading] = React.useState<any>(true);
   const [template, setTemplate] = React.useState<any>({});
+  console.log("template: ", template);
   const [templateOpen, setTemplateOpen] = useState<any>(false);
   const [anotherTempLoad, setAnotherTempLoad] = useState<any>(true);
   const openModal = useSelector((state: any) => state.actions.openTempModal);
@@ -460,14 +461,14 @@ export default function TemplateModal({
                     image={
                       <Icons.tModalCustomizeIcon svgProps={{ width: 20 }} />
                     }
-                    text="100% Customize with online editing tools"
+                    text={`Customize ${template.category_name} with our online editing tool`}
                     isLoading={isLoading}
                   />
                   <IconsText
                     image={
                       <Icons.tModalSmartphoneIcon svgProps={{ width: 20 }} />
                     }
-                    text="Edit and download on the go"
+                    text="Edit and Download"
                     isLoading={isLoading}
                   />
                   <IconsText
@@ -475,16 +476,20 @@ export default function TemplateModal({
                     text="Share and publish anywhere"
                     isLoading={isLoading}
                   />
-                  <IconsText
-                    image={<Icons.tModalBackedIcon svgProps={{ width: 20 }} />}
-                    text="Backed by our happiness Guarantee"
-                    isLoading={isLoading}
-                  />
-                  <IconsText
+
+                  {template?.is_premium && (
+                    <IconsText
+                      image={<Icons.premiumIcon svgProps={{ width: 20 }} />}
+                      text="This Template contains paid elements"
+                      isLoading={isLoading}
+                    />
+                  )}
+
+                  {/* <IconsText
                     image={<Icons.tModalAccessIcon svgProps={{ width: 20 }} />}
                     text="Access 10,000+ all inclusive templates"
                     isLoading={isLoading}
-                  />
+                  /> */}
                 </div>
               </Box>
             </Box>
