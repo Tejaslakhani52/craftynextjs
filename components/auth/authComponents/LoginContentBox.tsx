@@ -71,16 +71,6 @@ export default function LoginContentBox(props: any) {
       //   document.cookie = "token=yourTokenValue";
       // }
 
-      let response = NextResponse.json(
-        { success: true },
-        { status: 200, headers: { "content-type": "application/json" } }
-      );
-
-      response.cookies.set({
-        name: "sessionId",
-        value: userCredential?.user?.uid,
-      });
-
       router.push(`${router.pathname}`);
 
       // window.location.reload();

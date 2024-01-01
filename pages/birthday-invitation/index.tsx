@@ -18,10 +18,9 @@ export default function index() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/birthdayInvitation.png"
         heading={
-          "Discover Stylish Birthday Invitation Templates | Personalize Your Celebration          "
+          "Discover Stylish Birthday Invitation Templates | Personalize Your Celebration"
         }
-        text="Explore a diverse collection of birthday invitation templates. Create cards online, send invites digitally, and craft stunning designs with our easy invitation maker.
-        "
+        text="Explore a diverse collection of birthday invitation templates. Create cards online, send invites digitally, and craft stunning designs with our easy invitation maker."
       />
       <Head>
         <script
@@ -123,7 +122,7 @@ export default function index() {
             <MarkText text="Determine the type of party you want to host and choose a suitable theme." />
             <MarkText text="Decide on the budget for the party and determine how much you can spend on invitations." />
             <MarkText text="Consider the guest list and ensure that the invitations reflect the appropriate tone and style." />
-            <MarkText text="Choose a platform or tool that allows you to create custom invitations easily and effectively." />
+            <MarkText text="Crafty Art allows you to create birthday invitations easily and effectively." />
             <MarkText text="Plan ahead and allot enough time to complete the invitation design and send them out to your guests." />
           </Box>
         }
@@ -151,7 +150,11 @@ export default function index() {
         image="https://assets.craftyart.in/w_assets/images/birthdayMinute.png"
       />
 
-      <ExploreTemplates getAll={"/s/birthday"} category="birthday" />
+      <ExploreTemplates
+        getAll={"/s/birthday"}
+        category="birthday"
+        keyword="Birthday"
+      />
 
       <LeftImageSection
         title="

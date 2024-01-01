@@ -12,6 +12,9 @@ import TemplatesSkelton from "./TemplatesSkelton";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import Icons from "@/assets";
+import { decryptData } from "@/aes-crypto";
+import { resolve } from "path";
+import Image from "next/image";
 
 function ImageBox({
   templates,
@@ -22,9 +25,7 @@ function ImageBox({
 }: any) {
   const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
-  console.log("currentIndex: ", currentIndex);
   const [isHovered, setIsHovered] = useState(false);
-  console.log("isHovered: ", isHovered);
   const intervalRef: any = useRef(null);
   useEffect(() => {
     if (isHovered) {
@@ -113,12 +114,21 @@ function ImageBox({
             >
               {templates?.thumbArray.map((image: any, index: number) => (
                 <div className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide">
-                  <img
+                  <Image
                     src={image}
                     alt={image}
                     className={` w-[auto] ${
                       uniqueCat ? "h-[100%]" : ""
-                    }  mx-auto rounded-[4px]`}
+                    }  mx-auto rounded-[4px] opacity-0`}
+                    style={{ transition: "0.5s all" }}
+                    width={200}
+                    height={200}
+                    quality={80}
+                    priority={true}
+                    loading="eager"
+                    onLoadingComplete={(image) =>
+                      image.classList.remove("opacity-0")
+                    }
                   />
                 </div>
               ))}
@@ -272,41 +282,38 @@ export const TemplatesBoxes = ({
   );
 };
 
-// export async function getServerSideProps(context: any) {
-//   try {
-//     const { params } = context;
+export async function getServerSideProps(context: any) {
+  try {
+    const response = await axios.post(
+      "https://story.craftyartapp.com/get/main/data",
+      {
+        key: `qwfsegxdhbxfjhncf`,
+        page: 1,
+        count: 0,
+      }
+    );
 
-//     const response = await axios.post(
-//       "https://story.craftyartapp.com/get/main/data",
-//       {
-//         key: `qwfsegxdhbxfjhncf`,
-//         page: 1,
-//         count: 0,
-//       }
-//     );
+    const responseData = response.data;
 
-//     const templatesData = response?.daa;
-
-//     return {
-//       props: {
-//         templateData,
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error in getStaticProps:", error);
-//     return {
-//       notFound: true,
-//     };
-//   }
-// }
-
-export default function TemplatesBox() {
+    return {
+      props: {
+        apiData: responseData,
+      },
+    };
+  } catch (error) {
+    console.error("Error in getServerSideProps:", error);
+    return {
+      notFound: true,
+    };
+  }
+}
+export default function TemplatesBox({ apiData }: any) {
+  console.log("data: ", apiData);
   const screenWidth = useScreenWidth();
 
   const [openModal, setOpenModal] = React.useState(false);
   const [idName, setIdName] = useState<any>("");
   const router = useRouter();
-  console.log("router: ", router.asPath);
   const dispatch = useDispatch();
 
   const data = useSelector((state: any) => state.auth.templatesData);
@@ -314,9 +321,11 @@ export default function TemplatesBox() {
   useEffect(() => {
     axios
       .post(`/api/dashboard`)
-      .then((res: any) => {
-        console.log("res: ", res);
-        dispatch(templatesData(res?.data));
+      .then((response: any) => {
+        if (response?.data) {
+          const res: any = JSON.parse(decryptData(response?.data));
+          dispatch(templatesData(res));
+        }
       })
       .catch((err: any) => consoleShow("err", err));
   }, []);
@@ -326,7 +335,6 @@ export default function TemplatesBox() {
       return 200;
     } else return 100;
   }, [screenWidth]);
-  console.log("height: ", height);
 
   return (
     <Box className="px-[20px] max-sm:px-[10px] pb-10">

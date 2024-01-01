@@ -116,15 +116,10 @@ export default function SignUpContentBox(props: any) {
     dispatch(
       createUserApi(
         {
-          key: "qwfsegxdhbxfjhncf",
           user_id: finalUser?.uid,
           name: finalUser?.displayName,
           email: finalUser?.email,
           photo_uri: "",
-          login_type: "email",
-          device_id: "",
-          utm_medium: "craftyart",
-          utm_source: "craftyart",
         },
         router
       )

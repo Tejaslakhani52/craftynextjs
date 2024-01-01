@@ -1,3 +1,4 @@
+import { decryptData } from "@/aes-crypto";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { consoleShow } from "@/commonFunction/console";
 import {
@@ -14,18 +15,17 @@ import StackGrid from "react-stack-grid";
 interface props {
   category: string;
   getAll: string;
+  keyword?: string;
 }
 
-export default function ExploreTemplates({ category, getAll }: any) {
+export default function ExploreTemplates({ category, getAll, keyword }: any) {
   const router = useRouter();
   const { pathname } = router;
   const pathSegments = pathname.split("/");
   const lastSegment = pathSegments[pathSegments.length - 1];
-  console.log("lastSegment: ", lastSegment);
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
   const [data, setData] = useState<any>();
-  console.log("data: ", data);
 
   useEffect(() => {
     axios
@@ -34,10 +34,10 @@ export default function ExploreTemplates({ category, getAll }: any) {
         page: 1,
       })
       .then((response: any) => {
-        console.log("response: ", response);
-        const jsonString = response.data.substring(
-          response.data.indexOf("{"),
-          response.data.lastIndexOf("}") + 1
+        const res = JSON.parse(decryptData(response?.data));
+        const jsonString = res.substring(
+          res.indexOf("{"),
+          res.lastIndexOf("}") + 1
         );
         const getData = JSON.parse(jsonString);
         setData(getData?.datas);
@@ -76,7 +76,7 @@ export default function ExploreTemplates({ category, getAll }: any) {
           }}
           className="text-[25px] sm:text-[36px]"
         >
-          Start Explore Templates :
+          Start Explore {keyword ?? "Templates"}
         </Typography>
 
         <Typography
@@ -89,7 +89,7 @@ export default function ExploreTemplates({ category, getAll }: any) {
             mb: "40px",
           }}
         >
-          Get a head start with fully customizable templates
+          Get a head start with fully customizable {keyword ?? "templates"}
         </Typography>
 
         <StackGrid columnWidth={screenWidth / multiSizeFixSize}>

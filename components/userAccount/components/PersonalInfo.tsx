@@ -1,3 +1,4 @@
+import { decryptData } from "@/aes-crypto";
 import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
@@ -19,6 +20,7 @@ export default function PersonalInfo() {
     photo_uri: null,
   });
 
+  console.log("accountDetail: ", accountDetail);
   useEffect(() => {
     setAccountDetail({
       ...accountDetail,
@@ -47,39 +49,38 @@ export default function PersonalInfo() {
 
   const fetchData = async () => {
     axios
-      .post("/api/getUserData", {
-        email: uId,
-      })
+      .post("/api/getUserData")
       .then(({ data }: any) => {
-        setImageBaseUrl(data?.url);
-        setUserProfile(data?.user);
+        const data2 = JSON.parse(decryptData(data));
+        console.log("data2: ", data2);
+        setImageBaseUrl(data2?.url);
+        setUserProfile(data2?.user);
       })
       .catch((err: any) => {
-        console.log("err: ", err);
+        // console.log("err: ", err);
       });
   };
 
   useEffect(() => {
     fetchData();
-  }, [uId]);
+  }, []);
 
   const updateFetchData = (event: any) => {
     const formData = new FormData();
-    formData.append("key", "qwfsegxdhbxfjhncf");
     formData.append("name", accountDetail?.name);
-    formData.append("user_id", accountDetail?.user_id);
     formData.append("updateDp", accountDetail?.updateDp);
-    formData.append("photo_uri", accountDetail?.photo_uri);
+    formData.append("file", accountDetail?.photo_uri);
 
     setLoading(true);
 
     axios
-      .post("/api2/templates/api/V3/updateUser", formData, {
+      .post("/api/updateUser", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then((response) => {
+        console.log("responsedscds: ", response);
         setTimeout(() => {
           fetchData();
           toast.success("User updated successfully");
@@ -88,7 +89,7 @@ export default function PersonalInfo() {
         }, 1000);
       })
       .catch((error) => {
-        console.log("error: ", error);
+        // console.log("error: ", error);
       });
   };
 

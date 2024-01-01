@@ -14,6 +14,7 @@ import PersonalInfo from "./components/PersonalInfo";
 import Subscription from "./components/Subscription";
 import PaymentHistory from "./components/PaymentHistory";
 import Icons from "@/assets";
+import { decryptData } from "@/aes-crypto";
 
 export const sidebarMenu = [
   {
@@ -43,32 +44,25 @@ export default function Account({ defaultTab }: any) {
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
   const [activeTab, setActiveTab] = useState<any>(defaultTab);
   const [currentPlan, setCurrentPlan] = useState<any>();
-  const [loading, setLoading] = useState<any>(true);
   console.log("currentPlan: ", currentPlan);
+  const [loading, setLoading] = useState<any>(true);
   const screenHeight = useScreenHeight();
 
-  const fetchData = async () => {
+  useEffect(() => {
     axios
-      .post("/api/getUserData", {
-        email: getData,
-      })
-      .then(({ data }) => {
-        tokenSet("premium", data?.user?.is_premium === 1 ? "true" : "false");
-        userPremium(`${data?.user?.is_premium}`);
+      .get("/api/getUserData")
+      .then(({ data }: any) => {
+        const data2 = JSON.parse(decryptData(data));
+        tokenSet("premium", data2?.user?.is_premium === 1 ? "true" : "false");
+        userPremium(`${data2?.user?.is_premium}`);
 
-        setImageBaseUrl(data?.url);
-        setUserProfile(data?.user);
+        setImageBaseUrl(data2?.url);
+        setUserProfile(data2?.user);
       })
       .catch((err) => {
-        console.log("err: ", err);
+        // console.log("err: ", err);
       });
-  };
-
-  useEffect(() => {
-    if (getData == "") {
-      setUserProfile(null);
-    } else fetchData();
-  }, [getData]);
+  }, []);
 
   const ProfileImage = () => {
     return userProfile?.photo_uri !== "null" && userProfile?.photo_uri ? (
@@ -115,20 +109,13 @@ export default function Account({ defaultTab }: any) {
 
   useEffect(() => {
     axios
-      .post(
-        "/api1/my-currentPlan",
-        {
-          key: "qwfsegxdhbxfjhncf",
-          user_id: getData,
-        },
-        { withCredentials: false }
-      )
+      .post("/api/currentPlan")
       .then((response: any) => {
         setLoading(false);
-        console.log("response: ", response);
-        const jsonString = response?.data?.substring(
-          response?.data?.indexOf("{"),
-          response?.data?.lastIndexOf("}") + 1
+        const res: any = JSON.parse(decryptData(response?.data));
+        const jsonString = res.substring(
+          res.indexOf("{"),
+          res.lastIndexOf("}") + 1
         );
         const getDatas = JSON.parse(jsonString);
         setCurrentPlan(getDatas);

@@ -51,19 +51,15 @@ export default function LoginPlatform() {
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider).then((data) => {
       const userData: any = data?.user;
+      console.log("userData: ", userData);
 
       dispatch(
         createUserApi(
           {
-            key: "qwfsegxdhbxfjhncf",
-            user_id: userData?.uid,
             name: userData?.displayName,
             email: userData?.email,
             photo_uri: userData?.photoURL,
-            login_type: "google",
-            device_id: "",
-            utm_medium: "craftyart",
-            utm_source: "craftyart",
+            user_id: userData?.uid,
           },
           router
         )
@@ -77,22 +73,6 @@ export default function LoginPlatform() {
         <Icons.googleIcon />
         Continue with Google
       </LoginButton>
-      {/* <LoginButton>
-        <img
-          src="/icons/facebookLogin.svg"
-          alt="facebookLogin"
-          className="w-[24px] h-[24px]"
-        />
-        Continue with Facebook
-      </LoginButton>
-      <LoginButton>
-        <img
-          src="/icons/mobileLogin.svg"
-          alt="mobileLogin"
-          className="w-[24px] h-[24px]"
-        />
-        Log in with Mobile
-      </LoginButton> */}
     </Box>
   );
 }

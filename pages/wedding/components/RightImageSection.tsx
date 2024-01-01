@@ -1,5 +1,6 @@
 import { authCookiesGet } from "@/redux/action/AuthToken";
 import { Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -51,7 +52,15 @@ export default function RightImageSection({
           </Box>
         </Box>
         <Box className="flex-1  flex justify-center">
-          <img src={image} alt={alt} className="object-contain w-[500px]" />
+          <Image
+            src={image}
+            alt={alt}
+            className="object-contain w-[500px] max-sm:w-[90%] "
+            width={500}
+            height={500}
+            quality={80}
+            priority={true}
+          />
         </Box>
       </Box>
     </Box>

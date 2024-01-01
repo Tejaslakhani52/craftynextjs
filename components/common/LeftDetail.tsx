@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -8,16 +9,21 @@ export default function LeftDetail({
   image,
   buttonName,
   path,
+  alt,
 }: any) {
   const router = useRouter();
   return (
     <Box className="  bg-[#F4F7FE]  ">
       <Box className="flex py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
         <Box className="flex-1 flex justify-center ">
-          <img
+          <Image
             src={image}
-            alt={image}
+            alt={alt}
             className="object-contain w-[450px] max-sm:w-[90%] "
+            width={500}
+            height={500}
+            quality={80}
+            priority={true}
           />
         </Box>
         <Box className="flex-1 flex justify-center py-[30px]  max-lg:pb-0  max-lg:w-[100%]">

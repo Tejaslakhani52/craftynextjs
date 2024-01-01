@@ -57,7 +57,7 @@ export default function index() {
                   name: "4. How much should I expect to pay for a logo design?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design, and the level of customization required. Generally, you can expect to pay anywhere between $1 to $1000 for a professional logo design.",
+                    text: "The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design, and the level of customization required. Generally, you can expect to pay anywhere between ₹1 to ₹1000 for a professional logo design.",
                   },
                 },
                 {
@@ -145,7 +145,11 @@ export default function index() {
         image="https://assets.craftyart.in/w_assets/images/logoStunning.png"
       />
 
-      <ExploreTemplates category="logo" getAll="/templates/logos" />
+      <ExploreTemplates
+        category="logo"
+        getAll="/templates/logos"
+        keyword="Logo"
+      />
 
       <Box className="py-[50px]">
         <Typography
@@ -349,7 +353,7 @@ covered."
         <FaqsBox
           heading="4. How much should I expect to pay for a logo design?"
           text="The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design,
-          and the level of customization required. Generally, you can expect to pay anywhere between $1 to $1000 for a
+          and the level of customization required. Generally, you can expect to pay anywhere between ₹1 to ₹1000 for a
           professional logo design."
         />
         <FaqsBox

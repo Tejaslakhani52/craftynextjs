@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
+import { decryptData, encryptData } from "@/aes-crypto";
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,17 +20,19 @@ export default async function handler(
       return;
     }
 
+    const cookieValue = req.cookies;
+
     const response = await axios.post<any>(
       `https://panel.craftyartapp.com/templates/api/mdraft`,
       {
         key: "qwfsegxdhbxfjhncf",
         id: req.body.id,
-        user_id: req.body.user_id,
+        user_id: decryptData(cookieValue._sdf),
         type: req.body.type,
       }
     );
 
-    res.status(200).json(response.data);
+    res.status(200).json(encryptData(JSON.stringify(response.data)));
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

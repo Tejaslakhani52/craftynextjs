@@ -9,12 +9,18 @@ import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
+import CustomHead from "@/components/common/CustomHead";
 
 export default function index() {
   const router = useRouter();
 
   return (
     <div>
+      <CustomHead
+        image="https://assets.craftyart.in/w_assets/images/marketingCatching.png"
+        heading="Style Kit - Modern & Versatile Graphic Design Styles | Crafty Art App"
+        text="Discover graphic design tool's comprehensive style kit, curated with versatile color palettes, elegant typography, and cohesive design elements."
+      />
       <Box
         sx={{
           background: "#BEE1BF",

@@ -2,6 +2,7 @@ import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
+import { decryptData } from "@/aes-crypto";
 
 const loadScript = (src: any) => {
   return new Promise((resolve) => {
@@ -31,16 +32,16 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
     setOpen(false);
 
     const formData = new FormData();
-    formData.append("user_id", uId ?? "");
     formData.append("packageId", selectPaln?.id ?? "");
     formData.append("packageName", selectPaln?.package_name ?? "");
     formData.append("rate", selectPaln?.price ?? "");
     formData.append("currency", selectPaln?.currency ?? "");
 
     axios
-      .post("/ap3/payment/web_razorpay", formData)
-      .then((res: any) => {
-        const rzp = new (window as any).Razorpay(res.data);
+      .post("/api/razorPay", formData)
+      .then((response: any) => {
+        const res = JSON.parse(decryptData(response?.data));
+        const rzp = new (window as any).Razorpay(res);
 
         if (rzp) {
           setLoading(false);
@@ -57,7 +58,7 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
         });
       })
       .catch((error: any) => {
-        console.log("error: ", error);
+        // console.log("error: ", error);
       });
   };
   return (

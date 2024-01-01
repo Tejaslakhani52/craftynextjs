@@ -17,7 +17,7 @@ export default function index() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/qoutesDesign.png"
         heading={
-          "Best Practices for Designing Quotes Posts that  Engage Your Audience"
+          "Best Practices for Designing Quotes Posts that Engage Your Audience"
         }
         text="Tips and Techniques for Crafting Distinctive and Memorable Quotes Posts"
       />
@@ -146,7 +146,11 @@ export default function index() {
         path="/templates/quotes-post-square"
         image="https://assets.craftyart.in/w_assets/images/qoutesTrending.png"
       />
-      {/*  */} <ExploreTemplates getAll={"/templates/quotes-post-square"} />
+      {/*  */}{" "}
+      <ExploreTemplates
+        getAll={"/templates/quotes-post-square"}
+        keyword="Quotes"
+      />
       <RightImageSection
         title="Transform Your Instagram Presence with
         Powerful Quotes"

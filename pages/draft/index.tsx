@@ -12,6 +12,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { Divider } from "@mui/material";
 import toast from "react-hot-toast";
+import { decryptData } from "@/aes-crypto";
 
 const DraftBoxes = ({
   item,
@@ -61,11 +62,9 @@ const DraftBoxes = ({
     axios
       .post("/api/draftAction", {
         id: id,
-        user_id: user_id,
         type: "0",
       })
       .then((res: any) => {
-        console.log("moveTrash: ", res);
         setRemoveId(id);
         toast.success("Design moved to trash");
       });
@@ -194,7 +193,6 @@ const DraftBoxes = ({
 
 export default function index() {
   const dispatch = useDispatch();
-
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const user_id = authCookiesGet();
   const screenHeight = useScreenHeight();
@@ -230,30 +228,24 @@ export default function index() {
   console.log("multiSize: ", multiSize);
 
   useEffect(() => {
-    if (user_id) {
-      setLoadMore(true);
+    setLoadMore(true);
+    axios
+      .post(`/api/getDrafts`, {
+        type: "0",
+        page: page,
+      })
+      .then((response: any) => {
+        const res: any = JSON.parse(decryptData(response?.data));
 
-      axios
-        .post(`/api/getDrafts`, {
-          user_id: user_id,
-          type: "0",
-          page: page,
-        })
-        .then((res: any) => {
-          console.log("res: ", res);
-          setLoadMore(false);
+        setLoadMore(false);
 
-          if (res?.data?.datas.length > 0) {
-            setDraftData((prevData: any) => [
-              ...(prevData || []),
-              ...res?.data?.datas,
-            ]);
-            setIsLastPage(res?.data?.isLastPage);
-          }
-        })
-        .catch((err: any) => console.log("err: ", err));
-    }
-  }, [user_id, page]);
+        if (res?.datas.length > 0) {
+          setDraftData((prevData: any) => [...(prevData || []), ...res?.datas]);
+          setIsLastPage(res?.isLastPage);
+        }
+      })
+      .catch((err: any) => console.log("err: ", err));
+  }, [page]);
 
   return (
     <div className="px-[15px]">

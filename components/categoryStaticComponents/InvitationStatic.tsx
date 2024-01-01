@@ -110,12 +110,12 @@ export default function InvitationStatic() {
                 variant="h2"
                 className="text-[#1C3048] text-[30px] max-sm:text-[25px] font-[600] mb-4"
               >
-                Why Choose CraftyArt For Invitation Designs ?
+                Why Choose Crafty Art For Invitation Designs ?
               </Typography>
 
               <FaqsBox
                 heading="Creativity and Uniqueness:"
-                text="CraftyArt offers creative and unique invitation card designs."
+                text="Crafty Art offers creative and unique invitation card designs."
               />
 
               <FaqsBox
@@ -299,7 +299,7 @@ export default function InvitationStatic() {
           What are Customers Saying about Craftyart
         </Typography>
         <Typography className="text-center">
-          Craftyart has a proven track record of delivering efficiency, results
+          Crafty Art has a proven track record of delivering efficiency, results
           and excellent customer service.
         </Typography>
 
@@ -398,13 +398,13 @@ export default function InvitationStatic() {
           <Box sx={{ p: "20px" }}></Box>
 
           <FaqsBox
-            heading="Why choose CraftyArt for invitation card designs?"
-            text="CraftyArt offers a unique blend of creativity, quality, and customization in every design."
+            heading="Why choose Crafty Art for invitation card designs?"
+            text="Crafty Art offers a unique blend of creativity, quality, and customization in every design."
           />
 
           <FaqsBox
             heading="Can I customize my invitation cards?"
-            text="Yes, CraftyArt specializes in customization, allowing you to personalize colors, themes, and details."
+            text="Yes, Crafty Art specializes in customization, allowing you to personalize colors, themes, and details."
           />
 
           <FaqsBox
@@ -419,7 +419,7 @@ export default function InvitationStatic() {
 
           <FaqsBox
             heading="Do you offer bulk discounts?"
-            text="Yes, CraftyArt provides competitive pricing and discounts for bulk orders."
+            text="Yes, Crafty Art provides competitive pricing and discounts for bulk orders."
           />
         </Box>
       </Box>
@@ -427,7 +427,7 @@ export default function InvitationStatic() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/InvitationC/img7.png"
         heading={
-          "Create Stunning Invitation Cards with Our Elegant Templates | Customize for Every Occasion        "
+          "Create Stunning Invitation Cards with Our Elegant Templates | Customize for Every Occasion"
         }
         text="Create unforgettable moments with our stylish invitation card templates. Perfect for weddings, birthdays, and more. Customize with ease and celebrate in unique style. Start designing now!"
       />
@@ -442,10 +442,10 @@ export default function InvitationStatic() {
               mainEntity: [
                 {
                   "@type": "Question",
-                  name: "1. Why choose CraftyArt for invitation card designs?",
+                  name: "1. Why choose Crafty Art for invitation card designs?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "CraftyArt offers a unique blend of creativity, quality, and customization in every design.",
+                    text: "Crafty Art offers a unique blend of creativity, quality, and customization in every design.",
                   },
                 },
                 {
@@ -453,7 +453,7 @@ export default function InvitationStatic() {
                   name: "2. Can I customize my invitation cards?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Yes, CraftyArt specializes in customization, allowing you to personalize colors, themes, and details.",
+                    text: "Yes, Crafty Art specializes in customization, allowing you to personalize colors, themes, and details.",
                   },
                 },
                 {
@@ -477,7 +477,7 @@ export default function InvitationStatic() {
                   name: "5. Do you offer bulk discounts?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Yes, CraftyArt provides competitive pricing and discounts for bulk orders.",
+                    text: "Yes, Crafty Art provides competitive pricing and discounts for bulk orders.",
                   },
                 },
               ],

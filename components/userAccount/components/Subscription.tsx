@@ -24,13 +24,13 @@ export default function Subscription({ userSubscription }: any) {
             className="w-[300px] mb-5"
           />
           <h3 className="text-[18px] pt-5 pb-5 text-[#1C3048] font-medium">
-            Upgrade your CraftyArt account now !
+            Upgrade your Crafty Art account now !
           </h3>
 
           <Typography className="text-center text-[#ABB2C7] mb-8">
             With no ads and full access to all new content, features and cutting
-            edge image processing tech, your CraftyArt experience has never been
-            so good!
+            edge image processing tech, your Crafty Art experience has never
+            been so good!
           </Typography>
 
           <Button className="bg_linear h-[40px] normal-case px-[50px] text-white">

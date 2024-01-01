@@ -73,8 +73,8 @@ export default function index() {
         />
       </Head>
       <GetStartedLinearBanner
-        heading={"Crafting a Winning Resume: Tips and  Best Practices"}
-        text="Take your career to the next level with a professional, well-crafted resume."
+        heading={"Welcome to Our Source of Professional Resume Templates!"}
+        text="Create an impressive resume that shows you're the perfect fit for the job you want in just a few minutes by using our Resume Template Designs!"
         buttonName="Get Started"
         navigate="/templates/resume-portrait"
         image={
@@ -137,7 +137,11 @@ export default function index() {
         path="/templates/resume-portrait"
         image="https://assets.craftyart.in/w_assets/images/resumeUnique.png"
       />
-      {/*  */} <ExploreTemplates getAll={"/templates/resume-portrait"} />
+      {/*  */}{" "}
+      <ExploreTemplates
+        getAll={"/templates/resume-portrait"}
+        keyword="Resume"
+      />
       <RightImageSection
         title="Why Choose Our Resume
         Templates?"

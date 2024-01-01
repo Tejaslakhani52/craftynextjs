@@ -22,7 +22,7 @@ export default function ForgotPass(props: any) {
   const router = useRouter();
   const [enterNewPass, setEnterNewPass] = useState<boolean>(false);
   const [process, setProcess] = useState<boolean>(false);
-  const [emailPassword, setemailPassword] = useState<any>({
+  const [emailPassword, setEmailPassword] = useState<any>({
     email: "",
     password: "",
   });
@@ -138,7 +138,7 @@ export default function ForgotPass(props: any) {
             <Password
               label="New Password"
               onChange={(e: any) =>
-                setemailPassword({
+                setEmailPassword({
                   ...emailPassword,
                   password: e.target.value,
                 })
@@ -149,7 +149,7 @@ export default function ForgotPass(props: any) {
               label="Email"
               value={emailPassword?.email}
               onChange={(e: any) =>
-                setemailPassword({
+                setEmailPassword({
                   ...emailPassword,
                   email: e.target.value,
                 })

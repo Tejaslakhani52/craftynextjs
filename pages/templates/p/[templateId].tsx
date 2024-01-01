@@ -17,6 +17,7 @@ import {
 import { Box, Skeleton, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -481,7 +482,8 @@ export default function templateId({ templateData, anotherData }: any) {
                                 <Icons.proIcon svgProps={{ width: 28 }} />
                               </span>
                             )}
-                            <img
+
+                            <Image
                               src={templates?.template_thumb}
                               alt={templates?.category_name}
                               className={`w-full] rounded-[5px] cursor-pointer`}
@@ -489,6 +491,10 @@ export default function templateId({ templateData, anotherData }: any) {
                                 border: "1px solid #80808082",
                                 height: "100%",
                               }}
+                              width={200}
+                              height={200}
+                              quality={80}
+                              priority={true}
                             />
                           </div>
                         </div>

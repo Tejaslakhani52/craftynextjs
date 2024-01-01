@@ -1,3 +1,4 @@
+import { decryptData } from "@/aes-crypto";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
@@ -24,6 +25,7 @@ import axios from "axios";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { resolve } from "path";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
@@ -82,7 +84,7 @@ export default function index() {
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = React.useState(true);
   const [notFound, setNotFound] = useState<any>(false);
-  const [loadMore, setLoadMore] = useState<any>(false);
+  const [loadMore, setLoadMore] = useState<any>(true);
   const [isLastPage, setIsLastPage] = useState<any>();
   const userLoginStatus = authCookiesGet();
   const tempIdValue = useSelector((state: any) => state.actions.tempId);
@@ -94,28 +96,26 @@ export default function index() {
         cat_id: "latest",
         page: page,
       })
-      .then((res: any) => {
+      .then((response: any) => {
+        const res: any = JSON.parse(decryptData(response?.data));
         setLoadMore(false);
-        setIsLastPage(res?.data?.isLastPage);
+        setIsLastPage(res?.isLastPage);
         setContentData(otherData.latestMeta);
 
-        setIsNotFix(res?.data?.cat_id >= 0);
-        setNotFound(res?.data?.status === 500 ? true : false);
+        setIsNotFix(res?.cat_id >= 0);
+        setNotFound(res?.status === 500 ? true : false);
 
-        if (id?.page > res?.data?.total_pages || id?.page < 0) {
+        if (id?.page > res?.total_pages || id?.page < 0) {
           setNotFound(true);
         }
 
-        if (res?.data?.datas) {
+        if (res?.datas) {
           setIsLoading(false);
 
-          setData((prevData: any) => [
-            ...(prevData || []),
-            ...res?.data?.datas,
-          ]);
+          setData((prevData: any) => [...(prevData || []), ...res?.datas]);
         }
 
-        if (res?.data?.status === 500) {
+        if (res?.status === 500) {
           setIsLoading(false);
         }
       })
@@ -162,10 +162,7 @@ export default function index() {
 
   return (
     <>
-      {isLoading && <DashBoardSkelton height={height} />}
-      {notFound && <NotFound />}
-
-      {!isLoading && (
+      {true && (
         <Box>
           {" "}
           <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
@@ -235,22 +232,6 @@ export default function index() {
                   Elevate your designs with ease and stay ahead in the world of
                   visual aesthetics
                 </Typography>
-
-                <Button
-                  style={{
-                    backgroundColor: "white",
-                    width: "162px",
-                    textTransform: "unset",
-                    boxShadow: " 2px 2px 4px rgba(0, 0, 0, 0.15)",
-                    border: "none",
-                    padding: "8px 10px",
-                    borderRadius: "10px",
-                    fontSize: "16px",
-                    fontWeight: "500",
-                  }}
-                >
-                  <span className="text_linear">Start Design</span>
-                </Button>
               </Box>
               <Box
                 sx={{
@@ -275,43 +256,44 @@ export default function index() {
                 </Box>
               </Box>
             </Box>
+            <Box className="min-h-[800px]">
+              <StackGrid
+                columnWidth={screenWidth / multiSizeFixSize}
+                duration={0}
+              >
+                {data?.map((templates: any, index: number) => (
+                  <ImageBox
+                    templates={templates}
+                    screenWidth={screenWidth}
+                    multiSizeFixSize={multiSizeFixSize}
+                    setIdName={setIdName}
+                    setOpenModal={setOpenModal}
+                  />
+                ))}
+              </StackGrid>
 
-            <StackGrid
-              columnWidth={screenWidth / multiSizeFixSize}
-              duration={0}
-            >
-              {data?.map((templates: any, index: number) => (
-                <ImageBox
-                  templates={templates}
-                  screenWidth={screenWidth}
-                  multiSizeFixSize={multiSizeFixSize}
-                  setIdName={setIdName}
-                  setOpenModal={setOpenModal}
-                />
-              ))}
-            </StackGrid>
-
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                padding: "40px 0",
-              }}
-            >
-              {loadMore ? (
-                <Box className="text_linear font-[700 text-[20px]">
-                  Loading....
-                </Box>
-              ) : (
-                <Button
-                  className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-                  sx={{ display: isLastPage ? "none" : "block" }}
-                  onClick={() => setPage((prev) => prev + 1)}
-                >
-                  LOAD MORE
-                </Button>
-              )}
-            </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "40px 0",
+                }}
+              >
+                {loadMore ? (
+                  <Box className="text_linear font-[700 text-[20px]">
+                    Loading....
+                  </Box>
+                ) : (
+                  <Button
+                    className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
+                    sx={{ display: isLastPage ? "none" : "block" }}
+                    onClick={() => setPage((prev) => prev + 1)}
+                  >
+                    LOAD MORE
+                  </Button>
+                )}
+              </div>
+            </Box>
           </Box>
           <div>
             <Box className="py-[70px] px-[15px]">
@@ -456,7 +438,7 @@ export default function index() {
                 What are Customers Saying about Craftyart
               </Typography>
               <Typography className="text-center">
-                Craftyart has a proven track record of delivering efficiency,
+                Crafty Art has a proven track record of delivering efficiency,
                 results and excellent customer service.
               </Typography>
 

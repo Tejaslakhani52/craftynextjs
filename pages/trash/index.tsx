@@ -17,6 +17,8 @@ import { useTheme } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import { decryptData } from "@/aes-crypto";
+import Image from "next/image";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -106,11 +108,9 @@ const DraftBoxes = ({
     axios
       .post("/api/draftAction", {
         id: id,
-        user_id: user_id,
         type: "2",
       })
       .then((res: any) => {
-        console.log("moveTrash: ", res);
         setRemoveId(id);
       });
   };
@@ -119,11 +119,9 @@ const DraftBoxes = ({
     axios
       .post("/api/draftAction", {
         id: id,
-        user_id: user_id,
         type: "1",
       })
       .then((res: any) => {
-        console.log("moveTrash: ", res);
         toast.success("Moved to your project");
         setRemoveId(id);
       });
@@ -327,11 +325,9 @@ const DraftBoxesTab2 = ({
     axios
       .post("/api/uploadAction", {
         id: id,
-        user_id: user_id,
         type: "2",
       })
       .then((res: any) => {
-        console.log("moveTrash: ", res);
         setRemoveId(id);
       });
   };
@@ -340,11 +336,9 @@ const DraftBoxesTab2 = ({
     axios
       .post("/api/uploadAction", {
         id: id,
-        user_id: user_id,
         type: "1",
       })
       .then((res: any) => {
-        console.log("moveTrash: ", res);
         toast.success("Moved to your upload");
         setRemoveId(id);
       });
@@ -528,54 +522,51 @@ export default function index() {
   console.log("multiSize: ", multiSize);
 
   useEffect(() => {
-    if (user_id) {
-      setLoadMore(true);
+    setLoadMore(true);
 
-      axios
-        .post(`/api/getDrafts`, {
-          user_id: user_id,
-          type: "1",
-          page: designPage,
-        })
-        .then((res: any) => {
-          setLoadMore(false);
-          if (res?.data?.datas.length > 0) {
-            setDesignTrash((prevData: any) => [
-              ...(prevData || []),
-              ...res?.data?.datas,
-            ]);
-            setIsLastDesignPage(res?.data?.isLastPage);
-          } else setDesignTrash(null);
-        })
-        .catch((err: any) => console.log("err: ", err));
-    }
-  }, [user_id, designPage]);
+    axios
+      .post(`/api/getDrafts`, {
+        type: "1",
+        page: designPage,
+      })
+      .then((response: any) => {
+        const res: any = JSON.parse(decryptData(response?.data));
+
+        setLoadMore(false);
+        if (res?.datas.length > 0) {
+          setDesignTrash((prevData: any) => [
+            ...(prevData || []),
+            ...res?.datas,
+          ]);
+          setIsLastDesignPage(res?.isLastPage);
+        } else setDesignTrash(null);
+      })
+      .catch((err: any) => console.log("err: ", err));
+  }, [designPage]);
 
   useEffect(() => {
-    if (user_id) {
-      setLoadMore2(true);
-      axios
-        .post(`/api/getUploads`, {
-          key: "qwfsegxdhbxfjhncf",
-          user_id: user_id,
-          type: "1",
-          page: imagesPage,
-        })
-        .then((res: any) => {
-          console.log("Imagesres:", res);
-          setLoadMore2(false);
-          if (res?.data?.datas.length > 0) {
-            setImagesTrash((prevData: any) => [
-              ...(prevData || []),
-              ...res?.data?.datas,
-            ]);
+    setLoadMore2(true);
+    axios
+      .post(`/api/getUploads`, {
+        key: "qwfsegxdhbxfjhncf",
+        type: "1",
+        page: imagesPage,
+      })
+      .then((response: any) => {
+        const res = JSON.parse(decryptData(response?.data));
 
-            setIsLastImagesPage(res?.data?.isLastPage);
-          } else setImagesTrash(null);
-        })
-        .catch((err: any) => console.log("err: ", err));
-    }
-  }, [user_id, imagesPage]);
+        setLoadMore2(false);
+        if (res?.data?.datas.length > 0) {
+          setImagesTrash((prevData: any) => [
+            ...(prevData || []),
+            ...res?.data?.datas,
+          ]);
+
+          setIsLastImagesPage(res?.data?.isLastPage);
+        } else setImagesTrash(null);
+      })
+      .catch((err: any) => console.log("err: ", err));
+  }, [imagesPage]);
 
   return (
     <div className="px-[15px]">

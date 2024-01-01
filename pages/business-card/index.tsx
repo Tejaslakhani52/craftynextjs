@@ -19,8 +19,7 @@ export default function index() {
         heading={
           "Business Card Maker Online - Design Professional Cards for Business"
         }
-        text="Elevate your small business with Crafty Art's free business card maker. Explore digital and online options, browse templates, and design professional cards effortlessly.
-        "
+        text="Elevate your small business with Crafty Art's free business card maker. Explore digital and online options, browse templates, and design professional cards effortlessly."
       />
 
       <Head>
@@ -81,7 +80,7 @@ export default function index() {
         heading={"Design professional business cards with business card maker"}
         text="Create a lasting impression with our Business Card Template! Elevate your professional identity with a sleek design that showcases your brand. Easily customize details, fonts, and colors for a personalized touch. Make networking memorable and leave a lasting impact."
         buttonName="Get Started"
-        navigate="/s/business-card"
+        navigate="/templates/business-cards"
         image={
           <Box sx={{ width: "500px" }}>
             <img
@@ -109,7 +108,7 @@ export default function index() {
         }
         buttonName={"Design your Card"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCardDesign.png"
       />
 
@@ -127,7 +126,7 @@ export default function index() {
         }
         buttonName={"Create Your Business Card"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCardCreate.png"
       />
 
@@ -145,11 +144,15 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCardTrending.png"
       />
 
-      <ExploreTemplates category="business card" getAll="/s/business-card" />
+      <ExploreTemplates
+        category="business card"
+        getAll="/templates/business-cards"
+        keyword="Business Card"
+      />
 
       <RightImageSection
         title="Craft Your Professional Identity with
@@ -165,7 +168,7 @@ export default function index() {
         }
         buttonName={"Create Your Business Card"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard.png"
       />
 
@@ -182,7 +185,7 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard2.png"
       />
 
@@ -199,7 +202,7 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard3.png"
       />
 
@@ -217,7 +220,7 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard4.png"
       />
 
@@ -235,7 +238,7 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard5.png"
       />
 
@@ -252,7 +255,7 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard6.png"
       />
 
@@ -270,7 +273,7 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard7.png"
       />
 
@@ -287,7 +290,7 @@ export default function index() {
         }
         buttonName={"Explore Cards"}
         alt="business card maker"
-        path="/s/business-card"
+        path="/templates/business-cards"
         image="https://assets.craftyart.in/w_assets/images/bussinessCard8.png"
       />
 
@@ -296,7 +299,7 @@ export default function index() {
       <GetTemplates
         heading="Get Started Now and Create Your Professional Business Card Today!"
         text="Your business card is your first impression – Make it count by creating your own today!"
-        navigate="/s/business-card"
+        navigate="/templates/business-cards"
       />
 
       <Box

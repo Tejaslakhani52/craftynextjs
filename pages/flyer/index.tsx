@@ -42,7 +42,7 @@ export default function index() {
                   name: "2. Where can I find flyer templates?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Our online flyer maker offers a wide range of free templates that you can customise to create a unique and personalised invitation.",
+                    text: "Crafty Art flyer maker offers a wide range of free templates that you can customise to create a unique and personalised invitation.",
                   },
                 },
 
@@ -79,8 +79,7 @@ export default function index() {
       </Head>
       <GetStartedLinearBanner
         heading={"Stand out from the crowd with our unique flyers"}
-        text="Unlock creativity with our vibrant flyer templates! From sleek corporate events to lively parties, our designs cater to every occasion. Easily customize and captivate your audience with eye-catching visuals. Make your message stand out effortlessly!
-        "
+        text="Unlock creativity with our vibrant flyer templates! From sleek corporate events to lively parties, our designs cater to every occasion. Easily customize and captivate your audience with eye-catching visuals."
         buttonName="Get Started"
         navigate="/templates/flyer"
         image={
@@ -203,7 +202,7 @@ limited design experience."
         image="https://assets.craftyart.in/w_assets/images/flyerTemplate.png"
       />
 
-      <ExploreTemplates getAll={"/templates/flyer"} />
+      <ExploreTemplates getAll={"/templates/flyer"} keyword="Flyer" />
 
       <LeftImageSection
         title="Get Started with Flyer Templates
@@ -346,7 +345,7 @@ backgrounds."
 
         <FaqsBox
           heading="2. Where can I find flyer templates?"
-          text="Our online flyer maker offers a wide range of free templates that you can customise to create a unique and personalised invitation."
+          text="Crafty Art flyer maker offers a wide range of free templates that you can customise to create a unique and personalised invitation."
         />
 
         <FaqsBox

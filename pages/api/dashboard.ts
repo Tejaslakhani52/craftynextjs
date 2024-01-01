@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
+import { encryptData } from "@/aes-crypto";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
-  console.log("req: ", req);
   try {
     if (req.method !== "POST") {
       res.status(500).json({ error: "Internal Server Error" });
@@ -21,9 +21,7 @@ export default async function handler(
       }
     );
 
-    console.log("response: ", response);
-
-    res.status(200).json(response.data.datas);
+    res.status(200).json(encryptData(JSON.stringify(response.data.datas)));
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

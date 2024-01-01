@@ -5,3 +5,4 @@ Disallow: /craftyartapp.com/s/
 Disallow: /craftyartapp.com/upload/
 Disallow: /craftyartapp.com/trash/
 Disallow: /craftyartapp.com/draft/
+Disallow: /craftyartapp.com/your-account/

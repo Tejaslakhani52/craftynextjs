@@ -10,7 +10,7 @@ export default function CustomHead({ image, robots, text, heading, faq }: any) {
       <meta name="description" content={text} />
       <meta property="og:description" content={text} />
       <meta property="og:image" content={image} />
-      <meta property="og:image:alt" content={"craftyArt Image"} />
+      <meta property="og:image:alt" content={"Crafty Art Image"} />
     </Head>
   );
 }

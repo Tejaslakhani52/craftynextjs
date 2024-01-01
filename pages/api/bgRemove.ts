@@ -1,8 +1,31 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
+import { decryptData, encryptData } from "@/aes-crypto";
+import multer from "multer";
+
+function runMiddleware(
+  req: NextApiRequest & { [key: string]: any },
+  res: NextApiResponse,
+  fn: (...args: any[]) => void
+): Promise<void> {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result: any) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+      return resolve(result);
+    });
+  });
+}
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 export default async function handler(
-  req: NextApiRequest,
+  req: NextApiRequest & { [key: string]: any },
   res: NextApiResponse<any>
 ) {
   try {
@@ -18,23 +41,33 @@ export default async function handler(
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
-    if (req.body.user_id && req.body.file) {
-      const formData = new FormData();
-      formData.append("user_id", req.body.user_id);
-      formData.append("file", req.body.file);
 
-      const response = await axios.post<any>(
-        `https://bgremover.craftyartapp.com/api/removebg`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+    const multerUpload = multer();
+    await runMiddleware(req, res, multerUpload.single("file"));
 
-      res.status(200).json(response.data);
+    const cookieValue = req.cookies;
+    const userId = decryptData(cookieValue._sdf);
+
+    const formData = new FormData();
+    formData.append("user_id", userId);
+    if (req.file) {
+      const fileBlob = new Blob([req.file.buffer], { type: req.file.mimetype });
+      formData.append("file", fileBlob, req.file.originalname);
     }
+
+    const response = await axios.post<any>(
+      `https://bgremover.craftyartapp.com/api/removebg`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        responseType: "blob",
+      }
+    );
+    console.log("apiRes: ", response);
+
+    res.status(200).json(encryptData(JSON.stringify(response.data)));
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

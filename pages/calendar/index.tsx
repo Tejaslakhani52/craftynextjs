@@ -16,9 +16,7 @@ export default function index() {
     <>
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/calendarDesign.png"
-        heading={
-          "Create Personalized Calendars with Our Custom Calendar Maker          "
-        }
+        heading={"Create Personalized Calendars with Our Custom Calendar Maker"}
         text="Design your own unique calendars effortlessly with our custom calendar maker. Choose themes, add photos, and personalize dates for a truly one-of-a-kind calendar experience."
       />
 
@@ -152,7 +150,7 @@ export default function index() {
         image="https://assets.craftyart.in/w_assets/images/calendarTrending.png"
       />
 
-      <ExploreTemplates getAll={"/templates/calendar"} />
+      <ExploreTemplates getAll={"/templates/calendar"} keyword="Calendar" />
 
       <RightImageSection
         title="Unlock Your Creativity with Our Free Calendar Maker!

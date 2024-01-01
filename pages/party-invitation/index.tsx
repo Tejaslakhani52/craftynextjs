@@ -148,6 +148,7 @@ export default function index() {
       <ExploreTemplates
         category="party celebration"
         getAll="/s/party-celebration"
+        keyword="Party Celebration"
       />
 
       <RightImageSection

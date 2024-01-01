@@ -149,7 +149,11 @@ export default function index() {
         image="https://assets.craftyart.in/w_assets/images/bridalMinute.png"
       />
 
-      <ExploreTemplates category="bridal Shower" getAll={"/s/bridal-Shower"} />
+      <ExploreTemplates
+        category="bridal Shower"
+        getAll={"/s/bridal-Shower"}
+        keyword="Bridal Shower"
+      />
 
       <RightImageSection
         title="Elegant Bridal Shower Invitations for Your Celebration"

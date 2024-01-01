@@ -1,3 +1,4 @@
+import CustomHead from "@/components/common/CustomHead";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { Box, Typography } from "@mui/material";
 import React from "react";
@@ -5,6 +6,10 @@ import React from "react";
 export default function index() {
   return (
     <div className="py-[50px] max-sm:py-[20px] px-[15px]">
+      <CustomHead
+        heading={"Terms & Conditions"}
+        text="Explore our comprehensive Terms & Conditions for a transparent and secure experience. Understand the rules governing our services."
+      />
       <Box className="flex items-center flex-col">
         <Typography className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10">
           Terms & Conditions

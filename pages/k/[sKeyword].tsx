@@ -1,3 +1,4 @@
+import { decryptData } from "@/aes-crypto";
 import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import {
@@ -16,6 +17,7 @@ import {
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -112,7 +114,7 @@ const ImageBox = ({
                 key={index}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <img
+                {/* <img
                   src={image}
                   alt={`slide-${index}`}
                   className={`w-full] rounded-[5px] cursor-pointer`}
@@ -120,6 +122,16 @@ const ImageBox = ({
                     height: "100%",
                     width: "100%",
                   }}
+                /> */}
+
+                <Image
+                  src={image}
+                  alt={`slide-${index}`}
+                  className={`w-full] rounded-[5px] cursor-pointer`}
+                  width={200}
+                  height={200}
+                  quality={80}
+                  priority={true}
                 />
               </div>
             ))}
@@ -231,21 +243,23 @@ export default function sKeyword({ serverData, updatedLines }: any) {
           page: page,
         })
         .then((res: any) => {
+          const response = JSON.parse(decryptData(res?.data));
+
           setLoadMore(false);
-          setIsLastPage(res?.data?.current_page >= res?.data?.total_page);
+          setIsLastPage(response?.current_page >= response?.total_page);
 
           setContentData(res?.data);
 
-          if (res?.data?.datas) {
+          if (response?.datas) {
             setIsLoading(false);
 
             setData((prevData: any) => [
               ...(prevData || []),
-              ...res?.data?.datas,
+              ...response?.datas,
             ]);
           }
 
-          if (res?.data?.status === 500) {
+          if (response?.status === 500) {
             setIsLoading(false);
           }
         })

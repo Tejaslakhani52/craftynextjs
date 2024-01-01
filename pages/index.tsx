@@ -20,7 +20,7 @@ const inter = Inter({ subsets: ["latin"] });
 export async function getServerSideProps(context: any) {
   const cookiesString = context.req.headers.cookie || "";
 
-  const sessionId = extractCookieValue(cookiesString, "sessionId");
+  const sessionId = extractCookieValue(cookiesString, "_sdf");
 
   return {
     props: {
@@ -33,22 +33,19 @@ const extractCookieValue = (cookiesString: any, cookieName: any) => {
   const cookieRegex = new RegExp(
     `(?:(?:^|.*;\\s*)${cookieName}\\s*\\=\\s*([^;]*).*$)|^.*$`
   );
+
   const match = cookiesString.match(cookieRegex);
   return match ? match[1] || null : null;
 };
 
 export default function Home({ sessionId }: any) {
-  console.log("initialCookieValue: ", sessionId);
-
   const dispatch = useDispatch();
   const router = useRouter();
   const token = authCookiesGet();
   const tokenRedux = useSelector((state: any) => state.auth.tokenValue);
   const mainLoading = useSelector((state: any) => state.actions.mainLoader);
-  console.log("mainLoading: ", mainLoading);
   const [isLoading, setIsLoading] = useState<any>(true);
   const urlNavigate = tokenGet("navigate");
-  console.log("urlNavigate: ", urlNavigate);
 
   const screenWidth = useScreenWidth();
 
@@ -74,23 +71,6 @@ export default function Home({ sessionId }: any) {
     }, 100);
   }, [tokenRedux]);
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     var bazStorage = createGuest("http://sub.localhost:3000");
-  //     console.log("bazStorage: ", bazStorage);
-  //     bazStorage.get("localStorageKey", function (error: any, value: any) {
-  //       console.log("value: ", value);
-  //       if (error) {
-  //         console.log("value:", error);
-  //       } else {
-  //         console.log("value: ", value);
-  //       }
-  //     });
-  //   }
-  // }, []);
-
-  // "dev2": "next dev --hostname sub.localhost",
-
   return (
     <main>
       <Head>
@@ -99,7 +79,7 @@ export default function Home({ sessionId }: any) {
         </title>
         <meta
           name="description"
-          content="Discover a powerful all-in-one graphic design tool that streamlines your creative process. Create stunning designs like invitation, logos, social media posts and many more.. with ease."
+          content="Our powerful all-in-one graphic design tool that streamlines your creative process. Create stunning designs like invitation, logos, social media posts and more."
         />
       </Head>
       {sessionId ? <Dashboard /> : <LandingPage />}

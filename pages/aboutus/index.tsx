@@ -4,6 +4,7 @@ import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { useRouter } from "next/router";
 import GetTemplates from "@/components/common/GetTemplates";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import CustomHead from "@/components/common/CustomHead";
 
 const dEverything = [
   {
@@ -135,6 +136,13 @@ export default function index() {
   const router = useRouter();
   return (
     <>
+      {/* <CustomHead
+        image="https://assets.craftyart.in/w_assets/images/whatCraftyart.png"
+        heading={
+          "Poster Design Online: Create Graphic Design Posters with Ease"
+        }
+        text="Elevate your brand with our online poster design tool. Design custom graphic posters effortlessly, collaborating from anywhere."
+      /> */}
       <Box className="text-center pt-14 max-sm:pt-5 pb-12 px-[15px]">
         <Typography className="text-[15px]">ABOUT CRAFTYART</Typography>
 

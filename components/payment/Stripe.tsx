@@ -1,3 +1,4 @@
+import { decryptData } from "@/aes-crypto";
 import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Button, Typography } from "@mui/material";
 import {
@@ -71,9 +72,10 @@ export default function Stripe({ selectPlan, countryCode }: any) {
           returnUrl: returnUrl,
         });
 
-        if (response?.data?.next_action?.redirect_to_url?.url) {
-          window.location.href =
-            response?.data?.next_action?.redirect_to_url?.url;
+        const response1 = JSON.parse(decryptData(response?.data));
+
+        if (response1.next_action?.redirect_to_url?.url) {
+          window.location.href = response1.next_action?.redirect_to_url?.url;
           setIsLoading(false);
         }
 
@@ -81,7 +83,7 @@ export default function Stripe({ selectPlan, countryCode }: any) {
           toast.success("Successful payment");
         }
       } catch (error) {
-        console.log("error: ", error);
+        // console.log("error: ", error);
       }
     } else {
       toast.error(error.message);
@@ -173,7 +175,7 @@ export default function Stripe({ selectPlan, countryCode }: any) {
         className="bg_linear text-white w-full py-[10px] normal-case text-[17px]"
         onClick={handleSubmit}
       >
-        Get CraftyArt Pro
+        Get Crafty Art Pro
       </Button>
 
       {isLoading && (

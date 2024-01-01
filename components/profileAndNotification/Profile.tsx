@@ -15,6 +15,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import Cookies from "js-cookie";
+import { decryptData } from "@/aes-crypto";
 
 export default function Profile() {
   const router = useRouter();
@@ -28,33 +29,22 @@ export default function Profile() {
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-  const getData = authCookiesGet();
 
   useEffect(() => {
-    setuId(getData);
-  }, [getData]);
-
-  useEffect(() => {
-    if (uId == "") {
-      setUserProfile(null);
-    } else fetchData();
-  }, [uId, getData]);
-
-  const fetchData = async () => {
     axios
-      .post("/api/getUserData", {
-        email: uId,
-      })
-      .then(({ data }) => {
-        tokenSet("premium", data?.user?.is_premium === 1 ? "true" : "false");
-        userPremium(`${data?.user?.is_premium}`);
-        setImageBaseUrl(data?.url);
-        setUserProfile(data?.user);
+      .post("/api/getUserData")
+      .then(({ data }: any) => {
+        console.log("response: ", data);
+        const data2 = JSON.parse(decryptData(data));
+        tokenSet("premium", data2?.user?.is_premium === 1 ? "true" : "false");
+        userPremium(`${data2?.user?.is_premium}`);
+        setImageBaseUrl(data2?.url);
+        setUserProfile(data2?.user);
       })
       .catch((err) => {
-        console.log("err: ", err);
+        // console.log("err: ", err);
       });
-  };
+  }, []);
 
   const ProfileImage = () => {
     return userProfile?.photo_uri !== "null" && userProfile?.photo_uri ? (
@@ -172,10 +162,10 @@ export default function Profile() {
             dispatch(openSidebar(false));
             Cookies.remove("rememberMe");
 
-            Cookies.remove("sessionId", { domain: ".craftyartapp.com" });
+            Cookies.remove("_sdf", { domain: ".craftyartapp.com" });
             Cookies.remove("premium", { domain: ".craftyartapp.com" });
 
-            Cookies.remove("sessionId");
+            Cookies.remove("_sdf");
             Cookies.remove("premium");
 
             window.location.reload();

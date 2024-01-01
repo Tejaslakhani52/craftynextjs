@@ -1,3 +1,4 @@
+import { decryptData } from "@/aes-crypto";
 import { consoleShow } from "@/commonFunction/console";
 import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
@@ -10,14 +11,13 @@ export default function CustomInvitations() {
 
   useEffect(() => {
     axios
-      .post("/api1/get/datas", {
-        debug_key: "debug",
+      .post("/api/category", {
         cat_id: "a4-invitation",
-        limit: 10,
-        page: 1,
+        page: 3,
       })
-      .then((res: any) => {
-        setData(res?.data.datas);
+      .then((response: any) => {
+        const res: any = JSON.parse(decryptData(response?.data));
+        setData(res?.datas);
       })
       .catch((err) => consoleShow("err", err));
   }, []);

@@ -15,25 +15,14 @@ import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export async function getServerSideProps(context: any) {
-  // Get the sessionId from the query parameters
-  const sessionId = context.query.sessionId;  
-
-  return {
-    props: {
-      sessionId,
-    },
-  };
-}
-
-export default function Index({ sessionId }: any) {
-  console.log("sessionId: ", sessionId);
+export default function Index() {
   const screenWidth = useScreenWidth();
   console.log("screenWidth: ", screenWidth);
   const dispatch = useDispatch();
   const router = useRouter();
 
   const token = authCookiesGet();
+  console.log("token: ", token);
 
   const hasEffectRun = useRef(false);
 

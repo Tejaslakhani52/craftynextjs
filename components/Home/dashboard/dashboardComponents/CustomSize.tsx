@@ -15,21 +15,14 @@ export default function CustomSize() {
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [height, setHeight] = useState<any>(0);
-  console.log("height: ", height);
   const [width, setWidth] = useState<any>(0);
   const [selectedUnit, setSelectedUnit] = React.useState<null | string>("px");
   const [lockAspectRatio, setLockAspectRatio] = useState<boolean>(false);
   const [lastSelectUnit, setLastSelectUnit] = useState<any>();
   const [enterHeight, setEnterHeight] = useState<any>(0);
   const [enterWidth, setEnterWidth] = useState<any>(0);
-  console.log("enterWidth: ", enterWidth);
-
   const [forAspectRatioWidth, setForAspectRatioWidth] = useState<any>(0);
-  console.log("forAspectRatioWidth: ", forAspectRatioWidth);
-  // console.log("forAspectRatioWidth: ", forAspectRatioWidth);
   const [forAspectRatioHeight, setForAspectRatioHeight] = useState<any>(0);
-  console.log("lastSelectUnit: ", enterHeight);
-  console.log("forAspectRatioWidth: ", forAspectRatioWidth);
 
   const open = Boolean(anchorEl);
 
@@ -46,7 +39,6 @@ export default function CustomSize() {
       const formattedWidth: any = width / conversionFactor;
       const formattedHeight = height / conversionFactor;
 
-      console.log("formattedWidth: ", formattedWidth.length);
       //   if (hasDecimal(formattedWidth)) {
       //     setWidth(formattedWidth.toFixed(3));
       //   } else setWidth(formattedWidth);
@@ -309,7 +301,6 @@ export default function CustomSize() {
   }, [enterHeight, lockAspectRatio]);
 
   const [base64String, setBase64String] = useState("");
-  console.log("base64String: ", base64String);
 
   useEffect(() => {
     const jsonString = JSON.stringify({ w: width, h: height });

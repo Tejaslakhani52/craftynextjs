@@ -20,7 +20,7 @@ export default function index() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/weedingInvitationUnique.png"
         heading={
-          "Wedding Invitation Template Designs for Every Style and Theme          "
+          "Wedding Invitation Template Designs for Every Style and Theme"
         }
         text="Discover a Diverse Range of Wedding Invitation Templates - Classic, Modern, Rustic, and More! Create Your Perfect Invite Easily. Ideal for Every Wedding Theme."
       />
@@ -156,7 +156,7 @@ export default function index() {
         image="https://assets.craftyart.in/w_assets/images/weddingStyle.png"
       />
 
-      <ExploreTemplates getAll="/s/wedding" />
+      <ExploreTemplates getAll="/s/wedding" keyword="Wedding" />
 
       <RightImageSection
         title="Why Choose Crafty Art For Wedding
@@ -176,7 +176,7 @@ export default function index() {
 
       <LeftImageSection
         white
-        title="Why CraftyArt Stands Out:"
+        title="Why Crafty Art Stands Out:"
         point={
           <Box>
             <MarkText text="Quality Assurance: Each template is meticulously crafted by talented designers, ensuring high-quality, print-ready invitations." />

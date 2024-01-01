@@ -464,6 +464,10 @@ nextjs-portal {
   display: none;
 }
 
+a {
+  width: fit-content;
+}
+
 @media screen and (max-width: 767px) {
   .report_dialog {
     border-radius: 0px;

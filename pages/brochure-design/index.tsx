@@ -17,8 +17,7 @@ export default function index() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/brouchureDesign.png"
         heading={"Brochure Design: Creative Brochure Designs Online"}
-        text="Explore Crafty Art's innovative brochure design. From captivating covers to modern concepts, our designs tell your brand story. Get started today!
-        "
+        text="Explore Crafty Art's innovative brochure design. From captivating covers to modern concepts, our designs tell your brand story. Get started today!"
       />
       <Head>
         <script
@@ -38,10 +37,10 @@ export default function index() {
                 },
                 {
                   "@type": "Question",
-                  name: "2. Do I have input in the design process?",
+                  name: "2. Can I order custom brochure designs?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Absolutely! We believe in collaborative design. Our team works closely with clients to understand their vision, preferences, and brand identity. Your input is invaluable in shaping the final design, ensuring it aligns seamlessly with your goals.",
+                    text: "Yes, you can order custom brochure designs.",
                   },
                 },
                 {
@@ -77,8 +76,7 @@ export default function index() {
         heading={
           "Effective Brochure Design - Elements to Create a Unique and Engaging Brochure"
         }
-        text="Elevate your brand with our meticulously crafted Brochure Design template. Seamlessly blend creativity and professionalism to captivate your audience. Effortlessly customize layouts, fonts, and colors for a personalized touch. Make a lasting impression with our versatile and visually stunning brochure template.
-        "
+        text="Elevate your brand with our meticulously crafted Brochure Design template. Seamlessly blend creativity and professionalism to captivate your audience. Effortlessly customize layouts, fonts, and colors for a personalized touch."
         buttonName="Get Started"
         navigate="/s/brochure"
         image={
@@ -98,11 +96,11 @@ export default function index() {
         in an effective brochure design?"
         point={
           <Box>
-            <MarkText text=" Understand your audience and tailor the content and design to their needs" />
-            <MarkText text=" Use a clear headline, high-quality images, and simple layout to enhance readability" />
-            <MarkText text=" Organise the content with headings, subheadings, and bullet points to improve comprehension and retention" />
-            <MarkText text=" Maintain consistency in branding and messaging throughout the brochure" />
-            <MarkText text=" Include a strong call-to-action that prompts the reader to take action." />
+            <MarkText text=" Understand your audience and tailor the content and design to their needs." />
+            <MarkText text=" Use a clear headline, high-quality images, and simple layout to enhance readability." />
+            <MarkText text=" Organise the content with headings, subheadings, and bullet points to improve comprehension and retention." />
+            <MarkText text=" Maintain consistency in branding and messaging throughout the brochure." />
+            <MarkText text=" Include a strong call-to-action that prompts the reader to take action.." />
           </Box>
         }
         buttonName={"Design your Brochure"}
@@ -114,10 +112,10 @@ export default function index() {
         title="How to make unique brochures?"
         point={
           <Box>
-            <MarkText text=" Research competition and develop a unique visual identity that aligns with your brand and effectively communicates its personality and values" />
-            <MarkText text=" Experiment with formats, shapes, and materials to create a tactile experience that engages the reader and highlights the unique features of your product or service" />
-            <MarkText text=" Use storytelling techniques to connect with the audience emotionally and make the content more memorable" />
-            <MarkText text=" Incorporate persuasive language that is easy to understand and motivates the reader to take action" />
+            <MarkText text=" Research competition and develop a unique visual identity that aligns with your brand and effectively communicates its personality and values." />
+            <MarkText text=" Experiment with formats, shapes, and materials to create a tactile experience that engages the reader and highlights the unique features of your product or service." />
+            <MarkText text=" Use storytelling techniques to connect with the audience emotionally and make the content more memorable." />
+            <MarkText text=" Incorporate persuasive language that is easy to understand and motivates the reader to take action." />
             <MarkText text=" Focus on providing value to the reader by addressing their needs and solving their problems." />
           </Box>
         }
@@ -130,10 +128,10 @@ export default function index() {
         title="5 steps to create a brochure:"
         point={
           <Box>
-            <MarkText text=" Plan goals and gather information about the purpose, audience, and message of the brochure" />
-            <MarkText text=" Create a rough outline of the content and structure, ensuring that the content is organised logically and that the layout is visually appealing and easy to follow" />
-            <MarkText text=" Design the brochure using graphic design tool, making sure that the design aligns with the brand identity and effectively communicates the desired message and personality of the company" />
-            <MarkText text=" Incorporate visuals, such as images, illustrations, and graphs, to enhance the message and engagement level of the brochure" />
+            <MarkText text=" Plan goals and gather information about the purpose, audience, and message of the brochure." />
+            <MarkText text=" Create a rough outline of the content and structure, ensuring that the content is organised logically and that the layout is visually appealing and easy to follow." />
+            <MarkText text=" Design the brochure using graphic design tool, making sure that the design aligns with the brand identity and effectively communicates the desired message and personality of the company." />
+            <MarkText text=" Incorporate visuals, such as images, illustrations, and graphs, to enhance the message and engagement level of the brochure." />
             <MarkText text=" Review and edit the final version before printing or sharing, ensuring that the content is accurate, well-written, and free of errors or typos." />
           </Box>
         }
@@ -142,7 +140,12 @@ export default function index() {
         path="/s/brochure"
         image="https://assets.craftyart.in/w_assets/images/brouchureCreate.png"
       />
-      {/*  */} <ExploreTemplates getAll="/s/brochure" category="brochure" />
+      {/*  */}{" "}
+      <ExploreTemplates
+        getAll="/s/brochure"
+        category="brochure"
+        keyword="Brochure"
+      />
       <RightImageSection
         title="Unlock Your Creativity with Crafty Art's
         Brochure Design Services"
@@ -257,8 +260,8 @@ export default function index() {
         />
 
         <FaqsBox
-          heading="Do I have input in the design process?"
-          text="Absolutely! We believe in collaborative design. Our team works closely with clients to understand their vision, preferences, and brand identity. Your input is invaluable in shaping the final design, ensuring it aligns seamlessly with your goals."
+          heading="Can I order custom brochure designs?"
+          text="Yes, you can order custom brochure designs."
         />
 
         <FaqsBox

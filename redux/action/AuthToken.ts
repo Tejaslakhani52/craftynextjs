@@ -1,3 +1,4 @@
+import { decryptData, encryptData } from "@/aes-crypto";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
 
@@ -24,22 +25,22 @@ export const authCookiesSet = (value: any) => {
   const expirationDate = new Date();
   expirationDate.setDate(expirationDate.getDate() + 30);
 
-  Cookies.set("sessionId", value, {
+  Cookies.set("_sdf", encryptData(value), {
     domain: ".craftyartapp.com",
     expires: expirationDate,
   });
 
   console.log("expirationDate: ", expirationDate);
-  Cookies.set("sessionId", value, { expires: expirationDate });
+  Cookies.set("_sdf", encryptData(value), { expires: expirationDate });
 };
 
 export const authCookiesGet = () => {
-  const value = Cookies.get("sessionId");
-  return value;
+  const value = Cookies.get("_sdf");
+  return decryptData(value);
 };
 
 export const userPremium = (value: any) => {
-  Cookies.set("premium", String(value), {
+  Cookies.set("_pmf ", String(value), {
     domain: ".craftyartapp.com",
   });
 };

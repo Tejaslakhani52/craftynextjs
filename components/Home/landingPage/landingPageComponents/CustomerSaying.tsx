@@ -170,7 +170,7 @@ export default function CustomerSaying() {
         What are Customers Saying about Craftyart
       </Typography>
       <Typography className="text-[18px] text-black my-2 text-center">
-        Craftyart has a proven track record of delivering efficiency, results
+        Crafty Art has a proven track record of delivering efficiency, results
         and excellent customer service.
       </Typography>
       {/* <Box className="bg_linear  h-auto lg:h-[420px] w-[60%] my-10 opacity-50 max-lg:hidden"></Box> */}

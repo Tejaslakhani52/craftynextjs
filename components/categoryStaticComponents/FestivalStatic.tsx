@@ -438,7 +438,7 @@ export default function FestivalBanner() {
           What are Customers Saying about Craftyart
         </Typography>
         <Typography className="text-center">
-          Craftyart has a proven track record of delivering efficiency, results
+          Crafty Art has a proven track record of delivering efficiency, results
           and excellent customer service.
         </Typography>
 

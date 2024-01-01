@@ -1,3 +1,4 @@
+import { handleEmailClick } from "@/commonFunction/emailCheck";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { Box, Typography } from "@mui/material";
 import React from "react";
@@ -15,7 +16,13 @@ export default function index() {
             If you think that any material on the Crafty Art website violates
             any copyrights, you can notify us by sending the following notice,
             complete with all pertinent details: Notice of a copyright violation
-            on <span className="text-[#5961F8]">craftyartapp@gmail.com</span>
+            on{" "}
+            <span
+              className="text-[#5961F8] cursor-pointer"
+              onClick={handleEmailClick}
+            >
+              craftyartapp@gmail.com
+            </span>
           </Typography>
 
           <Typography
@@ -223,7 +230,13 @@ export default function index() {
           <Typography className="mb-3">
             Abuseful content and files are not tolerated at Crafty Art. Send an
             email to{" "}
-            <span className="text-[#5961F8]"> craftyartapp@gmail.com </span>{" "}
+            <span
+              className="text-[#5961F8] cursor-pointer"
+              onClick={handleEmailClick}
+            >
+              {" "}
+              craftyartapp@gmail.com{" "}
+            </span>{" "}
             with a concise summary or description of the suspected abuse in
             respect to the content or files.
           </Typography>

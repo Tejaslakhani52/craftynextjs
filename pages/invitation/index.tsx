@@ -258,7 +258,7 @@ export default function index() {
         path="/baby-shower-invitation"
       />
 
-      <ExploreTemplates getAll={"/templates/resume-portrait"} />
+      <ExploreTemplates getAll={"/templates/invitation"} keyword="Invitation" />
 
       <RightDetail
         title="How to design an anniversary invitation that

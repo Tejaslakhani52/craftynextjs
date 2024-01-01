@@ -8,6 +8,7 @@ import LeftDetail from "@/components/common/LeftDetail";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import RightDetail from "@/components/common/RightDetail";
 import { Box, Button, Typography } from "@mui/material";
+import Head from "next/head";
 import React from "react";
 
 const sliderTemplate = [
@@ -44,11 +45,63 @@ export default function index() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/marketingCatching.png"
         heading="Elevate your marketing game with stunning marketing templates!"
-        text="Make an unforgettable impression with custom marketing posters
-              created in minutes. Choose from a variety of design templates to
-              create professional and impactful business cards, flyers, logos,
-              posters, brochures, menus, and infographics."
+        text="Make custom posters using marketing templates in minutes to create professional business cards, flyers, logos, posters, brochures, menus, and infographics."
       />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What are customizable marketing templates?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Customizable marketing templates are pre-designed marketing materials, such as business cards, flyers, logos, posters, brochures, menus, and infographics, that can be edited and filled out with the necessary information for your business or organisation.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. Can I customize Marketing Templates to match my brand?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Absolutely! Crafty Art Marketing Templates are meant to be flexible. You can easily customize colors, fonts, and imagery to align with your artistic style and overall brand identity.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. Can Crafty Art Marketing Templates be used for online and offline promotion?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, Crafty Art Marketing Templates are designed to be versatile and can be used for both online platforms, such as social media and websites, as well as offline mediums, like printed promotional materials for art exhibitions or events.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. What information should be included in marketing posters?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "The type of information included in marketing posters will depend on the purpose of the material. However, common elements include company or organisation name, logo, products or services offered, contact information, and call-to-action.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "5. Can I print my own marketing materials from a template?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, most marketing templates can be printed at home or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <FreeTrialBlackBanner
         heading="Elevate your marketing game with stunning marketing templates!"
         text="Make an unforgettable impression with custom marketing posters
@@ -180,7 +233,7 @@ export default function index() {
         buttonName={"Design your own Infographic"}
         alt="marketing templates"
         image="https://assets.craftyart.in/w_assets/images/marketingInfoGraphic.png"
-        path="/s/infographic"
+        path="/templates/infographics"
       />
 
       <Box
@@ -205,13 +258,13 @@ export default function index() {
           text="Customizable marketing templates are pre-designed marketing materials, such as business cards, flyers, logos, posters, brochures, menus, and infographics, that can be edited and filled out with the necessary information for your business or organisation."
         />
         <FaqsBox
-          heading=" 2. Where can I find customizable marketing templates?"
-          text="There are many websites and online marketplaces that offer free or paid customizable marketing templates. You can also create your own using design software or hire a graphic designer to create one for you."
+          heading=" 2. Can I customize Marketing Templates to match my brand?"
+          text="Absolutely! Crafty Art Marketing Templates are meant to be flexible. You can easily customize colors, fonts, and imagery to align with your artistic style and overall brand identity."
         />
 
         <FaqsBox
-          heading=" 3. How do I customise a marketing template?"
-          text="Most marketing templates come in editable formats, such as PSD or AI files, which can be opened in graphic design software like Adobe Photoshop or Illustrator. You can then change the text, colours, and images to suit your preferences."
+          heading=" 3. Can Crafty Art Marketing Templates be used for online and offline promotion?"
+          text="Yes, Crafty Art Marketing Templates are designed to be versatile and can be used for both online platforms, such as social media and websites, as well as offline mediums, like printed promotional materials for art exhibitions or events."
         />
 
         <FaqsBox

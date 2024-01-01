@@ -29,26 +29,6 @@ export default function Document() {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "CraftyArt",
-              url: "https://craftyartapp.com/",
-              logo: "/images/logo.svg",
-              contactPoint: [
-                {
-                  "@type": "ContactPoint",
-                  url: "https://craftyartapp.com/contact-us",
-                  contactType: "Customer Support",
-                },
-              ],
-            }),
-          }}
-        />
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
               "@context": "http://schema.org",
               "@type": "Organization",
               name: "Crafty Art App",

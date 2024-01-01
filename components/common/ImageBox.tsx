@@ -1,5 +1,6 @@
 import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -10,13 +11,12 @@ export default function ImageBox({
   multiSizeFixSize,
   setIdName,
   setOpenModal,
+  loadedImages,
+  index,
 }: any) {
   const router = useRouter();
-  console.log("router: ", router?.query);
   const [currentIndex, setCurrentIndex] = useState<any>(0);
-  console.log("currentIndex: ", currentIndex);
   const [isHovered, setIsHovered] = useState(false);
-  console.log("isHovered: ", isHovered);
   const intervalRef: any = useRef(null);
   useEffect(() => {
     if (isHovered) {
@@ -91,20 +91,50 @@ export default function ImageBox({
                 transform: `translateX(-${currentIndex * 100}%)`,
               }}
             >
+              {/* <Image
+                src={templates?.template_thumb}
+                alt={"image"}
+                className={`w-full h-full rounded-[5px] cursor-pointer opacity-0`}
+                // style={{ transition: "0.5s all" }}
+                width={200}
+                height={200}
+                quality={80}
+                priority={true}
+                loading="eager"
+                onLoadingComplete={(image) =>
+                  image.classList.remove("opacity-0")
+                }
+                style={{ display: loadedImages[index] ? "block" : "none" }}
+              /> */}
               {templates?.thumbArray.map((image: any, index: number) => (
                 <div
                   className="carousel-slide"
                   key={index}
                   style={{ display: "flex", justifyContent: "center" }}
                 >
-                  <img
+                  {/* <img
                     src={image}
                     alt={`slide-${index}`}
-                    className={`w-full] rounded-[5px] cursor-pointer`}
+                    className={`w-full]   rounded-[5px] cursor-pointer`}
                     style={{
                       height: "100%",
                       width: "100%",
                     }}
+                  /> */}
+
+                  <Image
+                    src={image}
+                    alt={image}
+                    className={`w-full h-full rounded-[5px] cursor-pointer opacity-0`}
+                    style={{ transition: "0.5s all" }}
+                    width={200}
+                    height={200}
+                    quality={80}
+                    priority={true}
+                    loading="eager"
+                    onLoadingComplete={(image) =>
+                      image.classList.remove("opacity-0")
+                    }
                   />
                 </div>
               ))}

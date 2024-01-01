@@ -43,9 +43,8 @@ export default function index() {
     <>
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/bussinessLetterhead.png"
-        heading=" Streamline Your Business with Our Essential Template"
-        text=" Design Professional and Functional Documents with Ease Using Our
-        Template Library"
+        heading="Streamline Your Business with Our Essential Template"
+        text="Design Professional and Functional Documents with Ease Using Our Template Library"
       />
       <FreeTrialBlackBanner
         heading="Streamline Your Business with Our Essential Template"

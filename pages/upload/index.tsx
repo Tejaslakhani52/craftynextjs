@@ -15,6 +15,7 @@ import toast from "react-hot-toast";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
+import { decryptData } from "@/aes-crypto";
 
 const DraftBoxes = ({
   item,
@@ -37,11 +38,9 @@ const DraftBoxes = ({
     axios
       .post("/api/uploadAction", {
         id: id,
-        user_id: user_id,
         type: "0",
       })
       .then((res: any) => {
-        console.log("moveTrash: ", res);
         toast.success("Moved to trash");
         setRemoveId(id);
       });
@@ -162,30 +161,28 @@ export default function index() {
   console.log("multiSize: ", multiSize);
 
   useEffect(() => {
-    if (user_id) {
-      setLoadMore(true);
+    setLoadMore(true);
 
-      axios
-        .post(`/api/getUploads`, {
-          key: "qwfsegxdhbxfjhncf",
-          user_id: user_id,
-          type: "0",
-          page: page,
-        })
-        .then((res: any) => {
-          setLoadMore(false);
+    axios
+      .post(`/api/getUploads`, {
+        key: "qwfsegxdhbxfjhncf",
+        type: "0",
+        page: page,
+      })
+      .then((response: any) => {
+        setLoadMore(false);
+        const res = JSON.parse(decryptData(response?.data));
 
-          if (res?.data?.datas.length > 0) {
-            setDraftData((prevData: any) => [
-              ...(prevData || []),
-              ...res?.data?.datas,
-            ]);
-            setIsLastPage(res?.data?.isLastPage);
-          } else setDraftData(null);
-        })
-        .catch((err: any) => console.log("err: ", err));
-    }
-  }, [user_id, page]);
+        if (res?.data?.datas.length > 0) {
+          setDraftData((prevData: any) => [
+            ...(prevData || []),
+            ...res?.data?.datas,
+          ]);
+          setIsLastPage(res?.data?.isLastPage);
+        } else setDraftData(null);
+      })
+      .catch((err: any) => console.log("err: ", err));
+  }, [page]);
 
   return (
     <div className="px-[15px]">

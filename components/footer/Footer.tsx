@@ -12,6 +12,8 @@ import React, { useState } from "react";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Icons from "@/assets";
+import Link from "next/link";
+import { handleClickWhatsapp } from "../header/headerComponents/Menu";
 
 export const OptionButton = (props: any) => {
   return (
@@ -96,13 +98,15 @@ export const Special = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <OptionButton onClick={() => router.push("/marketing")}>
-        Marketing
-      </OptionButton>
-      <OptionButton onClick={() => router.push("/business")}>
-        Business
-      </OptionButton>
-      <OptionButton>Card & Invitation</OptionButton>
+      <Link href={"/marketing"}>
+        <OptionButton>Marketing</OptionButton>
+      </Link>
+      <Link href={"/business"}>
+        <OptionButton>Business</OptionButton>
+      </Link>
+      <Link href={"/invitation"}>
+        <OptionButton>Card & Invitation</OptionButton>
+      </Link>
     </Box>
   );
 };
@@ -112,13 +116,19 @@ export const Company = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <OptionButton onClick={() => router.push("/aboutus")}>About</OptionButton>
-      <OptionButton>Career</OptionButton>
-      <OptionButton onClick={() => router.push("/plans")}>
-        Price and plan
-      </OptionButton>
-      <OptionButton>Contact us</OptionButton>
-      <OptionButton>Blog</OptionButton>
+      <Link href={"/aboutus"}>
+        <OptionButton>About</OptionButton>
+      </Link>
+      {/* <OptionButton>Career</OptionButton> */}
+      <Link href={"/plans"}>
+        <OptionButton>Price and plan</OptionButton>
+      </Link>
+      <Link href={"/contact-us"}>
+        <OptionButton>Contact us</OptionButton>
+      </Link>
+      <Link href={"https://www.craftyartapp.com/blog"}>
+        <OptionButton>Blog</OptionButton>
+      </Link>
     </Box>
   );
 };
@@ -128,18 +138,18 @@ export const Legal = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <OptionButton onClick={() => router.push("/privacy-policy")}>
-        Privacy policy
-      </OptionButton>
-      <OptionButton onClick={() => router.push("/referal-program")}>
-        Referal program
-      </OptionButton>
-      <OptionButton onClick={() => router.push("/term-condition")}>
-        Terms and condition
-      </OptionButton>
-      <OptionButton onClick={() => router.push("/copyright-infringement")}>
-        Copyright infrigment
-      </OptionButton>
+      <Link href={"/privacy-policy"}>
+        <OptionButton>Privacy policy</OptionButton>
+      </Link>
+      <Link href={"/referral-program"}>
+        <OptionButton>referral program</OptionButton>
+      </Link>
+      <Link href={"/term-condition"}>
+        <OptionButton>Terms and condition</OptionButton>
+      </Link>
+      <Link href={"/copyright-infringement"}>
+        <OptionButton>Copyright infrigment</OptionButton>
+      </Link>
     </Box>
   );
 };
@@ -149,14 +159,24 @@ export const Discover = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <OptionButton onClick={() => router.push("/invitation")}>
-        Invitation
-      </OptionButton>
-      <OptionButton onClick={() => router.push("/quotes")}>Quotes</OptionButton>
-      <OptionButton onClick={() => router.push("/flyers")}>Flyer</OptionButton>
-      <OptionButton>Festival</OptionButton>
-      <OptionButton>Custom order</OptionButton>
-      <OptionButton>Brand Kit</OptionButton>
+      <Link href={"/invitation"}>
+        <OptionButton>Invitation</OptionButton>
+      </Link>
+      <Link href={"/quotes"}>
+        <OptionButton>Quotes</OptionButton>
+      </Link>
+      <Link href={"/flyer"}>
+        <OptionButton>Flyer</OptionButton>
+      </Link>
+      <Link href={"/caricature"}>
+        <OptionButton>Caricature</OptionButton>
+      </Link>
+      <Link href={""} onClick={handleClickWhatsapp}>
+        <OptionButton>Custom order</OptionButton>
+      </Link>
+      <Link href={"/brand-kit"}>
+        <OptionButton>Brand Kit</OptionButton>
+      </Link>
     </Box>
   );
 };
@@ -205,30 +225,42 @@ export default function Footer() {
             </Typography>
             <Box className="flex flex-col items-start text-white font-normal max-sm:items-center">
               <Box className="cursor-pointer">
-                <img
-                  src="https://assets.craftyart.in/w_assets/images/playstore.png"
-                  alt="playstore"
-                />
+                <a href="https://play.google.com/store/apps/details?id=com.crafty.art">
+                  <img
+                    src="https://assets.craftyart.in/w_assets/images/playstore.png"
+                    alt="playstore"
+                  />
+                </a>
               </Box>
               <Box className="flex items-center gap-5 my-8 max-sm:justify-center">
                 <span className="cursor-pointer">
-                  <Icons.facebookIcon svgProps={{ width: 25, height: 25 }} />
+                  <a href="https://www.facebook.com/people/Crafty-Art/100087508073608/">
+                    <Icons.facebookIcon svgProps={{ width: 25, height: 25 }} />
+                  </a>
                 </span>
 
                 <span className="cursor-pointer">
-                  <Icons.instagramIcon svgProps={{ width: 25, height: 25 }} />
+                  <a href="https://www.instagram.com/craftyart_official/">
+                    <Icons.instagramIcon svgProps={{ width: 25, height: 25 }} />
+                  </a>
                 </span>
 
                 <span className="cursor-pointer">
-                  <Icons.pinterestIcon svgProps={{ width: 25, height: 25 }} />
+                  <a href="https://in.pinterest.com/crafty_art_official/">
+                    <Icons.pinterestIcon svgProps={{ width: 25, height: 25 }} />
+                  </a>
                 </span>
 
                 <span className="cursor-pointer">
-                  <Icons.twitterIcon svgProps={{ width: 25, height: 25 }} />
+                  <a href="https://twitter.com/craftyartstudio">
+                    <Icons.twitterIcon svgProps={{ width: 25, height: 25 }} />
+                  </a>
                 </span>
 
                 <span className="cursor-pointer">
-                  <Icons.youtubeIcon svgProps={{ width: 25, height: 25 }} />
+                  <a href="https://www.youtube.com/@craftyartgraphic7864">
+                    <Icons.youtubeIcon svgProps={{ width: 25, height: 25 }} />
+                  </a>
                 </span>
               </Box>
             </Box>
@@ -240,7 +272,7 @@ export default function Footer() {
         sx={{ borderTop: "2px solid grey" }}
       >
         <Typography className="text-center text-[13px] sm:text-[16px] text-white">
-          Copyright © 2022-2023 by Crafty Art All Rights Reserved.
+          Copyright © 2023-2024 by Crafty Art All Rights Reserved.
         </Typography>
       </Box>
     </Box>

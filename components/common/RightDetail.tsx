@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
@@ -8,6 +9,7 @@ export default function RightDetail({
   image,
   buttonName,
   path,
+  alt,
 }: any) {
   const router = useRouter();
   return (
@@ -41,10 +43,14 @@ export default function RightDetail({
         </Box>
       </Box>
       <Box className="flex-1  flex justify-center   max-lg:pt-10">
-        <img
+        <Image
           src={image}
-          alt={image}
-          className="object-contain w-[450px] max-sm:w-[90%]"
+          alt={alt}
+          className="object-contain w-[450px] max-sm:w-[90%] "
+          width={500}
+          height={500}
+          quality={80}
+          priority={true}
         />
       </Box>
     </Box>

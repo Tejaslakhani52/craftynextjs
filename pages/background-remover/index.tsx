@@ -15,6 +15,7 @@ import { authCookiesGet } from "@/redux/action/AuthToken";
 import { saveAs } from "file-saver";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
+import { decryptData } from "@/aes-crypto";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -51,15 +52,13 @@ function a11yProps(index: number) {
 
 export default function index() {
   const user_id = authCookiesGet();
-  const [selectedFile, setSelectedFile] = useState();
-  console.log("selectedFile: ", selectedFile);
+  const [selectedFile, setSelectedFile] = useState<any>("");
   const [isDragOver, setIsDragOver] = useState(false);
   const [mainLoader, setMainLoader] = useState<any>(false);
   const [imageTab, setImageTab] = useState<any>("after");
   const [imagePreviewUrl, setImagePreviewUrl] = useState<any>();
 
   const [value, setValue] = React.useState(0);
-  console.log("value: ", value);
 
   const fileInputRef: any = useRef(null);
 
@@ -92,50 +91,68 @@ export default function index() {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    if (user_id && selectedFile) {
-      axios
-        .post("/api/bgRemove", {
-          user_id: user_id,
-          file: selectedFile,
-        })
-        .then((res) => {
-          console.log("res: ", res?.data);
-        })
-        .catch((err) => {
-          console.log("err: ", err);
-        });
-    }
-  }, [user_id, selectedFile]);
-
   const [imageUrl, setImageUrl] = useState<any>(null);
-  console.log("imageUrl: ", imageUrl);
 
   useEffect(() => {
-    if (user_id && selectedFile) {
+    if (selectedFile) {
       setMainLoader(true);
-
       const formData = new FormData();
-      formData.append("user_id", user_id);
       formData.append("file", selectedFile);
 
       axios
-        .post("https://bgremover.craftyartapp.com/api/removebg", formData, {
+        .post("/api/bgRemove", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          responseType: "blob",
         })
         .then((res) => {
+          console.log("res: ", res);
+          const response = JSON.parse(decryptData(res?.data));
+          console.log("response: ", response);
+          const blob = new Blob([response], { type: "image/png" });
+
+          console.log("blob: ", blob);
+
+          const imageUrl = URL.createObjectURL(response);
+
+          console.log("imageUrl: ", imageUrl);
+
           setMainLoader(false);
-          const imageUrl = URL.createObjectURL(new Blob([res.data]));
           setImageUrl(imageUrl);
         })
         .catch((err) => {
-          console.log("err: ", err);
+          // console.log("err: ", err);
         });
     }
   }, [selectedFile]);
+
+  // useEffect(() => {
+  //   if (user_id && selectedFile) {
+  //     setMainLoader(true);
+
+  //     const formData = new FormData();
+  //     formData.append("user_id", user_id);
+  //     formData.append("file", selectedFile);
+
+  //     axios
+  //       .post("https://bgremover.craftyartapp.com/api/removebg", formData, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //         responseType: "blob",
+  //       })
+  //       .then((res) => {
+  //         console.log("res: ", res);
+
+  //         setMainLoader(false);
+  //         const imageUrl = URL.createObjectURL(new Blob([res?.data]));
+  //         setImageUrl(imageUrl);
+  //       })
+  //       .catch((err) => {
+  //         // console.log("err: ", err);
+  //       });
+  //   }
+  // }, [selectedFile]);
 
   const handleDownload = async () => {
     const blob = await fetch(imageUrl).then((res) => res.blob());
@@ -148,7 +165,7 @@ export default function index() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/bg_remove.png"
         heading={"Background Remover: Eliminate Unwanted Elements Effortlessly"}
-        text="Effortlessly remove unwanted elements from your images with our Background Remover tool. Say goodbye to distractions in just a click!        "
+        text="Effortlessly remove unwanted elements from your images with our Background Remover tool. Say goodbye to distractions in just a click!"
       />
       <Head>
         <script

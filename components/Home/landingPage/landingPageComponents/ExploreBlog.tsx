@@ -34,7 +34,7 @@ export default function ExploreBlog() {
         Achieve your goals with Craftyart's in-depth articles
       </Typography>
       <Typography className="text-[18px] text-black my-2 text-center">
-        Craftyart has a proven track record of delivering efficiency, results
+        Crafty Art has a proven track record of delivering efficiency, results
         and excellent customer service.
       </Typography>
 

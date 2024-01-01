@@ -1,4 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import Iframe from "react-iframe";
@@ -25,10 +26,13 @@ export default function LeftImage({
           /> */}
 
           {image ? (
-            <img
+            <Image
               src={image}
               alt={alt}
               className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
+              width={500}
+              height={500}
+              quality={80}
             />
           ) : (
             <video

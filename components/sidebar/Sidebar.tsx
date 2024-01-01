@@ -168,7 +168,6 @@ export default function Sidebar({
   const router = useRouter();
   const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
-  console.log("sideBarRedux: ", sideBarRedux);
   const MobileMenuRedux = useSelector(
     (state: any) => state.actions.openMobileMenubar
   );

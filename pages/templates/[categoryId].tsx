@@ -1,3 +1,4 @@
+import { decryptData } from "@/aes-crypto";
 import {
   useScreenHeight,
   useScreenWidth,
@@ -17,6 +18,7 @@ import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { resolve } from "path";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
@@ -118,6 +120,7 @@ export default function index({ jsonString }: any) {
   const id: any = router.query;
   const [openModal, setOpenModal] = useState(false);
   const [data, setData] = useState<any>();
+  console.log("data: ", data);
   const [contentData, setContentData] = useState<any>([]);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -138,33 +141,33 @@ export default function index({ jsonString }: any) {
               : (id?.categoryId as any),
           page: page,
         })
-        .then((res: any) => {
+        .then((response: any) => {
+          console.log("response: ", response);
+          const res: any = JSON.parse(decryptData(response?.data));
+          console.log("resaxa: ", res);
           setLoadMore(false);
-          setIsLastPage(res?.data?.isLastPage);
+          setIsLastPage(res?.isLastPage);
           if (id?.categoryId === "latest") {
             setContentData(otherData.latestMeta);
           } else if (id?.categoryId === "trending") {
             setContentData(otherData.trendingData);
           } else if (id?.categoryId === "invitation") {
             setContentData(otherData.invitationData);
-          } else setContentData(res?.data);
+          } else setContentData(res);
 
-          setNotFound(res?.data?.status === 500 ? true : false);
+          setNotFound(res?.status === 500 ? true : false);
 
-          if (id?.page > res?.data?.total_pages || id?.page < 0) {
+          if (id?.page > res?.total_pages || id?.page < 0) {
             setNotFound(true);
           }
 
-          if (res?.data?.datas) {
-            setData((prevData: any) => [
-              ...(prevData || []),
-              ...res?.data?.datas,
-            ]);
+          if (res?.datas) {
+            setData((prevData: any) => [...(prevData || []), ...res?.datas]);
 
             setIsLoading(false);
           }
 
-          if (res?.data?.status === 500) {
+          if (res?.status === 500) {
             setIsLoading(false);
           }
         })
@@ -182,6 +185,35 @@ export default function index({ jsonString }: any) {
     const element: any = document.getElementById(tempIdValue);
     element?.scrollIntoView();
   }, [data]);
+
+  // const [loadedImages, setLoadedImages] = useState({});
+  // console.log("loadedImages: ", loadedImages);
+  // const [allLoaded, setAllLoaded] = useState(false);
+  // useEffect(() => {
+  //   const loadImages = async () => {
+  //     try {
+  //       const promises = data.map((imagePath: any, index: number) => {
+  //         return new Promise((resolve, reject) => {
+  //           const img = new Image();
+  //           img.src = imagePath?.template_thumb;
+  //           img.onload = () => resolve(index);
+  //           img.onerror = () =>
+  //             reject(new Error(`Failed to load image at index ${index}`));
+  //         });
+  //       });
+  //       const loadedIndices = await Promise.all(promises);
+  //       const loadedImagesMap: any = {};
+  //       loadedIndices.forEach((index: any) => {
+  //         loadedImagesMap[index] = true;
+  //       });
+  //       setLoadedImages(loadedImagesMap);
+  //       setAllLoaded(true);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   loadImages();
+  // }, [data]);
 
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
@@ -300,11 +332,13 @@ export default function index({ jsonString }: any) {
               >
                 {data?.map((templates: any, index: number) => (
                   <ImageBox
+                    // loadedImages={loadedImages}
                     templates={templates}
                     screenWidth={screenWidth}
                     multiSizeFixSize={multiSizeFixSize}
                     setIdName={setIdName}
                     setOpenModal={setOpenModal}
+                    index={index}
                   />
                 ))}
               </StackGrid>

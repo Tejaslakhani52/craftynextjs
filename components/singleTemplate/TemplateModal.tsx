@@ -21,6 +21,8 @@ import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import { Templates } from "../header/headerComponents/Menu";
 import { AnyAaaaRecord } from "dns";
 import Icons from "@/assets";
+import { decryptData } from "@/aes-crypto";
+import Image from "next/image";
 
 export const IconsText = ({ image, text, isLoading }: any) => {
   return isLoading ? (
@@ -67,15 +69,12 @@ export default function TemplateModal({
   const [anotherData, setAnotherData] = React.useState<any>([]);
   const [isLoading, setIsLoading] = React.useState<any>(true);
   const [template, setTemplate] = React.useState<any>({});
-  console.log("template: ", template);
   const [templateOpen, setTemplateOpen] = useState<any>(false);
   const [anotherTempLoad, setAnotherTempLoad] = useState<any>(true);
-
   const openModal = useSelector((state: any) => state.actions.openTempModal);
   const modalClose = useSelector((state: any) => state.actions.modalClosePath);
   const [showPrevButton, setShowPrevButton] = useState(false);
   const [showNextButton, setShowNextButton] = useState(true);
-  console.log("showPrevButton: ", showPrevButton, showNextButton);
   const [showImage, setShowImage] = useState<any>();
   const containerId = `modalId`;
 
@@ -93,12 +92,15 @@ export default function TemplateModal({
         setIsLoading(true);
 
         if (id) {
-          const response1 = await axios.post("/api/getSingleTemplate", {
+          const res = await axios.post("/api/getSingleTemplate", {
             id_name: id,
           });
-          const jsonString1 = response1.data.substring(
-            response1.data.indexOf("{"),
-            response1.data.lastIndexOf("}") + 1
+
+          const response1 = JSON.parse(decryptData(res?.data));
+
+          const jsonString1 = response1.substring(
+            response1.indexOf("{"),
+            response1.lastIndexOf("}") + 1
           );
           getData1 = JSON.parse(jsonString1);
 
@@ -109,9 +111,12 @@ export default function TemplateModal({
             keywords: getData1?.tags?.[0],
             page: 1,
           });
-          const jsonString2 = response2.data.substring(
-            response2.data.indexOf("{"),
-            response2.data.lastIndexOf("}") + 1
+
+          const res2: any = JSON.parse(decryptData(response2?.data));
+
+          const jsonString2 = res2.substring(
+            res2.indexOf("{"),
+            res2.lastIndexOf("}") + 1
           );
           const getData2 = JSON.parse(jsonString2);
 
@@ -120,9 +125,12 @@ export default function TemplateModal({
         }
       } catch (error) {
         if (id) {
-          const response1 = await axios.post("/api/getSingleTemplate", {
+          const res = await axios.post("/api/getSingleTemplate", {
             id_name: id,
           });
+
+          const response1 = JSON.parse(decryptData(res?.data));
+
           const jsonString1 = response1.data.substring(
             response1.data.indexOf("{"),
             response1.data.lastIndexOf("}") + 1
@@ -136,9 +144,12 @@ export default function TemplateModal({
             keywords: getData1?.tags?.[0],
             page: 1,
           });
-          const jsonString2 = response2.data.substring(
-            response2.data.indexOf("{"),
-            response2.data.lastIndexOf("}") + 1
+
+          const res2: any = JSON.parse(decryptData(response2?.data));
+
+          const jsonString2 = res2.substring(
+            res2.indexOf("{"),
+            res2.lastIndexOf("}") + 1
           );
           const getData2 = JSON.parse(jsonString2);
 
@@ -151,16 +162,19 @@ export default function TemplateModal({
             keywords: getData1?.tags?.[0],
             page: 1,
           });
-          const jsonString = response.data.substring(
-            response.data.indexOf("{"),
-            response.data.lastIndexOf("}") + 1
+
+          const res2: any = JSON.parse(decryptData(response?.data));
+
+          const jsonString = res2.substring(
+            res2.indexOf("{"),
+            res2.lastIndexOf("}") + 1
           );
           const getData = JSON.parse(jsonString);
 
           setAnotherData(getData);
           setAnotherTempLoad(false);
         } catch (error) {
-          console.log("error: ", error);
+          // console.log("error: ", error);
         }
       }
     };
@@ -208,46 +222,10 @@ export default function TemplateModal({
 
   const handleScroll: React.UIEventHandler<HTMLDivElement> = (e) => {
     const container = e.target as HTMLDivElement;
-    console.log(
-      "container: ",
-      container.scrollLeft,
-      container.scrollWidth - container.clientWidth
-    );
     setShowPrevButton(container.scrollLeft > 0);
     setShowNextButton(
       container.scrollLeft < container.scrollWidth - container.clientWidth
     );
-  };
-
-  // React.useEffect(() => {
-  //   const container = document.getElementById(containerId);
-  //   if (container) {
-  //     handleScroll({ target: container } as unknown as Event);
-  //     container.addEventListener("scroll", handleScroll);
-  //     return () => container.removeEventListener("scroll", handleScroll);
-  //   }
-  // }, [containerId]);
-
-  const handleNextClick = () => {
-    const container = document.getElementById(containerId) as HTMLElement;
-    if (container) {
-      handleScroll({ target: container } as any);
-      container.scrollBy({
-        left: container.offsetWidth,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const handlePrevClick = () => {
-    const container = document.getElementById(containerId) as HTMLElement;
-    if (container) {
-      handleScroll({ target: container } as any);
-      container.scrollBy({
-        left: -container.offsetWidth,
-        behavior: "smooth",
-      });
-    }
   };
 
   return (
@@ -579,7 +557,8 @@ export default function TemplateModal({
                                   <Icons.proIcon svgProps={{ width: 28 }} />
                                 </span>
                               )}
-                              <img
+
+                              <Image
                                 src={templates?.template_thumb}
                                 alt={templates?.category_name}
                                 className={`w-full] rounded-[5px] cursor-pointer`}
@@ -587,6 +566,10 @@ export default function TemplateModal({
                                   border: "1px solid #80808082",
                                   height: "100%",
                                 }}
+                                width={200}
+                                height={200}
+                                quality={80}
+                                priority={true}
                               />
                             </div>
                           </div>

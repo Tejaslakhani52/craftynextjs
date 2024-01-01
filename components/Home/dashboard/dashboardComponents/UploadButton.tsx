@@ -7,37 +7,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 
 export default function UploadButton() {
-  const router = useRouter();
-  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [height, setHeight] = useState<any>(0);
-  console.log("height: ", height);
-  const [width, setWidth] = useState<any>(0);
-  const [selectedUnit, setSelectedUnit] = React.useState<null | string>("px");
-  const [lockAspectRatio, setLockAspectRatio] = useState<boolean>(false);
-  const [lastSelectUnit, setLastSelectUnit] = useState<any>();
-  const [enterHeight, setEnterHeight] = useState<any>(0);
-  const [enterWidth, setEnterWidth] = useState<any>(0);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
-
-  const [value, setValue] = React.useState(0);
-  console.log("enterWidth: ", enterWidth);
-
-  const [forAspectRatioWidth, setForAspectRatioWidth] = useState<any>(0);
-  console.log("forAspectRatioWidth: ", forAspectRatioWidth);
-  // console.log("forAspectRatioWidth: ", forAspectRatioWidth);
-  const [forAspectRatioHeight, setForAspectRatioHeight] = useState<any>(0);
-  console.log("lastSelectUnit: ", enterHeight);
-  console.log("forAspectRatioWidth: ", forAspectRatioWidth);
 
   const open = Boolean(anchorEl);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-
-  console.log("value: ", value);
 
   const fileInputRef: any = useRef(null);
 
@@ -63,9 +41,6 @@ export default function UploadButton() {
     setSelectedFile(event.dataTransfer.files[0]);
   };
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
   return (
     <Box>
       <Button
@@ -134,7 +109,7 @@ export default function UploadButton() {
 
             <div className="my-4">
               <Typography className="text-center ">
-                CraftyArt supports image, videos and files
+                Crafty Art supports image, videos and files
               </Typography>
             </div>
           </Box>

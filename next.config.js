@@ -1,4 +1,7 @@
 module.exports = {
+  images: {
+    domains: ["panel.craftyartapp.com", "assets.craftyart.in"],
+  },
   reactDevOverlay: false,
   async rewrites() {
     return [

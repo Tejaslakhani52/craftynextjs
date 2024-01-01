@@ -31,7 +31,7 @@ export default function NotFound() {
             window.location.href = "https://craftyartapp.com/";
           }}
         >
-          Go back to the Craftyart homepage
+          Go back to the Crafty Art homepage
         </p>
       </div>
     </div>

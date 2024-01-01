@@ -235,7 +235,7 @@ export default function FlyerStatic() {
       </Box>
 
       <RightImageSection
-        title="Why Choose CraftyArt For Flyer Designs ?"
+        title="Why Choose Crafty Art For Flyer Designs ?"
         point={
           <Box>
             <Box sx={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -278,7 +278,7 @@ export default function FlyerStatic() {
           What are Customers Saying about Craftyart
         </Typography>
         <Typography className="text-center">
-          Craftyart has a proven track record of delivering efficiency, results
+          Crafty Art has a proven track record of delivering efficiency, results
           and excellent customer service.
         </Typography>
 

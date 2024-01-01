@@ -19,8 +19,7 @@ export default function index() {
         heading={
           "Baby Shower Invitations: Create Magical Moments with Personalized Delight"
         }
-        text="Spark Joy with Stunning Invites! Elevate Your Baby Shower with Unique Invitations. Personalize & Delight Guests. Customize it Today for Unforgettable Memories! 
-        "
+        text="Spark Joy with Stunning Invites! Elevate Your Baby Shower with Unique Invitations. Personalize & Delight Guests. Customize it Today for Unforgettable Memories!"
       />
 
       <Head>
@@ -41,10 +40,10 @@ export default function index() {
                 },
                 {
                   "@type": "Question",
-                  name: "2. Can I order samples before making a bulk purchase?",
+                  name: "2. Can I order custom baby shower invitation?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Yes, you can order a sample to experience the quality and design before committing to a larger order.",
+                    text: "Yes, you can order custom baby shower invitation.",
                   },
                 },
                 {
@@ -103,11 +102,9 @@ export default function index() {
         invitations?"
         point={
           <Box>
-            <MarkText text="Choose a theme that reflects the personality of the parents-to-be and the gender of the baby." />
-            <MarkText text="Select colours that match the theme, from pastels to bold and bright hues." />
-            <MarkText text="Include personal details like names, date, time, and location, along with fun elements like photos or ultrasound images." />
-            <MarkText text="Use high-quality Images for a professional look and durability." />
-            <MarkText text="Keep it simple with easy-to-read fonts and clear messaging." />
+            <MarkText text="Choose a theme or color scheme that reflects the gender of the baby or the nursery decor. It could be traditional pastels, gender-neutral colors, or even something unique like a favorite children's book." />
+            <MarkText text="Use creative and visually appealing designs. You can find templates online or create your own using graphic design software. Consider adding cute baby-related images like rattles, strollers, or baby animals." />
+            <MarkText text="Clearly mention the key details such as the date, time, and location of the baby shower. Include RSVP information, gift registry details, and any specific requests (like bringing a favorite childhood book)." />
           </Box>
         }
         buttonName={"Design your Card"}
@@ -117,24 +114,6 @@ export default function index() {
       />
 
       <RightImageSection
-        title="Craft the party baby shower with
-        ease:"
-        point={
-          <Box>
-            <MarkText text="Use an online invitation maker with customizable templates." />
-            <MarkText text="Choose from pre-made designs that fit your theme." />
-            <MarkText text="Add all important details and customise font types and sizes." />
-            <MarkText text="Consider adding photos or graphics for a personal touch." />
-            <MarkText text="Preview and proofread before sending out." />
-          </Box>
-        }
-        buttonName={"Create Invitation"}
-        path="/s/baby-Shower"
-        alt="baby shower invitations"
-        image="https://assets.craftyart.in/w_assets/images/babyShowerEase.png"
-      />
-
-      <LeftImageSection
         title="Make custom party baby shower
         in minutes:"
         point={
@@ -152,7 +131,11 @@ export default function index() {
         image="https://assets.craftyart.in/w_assets/images/babyShowerMinute.png"
       />
 
-      <ExploreTemplates category="baby Shower" getAll="/s/baby-Shower" />
+      <ExploreTemplates
+        category="baby Shower"
+        getAll="/s/baby-Shower"
+        keyword="Baby Shower"
+      />
 
       <RightImageSection
         title="Unique Baby Shower Invitations for Every Celebration
@@ -271,8 +254,8 @@ export default function index() {
         />
 
         <FaqsBox
-          heading="Can I order samples before making a bulk purchase?"
-          text="Yes, you can order a sample to experience the quality and design before committing to a larger order."
+          heading="Can I order custom baby shower invitation?"
+          text="Yes, you can order custom baby shower invitation."
         />
 
         <FaqsBox

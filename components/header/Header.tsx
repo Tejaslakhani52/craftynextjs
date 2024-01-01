@@ -229,7 +229,6 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
 
             if (e.key === "Enter") {
               // if (modifiedValue !== "" && !executed) {
-              //   console.log("modifiedValue: ", modifiedValue);
               router.push(`/s/${modifiedValue}`);
             }
             // }

@@ -1,3 +1,4 @@
+import CustomHead from "@/components/common/CustomHead";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { Box, Typography } from "@mui/material";
 import React from "react";
@@ -5,6 +6,10 @@ import React from "react";
 export default function index() {
   return (
     <div className="py-[50px] max-sm:py-[20px] px-[15px]">
+      <CustomHead
+        heading={"Privacy Policy"}
+        text="Where creativity meets confidentiality! Explore our guidelines for secure artistic expression. Privacy and art, perfectly blended."
+      />
       <Box className="flex items-center flex-col">
         <Typography className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10">
           Privacy Policy
@@ -12,19 +17,19 @@ export default function index() {
 
         <Box className="w-[80%] max-sm:w-full  mx-auto">
           <Typography>
-            CraftyArt built the CraftyArt graphic design tool as an ad-supported
-            website. This service is provided by CraftyArt at no cost and is
-            intended for use as-is. This page is used to inform visitors
-            regarding my policies, regarding the collection, use, and disclosure
-            of personal information if anyone decides to use my service. If you
-            choose to use my service, then you agree to the collection and use
-            of information in relation to this policy. The personal information
-            that I collect is used for providing and improving the service. I
-            will not use or share your information with anyone except as
-            described in this privacy policy. The terms used in this privacy
-            policy have the same meanings as in our terms and conditions, which
-            are accessible at CraftyArt, unless otherwise defined in this
-            privacy policy.
+            Crafty Art built the Crafty Art graphic design tool as an
+            ad-supported website. This service is provided by Crafty Art at no
+            cost and is intended for use as-is. This page is used to inform
+            visitors regarding my policies, regarding the collection, use, and
+            disclosure of personal information if anyone decides to use my
+            service. If you choose to use my service, then you agree to the
+            collection and use of information in relation to this policy. The
+            personal information that I collect is used for providing and
+            improving the service. I will not use or share your information with
+            anyone except as described in this privacy policy. The terms used in
+            this privacy policy have the same meanings as in our terms and
+            conditions, which are accessible at CraftyArt, unless otherwise
+            defined in this privacy policy.
           </Typography>
 
           <Typography

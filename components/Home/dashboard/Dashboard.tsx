@@ -150,7 +150,7 @@ export default function Dashboard() {
             <Box>
               <Typography className="text-white mb-2">Pro+</Typography>
               <Typography className="text-white whitespace-nowrap text-[20px] font-medium mb-5">
-                CraftyArt & Design
+                Crafty Art & Design
               </Typography>
 
               <Button

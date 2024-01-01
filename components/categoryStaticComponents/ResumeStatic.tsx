@@ -152,7 +152,7 @@ export default function ResumeStatic() {
 
                   <Typography className="text-[#5C626A]">
                     Once you're satisfied with your resume, save your work and
-                    download it in a format supported by CraftyArt or any other
+                    download it in a format supported by Crafty Art or any other
                     platform (e.g., PDF, Word).
                   </Typography>
                 </Box>
@@ -444,7 +444,7 @@ export default function ResumeStatic() {
           What are Customers Saying about Craftyart
         </Typography>
         <Typography className="text-center">
-          Craftyart has a proven track record of delivering efficiency, results
+          Crafty Art has a proven track record of delivering efficiency, results
           and excellent customer service.
         </Typography>
 
@@ -543,28 +543,28 @@ export default function ResumeStatic() {
           <Box sx={{ p: "20px" }}></Box>
 
           <FaqsBox
-            heading="What makes CraftyArt unique for resume designs?"
-            text="CraftyArt offers a personalized approach, collaborating closely with clients for unique, industry-aligned resumes."
+            heading="What makes Crafty Art unique for resume designs?"
+            text="Crafty Art offers a personalized approach, collaborating closely with clients for unique, industry-aligned resumes."
           />
 
           <FaqsBox
-            heading="Can CraftyArt cater to different industries?"
+            heading="Can Crafty Art cater to different industries?"
             text="Yes, our diverse team tailors designs to match various professions, ensuring industry relevance."
           />
 
           <FaqsBox
-            heading="What design elements does CraftyArt focus on?"
-            text="CraftyArt combines aesthetics with readability, emphasizing clean and professional designs."
+            heading="What design elements does Crafty Art focus on?"
+            text="Crafty Art combines aesthetics with readability, emphasizing clean and professional designs."
           />
 
           <FaqsBox
-            heading="How does CraftyArt ensure industry standards are met?"
-            text="Staying updated on trends, CraftyArt aligns resumes with current industry norms."
+            heading="How does Crafty Art ensure industry standards are met?"
+            text="Staying updated on trends, Crafty Art aligns resumes with current industry norms."
           />
 
           <FaqsBox
-            heading="Can CraftyArt handle traditional and creative designs?"
-            text="Yes, CraftyArt caters to both traditional and creative preferences, adapting to diverse needs."
+            heading="Can Crafty Art handle traditional and creative designs?"
+            text="Yes, Crafty Art caters to both traditional and creative preferences, adapting to diverse needs."
           />
         </Box>
       </Box>
@@ -587,15 +587,15 @@ export default function ResumeStatic() {
               mainEntity: [
                 {
                   "@type": "Question",
-                  name: "1. What makes CraftyArt unique for resume designs?",
+                  name: "1. What makes Crafty Art unique for resume designs?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "CraftyArt offers a personalized approach, collaborating closely with clients for unique, industry-aligned resumes.",
+                    text: "Crafty Art offers a personalized approach, collaborating closely with clients for unique, industry-aligned resumes.",
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "2. Can CraftyArt cater to different industries?",
+                  name: "2. Can Crafty Art cater to different industries?",
                   acceptedAnswer: {
                     "@type": "Answer",
                     text: "Yes, our diverse team tailors designs to match various professions, ensuring industry relevance.",
@@ -603,26 +603,26 @@ export default function ResumeStatic() {
                 },
                 {
                   "@type": "Question",
-                  name: "3. What design elements does CraftyArt focus on?",
+                  name: "3. What design elements does Crafty Art focus on?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "CraftyArt combines aesthetics with readability, emphasizing clean and professional designs.",
+                    text: "Crafty Art combines aesthetics with readability, emphasizing clean and professional designs.",
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "4. How does CraftyArt ensure industry standards are met?",
+                  name: "4. How does Crafty Art ensure industry standards are met?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Staying updated on trends, CraftyArt aligns resumes with current industry norms.",
+                    text: "Staying updated on trends, Crafty Art aligns resumes with current industry norms.",
                   },
                 },
                 {
                   "@type": "Question",
-                  name: "5. Can CraftyArt handle traditional and creative designs?",
+                  name: "5. Can Crafty Art handle traditional and creative designs?",
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: "Yes, CraftyArt caters to both traditional and creative preferences, adapting to diverse needs.",
+                    text: "Yes, Crafty Art caters to both traditional and creative preferences, adapting to diverse needs.",
                   },
                 },
               ],

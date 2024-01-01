@@ -17,9 +17,9 @@ export default function index() {
       <CustomHead
         image="https://assets.craftyart.in/w_assets/images/posterPerfact.png"
         heading={
-          "Poster Design Online: Create Graphic Design Posters with Ease        "
+          "Poster Design Online: Create Graphic Design Posters with Ease"
         }
-        text="Elevate your brand with our online poster design tool. Design custom graphic posters effortlessly, collaborating from anywhere. "
+        text="Elevate your brand with our online poster design tool. Design custom graphic posters effortlessly, collaborating from anywhere."
       />
       <Head>
         <script
@@ -142,7 +142,7 @@ export default function index() {
         path="/s/poster"
         image="https://assets.craftyart.in/w_assets/images/posterEase.png"
       />
-      {/*  */} <ExploreTemplates getAll="/s/poster" />
+      {/*  */} <ExploreTemplates getAll="/s/poster" keyword="Poster" />
       <RightImageSection
         title="Transform Your Ideas into Stunning Visuals with Poster Design Online
         "

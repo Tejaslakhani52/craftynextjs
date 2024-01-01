@@ -14,6 +14,10 @@ import { useRouter } from "next/router";
 import { addDays, format } from "date-fns";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import Icons from "@/assets";
+import { decryptData } from "@/aes-crypto";
+import CustomHead from "@/components/common/CustomHead";
+import Head from "next/head";
+import { handleEmailClick } from "@/commonFunction/emailCheck";
 
 const PUBLIC_KEY =
   "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
@@ -117,17 +121,19 @@ export default function index({ ip }: any) {
     try {
       const response = await axios
         .post("/api/getCountryCode", { ip: ip?.ip })
-        .then((res: any) => {
-          setUserCountryCode(res?.data?.countryCode);
+        .then((response: any) => {
+          const res: any = JSON.parse(decryptData(response?.data));
+          setUserCountryCode(res?.countryCode);
           axios
             .post("/api/getPlans", {
-              user_id: uId,
-              currency: res?.data?.countryCode === "IN" ? "INR" : "USD",
+              currency: res?.countryCode === "IN" ? "INR" : "USD",
             })
-            .then((response: any) => {
-              const jsonString = response.data.substring(
-                response.data.indexOf("{"),
-                response.data.lastIndexOf("}") + 1
+            .then((res: any) => {
+              const response: any = JSON.parse(decryptData(res?.data));
+
+              const jsonString = response.substring(
+                response.indexOf("{"),
+                response.lastIndexOf("}") + 1
               );
               const getData = JSON.parse(jsonString);
               setPricePlaneData(getData?.subs);
@@ -167,6 +173,57 @@ export default function index({ ip }: any) {
 
   return (
     <div className="">
+      <CustomHead
+        heading="Crafty Art Plans & Pricing | Unlock Your Creative Journey Today!"
+        text="Unleash Your Creativity with Crafty Art! Explore Affordable Plans & Pricing. Transform Ideas into Masterpieces. Join Now!"
+      />
+
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "1. What pricing plans does Crafty Art offer?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Crafty Art offers different pricing plans to cater to various needs. These typically include a free plan with basic features and paid plans with additional benefits.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "2. What are the benefits of a premium subscription?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "As a premium user, you can download unlimited Crafty Art assets and access various premium services.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "3. Why do I have to purchase Crafty Art Pro?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "With the Crafty Art Pro subscription, you can unlock unlimited access to premium services and features.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "4. Are my downloads unlimited as a premium user?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Yes, as a premium user, you have unlimited downloads. There are no limitations on the use of Crafty Art assets, templates, and the Background Remover Tool.",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+      </Head>
+
       <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[95%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
         <Box className="flex-1 flex justify-center max-lg:order-2  max-lg:w-[100%]">
           <Box className="w-[90%] flex  flex-col gap-[20px]   max-lg:w-[8 0%] max-sm:w-[100%]">
@@ -177,7 +234,7 @@ export default function index({ ip }: any) {
               Turning Imagination into Innovation
             </Typography>
             <p>
-              CraftyArt is the ultimate graphic design tool that empowers
+              Crafty Art is the ultimate graphic design tool that empowers
               creative professionals, freelancers, and businesses to bring their
               visions to life with ease. Our pricing plans are designed to cater
               to a wide range of users, from individuals working on personal
@@ -219,13 +276,19 @@ export default function index({ ip }: any) {
           </Box>
         </Box>
         <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
-          <video
+          {/* <video
             src={"https://assets.craftyart.in/w_assets/remove_bg.mp4"}
             controls={false}
             autoPlay
             loop
             muted
             className="object-contain w-[550px] max-lg:w-[400px] max-sm:w-full"
+          /> */}
+
+          <img
+            src="/images/plans.png"
+            alt="plans"
+            className="object-contain w-[450px] max-lg:w-[400px] max-sm:w-full"
           />
         </Box>
       </Box>
@@ -379,7 +442,7 @@ export default function index({ ip }: any) {
               variant="h3"
               className="text-[#1C3048] text-[24px] font-[600] pb-[20px] flex items-center gap-3"
             >
-              CraftyArt Pro
+              Crafty Art Pro
               <Icons.pricingIcon svgProps={{ width: 30 }} />
             </Typography>
 
@@ -522,14 +585,14 @@ export default function index({ ip }: any) {
           variant="h2"
           className="text-[#1C3048] text-[30px] text-center font-[600] mb-4"
         >
-          Why Choose CraftyArt ?
+          Why Choose Crafty Art ?
         </Typography>
 
         <Typography className="text-center max-sm:w-[90%] w-[70%] mx-auto text-[15px]">
           At CraftyArt, we understand that choosing the right pricing plan for
           your creative needs is a significant decision. We offer a range of
           plans tailored to meet the unique requirements of artists, creators,
-          and enthusiasts. Here's why you should choose CraftyArt for your
+          and enthusiasts. Here's why you should choose Crafty Art for your
           creative journey.
         </Typography>
         <Box className="flex py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
@@ -542,7 +605,7 @@ export default function index({ ip }: any) {
                 User-Friendly Interface:
               </Typography>
               <Typography className="font-medium">
-                CraftyArt is designed for both beginners and experts, offering
+                Crafty Art is designed for both beginners and experts, offering
                 an intuitive experience for all users.
               </Typography>
             </Box>
@@ -705,7 +768,7 @@ export default function index({ ip }: any) {
           <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
             <Box className="mb-5">
               <Typography className="mb-3">
-                CraftyArt is your all-in-one solution for creating captivating
+                Crafty Art is your all-in-one solution for creating captivating
                 visuals. Choose the plan that best suits your needs and join the
                 ranks of satisfied designers who have transformed their creative
                 process with CraftyArt.
@@ -713,9 +776,16 @@ export default function index({ ip }: any) {
 
               <Typography className="">
                 Still have questions or need a custom solution for your
-                organization? Please don't hesitate to contact us at [Your
-                Contact Information] for more information, personalized
-                assistance, and enterprise pricing options.
+                organization? Please don't hesitate to contact us at
+                <span
+                  className="text-[#5961F8] cursor-pointer"
+                  onClick={handleEmailClick}
+                >
+                  {" "}
+                  craftyartapp@gmail.com{" "}
+                </span>
+                for more information, personalized assistance, and enterprise
+                pricing options.
               </Typography>
             </Box>
           </Box>
@@ -753,10 +823,8 @@ export default function index({ ip }: any) {
         <Box sx={{ p: "20px" }}></Box>
 
         <FaqsBox
-          heading="1. Can I use Crafty Art for free?"
-          text="Yes, Crafty Art offers a free online logo maker. To access it, select the Logo Maker option from the main page and
-          choose one of the premade templates. You can then add your own images, text, and design elements to customise the
-          post. When you’re finished, click Save, and your logo will be ready to download."
+          heading="1. What pricing plans does Crafty Art offer?"
+          text="Crafty Art offers different pricing plans to cater to various needs. These typically include a free plan with basic features and paid plans with additional benefits."
         />
         <FaqsBox
           heading="2. What are the benefits of a premium subscription?"
