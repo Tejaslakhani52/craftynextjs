@@ -4,12 +4,14 @@ interface DataState {
   templatesData: any[];
   templatesSingleValue: any;
   tokenValue: boolean;
+  userData: any;
 }
 
 const initialState: DataState = {
   templatesData: [],
   templatesSingleValue: {},
   tokenValue: false,
+  userData: null,
 };
 
 const dataSlice = createSlice({
@@ -22,8 +24,11 @@ const dataSlice = createSlice({
     tokenValue: (state, action: PayloadAction<boolean>) => {
       state.tokenValue = action.payload;
     },
+    userData: (state, action: PayloadAction<boolean>) => {
+      state.userData = action.payload;
+    },
   },
 });
 
-export const { templatesData, tokenValue } = dataSlice.actions;
+export const { templatesData, tokenValue, userData } = dataSlice.actions;
 export default dataSlice.reducer;

@@ -1,5 +1,3 @@
-import { decryptData } from "@/aes-crypto";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Button, Typography } from "@mui/material";
 import {
   AddressElement,
@@ -9,10 +7,11 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { setSessionVal } from "@/redux/action/AuthToken";
 import PhoneInput from "react-phone-input-2";
 
 const inputStyle = {
@@ -39,33 +38,14 @@ interface AddressProps {
   country: string;
 }
 
-export default function Stripe({ selectPlan, countryCode }: any) {
-  console.log("countryCode: ", countryCode);
-  const uId = authCookiesGet();
+export function Stripe({ countryCode }: any) {
+  const dispatch = useDispatch();
   const stripe = useStripe();
   const elements = useElements();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [fullName, setFullName] = useState<any>("");
   const [phoneNo, setPhoneNo] = useState<any>("");
   const userData = useSelector((state: any) => state.auth.userData);
-
-  let protocol: any;
-  let hostname: any;
-  let location: any;
-  let currentUrl: any;
-
-  if (typeof window !== "undefined") {
-    protocol = window.location.protocol;
-    hostname = window.location.hostname;
-    location = window.location;
-    currentUrl = window.location.href;
-  }
-
-  const domain = `${protocol}//${hostname}${
-    location?.port ? ":" + location?.port : ""
-  }`;
-
-  const returnUrl = `${domain}/payment/success/done?return_url=${currentUrl}`;
 
   const handleSubmit = async (e: any) => {
     const billing_details: {
@@ -79,7 +59,6 @@ export default function Stripe({ selectPlan, countryCode }: any) {
       address: undefined,
       phone: phoneNo,
     };
-    setIsLoading(true);
     e.preventDefault();
 
     if (countryCode !== "IN") {
@@ -118,33 +97,63 @@ export default function Stripe({ selectPlan, countryCode }: any) {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response: any = await axios.post("/api/stripePayment", {
-          amount: selectPlan?.price * 100,
-          id,
-          currency: countryCode === "IN" ? "INR" : "USD",
-          userId: uId,
-          packageId: selectPlan?.id,
-          packageName: selectPlan?.package_name,
-          returnUrl: returnUrl,
-        });
 
-        const response1 = JSON.parse(decryptData(response?.data));
+        axios
+          .get("/api/templatePayment/stripe")
+          .then(async (c: any) => {
+            stripe
+              ?.confirmCardPayment(c.client_secret)
+              .then(async (data) => {
+                if (data.error) {
+                  toast.error(data.error.message!);
+                } else if (data.paymentIntent) {
+                  const datas = {
+                    id: data.paymentIntent.id,
+                    m: "Stripe",
+                  };
+                  setSessionVal("_pdf", JSON.stringify(datas));
 
-        if (response1.next_action?.redirect_to_url?.url) {
-          window.location.href = response1.next_action?.redirect_to_url?.url;
-          setIsLoading(false);
-        }
-
-        if (response.data.success) {
-          toast.success("Successful payment");
-        }
+                  // api
+                  //   .webhook()
+                  //   .then((data: any) => {
+                  //     hideLoader();
+                  //     if (data.success) {
+                  //       const val: PaymentProps[] = JSON.parse(
+                  //         getSessionVal("_paf", "[]") || "[]"
+                  //       );
+                  //       const purDatas: PurchaseItemProps[] = [];
+                  //       val.forEach((_) => {
+                  //         purDatas.push({ id: _.id, type: _.type });
+                  //       });
+                  //       dispatch(setPurchaseItems(purDatas));
+                  //       removeUnusedSessions();
+                  //       toast.success(data.msg);
+                  //       hidePaymentDialog();
+                  //     } else {
+                  //       toast.error(data.msg);
+                  //     }
+                  //   })
+                  //   .catch(() => {
+                  //     toast.error("Payment failed");
+                  //     hideLoader();
+                  //   });
+                } else {
+                  toast.error("Payment failed");
+                }
+              })
+              .catch((err) => {
+                console.error(err);
+              });
+          })
+          .catch((err: any) => {
+            console.error(err);
+            toast.error("Payment failed");
+          });
       } catch (error) {
-        // console.log("error: ", error);
-        setIsLoading(false);
+        toast.error("Payment failed");
       }
     } else {
       toast.error(error.message);
-      setIsLoading(false);
     }
   };
   return (
@@ -184,7 +193,7 @@ export default function Stripe({ selectPlan, countryCode }: any) {
                 disableDropdown={true}
                 countryCodeEditable={false}
                 value={phoneNo}
-                onChange={(e) => setPhoneNo(e)}
+                onChange={(e: any) => setPhoneNo(e)}
                 inputStyle={{ width: "100%" }}
               />
             </Box>
@@ -299,14 +308,8 @@ export default function Stripe({ selectPlan, countryCode }: any) {
         className="bg_linear text-white w-full py-[10px] normal-case text-[17px]"
         onClick={handleSubmit}
       >
-        Get Crafty Art Pro
+        Process to pay
       </Button>
-
-      {isLoading && (
-        <main className="main">
-          <span className="loader"></span>
-        </main>
-      )}
     </>
   );
 }

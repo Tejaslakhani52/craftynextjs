@@ -13,7 +13,10 @@ export default function index() {
         text="Need Help? Contact Us Instantly! Your Solution Awaits. Expert Assistance 24/7. Don't Miss Out – Act Now!"
       />
       <Box className="flex items-center flex-col">
-        <Typography className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10">
+        <Typography
+          className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10"
+          variant="h1"
+        >
           Contact Us
         </Typography>
 

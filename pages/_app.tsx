@@ -1,16 +1,18 @@
+import { decryptData } from "@/aes-crypto";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
 import MobileBottomBar from "@/components/common/MobileBottomBar";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import Index from "@/private/Index";
-import { authCookiesGet } from "@/redux/action/AuthToken";
+import { authCookiesGet, setCC } from "@/redux/action/AuthToken";
 import store from "@/redux/store";
 import "@/styles/globals.css";
 import { Box } from "@mui/material";
+import axios from "axios";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
 
@@ -49,6 +51,19 @@ export default function App({
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const token = authCookiesGet();
+
+  useEffect(() => {
+    axios.get("/api/getIp").then((res) => {
+      const ip: any = JSON.parse(decryptData(res?.data));
+
+      axios
+        .post("/api/getCountryCode", { ip: ip?.ip })
+        .then((response: any) => {
+          const res: any = JSON.parse(decryptData(response?.data));
+          setCC(res?.countryCode);
+        });
+    });
+  }, []);
 
   return (
     <>

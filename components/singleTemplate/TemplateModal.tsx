@@ -23,6 +23,8 @@ import { AnyAaaaRecord } from "dns";
 import Icons from "@/assets";
 import { decryptData } from "@/aes-crypto";
 import Image from "next/image";
+import ShowPremiumDialog from "../templatePayment/ShowPremiumDialog";
+import { te } from "date-fns/locale";
 
 export const IconsText = ({ image, text, isLoading }: any) => {
   return isLoading ? (
@@ -63,6 +65,7 @@ export default function TemplateModal({
   const dispatch = useDispatch();
   const router = useRouter();
   const userPremium = tokenGet("premium");
+  console.log("userPremium: ", userPremium);
   const token = authCookiesGet();
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
@@ -78,6 +81,7 @@ export default function TemplateModal({
   const [showNextButton, setShowNextButton] = useState(true);
   const [showImage, setShowImage] = useState<any>();
   const containerId = `modalId`;
+  const [showPremiumBox, setShowPremiumBox] = useState<any>(false);
 
   React.useEffect(() => {
     setShowImage(template?.thumbArray?.[0]);
@@ -86,6 +90,7 @@ export default function TemplateModal({
   React.useEffect(() => {
     const fetchData = async () => {
       let getData1;
+      console.log("getData1: ", getData1);
 
       try {
         setAnotherTempLoad(true);
@@ -136,13 +141,13 @@ export default function TemplateModal({
             response1.data.indexOf("{"),
             response1.data.lastIndexOf("}") + 1
           );
-          getData1 = JSON.parse(jsonString1);
+          const getDataSingle = JSON.parse(jsonString1);
 
           setIsLoading(false);
-          setTemplate(getData1);
+          setTemplate(getDataSingle);
 
           const response2 = await axios.post("/api/searchTemplate", {
-            keywords: getData1?.tags?.[0],
+            keywords: getDataSingle?.tags?.[0],
             page: 1,
           });
 
@@ -431,8 +436,9 @@ export default function TemplateModal({
                     <button
                       onClick={() => {
                         if (template?.is_premium && userPremium !== "true") {
-                          dispatch(openSidebar(false));
-                          router.push("/plans");
+                          // dispatch(openSidebar(false));
+                          // router.push("/plans");
+                          setShowPremiumBox(true);
                         } else
                           window.open(
                             `https://editor.craftyartapp.com/${template?.id_name}`
@@ -584,6 +590,18 @@ export default function TemplateModal({
                 </Box>
               )}
             </Box>
+            <ShowPremiumDialog
+              open={showPremiumBox}
+              setOpen={setShowPremiumBox}
+              tempData={{
+                string_id: template.string_id,
+                usdAmount: template.usdAmount,
+                usdVal: template.usdVal,
+                inrAmount: template.inrAmount,
+                inrVal: template.inrVal,
+                type: 0,
+              }}
+            />
           </DialogContent>
         </Box>
       </Box>

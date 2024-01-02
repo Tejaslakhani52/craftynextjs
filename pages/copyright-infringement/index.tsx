@@ -1,4 +1,5 @@
 import { handleEmailClick } from "@/commonFunction/emailCheck";
+import CustomHead from "@/components/common/CustomHead";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { Box, Typography } from "@mui/material";
 import React from "react";
@@ -6,8 +7,15 @@ import React from "react";
 export default function index() {
   return (
     <div className="py-[50px] max-sm:py-[20px] px-[15px]">
+      <CustomHead
+        heading={"Copyright Infringement: What You Need to Know"}
+        text="Understand the implications of Copyright Infringement guide."
+      />
       <Box className="flex items-center flex-col">
-        <Typography className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10">
+        <Typography
+          className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10"
+          variant="h1"
+        >
           Copyright Infringement
         </Typography>
 

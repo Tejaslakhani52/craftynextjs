@@ -112,7 +112,7 @@ export default function ImageBox({
                   key={index}
                   style={{ display: "flex", justifyContent: "center" }}
                 >
-                  {/* <img
+                  <img
                     src={image}
                     alt={`slide-${index}`}
                     className={`w-full]   rounded-[5px] cursor-pointer`}
@@ -120,9 +120,9 @@ export default function ImageBox({
                       height: "100%",
                       width: "100%",
                     }}
-                  /> */}
+                  />
 
-                  <Image
+                  {/* <Image
                     src={image}
                     alt={image}
                     className={`w-full h-full rounded-[5px] cursor-pointer opacity-0`}
@@ -135,7 +135,7 @@ export default function ImageBox({
                     onLoadingComplete={(image) =>
                       image.classList.remove("opacity-0")
                     }
-                  />
+                  /> */}
                 </div>
               ))}
             </div>

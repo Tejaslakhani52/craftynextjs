@@ -317,6 +317,7 @@ export default function TemplatesBox({ apiData }: any) {
   const dispatch = useDispatch();
 
   const data = useSelector((state: any) => state.auth.templatesData);
+  console.log("data: ", data);
 
   useEffect(() => {
     axios

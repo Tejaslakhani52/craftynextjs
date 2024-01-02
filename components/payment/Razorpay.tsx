@@ -18,6 +18,15 @@ const loadScript = (src: any) => {
   });
 };
 
+interface AddressProps {
+  line1: string;
+  line2: string | null;
+  city: string;
+  state: string;
+  postal_code: string;
+  country: string;
+}
+
 export default function RazorpayPage({ selectPaln, setOpen }: any) {
   const [loading, setLoading] = useState<boolean>(false);
   const uId = authCookiesGet();

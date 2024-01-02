@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import Cookies from "js-cookie";
 import { decryptData } from "@/aes-crypto";
+import { userData } from "@/redux/reducer/AuthDataReducer";
 
 export default function Profile() {
   const router = useRouter();
@@ -38,6 +39,7 @@ export default function Profile() {
         const data2 = JSON.parse(decryptData(data));
         tokenSet("premium", data2?.user?.is_premium === 1 ? "true" : "false");
         userPremium(`${data2?.user?.is_premium}`);
+        dispatch(userData(data2?.user));
         setImageBaseUrl(data2?.url);
         setUserProfile(data2?.user);
       })

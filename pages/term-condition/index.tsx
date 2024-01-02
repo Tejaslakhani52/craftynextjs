@@ -11,7 +11,10 @@ export default function index() {
         text="Explore our comprehensive Terms & Conditions for a transparent and secure experience. Understand the rules governing our services."
       />
       <Box className="flex items-center flex-col">
-        <Typography className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10">
+        <Typography
+          className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10"
+          variant="h1"
+        >
           Terms & Conditions
         </Typography>
 

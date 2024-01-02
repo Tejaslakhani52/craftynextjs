@@ -44,3 +44,28 @@ export const userPremium = (value: any) => {
     domain: ".craftyartapp.com",
   });
 };
+
+export function removeUnusedSessions(): void {
+  Cookies.remove("_paf");
+  Cookies.remove("_pdf");
+}
+
+export function setSessionVal(key: string, val: string): void {
+  Cookies.set(key, encryptData(val), { secure: true });
+}
+
+export function getSessionVal(
+  key: string,
+  defaultVal?: string | undefined
+): string | undefined {
+  return decryptData(Cookies.get(key), defaultVal) || defaultVal;
+}
+
+export const setCC = (value: any) => {
+  Cookies.set("CC", encryptData(value));
+};
+
+export const getCC = () => {
+  const value = Cookies.get("CC");
+  return decryptData(value);
+};

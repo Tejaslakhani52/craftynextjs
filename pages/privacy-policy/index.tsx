@@ -11,7 +11,10 @@ export default function index() {
         text="Where creativity meets confidentiality! Explore our guidelines for secure artistic expression. Privacy and art, perfectly blended."
       />
       <Box className="flex items-center flex-col">
-        <Typography className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10">
+        <Typography
+          className="text_linear max-sm:text-[30px] text-[45px] font-[700] text-center mx-auto sm:mb-10"
+          variant="h1"
+        >
           Privacy Policy
         </Typography>
 
