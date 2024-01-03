@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: TemplateStateType = {
+interface DataState {
+  categoryTempData: any;
+  categoryDataPage: number;
+  setPurchaseItems: any;
+}
+
+const initialState: DataState = {
   categoryTempData: [],
   categoryDataPage: 1,
   setPurchaseItems: "",
