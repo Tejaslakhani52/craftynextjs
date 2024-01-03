@@ -1,5 +1,9 @@
+import { decryptData } from "@/aes-crypto";
+import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { consoleShow } from "@/commonFunction/console";
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { templatesData } from "@/redux/reducer/AuthDataReducer";
 import { modalClosePath } from "@/redux/reducer/actionDataReducer";
 import { Box, Button, Typography } from "@mui/material";
@@ -9,12 +13,8 @@ import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TemplatesSkelton from "./TemplatesSkelton";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
-import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
-import Icons from "@/assets";
-import { decryptData } from "@/aes-crypto";
-import { resolve } from "path";
-import Image from "next/image";
+import { AuthStateType } from "@/interface/stateType";
+import { DashboardDataType } from "@/interface/dashboard";
 
 function ImageBox({
   templates,
@@ -26,7 +26,7 @@ function ImageBox({
   const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
   const [isHovered, setIsHovered] = useState(false);
-  const intervalRef: any = useRef(null);
+  const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
   useEffect(() => {
     if (isHovered) {
       intervalRef.current = setInterval(() => {
@@ -59,7 +59,7 @@ function ImageBox({
           ? "p-3 max-sm:p-1 min-w-[250px] max-sm:min-w-[130px]"
           : "p-[7px] max-sm:p-1"
       } rounded-[12px]`}
-      key={templates?.template_name}
+      key={templates.id_name}
       href={`/templates/p/${templates.id_name}`}
       onClick={(e) => e.preventDefault()}
     >
@@ -113,8 +113,19 @@ function ImageBox({
               }}
             >
               {templates?.thumbArray.map((image: any, index: number) => (
-                <div className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide">
-                  <Image
+                <div
+                  className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide"
+                  key={index}
+                >
+                  <img
+                    src={image}
+                    alt={image}
+                    className={` w-[auto] ${
+                      uniqueCat ? "h-[100%]" : ""
+                    }  mx-auto rounded-[4px]  `}
+                    style={{ transition: "0.5s all" }}
+                  />
+                  {/* <Image
                     src={image}
                     alt={image}
                     className={` w-[auto] ${
@@ -129,7 +140,7 @@ function ImageBox({
                     onLoadingComplete={(image) =>
                       image.classList.remove("opacity-0")
                     }
-                  />
+                  /> */}
                 </div>
               ))}
             </div>
@@ -170,8 +181,8 @@ export const TemplatesBoxes = ({
   setOpenModal,
   setIdName,
   height,
+  key,
 }: any) => {
-  const dispatch = useDispatch();
   const router = useRouter();
   const uniqueCat =
     item?.category_name === "Latest" ||
@@ -180,7 +191,6 @@ export const TemplatesBoxes = ({
   const containerId = `carousel-slide-container-${item.category_id}`;
   const [showPrevButton, setShowPrevButton] = useState(true);
   const [showNextButton, setShowNextButton] = useState(true);
-  const screenWidth = useScreenWidth();
 
   const handleScroll = (e: Event) => {
     const container = e.target as HTMLElement;
@@ -220,7 +230,7 @@ export const TemplatesBoxes = ({
   };
 
   return (
-    <Box className="relative">
+    <Box className="relative" key={key}>
       <Box className="flex items-center justify-between pt-8 pb-4 max-sm:pb-2 max-sm:pt-5">
         <Typography className="text-black font-semibold text-[22px] max-sm:text-[14px]">
           {item?.category_name}
@@ -253,9 +263,10 @@ export const TemplatesBoxes = ({
             </button>
           </Box>
         )}
-        {item?.template_model?.map((templates: any) => (
+        {item?.template_model?.map((templates: any, index: number) => (
           <>
             <ImageBox
+              key={index}
               templates={templates}
               uniqueCat={uniqueCat}
               height={height}
@@ -282,49 +293,22 @@ export const TemplatesBoxes = ({
   );
 };
 
-export async function getServerSideProps(context: any) {
-  try {
-    const response = await axios.post(
-      "https://story.craftyartapp.com/get/main/data",
-      {
-        key: `qwfsegxdhbxfjhncf`,
-        page: 1,
-        count: 0,
-      }
-    );
-
-    const responseData = response.data;
-
-    return {
-      props: {
-        apiData: responseData,
-      },
-    };
-  } catch (error) {
-    console.error("Error in getServerSideProps:", error);
-    return {
-      notFound: true,
-    };
-  }
-}
-export default function TemplatesBox({ apiData }: any) {
-  console.log("data: ", apiData);
+export default function TemplatesBox() {
   const screenWidth = useScreenWidth();
-
   const [openModal, setOpenModal] = React.useState(false);
-  const [idName, setIdName] = useState<any>("");
+  const [idName, setIdName] = useState<string>("");
   const router = useRouter();
   const dispatch = useDispatch();
-
-  const data = useSelector((state: any) => state.auth.templatesData);
-  console.log("data: ", data);
+  const data = useSelector((state: AuthStateType) => state.auth.templatesData);
 
   useEffect(() => {
     axios
       .post(`/api/dashboard`)
       .then((response: any) => {
         if (response?.data) {
-          const res: any = JSON.parse(decryptData(response?.data));
+          const res: DashboardDataType = JSON.parse(
+            decryptData(response?.data)
+          );
           dispatch(templatesData(res));
         }
       })
@@ -346,15 +330,17 @@ export default function TemplatesBox({ apiData }: any) {
   return (
     <Box className="px-[20px] max-sm:px-[10px] pb-10">
       {data?.length > 0
-        ? data?.map((item: any) => (
-            <TemplatesBoxes
-              item={item}
-              key={item?.id}
-              openModal={openModal}
-              setOpenModal={setOpenModal}
-              setIdName={setIdName}
-              height={height}
-            />
+        ? data?.map((item: any, index: number) => (
+            <div key={index}>
+              <TemplatesBoxes
+                item={item}
+                key={item?.id}
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+                setIdName={setIdName}
+                height={height}
+              />
+            </div>
           ))
         : true && <TemplatesSkelton />}
 

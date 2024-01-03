@@ -37,16 +37,13 @@ export const extractCookieValue = (cookiesString: any, cookieName: any) => {
 };
 
 export default function Index({ sessionId }: any) {
-  console.log("sessionId: ", sessionId);
   const screenWidth = useScreenWidth();
-  console.log("screenWidth: ", screenWidth);
   const dispatch = useDispatch();
   const router = useRouter();
-
   const token = authCookiesGet();
-  console.log("token: ", token);
-
   const hasEffectRun = useRef(false);
+  const mainLoading = useSelector((state: any) => state.actions.mainLoad);
+  console.log("mainLoading: ", mainLoading);
 
   const productPaths = Product.subName.flatMap((category: any) =>
     category.allName.map((item: any) => item.path)
@@ -59,7 +56,6 @@ export default function Index({ sessionId }: any) {
   const templatesPaths = Templates.subName.flatMap((category: any) =>
     category.allName.map((item: any) => item.path)
   );
-  console.log("productPaths: ", productPaths);
 
   useEffect(() => {
     dispatch(mainLoader(true));
@@ -75,10 +71,6 @@ export default function Index({ sessionId }: any) {
             !editorToolsPaths.includes(router?.pathname) &&
             !templatesPaths.includes(router?.pathname)
           ) {
-            console.log(
-              "productPaths.every((path) => !router?.pathname.includes(path)): "
-            );
-
             dispatch(openSidebar(true));
           }
           dispatch(tokenValue(true));
@@ -126,5 +118,13 @@ export default function Index({ sessionId }: any) {
     } else dispatch(enterAccount(false));
   }, [router]);
 
-  return <div></div>;
+  return (
+    <div style={{ zIndex: "555555555555555555555555" }}>
+      {mainLoading && (
+        <main className="main">
+          <span className="loader"></span>
+        </main>
+      )}
+    </div>
+  );
 }

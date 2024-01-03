@@ -11,8 +11,15 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { setSessionVal } from "@/redux/action/AuthToken";
+import {
+  getSessionVal,
+  removeUnusedSessions,
+  setSessionVal,
+} from "@/redux/action/AuthToken";
 import PhoneInput from "react-phone-input-2";
+import { decryptData } from "@/aes-crypto";
+import { setPurchaseItems } from "@/redux/reducer/templateDataReducer";
+import { mainLoad } from "@/redux/reducer/actionDataReducer";
 
 const inputStyle = {
   color: "black",
@@ -48,6 +55,8 @@ export function Stripe({ countryCode }: any) {
   const userData = useSelector((state: any) => state.auth.userData);
 
   const handleSubmit = async (e: any) => {
+    dispatch(mainLoad(true));
+
     const billing_details: {
       name: string;
       email: string;
@@ -71,16 +80,18 @@ export function Stripe({ countryCode }: any) {
           billing_details.address = addressElement.value.address;
           billing_details.phone = addressElement.value.phone;
         } else {
+          dispatch(mainLoad(false));
           toast.error("Please provide details.");
-          setIsLoading(false);
           return;
         }
       }
     } else {
       if (fullName.trim().length === 0 || phoneNo?.trim().length !== 12) {
         if (fullName.trim().length === 0) {
+          dispatch(mainLoad(false));
           toast.error("Please provide your name.");
         } else {
+          dispatch(mainLoad(false));
           toast.error("Please provide valid mobile number.");
         }
         setIsLoading(false);
@@ -99,8 +110,10 @@ export function Stripe({ countryCode }: any) {
         const { id } = paymentMethod;
 
         axios
-          .get("/api/templatePayment/stripe")
-          .then(async (c: any) => {
+          .post("/api/templatePayment/stripe", { pi: id })
+          .then(async (res: any) => {
+            const c: any = JSON.parse(decryptData(res));
+
             stripe
               ?.confirmCardPayment(c.client_secret)
               .then(async (data) => {
@@ -113,32 +126,32 @@ export function Stripe({ countryCode }: any) {
                   };
                   setSessionVal("_pdf", JSON.stringify(datas));
 
-                  // api
-                  //   .webhook()
-                  //   .then((data: any) => {
-                  //     hideLoader();
-                  //     if (data.success) {
-                  //       const val: PaymentProps[] = JSON.parse(
-                  //         getSessionVal("_paf", "[]") || "[]"
-                  //       );
-                  //       const purDatas: PurchaseItemProps[] = [];
-                  //       val.forEach((_) => {
-                  //         purDatas.push({ id: _.id, type: _.type });
-                  //       });
-                  //       dispatch(setPurchaseItems(purDatas));
-                  //       removeUnusedSessions();
-                  //       toast.success(data.msg);
-                  //       hidePaymentDialog();
-                  //     } else {
-                  //       toast.error(data.msg);
-                  //     }
-                  //   })
-                  //   .catch(() => {
-                  //     toast.error("Payment failed");
-                  //     hideLoader();
-                  //   });
+                  axios
+                    .post("/api/templatePayment/webhook")
+                    .then((data: any) => {
+                      const res: any = JSON.parse(decryptData(data));
+                      if (res.success) {
+                        const val: any = JSON.parse(
+                          getSessionVal("_paf", "[]") || "[]"
+                        );
+                        const purDatas: any = [];
+                        val.forEach((_: any) => {
+                          purDatas.push({ id: _.id, type: _.type });
+                        });
+                        dispatch(setPurchaseItems(purDatas));
+                        removeUnusedSessions();
+                        toast.success(res.msg);
+                      } else {
+                        toast.error(res.msg);
+                      }
+                    })
+                    .catch(() => {
+                      toast.error("Payment failed");
+                      dispatch(mainLoad(false));
+                    });
                 } else {
                   toast.error("Payment failed");
+                  dispatch(mainLoad(false));
                 }
               })
               .catch((err) => {
@@ -148,12 +161,15 @@ export function Stripe({ countryCode }: any) {
           .catch((err: any) => {
             console.error(err);
             toast.error("Payment failed");
+            dispatch(mainLoad(false));
           });
       } catch (error) {
         toast.error("Payment failed");
+        dispatch(mainLoad(false));
       }
     } else {
       toast.error(error.message);
+      dispatch(mainLoad(false));
     }
   };
   return (

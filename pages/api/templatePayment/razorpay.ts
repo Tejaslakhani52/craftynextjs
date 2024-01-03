@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   try {
-    const allowedDomain = "https://craftynextjs-al84.vercel.app/";
+    const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || "";
 
     if (!referer.includes(allowedDomain)) {
@@ -24,15 +24,14 @@ export default async function handler(
     const form = new FormData();
     form.append("key", "qwfsegxdhbxfjhncf");
     form.append("u", _sdf);
-    form.append("p", "10");
-    form.append("currency", cc);
+    form.append("p", _paf);
+    form.append("currency", cc === "IN" ? "INR" : "USD");
     form.append("from", "Web");
 
     const response = await axios.post(
       "https://panel.craftyartapp.com/templates/api/razorpay",
       form
     );
-    console.log("Razorpayresponse: ", response);
 
     if (response.status === 200) {
       res.status(200).json(encryptData(JSON.stringify(response.data)));
@@ -40,7 +39,6 @@ export default async function handler(
       res.status(500).json({ error: "Internal Server Error" });
     }
   } catch (error) {
-    console.log("error: ", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }

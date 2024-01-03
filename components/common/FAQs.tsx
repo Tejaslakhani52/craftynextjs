@@ -15,7 +15,6 @@ import Head from "next/head";
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
-  //   border: `1px solid ${theme.palette.divider}`,
   "&:not(:last-child)": {
     borderBottom: 0,
   },
@@ -24,8 +23,6 @@ const Accordion = styled((props: AccordionProps) => (
   },
 }));
 
-// ... (imports and other code)
-
 export default function FaqsBox(props: any) {
   const [open, setOpen] = useState<boolean>(false);
   const [expanded, setExpanded] = React.useState<string | false>("panel1");
@@ -33,7 +30,7 @@ export default function FaqsBox(props: any) {
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
       setExpanded(newExpanded ? panel : false);
-      setOpen(!open); // Toggle the 'open' state
+      setOpen(!open);
     };
 
   return (

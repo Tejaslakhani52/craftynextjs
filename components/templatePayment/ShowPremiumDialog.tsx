@@ -9,44 +9,59 @@ import { Elements } from "@stripe/react-stripe-js";
 import { Stripe } from "../payment/templatePurchase/StripeSingleTemp";
 import { loadStripe } from "@stripe/stripe-js";
 
-const PUBLIC_KEY =
-  "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
+interface TemplateData {
+  id: string;
+  type: number;
+  usdAmount: string;
+  usdVal: number;
+  inrAmount: string;
+  inrVal: number;
+}
 
-const stripeTestPromise = loadStripe(PUBLIC_KEY);
+interface AmountProps {
+  usdAmount: string;
+  usdVal: number;
+  inrAmount: string;
+  inrVal: number;
+}
 
-export default function ShowPremiumDialog({ open, setOpen, tempData }: any) {
+type PropsType = {
+  open: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  tempData: TemplateData;
+  amountProps: AmountProps;
+};
+
+export default function ShowPremiumDialog({
+  open,
+  setOpen,
+  tempData,
+  amountProps,
+}: PropsType) {
   const router = useRouter();
-  const [countryCode, setCountryCode] = useState<any>("IN");
+  const [countryCode, setCountryCode] = useState<string>("IN");
+  const [openPaymentDialog, setOpenPaymentDialog] = useState<boolean>(false);
+  const [amount, setAmount] = useState<string>("");
+  const [stripeTestPromise, setStripeTestPromise] = useState<string | any>(
+    null
+  );
+
   useEffect(() => {
-    if (open) {
-      const countryCodeVal: any = getCC();
-      console.log("countryCodeVal: ", countryCodeVal);
+    if (tempData && open) {
+      const PUBLIC_KEY =
+        "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
+      const valStripe = loadStripe(PUBLIC_KEY);
+      setStripeTestPromise(valStripe);
+
+      const countryCodeVal: string = getCC();
       setCountryCode(countryCodeVal);
-    }
-  }, [open]);
 
-  console.log("tempData: ", countryCode);
-  const [openPaymentDialog, setOpenPaymentDialog] = useState<any>(false);
-  const [amount, setAmount] = useState<any>(0);
+      const val =
+        getCC() === "IN" ? amountProps.inrAmount : amountProps.usdAmount;
 
-  // if (tempData) {
-  //   // setSessionVal("_paf", JSON.stringify([tempData]));
-  //   // const newC = content.endsWith(".")
-  //   //   ? content.slice(0, content.length - 1)
-  //   //   : content;
-  //   // content =
-  //   //   newC +
-  //   //   ` or Buy this for ${
-  //   //     getCC() === "INR" ? payment.inrAmount : payment.usdAmount
-  //   //   }`;
-  // }
-  useEffect(() => {
-    if (tempData) {
-      // setSessionVal("_paf", JSON.stringify([tempData]));
-      const val = getCC() === "INR" ? tempData.inrAmount : tempData.usdAmount;
       setAmount(val);
     }
-  }, [tempData]);
+  }, [open, tempData]);
 
   return (
     <>
@@ -60,8 +75,6 @@ export default function ShowPremiumDialog({ open, setOpen, tempData }: any) {
             This template requires a subscription
           </Typography>
           <Typography className="text-[#ABB2C7] text-[16px]">
-            {/* Purchase our subscription or purchase the template to use this
-          template */}
             Subscribe or purchase the template to use this template
           </Typography>
 
@@ -77,9 +90,6 @@ export default function ShowPremiumDialog({ open, setOpen, tempData }: any) {
                 className="bg_linear text-white normal-case px-[30px] text-[16px]"
                 onClick={() => {
                   setSessionVal("_paf", JSON.stringify([tempData]));
-                  setAmount(
-                    getCC() === "INR" ? tempData.inrAmount : tempData.usdAmount
-                  );
                   setOpen(false);
                   setOpenPaymentDialog(true);
                 }}
@@ -99,57 +109,19 @@ export default function ShowPremiumDialog({ open, setOpen, tempData }: any) {
         <Box className="flex max-md:flex-col rounded-[8px] bg-[#F4F7FE] overflow-hidden">
           <Box className="md:w-[50%] p-[30px] bg-white">
             <Typography variant="h2" className="font-medium text-[22px] mb-2">
-              Choose your plan
+              Amount
             </Typography>
             <Typography className="text-[#ABB2C7] text-[14px]  sm:w-[80%] ">
               Access all assets, templates, integrations and{" "}
               <span className="font-[700]"> Premium support.</span>
             </Typography>
 
-            <Box className="mt-[20px]">
-              {/* {pricePlaneData?.map((item: any) => (
-                <Box
-                  className="flex items-start mb-3 cursor-pointer"
-                  onClick={() => setChoosePlan(item)}
-                >
-                  <Radio
-                    color="default"
-                    checked={item?.offer_price === choosePlan?.offer_price}
-                  />
-                  <Box className="py-[7px]">
-                    <Typography className="font-semibold">
-                      {item?.package_name}
-                    </Typography>
-
-                    <Box className="flex gap-2">
-                      {item?.has_offer ? (
-                        <Typography className="text-[#ABB2C7] text-[13px] line-through	">
-                          {item?.actual_price}
-                        </Typography>
-                      ) : (
-                        ""
-                      )}
-
-                      <Typography className="text-[#ABB2C7] text-[13px] ">
-                        {item?.offer_price}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Box>
-              ))} */}
-            </Box>
-
-            {/* <Box className="flex justify-between mb-2">
-              <Typography>Ends on</Typography>
-              <Typography>{endDate}</Typography>
-            </Box>
+            <Box className="mt-[20px]"></Box>
 
             <Box className="flex justify-between">
               <Typography className="font-semibold">Due today</Typography>
-              <Typography className="font-semibold">
-                {choosePlan?.offer_price}
-              </Typography>
-            </Box> */}
+              <Typography className="font-semibold">{amount}</Typography>
+            </Box>
           </Box>
 
           <Box className="md:w-[50%] p-[30px] ">

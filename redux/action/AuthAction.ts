@@ -21,18 +21,15 @@ export const createUserApi =
         user_id: props?.user_id,
       })
       .then(({ data }) => {
-        console.log("data: ", data);
         const res: any = JSON.parse(decryptData(data));
-        console.log("resLogin: ", res);
         toast.success("Success Login");
         authCookiesSet(res?.user?.uid);
-
         router.push(`${"/"}`);
         // setTimeout(() => {
         //   window.location.reload();
         // }, 100);
       })
       .catch((err) => {
-        console.log("err: ", err);
+        // console.log("err: ", err);
       });
   };

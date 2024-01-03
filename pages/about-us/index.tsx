@@ -254,8 +254,9 @@ export default function index() {
 
         <Box className="py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[70%] mx-auto max-w-[2400px] ">
           <Box className="flex w-full flex-wrap gap-3 justify-between">
-            {dEverything?.map((item) => (
+            {dEverything?.map((item, index: number) => (
               <Box
+                key={index}
                 className="flex gap-3 bg_linear  max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
@@ -272,8 +273,9 @@ export default function index() {
           </Box>
 
           <Box className="flex w-[80%] max-lg:w-full flex-wrap mx-auto gap-3 my-14 max-sm:my-5 justify-between">
-            {dEverything2?.map((item) => (
+            {dEverything2?.map((item, index: number) => (
               <Box
+                key={index}
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
@@ -290,8 +292,9 @@ export default function index() {
           </Box>
 
           <Box className="flex w-full flex-wrap gap-3 justify-between">
-            {dEverything3?.map((item) => (
+            {dEverything3?.map((item, index: number) => (
               <Box
+                key={index}
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
@@ -308,8 +311,9 @@ export default function index() {
           </Box>
 
           <Box className="flex w-[80%] max-lg:w-full flex-wrap mx-auto gap-3 my-14 max-sm:my-5 justify-between">
-            {dEverything4?.map((item) => (
+            {dEverything4?.map((item, index: number) => (
               <Box
+                key={index}
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
@@ -326,8 +330,9 @@ export default function index() {
           </Box>
 
           <Box className="flex w-full flex-wrap gap-3 justify-between">
-            {dEverything5?.map((item) => (
+            {dEverything5?.map((item, index: number) => (
               <Box
+                key={index}
                 className="flex gap-3 bg_linear max-lg:flex-1 min-w-[150px] lg:w-[200px] p-[13px] justify-center rounded-[4px]"
                 onClick={() => router.push(item?.path)}
               >
@@ -404,8 +409,9 @@ export default function index() {
         </Typography>
 
         <Box className="grid sm:grid-cols-2 md:grid-cols-3 gap-10 justify-between py-[30px] sm:py-[50px] px-[20px] w-full xl:w-[85%] mx-auto max-w-[2400px] items-center ">
-          {WeWork?.map((item) => (
+          {WeWork?.map((item, index: number) => (
             <Box
+              key={index}
               className="w-full bg-[#F4F7FE] p-[30px] h-full "
               sx={{ boxShadow: "0px 0px 10px rgba(28, 48, 72, 0.20)" }}
             >

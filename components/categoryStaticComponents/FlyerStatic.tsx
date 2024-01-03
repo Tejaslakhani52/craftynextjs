@@ -43,7 +43,7 @@ export default function FlyerStatic() {
           </Box>
           <Box className="flex-1 max-lg:order-2  max-lg:w-[100%]">
             {howMakeFlyer?.map((item, index) => (
-              <Box className="flex gap-3 mb-5">
+              <Box className="flex gap-3 mb-5" key={index}>
                 <Box className="bg-[#EDF0F9] h-[38px] w-[40px] rounded-full flex justify-center items-center">
                   {index + 1}
                 </Box>
@@ -275,7 +275,7 @@ export default function FlyerStatic() {
           variant="h2"
           className="text-[#1C3048] text-[30px] max-sm:text-[25px] text-center font-[600] mb-4"
         >
-          What are Customers Saying about Craftyart
+          What are Customers Saying about Crafty Art
         </Typography>
         <Typography className="text-center">
           Crafty Art has a proven track record of delivering efficiency, results

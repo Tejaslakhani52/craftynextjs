@@ -30,7 +30,6 @@ export const authCookiesSet = (value: any) => {
     expires: expirationDate,
   });
 
-  console.log("expirationDate: ", expirationDate);
   Cookies.set("_sdf", encryptData(value), { expires: expirationDate });
 };
 

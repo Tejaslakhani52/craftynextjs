@@ -7,7 +7,7 @@ import Stripe from "@/components/payment/Stripe";
 import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import { Box, Button, Radio, Typography } from "@mui/material";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import RazorpayPage from "@/components/payment/Razorpay";
 import { useRouter } from "next/router";
@@ -18,11 +18,7 @@ import { decryptData } from "@/aes-crypto";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import { handleEmailClick } from "@/commonFunction/emailCheck";
-
-const PUBLIC_KEY =
-  "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
-
-const stripeTestPromise = loadStripe(PUBLIC_KEY);
+import { PackageList } from "@/interface/currentPlane";
 
 export const MarkTextRight = ({ text }: any) => {
   return (
@@ -93,25 +89,34 @@ export async function getServerSideProps() {
 }
 
 export default function index({ ip }: any) {
-  console.log("ip: ", ip);
+  const [stripeTestPromise, setStripeTestPromise] = useState<any>(null);
+
+  useEffect(() => {
+    const PUBLIC_KEY =
+      "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
+    const valStripe = loadStripe(PUBLIC_KEY);
+    setStripeTestPromise(valStripe);
+  }, []);
+
   const router = useRouter();
   const uId = authCookiesGet();
   const [planeType, setPlaneType] = useState<string>("monthly");
-  const [pricePlaneData, setPricePlaneData] = useState<any>();
+  const [pricePlaneData, setPricePlaneData] = useState<PackageList>([]);
   const [checkedDataPlane, setCheckedDataPlane] = useState<any>(null);
   const [userCountryCode, setUserCountryCode] = useState("");
   const [isLoading, setIsLoading] = useState<any>(false);
   const [priceShowData, setPriceShowData] = useState<any>();
   const [choosePlan, setChoosePlan] = useState<any>();
   const [endDate, setEndDate] = useState<any>("");
-
   const [openPriceDialog, setOpenPriceDialog] = useState<boolean>(false);
+
+  const scrollContainerRef: React.RefObject<HTMLInputElement> | any =
+    useRef(null);
 
   useEffect(() => {
     const currentDate = new Date();
     if (typeof choosePlan?.validity === "number") {
       const futureDate = addDays(currentDate, choosePlan?.validity);
-
       const formattedDate = format(futureDate, "MMMM dd, yyyy");
       setEndDate(formattedDate);
     }
@@ -147,6 +152,15 @@ export default function index({ ip }: any) {
       setUserCountryCode("Unknown");
     }
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 800);
+
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollLeft =
+        scrollContainerRef.current.scrollWidth;
+    }
+  }, []);
 
   useEffect(() => {
     getData();
@@ -347,7 +361,11 @@ export default function index({ ip }: any) {
         </Box>
       </Box>
 
-      <Box className="w-full scroll_none max-sm:px-[15px] pb-[30px] sm:w-[95%]  xl:w-[70%]  mx-auto mt-[-150px] max-lg:mt-[-125px] max-sm:mt-[-67px] flex sm:justify-center gap-[15px] sm:gap-[30px] overflow-auto">
+      <Box
+        className="w-full scroll_none max-sm:px-[15px] pb-[30px] sm:w-[95%]  xl:w-[70%]  mx-auto mt-[-150px] max-lg:mt-[-125px] max-sm:mt-[-67px] flex sm:justify-center gap-[15px] sm:gap-[30px] overflow-auto"
+        ref={scrollContainerRef}
+        sx={{ transition: "1s all", scrollBehavior: "smooth" }}
+      >
         <Box
           className="bg-[white]  min-w-[300px] rounded-[15px] p-[30px] pt-[52px] "
           sx={{
@@ -802,7 +820,7 @@ export default function index({ ip }: any) {
       <GetTemplates
         heading="Design your dream posters today and take your brand to the next level with Premium!"
         text="Get started now with our customizable templates."
-        navigate="/templates/invitation-card"
+        navigate="/templates/"
       />
 
       <Box
@@ -859,8 +877,9 @@ export default function index({ ip }: any) {
             </Typography>
 
             <Box className="mt-[20px]">
-              {pricePlaneData?.map((item: any) => (
+              {pricePlaneData?.map((item: any, index: number) => (
                 <Box
+                  key={index}
                   className="flex items-start mb-3 cursor-pointer"
                   onClick={() => setChoosePlan(item)}
                 >

@@ -4,6 +4,15 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 
+type PropsType = {
+  title?: string;
+  point?: any;
+  image?: string;
+  buttonName?: string;
+  alt?: string;
+  path?: string | any;
+};
+
 export default function RightImageSection({
   title,
   point,
@@ -11,7 +20,7 @@ export default function RightImageSection({
   buttonName,
   path,
   alt,
-}: any) {
+}: PropsType) {
   const router = useRouter();
   const token = authCookiesGet();
 

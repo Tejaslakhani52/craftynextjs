@@ -62,8 +62,8 @@ export default function MobileBottomBar() {
   return (
     <Box className="fixed bottom-0 right-0 left-0 sm:hidden bg-white h-[66px] z-[100]">
       <Box className="flex items-center h-full justify-around">
-        {data?.map((item: any) => (
-          <Box>
+        {data?.map((item: any, index: any) => (
+          <Box key={index}>
             <button
               style={{
                 marginTop: item?.name === "plus" ? "-61px" : "0",

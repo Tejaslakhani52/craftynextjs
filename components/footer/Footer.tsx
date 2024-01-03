@@ -116,7 +116,7 @@ export const Company = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <Link href={"/aboutus"}>
+      <Link href={"/about-us"}>
         <OptionButton>About</OptionButton>
       </Link>
       {/* <OptionButton>Career</OptionButton> */}

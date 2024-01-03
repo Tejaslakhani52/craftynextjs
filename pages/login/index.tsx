@@ -10,7 +10,6 @@ import { useState, useEffect } from "react";
 export default function index() {
   const router = useRouter();
   const userLoginStatus = authCookiesGet();
-  console.log("userLoginStatus: ", userLoginStatus);
   const [forgot, setForgot] = useState<boolean>(false);
   const [loading, setLoading] = useState<any>(true);
 

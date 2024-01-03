@@ -6,9 +6,10 @@ export default function Breadcrumb({ data }: any) {
   const router = useRouter();
   return (
     <div className="flex items-center">
-      {data?.map((item: any) => (
+      {data?.map((item: any, index: number) => (
         <>
           <button
+            key={index}
             className={`text-[15px] font-medium ${
               item?.current ? "opacity-50" : ""
             }`}

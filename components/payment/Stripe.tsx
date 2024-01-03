@@ -40,7 +40,6 @@ interface AddressProps {
 }
 
 export default function Stripe({ selectPlan, countryCode }: any) {
-  console.log("countryCode: ", countryCode);
   const uId = authCookiesGet();
   const stripe = useStripe();
   const elements = useElements();

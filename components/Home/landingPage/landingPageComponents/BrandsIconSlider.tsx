@@ -75,9 +75,10 @@ export default function BrandsIconSlider() {
             className="flex w-[80%] mx-auto overflow-x-auto gap-[100px] items-center scroll_none max-md:gap-[30px]   max-sm:w-[100%]"
             id="brandIcons"
           >
-            {brandIcons?.map((item) => (
+            {brandIcons?.map((item, index: number) => (
               // <Box className="w-[20%]">
               <img
+                key={index}
                 src={item}
                 alt={item}
                 className="w-[130px] max-md:w-[130px] h-auto"

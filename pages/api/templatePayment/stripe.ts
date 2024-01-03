@@ -12,17 +12,12 @@ export default async function handler(
       return;
     }
 
-    const allowedDomain = [
-      "localhost:3000",
-      "www.craftyartapp.com",
-      "editor.craftyartapp.com",
-      "betaeditor.craftyartapp.com",
-    ];
+    const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || "";
     const domainMatch = referer.match(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     const domain = domainMatch ? domainMatch[1] : "";
 
-    if (!allowedDomain.includes(domain)) {
+    if (!referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
@@ -34,7 +29,10 @@ export default async function handler(
     form.append("id", req.body.pi);
     form.append("u", decryptData(cookieValue._sdf));
     form.append("p", decryptData(cookieValue._paf, "[]"));
-    form.append("currency", decryptData(cookieValue.cc, "USD"));
+    form.append(
+      "currency",
+      decryptData(cookieValue.CC === "IN" ? "INR" : "USD", "USD")
+    );
     form.append("from", "Web");
 
     const response = await axios.post(

@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -269,27 +270,63 @@ export default function index() {
 
         <FaqsBox
           heading="What customization options are offered for Crafty Art's custom calendars?"
-          text="Crafty Art's custom calendar maker allows you to personalize with photos, themes, colors, and fonts."
+          text={
+            <>
+              Crafty Art's{" "}
+              <FLink lk="https://craftyartapp.com/calendar">
+                custom calendar maker
+              </FLink>{" "}
+              allows you to personalize with photos, themes, colors, and fonts.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I use my own photos in the custom calendar?"
-          text="Yes, you can easily upload and use your own photos to create a unique and personalized calendar."
+          text={
+            <>
+              Yes, you can easily upload and use your own photos to create a
+              unique and{" "}
+              <FLink lk="https://craftyartapp.com/calendar">
+                personalized calendar.
+              </FLink>{" "}
+            </>
+          }
         />
 
         <FaqsBox
           heading="What sizes and formats are available for custom calendars?"
-          text="Crafty Art offers various sizes and formats, including wall, desk, and poster-style calendars."
+          text={
+            <>
+              <FLink lk="https://craftyartapp.com/">Crafty Art</FLink> offers
+              various sizes and formats, including wall, desk, and poster-style
+              calendars.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Are there bulk order discounts for custom calendars?"
-          text="Crafty Art offers discounts for bulk orders; check the website or contact support for details."
+          text={
+            <>
+              Crafty Art offers discounts for bulk orders; check the website or
+              contact support for details.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Is there a limit to the number of photos I can include in my custom calendar?"
-          text="Crafty Art's custom calendar maker typically allows you to include multiple photos for each month, but there may be a limit based on the chosen design. Check the options during customization."
+          text={
+            <>
+              <FLink lk="https://craftyartapp.com/calendar">
+                Crafty Art's custom calendar maker
+              </FLink>{" "}
+              typically allows you to include multiple photos for each month,
+              but there may be a limit based on the chosen design. Check the
+              options during customization.
+            </>
+          }
         />
       </Box>
     </>

@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -249,27 +250,65 @@ applying for your dream job."
 
         <FaqsBox
           heading="What is Crafty Art Online Resume Maker?"
-          text="Crafty Art Online Resume Maker is a platform designed to help individuals create visually appealing and professional resumes through an easy-to-use online tool."
+          text={
+            <>
+              Crafty Art{" "}
+              <FLink lk="https://craftyartapp.com/resume">
+                Online Resume Maker
+              </FLink>{" "}
+              is a platform designed to help individuals create visually
+              appealing and professional resumes through an easy-to-use online
+              tool.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Is Crafty Art Online Resume Maker free to use?"
-          text="Yes, Crafty Art offers a free version with basic features for users to create and download their resumes."
+          text={
+            <>
+              Yes, <FLink lk="https://craftyartapp.com/">Crafty Art</FLink>{" "}
+              offers a free version with basic features for users to create and
+              download their resumes.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I customize the artistic elements of my resume with Crafty Art?"
-          text="Absolutely! Crafty Art provides a variety of artistic templates and customization options, allowing users to personalize the design, colors, and visual elements of their resumes."
+          text={
+            <>
+              Absolutely! Crafty Art provides a variety of artistic templates
+              and customization options, allowing users to personalize the
+              design, colors, and visual elements of their resumes.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Is there guidance on incorporating creative elements into resumes using Crafty Art?"
-          text="Yes, Crafty Art Online Resume Maker often includes tips and suggestions for integrating creative elements effectively, ensuring resumes stand out in a visually appealing way."
+          text={
+            <>
+              Yes, Crafty Art{" "}
+              <FLink lk="https://craftyartapp.com/resume">
+                Online Resume Maker
+              </FLink>{" "}
+              often includes tips and suggestions for integrating creative
+              elements effectively, ensuring resumes stand out in a visually
+              appealing way.
+            </>
+          }
         />
 
         <FaqsBox
           heading="How secure is Crafty Art in terms of handling personal information?"
-          text="Crafty Art prioritizes user privacy and employs secure measures to protect personal information entered into the platform."
+          text={
+            <>
+              <FLink lk="https://craftyartapp.com/">Crafty Art</FLink>{" "}
+              prioritizes user privacy and employs secure measures to protect
+              personal information entered into the platform.
+            </>
+          }
         />
       </Box>
     </>

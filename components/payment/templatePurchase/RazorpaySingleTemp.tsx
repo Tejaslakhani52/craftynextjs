@@ -9,6 +9,9 @@ import {
   setSessionVal,
 } from "@/redux/action/AuthToken";
 import axios from "axios";
+import { decryptData } from "@/aes-crypto";
+import { setPurchaseItems } from "@/redux/reducer/templateDataReducer";
+import { mainLoad } from "@/redux/reducer/actionDataReducer";
 
 const url: string = "https://checkout.razorpay.com/v1/checkout.js";
 
@@ -44,54 +47,58 @@ export function RazorpaySingleTemp({ setOpen }: any) {
     return document.querySelectorAll(`script[src="${url}"]`).length > 0;
   }
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: React.MouseEvent<any> | any) => {
     event.preventDefault();
+    setOpen(false);
+    dispatch(mainLoad(true));
 
     axios
       .post("/api/templatePayment/razorpay")
       .then((data: any) => {
-        console.log("data: ", data);
+        const res: any = JSON.parse(decryptData(data?.data));
+
         const options = {
-          ...data,
+          ...res,
           handler: (response: any) => {
             const datas = {
               id: response.razorpay_payment_id,
               m: "Razorpay",
             };
             setSessionVal("_pdf", JSON.stringify(datas));
-            // api
-            //   .webhook()
-            //   .then((data: any) => {
-            //     if (data.success) {
-            //       const val: any = JSON.parse(
-            //         getSessionVal("_paf", "[]") || "[]"
-            //       );
-            //       const purDatas: any = [];
-            //       val.forEach((_) => {
-            //         purDatas.push({ id: _.id, type: _.type });
-            //       });
-            //       dispatch(setPurchaseItems(purDatas));
-            //       removeUnusedSessions();
-            //       toast.success(data.msg);
-            //     } else {
-            //       toast.error(data.msg);
-            //     }
-            //   })
-            //   .catch(() => {
-            //     toast.error("Payment failed");
-            //   });
+            axios
+              .post("/api/templatePayment/webhook")
+              .then((data: any) => {
+                const res: any = JSON.parse(decryptData(data));
+                if (res.success) {
+                  const val: any = JSON.parse(
+                    getSessionVal("_paf", "[]") || "[]"
+                  );
+                  const purDatas: any = [];
+                  val.forEach((_: any) => {
+                    purDatas.push({ id: _.id, type: _.type });
+                  });
+                  dispatch(setPurchaseItems(purDatas));
+                  removeUnusedSessions();
+                  toast.success(res.msg);
+                } else {
+                  toast.error(res.msg);
+                }
+              })
+              .catch(() => {
+                dispatch(mainLoad(false));
+                toast.error("Payment failed");
+              });
           },
         };
 
         const rzp = new (window as any).Razorpay(options);
         rzp.open();
         if (rzp) {
-          // hideLoader();
-          // hidePaymentDialog();
-          setOpen(false);
+          dispatch(mainLoad(false));
         }
       })
       .catch(() => {
+        dispatch(mainLoad(false));
         toast.error("Payment failed");
       });
   };

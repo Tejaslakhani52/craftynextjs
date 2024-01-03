@@ -2,6 +2,7 @@ import { MarkText } from "@/components/Home/landingPage/LandingPage";
 import CustomHead from "@/components/common/CustomHead";
 import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
 import FaqsBox from "@/components/common/FAQs";
+import FLink from "@/components/common/FLink";
 import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
 import GetTemplates from "@/components/common/GetTemplates";
 import LeftDetail from "@/components/common/LeftDetail";
@@ -155,27 +156,69 @@ export default function index() {
 
         <FaqsBox
           heading=" 1. What are business templates?"
-          text="Business templates are pre-designed documents or forms that can be customised and used for various business purposes, such as invoices, contracts, business plans, and marketing materials."
+          text={
+            <>
+              <FLink lk="https://craftyartapp.com/business">
+                Business templates
+              </FLink>{" "}
+              are pre-designed documents or forms that can be customised and
+              used for various business purposes, such as invoices, contracts,
+              business plans, and marketing materials.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 2. Are business templates customizable?"
-          text="Yes, most business templates can be customised to fit the specific needs of your business. You can typically edit text, add or remove sections, and customise the design elements to match your branding."
+          text={
+            <>
+              Yes, most business templates can be customised to fit the specific
+              needs of your business. You can typically edit text, add or remove
+              sections, and customise the design elements to match your
+              branding.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 3. Can I use business templates for personal use?"
-          text="While business templates are designed for professional use, there's no reason why you couldn't adapt them for personal use. For example, an invoice template could be used for tracking expenses or billing clients for freelance work."
+          text={
+            <>
+              While business templates are designed for professional use,
+              there's no reason why you couldn't adapt them for personal use.
+              For example, an invoice template could be used for tracking
+              expenses or billing clients for freelance work.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 4. Why should I use business templates?"
-          text="Using business templates can save time and improve efficiency by providing a starting point for commonly used documents and forms. They can also help ensure consistency and professionalism in your business communications."
+          text={
+            <>
+              Using{" "}
+              <FLink lk="https://craftyartapp.com/business">
+                business templates
+              </FLink>{" "}
+              can save time and improve efficiency by providing a starting point
+              for commonly used documents and forms. They can also help ensure
+              consistency and professionalism in your business communications.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 5. How do I determine which business templates are best suited for my needs?"
-          text="The types of business templates you'll need will depend on the nature of your business and its specific needs. Consider what documents or forms you use most frequently, and look for templates that are tailored to those needs. You can also ask other professionals in your industry for recommendations or search for templates specific to your field."
+          text={
+            <>
+              The types of business templates you'll need will depend on the
+              nature of your business and its specific needs. Consider what
+              documents or forms you use most frequently, and look for templates
+              that are tailored to those needs. You can also ask other
+              professionals in your industry for recommendations or search for
+              templates specific to your field.
+            </>
+          }
         />
       </Box>
 

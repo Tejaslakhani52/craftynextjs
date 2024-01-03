@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import { authCookiesGet } from "@/redux/action/AuthToken";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   const router = useRouter();
@@ -319,28 +320,56 @@ Foster collaboration among teams and seamlessly share brand assets for unified b
 
         <FaqsBox
           heading="1. What makes the Brand Kit feature unique compared to other design tools?"
-          text="The Brand Kit automates formatting of your brand assets for consistency and saves time. You can easily update brand
-          assets in one centralised location."
+          text={
+            <>
+              The{" "}
+              <FLink lk="https://craftyartapp.com/brand-kit">Brand Kit</FLink>{" "}
+              automates formatting of your brand assets for consistency and
+              saves time. You can easily update brand assets in one centralised
+              location.
+            </>
+          }
         />
         <FaqsBox
           heading="2. Can I customise my Brand Kit settings?"
-          text="Yes, you can add or remove brand assets to tailor to your specific needs."
+          text={
+            <>
+              Yes, you can add or remove brand assets to tailor to your specific
+              needs.
+            </>
+          }
         />
 
         <FaqsBox
           heading="3. How does the Brand Kit feature benefit marketers?"
-          text="Ensures consistency across marketing materials and saves time. Allows marketers to focus on the creative aspects of
-          their designs."
+          text={
+            <>
+              Ensures consistency across{" "}
+              <FLink lk="https://craftyartapp.com/marketing">marketing</FLink>{" "}
+              materials and saves time. Allows marketers to focus on the
+              creative aspects of their designs.
+            </>
+          }
         />
 
         <FaqsBox
           heading="4. Will the Brand Kit feature work with any design template?"
-          text="Yes, it's designed to work with any design template for consistency and to save time."
+          text={
+            <>
+              Yes, it's designed to work with any design template for
+              consistency and to save time.
+            </>
+          }
         />
 
         <FaqsBox
           heading="5. Is the Brand Kit feature easy to use for beginners?"
-          text="Yes, it eliminates manual formatting and makes it easier for beginners to create professional-looking designs."
+          text={
+            <>
+              Yes, it eliminates manual formatting and makes it easier for
+              beginners to create professional-looking designs.
+            </>
+          }
         />
       </Box>
     </div>

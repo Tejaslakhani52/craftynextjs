@@ -31,7 +31,7 @@ export default function ExploreBlog() {
   return (
     <Box className="flex flex-col items-center py-4 max-w-[2400px] mx-auto mb-10 max-lg:mt-[-50px] max-2sm:mt-[-120px] px-[20px]">
       <Typography className="text-[28px] sm:text-[35px] font-bold text-black text-center">
-        Achieve your goals with Craftyart's in-depth articles
+        Achieve your goals with Crafty Art's in-depth articles
       </Typography>
       <Typography className="text-[18px] text-black my-2 text-center">
         Crafty Art has a proven track record of delivering efficiency, results

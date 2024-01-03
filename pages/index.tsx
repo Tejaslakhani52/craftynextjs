@@ -6,7 +6,7 @@ import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { useEffect, useState, useMemo } from "react";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { tokenValue } from "@/redux/reducer/AuthDataReducer";
+import { templatesData, tokenValue } from "@/redux/reducer/AuthDataReducer";
 import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { useRouter } from "next/router";
@@ -14,6 +14,8 @@ import Head from "next/head";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import Cookies from "js-cookie";
+import CustomHead from "@/components/common/CustomHead";
+import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,7 +40,7 @@ const extractCookieValue = (cookiesString: any, cookieName: any) => {
   return match ? match[1] || null : null;
 };
 
-export default function Home({ sessionId }: any) {
+export default function Home({ sessionId, responseData }: any) {
   const dispatch = useDispatch();
   const router = useRouter();
   const token = authCookiesGet();
@@ -73,15 +75,15 @@ export default function Home({ sessionId }: any) {
 
   return (
     <main>
-      <Head>
-        <title>
-          Unlock Your Creative Potential with Our All-in-One Graphic Design Tool
-        </title>
-        <meta
-          name="description"
-          content="Our powerful all-in-one graphic design tool that streamlines your creative process. Create stunning designs like invitation, logos, social media posts and more."
-        />
-      </Head>
+      <CustomHead
+        image="https://assets.craftyart.in/w_assets/images/landingPageMainVideo.png"
+        heading={
+          "Unlock Your Creative Potential with Our All-in-One Graphic Design Tool"
+        }
+        text={
+          "Our powerful all-in-one graphic design tool that streamlines your creative process. Create stunning designs like invitation, logos, social media posts and more."
+        }
+      />
       {sessionId ? <Dashboard /> : <LandingPage />}
     </main>
   );

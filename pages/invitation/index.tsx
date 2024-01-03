@@ -3,6 +3,7 @@ import CustomHead from "@/components/common/CustomHead";
 import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
 import ExploreTemplates from "@/components/common/ExploreTemplates";
 import FaqsBox from "@/components/common/FAQs";
+import FLink from "@/components/common/FLink";
 import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
 import GetTemplates from "@/components/common/GetTemplates";
 import LeftDetail from "@/components/common/LeftDetail";
@@ -10,6 +11,7 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import RightDetail from "@/components/common/RightDetail";
 import { Box, Button, Typography } from "@mui/material";
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 
 const sliderTemplate = [
@@ -313,29 +315,68 @@ export default function index() {
         />
         <Box sx={{ p: "20px" }}></Box>
         <FaqsBox
-          heading="1. What are the available design templates for invitations?  "
-          text="Our invitation maker offers a wide range of design templates to choose from, including options for birthdays, weddings,
-          baby showers, graduations, and more."
+          heading="1. What are the available design templates for invitations? "
+          text={
+            <>
+              Our invitation maker offers a wide range of design templates to
+              choose from, including options for birthdays,
+              <FLink lk="https://www.craftyartapp.com/k/wedding-invitation-template">
+                weddings,
+              </FLink>
+              baby showers, graduations, and more.
+            </>
+          }
         />
+
         <FaqsBox
           heading="2. Can I customize the text and images on the invitations?"
-          text="Yes, our invitation maker allows you to personalize your invitations with your own text and images. You can also
-          experiment with different fonts, colors, and layouts to create a unique look that matches your event."
+          text={
+            <>
+              Yes, our invitation maker allows you to personalize your
+              invitations with your own text and images. You can also experiment
+              with different fonts, colors, and layouts to create a unique look
+              that matches your event.
+            </>
+          }
         />
         <FaqsBox
           heading="3. How can I share my invitations with guests? "
-          text="You can share your invitations via email, social media, or print. Our platform makes it easy to send your invitations
-          directly to your guests' inboxes or share them on your social media accounts."
+          text={
+            <>
+              You can share your invitations via email, social media, or print.
+              Our platform makes it easy to send your{" "}
+              <FLink lk="https://www.craftyartapp.com/invitation">
+                invitations
+              </FLink>{" "}
+              directly to your guests' inboxes or share them on your social
+              media accounts.
+            </>
+          }
         />
         <FaqsBox
           heading="4. Can I preview my invitations before sending them out?"
-          text="Yes, our invitation maker comes with a preview feature that allows you to see how your finished invitations will look. You
-          can make any necessary changes before sending them out to ensure they are error-free and visually appealing."
+          text={
+            <>
+              Yes, our invitation maker comes with a preview feature that allows
+              you to see how your finished invitations will look. You can make
+              any necessary changes before sending them out to ensure they are
+              error-free and visually appealing.
+            </>
+          }
         />
         <FaqsBox
           heading="5. Is the invitation maker free to use?"
-          text="We offer both free and paid options for using our invitation maker. The free version allows you to access basic features
-          and templates, while the paid version offers advanced customization options and premium templates."
+          text={
+            <>
+              We offer both free and paid options for using our
+              <FLink lk="https://www.craftyartapp.com/k/free-wedding-invitation-maker">
+                invitation maker.
+              </FLink>{" "}
+              The free version allows you to access basic features and
+              templates, while the paid version offers advanced customization
+              options and premium templates.
+            </>
+          }
         />
       </Box>
 

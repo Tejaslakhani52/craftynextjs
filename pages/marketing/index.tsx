@@ -2,6 +2,7 @@ import { MarkText } from "@/components/Home/landingPage/LandingPage";
 import CustomHead from "@/components/common/CustomHead";
 import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
 import FaqsBox from "@/components/common/FAQs";
+import FLink from "@/components/common/FLink";
 import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
 import GetTemplates from "@/components/common/GetTemplates";
 import LeftDetail from "@/components/common/LeftDetail";
@@ -255,26 +256,65 @@ export default function index() {
 
         <FaqsBox
           heading="1. What are customizable marketing templates?"
-          text="Customizable marketing templates are pre-designed marketing materials, such as business cards, flyers, logos, posters, brochures, menus, and infographics, that can be edited and filled out with the necessary information for your business or organisation."
+          text={
+            <>
+              Customizable{" "}
+              <FLink lk="https://craftyartapp.com/marketing">
+                marketing templates
+              </FLink>{" "}
+              are pre-designed marketing materials, such as business cards,
+              flyers, logos, posters, brochures, menus, and infographics, that
+              can be edited and filled out with the necessary information for
+              your business or organisation.
+            </>
+          }
         />
         <FaqsBox
           heading=" 2. Can I customize Marketing Templates to match my brand?"
-          text="Absolutely! Crafty Art Marketing Templates are meant to be flexible. You can easily customize colors, fonts, and imagery to align with your artistic style and overall brand identity."
+          text={
+            <>
+              Absolutely! Crafty Art Marketing Templates are meant to be
+              flexible. You can easily customize colors, fonts, and imagery to
+              align with your artistic style and overall brand identity.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 3. Can Crafty Art Marketing Templates be used for online and offline promotion?"
-          text="Yes, Crafty Art Marketing Templates are designed to be versatile and can be used for both online platforms, such as social media and websites, as well as offline mediums, like printed promotional materials for art exhibitions or events."
+          text={
+            <>
+              Yes, Crafty Art Marketing Templates are designed to be versatile
+              and can be used for both online platforms, such as social media
+              and websites, as well as offline mediums, like printed promotional
+              materials for art exhibitions or events.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 4. What information should be included in marketing posters ?"
-          text="The type of information included in marketing posters will depend on the purpose of the material. However, common elements include company or organisation name, logo, products or services offered, contact information, and call-to-action."
+          text={
+            <>
+              The type of information included in marketing posters will depend
+              on the purpose of the material. However, common elements include
+              company or organisation name,{" "}
+              <FLink lk="https://craftyartapp.com/logos">logo,</FLink> products
+              or services offered, contact information, and call-to-action.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 5. Can I print my own marketing materials from a template?"
-          text="Yes, most marketing templates can be printed at home or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template."
+          text={
+            <>
+              Yes, most marketing templates can be printed at home or sent to a
+              professional printing service for higher quality results. Be sure
+              to choose the appropriate paper stock and size for your chosen
+              template.
+            </>
+          }
         />
       </Box>
 

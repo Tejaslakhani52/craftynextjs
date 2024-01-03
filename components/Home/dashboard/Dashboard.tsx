@@ -130,8 +130,9 @@ export default function Dashboard() {
             What would you like to create ?
           </Typography>
           <Box className="flex max-sm:hidden lg:justify-center items-center gap-[30px] md:gap-[50px] py-10 overflow-auto scroll_none">
-            {bannerCategory?.map((item) => (
+            {bannerCategory?.map((item, index) => (
               <Link
+                key={index}
                 href={item?.path}
                 className="flex flex-col items-center cursor-pointer gap-[10px]"
               >
@@ -198,8 +199,9 @@ export default function Dashboard() {
         </Box>
       </Box> */}
       <Box className="flex sm:hidden lg:justify-center items-center gap-[25px] md:gap-[50px] pt-5 px-[15px] overflow-auto scroll_none">
-        {bannerCategoryM?.map((item) => (
+        {bannerCategoryM?.map((item, index) => (
           <Box
+            key={index}
             className="flex flex-col items-center cursor-pointer gap-[10px]"
             onClick={() => {
               dispatch(openSidebar(false));

@@ -17,17 +17,17 @@ import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import Cookies from "js-cookie";
 import { decryptData } from "@/aes-crypto";
 import { userData } from "@/redux/reducer/AuthDataReducer";
+import { UserProfileType } from "@/interface/commonType";
 
 export default function Profile() {
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const dispatch = useDispatch();
   const open = Boolean(anchorEl);
-  const [uId, setuId] = useState<any>("");
-  const [userProfile, setUserProfile] = useState<any>(null);
+  const [userProfile, setUserProfile] = useState<UserProfileType | any>(null);
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -35,7 +35,6 @@ export default function Profile() {
     axios
       .post("/api/getUserData")
       .then(({ data }: any) => {
-        console.log("response: ", data);
         const data2 = JSON.parse(decryptData(data));
         tokenSet("premium", data2?.user?.is_premium === 1 ? "true" : "false");
         userPremium(`${data2?.user?.is_premium}`);
@@ -159,7 +158,6 @@ export default function Profile() {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            // tokenSet("navigate", "/");
             localStorage.clear();
             dispatch(openSidebar(false));
             Cookies.remove("rememberMe");

@@ -53,7 +53,7 @@ export default function QuotesStatic() {
 
           <Box className="flex-1 max-lg:order-2  max-lg:w-[100%] relative">
             {howMakeQuotes?.map((item, index) => (
-              <Box className="flex gap-8 items-center mb-10">
+              <Box className="flex gap-8 items-center mb-10" key={index}>
                 <Box className=" flex gap-3 items-center ">
                   <Box className=" text-[#ABB2C7] text-[23px]">{index + 1}</Box>
 
@@ -347,7 +347,7 @@ export default function QuotesStatic() {
           variant="h2"
           className="text-[#1C3048] text-[30px] max-sm:text-[25px] text-center font-[600] mb-4"
         >
-          What are Customers Saying about Craftyart
+          What are Customers Saying about Crafty Art
         </Typography>
         <Typography className="text-center">
           Crafty Art has a proven track record of delivering efficiency, results

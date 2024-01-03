@@ -58,9 +58,8 @@ const DraftBoxes = ({
 }: any) => {
   const theme = useTheme();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
-  console.log("currentIndex: ", currentIndex);
   const [isHovered, setIsHovered] = useState(false);
-  const intervalRef: any = useRef(null);
+  const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
   const [removeId, setRemoveId] = useState<string>("");
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [openDeleteBox, setOpenDeleteBox] = React.useState(false);
@@ -92,7 +91,7 @@ const DraftBoxes = ({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -291,9 +290,8 @@ const DraftBoxesTab2 = ({
 }: any) => {
   const theme = useTheme();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
-  console.log("currentIndex: ", currentIndex);
   const [isHovered, setIsHovered] = useState(false);
-  const intervalRef: any = useRef(null);
+  const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
   const [removeId, setRemoveId] = useState<string>("");
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const [openDeleteBox, setOpenDeleteBox] = React.useState(false);
@@ -309,7 +307,7 @@ const DraftBoxesTab2 = ({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -484,14 +482,11 @@ export default function index() {
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
   const [designTrash, setDesignTrash] = useState<any>([]);
   const [imagesTrash, setImagesTrash] = useState<any>([]);
-  console.log("draftData: ", designTrash);
   const [mouseEnterItem, setMouseEnterItem] = useState<any>("");
   const [loadMore, setLoadMore] = useState<any>(false);
   const [loadMore2, setLoadMore2] = useState<any>(false);
-  console.log("loadMore2: ", loadMore2);
   const [isLastDesignPage, setIsLastDesignPage] = useState<any>(false);
   const [isLastImagesPage, setIsLastImagesPage] = useState<any>(false);
-  console.log("isLastImagesPage: ", isLastImagesPage);
   const [designPage, setDesignPage] = useState<number>(1);
   const [imagesPage, setImagesPage] = useState<number>(1);
   const [value, setValue] = React.useState(0);
@@ -501,7 +496,6 @@ export default function index() {
   };
 
   const multiSize = useMemo(() => {
-    console.log("screenWidth: ", screenWidth);
     switch (true) {
       case screenWidth > 1500:
         return screenWidth / 6;
@@ -518,8 +512,6 @@ export default function index() {
         return screenWidth / 2;
     }
   }, [screenWidth, sideBarRedux]);
-
-  console.log("multiSize: ", multiSize);
 
   useEffect(() => {
     setLoadMore(true);
@@ -541,7 +533,9 @@ export default function index() {
           setIsLastDesignPage(res?.isLastPage);
         } else setDesignTrash(null);
       })
-      .catch((err: any) => console.log("err: ", err));
+      .catch((err: any) => {
+        // console.log("err: ", err);
+      });
   }, [designPage]);
 
   useEffect(() => {
@@ -565,7 +559,9 @@ export default function index() {
           setIsLastImagesPage(res?.data?.isLastPage);
         } else setImagesTrash(null);
       })
-      .catch((err: any) => console.log("err: ", err));
+      .catch((err: any) => {
+        // console.log("err: ", err);
+      });
   }, [imagesPage]);
 
   return (
@@ -639,8 +635,9 @@ export default function index() {
           <CustomTabPanel value={value} index={0}>
             <div className="flex flex-wrap " style={{ width: screenWidth }}>
               {designTrash
-                ? designTrash?.map((item: any) => (
+                ? designTrash?.map((item: any, index: number) => (
                     <DraftBoxes
+                      key={index}
                       item={item}
                       setMouseEnterItem={setMouseEnterItem}
                       mouseEnterItem={mouseEnterItem}
@@ -689,8 +686,9 @@ export default function index() {
           <CustomTabPanel value={value} index={1}>
             <div className="flex flex-wrap " style={{ width: screenWidth }}>
               {imagesTrash
-                ? imagesTrash?.map((item: any) => (
+                ? imagesTrash?.map((item: any, index: number) => (
                     <DraftBoxesTab2
+                      key={index}
                       item={item}
                       setMouseEnterItem={setMouseEnterItem}
                       mouseEnterItem={mouseEnterItem}

@@ -93,6 +93,7 @@ export default function CustomizableSliderTemplates({ data }: props) {
           const color = colors[index % colors.length];
           return (
             <Box
+              key={index}
               className="flex flex-col justify-center  cursor-pointer"
               onClick={() => router.push(item?.path)}
             >

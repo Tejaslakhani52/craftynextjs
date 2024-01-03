@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -340,27 +341,62 @@ backgrounds."
 
         <FaqsBox
           heading="1. What are flyer templates? "
-          text="Flyer templates are pre-designed flyers that can be customised and filled out with the necessary information for an event."
+          text={
+            <>
+              <FLink lk="https://craftyartapp.com/flyer">Flyer templates</FLink>
+              are pre-designed flyers that can be customised and filled out with
+              the necessary information for an event.
+            </>
+          }
         />
 
         <FaqsBox
           heading="2. Where can I find flyer templates?"
-          text="Crafty Art flyer maker offers a wide range of free templates that you can customise to create a unique and personalised invitation."
+          text={
+            <>
+              Crafty Art{" "}
+              <FLink lk="https://craftyartapp.com/flyer">flyer maker</FLink>{" "}
+              offers a wide range of free templates that you can customise to
+              create a unique and personalised invitation.
+            </>
+          }
         />
 
         <FaqsBox
           heading="3. How do I customise a flyer template?"
-          text="Our flyer maker offers an easy-to-use interface where you can change the text, colours, and images to suit your preferences."
+          text={
+            <>
+              Our <FLink lk="https://craftyartapp.com/flyer">flyer maker</FLink>{" "}
+              offers an easy-to-use interface where you can change the text,
+              colours, and images to suit your preferences.
+            </>
+          }
         />
 
         <FaqsBox
           heading="4. What information should be included in a flyer?"
-          text="A typical flyer should include the expectant mother's name, date, time, and location of the event, as well as RSVP details and any other relevant information, such as gift registry information or dress code."
+          text={
+            <>
+              A typical flyer should include the expectant mother's name, date,
+              time, and location of the event, as well as RSVP details and any
+              other relevant information, such as gift registry information or
+              dress code.
+            </>
+          }
         />
 
         <FaqsBox
           heading="5. Can I print my own flyers from a template?"
-          text="Yes, most  flyer templates can be printed at home on a standard printer or sent to a professional printing service for higher quality results. Be sure to choose the appropriate paper stock and size for your chosen template."
+          text={
+            <>
+              Yes, most{" "}
+              <FLink lk="https://craftyartapp.com/flyer">flyer templates</FLink>
+              can be printed at home on a standard printer or sent to a
+              professional printing service for higher quality results. Be sure
+              to choose the appropriate paper stock and size for your chosen
+              template.
+            </>
+          }
         />
       </Box>
     </>

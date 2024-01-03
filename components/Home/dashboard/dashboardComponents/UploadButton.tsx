@@ -1,33 +1,29 @@
 import Icons from "@/assets";
-import CustomizedMenus from "@/components/common/WidthType";
 import { Box, Button, Typography } from "@mui/material";
 import Menu from "@mui/material/Menu";
-import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import React, { useRef, useState } from "react";
 
 export default function UploadButton() {
+  const fileInputRef: React.RefObject<HTMLInputElement> | any = useRef(null);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [isDragOver, setIsDragOver] = useState(false);
 
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const fileInputRef: any = useRef(null);
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = (event: any) => {
+  const handleFileChange = (event: React.MouseEvent<any> | any | any) => {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleDragOver = (event: any) => {
+  const handleDragOver = (event: React.MouseEvent<any> | any) => {
     event.preventDefault();
     setIsDragOver(true);
   };
@@ -35,7 +31,7 @@ export default function UploadButton() {
   const handleDragLeave = () => {
     setIsDragOver(false);
   };
-  const handleDrop = (event: any) => {
+  const handleDrop = (event: React.MouseEvent<any> | any) => {
     event.preventDefault();
     setIsDragOver(false);
     setSelectedFile(event.dataTransfer.files[0]);

@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -234,27 +235,65 @@ and seize the day."
 
         <FaqsBox
           heading="1. How can I design a quotes post that resonates with my target audience?"
-          text=" To design a quotes post that resonates with your audience, make sure to choose a quote that is relevant to their interests or pain points. Additionally, use colours and fonts that align with your brand identity, and incorporate images or graphics that help convey the message of the quote."
+          text={
+            <>
+              To <FLink lk="/quotes">design a quotes</FLink> post that resonates
+              with your audience, make sure to choose a quote that is relevant
+              to their interests or pain points. Additionally, use colours and
+              fonts that align with your brand identity, and incorporate images
+              or graphics that help convey the message of the quote.
+            </>
+          }
         />
 
         <FaqsBox
           heading="2. Should I include my logo or website URL in my quotes post design?"
-          text=" Yes, including your logo or website URL in your quotes post design can help build brand recognition and drive traffic to your website."
+          text={
+            <>
+              Yes, including your logo or website URL in your quotes post design
+              can help build brand recognition and drive traffic to your
+              website.
+            </>
+          }
         />
 
         <FaqsBox
           heading="3. What are some common mistakes to avoid when designing quotes posts?"
-          text=" Some common mistakes to avoid when designing quotes posts include using illegible fonts, choosing a background that clashes with the text, and overloading the design with too many elements. It's also important to ensure that the quote you've chosen is accurate and properly attributed."
+          text={
+            <>
+              Some common mistakes to avoid when designing quotes posts include
+              using illegible fonts, choosing a background that clashes with the
+              text, and overloading the design with too many elements. It's also
+              important to ensure that the quote you've chosen is accurate and
+              properly attributed.
+            </>
+          }
         />
 
         <FaqsBox
           heading="4. Can I use quotes from famous people in my quotes posts without permission?"
-          text=" No, it's generally not recommended to use quotes from famous people in your quotes posts without first obtaining permission or ensuring that the quote is in the public domain."
+          text={
+            <>
+              No, it's generally not recommended to use quotes from famous
+              people in your quotes posts without first obtaining permission or
+              ensuring that the quote is in the public domain.
+            </>
+          }
         />
 
         <FaqsBox
           heading="5. How can quotes posts be used to improve conversion rates on landing pages?"
-          text=" Quote posts can be used to improve conversion rates on landing pages by providing social proof, building trust, and establishing authority. By incorporating quotes from satisfied customers or industry experts, you can show potential customers that others have had positive experiences with your product or service, which can help increase their confidence in making a purchase."
+          text={
+            <>
+              <FLink lk="/quotes">Quote posts</FLink> can be used to improve
+              conversion rates on landing pages by providing social proof,
+              building trust, and establishing authority. By incorporating
+              quotes from satisfied customers or industry experts, you can show
+              potential customers that others have had positive experiences with
+              your product or service, which can help increase their confidence
+              in making a purchase.
+            </>
+          }
         />
       </Box>
     </>

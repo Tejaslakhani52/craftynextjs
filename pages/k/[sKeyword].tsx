@@ -32,9 +32,8 @@ const ImageBox = ({
   setOpenModal,
 }: any) => {
   const [currentIndex, setCurrentIndex] = useState<any>(0);
-  console.log("currentIndex: ", currentIndex);
   const [isHovered, setIsHovered] = useState(false);
-  const intervalRef: any = useRef(null);
+  const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
   useEffect(() => {
     if (isHovered) {
       intervalRef.current = setInterval(() => {
@@ -217,7 +216,6 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function sKeyword({ serverData, updatedLines }: any) {
-  console.log("serverData: ", updatedLines);
   const router = useRouter();
   const searchName: any = router?.query?.sKeyword;
   const formattedSearchName = searchName?.replace(/\s+/g, "-").toLowerCase();
@@ -355,6 +353,7 @@ export default function sKeyword({ serverData, updatedLines }: any) {
               >
                 {data?.map((templates: any, index: number) => (
                   <ImageBox
+                    key={index}
                     templates={templates}
                     screenWidth={screenWidth}
                     multiSizeFixSize={multiSizeFixSize}

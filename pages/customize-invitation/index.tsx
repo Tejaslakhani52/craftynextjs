@@ -11,6 +11,7 @@ import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   const router = useRouter();
@@ -353,27 +354,67 @@ your creative process."
 
         <FaqsBox
           heading="How do I customize my invitations on your platform?"
-          text="Our user-friendly customization tool allows you to easily personalize your invitations. Simply choose a design, add your details, and customize elements such as colors and fonts."
+          text={
+            <>
+              Our user-friendly customization tool allows you to easily
+              personalize your{" "}
+              <FLink lk="https://craftyartapp.com/invitation">
+                invitations.
+              </FLink>{" "}
+              Simply choose a design, add your details, and customize elements
+              such as colors and fonts.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I see a preview of my customized invitation before ordering?"
-          text="Yes, absolutely! Our platform provides a preview feature, allowing you to see exactly how your customized invitation will look before finalizing your order. This ensures that you are completely satisfied with the design."
+          text={
+            <>
+              Yes, absolutely! Our platform provides a preview feature, allowing
+              you to see exactly how your customized invitation will look before
+              finalizing your order. This ensures that you are completely
+              satisfied with the design.
+            </>
+          }
         />
 
         <FaqsBox
           heading="What types of events can I create customized invitations for?"
-          text="Our platform offers a wide range of design options suitable for various events. Whether it's a birthday, wedding, baby shower, bridal shower, or graduation, you can find customizable templates that fit the theme and mood of your celebration."
+          text={
+            <>
+              Our platform offers a wide range of design options suitable for
+              various events. Whether it's a birthday, wedding, baby shower,
+              bridal shower, or graduation, you can find customizable templates
+              that fit the theme and mood of your celebration.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Are there any design limitations or restrictions?"
-          text="No, there are no design limitations. Our customization tool is designed to give you the freedom to express your creativity. You can customize colors, fonts, and other details to match your unique style. Create invitations that reflect your personality without any constraints."
+          text={
+            <>
+              No, there are no design limitations. Our customization tool is
+              designed to give you the freedom to express your creativity. You
+              can customize colors, fonts, and other details to match your
+              unique style. Create invitations that reflect your personality
+              without any constraints.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Is there a cost for using the custom invitation maker on your website?"
-          text="No, our custom invitation maker is free to use. You can explore the tool, try out different designs, and customize it to your heart's content without any charges. You only pay when you decide to order the final, printed invitations. Enjoy the freedom to design without breaking the bank."
+          text={
+            <>
+              No, our custom invitation maker is free to use. You can explore
+              the tool, try out different designs, and customize it to your
+              heart's content without any charges. You only pay when you decide
+              to order the final, printed invitations. Enjoy the freedom to
+              design without breaking the bank.
+            </>
+          }
         />
       </Box>
     </div>

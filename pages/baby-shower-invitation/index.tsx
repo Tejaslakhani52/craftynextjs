@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -250,27 +251,50 @@ export default function index() {
 
         <FaqsBox
           heading="How do I customize my baby shower invitations?"
-          text="Use Crafty Art's user-friendly tool to personalize your chosen design effortlessly."
+          text={
+            <>
+              Use <FLink lk="https://craftyartapp.com/"> Crafty Art's</FLink>{" "}
+              user-friendly tool to personalize your chosen design effortlessly.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I order custom baby shower invitation?"
-          text="Yes, you can order custom baby shower invitation."
+          text={<>Yes, you can order custom baby shower invitation.</>}
         />
 
         <FaqsBox
           heading="Do you offer gender-neutral options for baby shower invitations?"
-          text="Certainly! Explore our diverse collection with themes suitable for any celebration, ensuring inclusivity."
+          text={
+            <>
+              Certainly! Explore our diverse collection with themes suitable for
+              any celebration, ensuring inclusivity.
+            </>
+          }
         />
 
         <FaqsBox
           heading="How can I get assistance with the design process?"
-          text="Reach out to our customer support for personalized guidance; we're here to help you create the perfect invitation."
+          text={
+            <>
+              Reach out to our customer support for personalized guidance; we're
+              here to help you create the perfect{" "}
+              <FLink lk="https://craftyartapp.com/invitation">
+                invitation.
+              </FLink>
+            </>
+          }
         />
 
         <FaqsBox
           heading="What types of customization are available for the baby shower invitations?"
-          text="You can customize colors, fonts, and add personal details to create a truly unique and special invitation for your celebration."
+          text={
+            <>
+              You can customize colors, fonts, and add personal details to
+              create a truly unique and special invitation for your celebration.
+            </>
+          }
         />
       </Box>
     </>

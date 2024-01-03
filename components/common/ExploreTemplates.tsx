@@ -97,6 +97,7 @@ export default function ExploreTemplates({ category, getAll, keyword }: any) {
             ?.filter((e: any, index: number) => index < 20)
             ?.map((templates: any, index: number) => (
               <div
+                key={index}
                 className=""
                 style={{
                   height: `${calculateHeight(

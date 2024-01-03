@@ -4,24 +4,21 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
+import CustomHead from "@/components/common/CustomHead";
 import TemplateModal, {
   IconsText,
 } from "@/components/singleTemplate/TemplateModal";
+import ShowPremiumDialog from "@/components/templatePayment/ShowPremiumDialog";
+import { SingleTempType } from "@/interface/getSingleTempType";
+import { SearchTempType } from "@/interface/searchTemplateType";
 import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
-import {
-  modalClosePath,
-  openSidebar,
-  openTempModal,
-  tempId,
-} from "@/redux/reducer/actionDataReducer";
+import { modalClosePath, tempId } from "@/redux/reducer/actionDataReducer";
 import { Box, Skeleton, Typography } from "@mui/material";
 import axios from "axios";
-import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import StackGrid from "react-stack-grid";
 
 export async function getServerSideProps(context: any) {
@@ -77,27 +74,29 @@ export async function getServerSideProps(context: any) {
   }
 }
 
-export default function templateId({ templateData, anotherData }: any) {
-  console.log("templateData: ", templateData);
+interface serverProps {
+  templateData: SingleTempType | any;
+  anotherData: SearchTempType[] | any;
+}
+
+export default function templateId({ templateData, anotherData }: serverProps) {
+  const containerId = `slider`;
   const screenHeight = useScreenHeight();
   const router = useRouter();
   const dispatch = useDispatch();
   const token = authCookiesGet();
   const userPremium = tokenGet("premium");
-  const currentPathname = router.query;
   const screenWidth = useScreenWidth();
-  const [isLoading, setIsLoading] = React.useState<any>(false);
-  const tempIdValue = useSelector((state: any) => state.actions.tempId);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [description, setDescription] = React.useState<string>("");
-  const [notFound, setNotFound] = React.useState<any>(false);
-  const [idName, setIdName] = React.useState<any>("");
-  const [openModal, setOpenModal] = React.useState<any>("");
+  const [notFound, setNotFound] = React.useState<boolean>(false);
+  const [idName, setIdName] = React.useState<string>("");
+  const [openModal, setOpenModal] = React.useState<boolean>(false);
   const [showPrevButton, setShowPrevButton] = React.useState(true);
   const [showNextButton, setShowNextButton] = React.useState(true);
-
-  const [showImage, setShowImage] = React.useState<any>();
-
+  const [showImage, setShowImage] = React.useState<string>("");
   const [imageLoaded, setImageLoaded] = React.useState(false);
+  const [showPremiumBox, setShowPremiumBox] = React.useState<boolean>(false);
 
   const handleImageLoad = () => {
     setImageLoaded(true);
@@ -112,7 +111,6 @@ export default function templateId({ templateData, anotherData }: any) {
     const pathSegments = window.location.pathname.split("/");
     templateIds = pathSegments[pathSegments.length - 1];
   }
-  console.log("templateIds: ", templateIds);
 
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
@@ -134,8 +132,6 @@ export default function templateId({ templateData, anotherData }: any) {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const containerId = `slider`;
 
   React.useEffect(() => {
     const formattedText = templateData?.description
@@ -187,13 +183,11 @@ export default function templateId({ templateData, anotherData }: any) {
 
   return (
     <Box className="px-[40px] max-sm:px-[10px] py-2">
-      <Head>
-        <title>{templateData?.template_name}</title>
-        <meta
-          content="description"
-          name={`Design with ${templateData?.template_name}: Ignite Your Imagination, Create Unique Art, and Inspire Awe. Start Design Crafting Today with Crafty Art!`}
-        />
-      </Head>
+      <CustomHead
+        image={showImage}
+        heading={templateData?.template_name}
+        text={`Design with ${templateData?.template_name}: Ignite Your Imagination, Create Unique Art, and Inspire Awe. Start Design Crafting Today with Crafty Art!`}
+      />
 
       {notFound ? (
         <div
@@ -264,26 +258,29 @@ export default function templateId({ templateData, anotherData }: any) {
                         </button>
                       </Box>
                     )}
-                    {templateData?.thumbArray?.map((image: any) => (
-                      <Box
-                        className="cursor-pointer rounded-[4px]"
-                        sx={{
-                          border:
-                            showImage === image
-                              ? "2px solid #2ec6b8"
-                              : "2px solid #ffff",
-                        }}
-                        onClick={() => setShowImage(image)}
-                      >
-                        <Box className="w-[100px]">
-                          <img
-                            src={image}
-                            alt={templateData?.template_name}
-                            className="h-auto rounded-[4px]"
-                          />
+                    {templateData?.thumbArray?.map(
+                      (image: any, index: number) => (
+                        <Box
+                          key={index}
+                          className="cursor-pointer rounded-[4px]"
+                          sx={{
+                            border:
+                              showImage === image
+                                ? "2px solid #2ec6b8"
+                                : "2px solid #ffff",
+                          }}
+                          onClick={() => setShowImage(image)}
+                        >
+                          <Box className="w-[100px]">
+                            <img
+                              src={image}
+                              alt={templateData?.template_name}
+                              className="h-auto rounded-[4px]"
+                            />
+                          </Box>
                         </Box>
-                      </Box>
-                    ))}
+                      )
+                    )}
                     {showNextButton && (
                       <Box>
                         <button
@@ -364,29 +361,32 @@ export default function templateId({ templateData, anotherData }: any) {
                   Customize this template
                 </a>
               ) : (
-                <button
-                  onClick={() => {
-                    if (templateData?.is_premium && userPremium !== "true") {
-                      dispatch(openSidebar(false));
-                      router.push("/plans");
-                    } else
-                      window.open(
-                        `https://editor.craftyartapp.com/${templateData?.id_name}`
-                      );
-                  }}
-                  className="text-white w-full py-[10px] rounded-[6px] flex items-center cursor-pointer justify-center gap-3"
-                  style={{
-                    background:
-                      "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
-                  }}
-                >
-                  {templateData?.is_premium && (
-                    <span className="w-[22px] ml-[8px]">
-                      <Icons.pricingIcon svgProps={{ width: 22, height: 21 }} />
-                    </span>
-                  )}
-                  Customize this template
-                </button>
+                <Box>
+                  <button
+                    onClick={() => {
+                      if (templateData?.is_premium && userPremium !== "true") {
+                        setShowPremiumBox(true);
+                      } else
+                        window.open(
+                          `https://editor.craftyartapp.com/${templateData?.id_name}`
+                        );
+                    }}
+                    className="text-white w-full py-[10px] rounded-[6px] flex items-center cursor-pointer justify-center gap-3"
+                    style={{
+                      background:
+                        "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
+                    }}
+                  >
+                    {templateData?.is_premium && (
+                      <span className="w-[22px] ml-[8px]">
+                        <Icons.pricingIcon
+                          svgProps={{ width: 22, height: 21 }}
+                        />
+                      </span>
+                    )}
+                    Customize this template
+                  </button>
+                </Box>
               )}
 
               <div className="py-4">
@@ -498,7 +498,7 @@ export default function templateId({ templateData, anotherData }: any) {
                               </span>
                             )}
 
-                            <Image
+                            <img
                               src={templates?.template_thumb}
                               alt={templates?.category_name}
                               className={`w-full] rounded-[5px] cursor-pointer`}
@@ -506,10 +506,6 @@ export default function templateId({ templateData, anotherData }: any) {
                                 border: "1px solid #80808082",
                                 height: "100%",
                               }}
-                              width={200}
-                              height={200}
-                              quality={80}
-                              priority={true}
                             />
                           </div>
                         </div>
@@ -528,23 +524,33 @@ export default function templateId({ templateData, anotherData }: any) {
               </Box>
             )}
           </Box>
-
-          {/* <h1 className="text-[#1C3048] text-[24px] font-[500] mb-3">
-            {templateData?.template_name}
-          </h1> */}
         </>
       )}
-
-      {/* <TemplateModal
-        open={openModal}
-        currentPathname={`/templates/p/${currentPathname?.templateId}`}
-      /> */}
 
       <TemplateModal
         open={openModal}
         id={idName}
         setOpen={setOpenModal}
         setId={setIdName}
+      />
+
+      <ShowPremiumDialog
+        open={showPremiumBox}
+        setOpen={setShowPremiumBox}
+        tempData={{
+          id: templateData.string_id,
+          type: 0,
+          usdAmount: templateData.usdAmount,
+          usdVal: templateData.usdVal,
+          inrAmount: templateData.inrAmount,
+          inrVal: templateData.inrVal,
+        }}
+        amountProps={{
+          usdAmount: templateData.usdAmount,
+          usdVal: templateData.usdVal,
+          inrAmount: templateData.inrAmount,
+          inrVal: templateData.inrVal,
+        }}
       />
     </Box>
   );

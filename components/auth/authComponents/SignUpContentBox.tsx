@@ -54,7 +54,7 @@ export default function SignUpContentBox(props: any) {
             }
           })
           .catch((err: any) => {
-            console.log("err: ", err);
+            // console.log("err: ", err);
           });
       }, 1000);
     }

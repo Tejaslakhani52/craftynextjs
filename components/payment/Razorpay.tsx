@@ -3,6 +3,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
 import { decryptData } from "@/aes-crypto";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { mainLoad } from "@/redux/reducer/actionDataReducer";
 
 const loadScript = (src: any) => {
   return new Promise((resolve) => {
@@ -28,16 +31,16 @@ interface AddressProps {
 }
 
 export default function RazorpayPage({ selectPaln, setOpen }: any) {
-  const [loading, setLoading] = useState<boolean>(false);
   const uId = authCookiesGet();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     loadScript("https://checkout.razorpay.com/v1/checkout.js");
   }, []);
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: React.MouseEvent<any> | any) => {
     event.preventDefault();
-    setLoading(true);
+    dispatch(mainLoad(true));
     setOpen(false);
 
     const formData = new FormData();
@@ -53,7 +56,7 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
         const rzp = new (window as any).Razorpay(res);
 
         if (rzp) {
-          setLoading(false);
+          dispatch(mainLoad(false));
         }
         rzp.open({
           handler: function (response: any) {
@@ -61,7 +64,8 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
           },
           modal: {
             ondismiss: function () {
-              console.log("err", "Payment cancelled");
+              // console.log("err", "Payment cancelled");
+              toast.error("Payment cancelled");
             },
           },
         });
@@ -83,11 +87,6 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
         <h2 className="mb-0">or</h2>
         <Box className="line" />
       </Box>
-      {loading && (
-        <main className="main">
-          <span className="loader"></span>
-        </main>
-      )}
     </Box>
   );
 }

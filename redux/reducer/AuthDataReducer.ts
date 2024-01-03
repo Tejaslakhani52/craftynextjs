@@ -1,13 +1,7 @@
+import { AuthStateType } from "@/interface/stateType";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface DataState {
-  templatesData: any[];
-  templatesSingleValue: any;
-  tokenValue: boolean;
-  userData: any;
-}
-
-const initialState: DataState = {
+const initialState: AuthStateType = {
   templatesData: [],
   templatesSingleValue: {},
   tokenValue: false,

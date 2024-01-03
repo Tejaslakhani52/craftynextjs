@@ -5,19 +5,26 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 
+interface ImageBoxProps {
+  templates: ImageData | any;
+  screenWidth: number;
+  multiSizeFixSize: number;
+  setIdName: React.Dispatch<React.SetStateAction<string>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  index?: number;
+}
+
 export default function ImageBox({
   templates,
   screenWidth,
   multiSizeFixSize,
   setIdName,
   setOpenModal,
-  loadedImages,
-  index,
-}: any) {
+}: ImageBoxProps) {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
   const [isHovered, setIsHovered] = useState(false);
-  const intervalRef: any = useRef(null);
+  const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
   useEffect(() => {
     if (isHovered) {
       intervalRef.current = setInterval(() => {

@@ -26,7 +26,7 @@ export default function CustomSize() {
 
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
 

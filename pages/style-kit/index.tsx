@@ -10,6 +10,7 @@ import QuestionsTitle from "@/components/common/QuestionsTitle";
 import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
 import CustomHead from "@/components/common/CustomHead";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   const router = useRouter();
@@ -207,27 +208,53 @@ export default function index() {
 
         <FaqsBox
           heading="1. Can I customise my Style Kit?"
-          text="Yes, you can customise your Style Kit by selecting specific brand elements like colours and fonts."
+          text={
+            <>
+              Yes, you can customise your{" "}
+              <FLink lk="https://craftyartapp.com/style-kit">Style Kit</FLink>{" "}
+              by selecting specific brand elements like colours and fonts.
+            </>
+          }
         />
         <FaqsBox
           heading="2. Is Style Kit available on all graphic design tools?"
-          text="No, Style Kit may not be available on all graphic design tools. However, many popular tools offer similar features for
-          creating brand consistency."
+          text={
+            <>
+              No, Style Kit may not be available on all graphic design tools.
+              However, many popular tools offer similar features for creating
+              brand consistency.
+            </>
+          }
         />
 
         <FaqsBox
           heading="3. Can I apply Style Kit to existing designs?"
-          text="Yes, you can apply Style Kit to existing designs to ensure consistency in branding."
+          text={
+            <>
+              Yes, you can apply Style Kit to existing designs to ensure
+              consistency in branding.
+            </>
+          }
         />
 
         <FaqsBox
           heading="4. Do I need design experience to use Style Kit?"
-          text="No, you do not need design experience to use Style Kit. It is a simple and intuitive feature that can be used by anyone."
+          text={
+            <>
+              No, you do not need design experience to use Style Kit. It is a
+              simple and intuitive feature that can be used by anyone.
+            </>
+          }
         />
 
         <FaqsBox
           heading="5. Can Style Kit help me save time in my design process?"
-          text="Yes, Style Kit can help you save time by eliminating the need to manually select brand elements for each design."
+          text={
+            <>
+              Yes, Style Kit can help you save time by eliminating the need to
+              manually select brand elements for each design.
+            </>
+          }
         />
       </Box>
     </div>

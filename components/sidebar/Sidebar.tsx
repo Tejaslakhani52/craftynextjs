@@ -1,5 +1,9 @@
+import Icons from "@/assets";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { Box, Button, Divider, MenuItem, Typography } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   EditorTools,
@@ -7,15 +11,6 @@ import {
   Templates,
   handleClickWhatsapp,
 } from "../header/headerComponents/Menu";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import Login from "../auth/Login";
-import SignUp from "../auth/SignUp";
-import { useRouter } from "next/router";
-import { openSidebar } from "@/redux/reducer/actionDataReducer";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
-import Link from "next/link";
-import Icons from "@/assets";
 
 export const sidebarMenu = [
   {
@@ -89,7 +84,14 @@ const option = [
   },
 ];
 
-export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
+type PropsType = {
+  open: boolean;
+  data: any;
+  setOpens: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export const InnerButton = ({ open, data, setOpens, setOpen }: PropsType) => {
   const router = useRouter();
   return (
     <Box
@@ -103,10 +105,7 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
       sx={{ transition: "0.2s all" }}
     >
       <Box className="">
-        <Box
-          className="px-[20px] flex items-center gap-4 pb-3 "
-          // sx={{ borderBottom: "1px solid #394c6026" }}
-        >
+        <Box className="px-[20px] flex items-center gap-4 pb-3 ">
           <Button onClick={() => setOpens(false)} className="min-w-[auto]">
             <Icons.leftArrowIcon svgProps={{ width: 8 }} />
           </Button>
@@ -117,8 +116,8 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
         </Box>
         <Divider />
 
-        {data?.subName?.map((data: any) => (
-          <div>
+        {data?.subName?.map((data: any, index: number) => (
+          <div key={index}>
             <Box className="flex flex-col p-[20px]">
               <Typography
                 className={`text-black font-semibold px-4 ${
@@ -127,8 +126,8 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
               >
                 {data?.heading}
               </Typography>
-              {data?.allName?.map((item: any) => (
-                <div>
+              {data?.allName?.map((item: any, index: number) => (
+                <div key={index}>
                   <MenuItem
                     onClick={() => {
                       router.push(item.path);
@@ -157,22 +156,13 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: any) => {
   );
 };
 
-export default function Sidebar({
-  open,
-  setOpen,
-  openLogin,
-  setOpenLogin,
-  openSignUp,
-  setOpenSignUp,
-}: any) {
+export default function Sidebar(
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>
+) {
   const router = useRouter();
   const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
-  const MobileMenuRedux = useSelector(
-    (state: any) => state.actions.openMobileMenubar
-  );
   const [screenHeight, setScreenHeight] = useState(0);
-  const token = authCookiesGet();
 
   useEffect(() => {
     const updateScreenHeight = () => {
@@ -229,7 +219,6 @@ export default function Sidebar({
             : "left-[-268px] max-lg:left-[-350px] max-sm:left-[-80%]"
         } `}
         sx={{
-          // transition: "0.1s all",
           zIndex: "500",
           borderRight: "1px solid #D5D8E3",
         }}
@@ -260,8 +249,9 @@ export default function Sidebar({
           </Box>
           <Divider className="hidden max-lg:block" />
           <Box className="max-lg:py-5 px-[10px]">
-            {sidebarMenu?.map((item) => (
+            {sidebarMenu?.map((item: any, index: number) => (
               <Box
+                key={index}
                 className={`${
                   item.name === "Custom Order" && "py-5 mt-3 mb-3"
                 }`}
@@ -338,8 +328,9 @@ export default function Sidebar({
             <Typography className="px-3 text-black text-[13px] pb-1">
               OPTIONS
             </Typography>
-            {option?.map((item) => (
+            {option?.map((item, index: number) => (
               <Box
+                key={index}
                 className={`${item.name === "Refer and earn" && "py-5 mt-3"}`}
                 sx={{
                   borderTop:
@@ -358,7 +349,6 @@ export default function Sidebar({
                   }    rounded-[4px]`}
                   onClick={() => router.push(item.path)}
                 >
-                  {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
                   <Box className="flex gap-5">
                     <Box className="w-[20px]">
                       {router.pathname === item.path
@@ -378,16 +368,6 @@ export default function Sidebar({
                 </Box>
               </Box>
             ))}
-            {/* <Box className="flex justify-center py-5 px-3">
-              <Button className="bg_linear text-white gap-2 rounded-[10px] font-bold px-5 py-2 w-full ">
-                <img
-                  src="/icons/pricing.svg"
-                  alt="price"
-                  className="w-[20px]"
-                />
-                Upgrade to PRO
-              </Button>
-            </Box> */}
           </Box>
         </Box>
 
@@ -396,18 +376,6 @@ export default function Sidebar({
             <Icons.pricingIcon svgProps={{ width: 20 }} />
             Upgrade to PRO
           </Button>
-          {/* <SignUp
-            setOpenLogin={setOpenLogin}
-            openSignUp={openSignUp}
-            setOpenSignUp={setOpenSignUp}
-            width="100%"
-          />
-          <Login
-            setOpenSignUp={setOpenSignUp}
-            openLogin={openLogin}
-            setOpenLogin={setOpenLogin}
-            width="100%"
-          /> */}
         </Box>
       </Box>
     </Box>

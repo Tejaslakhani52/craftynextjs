@@ -32,8 +32,8 @@ export default function Skelton({
       >
         {Array(fill)
           .fill("")
-          .map(() => (
-            <div>
+          .map((item, index) => (
+            <div key={index}>
               <Skeleton
                 variant="rectangular"
                 width={width}

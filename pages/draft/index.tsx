@@ -13,6 +13,8 @@ import MenuItem from "@mui/material/MenuItem";
 import { Divider } from "@mui/material";
 import toast from "react-hot-toast";
 import { decryptData } from "@/aes-crypto";
+import { DraftDataType } from "@/interface/getDraftsType";
+import { ActionStateType } from "@/interface/stateType";
 
 const DraftBoxes = ({
   item,
@@ -21,17 +23,16 @@ const DraftBoxes = ({
   setMouseEnterItem,
   user_id,
 }: any) => {
-  const [currentIndex, setCurrentIndex] = useState<any>(0);
-  console.log("currentIndex: ", currentIndex);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isHovered, setIsHovered] = useState(false);
-  const intervalRef: any = useRef(null);
+  const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
   const [removeId, setRemoveId] = useState<string>("");
 
   useEffect(() => {
     if (isHovered) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex(
-          (prevIndex: any) => (prevIndex + 1) % item?.thumbs.length
+          (prevIndex: number) => (prevIndex + 1) % item?.thumbs.length
         );
       }, 1300);
     } else {
@@ -54,7 +55,7 @@ const DraftBoxes = ({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -193,21 +194,19 @@ const DraftBoxes = ({
 
 export default function index() {
   const dispatch = useDispatch();
-  const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+  const sideBarRedux = useSelector(
+    (state: ActionStateType) => state.actions.openSidebar
+  );
   const user_id = authCookiesGet();
   const screenHeight = useScreenHeight();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
-  const [draftData, setDraftData] = useState<any>([]);
-  console.log("draftData: ", draftData);
-  const [mouseEnterItem, setMouseEnterItem] = useState<any>("");
-  const [loadMore, setLoadMore] = useState<any>(false);
-  console.log("loadMore: ", loadMore);
-  const [isLastPage, setIsLastPage] = useState<any>(true);
-  console.log("isLastPage: ", isLastPage);
+  const [draftData, setDraftData] = useState<DraftDataType[]>([]);
+  const [mouseEnterItem, setMouseEnterItem] = useState<string>("");
+  const [loadMore, setLoadMore] = useState<boolean>(false);
+  const [isLastPage, setIsLastPage] = useState<boolean>(true);
   const [page, setPage] = useState<number>(1);
 
   const multiSize = useMemo(() => {
-    console.log("screenWidth: ", screenWidth);
     switch (true) {
       case screenWidth > 1500:
         return screenWidth / 6;
@@ -225,8 +224,6 @@ export default function index() {
     }
   }, [screenWidth, sideBarRedux]);
 
-  console.log("multiSize: ", multiSize);
-
   useEffect(() => {
     setLoadMore(true);
     axios
@@ -239,12 +236,17 @@ export default function index() {
 
         setLoadMore(false);
 
-        if (res?.datas.length > 0) {
-          setDraftData((prevData: any) => [...(prevData || []), ...res?.datas]);
+        if (res?.datas?.length > 0) {
+          setDraftData((prevData: DraftDataType[]) => [
+            ...(prevData || []),
+            ...res?.datas,
+          ]);
           setIsLastPage(res?.isLastPage);
         }
       })
-      .catch((err: any) => console.log("err: ", err));
+      .catch((err: any) => {
+        // console.log("err: ", err);
+      });
   }, [page]);
 
   return (
@@ -252,8 +254,9 @@ export default function index() {
       <h1 className="text-[32px] font-medium p-[10px]">Draft</h1>
       <div className="flex flex-wrap" style={{ width: screenWidth }}>
         {draftData
-          ? draftData?.map((item: any) => (
+          ? draftData?.map((item: any, index: number) => (
               <DraftBoxes
+                key={index}
                 item={item}
                 setMouseEnterItem={setMouseEnterItem}
                 mouseEnterItem={mouseEnterItem}

@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -321,27 +322,68 @@ export default function index() {
 
         <FaqsBox
           heading="How do I use the Crafty Art business card maker?"
-          text="To use our business card maker, simply visit our website, choose a template or start from scratch, personalize it with your information, and preview the design. Once satisfied, you can download or print your business cards."
+          text={
+            <>
+              To use our{" "}
+              <FLink lk="https://craftyartapp.com/business-card">
+                {" "}
+                business card maker,
+              </FLink>{" "}
+              simply visit our website, choose a template or start from scratch,
+              personalize it with your information, and preview the design. Once
+              satisfied, you can download or print your business cards.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Are there free business card templates available?"
-          text="Yes, Crafty Art offers a range of free business card templates. You can access them through our online tool, customize them to suit your needs, and create professional-looking business cards without any cost."
+          text={
+            <>
+              Yes, Crafty Art offers a range of free business card templates.
+              You can access them through our online tool, customize them to
+              suit your needs, and create professional-looking business cards
+              without any cost.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I upload my own design to Crafty Art for printing?"
-          text="Currently, our platform focuses on providing a user-friendly design experience, and we don't support uploading external designs. However, you can use our templates and tools to create a design that matches your vision."
+          text={
+            <>
+              Currently, our platform focuses on providing a user-friendly
+              design experience, and we don't support uploading external
+              designs. However, you can use our templates and tools to create a
+              design that matches your vision.
+            </>
+          }
         />
 
         <FaqsBox
           heading="What types of industries do your business card templates cater to?"
-          text="Crafty Art offers a diverse collection of business card templates suitable for various industries. Whether you're in a creative field, corporate sector, or a casual business, you'll find templates that align with your industry and style."
+          text={
+            <>
+              <FLink lk="https://craftyartapp.com/">Crafty Art</FLink> offers a
+              diverse collection of business card templates suitable for various
+              industries. Whether you're in a creative field, corporate sector,
+              or a casual business, you'll find templates that align with your
+              industry and style.
+            </>
+          }
         />
 
         <FaqsBox
           heading="How can I ensure my business cards look professional and stand out?"
-          text="To ensure professional and standout business cards, choose a clean and well-designed template, use high-quality images and fonts, maintain a balance between text and visuals, and personalize the content to reflect your brand. Preview the design before finalizing it to ensure a polished look."
+          text={
+            <>
+              To ensure professional and standout business cards, choose a clean
+              and well-designed template, use high-quality images and fonts,
+              maintain a balance between text and visuals, and personalize the
+              content to reflect your brand. Preview the design before
+              finalizing it to ensure a polished look.
+            </>
+          }
         />
       </Box>
     </>

@@ -4,6 +4,17 @@ import { useRouter } from "next/router";
 import React from "react";
 import Iframe from "react-iframe";
 
+type PropsType = {
+  title: string;
+  point: any;
+  image: string;
+  buttonName: string;
+  video: string;
+  alt: string;
+  path: string;
+  whatsapp: boolean;
+};
+
 export default function LeftImage({
   title,
   point,
@@ -13,18 +24,12 @@ export default function LeftImage({
   alt,
   path,
   whatsapp,
-}: any) {
+}: PropsType) {
   const router = useRouter();
   return (
     <Box className="  bg-[#F4F7FE]  ">
       <Box className="flex py-[50px]  px-[20px] xl:px-[7%] w-full  xl:w-[92%] mx-auto max-w-[2400px] items-center lg:flex-row flex-col">
         <Box className="flex-1 flex justify-center ">
-          {/* <img
-            src={image}
-            alt={image}
-            className="object-contain w-[500px] max-lg:w-[400px] max-sm:w-full"
-          /> */}
-
           {image ? (
             <img
               src={image}

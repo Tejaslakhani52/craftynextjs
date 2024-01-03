@@ -16,6 +16,10 @@ import PaymentHistory from "./components/PaymentHistory";
 import Icons from "@/assets";
 import { decryptData } from "@/aes-crypto";
 
+interface AccountProps {
+  defaultTab: string;
+}
+
 export const sidebarMenu = [
   {
     name: "Personal Info",
@@ -37,15 +41,14 @@ export const sidebarMenu = [
   },
 ];
 
-export default function Account({ defaultTab }: any) {
+const Account: React.FC<AccountProps> = ({ defaultTab }) => {
   const router = useRouter();
   const getData = authCookiesGet();
   const [userProfile, setUserProfile] = useState<any>(null);
   const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
-  const [activeTab, setActiveTab] = useState<any>(defaultTab);
+  const [activeTab, setActiveTab] = useState<string>(defaultTab);
   const [currentPlan, setCurrentPlan] = useState<any>();
-  console.log("currentPlan: ", currentPlan);
-  const [loading, setLoading] = useState<any>(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const screenHeight = useScreenHeight();
 
   useEffect(() => {
@@ -55,7 +58,6 @@ export default function Account({ defaultTab }: any) {
         const data2 = JSON.parse(decryptData(data));
         tokenSet("premium", data2?.user?.is_premium === 1 ? "true" : "false");
         userPremium(`${data2?.user?.is_premium}`);
-
         setImageBaseUrl(data2?.url);
         setUserProfile(data2?.user);
       })
@@ -120,7 +122,9 @@ export default function Account({ defaultTab }: any) {
         const getDatas = JSON.parse(jsonString);
         setCurrentPlan(getDatas);
       })
-      .catch((error) => console.log("error: ", error));
+      .catch((error) => {
+        // console.log("error: ", error);
+      });
   }, [getData]);
 
   const accountComponents: any = {
@@ -179,8 +183,9 @@ export default function Account({ defaultTab }: any) {
           </Box>
         </Box>
         <Box className="pt-[20px] max-2md:px-[8px] gap-2 px-[15px] max-2md:flex justify-between border-b dark:bg-gray-800 overflow-auto scroll_none">
-          {sidebarMenu?.map((item) => (
+          {sidebarMenu?.map((item, index: number) => (
             <Box
+              key={index}
               className={`${
                 activeTab === item?.name && "max-2md:border_b_linear"
               }`}
@@ -205,7 +210,7 @@ export default function Account({ defaultTab }: any) {
                   <Typography
                     className={`text-[15px] font-medium whitespace-nowrap ${
                       activeTab === item?.name
-                        ? " active_text_linear "
+                        ? " active_text_linear"
                         : "text-black opacity-60"
                     }`}
                   >
@@ -232,4 +237,6 @@ export default function Account({ defaultTab }: any) {
       )}
     </Box>
   );
-}
+};
+
+export default Account;

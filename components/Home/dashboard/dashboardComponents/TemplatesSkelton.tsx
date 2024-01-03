@@ -1,11 +1,10 @@
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import Skelton from "@/components/common/Skelton";
-import { Box, Typography } from "@mui/material";
-import React, { useMemo } from "react";
+import { Box } from "@mui/material";
+import { useMemo } from "react";
 
 export default function TemplatesSkelton() {
   const screenWidth = useScreenWidth();
-  console.log("screenWidth: ", screenWidth);
 
   const height = useMemo(() => {
     let val;
@@ -18,7 +17,6 @@ export default function TemplatesSkelton() {
 
     return val;
   }, [screenWidth]);
-  console.log("height: ", height);
   return (
     <Box className="flex flex-col gap-5 py-[50px]">
       {/* <Box className="flex items-center justify-between pt-8 pb-4">

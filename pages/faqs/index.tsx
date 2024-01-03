@@ -24,6 +24,7 @@ export default function Index() {
           ?.filter((item, index) => (moreItems ? index : index < 7))
           ?.map((item: any, index: number) => (
             <Box
+              key={index}
               className="bg-[#FFF] max-md:w-full w-[80%] p-[20px] rounded-[10px] mb-5 cursor-pointer"
               sx={{ boxShadow: "0px 0px 8px 1px rgba(28, 48, 72, 0.10)" }}
               onClick={() =>

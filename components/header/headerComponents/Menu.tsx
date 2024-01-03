@@ -31,7 +31,7 @@ export const Product = {
         { name: "Resume", path: "/resume" },
         { name: "Flyer", path: "/flyer" },
         { name: "Calendar", path: "/calendar" },
-        { name: "Bridal shower", path: "/bridal-shower" },
+        { name: "Bridal Shower", path: "/bridal-shower" },
         { name: "Logo", path: "/logos" },
       ],
     },
@@ -63,7 +63,7 @@ export const Templates = {
       allName: [
         { name: "Wedding", path: "/wedding" },
         { name: "Birthday", path: "/birthday-invitation" },
-        { name: "Baby & Care", path: "/baby-shower-invitation" },
+        { name: "Baby Shower", path: "/baby-shower-invitation" },
         { name: "Party", path: "/party-invitation" },
         { name: "Brochure", path: "/brochure-design" },
       ],
@@ -112,9 +112,6 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
         className={`peer px-3 max-2xl:px-3 py-2  text-[14px] flex items-center whitespace-nowrap  ${
           onButtonLeave || onBoxLeave ? " text-[#2EC6B8]" : "#1C3048"
         } `}
-        // active_text_linear
-        // style={{ color: onButtonLeave || onBoxLeave ? "#2EC6B8" : "#1C3048" }}
-        // onMouseEnter={() => setSelectColor("#2EC6B8")}
         onMouseEnter={() => setOnButtonLeave(true)}
         onMouseLeave={() => setOnButtonLeave(false)}
       >
@@ -139,8 +136,8 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
           boxShadow: "0px 5px 12px 3px rgba(0, 0, 0, 0.16)",
         }}
       >
-        {itemName?.map((data: any) => (
-          <Box className="flex flex-col">
+        {itemName?.map((data: any, index: number) => (
+          <Box className="flex flex-col" key={index}>
             <Typography
               className={`text-black font-semibold px-4 ${
                 data?.heading && " pb-3"
@@ -148,8 +145,9 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
             >
               {data?.heading}
             </Typography>
-            {data?.allName?.map((item: any) => (
+            {data?.allName?.map((item: any, index: number) => (
               <Link
+                key={index}
                 href={item.path}
                 onClick={() => {
                   dispatch(openSidebar(false));
@@ -190,9 +188,6 @@ export const handleClickWhatsapp = () => {
 
 export default function MenuBox() {
   const dispatch = useDispatch();
-  const router = useRouter();
-  const [selectColor, setSelectColor] = React.useState<string>("#1C3048");
-  const [openHideButton, setOpenHideButton] = useState<boolean>(false);
 
   return (
     <>
@@ -237,7 +232,6 @@ export default function MenuBox() {
             }}
           >
             <MenuItem
-              // onClick={handleClose}
               sx={{
                 fontSize: "14px",
                 borderRadius: "4px",
@@ -250,7 +244,6 @@ export default function MenuBox() {
               Custom order
             </MenuItem>
             <MenuItem
-              // onClick={handleClose}
               sx={{
                 fontSize: "14px",
                 borderRadius: "4px",

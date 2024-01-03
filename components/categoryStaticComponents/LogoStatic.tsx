@@ -30,6 +30,7 @@ export default function LogoStatic() {
             <Box className="flex gap-3 mb-10">
               {["", "", "", ""].map((item, index) => (
                 <Box
+                  key={index}
                   className={`${
                     activeStep === index + 1
                       ? "bg-[#1C3048]  text-white"
@@ -345,7 +346,7 @@ export default function LogoStatic() {
           variant="h2"
           className="text-[#1C3048] text-[30px] max-sm:text-[25px] text-center font-[600] mb-4"
         >
-          What are Customers Saying about Craftyart
+          What are Customers Saying about Crafty Art
         </Typography>
         <Typography className="text-center">
           Crafty Art has a proven track record of delivering efficiency, results

@@ -13,6 +13,7 @@ import RightImageSection from "./components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -101,7 +102,6 @@ export default function index() {
       />
 
       <LeftImageSection
-        white
         title="What makes our wedding Invitation
         unique?"
         point={
@@ -138,7 +138,6 @@ export default function index() {
       />
 
       <LeftImageSection
-        white
         title="What designs and styles are 
         available for Wedding Invitations?"
         point={
@@ -175,7 +174,6 @@ export default function index() {
       />
 
       <LeftImageSection
-        white
         title="Why Crafty Art Stands Out:"
         point={
           <Box>
@@ -281,26 +279,63 @@ export default function index() {
 
         <FaqsBox
           heading=" 1. What is a wedding invitation template?"
-          text="A wedding invitation template is a pre-designed digital file that contains the layout and design elements of a wedding invitation. It serves as a starting point for creating your own personalised invitations."
+          text={
+            <>
+              A wedding{" "}
+              <FLink lk="https://craftyartapp.com/invitation">invitation</FLink>
+              template is a pre-designed digital file that contains the layout
+              and design elements of a wedding invitation. It serves as a
+              starting point for creating your own personalised invitations.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 2. Can I customise a wedding invitation template?"
-          text="Yes, most wedding invitation templates are editable, which means you can make changes to the text, fonts, colours, and other design elements to suit your preferences."
+          text={
+            <>
+              Yes, most wedding invitation templates are editable, which means
+              you can make changes to the text, fonts, colours, and other design
+              elements to suit your preferences.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 3. What should I consider when choosing a wedding invitation template?"
-          text="When choosing a wedding invitation template, consider the theme, colour scheme, and overall style of your wedding. You should also evaluate the level of customization available with the template and whether it meets your needs."
+          text={
+            <>
+              When choosing a{" "}
+              <FLink lk="https://craftyartapp.com/wedding">
+                {" "}
+                wedding invitation template,
+              </FLink>{" "}
+              consider the theme, colour scheme, and overall style of your
+              wedding. You should also evaluate the level of customization
+              available with the template and whether it meets your needs.
+            </>
+          }
         />
 
         <FaqsBox
           heading=" 4. What information should be included in a wedding invitation?"
-          text="A wedding invitation typically includes the names of the couple, the date and time of the wedding, the location of the ceremony and reception, and RSVP information. You may also include additional details such as dress code, accommodations, and directions."
+          text={
+            <>
+              A wedding invitation typically includes the names of the couple,
+              the date and time of the wedding, the location of the ceremony and
+              reception, and RSVP information. You may also include additional
+              details such as dress code, accommodations, and directions.
+            </>
+          }
         />
         <FaqsBox
           heading=" 5. Are wedding invitation templates affordable?"
-          text="Yes, wedding invitation templates are generally more affordable than custom-designed invitations."
+          text={
+            <>
+              Yes, wedding invitation templates are generally more affordable
+              than custom-designed invitations.
+            </>
+          }
         />
       </Box>
     </>

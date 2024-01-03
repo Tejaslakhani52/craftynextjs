@@ -38,7 +38,10 @@ export default function PaymentHistory({ userSubscription }: any) {
               ) : (
                 userSubscription?.hasHistory &&
                 userSubscription?.history?.map((item: any, index: any) => (
-                  <tr className="bg-[#F4F7FE] border-b dark:bg-gray-800 dark:border-gray-700">
+                  <tr
+                    key={index}
+                    className="bg-[#F4F7FE] border-b dark:bg-gray-800 dark:border-gray-700"
+                  >
                     <td className="px-6 py-4 whitespace-nowrap">
                       {item?.package_name}
                     </td>

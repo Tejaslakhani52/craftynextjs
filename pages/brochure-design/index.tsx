@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -256,27 +257,62 @@ export default function index() {
 
         <FaqsBox
           heading="What makes Crafty Art's Brochure Design stand out?"
-          text="Crafty Art's Brochure Design stands out for its perfect blend of creativity and functionality. Each design is meticulously crafted to not only captivate the audience visually but also to effectively convey the intended message."
+          text={
+            <>
+              Crafty Art's{" "}
+              <FLink lk="https://craftyartapp.com/party-invitation">
+                Brochure Design
+              </FLink>{" "}
+              stands out for its perfect blend of creativity and functionality.
+              Each design is meticulously crafted to not only captivate the
+              audience visually but also to effectively convey the intended
+              message.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I order custom brochure designs?"
-          text="Yes, you can order custom brochure designs."
+          text={<>Yes, you can order custom brochure designs.</>}
         />
 
         <FaqsBox
           heading="Can I see examples of your previous brochure designs?"
-          text="Certainly! Explore our extensive portfolio to witness a diverse range of brochure designs. From creative and modern concepts to business-centric solutions, our showcase reflects the depth and versatility of Crafty Art's design expertise."
+          text={
+            <>
+              Certainly! Explore our extensive portfolio to witness a diverse
+              range of brochure designs. From creative and modern concepts to
+              business-centric solutions, our showcase reflects the depth and
+              versatility of Crafty Art's design expertise.
+            </>
+          }
         />
 
         <FaqsBox
           heading="What sets Crafty Art's modern brochure designs apart?"
-          text="Crafty Art specializes in modern brochure designs that go beyond aesthetics. Our designs are strategically crafted to align with contemporary trends, ensuring your brand stays ahead. We prioritize both visual appeal and relevance to deliver designs that stand the test of time."
+          text={
+            <>
+              Crafty Art specializes in modern brochure designs that go beyond
+              aesthetics. Our designs are strategically crafted to align with
+              contemporary trends, ensuring your brand stays ahead. We
+              prioritize both visual appeal and relevance to deliver designs
+              that stand the test of time.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Are there any free resources or consultations available?"
-          text="Yes, there are! Crafty Art offers free brochure design consultations to discuss your needs and explore potential design solutions. Additionally, you can find a selection of free brochure design templates and ideas on our website to kickstart your creative journey."
+          text={
+            <>
+              Yes, there are!{" "}
+              <FLink lk="https://craftyartapp.com/">Crafty Art</FLink> offers
+              free brochure design consultations to discuss your needs and
+              explore potential design solutions. Additionally, you can find a
+              selection of free brochure design templates and ideas on our
+              website to kickstart your creative journey.
+            </>
+          }
         />
       </Box>
     </>

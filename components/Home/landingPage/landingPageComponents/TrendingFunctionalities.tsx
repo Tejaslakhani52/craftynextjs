@@ -96,8 +96,9 @@ export default function TrendingFunctionalities() {
             className="flex   mx-auto overflow-x-auto gap-[30px] items-center scroll_none max-md:gap-[30px]   max-sm:w-[100%]"
             id="brandIcons"
           >
-            {brandIcons?.map((item) => (
+            {brandIcons?.map((item, index: number) => (
               <Box
+                key={index}
                 className="flex items-center bg-white min-w-[150px] sm:min-w-[230px] py-[5px] px-[10px] sm:px-[20px] gap-3 rounded-[4px] h-[70px]"
                 sx={{
                   boxShadow: "0px 3px 4px 0px rgba(0, 0, 0, 0.10)",

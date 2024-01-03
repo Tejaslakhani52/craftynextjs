@@ -1,4 +1,5 @@
 import { decryptData } from "@/aes-crypto";
+import { UserProfileType } from "@/interface/commonType";
 import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { Box, Typography, Button } from "@mui/material";
 import axios from "axios";
@@ -6,13 +7,12 @@ import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
 export default function PersonalInfo() {
-  const uId = authCookiesGet();
   const [removeImage, setRemoveImage] = useState<any>(false);
-  const [userProfile, setUserProfile] = useState<any>(null);
-  const [imageBaseUrl, setImageBaseUrl] = useState<any>(null);
-  const [imagePreview, setImagePreview] = useState<any>(null);
-  const [editNameInput, setEditNameInput] = useState<any>(false);
-  const [loading, setLoading] = useState<any>(false);
+  const [userProfile, setUserProfile] = useState<UserProfileType | any>(null);
+  const [imageBaseUrl, setImageBaseUrl] = useState<string>("");
+  const [imagePreview, setImagePreview] = useState<string>("");
+  const [editNameInput, setEditNameInput] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [accountDetail, setAccountDetail] = useState<any>({
     name: "",
     user_id: "",
@@ -20,7 +20,6 @@ export default function PersonalInfo() {
     photo_uri: null,
   });
 
-  console.log("accountDetail: ", accountDetail);
   useEffect(() => {
     setAccountDetail({
       ...accountDetail,
@@ -43,7 +42,7 @@ export default function PersonalInfo() {
 
   const handleFileRemove = () => {
     setAccountDetail({ ...accountDetail, photo_uri: null, updateDp: 1 });
-    setImagePreview(null);
+    setImagePreview("");
     setRemoveImage(true);
   };
 
@@ -52,7 +51,6 @@ export default function PersonalInfo() {
       .post("/api/getUserData")
       .then(({ data }: any) => {
         const data2 = JSON.parse(decryptData(data));
-        console.log("data2: ", data2);
         setImageBaseUrl(data2?.url);
         setUserProfile(data2?.user);
       })
@@ -65,7 +63,7 @@ export default function PersonalInfo() {
     fetchData();
   }, []);
 
-  const updateFetchData = (event: any) => {
+  const updateFetchData = () => {
     const formData = new FormData();
     formData.append("name", accountDetail?.name);
     formData.append("updateDp", accountDetail?.updateDp);
@@ -80,7 +78,6 @@ export default function PersonalInfo() {
         },
       })
       .then((response) => {
-        console.log("responsedscds: ", response);
         setTimeout(() => {
           fetchData();
           toast.success("User updated successfully");
@@ -89,8 +86,16 @@ export default function PersonalInfo() {
         }, 1000);
       })
       .catch((error) => {
+        setLoading(true);
         // console.log("error: ", error);
       });
+
+    setTimeout(() => {
+      fetchData();
+      toast.success("User updated successfully");
+      window.location.reload();
+      setLoading(false);
+    }, 1000);
   };
 
   return (

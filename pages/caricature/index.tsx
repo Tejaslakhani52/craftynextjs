@@ -11,6 +11,7 @@ import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   const router = useRouter();
@@ -348,27 +349,62 @@ export default function index() {
 
         <FaqsBox
           heading="How does the free caricature maker from 'Crafty Art' work?"
-          text="Crafty Art's free caricature maker is user-friendly and operates with a simple upload-and-customize process. Just upload your photo, tweak the settings, and watch your caricature come to life!"
+          text={
+            <>
+              Crafty Art's free{" "}
+              <FLink lk="https://craftyartapp.com/caricature">
+                caricature maker
+              </FLink>{" "}
+              is user-friendly and operates with a simple upload-and-customize
+              process. Just upload your photo, tweak the settings, and watch
+              your caricature come to life!
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I use Crafty Art's caricature tools without any artistic skills?"
-          text="Absolutely! Our tools are designed for users of all skill levels. You can effortlessly create captivating caricatures without any prior artistic experience."
+          text={
+            <>
+              Absolutely! Our tools are designed for users of all skill levels.
+              You can effortlessly create captivating caricatures without any
+              prior artistic experience.
+            </>
+          }
         />
 
         <FaqsBox
           heading="What makes Crafty Art's caricature cartoons unique?"
-          text="Crafty Art allows you to tailor each caricature cartoon to your style, ensuring a personalized touch. Create entertaining moments and turn ordinary photos into laugh-inducing stories."
+          text={
+            <>
+              Crafty Art allows you to tailor each caricature cartoon to your
+              style, ensuring a personalized touch. Create entertaining moments
+              and turn ordinary photos into laugh-inducing stories.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Is there a limit to the types of photos I can transform into caricatures?"
-          text="Crafty Art's caricature tools are versatile and can transform a wide range of photos. From casual snapshots to formal portraits, you can turn any moment into a whimsical work of art."
+          text={
+            <>
+              Crafty Art's caricature tools are versatile and can transform a
+              wide range of photos. From casual snapshots to formal portraits,
+              you can turn any moment into a whimsical work of art.
+            </>
+          }
         />
 
         <FaqsBox
           heading="How can I share my caricature creations with others?"
-          text="Sharing your caricature masterpieces is easy! Crafty Art provides seamless options to share on social media, via email, or by downloading your creations for printing or digital use."
+          text={
+            <>
+              Sharing your caricature masterpieces is easy!{" "}
+              <FLink lk="https://craftyartapp.com/">Crafty Art</FLink> provides
+              seamless options to share on social media, via email, or by
+              downloading your creations for printing or digital use.
+            </>
+          }
         />
       </Box>
     </div>

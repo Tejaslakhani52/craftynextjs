@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -301,27 +302,69 @@ export default function index() {
 
         <FaqsBox
           heading="How can I personalize my bridal shower invitations on Crafty Art?"
-          text="Crafty Art offers a user-friendly platform where you can personalize your bridal shower invitations effortlessly. Choose from a variety of themes, add photos, and customize details to match the bride's style."
+          text={
+            <>
+              Crafty Art offers a user-friendly platform where you can
+              personalize your{" "}
+              <FLink lk="https://craftyartapp.com/bridal-shower">
+                bridal shower invitations
+              </FLink>{" "}
+              effortlessly. Choose from a variety of themes, add photos, and
+              customize details to match the bride's style.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Are there free bridal shower invitation options available?"
-          text="Yes, Crafty Art provides a selection of free bridal shower invitation examples. Explore these templates to kickstart your creative process without incurring any costs."
+          text={
+            <>
+              Yes, <FLink lk="https://craftyartapp.com/">Crafty Art</FLink>{" "}
+              provides a selection of free bridal shower invitation examples.
+              Explore these templates to kickstart your creative process without
+              incurring any costs.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I include a photo on my bridal shower invitations?"
-          text="Absolutely! Crafty Art allows you to create picture-perfect invitations by easily adding a photo of the bride. Choose a template that accommodates a picture to capture those special moments."
+          text={
+            <>
+              Absolutely!{" "}
+              <FLink lk="https://craftyartapp.com/">Crafty Art</FLink> allows
+              you to create picture-perfect invitations by easily adding a photo
+              of the bride. Choose a template that accommodates a picture to
+              capture those special moments.
+            </>
+          }
         />
 
         <FaqsBox
           heading="What makes digital bridal shower invitations a good choice?"
-          text="Digital invitations on Crafty Art offer modern elegance and convenience. Enjoy the ease of managing RSVPs digitally and reduce paper waste, all while creating stylish invitations for your bridal shower."
+          text={
+            <>
+              Digital invitations on Crafty Art offer modern elegance and
+              convenience. Enjoy the ease of managing RSVPs digitally and reduce
+              paper waste, all while creating stylish invitations for your
+              bridal shower.
+            </>
+          }
         />
 
         <FaqsBox
           heading="How do I find inspiration for unique bridal shower invitations?"
-          text="Crafty Art provides a diverse array of bridal shower invitation samples to spark your creativity. Explore different themes, styles, and designs to find inspiration that aligns with the bride's personality and the overall celebration theme."
+          text={
+            <>
+              Crafty Art provides a diverse array of{" "}
+              <FLink lk="https://craftyartapp.com/bridal-shower">
+                bridal shower invitation
+              </FLink>{" "}
+              samples to spark your creativity. Explore different themes,
+              styles, and designs to find inspiration that aligns with the
+              bride's personality and the overall celebration theme.
+            </>
+          }
         />
       </Box>
     </>

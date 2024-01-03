@@ -16,6 +16,7 @@ import { saveAs } from "file-saver";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
 import { decryptData } from "@/aes-crypto";
+import FLink from "@/components/common/FLink";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -60,20 +61,20 @@ export default function index() {
 
   const [value, setValue] = React.useState(0);
 
-  const fileInputRef: any = useRef(null);
+  const fileInputRef: React.RefObject<HTMLInputElement> | any = useRef(null);
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
 
-  const handleFileChange = (event: any) => {
+  const handleFileChange = (event: React.MouseEvent<any> | any) => {
     setSelectedFile(event.target.files[0]);
 
     const imageUrl = URL.createObjectURL(event.target.files[0]);
     setImagePreviewUrl(imageUrl);
   };
 
-  const handleDragOver = (event: any) => {
+  const handleDragOver = (event: React.MouseEvent<any> | any) => {
     event.preventDefault();
     setIsDragOver(true);
   };
@@ -81,7 +82,7 @@ export default function index() {
   const handleDragLeave = () => {
     setIsDragOver(false);
   };
-  const handleDrop = (event: any) => {
+  const handleDrop = (event: React.MouseEvent<any> | any) => {
     event.preventDefault();
     setIsDragOver(false);
     setSelectedFile(event.dataTransfer.files[0]);
@@ -107,10 +108,8 @@ export default function index() {
           responseType: "blob",
         })
         .then((res: any) => {
-          console.log("res1: ", res);
           const blob = new Blob([res?.data], { type: "image/png" });
           const imageUrl = URL.createObjectURL(new Blob([blob]));
-          console.log("imageUrl: ", imageUrl);
           setMainLoader(false);
           setImageUrl(imageUrl);
         })
@@ -690,31 +689,61 @@ and generating ideas."
 
         <FaqsBox
           heading="1. Is the background remover easy to use?"
-          text="Yes, it's very easy! Just upload your image, select the background remover, highlight the object you want to keep and
-            the background you want to remove, preview and save your image with the new background."
+          text={
+            <>
+              Yes, it's very easy! Just upload your image, select the{" "}
+              <FLink lk="https://craftyartapp.com/background-remover">
+                background remover,
+              </FLink>{" "}
+              highlight the object you want to keep and the background you want
+              to remove, preview and save your image with the new background.
+            </>
+          }
         />
         <FaqsBox
           heading="2. Can the background remover handle all types of images?"
-          text="It can handle a lot of different types of images but there may be cases where it's not as accurate. However, it uses
-            advanced algorithms to handle complex images with multiple objects and intricate details."
+          text={
+            <>
+              It can handle a lot of different types of images but there may be
+              cases where it's not as accurate. However, it uses advanced
+              algorithms to handle complex images with multiple objects and
+              intricate details.
+            </>
+          }
         />
 
         <FaqsBox
           heading="3. Will the background remover affect the quality of my image?"
-          text="No, it won't! You can expect a professional finish with clean edges and no loss of detail. Just ensure that the resolution
-            of your original image is high enough."
+          text={
+            <>
+              No, it won't! You can expect a professional finish with clean
+              edges and no loss of detail. Just ensure that the resolution of
+              your original image is high enough.
+            </>
+          }
         />
 
         <FaqsBox
           heading="4. Can I undo or redo my edits in the background remover?"
-          text="Yes, you can easily undo or redo your edits until you achieve the desired result. You can also manually add or remove
-            portions of the image, giving you full control over the editing process."
+          text={
+            <>
+              Yes, you can easily undo or redo your edits until you achieve the
+              desired result. You can also manually add or remove portions of
+              the image, giving you full control over the editing process.
+            </>
+          }
         />
 
         <FaqsBox
           heading="5. Do I need any special skills or software to use the background remover?"
-          text="No, you don't need any special skills or software. It's a web-based tool that's accessible from any device with an internet
-            connection. It's designed to be user-friendly for everyone, whether you're a professional designer, student or marketer."
+          text={
+            <>
+              No, you don't need any special skills or software. It's a
+              web-based tool that's accessible from any device with an internet
+              connection. It's designed to be user-friendly for everyone,
+              whether you're a professional designer, student or marketer.
+            </>
+          }
         />
       </Box>
 

@@ -11,6 +11,7 @@ import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
 import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   const router = useRouter();
@@ -287,26 +288,52 @@ campaigns."
 
         <FaqsBox
           heading="1. Can I resize multiple designs at once?"
-          text="Yes, you can select multiple designs and use the batch resize feature to adjust them simultaneously."
+          text={
+            <>
+              Yes, you can select multiple designs and use the batch{" "}
+              <FLink lk="https://craftyartapp.com/resize">resize</FLink>
+              feature to adjust them simultaneously.
+            </>
+          }
         />
         <FaqsBox
           heading="2. Is the resize feature easy to use for beginners?"
-          text="Absolutely, the resize feature is designed to be user-friendly and intuitive."
+          text={
+            <>
+              Absolutely, the resize feature is designed to be user-friendly and
+              intuitive.
+            </>
+          }
         />
 
         <FaqsBox
           heading="3. Can I customise the size of individual design elements?"
-          text="Yes, you can use the crop and transform features to adjust individual elements within your design."
+          text={
+            <>
+              Yes, you can use the crop and transform features to adjust
+              individual elements within your design.
+            </>
+          }
         />
 
         <FaqsBox
           heading="4. How does the resize feature help with responsive design?"
-          text="By optimising your design for different screen sizes, you can ensure that it looks great on any device or platform."
+          text={
+            <>
+              By optimising your design for different screen sizes, you can
+              ensure that it looks great on any device or platform.
+            </>
+          }
         />
 
         <FaqsBox
           heading="5. Are there any limitations to the resize feature?"
-          text="The tool supports resizing up to a certain limit, depending on the file size and complexity of the design."
+          text={
+            <>
+              The tool supports resizing up to a certain limit, depending on the
+              file size and complexity of the design.
+            </>
+          }
         />
       </Box>
     </div>

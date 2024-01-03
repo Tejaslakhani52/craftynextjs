@@ -48,7 +48,7 @@ export default function searchValue() {
         setData((prevData: any) => [...(prevData || []), ...getData?.datas]);
       })
       .catch((error: any) => {
-        console.log("error: ", error);
+        // console.log("error: ", error);
       });
   };
 
@@ -160,6 +160,7 @@ export default function searchValue() {
               <StackGrid columnWidth={screenWidth / multiSizeFixSize}>
                 {data?.map((templates: any, index: number) => (
                   <ImageBox
+                    key={index}
                     templates={templates}
                     screenWidth={screenWidth}
                     multiSizeFixSize={multiSizeFixSize}

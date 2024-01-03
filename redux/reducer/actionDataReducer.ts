@@ -6,6 +6,7 @@ interface DataState {
   openTempModal: boolean;
   enterAccount: boolean;
   mainLoader: boolean;
+  mainLoad: boolean;
   modalClosePath: any;
   tempId: string;
 }
@@ -16,6 +17,7 @@ const initialState: DataState = {
   openTempModal: false,
   enterAccount: false,
   mainLoader: true,
+  mainLoad: false,
   modalClosePath: "",
   tempId: "",
 };
@@ -39,6 +41,9 @@ const dataActions = createSlice({
     mainLoader: (state, action: PayloadAction<boolean>) => {
       state.mainLoader = action.payload;
     },
+    mainLoad: (state, action: PayloadAction<boolean>) => {
+      state.mainLoad = action.payload;
+    },
     modalClosePath: (state, action: PayloadAction<any>) => {
       state.modalClosePath = action.payload;
     },
@@ -56,5 +61,6 @@ export const {
   enterAccount,
   mainLoader,
   tempId,
+  mainLoad,
 } = dataActions.actions;
 export default dataActions.reducer;

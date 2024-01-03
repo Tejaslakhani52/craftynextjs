@@ -167,7 +167,7 @@ export default function CustomerSaying() {
   return (
     <Box className="flex flex-col items-center py-24 max-w-[2400px] mx-auto mb-0 max-sm:mb-0 px-[20px] max-lg:py-10 ">
       <Typography className="text-[35px] font-bold text-black max-sm:text-[30px] text-center">
-        What are Customers Saying about Craftyart
+        What are Customers Saying about Crafty Art
       </Typography>
       <Typography className="text-[18px] text-black my-2 text-center">
         Crafty Art has a proven track record of delivering efficiency, results
@@ -200,8 +200,9 @@ export default function CustomerSaying() {
           className=" flex  w-full xl:w-[80%] justify-between  z-[1] max-lg:mt-[0]  gap-[30px] overflow-auto scroll_none px-2 sm:px-10 py-5 sm:py-15  mt-5"
           id="customer"
         >
-          {customerComment?.map((item: any) => (
+          {customerComment?.map((item: any, index: number) => (
             <CustomerBox
+              key={index}
               value={item?.rating}
               text={`“${item?.comment}”`}
               image={item?.image}

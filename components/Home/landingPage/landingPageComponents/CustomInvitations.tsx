@@ -86,6 +86,7 @@ export default function CustomInvitations() {
             }
             return (
               <Box
+                key={index}
                 sx={{
                   width: `${width}px`,
                   filter: "  drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.25))",
@@ -118,6 +119,7 @@ export default function CustomInvitations() {
             }
             return (
               <Box
+                key={index}
                 sx={{
                   width: `${width}px`,
                   filter: "  drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.25))",

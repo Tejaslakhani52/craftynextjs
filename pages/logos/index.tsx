@@ -10,6 +10,7 @@ import RightImageSection from "../wedding/components/RightImageSection";
 import CustomHead from "@/components/common/CustomHead";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 import Head from "next/head";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
@@ -336,32 +337,66 @@ covered."
 
         <FaqsBox
           heading="1. What is Logo Design?"
-          text="Logo design is the process of creating a unique symbol or emblem that visually represents a brand, company, or individual. It involves the use of typography, colours, and graphic elements to create a distinctive visual identity."
+          text={
+            <>
+              <FLink lk="https://craftyartapp.com/logos">Logo design</FLink> is
+              the process of creating a unique symbol or emblem that visually
+              represents a brand, company, or individual. It involves the use of
+              typography, colours, and graphic elements to create a distinctive
+              visual identity.
+            </>
+          }
         />
         <FaqsBox
           heading="2. Why is a logo important for my business?"
-          text="A logo is an essential component of your brand identity. It helps your customers to recognize and remember your
-          business, products, and services. A well-designed logo can create a positive impression, build trust, and communicate
-          your brand's values and personality."
+          text={
+            <>
+              A logo is an essential component of your brand identity. It helps
+              your customers to recognize and remember your business, products,
+              and services. A well-designed logo can create a positive
+              impression, build trust, and communicate your brand's values and
+              personality.
+            </>
+          }
         />
         <FaqsBox
           heading="3. How long does it take to design a logo?"
-          text="The time required to design a logo depends on various factors, such as the complexity of the design, the number of
-          revisions needed, and the designer's availability. Typically, it can take anywhere from a few days to a few weeks to
-          create a high-quality logo."
+          text={
+            <>
+              The time required to design a logo depends on various factors,
+              such as the complexity of the design, the number of revisions
+              needed, and the designer's availability. Typically, it can take
+              anywhere from a few days to a few weeks to create a high-quality
+              logo.
+            </>
+          }
         />
         <FaqsBox
           heading="4. How much should I expect to pay for a logo design?"
-          text="The cost of a logo design can vary significantly depending on the designer's experience, the complexity of the design,
-          and the level of customization required. Generally, you can expect to pay anywhere between ₹1 to ₹1000 for a
-          professional logo design."
+          text={
+            <>
+              The cost of a{" "}
+              <FLink lk="https://craftyartapp.com/logos">logo design</FLink> can
+              vary significantly depending on the designer's experience, the
+              complexity of the design, and the level of customization required.
+              Generally, you can expect to pay anywhere between ₹1 to ₹1000 for
+              a professional logo design.
+            </>
+          }
         />
         <FaqsBox
           heading="5. What should I consider when designing a logo for my business?"
-          text="When designing a logo for your business, you should consider several factors to ensure that it reflects your brand
-          identity and resonates with your target audience. These factors include selecting appropriate colours that represent
-          your brand values and personality, choosing a font style that aligns with your brand messaging, and creating a design
-          that is simple, memorable, and easily recognizable."
+          text={
+            <>
+              When designing a logo for your business, you should consider
+              several factors to ensure that it reflects your brand identity and
+              resonates with your target audience. These factors include
+              selecting appropriate colours that represent your brand values and
+              personality, choosing a font style that aligns with your brand
+              messaging, and creating a design that is simple, memorable, and
+              easily recognizable.
+            </>
+          }
         />
       </Box>
     </Box>

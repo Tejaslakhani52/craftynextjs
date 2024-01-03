@@ -82,8 +82,9 @@ export default function CustomizedMenus({ value, setValue }: any) {
         open={open}
         onClose={handleClose}
       >
-        {data?.map((item) => (
+        {data?.map((item, index) => (
           <MenuItem
+            key={index}
             onClick={() => {
               setAnchorEl(null);
               setValue(item);

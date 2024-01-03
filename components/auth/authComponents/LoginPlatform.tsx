@@ -51,7 +51,6 @@ export default function LoginPlatform() {
   const handleGoogleLogin = () => {
     signInWithPopup(auth, provider).then((data) => {
       const userData: any = data?.user;
-      console.log("userData: ", userData);
 
       dispatch(
         createUserApi(

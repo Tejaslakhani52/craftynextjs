@@ -3,12 +3,15 @@ import {
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
 import Skelton from "@/components/common/Skelton";
+import { ActionStateType } from "@/interface/stateType";
 import { Box, Skeleton } from "@mui/material";
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 
 export default function DashBoardSkelton({ height }: any) {
-  const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
+  const sideBarRedux = useSelector(
+    (state: ActionStateType) => state.actions.openSidebar
+  );
 
   return (
     <div className="  bg-[white] z-[1000]">

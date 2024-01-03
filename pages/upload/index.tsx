@@ -30,7 +30,7 @@ const DraftBoxes = ({
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: any) => {
+  const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -132,15 +132,12 @@ export default function index() {
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
   const screenHeight = useScreenHeight();
   const [draftData, setDraftData] = useState<any>([]);
-  console.log("draftData: ", draftData);
   const [mouseEnterItem, setMouseEnterItem] = useState<any>("");
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>(false);
-  console.log("isLastPage: ", isLastPage);
   const [page, setPage] = useState<number>(1);
 
   const multiSize = useMemo(() => {
-    console.log("screenWidth: ", screenWidth);
     switch (true) {
       case screenWidth > 1500:
         return screenWidth / 6;
@@ -157,8 +154,6 @@ export default function index() {
         return screenWidth / 2;
     }
   }, [screenWidth, sideBarRedux]);
-
-  console.log("multiSize: ", multiSize);
 
   useEffect(() => {
     setLoadMore(true);
@@ -181,7 +176,9 @@ export default function index() {
           setIsLastPage(res?.data?.isLastPage);
         } else setDraftData(null);
       })
-      .catch((err: any) => console.log("err: ", err));
+      .catch((err: any) => {
+        // console.log("err: ", err);
+      });
   }, [page]);
 
   return (
@@ -189,8 +186,9 @@ export default function index() {
       <h1 className="text-[32px] font-medium p-[10px]">Upload</h1>
       <div className="flex flex-wrap " style={{ width: screenWidth }}>
         {draftData
-          ? draftData?.map((item: any) => (
+          ? draftData?.map((item: any, index: number) => (
               <DraftBoxes
+                key={index}
                 item={item}
                 setMouseEnterItem={setMouseEnterItem}
                 mouseEnterItem={mouseEnterItem}

@@ -11,12 +11,13 @@ import CustomHead from "@/components/common/CustomHead";
 import MainLoaderBox from "@/components/common/MainLoaderBox";
 import Head from "next/head";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (
     <>
       <CustomHead
-        image="https://assets.craftyart.in/w_assets/images/birthdayInvitation.png"
+        image="https://assets.craftyart.in/w_assets/images/birthdayBanner.png"
         heading={
           "Discover Stylish Birthday Invitation Templates | Personalize Your Celebration"
         }
@@ -272,27 +273,69 @@ export default function index() {
 
         <FaqsBox
           heading="How can I personalize my birthday invitation with your templates?"
-          text="Explore Crafty Art’s collection of templates and use our user-friendly customization tools to add your personal touch. Whether it's text, images, or details, make it uniquely yours."
+          text={
+            <>
+              Explore Crafty Art’s collection of templates and use our
+              user-friendly customization tools to add your personal touch.
+              Whether it's text, images, or details, make it uniquely yours.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Are the birthday invitation templates free to use?"
-          text="Yes, all our birthday invitation templates are entirely free. Enjoy the freedom of designing professional invitations without any hidden fees – design, customize, and download at no cost."
+          text={
+            <>
+              Yes, all our{" "}
+              <FLink lk="https://craftyartapp.com/birthday-invitation">
+                {" "}
+                birthday invitation templates
+              </FLink>{" "}
+              are entirely free. Enjoy the freedom of designing professional
+              invitations without any hidden fees – design, customize, and
+              download at no cost.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Can I send my birthday invitations online for free?"
-          text="Absolutely! Take advantage of Crafty Arts to send digital invitations at no expense. Save on paper and postage while conveniently managing RSVPs online. Share invitations through email, social media, or messaging apps."
+          text={
+            <>
+              Absolutely! Take advantage of Crafty Arts to send digital
+              invitations at no expense. Save on paper and postage while
+              conveniently managing RSVPs online. Share invitations through
+              email, social media, or messaging apps.
+            </>
+          }
         />
 
         <FaqsBox
           heading="Is the invitation maker suitable for users with no design experience?"
-          text="Yes, Crafty Art’s invitation maker is designed to be user-friendly for everyone. No design skills are necessary. Simply drag, drop, and customize to create professional-looking invitations effortlessly, even if you're a beginner."
+          text={
+            <>
+              Yes, Crafty Art’s invitation maker is designed to be user-friendly
+              for everyone. No design skills are necessary. Simply drag, drop,
+              and customize to create professional-looking{" "}
+              <FLink lk="https://craftyartapp.com/invitation">
+                {" "}
+                invitations
+              </FLink>
+              effortlessly, even if you're a beginner.
+            </>
+          }
         />
 
         <FaqsBox
           heading="What themes are available in your birthday invitation template collection?"
-          text="Discover a diverse range of themes suitable for all ages in our template library. From birthdays for kids to milestones and surprise parties, find the perfect match for your celebration, whether it's playful and vibrant or elegant and sophisticated."
+          text={
+            <>
+              Discover a diverse range of themes suitable for all ages in our
+              template library. From birthdays for kids to milestones and
+              surprise parties, find the perfect match for your celebration,
+              whether it's playful and vibrant or elegant and sophisticated.
+            </>
+          }
         />
       </Box>
     </>

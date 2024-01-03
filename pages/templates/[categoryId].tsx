@@ -3,7 +3,6 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import FestivalBanner from "@/components/categoryStaticComponents/FestivalStatic";
 import FlyerStatic from "@/components/categoryStaticComponents/FlyerStatic";
 import InvitationStatic from "@/components/categoryStaticComponents/InvitationStatic";
@@ -11,16 +10,16 @@ import LogoStatic from "@/components/categoryStaticComponents/LogoStatic";
 import QuotesStatic from "@/components/categoryStaticComponents/QuotesStatic";
 import ResumeStatic from "@/components/categoryStaticComponents/ResumeStatic";
 import Breadcrumb from "@/components/common/Breadcrumb";
+import CustomHead from "@/components/common/CustomHead";
 import ImageBox from "@/components/common/ImageBox";
 import NotFound from "@/components/common/NotFound";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { CategoryApiData, ServerSideProps } from "@/interface/categoryType";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
-import Head from "next/head";
 import { useRouter } from "next/router";
-import { resolve } from "path";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 
 const otherData = {
@@ -52,12 +51,11 @@ const otherData = {
   invitationData: {
     short_desc:
       "Discover a variety of invitation templates for every occasion. From parties to events, our invitation templates offer creative designs to make your invites truly special.",
-    h1_tag: "Invitation Templates",
+    h1_tag: "Invitation Card Templates",
     h2_tag: "Creative Event Invitation Templates",
-    meta_title:
-      "Stunning Invitation Templates for Every Occasion - Customize with Ease",
+    meta_title: "Craft Free Online Invitation Card Templates - Crafty Art",
     meta_desc:
-      "Discover a wide range of invitation templates for all events. Personalize effortlessly and create memorable invitations. Get started today!",
+      "Discover beautiful invitation card designs & create your own with an invitation card maker. Explore stunning ideas for any occasion.",
     long_desc:
       "Are you in search of the perfect invitation templates to set the tone for your upcoming event? Look no further! Our collection boasts an extensive array of professionally designed invitation templates tailored to suit every occasion imaginable. Whether you're hosting a birthday bash, a wedding extravaganza, a corporate soirée, or a casual get-together, we've got you covered.\n\nGone are the days of spending hours wrangling with complicated design software. Our user-friendly platform lets you customize each invitation templates with ease. From selecting the color palette that complements your theme to adding your personalized text, the process is a breeze. The result? Unique and eye-catching invitations that reflect your style and event's essence.\n\nOur invitation templates are curated by a team of creative experts who understand the importance of making a lasting impression. A well-designed invitation sets the stage for an unforgettable experience. Choose from a variety of styles, from elegant and timeless to modern and vibrant. Our templates can be tailored to match any event's atmosphere.\n\nThe versatility of our invitation templates is truly remarkable. They're not just for physical invitations; they can be used for digital invitations, e-cards, or social media announcements. Share your event details with friends and family across the globe with just a few clicks. The convenience of digital invitations combined with the beauty of our invitation templates ensures that your event will be talked about long before it happens.\n\nTo make your invitation even more special, we offer the option to upload your own images or artwork. Imagine personalizing wedding invitations with your engagement photos or adding childhood snapshots to birthday invites. The possibilities are endless, and the result is an invitation that's uniquely you.\n\nHosting an event often involves a myriad of tasks, but creating the perfect invitation doesn't have to be a hassle. With our intuitive platform and customizable invitation templates, you'll save time without compromising on quality. Each template is meticulously crafted, ensuring that every element is placed thoughtfully and aesthetically.\n\nDon't settle for generic invitations that fail to capture the essence of your event. Let our invitation templates be the canvas for your creativity. With just a few clicks, you can transform a template into a masterpiece that excites and entices your guests. Make your event stand out from the rest with invitations that mirror the effort and care you've put into planning.\n\n",
     datas: [],
@@ -78,7 +76,6 @@ const staticBox: any = {
 export async function getServerSideProps(context: any) {
   try {
     const { params } = context;
-    console.log("params: ", params);
 
     const response = await axios.post(
       "https://story.craftyartapp.com/get/datas",
@@ -89,8 +86,8 @@ export async function getServerSideProps(context: any) {
         page: 1,
       }
     );
-    let jsonString;
 
+    let jsonString: ServerSideProps["jsonString"];
     if (params?.categoryId === "latest") {
       jsonString = otherData.latestMeta;
     } else if (params?.categoryId === "trending") {
@@ -112,15 +109,13 @@ export async function getServerSideProps(context: any) {
   }
 }
 
-export default function index({ jsonString }: any) {
-  console.log("tData: ", jsonString);
+export default function index({ jsonString }: ServerSideProps) {
   const screenHeight = useScreenHeight();
   const router = useRouter();
   const screenWidth = useScreenWidth();
   const id: any = router.query;
   const [openModal, setOpenModal] = useState(false);
-  const [data, setData] = useState<any>();
-  console.log("data: ", data);
+  const [data, setData] = useState<CategoryApiData[]>([]);
   const [contentData, setContentData] = useState<any>([]);
   const [page, setPage] = useState<number>(1);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -142,9 +137,7 @@ export default function index({ jsonString }: any) {
           page: page,
         })
         .then((response: any) => {
-          console.log("response: ", response);
           const res: any = JSON.parse(decryptData(response?.data));
-          console.log("resaxa: ", res);
           setLoadMore(false);
           setIsLastPage(res?.isLastPage);
           if (id?.categoryId === "latest") {
@@ -156,23 +149,22 @@ export default function index({ jsonString }: any) {
           } else setContentData(res);
 
           setNotFound(res?.status === 500 ? true : false);
-
           if (id?.page > res?.total_pages || id?.page < 0) {
             setNotFound(true);
           }
-
           if (res?.datas) {
-            setData((prevData: any) => [...(prevData || []), ...res?.datas]);
-
+            setData((prevData: CategoryApiData[]) => [
+              ...(prevData || []),
+              ...(res?.datas || []),
+            ]);
             setIsLoading(false);
           }
-
           if (res?.status === 500) {
             setIsLoading(false);
           }
         })
         .catch((err: any) => {
-          console.log("err: ", err);
+          // console.log("err: ", err);
         });
     }
   }, [id, page]);
@@ -185,35 +177,6 @@ export default function index({ jsonString }: any) {
     const element: any = document.getElementById(tempIdValue);
     element?.scrollIntoView();
   }, [data]);
-
-  // const [loadedImages, setLoadedImages] = useState({});
-  // console.log("loadedImages: ", loadedImages);
-  // const [allLoaded, setAllLoaded] = useState(false);
-  // useEffect(() => {
-  //   const loadImages = async () => {
-  //     try {
-  //       const promises = data.map((imagePath: any, index: number) => {
-  //         return new Promise((resolve, reject) => {
-  //           const img = new Image();
-  //           img.src = imagePath?.template_thumb;
-  //           img.onload = () => resolve(index);
-  //           img.onerror = () =>
-  //             reject(new Error(`Failed to load image at index ${index}`));
-  //         });
-  //       });
-  //       const loadedIndices = await Promise.all(promises);
-  //       const loadedImagesMap: any = {};
-  //       loadedIndices.forEach((index: any) => {
-  //         loadedImagesMap[index] = true;
-  //       });
-  //       setLoadedImages(loadedImagesMap);
-  //       setAllLoaded(true);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   loadImages();
-  // }, [data]);
 
   const multiSizeFixSize = React.useMemo(() => {
     switch (true) {
@@ -243,10 +206,11 @@ export default function index({ jsonString }: any) {
       {jsonString?.datas && (
         <>
           <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
-            <Head>
-              <title>{jsonString?.meta_title}</title>
-              <meta name="description" content={jsonString?.meta_desc} />
-            </Head>
+            <CustomHead
+              image="https://assets.craftyart.in/w_assets/images/categoryBanner.png"
+              heading={jsonString?.meta_title}
+              text={jsonString?.meta_desc}
+            />
             <Box className="pt-[15px]">
               <Breadcrumb
                 data={[
@@ -333,6 +297,7 @@ export default function index({ jsonString }: any) {
                 {data?.map((templates: any, index: number) => (
                   <ImageBox
                     // loadedImages={loadedImages}
+                    key={index}
                     templates={templates}
                     screenWidth={screenWidth}
                     multiSizeFixSize={multiSizeFixSize}
@@ -366,6 +331,18 @@ export default function index({ jsonString }: any) {
               </div>
             </Box>
           </Box>
+
+          {!staticBox[id?.categoryId] && (
+            <Box className="my-[50px] w-[80%] mx-auto px-[30px] max-sm:w-full">
+              <h2 className="text-[23px] text-[#1C3048] font-medium mb-3">
+                {jsonString?.h2_tag}
+              </h2>
+
+              <Typography className="text-[15px] whitespace-pre-line text-justify">
+                {jsonString?.long_desc}
+              </Typography>
+            </Box>
+          )}
           {staticBox[id?.categoryId]}
         </>
       )}
