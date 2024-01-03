@@ -156,9 +156,7 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: PropsType) => {
   );
 };
 
-export default function Sidebar(
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>
-) {
+export default function Sidebar(setOpen: any) {
   const router = useRouter();
   const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
