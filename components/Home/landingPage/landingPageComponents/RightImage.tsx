@@ -5,14 +5,14 @@ import React from "react";
 import Iframe from "react-iframe";
 
 type PropsType = {
-  title: string;
-  point: any;
-  image: string;
-  buttonName: string;
-  video: string;
-  alt: string;
-  path: string;
-  whatsapp: boolean;
+  title?: string;
+  point?: any;
+  image?: string;
+  buttonName?: string;
+  video?: string;
+  alt?: string;
+  path?: string | any;
+  whatsapp?: boolean;
 };
 
 export default function RightImage({
