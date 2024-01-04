@@ -1,28 +1,34 @@
+import { decryptData } from "@/aes-crypto";
 import Icons from "@/assets";
 import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
-import { Box, Button, Typography } from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { Divider } from "@mui/material";
-import toast from "react-hot-toast";
-import { decryptData } from "@/aes-crypto";
 import { DraftDataType } from "@/interface/getDraftsType";
 import { ActionStateType } from "@/interface/stateType";
+import { authCookiesGet } from "@/redux/action/AuthToken";
+import { Box, Button } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import axios from "axios";
+import Image from "next/image";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+
+interface DraftBoxesType {
+  item: DraftDataType | any;
+  mouseEnterItem: string;
+  multiSize: number;
+  setMouseEnterItem: React.Dispatch<React.SetStateAction<string>>;
+}
 
 const DraftBoxes = ({
   item,
   mouseEnterItem,
   multiSize,
   setMouseEnterItem,
-  user_id,
-}: any) => {
+}: DraftBoxesType) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
@@ -61,7 +67,7 @@ const DraftBoxes = ({
 
   const moveTrash = (id: string) => {
     axios
-      .post("/api/draftAction", {
+      .post("/api/draft/action", {
         id: id,
         type: "0",
       })
@@ -129,14 +135,21 @@ const DraftBoxes = ({
                     alignItems: "center",
                   }}
                 >
-                  <img
+                  <Image
                     src={image}
-                    alt={`slide-${index}`}
+                    alt={image}
+                    className="opacity-0"
                     style={{
                       maxWidth: `${multiSize}px`,
                       maxHeight: "180px",
                       width: "auto",
+                      transition: "0.5s all",
                     }}
+                    width={200}
+                    height={200}
+                    quality={80}
+                    priority={true}
+                    onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                   />
                 </div>
               ))}
@@ -193,14 +206,13 @@ const DraftBoxes = ({
 };
 
 export default function index() {
-  const dispatch = useDispatch();
   const sideBarRedux = useSelector(
     (state: ActionStateType) => state.actions.openSidebar
   );
   const user_id = authCookiesGet();
   const screenHeight = useScreenHeight();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
-  const [draftData, setDraftData] = useState<DraftDataType[]>([]);
+  const [draftData, setDraftData] = useState<DraftDataType[] | any>([]);
   const [mouseEnterItem, setMouseEnterItem] = useState<string>("");
   const [loadMore, setLoadMore] = useState<boolean>(false);
   const [isLastPage, setIsLastPage] = useState<boolean>(true);
@@ -227,7 +239,7 @@ export default function index() {
   useEffect(() => {
     setLoadMore(true);
     axios
-      .post(`/api/getDrafts`, {
+      .post(`/api/draft/getData`, {
         type: "0",
         page: page,
       })
@@ -242,7 +254,7 @@ export default function index() {
             ...res?.datas,
           ]);
           setIsLastPage(res?.isLastPage);
-        }
+        } else setDraftData(null);
       })
       .catch((err: any) => {
         // console.log("err: ", err);
@@ -261,7 +273,6 @@ export default function index() {
                 setMouseEnterItem={setMouseEnterItem}
                 mouseEnterItem={mouseEnterItem}
                 multiSize={multiSize}
-                user_id={user_id}
               />
             ))
           : !loadMore && (

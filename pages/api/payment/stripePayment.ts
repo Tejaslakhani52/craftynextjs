@@ -7,16 +7,31 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   try {
-    const allowedDomain = "http://localhost:3000/";
-    const referer = req.headers.referer || req.headers.referrer;
-
-    if (!referer || !referer.includes(allowedDomain)) {
+    if (req.method !== "POST") {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
 
-    const response = await axios.get<any>(
-      `https://story.craftyartapp.com/get-ip`
+    const allowedDomain = "http://localhost:3000/";
+    const referer = req.headers.referer || req.headers.referrer;
+
+    if (!referer || referer.includes(allowedDomain)) {
+      res.status(500).json({ error: "Internal Server Error" });
+      return;
+    }
+
+    const response = await axios.post<any>(
+      `https://story.craftyartapp.com/payments/stripe`,
+      {
+        amount: req.body.amount,
+        id: req.body.id,
+        currency: req.body.currency,
+        userId: req.body.userId,
+        packageId: req.body.packageId,
+        pay_mode: "subs",
+        packageName: req.body.packageName,
+        returnUrl: req.body.returnUrl,
+      }
     );
 
     res.status(200).json(encryptData(JSON.stringify(response.data)));

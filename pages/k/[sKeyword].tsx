@@ -5,24 +5,26 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import DashBoardSkelton from "@/components/Home/dashboard/dashboardComponents/DashBoardSkelton";
 import Breadcrumb from "@/components/common/Breadcrumb";
-import NotFound from "@/components/common/NotFound";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
-import {
-  modalClosePath,
-  openTempModal,
-  tempId,
-} from "@/redux/reducer/actionDataReducer";
+import { DataType } from "@/interface/searchTemplateType";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
+
+interface ImageBoxProps {
+  templates: DataType | any;
+  screenWidth: number;
+  multiSizeFixSize: number;
+  setIdName: React.Dispatch<React.SetStateAction<string>>;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  index?: number;
+}
 
 const ImageBox = ({
   templates,
@@ -30,7 +32,7 @@ const ImageBox = ({
   multiSizeFixSize,
   setIdName,
   setOpenModal,
-}: any) => {
+}: ImageBoxProps) => {
   const [currentIndex, setCurrentIndex] = useState<any>(0);
   const [isHovered, setIsHovered] = useState(false);
   const intervalRef: React.RefObject<HTMLInputElement> | any = useRef(null);
@@ -68,15 +70,7 @@ const ImageBox = ({
         )}px`,
         width: `${screenWidth / multiSizeFixSize}px`,
       }}
-      // id={`content${index}`}
     >
-      {/* <Link
-      href={`/templates/p/${templates.id_name}`}
-      // as={`/templates/p/${templates.id_name}`}
-      // scroll={false}
-      // shallow={true}
-      // replace
-    > */}
       <div
         className="w-full h-full p-[8px]"
         onClick={() => {
@@ -113,24 +107,16 @@ const ImageBox = ({
                 key={index}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                {/* <img
-                  src={image}
-                  alt={`slide-${index}`}
-                  className={`w-full] rounded-[5px] cursor-pointer`}
-                  style={{
-                    height: "100%",
-                    width: "100%",
-                  }}
-                /> */}
-
                 <Image
                   src={image}
                   alt={`slide-${index}`}
                   className={`w-full] rounded-[5px] cursor-pointer`}
+                  style={{ transition: "0.5s all" }}
                   width={200}
                   height={200}
                   quality={80}
                   priority={true}
+                  onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                 />
               </div>
             ))}
@@ -146,15 +132,6 @@ const ImageBox = ({
             {templates?.thumbArray}
           </p>
         )}
-        {/* <img
-          src={templates?.template_thumb}
-          alt={templates?.category_name}
-          className={`w-full] rounded-[5px] cursor-pointer`}
-          style={{
-            border: "1px solid #80808082",
-            height: "100%",
-          }}
-        /> */}
 
         <div className="pt-2">
           <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">
@@ -165,7 +142,6 @@ const ImageBox = ({
           </p>
         </div>
       </div>
-      {/* </Link> */}
     </div>
   );
 };
@@ -236,7 +212,7 @@ export default function sKeyword({ serverData, updatedLines }: any) {
     setLoadMore(true);
     if (formattedSearchName) {
       axios
-        .post(`/api/specialKeyword`, {
+        .post(`/api/special/getKeywordData`, {
           key_name: formattedSearchName,
           page: page,
         })

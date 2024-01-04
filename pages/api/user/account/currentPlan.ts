@@ -15,28 +15,20 @@ export default async function handler(
     const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || req.headers.referrer;
 
-    if (!referer || !referer.includes(allowedDomain)) {
+    if (!referer || referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
 
     const cookieValue = req.cookies;
 
-    const formData = new FormData();
-    formData.append("key", "qwfsegxdhbxfjhncf");
-    formData.append("name", req.body.name);
-    formData.append("user_id", decryptData(cookieValue._sdf));
-    formData.append("updateDp", req.body.updateDp);
-    formData.append("photo_uri", req.body.photo_uri);
-
     const response = await axios.post<any>(
-      `https://panel.craftyartapp.com/templates/api/V3/updateUser`,
-      formData,
+      `https://story.craftyartapp.com/my-currentPlan`,
       {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+        key: "qwfsegxdhbxfjhncf",
+        user_id: decryptData(cookieValue._sdf),
+      },
+      { withCredentials: false }
     );
 
     res.status(200).json(encryptData(JSON.stringify(response.data)));
@@ -45,7 +37,3 @@ export default async function handler(
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
-
-// headers: {
-//     "Content-Type": "multipart/form-data",
-//   },

@@ -10,7 +10,7 @@ export default async function handler(
     const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || "";
 
-    if (!referer.includes(allowedDomain)) {
+    if (referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }

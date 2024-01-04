@@ -6,15 +6,15 @@ import {
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
 import { SingleTempType } from "@/interface/getSingleTempType";
-import { DatasType, SearchTempType } from "@/interface/searchTemplateType";
+import { DataType, SearchTempType } from "@/interface/searchTemplateType";
 import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import { Box, Skeleton, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import StackGrid from "react-stack-grid";
 import ShowPremiumDialog from "../templatePayment/ShowPremiumDialog";
 
@@ -48,7 +48,6 @@ export const IconsText = ({ image, text, isLoading }: any) => {
 };
 
 export default function TemplateModal({ open, setOpen, id, setId }: any) {
-  const dispatch = useDispatch();
   const router = useRouter();
   const userPremium = tokenGet("premium");
   const token = authCookiesGet();
@@ -74,7 +73,7 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
 
     if (id) {
       axios
-        .post("/api/getSingleTemplate", {
+        .post("/api/get/getSingleTemplate", {
           id_name: id,
         })
         .then((res) => {
@@ -90,7 +89,7 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
           setTemplate(getData);
 
           axios
-            .post("/api/searchTemplate", {
+            .post("/api/search/templates", {
               keywords: getData?.tags?.[0],
               page: 1,
             })
@@ -109,7 +108,7 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
         })
         .catch((error) => {
           axios
-            .post("/api/getSingleTemplate", {
+            .post("/api/get/getSingleTemplate", {
               id_name: id,
             })
             .then((res) => {
@@ -125,7 +124,7 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
               setTemplate(getData);
 
               axios
-                .post("/api/searchTemplate", {
+                .post("/api/search/templates", {
                   keywords: getData?.tags?.[0],
                   page: 1,
                 })
@@ -445,7 +444,7 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
                       ?.filter(
                         (t: any) => t.template_id !== template?.template_id
                       )
-                      ?.map((templates: DatasType, index: number) => (
+                      ?.map((templates: DataType, index: number) => (
                         <Link
                           href={`/templates/p/${templates.id_name}`}
                           onClick={(e) => e.preventDefault()}
@@ -480,14 +479,22 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
                                 </span>
                               )}
 
-                              <img
+                              <Image
                                 src={templates?.template_thumb}
                                 alt={templates?.category_name}
-                                className={`w-full] rounded-[5px] cursor-pointer`}
+                                className={`w-full] rounded-[5px] cursor-pointer opacity-0`}
                                 style={{
                                   border: "1px solid #80808082",
                                   height: "100%",
+                                  transition: "0.5s all",
                                 }}
+                                width={200}
+                                height={200}
+                                quality={80}
+                                priority={true}
+                                onLoadingComplete={(image) =>
+                                  image.classList.remove("opacity-0")
+                                }
                               />
                             </div>
                           </div>

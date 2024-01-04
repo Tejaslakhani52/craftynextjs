@@ -117,7 +117,7 @@ export default function Stripe({ selectPlan, countryCode }: any) {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response: any = await axios.post("/api/stripePayment", {
+        const response: any = await axios.post("/api/payment/stripePayment", {
           amount: selectPlan?.price * 100,
           id,
           currency: countryCode === "IN" ? "INR" : "USD",

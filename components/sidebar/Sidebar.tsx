@@ -11,6 +11,7 @@ import {
   Templates,
   handleClickWhatsapp,
 } from "../header/headerComponents/Menu";
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 
 export const sidebarMenu = [
   {
@@ -161,6 +162,7 @@ export default function Sidebar(setOpen: any) {
   const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [screenHeight, setScreenHeight] = useState(0);
+  const screenWidth = useScreenWidth();
 
   useEffect(() => {
     const updateScreenHeight = () => {
@@ -295,7 +297,11 @@ export default function Sidebar(setOpen: any) {
                     className={`flex cursor-pointer py-3 px-3 w-full hover:bg-[#F4F7FE] ${
                       router.pathname === item.path && " bg-[#F4F7FE]"
                     }    rounded-[4px]`}
-                    // onClick={() => router.push(item.path)}
+                    onClick={() => {
+                      if (screenWidth < 1020) {
+                        dispatch(openSidebar(false));
+                      }
+                    }}
                   >
                     {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
                     <Box className="flex gap-5  w-full">
@@ -345,7 +351,10 @@ export default function Sidebar(setOpen: any) {
                   className={`flex cursor-pointer py-3 px-3 w-full ${
                     router.pathname === item.path && " bg-[#F4F7FE]"
                   }    rounded-[4px]`}
-                  onClick={() => router.push(item.path)}
+                  onClick={() => {
+                    dispatch(openSidebar(false));
+                    router.push(item.path);
+                  }}
                 >
                   <Box className="flex gap-5">
                     <Box className="w-[20px]">
@@ -370,7 +379,13 @@ export default function Sidebar(setOpen: any) {
         </Box>
 
         <Box className="h-[150px] flex lg:hidden  flex-col items-center   gap-4 w-full px-[20px] justify-end  pb-10">
-          <Button className="bg_linear text-white gap-2 rounded-[10px] font-bold px-5 py-2 w-full ">
+          <Button
+            className="bg_linear text-white gap-2 rounded-[10px] font-bold px-5 py-2 w-full "
+            onClick={() => {
+              dispatch(openSidebar(false));
+              router.push("/plans");
+            }}
+          >
             <Icons.pricingIcon svgProps={{ width: 20 }} />
             Upgrade to PRO
           </Button>

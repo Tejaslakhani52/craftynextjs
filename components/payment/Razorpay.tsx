@@ -50,7 +50,7 @@ export default function RazorpayPage({ selectPaln, setOpen }: any) {
     formData.append("currency", selectPaln?.currency ?? "");
 
     axios
-      .post("/api/razorPay", formData)
+      .post("/api/payment/razorPay", formData)
       .then((response: any) => {
         const res = JSON.parse(decryptData(response?.data));
         const rzp = new (window as any).Razorpay(res);

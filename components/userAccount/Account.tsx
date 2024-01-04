@@ -53,7 +53,7 @@ const Account: React.FC<AccountProps> = ({ defaultTab }) => {
 
   useEffect(() => {
     axios
-      .get("/api/getUserData")
+      .get("/api/user/getData")
       .then(({ data }: any) => {
         const data2 = JSON.parse(decryptData(data));
         tokenSet("premium", data2?.user?.is_premium === 1 ? "true" : "false");
@@ -63,6 +63,7 @@ const Account: React.FC<AccountProps> = ({ defaultTab }) => {
       })
       .catch((err) => {
         // console.log("err: ", err);
+        setLoading(false);
       });
   }, []);
 
@@ -111,7 +112,7 @@ const Account: React.FC<AccountProps> = ({ defaultTab }) => {
 
   useEffect(() => {
     axios
-      .post("/api/currentPlan")
+      .post("/api/user/account/currentPlan")
       .then((response: any) => {
         setLoading(false);
         const res: any = JSON.parse(decryptData(response?.data));
@@ -123,6 +124,7 @@ const Account: React.FC<AccountProps> = ({ defaultTab }) => {
         setCurrentPlan(getDatas);
       })
       .catch((error) => {
+        setLoading(false);
         // console.log("error: ", error);
       });
   }, [getData]);

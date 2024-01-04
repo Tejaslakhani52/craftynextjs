@@ -1,4 +1,4 @@
-export interface DatasType {
+export interface DataType {
   auto_create: boolean;
   category_id: number;
   category_name: string;
@@ -25,6 +25,6 @@ export interface DatasType {
 }
 
 export interface SearchTempType {
-  datas: DatasType[];
+  datas: DataType[];
   isLastPage: boolean;
 }

@@ -101,7 +101,7 @@ export default function index() {
       formData.append("file", selectedFile);
 
       axios
-        .post("/api/bgRemove", formData, {
+        .post("/api/tools/bgRemove", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

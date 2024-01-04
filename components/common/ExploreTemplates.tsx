@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import StackGrid from "react-stack-grid";
 
-interface props {
+interface PropsType {
   category: string;
   getAll: string;
   keyword?: string;
@@ -29,7 +29,7 @@ export default function ExploreTemplates({ category, getAll, keyword }: any) {
 
   useEffect(() => {
     axios
-      .post("/api/searchTemplate", {
+      .post("/api/search/templates", {
         keywords: category ?? lastSegment,
         page: 1,
       })

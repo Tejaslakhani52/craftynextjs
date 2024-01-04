@@ -15,6 +15,16 @@ import { useDispatch, useSelector } from "react-redux";
 import TemplatesSkelton from "./TemplatesSkelton";
 import { AuthStateType } from "@/interface/stateType";
 import { DashboardDataType } from "@/interface/dashboard";
+import { DataType } from "@/interface/searchTemplateType";
+import Image from "next/image";
+
+interface ImageBoxesProps {
+  templates: DataType;
+  uniqueCat: boolean;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setIdName: React.Dispatch<React.SetStateAction<string>>;
+  height: number | any;
+}
 
 function ImageBox({
   templates,
@@ -22,7 +32,7 @@ function ImageBox({
   height,
   setIdName,
   setOpenModal,
-}: any) {
+}: ImageBoxesProps) {
   const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -117,30 +127,27 @@ function ImageBox({
                   className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide"
                   key={index}
                 >
-                  <img
+                  {/* <img
                     src={image}
                     alt={image}
                     className={` w-[auto] ${
                       uniqueCat ? "h-[100%]" : ""
-                    }  mx-auto rounded-[4px]  `}
+                    }  mx-auto rounded-[4px] `}
                     style={{ transition: "0.5s all" }}
-                  />
-                  {/* <Image
+                  /> */}
+                  <Image
                     src={image}
                     alt={image}
                     className={` w-[auto] ${
                       uniqueCat ? "h-[100%]" : ""
                     }  mx-auto rounded-[4px] opacity-0`}
-                    style={{ transition: "0.5s all" }}
+                    style={{ transition: "0.8s all" }}
                     width={200}
                     height={200}
                     quality={80}
                     priority={true}
-                    loading="eager"
-                    onLoadingComplete={(image) =>
-                      image.classList.remove("opacity-0")
-                    }
-                  /> */}
+                    onLoad={(e: any) => e.target.classList.remove("opacity-0")}
+                  />
                 </div>
               ))}
             </div>
@@ -175,14 +182,19 @@ function ImageBox({
   );
 }
 
+interface TemplatesBoxesProps {
+  item: DashboardDataType;
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setIdName: React.Dispatch<React.SetStateAction<string>>;
+  height: number | any;
+}
+
 export const TemplatesBoxes = ({
   item,
-  openModal,
   setOpenModal,
   setIdName,
   height,
-  key,
-}: any) => {
+}: TemplatesBoxesProps) => {
   const router = useRouter();
   const uniqueCat =
     item?.category_name === "Latest" ||
@@ -230,7 +242,7 @@ export const TemplatesBoxes = ({
   };
 
   return (
-    <Box className="relative" key={key}>
+    <Box className="relative">
       <Box className="flex items-center justify-between pt-8 pb-4 max-sm:pb-2 max-sm:pt-5">
         <Typography className="text-black font-semibold text-[22px] max-sm:text-[14px]">
           {item?.category_name}
@@ -303,7 +315,7 @@ export default function TemplatesBox() {
 
   useEffect(() => {
     axios
-      .post(`/api/dashboard`)
+      .post(`/api/dashboard/getData`)
       .then((response: any) => {
         if (response?.data) {
           const res: DashboardDataType = JSON.parse(
@@ -330,12 +342,10 @@ export default function TemplatesBox() {
   return (
     <Box className="px-[20px] max-sm:px-[10px] pb-10">
       {data?.length > 0
-        ? data?.map((item: any, index: number) => (
+        ? data?.map((item: DashboardDataType, index: number) => (
             <div key={index}>
               <TemplatesBoxes
                 item={item}
-                key={item?.id}
-                openModal={openModal}
                 setOpenModal={setOpenModal}
                 setIdName={setIdName}
                 height={height}

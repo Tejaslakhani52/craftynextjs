@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { decryptData, encryptData } from "@/aes-crypto";
+import { encryptData } from "@/aes-crypto";
 
 export default async function handler(
   req: NextApiRequest,
@@ -15,18 +15,16 @@ export default async function handler(
     const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || req.headers.referrer;
 
-    if (!referer || !referer.includes(allowedDomain)) {
+    if (!referer || referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
 
-    const cookieValue = req.cookies;
-
     const response = await axios.post<any>(
-      `https://story.craftyartapp.com/my-api`,
+      `https://story.craftyartapp.com/my-posterPage`,
       {
-        user_id: decryptData(cookieValue._sdf),
-        currency: req.body.currency,
+        key: "qwfsegxdhbxfjhncf",
+        id_name: req.body.id_name,
       },
       { withCredentials: false }
     );

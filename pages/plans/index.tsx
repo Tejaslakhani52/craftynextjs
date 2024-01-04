@@ -1,24 +1,23 @@
-import { Elements } from "@stripe/react-stripe-js";
+import { decryptData } from "@/aes-crypto";
+import Icons from "@/assets";
+import { handleEmailClick } from "@/commonFunction/emailCheck";
+import CustomHead from "@/components/common/CustomHead";
 import DialogModal from "@/components/common/DialogBox";
 import FaqsBox from "@/components/common/FAQs";
 import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
-import Stripe from "@/components/payment/Stripe";
-import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
-import { Box, Button, Radio, Typography } from "@mui/material";
-import axios from "axios";
-import React, { useState, useEffect, useRef } from "react";
-import { loadStripe } from "@stripe/stripe-js";
 import RazorpayPage from "@/components/payment/Razorpay";
-import { useRouter } from "next/router";
-import { addDays, format } from "date-fns";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
-import Icons from "@/assets";
-import { decryptData } from "@/aes-crypto";
-import CustomHead from "@/components/common/CustomHead";
-import Head from "next/head";
-import { handleEmailClick } from "@/commonFunction/emailCheck";
+import Stripe from "@/components/payment/Stripe";
 import { PackageList } from "@/interface/currentPlane";
+import { authCookiesGet, tokenSet } from "@/redux/action/AuthToken";
+import { Box, Button, Radio, Typography } from "@mui/material";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { addDays, format } from "date-fns";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import React, { useEffect, useRef, useState } from "react";
 
 export const MarkTextRight = ({ text }: any) => {
   return (
@@ -67,33 +66,34 @@ const scrollToTop = () => {
   }
 };
 
-export async function getServerSideProps() {
-  try {
-    const response = await axios.get("https://story.craftyartapp.com/get-ip");
-    const ip = response.data;
+// export async function getServerSideProps() {
+//   try {
+//     const response = await axios.get("https://story.craftyartapp.com/get-ip");
+//     const ip = response.data;
 
-    return {
-      props: {
-        ip,
-      },
-    };
-  } catch (error) {
-    console.error("Error fetching API data:", error);
+//     return {
+//       props: {
+//         ip,
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error fetching API data:", error);
 
-    return {
-      props: {
-        ip: null,
-      },
-    };
-  }
-}
+//     return {
+//       props: {
+//         ip: null,
+//       },
+//     };
+//   }
+// }
 
-export default function index({ ip }: any) {
+export default function index() {
   const [stripeTestPromise, setStripeTestPromise] = useState<any>(null);
 
   useEffect(() => {
     const PUBLIC_KEY =
-      "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
+      // "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
+      "pk_test_51M92RVSF3l7nabbscp4hWvBXvuge7JIR6OJki7sZWiw39k9Rs7DkmmTPUlGUdDdceDvWhGMy9K3N7PswzNrok1g600K3jdRYh6";
     const valStripe = loadStripe(PUBLIC_KEY);
     setStripeTestPromise(valStripe);
   }, []);
@@ -104,7 +104,7 @@ export default function index({ ip }: any) {
   const [pricePlaneData, setPricePlaneData] = useState<PackageList>([]);
   const [checkedDataPlane, setCheckedDataPlane] = useState<any>(null);
   const [userCountryCode, setUserCountryCode] = useState("");
-  const [isLoading, setIsLoading] = useState<any>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [priceShowData, setPriceShowData] = useState<any>();
   const [choosePlan, setChoosePlan] = useState<any>();
   const [endDate, setEndDate] = useState<any>("");
@@ -122,50 +122,50 @@ export default function index({ ip }: any) {
     }
   }, [choosePlan]);
 
-  const getData = async () => {
-    try {
-      const response = await axios
-        .post("/api/getCountryCode", { ip: ip?.ip })
-        .then((response: any) => {
-          const res: any = JSON.parse(decryptData(response?.data));
-          setUserCountryCode(res?.countryCode);
-          axios
-            .post("/api/getPlans", {
-              currency: res?.countryCode === "IN" ? "INR" : "USD",
-            })
-            .then((res: any) => {
-              const response: any = JSON.parse(decryptData(res?.data));
-
-              const jsonString = response.substring(
-                response.indexOf("{"),
-                response.lastIndexOf("}") + 1
-              );
-              const getData = JSON.parse(jsonString);
-              setPricePlaneData(getData?.subs);
-              setIsLoading(false);
-            })
-            .catch((error) => {
-              setIsLoading(false);
-            });
-        });
-    } catch (error) {
-      setUserCountryCode("Unknown");
-    }
-  };
-
   useEffect(() => {
-    window.scrollTo(0, 800);
-
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollLeft =
-        scrollContainerRef.current.scrollWidth;
-    }
-  }, []);
-
-  useEffect(() => {
-    getData();
     setIsLoading(true);
-  }, [ip]);
+    axios
+      .get("/api/get/getIp")
+      .then((res) => {
+        const ip: any = JSON.parse(decryptData(res?.data));
+        console.log("ip: ", ip);
+
+        axios
+          .post("/api/get/getCountryCode", { ip: ip?.ip })
+          .then((response: any) => {
+            const res: any = JSON.parse(decryptData(response?.data));
+            setUserCountryCode(res?.countryCode);
+
+            axios
+              .post("/api/plans/getData", {
+                currency: res?.countryCode === "IN" ? "INR" : "USD",
+              })
+              .then((res: any) => {
+                const response: any = JSON.parse(decryptData(res?.data));
+
+                const jsonString = response.substring(
+                  response.indexOf("{"),
+                  response.lastIndexOf("}") + 1
+                );
+                const getData = JSON.parse(jsonString);
+                setPricePlaneData(getData?.subs);
+                setIsLoading(false);
+                window.scrollTo(0, 800);
+
+                if (scrollContainerRef.current) {
+                  scrollContainerRef.current.scrollLeft =
+                    scrollContainerRef.current.scrollWidth;
+                }
+              })
+              .catch((error) => {
+                setIsLoading(false);
+              });
+          });
+      })
+      .then((error) => {
+        console.log("error: ", error);
+      });
+  }, []);
 
   useEffect(() => {
     if (planeType == "monthly") {

@@ -1,10 +1,16 @@
 import { decryptData } from "@/aes-crypto";
 import { UserProfileType } from "@/interface/commonType";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+
+interface AccountDetailType {
+  name: string;
+  user_id: string;
+  updateDp: number | any;
+  photo_uri: string | any;
+}
 
 export default function PersonalInfo() {
   const [removeImage, setRemoveImage] = useState<any>(false);
@@ -13,7 +19,7 @@ export default function PersonalInfo() {
   const [imagePreview, setImagePreview] = useState<string>("");
   const [editNameInput, setEditNameInput] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
-  const [accountDetail, setAccountDetail] = useState<any>({
+  const [accountDetail, setAccountDetail] = useState<AccountDetailType>({
     name: "",
     user_id: "",
     updateDp: 0,
@@ -48,7 +54,7 @@ export default function PersonalInfo() {
 
   const fetchData = async () => {
     axios
-      .post("/api/getUserData")
+      .post("/api/user/getData")
       .then(({ data }: any) => {
         const data2 = JSON.parse(decryptData(data));
         setImageBaseUrl(data2?.url);
@@ -72,7 +78,7 @@ export default function PersonalInfo() {
     setLoading(true);
 
     axios
-      .post("/api/updateUser", formData, {
+      .post("/api/user/update", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

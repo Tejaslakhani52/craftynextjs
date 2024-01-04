@@ -1,24 +1,23 @@
+import { decryptData } from "@/aes-crypto";
 import Icons from "@/assets";
 import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
-import { Box, Button, Typography } from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { DraftDataType } from "@/interface/getDraftsType";
+import { Box, Button } from "@mui/material";
+import Dialog from "@mui/material/Dialog";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Divider } from "@mui/material";
-import toast from "react-hot-toast";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
-import Dialog from "@mui/material/Dialog";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import { decryptData } from "@/aes-crypto";
+import Tabs from "@mui/material/Tabs";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import axios from "axios";
 import Image from "next/image";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -49,13 +48,19 @@ function a11yProps(index: number) {
   };
 }
 
+interface DraftBoxesType {
+  item: DraftDataType | any;
+  mouseEnterItem: string;
+  multiSize: number;
+  setMouseEnterItem: React.Dispatch<React.SetStateAction<string>>;
+}
+
 const DraftBoxes = ({
   item,
   mouseEnterItem,
   multiSize,
   setMouseEnterItem,
-  user_id,
-}: any) => {
+}: DraftBoxesType) => {
   const theme = useTheme();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -105,22 +110,22 @@ const DraftBoxes = ({
 
   const handleDelete = (id: string) => {
     axios
-      .post("/api/draftAction", {
+      .post("/api/draft/action", {
         id: id,
         type: "2",
       })
-      .then((res: any) => {
+      .then(() => {
         setRemoveId(id);
       });
   };
 
   const restore = (id: string) => {
     axios
-      .post("/api/draftAction", {
+      .post("/api/draft/action", {
         id: id,
         type: "1",
       })
-      .then((res: any) => {
+      .then(() => {
         toast.success("Moved to your project");
         setRemoveId(id);
       });
@@ -178,14 +183,23 @@ const DraftBoxes = ({
                   alignItems: "center",
                 }}
               >
-                <img
+                <Image
                   src={image}
-                  alt={`slide-${index}`}
+                  alt={image}
+                  className="opacity-0"
                   style={{
                     maxWidth: `${multiSize}px`,
                     maxHeight: "180px",
                     width: "auto",
+                    transition: "0.5s all",
                   }}
+                  width={200}
+                  height={200}
+                  quality={80}
+                  priority={true}
+                  onLoadingComplete={(image) =>
+                    image.classList.remove("opacity-0")
+                  }
                 />
               </div>
             ))}
@@ -286,8 +300,7 @@ const DraftBoxesTab2 = ({
   mouseEnterItem,
   multiSize,
   setMouseEnterItem,
-  user_id,
-}: any) => {
+}: DraftBoxesType) => {
   const theme = useTheme();
   const [currentIndex, setCurrentIndex] = useState<any>(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -321,7 +334,7 @@ const DraftBoxesTab2 = ({
 
   const handleDelete = (id: string) => {
     axios
-      .post("/api/uploadAction", {
+      .post("/api/upload/action", {
         id: id,
         type: "2",
       })
@@ -332,7 +345,7 @@ const DraftBoxesTab2 = ({
 
   const restore = (id: string) => {
     axios
-      .post("/api/uploadAction", {
+      .post("/api/upload/action", {
         id: id,
         type: "1",
       })
@@ -377,14 +390,21 @@ const DraftBoxesTab2 = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <img
+          <Image
             src={item?.image}
-            alt={`image`}
+            alt={item?.image}
+            className="opacity-0"
             style={{
               maxWidth: `${multiSize}px`,
               maxHeight: "180px",
               width: "auto",
+              transition: "0.5s all",
             }}
+            width={200}
+            height={200}
+            quality={80}
+            priority={true}
+            onLoadingComplete={(image) => image.classList.remove("opacity-0")}
           />
 
           {mouseEnterItem === item?.id && item?.thumbs?.length > 1 && (
@@ -475,9 +495,7 @@ const DraftBoxesTab2 = ({
 };
 
 export default function index() {
-  const dispatch = useDispatch();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
-  const user_id = authCookiesGet();
   const screenHeight = useScreenHeight();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
   const [designTrash, setDesignTrash] = useState<any>([]);
@@ -517,7 +535,7 @@ export default function index() {
     setLoadMore(true);
 
     axios
-      .post(`/api/getDrafts`, {
+      .post(`/api/draft/getData`, {
         type: "1",
         page: designPage,
       })
@@ -541,7 +559,7 @@ export default function index() {
   useEffect(() => {
     setLoadMore2(true);
     axios
-      .post(`/api/getUploads`, {
+      .post(`/api/upload/getData`, {
         key: "qwfsegxdhbxfjhncf",
         type: "1",
         page: imagesPage,
@@ -642,7 +660,6 @@ export default function index() {
                       setMouseEnterItem={setMouseEnterItem}
                       mouseEnterItem={mouseEnterItem}
                       multiSize={multiSize}
-                      user_id={user_id}
                     />
                   ))
                 : !loadMore && (
@@ -693,7 +710,6 @@ export default function index() {
                       setMouseEnterItem={setMouseEnterItem}
                       mouseEnterItem={mouseEnterItem}
                       multiSize={multiSize}
-                      user_id={user_id}
                     />
                   ))
                 : !loadMore2 && (

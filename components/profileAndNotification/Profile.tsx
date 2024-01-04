@@ -33,7 +33,7 @@ export default function Profile() {
 
   useEffect(() => {
     axios
-      .post("/api/getUserData")
+      .post("/api/user/getData")
       .then(({ data }: any) => {
         const data2 = JSON.parse(decryptData(data));
         tokenSet("premium", data2?.user?.is_premium === 1 ? "true" : "false");

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { encryptData } from "@/aes-crypto";
+import { decryptData, encryptData } from "@/aes-crypto";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,25 +13,23 @@ export default async function handler(
     }
 
     const allowedDomain = "http://localhost:3000/";
+
     const referer = req.headers.referer || req.headers.referrer;
 
-    if (!referer || !referer.includes(allowedDomain)) {
+    if (!referer || referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
 
+    const cookieValue = req.cookies;
+
     const response = await axios.post<any>(
-      `https://story.craftyartapp.com/search-template`,
+      `https://panel.craftyartapp.com/templates/api/drafts`,
       {
         key: "qwfsegxdhbxfjhncf",
-        app_id: "1",
-        cat_id: "-1",
-        keywords: req.body.keywords,
-        device: "0",
-        refWidth: "1080",
-        refHeight: "1080",
+        user_id: decryptData(cookieValue._sdf),
+        type: req.body.type,
         page: req.body.page,
-        debug: "debug",
       }
     );
 

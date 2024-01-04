@@ -17,7 +17,7 @@ export default async function handler(
     const domainMatch = referer.match(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     const domain = domainMatch ? domainMatch[1] : "";
 
-    if (!referer.includes(allowedDomain)) {
+    if (referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }

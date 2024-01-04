@@ -1,17 +1,15 @@
-import { Box, Button, Skeleton, Typography } from "@mui/material";
-import React, { useEffect, useMemo, useState, useRef } from "react";
-import axios from "axios";
-import Link from "next/link";
-import StackGrid from "react-stack-grid";
+import { decryptData } from "@/aes-crypto";
 import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { calculateHeight } from "@/commonFunction/calculateHeight";
-import { useRouter } from "next/router";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import ImageBox from "@/components/common/ImageBox";
-import { decryptData } from "@/aes-crypto";
+import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { Box, Skeleton, Typography } from "@mui/material";
+import axios from "axios";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import StackGrid from "react-stack-grid";
 
 export default function searchValue() {
   const router = useRouter();
@@ -30,7 +28,7 @@ export default function searchValue() {
   const getSearchList = (pages: number) => {
     setLoadMore(true);
     axios
-      .post("/api/searchTemplate", {
+      .post("/api/search/templates", {
         keywords: formattedSearchName,
         page: pages,
       })
@@ -44,6 +42,7 @@ export default function searchValue() {
           response1.lastIndexOf("}") + 1
         );
         const getData = JSON.parse(jsonString);
+        console.log("getData: ", getData);
         setIsLastPage(getData?.isLastPage);
         setData((prevData: any) => [...(prevData || []), ...getData?.datas]);
       })
@@ -82,6 +81,25 @@ export default function searchValue() {
     setPage(1);
     setData([]);
   }, [formattedSearchName]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop ===
+        document.documentElement.offsetHeight
+      ) {
+        if (!isLastPage) {
+          setPage((prev) => prev + 1);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isLastPage]);
 
   return (
     <>
@@ -177,7 +195,7 @@ export default function searchValue() {
                   padding: "40px 0",
                 }}
               >
-                {loadMore ? (
+                {/* {loadMore ? (
                   <Box className="text_linear font-[700 text-[20px]">
                     Loading....
                   </Box>
@@ -189,6 +207,12 @@ export default function searchValue() {
                   >
                     LOAD MORE
                   </Button>
+                )} */}
+
+                {!isLastPage && (
+                  <Box className="text_linear font-[700 text-[20px]">
+                    Loading....
+                  </Box>
                 )}
               </div>
             </Box>

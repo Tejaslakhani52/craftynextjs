@@ -47,18 +47,16 @@ export default function App({
   let convertedWords = words.map(
     (word) => word.charAt(0).toUpperCase() + word.slice(1)
   );
-  let convertedString = convertedWords.join(" ");
-  const canonicalUrl = `https://craftyartapp.com${router.asPath}`;
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const token = authCookiesGet();
 
   useEffect(() => {
-    axios.get("/api/getIp").then((res) => {
+    axios.get("/api/get/getIp").then((res) => {
       const ip: any = JSON.parse(decryptData(res?.data));
 
       axios
-        .post("/api/getCountryCode", { ip: ip?.ip })
+        .post("/api/get/getCountryCode", { ip: ip?.ip })
         .then((response: any) => {
           const res: any = JSON.parse(decryptData(response?.data));
           setCC(res?.countryCode);

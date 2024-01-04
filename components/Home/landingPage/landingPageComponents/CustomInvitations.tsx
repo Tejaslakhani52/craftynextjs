@@ -11,7 +11,7 @@ export default function CustomInvitations() {
 
   useEffect(() => {
     axios
-      .post("/api/category", {
+      .post("/api/category/getData", {
         cat_id: "a4-invitation",
         page: 3,
       })

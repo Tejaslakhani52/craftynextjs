@@ -15,22 +15,17 @@ export default async function handler(
     const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || req.headers.referrer;
 
-    if (!referer || !referer.includes(allowedDomain)) {
+    if (!referer || referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
 
     const response = await axios.post<any>(
-      `https://story.craftyartapp.com/payments/stripe`,
+      `https://panel.craftyartapp.com/templates/api/getKeyTemplates/ `,
       {
-        amount: req.body.amount,
-        id: req.body.id,
-        currency: req.body.currency,
-        userId: req.body.userId,
-        packageId: req.body.packageId,
-        pay_mode: "subs",
-        packageName: req.body.packageName,
-        returnUrl: req.body.returnUrl,
+        key: "qwfsegxdhbxfjhncf",
+        key_name: req.body.key_name,
+        page: req.body.page,
       }
     );
 

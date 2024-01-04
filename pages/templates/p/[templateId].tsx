@@ -15,6 +15,7 @@ import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import { modalClosePath, tempId } from "@/redux/reducer/actionDataReducer";
 import { Box, Skeleton, Typography } from "@mui/material";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
@@ -498,14 +499,22 @@ export default function templateId({ templateData, anotherData }: serverProps) {
                               </span>
                             )}
 
-                            <img
+                            <Image
                               src={templates?.template_thumb}
                               alt={templates?.category_name}
-                              className={`w-full] rounded-[5px] cursor-pointer`}
+                              className={`w-full] rounded-[5px] cursor-pointer opacity-0`}
                               style={{
                                 border: "1px solid #80808082",
                                 height: "100%",
+                                transition: "0.5s all",
                               }}
+                              width={200}
+                              height={200}
+                              quality={80}
+                              priority={true}
+                              onLoadingComplete={(image) =>
+                                image.classList.remove("opacity-0")
+                              }
                             />
                           </div>
                         </div>

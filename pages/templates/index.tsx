@@ -6,7 +6,7 @@ import ImageBox from "@/components/common/ImageBox";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { CategoryApiData } from "@/interface/categoryType";
-import { DatasType } from "@/interface/searchTemplateType";
+import { DataType } from "@/interface/searchTemplateType";
 import { ActionStateType } from "@/interface/stateType";
 import { Box, Button, Rating, Typography } from "@mui/material";
 import axios from "axios";
@@ -32,7 +32,7 @@ export default function index() {
   useEffect(() => {
     setLoadMore(true);
     axios
-      .post(`/api/category`, {
+      .post(`/api/category/getData`, {
         cat_id: "latest",
         page: page,
       })
@@ -180,7 +180,7 @@ export default function index() {
                 columnWidth={screenWidth / multiSizeFixSize}
                 duration={0}
               >
-                {data?.map((templates: DatasType, index: number) => (
+                {data?.map((templates: DataType, index: number) => (
                   <ImageBox
                     key={index}
                     templates={templates}

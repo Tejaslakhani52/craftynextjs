@@ -129,7 +129,7 @@ export default function index({ jsonString }: ServerSideProps) {
     setLoadMore(true);
     if (id?.categoryId) {
       axios
-        .post(`/api/category`, {
+        .post(`/api/category/getData`, {
           cat_id:
             id?.categoryId === "invitation"
               ? "a4-invitation"
@@ -296,7 +296,6 @@ export default function index({ jsonString }: ServerSideProps) {
               >
                 {data?.map((templates: any, index: number) => (
                   <ImageBox
-                    // loadedImages={loadedImages}
                     key={index}
                     templates={templates}
                     screenWidth={screenWidth}

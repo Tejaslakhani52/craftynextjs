@@ -31,18 +31,18 @@ export default function Document() {
             __html: JSON.stringify({
               "@context": "http://schema.org",
               "@type": "Organization",
-              name: "Crafty Art App",
-              alternateName: "Crafty Art App",
+              name: "CraftyArtApp",
+              alternateName: "CraftyArt",
               url: "https://www.craftyartapp.com/",
               logo: "https://panel.craftyartapp.com/templates/uploadedFiles/crafty_assets/Mlogo.svg",
               description:
-                "Crafty Art App is easy-to-use online graphics design tool that helps you to create invitation, flyer, brochures,business-cards,logo,social media graphics, posters & banners.",
+                "Crafty Art App is an easy-to-use online graphics design tool that helps you create invitations, flyers, brochures, business cards, logos, social media graphics, posters & banners.",
               sameAs: [
                 "https://www.facebook.com/craftyartapp",
                 "https://twitter.com/craftyartstudio",
-                "https://www.instagram.com/craftyart_official/",
+                "https://www.instagram.com/craftyart_official",
                 "https://www.youtube.com/channel/UCVt1DA8bQrM7YunIIrK-gSg",
-                "https://in.pinterest.com/craftyart_official/",
+                "https://in.pinterest.com/craftyart_official"
               ],
             }),
           }}

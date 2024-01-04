@@ -7,23 +7,31 @@ export default async function handler(
   res: NextApiResponse<any>
 ) {
   try {
-    const allowedDomain = "http://localhost:3000/";
-    const referer = req.headers.referer || req.headers.referrer;
-
-    if (!referer || !referer.includes(allowedDomain)) {
+    if (req.method !== "POST") {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
 
-    const cookieValue = req.cookies;
-    const userId = decryptData(cookieValue._sdf);
+    const allowedDomain = "http://localhost:3000/";
+    const referer = req.headers.referer || req.headers.referrer;
+
+    if (!referer || referer.includes(allowedDomain)) {
+      res.status(500).json({ error: "Internal Server Error" });
+      return;
+    }
 
     const response = await axios.post<any>(
-      `https://story.craftyartapp.com/get/user`,
+      `https://story.craftyartapp.com/create/user`,
       {
         key: "qwfsegxdhbxfjhncf",
+        user_id: req.body.name,
+        name: req.body.name,
+        email: req.body.email,
+        photo_uri: req.body.photo_uri,
+        login_type: "google",
         device_id: "",
-        email: userId,
+        utm_medium: "craftyart",
+        utm_source: "craftyart",
       }
     );
 

@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-import { encryptData } from "@/aes-crypto";
+import { decryptData, encryptData } from "@/aes-crypto";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,15 +10,20 @@ export default async function handler(
     const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || req.headers.referrer;
 
-    if (!referer || !referer.includes(allowedDomain)) {
+    if (!referer || referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
 
+    const cookieValue = req.cookies;
+    const userId = decryptData(cookieValue._sdf);
+
     const response = await axios.post<any>(
-      `https://story.craftyartapp.com/api/getCountryCode`,
+      `https://story.craftyartapp.com/get/user`,
       {
-        ip: req.body.ip,
+        key: "qwfsegxdhbxfjhncf",
+        device_id: "",
+        email: userId,
       }
     );
 

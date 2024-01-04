@@ -14,7 +14,7 @@ export const createUserApi =
   (props: any, router: any): any =>
   async (dispatch: Dispatch<any>) => {
     axios
-      .post("/api/createUser", {
+      .post("/api/user/create", {
         name: props?.name,
         email: props?.email,
         photo_uri: props?.photo_uri,

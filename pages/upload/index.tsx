@@ -1,46 +1,48 @@
+import { decryptData } from "@/aes-crypto";
 import Icons from "@/assets";
 import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
+import { DraftDataType } from "@/interface/getDraftsType";
+import { authCookiesGet } from "@/redux/action/AuthToken";
 import { Box, Button } from "@mui/material";
-import axios from "axios";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Divider } from "@mui/material";
+import axios from "axios";
+import Image from "next/image";
+import React, { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { useTheme } from "@mui/material/styles";
-import Dialog from "@mui/material/Dialog";
-import { decryptData } from "@/aes-crypto";
+import { useSelector } from "react-redux";
+
+interface DraftBoxesType {
+  item: DraftDataType | any;
+  mouseEnterItem: string;
+  multiSize: number;
+  setMouseEnterItem: React.Dispatch<React.SetStateAction<string>>;
+}
 
 const DraftBoxes = ({
   item,
   mouseEnterItem,
   multiSize,
   setMouseEnterItem,
-  user_id,
-}: any) => {
-  const [currentIndex, setCurrentIndex] = useState<any>(0);
+}: DraftBoxesType) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [removeId, setRemoveId] = useState<string>("");
-
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-
   const handleClick = (event: React.MouseEvent<any> | any) => {
     setAnchorEl(event.currentTarget);
   };
 
   const moveTrash = (id: string) => {
     axios
-      .post("/api/uploadAction", {
+      .post("/api/upload/action", {
         id: id,
         type: "0",
       })
-      .then((res: any) => {
+      .then(() => {
         toast.success("Moved to trash");
         setRemoveId(id);
       });
@@ -77,14 +79,21 @@ const DraftBoxes = ({
         </button>
 
         <div className=" flex justify-center w-full overflow-hidden cursor-pointer">
-          <img
+          <Image
             src={item?.image}
-            alt={`image`}
+            alt={item?.image}
+            className="opacity-0"
             style={{
               maxWidth: `${multiSize}px`,
               maxHeight: "180px",
               width: "auto",
+              transition: "0.5s all",
             }}
+            width={200}
+            height={200}
+            quality={80}
+            priority={true}
+            onLoadingComplete={(image) => image.classList.remove("opacity-0")}
           />
 
           {mouseEnterItem === item?.id && item?.thumbs?.length > 1 && (
@@ -131,7 +140,7 @@ export default function index() {
   const user_id = authCookiesGet();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
   const screenHeight = useScreenHeight();
-  const [draftData, setDraftData] = useState<any>([]);
+  const [uploadData, setUploadData] = useState<DraftDataType[] | any>([]);
   const [mouseEnterItem, setMouseEnterItem] = useState<any>("");
   const [loadMore, setLoadMore] = useState<any>(false);
   const [isLastPage, setIsLastPage] = useState<any>(false);
@@ -159,7 +168,7 @@ export default function index() {
     setLoadMore(true);
 
     axios
-      .post(`/api/getUploads`, {
+      .post(`/api/upload/getData`, {
         key: "qwfsegxdhbxfjhncf",
         type: "0",
         page: page,
@@ -169,12 +178,12 @@ export default function index() {
         const res = JSON.parse(decryptData(response?.data));
 
         if (res?.data?.datas.length > 0) {
-          setDraftData((prevData: any) => [
+          setUploadData((prevData: DraftDataType[]) => [
             ...(prevData || []),
             ...res?.data?.datas,
           ]);
           setIsLastPage(res?.data?.isLastPage);
-        } else setDraftData(null);
+        } else setUploadData(null);
       })
       .catch((err: any) => {
         // console.log("err: ", err);
@@ -185,15 +194,14 @@ export default function index() {
     <div className="px-[15px]">
       <h1 className="text-[32px] font-medium p-[10px]">Upload</h1>
       <div className="flex flex-wrap " style={{ width: screenWidth }}>
-        {draftData
-          ? draftData?.map((item: any, index: number) => (
+        {uploadData
+          ? uploadData?.map((item: any, index: number) => (
               <DraftBoxes
                 key={index}
                 item={item}
                 setMouseEnterItem={setMouseEnterItem}
                 mouseEnterItem={mouseEnterItem}
                 multiSize={multiSize}
-                user_id={user_id}
               />
             ))
           : !loadMore && (
@@ -223,7 +231,7 @@ export default function index() {
           <Box className="text_linear font-[700 text-[20px]">Loading....</Box>
         ) : (
           !isLastPage &&
-          draftData?.length > 0 && (
+          uploadData?.length > 0 && (
             <Button
               className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
               sx={{ display: !isLastPage ? "none" : "block" }}
