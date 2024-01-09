@@ -112,25 +112,15 @@ export default function ExploreTemplates({ category, getAll, keyword }: any) {
               >
                 <Link href={`/templates/p/${templates.id_name}`}>
                   <div className="w-full h-full p-[8px]">
-                    {/* <img
+                    <img
                       src={templates?.template_thumb}
                       alt={templates?.category_name}
-                      className={`w-full] rounded-[5px] cursor-pointer`}
+                      className={`w-full] rounded-[5px] cursor-pointer opacity-0`}
                       style={{
                         border: "1px solid #80808082",
                         height: "100%",
+                        transition: "0.5s all",
                       }}
-                    /> */}
-
-                    <Image
-                      src={templates?.template_thumb}
-                      alt={templates?.category_name}
-                      className={`w-full h-full rounded-[5px] cursor-pointer opacity-0`}
-                      style={{ transition: "0.5s all" }}
-                      width={200}
-                      height={200}
-                      quality={60}
-                      priority={true}
                       onLoad={(e: any) =>
                         e.target.classList.remove("opacity-0")
                       }

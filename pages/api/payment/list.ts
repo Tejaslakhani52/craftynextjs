@@ -7,7 +7,7 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   try {
-    const allowedDomain = "https://craftynextjs-al84sub.vercel.app/";
+    const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || "";
 
     if (!referer.includes(allowedDomain)) {

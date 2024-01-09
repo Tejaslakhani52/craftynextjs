@@ -499,7 +499,7 @@ export default function templateId({ templateData, anotherData }: serverProps) {
                               </span>
                             )}
 
-                            <Image
+                            <img
                               src={templates?.template_thumb}
                               alt={templates?.category_name}
                               className={`w-full] rounded-[5px] cursor-pointer opacity-0`}
@@ -508,12 +508,8 @@ export default function templateId({ templateData, anotherData }: serverProps) {
                                 height: "100%",
                                 transition: "0.5s all",
                               }}
-                              width={200}
-                              height={200}
-                              quality={60}
-                              priority={true}
-                              onLoadingComplete={(image) =>
-                                image.classList.remove("opacity-0")
+                              onLoad={(e: any) =>
+                                e.target.classList.remove("opacity-0")
                               }
                             />
                           </div>

@@ -79,7 +79,7 @@ const DraftBoxes = ({
         </button>
 
         <div className=" flex justify-center w-full overflow-hidden cursor-pointer">
-          <Image
+          <img
             src={item?.image}
             alt={item?.image}
             className="opacity-0"
@@ -89,11 +89,7 @@ const DraftBoxes = ({
               width: "auto",
               transition: "0.5s all",
             }}
-            width={200}
-            height={200}
-            quality={60}
-            priority={true}
-            onLoadingComplete={(image) => image.classList.remove("opacity-0")}
+            onLoad={(e: any) => e.target.classList.remove("opacity-0")}
           />
 
           {mouseEnterItem === item?.id && item?.thumbs?.length > 1 && (

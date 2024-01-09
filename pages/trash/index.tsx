@@ -183,7 +183,7 @@ const DraftBoxes = ({
                   alignItems: "center",
                 }}
               >
-                <Image
+                <img
                   src={image}
                   alt={image}
                   className="opacity-0"
@@ -193,13 +193,7 @@ const DraftBoxes = ({
                     width: "auto",
                     transition: "0.5s all",
                   }}
-                  width={200}
-                  height={200}
-                  quality={60}
-                  priority={true}
-                  onLoadingComplete={(image) =>
-                    image.classList.remove("opacity-0")
-                  }
+                  onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                 />
               </div>
             ))}
@@ -390,7 +384,7 @@ const DraftBoxesTab2 = ({
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <Image
+          <img
             src={item?.image}
             alt={item?.image}
             className="opacity-0"
@@ -400,11 +394,7 @@ const DraftBoxesTab2 = ({
               width: "auto",
               transition: "0.5s all",
             }}
-            width={200}
-            height={200}
-            quality={60}
-            priority={true}
-            onLoadingComplete={(image) => image.classList.remove("opacity-0")}
+            onLoad={(e: any) => e.target.classList.remove("opacity-0")}
           />
 
           {mouseEnterItem === item?.id && item?.thumbs?.length > 1 && (

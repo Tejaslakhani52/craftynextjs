@@ -107,15 +107,11 @@ const ImageBox = ({
                 key={index}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <Image
+                <img
                   src={image}
                   alt={`slide-${index}`}
                   className={`w-full] rounded-[5px] cursor-pointer`}
                   style={{ transition: "0.5s all" }}
-                  width={200}
-                  height={200}
-                  quality={60}
-                  priority={true}
                   onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                 />
               </div>

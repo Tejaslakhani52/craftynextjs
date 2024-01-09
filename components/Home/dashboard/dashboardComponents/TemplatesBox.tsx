@@ -135,7 +135,8 @@ function ImageBox({
                     }  mx-auto rounded-[4px] `}
                     style={{ transition: "0.5s all" }}
                   /> */}
-                  <Image
+
+                  <img
                     src={image}
                     alt={image}
                     className={` w-[auto] ${
@@ -146,10 +147,6 @@ function ImageBox({
                       height: "auto",
                       width: "auto",
                     }}
-                    width={200}
-                    height={200}
-                    quality={60}
-                    priority={true}
                     onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                   />
                 </div>
