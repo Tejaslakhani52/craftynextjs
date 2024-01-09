@@ -1,15 +1,20 @@
 import { decryptData } from "@/aes-crypto";
 import Icons from "@/assets";
 import { handleEmailClick } from "@/commonFunction/emailCheck";
+import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
 import CustomHead from "@/components/common/CustomHead";
 import DialogModal from "@/components/common/DialogBox";
 import FaqsBox from "@/components/common/FAQs";
 import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
-import RazorpayPage from "@/components/payment/Razorpay";
+import { RazorpayPage } from "@/components/payment/Razorpay";
 import Stripe from "@/components/payment/Stripe";
 import { PackageList } from "@/interface/currentPlane";
-import { authCookiesGet, tokenSet } from "@/redux/action/AuthToken";
+import {
+  authCookiesGet,
+  setSessionVal,
+  tokenSet,
+} from "@/redux/action/AuthToken";
 import { Box, Button, Radio, Typography } from "@mui/material";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -88,12 +93,13 @@ const scrollToTop = () => {
 // }
 
 export default function index() {
+  const screenHeight = useScreenHeight();
   const [stripeTestPromise, setStripeTestPromise] = useState<any>(null);
-
   useEffect(() => {
     const PUBLIC_KEY =
       // "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
-      "pk_test_51M92RVSF3l7nabbscp4hWvBXvuge7JIR6OJki7sZWiw39k9Rs7DkmmTPUlGUdDdceDvWhGMy9K3N7PswzNrok1g600K3jdRYh6";
+      // "pk_test_51N1RfySHvTwSTB8sK8VsmxsabkWDqN2L8KpU0nybMQoEdfPEB3aRRm93QpbbUa1fikmdgZxFgrLN7IfwllIdni4x00yql4kmC5";
+      " pk_test_51M92RVSF3l7nabbscp4hWvBXvuge7JIR6OJki7sZWiw39k9Rs7DkmmTPUlGUdDdceDvWhGMy9K3N7PswzNrok1g600K3jdRYh6";
     const valStripe = loadStripe(PUBLIC_KEY);
     setStripeTestPromise(valStripe);
   }, []);
@@ -107,13 +113,14 @@ export default function index() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [priceShowData, setPriceShowData] = useState<any>();
   const [choosePlan, setChoosePlan] = useState<any>();
+  console.log("choosePlan: ", choosePlan);
   const [endDate, setEndDate] = useState<any>("");
   const [openPriceDialog, setOpenPriceDialog] = useState<boolean>(false);
-
   const scrollContainerRef: React.RefObject<HTMLInputElement> | any =
     useRef(null);
 
   useEffect(() => {
+    setSessionVal("_paf", choosePlan?.id.toString());
     const currentDate = new Date();
     if (typeof choosePlan?.validity === "number") {
       const futureDate = addDays(currentDate, choosePlan?.validity);
@@ -128,7 +135,6 @@ export default function index() {
       .get("/api/get/getIp")
       .then((res) => {
         const ip: any = JSON.parse(decryptData(res?.data));
-        console.log("ip: ", ip);
 
         axios
           .post("/api/get/getCountryCode", { ip: ip?.ip })
@@ -163,7 +169,7 @@ export default function index() {
           });
       })
       .then((error) => {
-        console.log("error: ", error);
+        // console.log("error: ", error);
       });
   }, []);
 
@@ -177,6 +183,7 @@ export default function index() {
 
   useEffect(() => {
     setChoosePlan(priceShowData);
+    // setSessionVal("_paf", JSON.stringify([tempData]));
   }, [priceShowData]);
 
   useEffect(() => {
@@ -867,7 +874,7 @@ export default function index() {
         className="w-[100%] lg:w-[80%] xl:w-[1000px]"
       >
         <Box className="flex max-md:flex-col rounded-[8px] bg-[#F4F7FE] overflow-hidden">
-          <Box className="md:w-[50%] p-[30px] bg-white">
+          <Box className="md:w-[50%] p-[30px] max-sm:p-[10px] bg-white">
             <Typography variant="h2" className="font-medium text-[22px] mb-2">
               Choose your plan
             </Typography>
@@ -923,7 +930,10 @@ export default function index() {
             </Box>
           </Box>
 
-          <Box className="md:w-[50%] p-[30px] ">
+          <Box
+            className="md:w-[50%] p-[30px] max-sm:p-[10px] overflow-auto custom_scroll"
+            sx={{ maxHeight: `${screenHeight - 150}px` }}
+          >
             <Typography variant="h2" className="font-medium text-[22px] mb-5">
               Finalize Payment
             </Typography>
@@ -934,16 +944,11 @@ export default function index() {
               />
             )}
 
-            <Box className="flex items-center justify-between gap-2 flex-wrap mb-4">
-              <Typography className="text-[#ABB2C7] font-semibold">
-                Credit Or Debit Card
-              </Typography>
-
-              <Icons.creditDebitCardIcon />
-            </Box>
-
             <Elements stripe={stripeTestPromise}>
-              <Stripe selectPlan={choosePlan} countryCode={userCountryCode} />
+              <Stripe
+                countryCode={userCountryCode}
+                setOpen={setOpenPriceDialog}
+              />
             </Elements>
           </Box>
         </Box>

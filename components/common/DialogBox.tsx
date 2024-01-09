@@ -24,7 +24,9 @@ const DialogModal = (props: any) => {
           transition: "0.2s all",
         }}
       >
-        <div style={{ maxHeight: `  ${screenHeight - 0}px`, overflow: "auto" }}>
+        <div
+          style={{ maxHeight: `  ${screenHeight - 50}px`, overflow: "auto" }}
+        >
           <button
             className="fixed right-[20px] lg:right-[-50px] top-[15px] lg:top-[-10px] cursor-pointer"
             onClick={() => {

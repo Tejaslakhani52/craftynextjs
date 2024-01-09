@@ -37,7 +37,7 @@ export default async function handler(
     const allowedDomain = "http://localhost:3000/";
     const referer = req.headers.referer || req.headers.referrer;
 
-    if (!referer || referer.includes(allowedDomain)) {
+    if (!referer || !referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }
@@ -60,7 +60,6 @@ export default async function handler(
       formData.append("photo_uri", fileBlob, req.file.originalname);
     }
 
-    console.log("formData: ", formData);
     const response = await axios.post<any>(
       `https://panel.craftyartapp.com/templates/api/V3/updateUser`,
       formData,

@@ -353,7 +353,7 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
                   <Box>
                     <button
                       onClick={() => {
-                        if (template?.is_premium && userPremium !== "true") {
+                        if (true) {
                           setShowPremiumBox(true);
                         } else
                           window.open(

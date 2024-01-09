@@ -106,6 +106,15 @@ import {
   folderActiveIcon,
   dashboardActiveIcon,
   premiumActiveIcon,
+  UnionPay,
+  DinersClub,
+  Discover,
+  Amex,
+  Mastercard,
+  Visa,
+  JCB,
+  Edit,
+  Delete,
 } from "./commonIcon";
 
 class Icons {
@@ -216,5 +225,14 @@ class Icons {
   static folderActiveIcon = folderActiveIcon;
   static dashboardActiveIcon = dashboardActiveIcon;
   static premiumActiveIcon = premiumActiveIcon;
+  static UnionPay = UnionPay;
+  static DinersClub = DinersClub;
+  static Discover = Discover;
+  static Amex = Amex;
+  static Mastercard = Mastercard;
+  static Visa = Visa;
+  static JCB = JCB;
+  static Edit = Edit;
+  static Delete = Delete;
 }
 export default Icons;

@@ -16,7 +16,7 @@ import { useRouter } from "next/router";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import Cookies from "js-cookie";
 import { decryptData } from "@/aes-crypto";
-import { userData } from "@/redux/reducer/AuthDataReducer";
+import { customerId, userData } from "@/redux/reducer/AuthDataReducer";
 import { UserProfileType } from "@/interface/commonType";
 
 export default function Profile() {
@@ -41,6 +41,7 @@ export default function Profile() {
         dispatch(userData(data2?.user));
         setImageBaseUrl(data2?.url);
         setUserProfile(data2?.user);
+        dispatch(customerId(data2?.user?.stripe_cus_id));
       })
       .catch((err) => {
         // console.log("err: ", err);

@@ -3,11 +3,10 @@ import DialogModal from "../common/DialogBox";
 import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { getCC, setSessionVal } from "@/redux/action/AuthToken";
-import Icons from "@/assets";
-import { RazorpaySingleTemp } from "../payment/templatePurchase/RazorpaySingleTemp";
 import { Elements } from "@stripe/react-stripe-js";
-import { Stripe } from "../payment/templatePurchase/StripeSingleTemp";
 import { loadStripe } from "@stripe/stripe-js";
+import Stripe from "../payment/Stripe";
+import { RazorpayPage } from "../payment/Razorpay";
 
 interface TemplateData {
   id: string;
@@ -129,19 +128,14 @@ export default function ShowPremiumDialog({
               Finalize Payment
             </Typography>
             {countryCode === "IN" && (
-              <RazorpaySingleTemp setOpen={setOpenPaymentDialog} />
+              <RazorpayPage setOpen={setOpenPaymentDialog} />
             )}
 
-            <Box className="flex items-center justify-between gap-2 flex-wrap mb-4">
-              <Typography className="text-[#ABB2C7] font-semibold">
-                Credit Or Debit Card
-              </Typography>
-
-              <Icons.creditDebitCardIcon />
-            </Box>
-
             <Elements stripe={stripeTestPromise}>
-              <Stripe countryCode={countryCode} />
+              <Stripe
+                countryCode={countryCode}
+                setOpen={setOpenPaymentDialog}
+              />
             </Elements>
           </Box>
         </Box>

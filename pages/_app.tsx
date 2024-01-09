@@ -43,10 +43,6 @@ export default function App({
   const id = router.query;
   const str = router.pathname.substring(1);
   const screenHeight = useScreenHeight();
-  let words = str.split(" ");
-  let convertedWords = words.map(
-    (word) => word.charAt(0).toUpperCase() + word.slice(1)
-  );
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
 
   const token = authCookiesGet();
@@ -73,7 +69,6 @@ export default function App({
             sx={{
               marginLeft: sidebarOpen ? "250px" : "0",
               marginTop: "70px",
-              // transition: "0.1s all",
               minHeight: `${screenHeight - 568}px`,
             }}
             className="max-lg:ml-0 max-sm:mb-[80px]"
@@ -85,12 +80,9 @@ export default function App({
             {pageProps.paragraphContent && <p>{pageProps.paragraphContent}</p>}
           </Box>
           <Box>{!token && <Footer />}</Box>
-          {/* <MainLoader /> */}
         </Box>
 
         <TemplateModal open={id?.templates ? true : false} />
-
-        {/* <MainLoaderBox /> */}
 
         <MobileBottomBar />
         <Index />

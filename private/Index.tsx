@@ -119,9 +119,9 @@ export default function Index({ sessionId }: any) {
   }, [router]);
 
   return (
-    <div style={{ zIndex: "555555555555555555555555" }}>
+    <div>
       {mainLoading && (
-        <main className="main">
+        <main className="main" style={{ zIndex: "555555555555555555555555" }}>
           <span className="loader"></span>
         </main>
       )}

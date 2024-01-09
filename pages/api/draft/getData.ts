@@ -16,7 +16,7 @@ export default async function handler(
 
     const referer = req.headers.referer || req.headers.referrer;
 
-    if (!referer || referer.includes(allowedDomain)) {
+    if (!referer || !referer.includes(allowedDomain)) {
       res.status(500).json({ error: "Internal Server Error" });
       return;
     }

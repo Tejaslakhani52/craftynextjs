@@ -5,6 +5,7 @@ interface DataState {
   templatesSingleValue: any;
   tokenValue: boolean;
   userData: any;
+  customerId: string;
 }
 
 const initialState: DataState = {
@@ -12,6 +13,7 @@ const initialState: DataState = {
   templatesSingleValue: {},
   tokenValue: false,
   userData: null,
+  customerId: "",
 };
 
 const dataSlice = createSlice({
@@ -27,8 +29,12 @@ const dataSlice = createSlice({
     userData: (state, action: PayloadAction<boolean>) => {
       state.userData = action.payload;
     },
+    customerId: (state, action: PayloadAction<string>) => {
+      state.customerId = action.payload;
+    },
   },
 });
 
-export const { templatesData, tokenValue, userData } = dataSlice.actions;
+export const { templatesData, tokenValue, userData, customerId } =
+  dataSlice.actions;
 export default dataSlice.reducer;
