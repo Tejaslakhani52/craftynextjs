@@ -1,9 +1,5 @@
-import { decryptData } from "@/aes-crypto";
-import { consoleShow } from "@/commonFunction/console";
-import { Box, Typography, Button } from "@mui/material";
-import axios from "axios";
+import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
 
 const data = [
   "/images/dashImage1.webp",
