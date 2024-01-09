@@ -5,9 +5,8 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import axios from "axios";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -25,7 +24,6 @@ export default function ExploreTemplates({ category, getAll, keyword }: any) {
   const pathSegments = pathname.split("/");
   const lastSegment = pathSegments[pathSegments.length - 1];
   const screenWidth = useScreenWidth();
-  const screenHeight = useScreenHeight();
   const [data, setData] = useState<any>();
 
   useEffect(() => {

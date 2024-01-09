@@ -29,7 +29,6 @@ export default function CustomInvitations() {
         background: "url(/images/customeInvitationBanner.png)",
       }}
     >
-      {/* <Box className="h-[693px] bg_linear mt-[-171px]  middle_round  bg-center	"> */}
       <Box className="flex flex-col items-center pt-14 gap-5  pt-[230px] max-sm:pt-[169px] max-2sm:pt-[100px]">
         <Typography
           className="text-[47px] font-bold text-white text-center max-sm:text-[28px]"

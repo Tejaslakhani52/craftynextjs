@@ -1,19 +1,16 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import GetStartedLinearBanner from "@/components/common/GetStartedLinearBanner";
-import LeftDetail from "@/components/common/LeftDetail";
-import RightDetail from "@/components/common/RightDetail";
-import { Box, Typography } from "@mui/material";
-import React from "react";
-import LeftImageSection from "./components/LeftImageSection";
-import QuestionsTitle from "@/components/common/QuestionsTitle";
-import FaqsBox from "@/components/common/FAQs";
-import GetTemplates from "@/components/common/GetTemplates";
-import ExploreTemplates from "@/components/common/ExploreTemplates";
-import RightImageSection from "./components/RightImageSection";
-import CustomHead from "@/components/common/CustomHead";
-import Head from "next/head";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import CustomHead from "@/components/common/CustomHead";
+import ExploreTemplates from "@/components/common/ExploreTemplates";
+import FaqsBox from "@/components/common/FAQs";
 import FLink from "@/components/common/FLink";
+import GetStartedLinearBanner from "@/components/common/GetStartedLinearBanner";
+import GetTemplates from "@/components/common/GetTemplates";
+import QuestionsTitle from "@/components/common/QuestionsTitle";
+import { Box, Typography } from "@mui/material";
+import Head from "next/head";
+import LeftImageSection from "./components/LeftImageSection";
+import RightImageSection from "./components/RightImageSection";
 
 export default function index() {
   return (

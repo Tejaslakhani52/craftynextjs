@@ -86,12 +86,6 @@ export default function Stripe({ countryCode, setOpen }: PropsType) {
     currentUrl = window.location.href;
   }
 
-  const domain = `${protocol}//${hostname}${
-    location?.port ? ":" + location?.port : ""
-  }`;
-
-  // const returnUrl = `${domain}/payment/success/done?return_url=${currentUrl}`;
-
   const getCard = () => {
     axios.post("/api/payment/list").then((res) => {
       setSaveCard(res?.data?.data?.data);

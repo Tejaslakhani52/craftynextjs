@@ -1,27 +1,8 @@
-import { decryptData } from "@/aes-crypto";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
-import { Box, Button, Radio, Typography } from "@mui/material";
-import {
-  AddressElement,
-  CardCvcElement,
-  CardElement,
-  CardExpiryElement,
-  CardNumberElement,
-  useElements,
-  useStripe,
-} from "@stripe/react-stripe-js";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import PhoneInput from "react-phone-input-2";
-import Icons from "@/assets";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { capitalizeFirstLetter } from "@/commonFunction/capitalizeFirstLetter";
-import { getCardIconSvg } from "@/commonFunction/getCardIcon";
 import { mainLoad } from "@/redux/reducer/actionDataReducer";
+import { Box, Button, Typography } from "@mui/material";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { formatExpiryDate } from "../Stripe";
 
 export default function DeleteCard({
@@ -65,7 +46,6 @@ export default function DeleteCard({
             className="bg-transparent w-full font-semibold opacity-50"
             value={selectedDefaultCard?.billing_details?.name}
             disabled
-            // onChange={(e) => setCustomerName(e.target.value)}
           />
         </Box>
       </Box>
@@ -85,7 +65,6 @@ export default function DeleteCard({
             className="bg-transparent w-full font-semibold opacity-50"
             value={`XXXX XXXX XXXX ${selectedDefaultCard?.card?.last4}`}
             disabled
-            // onChange={(e) => setCustomerEmail(e.target.value)}
           />
         </Box>
       </Box>

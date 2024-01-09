@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-// import { setPurchaseItems } from "@/redux/reducer/dataReducer";
 import {
   getSessionVal,
   removeUnusedSessions,

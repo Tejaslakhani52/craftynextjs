@@ -19,14 +19,12 @@ export default function searchValue() {
   const screenHeight = useScreenHeight();
   const [data, setData] = useState<any>();
   const [page, setPage] = useState<number>(1);
-  const [loadMore, setLoadMore] = useState<any>(true);
   const [isLastPage, setIsLastPage] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   const [openModal, setOpenModal] = useState(false);
   const [idName, setIdName] = useState<any>("");
 
   const getSearchList = (pages: number) => {
-    setLoadMore(true);
     axios
       .post("/api/search/templates", {
         keywords: formattedSearchName,
@@ -34,7 +32,6 @@ export default function searchValue() {
       })
       .then((response: any) => {
         setLoading(false);
-        setLoadMore(false);
         const response1 = JSON.parse(decryptData(response?.data));
 
         const jsonString = response1.substring(
@@ -195,20 +192,6 @@ export default function searchValue() {
                   padding: "40px 0",
                 }}
               >
-                {/* {loadMore ? (
-                  <Box className="text_linear font-[700 text-[20px]">
-                    Loading....
-                  </Box>
-                ) : (
-                  <Button
-                    className="bg_linear px-[80px] py-[10px] rounded-[7px] text-[15px] text-white font-semibold"
-                    sx={{ display: isLastPage ? "none" : "block" }}
-                    onClick={() => setPage((prev) => prev + 1)}
-                  >
-                    LOAD MORE
-                  </Button>
-                )} */}
-
                 {!isLastPage && (
                   <Box className="text_linear font-[700 text-[20px]">
                     Loading....

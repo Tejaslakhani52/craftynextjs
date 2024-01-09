@@ -1,9 +1,6 @@
 import { authCookiesGet } from "@/redux/action/AuthToken";
-import { Box, Button, Typography } from "@mui/material";
-import Link from "next/link";
+import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import React from "react";
-// import { useNavigate } from "react-router-dom";
 
 export default function GetTemplates(props: any) {
   const router = useRouter();
@@ -53,7 +50,6 @@ export default function GetTemplates(props: any) {
           </Typography>
         </Box>
 
-        {/* <Link href={props.navigate}> */}
         <button
           style={{
             backgroundColor: "white",
@@ -75,7 +71,6 @@ export default function GetTemplates(props: any) {
             {props?.bt_name ?? "Get All Templates"}{" "}
           </span>
         </button>
-        {/* </Link> */}
       </Box>
     </>
   );

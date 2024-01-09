@@ -4,24 +4,23 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { authCookiesSet, tokenSet } from "@/redux/action/AuthToken";
+import Icons from "@/assets";
+import { authCookiesSet } from "@/redux/action/AuthToken";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { initializeApp } from "firebase/app";
 import {
+  UserCredential,
   getAuth,
   signInWithEmailAndPassword,
-  UserCredential,
 } from "firebase/auth";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import Input from "./Input";
-import Password from "./Password";
-import LoginPlatform from "./LoginPlatform";
-import Icons from "@/assets";
-import { NextResponse } from "next/server";
-import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch } from "react-redux";
+import Input from "./Input";
+import LoginPlatform from "./LoginPlatform";
+import Password from "./Password";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQP7F26DBVJvXWNgwS3lerBUCGcbH2z4U",
@@ -70,10 +69,6 @@ export default function LoginContentBox(props: any) {
       toast.success("Success Login");
       dispatch(openSidebar(true));
       authCookiesSet(userCredential?.user?.uid);
-
-      // if (typeof document !== "undefined") {
-      //   document.cookie = "token=yourTokenValue";
-      // }
 
       router.push(`${router.pathname}`);
 

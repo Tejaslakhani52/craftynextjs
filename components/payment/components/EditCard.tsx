@@ -13,11 +13,9 @@ import { useDispatch } from "react-redux";
 import { formatExpiryDate } from "../Stripe";
 
 export default function EditCard({
-  countryCode,
   setOpenEditCard,
   selectedDefaultCard,
 }: any) {
-  const stripe: any = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
 
@@ -196,7 +194,6 @@ export default function EditCard({
               className=" bg-white w-full font-semibold opacity-50"
               value={`***`}
               disabled
-              // onChange={(e) => setCustomerEmail(e.target.value)}
             />
           </Box>
         </Box>

@@ -4,6 +4,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+import Icons from "@/assets";
 import { auth } from "@/firebase";
 import { createUserApi } from "@/redux/action/AuthAction";
 import {
@@ -19,7 +20,6 @@ import { useDispatch } from "react-redux";
 import Input from "./Input";
 import LoginPlatform from "./LoginPlatform";
 import Password from "./Password";
-import Icons from "@/assets";
 
 export default function SignUpContentBox(props: any) {
   const dispatch = useDispatch();

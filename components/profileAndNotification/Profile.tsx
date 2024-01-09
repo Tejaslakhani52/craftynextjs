@@ -1,23 +1,16 @@
-import { Box, Button, Typography } from "@mui/material";
-import React from "react";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { decryptData } from "@/aes-crypto";
+import { UserProfileType } from "@/interface/commonType";
+import { tokenSet, userPremium } from "@/redux/action/AuthToken";
+import { customerId, userData } from "@/redux/reducer/AuthDataReducer";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import { Box, Divider } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { Divider } from "@mui/material";
-import {
-  authCookiesGet,
-  tokenGet,
-  tokenSet,
-  userPremium,
-} from "@/redux/action/AuthToken";
 import axios from "axios";
-import { useRouter } from "next/router";
-import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import Cookies from "js-cookie";
-import { decryptData } from "@/aes-crypto";
-import { customerId, userData } from "@/redux/reducer/AuthDataReducer";
-import { UserProfileType } from "@/interface/commonType";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Profile() {
   const router = useRouter();

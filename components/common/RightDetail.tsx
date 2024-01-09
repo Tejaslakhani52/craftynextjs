@@ -1,7 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
 
 export default function RightDetail({
   title,

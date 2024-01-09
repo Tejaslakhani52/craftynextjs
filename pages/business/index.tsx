@@ -8,8 +8,7 @@ import GetTemplates from "@/components/common/GetTemplates";
 import LeftDetail from "@/components/common/LeftDetail";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import RightDetail from "@/components/common/RightDetail";
-import { Box, Button, Typography } from "@mui/material";
-import React from "react";
+import { Box } from "@mui/material";
 
 const sliderTemplate = [
   {

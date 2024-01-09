@@ -13,12 +13,10 @@ import MenuBox from "./headerComponents/Menu";
 import Icons from "@/assets";
 
 export default function Header({ sidebarOpen, setSidebarOpen }: any) {
-  const screenWidth = useScreenWidth();
   const dispatch = useDispatch();
   const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-
   const token = authCookiesGet();
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
   const [openLogin, setOpenLogin] = useState<boolean>(false);

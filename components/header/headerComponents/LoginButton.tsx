@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Box, Button } from "@mui/material";
-import SignUp from "@/components/auth/SignUp";
 import Login from "@/components/auth/Login";
+import SignUp from "@/components/auth/SignUp";
+import { Box } from "@mui/material";
 
 export default function LoginButton({
   openLogin,

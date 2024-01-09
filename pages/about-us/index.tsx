@@ -1,10 +1,8 @@
-import React from "react";
-import { Box, Button, Typography } from "@mui/material";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
-import { useRouter } from "next/router";
-import GetTemplates from "@/components/common/GetTemplates";
 import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
 import CustomHead from "@/components/common/CustomHead";
+import GetTemplates from "@/components/common/GetTemplates";
+import { Box, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 
 const dEverything = [
   {

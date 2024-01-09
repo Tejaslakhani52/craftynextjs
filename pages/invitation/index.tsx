@@ -9,10 +9,8 @@ import GetTemplates from "@/components/common/GetTemplates";
 import LeftDetail from "@/components/common/LeftDetail";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import RightDetail from "@/components/common/RightDetail";
-import { Box, Button, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Head from "next/head";
-import Link from "next/link";
-import React from "react";
 
 const sliderTemplate = [
   {
@@ -35,11 +33,7 @@ const sliderTemplate = [
     buttonName: "Baby Shower Invitation",
     path: "/baby-shower-invitation",
   },
-  // {
-  //   img: "https://assets.craftyart.in/w_assets/images/anivversaryEase.png",
-  //   buttonName: "Anniversary Invitation",
-  //   path: "/anniversary",
-  // },
+
   {
     img: "https://assets.craftyart.in/w_assets/images/bridalEase.png",
     buttonName: "Bridal Shower Invitation",

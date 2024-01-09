@@ -11,13 +11,11 @@ import { ActionStateType } from "@/interface/stateType";
 import { Box, Button, Rating, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 
 export default function index() {
-  const router = useRouter();
   const screenWidth = useScreenWidth();
   const [openModal, setOpenModal] = useState(false);
   const [idName, setIdName] = useState<string>("");

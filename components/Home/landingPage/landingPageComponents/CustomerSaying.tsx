@@ -1,8 +1,6 @@
-import { Box, Rating, Typography, Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Icons from "@/assets";
+import { Box, Button, Rating, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const customerComment = [
   {
@@ -173,8 +171,6 @@ export default function CustomerSaying() {
         Crafty Art has a proven track record of delivering efficiency, results
         and excellent customer service.
       </Typography>
-      {/* <Box className="bg_linear  h-auto lg:h-[420px] w-[60%] my-10 opacity-50 max-lg:hidden"></Box> */}
-      {/* <Box className=" flex max-lg:flex-col w-full xl:w-[80%] justify-between  mt-[-441px] z-[1] max-lg:mt-[0] max-lg:gap-[30px] max-lg:mt-10"> */}
 
       <Box className="flex  justify-center relative w-[100%] overflow-auto ">
         <Box

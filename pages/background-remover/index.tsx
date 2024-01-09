@@ -1,22 +1,21 @@
-import { Box, Button, Rating, Typography } from "@mui/material";
-import React, { useState, useRef, useEffect } from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import LeftImageSection from "../wedding/components/LeftImageSection";
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import RightImageSection from "../wedding/components/RightImageSection";
+import CustomHead from "@/components/common/CustomHead";
+import CustomerSayingSmall from "@/components/common/CustomerSayingSmall";
+import FaqsBox from "@/components/common/FAQs";
+import FLink from "@/components/common/FLink";
 import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
-import FaqsBox from "@/components/common/FAQs";
 import WithCraftyartBanner from "@/components/common/WithCraftyartBanner";
-import CustomerSayingSmall from "@/components/common/CustomerSayingSmall";
-import axios from "axios";
 import { authCookiesGet } from "@/redux/action/AuthToken";
+import { Box, Button, Typography } from "@mui/material";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import axios from "axios";
 import { saveAs } from "file-saver";
-import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
-import { decryptData } from "@/aes-crypto";
-import FLink from "@/components/common/FLink";
+import React, { useEffect, useRef, useState } from "react";
+import LeftImageSection from "../wedding/components/LeftImageSection";
+import RightImageSection from "../wedding/components/RightImageSection";
 
 interface TabPanelProps {
   children?: React.ReactNode;

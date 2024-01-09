@@ -1,9 +1,8 @@
 import Icons from "@/assets";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { faqsList } from "@/constants/faqsList";
-import { Box, Typography, Button } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import { useState } from "react";
 
 export default function Index() {
   const screenHeight = useScreenHeight();

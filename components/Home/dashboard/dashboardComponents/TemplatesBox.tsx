@@ -4,6 +4,9 @@ import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { consoleShow } from "@/commonFunction/console";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import TemplateModal from "@/components/singleTemplate/TemplateModal";
+import { DashboardDataType } from "@/interface/dashboard";
+import { DataType } from "@/interface/searchTemplateType";
+import { AuthStateType } from "@/interface/stateType";
 import { templatesData } from "@/redux/reducer/AuthDataReducer";
 import { modalClosePath } from "@/redux/reducer/actionDataReducer";
 import { Box, Button, Typography } from "@mui/material";
@@ -13,10 +16,6 @@ import { useRouter } from "next/router";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TemplatesSkelton from "./TemplatesSkelton";
-import { AuthStateType } from "@/interface/stateType";
-import { DashboardDataType } from "@/interface/dashboard";
-import { DataType } from "@/interface/searchTemplateType";
-import Image from "next/image";
 
 interface ImageBoxesProps {
   templates: DataType;
@@ -127,15 +126,6 @@ function ImageBox({
                   className="bg-slate-200 flex justify-center w-full h-full rounded-[4px] carousel-slide"
                   key={index}
                 >
-                  {/* <img
-                    src={image}
-                    alt={image}
-                    className={` w-[auto] ${
-                      uniqueCat ? "h-[100%]" : ""
-                    }  mx-auto rounded-[4px] `}
-                    style={{ transition: "0.5s all" }}
-                  /> */}
-
                   <img
                     src={image}
                     alt={image}

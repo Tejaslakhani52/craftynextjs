@@ -1,16 +1,14 @@
+import Icons from "@/assets";
+import { openSidebar, openTempModal } from "@/redux/reducer/actionDataReducer";
 import { Box, Button, Typography } from "@mui/material";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
-import TemplatesBox from "./dashboardComponents/TemplatesBox";
 import { useDispatch } from "react-redux";
-import { openSidebar, openTempModal } from "@/redux/reducer/actionDataReducer";
 import CustomSize from "./dashboardComponents/CustomSize";
-import UploadButton from "./dashboardComponents/UploadButton";
-import Link from "next/link";
-import Icons from "@/assets";
+import TemplatesBox from "./dashboardComponents/TemplatesBox";
 
 const bannerCategory = [
-  // { image: "/icons/forYou.svg", name: "For you", path: "/trending" },
   {
     image: <Icons.invitationIcon svgProps={{ width: 50 }} />,
     name: "Invitation",
@@ -49,11 +47,6 @@ const bannerCategory = [
 ];
 
 const bannerCategoryM = [
-  // {
-  //   image: <Icons.forYouMIcon svgProps={{ width: 50 }} />,
-  //   name: "For you",
-  //   path: "/trending",
-  // },
   {
     image: <Icons.invitationMIcon svgProps={{ width: 50 }} />,
     name: "Invitation",
@@ -170,34 +163,6 @@ export default function Dashboard() {
         </Box>
       </Box>
 
-      {/* <Box className="mx-[20px] max-sm:mx-[0] bg_linear rounded-[10px] max-sm:rounded-[0] px-[16px]">
-        <Box className="flex justify-end py-[15px] gap-3">
-          <UploadButton />
-          <CustomSize />
-        </Box>
-        <Typography
-          variant="h1"
-          className="text-[30px] md:text-[47px] font-bold text-center  text-white max-sm:pb-5 "
-        >
-          What would you like to create ?
-        </Typography>
-        <Box className="flex max-sm:hidden lg:justify-center items-center gap-[30px] md:gap-[50px] py-10 overflow-auto scroll_none">
-          {bannerCategory?.map((item) => (
-            <Box
-              className="flex flex-col items-center cursor-pointer gap-[10px]"
-              onClick={() => {
-                dispatch(openSidebar(false));
-                router.push(item?.path);
-              }}
-            >
-              <img src={item?.image} alt="" className="w-[50px] max-w-[50px]" />
-              <Typography className="text-white text-center text-[14px] whitespace-nowrap ">
-                {item?.name}
-              </Typography>
-            </Box>
-          ))}
-        </Box>
-      </Box> */}
       <Box className="flex sm:hidden lg:justify-center items-center gap-[25px] md:gap-[50px] pt-5 px-[15px] overflow-auto scroll_none">
         {bannerCategoryM?.map((item, index) => (
           <Box

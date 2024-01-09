@@ -1,6 +1,5 @@
 import { decryptData } from "@/aes-crypto";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
 import MobileBottomBar from "@/components/common/MobileBottomBar";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
@@ -15,7 +14,7 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
-import { Provider, useSelector } from "react-redux";
+import { Provider } from "react-redux";
 
 export async function getStaticProps() {
   const router = useRouter();

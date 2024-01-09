@@ -76,14 +76,12 @@ export default function BrandsIconSlider() {
             id="brandIcons"
           >
             {brandIcons?.map((item, index: number) => (
-              // <Box className="w-[20%]">
               <img
                 key={index}
                 src={item}
                 alt={item}
                 className="w-[130px] max-md:w-[130px] h-auto"
               />
-              // </Box>
             ))}
           </Box>
 

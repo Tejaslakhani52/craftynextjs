@@ -1,5 +1,3 @@
-import { Box } from "@mui/material";
-import React from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import FormControl from "@mui/material/FormControl";
@@ -7,6 +5,7 @@ import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import React from "react";
 
 export default function Password(props: any) {
   const [showPassword, setShowPassword] = React.useState(false);

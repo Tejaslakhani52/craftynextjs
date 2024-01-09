@@ -1,8 +1,5 @@
 import { decryptData } from "@/aes-crypto";
-import {
-  useScreenHeight,
-  useScreenWidth,
-} from "@/commonFunction/screenWidthHeight";
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 import FestivalBanner from "@/components/categoryStaticComponents/FestivalStatic";
 import FlyerStatic from "@/components/categoryStaticComponents/FlyerStatic";
 import InvitationStatic from "@/components/categoryStaticComponents/InvitationStatic";
@@ -110,7 +107,6 @@ export async function getServerSideProps(context: any) {
 }
 
 export default function index({ jsonString }: ServerSideProps) {
-  const screenHeight = useScreenHeight();
   const router = useRouter();
   const screenWidth = useScreenWidth();
   const id: any = router.query;
@@ -118,8 +114,6 @@ export default function index({ jsonString }: ServerSideProps) {
   const [data, setData] = useState<CategoryApiData[]>([]);
   const [contentData, setContentData] = useState<any>([]);
   const [page, setPage] = useState<number>(1);
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [notFound, setNotFound] = useState<any>(false);
   const [loadMore, setLoadMore] = useState<any>(true);
   const [isLastPage, setIsLastPage] = useState<any>();
   const [idName, setIdName] = useState<any>("");
@@ -148,19 +142,11 @@ export default function index({ jsonString }: ServerSideProps) {
             setContentData(otherData.invitationData);
           } else setContentData(res);
 
-          setNotFound(res?.status === 500 ? true : false);
-          if (id?.page > res?.total_pages || id?.page < 0) {
-            setNotFound(true);
-          }
           if (res?.datas) {
             setData((prevData: CategoryApiData[]) => [
               ...(prevData || []),
               ...(res?.datas || []),
             ]);
-            setIsLoading(false);
-          }
-          if (res?.status === 500) {
-            setIsLoading(false);
           }
         })
         .catch((err: any) => {

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Icons from "@/assets";
+import { Box, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const brandIcons = [
   {

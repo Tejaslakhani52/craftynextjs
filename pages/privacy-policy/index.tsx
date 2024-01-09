@@ -1,7 +1,5 @@
 import CustomHead from "@/components/common/CustomHead";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
 import { Box, Typography } from "@mui/material";
-import React from "react";
 
 export default function index() {
   return (

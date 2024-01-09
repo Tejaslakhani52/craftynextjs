@@ -1,20 +1,18 @@
-import React from "react";
-import { Box, Button, Typography } from "@mui/material";
+import { decryptData } from "@/aes-crypto";
+import Icons from "@/assets";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
-import { useEffect, useState } from "react";
 import {
   authCookiesGet,
-  tokenGet,
   tokenSet,
   userPremium,
 } from "@/redux/action/AuthToken";
+import { Box, Typography } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import PaymentHistory from "./components/PaymentHistory";
 import PersonalInfo from "./components/PersonalInfo";
 import Subscription from "./components/Subscription";
-import PaymentHistory from "./components/PaymentHistory";
-import Icons from "@/assets";
-import { decryptData } from "@/aes-crypto";
 
 interface AccountProps {
   defaultTab: string;
@@ -198,7 +196,6 @@ const Account: React.FC<AccountProps> = ({ defaultTab }) => {
                 }    rounded-[4px]`}
                 onClick={() => setActiveTab(item?.name)}
               >
-                {/* <Box className="w-[3px] bg-[#2EC6B8] h-5px"></Box> */}
                 <Box className="flex w-full">
                   <Box className="w-[40px] max-2md:hidden">
                     <img

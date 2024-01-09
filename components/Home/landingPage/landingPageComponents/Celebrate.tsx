@@ -1,5 +1,5 @@
-import { Box, Rating, Typography, Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import Iframe from "react-iframe";
 
 export default function Celebrate() {
@@ -127,10 +127,6 @@ export default function Celebrate() {
         className="bg_linear py-[7px] px-[40px] max-lg:mt-10 ring-out"
         onClick={() => setOpen(true)}
       >
-        {/* <span className="animate-ping absolute inline-flex  w-full rounded-full bg-sky-400 opacity-75 h-[100px] top-0 left-0"></span>
-        <span className="animate-ping absolute inline-flex  w-full rounded-full bg-sky-400 opacity-75 h-[100px] top-0 left-0"></span>
-        <span className="relative inline-flex rounded-full bg-sky-500"></span> */}
-
         {"Celebrate with us"}
       </Button>
 

@@ -5,20 +5,20 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import { auth } from "@/firebase";
-import { authCookiesSet, tokenSet } from "@/redux/action/AuthToken";
+import { authCookiesSet } from "@/redux/action/AuthToken";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import {
+  UserCredential,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
-  UserCredential,
 } from "firebase/auth";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import Input from "./Input";
 import Password from "./Password";
-import { openSidebar } from "@/redux/reducer/actionDataReducer";
-import { useDispatch } from "react-redux";
 
 export default function ForgotPass(props: any) {
   const dispatch = useDispatch();

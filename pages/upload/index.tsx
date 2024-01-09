@@ -5,12 +5,10 @@ import {
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
 import { DraftDataType } from "@/interface/getDraftsType";
-import { authCookiesGet } from "@/redux/action/AuthToken";
 import { Box, Button } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
-import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -133,7 +131,6 @@ const DraftBoxes = ({
 
 export default function index() {
   const sideBarRedux = useSelector((state: any) => state.actions.openSidebar);
-  const user_id = authCookiesGet();
   const screenWidth = useScreenWidth() - (sideBarRedux ? 289 : 40);
   const screenHeight = useScreenHeight();
   const [uploadData, setUploadData] = useState<DraftDataType[] | any>([]);

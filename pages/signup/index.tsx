@@ -1,10 +1,9 @@
 import Icons from "@/assets";
 import SignUpContentBox from "@/components/auth/authComponents/SignUpContentBox";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
-import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
+import { authCookiesGet } from "@/redux/action/AuthToken";
 import { Box } from "@mui/material";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function index() {
   const router = useRouter();

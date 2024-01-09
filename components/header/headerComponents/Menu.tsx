@@ -1,16 +1,14 @@
-import { Box, Typography } from "@mui/material";
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { useRouter } from "next/router";
-import { openSidebar } from "@/redux/reducer/actionDataReducer";
-import { useDispatch } from "react-redux";
-import Link from "next/link";
 import Icons from "@/assets";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import { Box, Typography } from "@mui/material";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+import { useDispatch } from "react-redux";
 
 export const Product = {
   name: "Product",
@@ -104,7 +102,6 @@ export interface BasicMenuProps {
 export function BasicMenu({ title, itemName }: BasicMenuProps) {
   const dispatch = useDispatch();
   const router = useRouter();
-  const screenWidth = useScreenWidth();
   const [onBoxLeave, setOnBoxLeave] = React.useState<boolean>(false);
   const [onButtonLeave, setOnButtonLeave] = React.useState<boolean>(false);
 

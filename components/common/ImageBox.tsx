@@ -1,10 +1,8 @@
 import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { DataType } from "@/interface/searchTemplateType";
-import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface ImageBoxProps {
   templates: DataType | any;
@@ -124,15 +122,6 @@ export default function ImageBox({
               {templates?.thumbArray.length}
             </p>
           )}
-          {/* <img
-        src={templates?.template_thumb}
-        alt={templates?.category_name}
-        className={`w-full] rounded-[5px] cursor-pointer`}
-        style={{
-          border: "1px solid #80808082",
-          height: "100%",
-        }}
-      /> */}
 
           <div className="pt-2">
             <p className="text-ellipsis w-[100%] whitespace-nowrap overflow-hidden text-black font-medium">

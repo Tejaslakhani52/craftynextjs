@@ -71,34 +71,12 @@ const scrollToTop = () => {
   }
 };
 
-// export async function getServerSideProps() {
-//   try {
-//     const response = await axios.get("https://story.craftyartapp.com/get-ip");
-//     const ip = response.data;
-
-//     return {
-//       props: {
-//         ip,
-//       },
-//     };
-//   } catch (error) {
-//     console.error("Error fetching API data:", error);
-
-//     return {
-//       props: {
-//         ip: null,
-//       },
-//     };
-//   }
-// }
-
 export default function index() {
   const screenHeight = useScreenHeight();
   const [stripeTestPromise, setStripeTestPromise] = useState<any>(null);
   useEffect(() => {
     const PUBLIC_KEY =
       // "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
-      // "pk_test_51N1RfySHvTwSTB8sK8VsmxsabkWDqN2L8KpU0nybMQoEdfPEB3aRRm93QpbbUa1fikmdgZxFgrLN7IfwllIdni4x00yql4kmC5";
       " pk_test_51M92RVSF3l7nabbscp4hWvBXvuge7JIR6OJki7sZWiw39k9Rs7DkmmTPUlGUdDdceDvWhGMy9K3N7PswzNrok1g600K3jdRYh6";
     const valStripe = loadStripe(PUBLIC_KEY);
     setStripeTestPromise(valStripe);
@@ -113,7 +91,6 @@ export default function index() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [priceShowData, setPriceShowData] = useState<any>();
   const [choosePlan, setChoosePlan] = useState<any>();
-  console.log("choosePlan: ", choosePlan);
   const [endDate, setEndDate] = useState<any>("");
   const [openPriceDialog, setOpenPriceDialog] = useState<boolean>(false);
   const scrollContainerRef: React.RefObject<HTMLInputElement> | any =
@@ -183,7 +160,6 @@ export default function index() {
 
   useEffect(() => {
     setChoosePlan(priceShowData);
-    // setSessionVal("_paf", JSON.stringify([tempData]));
   }, [priceShowData]);
 
   useEffect(() => {
@@ -297,15 +273,6 @@ export default function index() {
           </Box>
         </Box>
         <Box className="flex-1  flex justify-center max-lg:pb-5 max-lg:order-1">
-          {/* <video
-            src={"https://assets.craftyart.in/w_assets/remove_bg.mp4"}
-            controls={false}
-            autoPlay
-            loop
-            muted
-            className="object-contain w-[550px] max-lg:w-[400px] max-sm:w-full"
-          /> */}
-
           <img
             src="/images/plans.png"
             alt="plans"

@@ -19,12 +19,6 @@ export default function TemplatesSkelton() {
   }, [screenWidth]);
   return (
     <Box className="flex flex-col gap-5 py-[50px]">
-      {/* <Box className="flex items-center justify-between pt-8 pb-4">
-        <Skelton width="200px" height="50px" round="20px" fill={0} line="row" />
-      </Box>
-      <Box className="py-2">
-        <Skelton width="200px" height="50px" round="20px" fill={1} line="row" />
-      </Box> */}
       <Box className="flex items-center overflow-hidden scroll_none gap-[20px]  ">
         <Skelton
           width={`${height ? height : 250}px`}

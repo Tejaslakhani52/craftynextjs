@@ -1,4 +1,3 @@
-// withAuth.js
 import { authCookiesGet, tokenGet } from "@/redux/action/AuthToken";
 import { useRouter } from "next/router";
 import { useEffect } from "react";

@@ -1,17 +1,16 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
+import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
+import CustomHead from "@/components/common/CustomHead";
 import ExploreTemplates from "@/components/common/ExploreTemplates";
 import FaqsBox from "@/components/common/FAQs";
+import FLink from "@/components/common/FLink";
 import GetStartedLinearBanner from "@/components/common/GetStartedLinearBanner";
 import GetTemplates from "@/components/common/GetTemplates";
 import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box } from "@mui/material";
+import Head from "next/head";
 import LeftImageSection from "../wedding/components/LeftImageSection";
 import RightImageSection from "../wedding/components/RightImageSection";
-import CustomHead from "@/components/common/CustomHead";
-import MainLoaderBox from "@/components/common/MainLoaderBox";
-import Head from "next/head";
-import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
-import FLink from "@/components/common/FLink";
 
 export default function index() {
   return (

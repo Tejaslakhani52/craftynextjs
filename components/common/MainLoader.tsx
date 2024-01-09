@@ -3,10 +3,8 @@ import { useEffect } from "react";
 
 export default function MainLoader() {
   useEffect(() => {
-    // Disable the scrollbar when the component mounts
     document.body.style.overflow = "hidden";
 
-    // Re-enable the scrollbar when the component unmounts
     return () => {
       document.body.style.overflow = "visible";
     };

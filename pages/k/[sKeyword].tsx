@@ -11,7 +11,6 @@ import { DataType } from "@/interface/searchTemplateType";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
