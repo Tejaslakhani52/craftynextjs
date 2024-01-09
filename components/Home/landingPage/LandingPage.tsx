@@ -76,9 +76,8 @@ export default function LandingPage({ post }: any) {
 
       <Box className="w-[50%] mx-auto mt-[-180px]  max-lg:mt-[-125px] max-sm:mt-[-67px] max-lg:w-[80%] max-sm:w-[97%] min-h-[500px] max-sm:min-h-[200px]">
         <img
-          src="/images/landingPageMainVideo.png"
+          src="/images/landingPageMainVideo.webp"
           alt="landingPageMainVideo"
-          loading="lazy"
         />
       </Box>
       <Box className=" my-8 sm:my-16">
@@ -216,7 +215,7 @@ export default function LandingPage({ post }: any) {
         }
         buttonName={"Create your Eprofile"}
         alt="e profile"
-        image="https://assets.craftyart.in/w_assets/images/order_img (1).png"
+        image="/images/order_img (1).png"
       />
 
       <CustomerSaying />

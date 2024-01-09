@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const customerComment = [
   {
     rating: 5,
-    image: "https://assets.craftyart.in/w_assets/images/comment/man1.jpg",
+    image: "/images/comment/man1.jpg",
     name: "Emily Smith",
     comment:
       "As a photographer, I rely on Crafty Art Background Remover to quickly separate subjects from their backgrounds. It's fast, accurate, and has saved me a ton of time. Highly recommended",
@@ -29,7 +29,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "https://assets.craftyart.in/w_assets/images/comment/girl2.jpg",
+    image: "/images/comment/girl2.jpg",
     name: "Pooja Sharma",
     comment:
       "Crafty Art's invitation maker tool is perfect for those last-minute invitations. I used it for a surprise party and had invitations ready within an hour. The templates are so stylish, and you can quickly personalize them with the event details. The speed at which I could create and print the invitations saved the day for me.",
@@ -54,7 +54,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "https://assets.craftyart.in/w_assets/images/comment/man4.jpg",
+    image: "/images/comment/man4.jpg",
     name: "Siddharth Reddy",
 
     comment:
@@ -63,7 +63,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "https://assets.craftyart.in/w_assets/images/comment/man5.jpg",
+    image: "/images/comment/man5.jpg",
     name: "kevin Smith",
 
     comment:
@@ -72,7 +72,7 @@ const customerComment = [
 
   {
     rating: 5,
-    image: "https://assets.craftyart.in/w_assets/images/comment/man6.jpg",
+    image: "/images/comment/man6.jpg",
     name: "devid johnson",
 
     comment:
