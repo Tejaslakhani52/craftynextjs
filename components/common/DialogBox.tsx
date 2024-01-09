@@ -1,7 +1,11 @@
-import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
+import {
+  useScreenHeight,
+  useScreenWidth,
+} from "@/commonFunction/screenWidthHeight";
 
 const DialogModal = (props: any) => {
   const screenHeight = useScreenHeight();
+  const screenWidth = useScreenWidth();
   return (
     <>
       <div
@@ -25,7 +29,13 @@ const DialogModal = (props: any) => {
         }}
       >
         <div
-          style={{ maxHeight: `  ${screenHeight - 50}px`, overflow: "auto" }}
+          style={{
+            maxHeight:
+              screenWidth < 600
+                ? ` ${screenHeight}px`
+                : ` ${screenHeight - 50}px`,
+            overflow: "auto",
+          }}
         >
           <button
             className="fixed right-[20px] lg:right-[-50px] top-[15px] lg:top-[-10px] cursor-pointer"

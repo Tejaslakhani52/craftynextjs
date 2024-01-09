@@ -141,10 +141,14 @@ function ImageBox({
                     className={` w-[auto] ${
                       uniqueCat ? "h-[100%]" : ""
                     }  mx-auto rounded-[4px] opacity-0`}
-                    style={{ transition: "0.8s all" }}
+                    style={{
+                      transition: "0.8s all",
+                      height: "auto",
+                      width: "auto",
+                    }}
                     width={200}
                     height={200}
-                    quality={80}
+                    quality={60}
                     priority={true}
                     onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                   />

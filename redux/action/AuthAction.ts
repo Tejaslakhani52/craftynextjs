@@ -4,6 +4,7 @@ import { ThunkAction } from "redux-thunk";
 import toast from "react-hot-toast";
 import { authCookiesSet, tokenSet } from "./AuthToken";
 import { decryptData } from "@/aes-crypto";
+import { openSidebar } from "../reducer/actionDataReducer";
 
 type TemplatesAction = {
   type: string;
@@ -23,6 +24,7 @@ export const createUserApi =
       .then(({ data }) => {
         const res: any = JSON.parse(decryptData(data));
         toast.success("Success Login");
+        dispatch(openSidebar(true));
         authCookiesSet(res?.user?.uid);
         router.push(`${"/"}`);
         // setTimeout(() => {

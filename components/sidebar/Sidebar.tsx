@@ -93,7 +93,9 @@ type PropsType = {
 };
 
 export const InnerButton = ({ open, data, setOpens, setOpen }: PropsType) => {
+  const dispatch = useDispatch();
   const router = useRouter();
+  const screenWidth = useScreenWidth();
   return (
     <Box
       className={`fixed  
@@ -107,7 +109,12 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: PropsType) => {
     >
       <Box className="">
         <Box className="px-[20px] flex items-center gap-4 pb-3 ">
-          <Button onClick={() => setOpens(false)} className="min-w-[auto]">
+          <Button
+            onClick={() => {
+              setOpens(false);
+            }}
+            className="min-w-[auto]"
+          >
             <Icons.leftArrowIcon svgProps={{ width: 8 }} />
           </Button>
 
@@ -132,7 +139,10 @@ export const InnerButton = ({ open, data, setOpens, setOpen }: PropsType) => {
                   <MenuItem
                     onClick={() => {
                       router.push(item.path);
-                      setOpen(false);
+                      if (screenWidth < 1020) {
+                        dispatch(openSidebar(false));
+                      }
+                      // setOpen(false);
                     }}
                     sx={{
                       fontSize: "14px",
@@ -234,18 +244,17 @@ export default function Sidebar(setOpen: any) {
             >
               <span className="text-black text-[15px]">Custom order</span>
             </Button>
-            <Button
-              className="flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
-              onClick={() => dispatch(openSidebar(false))}
-            >
-              <Link href={"/plans"} className="text-black text-[15px]">
+            <Box onClick={() => dispatch(openSidebar(false))}>
+              <Link
+                href={"/plans"}
+                className="text-black font-medium text-[15px] w-full flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
+              >
                 Pricing
+                <span className="ml-[8px] w-[20px]">
+                  <Icons.pricingIcon svgProps={{ width: 20 }} />
+                </span>
               </Link>
-
-              <span className="ml-[8px] w-[20px]">
-                <Icons.pricingIcon svgProps={{ width: 20 }} />
-              </span>
-            </Button>
+            </Box>
           </Box>
           <Divider className="hidden max-lg:block" />
           <Box className="max-lg:py-5 px-[10px]">
@@ -352,7 +361,9 @@ export default function Sidebar(setOpen: any) {
                     router.pathname === item.path && " bg-[#F4F7FE]"
                   }    rounded-[4px]`}
                   onClick={() => {
-                    dispatch(openSidebar(false));
+                    if (screenWidth < 1020) {
+                      dispatch(openSidebar(false));
+                    }
                     router.push(item.path);
                   }}
                 >

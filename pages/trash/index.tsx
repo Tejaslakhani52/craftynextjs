@@ -195,7 +195,7 @@ const DraftBoxes = ({
                   }}
                   width={200}
                   height={200}
-                  quality={80}
+                  quality={60}
                   priority={true}
                   onLoadingComplete={(image) =>
                     image.classList.remove("opacity-0")
@@ -402,7 +402,7 @@ const DraftBoxesTab2 = ({
             }}
             width={200}
             height={200}
-            quality={80}
+            quality={60}
             priority={true}
             onLoadingComplete={(image) => image.classList.remove("opacity-0")}
           />

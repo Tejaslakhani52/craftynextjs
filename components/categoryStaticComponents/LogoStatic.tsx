@@ -5,7 +5,6 @@ import QuestionsTitle from "../common/QuestionsTitle";
 import LeftImageSection from "@/pages/wedding/components/LeftImageSection";
 import { MarkText } from "../Home/landingPage/LandingPage";
 import Head from "next/head";
-import CustomHead from "../common/CustomHead";
 
 export default function LogoStatic() {
   const [activeStep, setActiveStep] = useState<number>(1);
@@ -197,9 +196,9 @@ export default function LogoStatic() {
           </Box>
         }
         buttonName={"Create a logos"}
-        alt="flyer Maker"
+        alt={"logo template"}
         path="/templates/logos"
-        image="https://assets.craftyart.in/w_assets/images/logoC/img1.png"
+        image="https://assets.craftyart.in/w_assets/images/logoC/Img1.png"
       />
 
       <Box className="pt-[50px]  bg-[#F4F7FE]">

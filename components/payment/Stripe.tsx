@@ -2,16 +2,16 @@ import { decryptData } from "@/aes-crypto";
 import Icons from "@/assets";
 import { capitalizeFirstLetter } from "@/commonFunction/capitalizeFirstLetter";
 import { getCardIconSvg } from "@/commonFunction/getCardIcon";
+import { PaymentProps } from "@/interface/payment_props";
 import {
-  authCookiesGet,
   getSessionVal,
   removeUnusedSessions,
   setSessionVal,
 } from "@/redux/action/AuthToken";
 import { mainLoad } from "@/redux/reducer/actionDataReducer";
+import { setPurchaseItems } from "@/redux/reducer/templateDataReducer";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import { Box, Button, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import {
   AddressElement,
   CardCvcElement,
@@ -26,8 +26,6 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import DialogModal from "../common/DialogBox";
 import EditCard from "./components/EditCard";
-import { setPurchaseItems } from "@/redux/reducer/templateDataReducer";
-import { PaymentProps } from "@/interface/payment_props";
 
 export const inputStyle = {
   color: "black",
@@ -66,19 +64,14 @@ interface PropsType {
 }
 
 export default function Stripe({ countryCode, setOpen }: PropsType) {
-  const uId = authCookiesGet();
   const dispatch = useDispatch();
-  const theme = useTheme();
-
   const stripe = useStripe();
   const elements = useElements();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [saveCard, setSaveCard] = useState([]);
   const [selectedDefaultCard, setSelectedDefaultCard] = useState<any>({});
   const [addNewOpen, setAddNewOpen] = useState<boolean>(false);
   const [openEditCard, setOpenEditCard] = useState<boolean>(false);
   const [openDeleteCard, setOpenDeleteCard] = useState<boolean>(false);
-  const [isSaveCard, setIsSaveCard] = useState<boolean>(true);
   const userData = useSelector((state: any) => state.auth.userData);
 
   let protocol: any;
@@ -508,22 +501,6 @@ export default function Stripe({ countryCode, setOpen }: PropsType) {
         />
       </Box>
 
-      {/* <Box className="flex items-start mb-6">
-        <Box className="flex items-center h-5">
-          <input
-            id="remember"
-            type="checkbox"
-            checked={isSaveCard}
-            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 text-[15px]"
-            required
-            onChange={() => setIsSaveCard(!isSaveCard)}
-          />
-        </Box>
-        <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300  max-2sm:text-[12px]">
-          Saved card for future payment
-        </label>
-      </Box> */}
-
       {saveCard?.length > 0 ? (
         <Box className="flex justify-between pt-5">
           <Button
@@ -574,12 +551,6 @@ export default function Stripe({ countryCode, setOpen }: PropsType) {
             Process to Pay
           </Button>
         </Box>
-      )}
-
-      {isLoading && (
-        <main className="main">
-          <span className="loader"></span>
-        </main>
       )}
     </>
   );

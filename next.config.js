@@ -1,5 +1,3 @@
-const TerserPlugin = require("terser-webpack-plugin");
-
 module.exports = {
   images: {
     domains: ["panel.craftyartapp.com", "assets.craftyart.in"],
@@ -24,22 +22,5 @@ module.exports = {
 
   devIndicators: {
     autoPrerender: false,
-  },
-
-  webpack: (config, { isServer }) => {
-    // For production builds, minify the JS
-    if (!isServer) {
-      config.optimization.minimizer.push(
-        new TerserPlugin({
-          terserOptions: {
-            compress: {
-              drop_console: true, // Remove console.log statements
-            },
-          },
-        })
-      );
-    }
-
-    return config;
   },
 };

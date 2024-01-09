@@ -10,6 +10,7 @@ import { openSidebar } from "@/redux/reducer/actionDataReducer";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import Icons from "@/assets";
+import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
 
 export const Product = {
   name: "Product",
@@ -103,6 +104,7 @@ export interface BasicMenuProps {
 export function BasicMenu({ title, itemName }: BasicMenuProps) {
   const dispatch = useDispatch();
   const router = useRouter();
+  const screenWidth = useScreenWidth();
   const [onBoxLeave, setOnBoxLeave] = React.useState<boolean>(false);
   const [onButtonLeave, setOnButtonLeave] = React.useState<boolean>(false);
 
@@ -188,6 +190,7 @@ export const handleClickWhatsapp = () => {
 
 export default function MenuBox() {
   const dispatch = useDispatch();
+  const screenWidth = useScreenWidth();
 
   return (
     <>
@@ -208,7 +211,9 @@ export default function MenuBox() {
           <Link
             href={"/plans"}
             onClick={() => {
-              dispatch(openSidebar(false));
+              if (screenWidth < 1020) {
+                dispatch(openSidebar(false));
+              }
             }}
           >
             Pricing

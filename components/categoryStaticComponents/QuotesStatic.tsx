@@ -4,22 +4,23 @@ import FaqsBox from "../common/FAQs";
 import QuestionsTitle from "../common/QuestionsTitle";
 import Head from "next/head";
 import CustomHead from "../common/CustomHead";
+import Icons from "@/assets";
 
 const howMakeQuotes = [
   {
     heading: "Printable Options: ",
     text: "Some quotes are available in printable formats. Decorate your space or create thoughtful gifts with our printable quote templates.    ",
-    icon: "https://assets.craftyart.in/w_assets/images/category/searchQuotes.svg",
+    icon: <Icons.SearchQuotesIcon />,
   },
   {
-    heading: " Customization Options: ",
+    heading: "Customization Options: ",
     text: "Personalize quotes to match your style or tailor them to specific occasions. Change fonts, colors, and layouts for a unique touch.    ",
-    icon: "https://assets.craftyart.in/w_assets/images/category/editQuotes.svg",
+    icon: <Icons.EditQuotesIcon />,
   },
   {
     heading: "Download and Share: ",
     text: " Easily download your favorite quotes and share them on social media, in presentations, or with friends and family.    ",
-    icon: "https://assets.craftyart.in/w_assets/images/category/download.svg",
+    icon: <Icons.DownloadQuotesIcon />,
   },
 ];
 
@@ -56,12 +57,7 @@ export default function QuotesStatic() {
               <Box className="flex gap-8 items-center mb-10" key={index}>
                 <Box className=" flex gap-3 items-center ">
                   <Box className=" text-[#ABB2C7] text-[23px]">{index + 1}</Box>
-
-                  <img
-                    src={item.icon}
-                    alt="quotes template"
-                    className="bg-white"
-                  />
+                  <Box className="bg-white">{item?.icon}</Box>
                 </Box>
                 <Box className="w-fit">
                   <Typography className="font-semibold">

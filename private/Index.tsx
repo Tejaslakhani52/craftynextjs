@@ -38,12 +38,12 @@ export const extractCookieValue = (cookiesString: any, cookieName: any) => {
 
 export default function Index({ sessionId }: any) {
   const screenWidth = useScreenWidth();
+  console.log("screenWidth: ", screenWidth);
   const dispatch = useDispatch();
   const router = useRouter();
   const token = authCookiesGet();
   const hasEffectRun = useRef(false);
   const mainLoading = useSelector((state: any) => state.actions.mainLoad);
-  console.log("mainLoading: ", mainLoading);
 
   const productPaths = Product.subName.flatMap((category: any) =>
     category.allName.map((item: any) => item.path)
@@ -59,6 +59,7 @@ export default function Index({ sessionId }: any) {
 
   useEffect(() => {
     dispatch(mainLoader(true));
+
     const timeoutId = setTimeout(() => {
       if (!hasEffectRun.current) {
         if (token) {
@@ -66,7 +67,6 @@ export default function Index({ sessionId }: any) {
             screenWidth > 991 &&
             router?.pathname !== "/your-account" &&
             router?.pathname !== "/subscriptions" &&
-            router?.pathname !== "/plans" &&
             !productPaths.includes(router?.pathname) &&
             !editorToolsPaths.includes(router?.pathname) &&
             !templatesPaths.includes(router?.pathname)
@@ -86,16 +86,13 @@ export default function Index({ sessionId }: any) {
         hasEffectRun.current = true;
         if (
           !token ||
-          router?.pathname === "/plans" ||
           productPaths.includes(router?.pathname) ||
           editorToolsPaths.includes(router?.pathname) ||
           templatesPaths.includes(router?.pathname)
         ) {
           dispatch(openSidebar(false));
         }
-        //  else if (screenWidth > 1200) {
-        //   dispatch(openSidebar(true));
-        // }
+
         setTimeout(() => {
           dispatch(mainLoader(false));
         }, 100);
@@ -103,13 +100,12 @@ export default function Index({ sessionId }: any) {
     }, 500);
 
     return () => clearTimeout(timeoutId);
-  }, [token]);
+  }, [token, screenWidth]);
 
   useEffect(() => {
     if (
       router?.pathname === "/your-account" ||
       router?.pathname === "/subscriptions" ||
-      router?.pathname === "/plans" ||
       productPaths.includes(router?.pathname) ||
       editorToolsPaths.includes(router?.pathname) ||
       templatesPaths.includes(router?.pathname)

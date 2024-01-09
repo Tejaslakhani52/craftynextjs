@@ -156,7 +156,7 @@ export default function index() {
                 const getData = JSON.parse(jsonString);
                 setPricePlaneData(getData?.subs);
                 setIsLoading(false);
-                window.scrollTo(0, 800);
+                window.scrollTo(0, 470);
 
                 if (scrollContainerRef.current) {
                   scrollContainerRef.current.scrollLeft =

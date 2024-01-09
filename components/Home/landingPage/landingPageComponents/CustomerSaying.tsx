@@ -175,7 +175,24 @@ export default function CustomerSaying() {
       </Typography>
       {/* <Box className="bg_linear  h-auto lg:h-[420px] w-[60%] my-10 opacity-50 max-lg:hidden"></Box> */}
       {/* <Box className=" flex max-lg:flex-col w-full xl:w-[80%] justify-between  mt-[-441px] z-[1] max-lg:mt-[0] max-lg:gap-[30px] max-lg:mt-10"> */}
-      <Box className="flex justify-end px-[15%] pt-5 w-[100%]">
+
+      <Box className="flex  justify-center relative w-[100%] overflow-auto ">
+        <Box
+          className=" flex  w-full xl:w-[80%] justify-between  z-[1] max-lg:mt-[0]  gap-[30px] overflow-auto scroll_none px-2 sm:px-10 py-5 sm:py-15  mt-5"
+          id="customer"
+        >
+          {customerComment?.map((item: any, index: number) => (
+            <CustomerBox
+              key={index}
+              value={item?.rating}
+              text={`“${item?.comment}”`}
+              image={item?.image}
+              name={item?.name}
+            />
+          ))}
+        </Box>
+      </Box>
+      <Box className="flex justify-center px-[15%] pt-5 w-[100%]">
         <Box className="flex  ">
           <Button
             onClick={handlePrevClick}
@@ -193,22 +210,6 @@ export default function CustomerSaying() {
           >
             <Icons.rightArrowIcon svgProps={{ width: 10 }} />
           </Button>
-        </Box>
-      </Box>
-      <Box className="flex  justify-center relative w-[100%] overflow-auto ">
-        <Box
-          className=" flex  w-full xl:w-[80%] justify-between  z-[1] max-lg:mt-[0]  gap-[30px] overflow-auto scroll_none px-2 sm:px-10 py-5 sm:py-15  mt-5"
-          id="customer"
-        >
-          {customerComment?.map((item: any, index: number) => (
-            <CustomerBox
-              key={index}
-              value={item?.rating}
-              text={`“${item?.comment}”`}
-              image={item?.image}
-              name={item?.name}
-            />
-          ))}
         </Box>
       </Box>
     </Box>

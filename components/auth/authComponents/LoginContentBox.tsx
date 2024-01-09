@@ -20,6 +20,8 @@ import Password from "./Password";
 import LoginPlatform from "./LoginPlatform";
 import Icons from "@/assets";
 import { NextResponse } from "next/server";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import { useDispatch } from "react-redux";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCQP7F26DBVJvXWNgwS3lerBUCGcbH2z4U",
@@ -36,6 +38,7 @@ export const auth: any = getAuth(app);
 
 export default function LoginContentBox(props: any) {
   const router = useRouter();
+  const dispatch = useDispatch();
   const [remember, setRemember] = useState<boolean>(false);
   const [emailPassword, setEmailPassword] = useState<any>({
     email: "",
@@ -65,6 +68,7 @@ export default function LoginContentBox(props: any) {
       );
 
       toast.success("Success Login");
+      dispatch(openSidebar(true));
       authCookiesSet(userCredential?.user?.uid);
 
       // if (typeof document !== "undefined") {

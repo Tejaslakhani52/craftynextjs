@@ -490,7 +490,7 @@ export default function TemplateModal({ open, setOpen, id, setId }: any) {
                                 }}
                                 width={200}
                                 height={200}
-                                quality={80}
+                                quality={60}
                                 priority={true}
                                 onLoadingComplete={(image) =>
                                   image.classList.remove("opacity-0")

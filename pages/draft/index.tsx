@@ -147,7 +147,7 @@ const DraftBoxes = ({
                     }}
                     width={200}
                     height={200}
-                    quality={80}
+                    quality={60}
                     priority={true}
                     onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                   />

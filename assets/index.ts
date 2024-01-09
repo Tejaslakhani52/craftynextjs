@@ -115,6 +115,9 @@ import {
   JCB,
   Edit,
   Delete,
+  SearchQuotesIcon,
+  EditQuotesIcon,
+  DownloadQuotesIcon,
 } from "./commonIcon";
 
 class Icons {
@@ -234,5 +237,8 @@ class Icons {
   static JCB = JCB;
   static Edit = Edit;
   static Delete = Delete;
+  static SearchQuotesIcon = SearchQuotesIcon;
+  static EditQuotesIcon = EditQuotesIcon;
+  static DownloadQuotesIcon = DownloadQuotesIcon;
 }
 export default Icons;

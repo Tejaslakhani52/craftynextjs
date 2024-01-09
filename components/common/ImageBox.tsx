@@ -61,7 +61,6 @@ export default function ImageBox({
         )}px`,
         width: `${screenWidth / multiSizeFixSize}px`,
       }}
-      // id={`content${index}`}
     >
       <Link
         href={`/templates/p/${templates.id_name}`}
@@ -111,7 +110,7 @@ export default function ImageBox({
                     style={{ transition: "0.5s all" }}
                     width={200}
                     height={200}
-                    quality={80}
+                    quality={60}
                     priority={true}
                     onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                   />

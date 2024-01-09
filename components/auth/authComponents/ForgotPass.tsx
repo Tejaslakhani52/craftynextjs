@@ -17,8 +17,11 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import Input from "./Input";
 import Password from "./Password";
+import { openSidebar } from "@/redux/reducer/actionDataReducer";
+import { useDispatch } from "react-redux";
 
 export default function ForgotPass(props: any) {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [enterNewPass, setEnterNewPass] = useState<boolean>(false);
   const [process, setProcess] = useState<boolean>(false);
@@ -59,6 +62,7 @@ export default function ForgotPass(props: any) {
       );
 
       toast.success("Success Login");
+      dispatch(openSidebar(true));
       authCookiesSet(userCredential?.user?.uid);
       router.push("/");
 

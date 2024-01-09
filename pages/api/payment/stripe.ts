@@ -12,7 +12,7 @@ export default async function handler(
       return;
     }
 
-    const allowedDomain = "http://localhost:3000/";
+    const allowedDomain = "https://craftynextjs-al84sub.vercel.app/";
     const referer = req.headers.referer || "";
     const domainMatch = referer.match(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
     const domain = domainMatch ? domainMatch[1] : "";
