@@ -5,22 +5,16 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
+const data = [
+  "/images/dashImage1.webp",
+  "/images/dashImage2.webp",
+  "/images/dashImage3.webp",
+  "/images/dashImage4.webp",
+  "/images/dashImage5.jpg",
+];
+
 export default function CustomInvitations() {
   const router = useRouter();
-  const [data, setData] = useState<any>();
-
-  useEffect(() => {
-    axios
-      .post("/api/category/getData", {
-        cat_id: "a4-invitation",
-        page: 3,
-      })
-      .then((response: any) => {
-        const res: any = JSON.parse(decryptData(response?.data));
-        setData(res?.datas);
-      })
-      .catch((err) => consoleShow("err", err));
-  }, []);
 
   return (
     <div
@@ -65,37 +59,35 @@ export default function CustomInvitations() {
       </Box>
 
       <Box className=" items-center gap-[2%] justify-center mt-14  max-2sm:mt-12 hidden sm:flex">
-        {data
-          ?.filter((e: any, index: number) => index > 0 && index < 6)
-          ?.map((item: any, index: number) => {
-            let width;
-            switch (true) {
-              case index === 1:
-                width = 200;
-                break;
-              case index === 2:
-                width = 242;
-                break;
-              case index === 3:
-                width = 200;
-                break;
-              default:
-                width = 169;
-            }
-            return (
-              <Box
-                key={index}
-                sx={{
-                  width: `${width}px`,
-                  filter: "  drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.25))",
-                  borderRadius: "10px",
-                  overflow: "hidden",
-                }}
-              >
-                <img src={item?.template_thumb} alt={item?.template_thumb} />
-              </Box>
-            );
-          })}
+        {data?.map((item: any, index: number) => {
+          let width;
+          switch (true) {
+            case index === 1:
+              width = 200;
+              break;
+            case index === 2:
+              width = 242;
+              break;
+            case index === 3:
+              width = 200;
+              break;
+            default:
+              width = 169;
+          }
+          return (
+            <Box
+              key={index}
+              sx={{
+                width: `${width}px`,
+                filter: "  drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.25))",
+                borderRadius: "10px",
+                overflow: "hidden",
+              }}
+            >
+              <img src={item} alt={item} />
+            </Box>
+          );
+        })}
       </Box>
       <Box className="flex items-center gap-[2%] justify-center mt-10 mb-5  max-2sm:mt-12 sm:hidden">
         {data
