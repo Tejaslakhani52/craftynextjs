@@ -37,7 +37,7 @@ export default function LandingPage({ post }: any) {
 
   return (
     <>
-      <Box className="h-[463px] bg-[url('https://assets.craftyart.in/w_assets/images/landingPageBanner.png')] bg-cover bg-no-repeat max-lg:px-[20px] max-sm:h-auto max-sm:pb-[100px]">
+      <Box className="h-[463px] bg_linear bg-cover bg-no-repeat max-lg:px-[20px] max-sm:h-auto max-sm:pb-[100px]">
         <Box className="flex flex-col items-center pt-14 gap-5">
           <Typography
             className="text-[47px] font-bold	text-white text-center max-sm:text-[30px]"
@@ -81,6 +81,12 @@ export default function LandingPage({ post }: any) {
         <img
           src="https://assets.craftyart.in/w_assets/images/landingPageMainVideo.png"
           alt="landingPageMainVideo"
+          className=" h-[auto] opacity-0"
+          style={{
+            transition: "0.2s all",
+          }}
+          onLoad={(e: any) => e.target.classList.remove("opacity-0")}
+          loading="lazy"
         />
       </Box>
       <Box className=" my-8 sm:my-16">
