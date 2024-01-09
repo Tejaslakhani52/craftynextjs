@@ -15,16 +15,7 @@ export const Card = ({ image, heading, text, path }: props) => {
       onClick={() => (window.location.href = path)}
     >
       <Box>
-        <img
-          src={image}
-          alt={image}
-          className="rounded-[10px] h-[auto] opacity-0"
-          style={{
-            transition: "0.2s all",
-          }}
-          onLoad={(e: any) => e.target.classList.remove("opacity-0")}
-          loading="lazy"
-        />
+        <img src={image} alt={image} className="rounded-[10px]" />
       </Box>
       <Typography className="text_linear my-3 text-[14px]">
         {heading}

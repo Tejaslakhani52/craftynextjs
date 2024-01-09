@@ -77,15 +77,10 @@ export default function LandingPage({ post }: any) {
         </Box>
       </Box>
 
-      <Box className="w-[50%] mx-auto mt-[-180px] max-lg:mt-[-125px] max-sm:mt-[-67px] max-lg:w-[80%] max-sm:w-[97%]">
+      <Box className="w-[50%] mx-auto mt-[-180px]  max-lg:mt-[-125px] max-sm:mt-[-67px] max-lg:w-[80%] max-sm:w-[97%] min-h-[500px] max-sm:min-h-[200px]">
         <img
           src="https://assets.craftyart.in/w_assets/images/landingPageMainVideo.png"
           alt="landingPageMainVideo"
-          className=" h-[auto] opacity-0"
-          style={{
-            transition: "0.2s all",
-          }}
-          onLoad={(e: any) => e.target.classList.remove("opacity-0")}
           loading="lazy"
         />
       </Box>
