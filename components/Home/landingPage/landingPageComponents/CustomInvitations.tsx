@@ -26,8 +26,7 @@ export default function CustomInvitations() {
     <div
       className="h-[516px] sm:h-[693px]   bg-cover bg-no-repeat mt-[-100px]  xl:mt-[-142px] bg-[#F4F7FE] 5xl:bg_linear px-[20px]   bg-top max-2sm:h-auto  max-2sm:pt-[50px]	"
       style={{
-        background:
-          "url(https://assets.craftyart.in/w_assets/images/customeInvitationBanner.png)",
+        background: "url(/images/customeInvitationBanner.png)",
       }}
     >
       {/* <Box className="h-[693px] bg_linear mt-[-171px]  middle_round  bg-center	"> */}

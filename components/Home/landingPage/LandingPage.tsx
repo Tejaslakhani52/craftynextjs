@@ -1,7 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import axios from "axios";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import Celebrate from "./landingPageComponents/Celebrate";
 import CustomInvitations from "./landingPageComponents/CustomInvitations";
 import CustomerSaying from "./landingPageComponents/CustomerSaying";
@@ -9,7 +7,6 @@ import ExploreBlog from "./landingPageComponents/ExploreBlog";
 import LeftImage from "./landingPageComponents/LeftImage";
 import RightImage from "./landingPageComponents/RightImage";
 import TrendingFunctionalities from "./landingPageComponents/TrendingFunctionalities";
-import Icons from "@/assets";
 
 export const MarkText = ({ text }: any) => {
   return (
@@ -79,7 +76,7 @@ export default function LandingPage({ post }: any) {
 
       <Box className="w-[50%] mx-auto mt-[-180px]  max-lg:mt-[-125px] max-sm:mt-[-67px] max-lg:w-[80%] max-sm:w-[97%] min-h-[500px] max-sm:min-h-[200px]">
         <img
-          src="https://assets.craftyart.in/w_assets/images/landingPageMainVideo.png"
+          src="/images/landingPageMainVideo.png"
           alt="landingPageMainVideo"
           loading="lazy"
         />
@@ -106,7 +103,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Explore Background Remover"}
-        video={"https://assets.craftyart.in/w_assets/remove_bg.mp4"}
+        video={"/videos/remove_bg.mp4"}
         path="/background-remover"
       />
 
@@ -122,7 +119,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Choose your Brand Kit"}
-        video={"https://assets.craftyart.in/w_assets/brandkit.mp4"}
+        video={"/videos/brandkit.mp4"}
         path="/brand-kit"
       />
 
@@ -138,7 +135,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Resize your Image"}
-        video={"https://assets.craftyart.in/w_assets/resize.mp4"}
+        video={"/videos/resize.mp4"}
         path="/resize"
       />
 
@@ -154,7 +151,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Turn photo to Caricature"}
-        video={"https://assets.craftyart.in/w_assets/caricature.mp4"}
+        video={"/videos/caricature.mp4"}
         path="/caricature"
       />
 
@@ -172,7 +169,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Apply Style Kit"}
-        video={"https://assets.craftyart.in/w_assets/stylekit.mp4"}
+        video={"/videos/stylekit.mp4"}
         path="/style-kit"
       />
 
@@ -188,7 +185,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Place your Custom Order"}
-        video={"https://assets.craftyart.in/w_assets/custom_order.mp4"}
+        video={"/videos/custom_order.mp4"}
         whatsapp
       />
       <RightImage
@@ -203,7 +200,7 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Schedule your Post"}
-        video={"https://assets.craftyart.in/w_assets/schedule_post.mp4"}
+        video={"/videos/schedule_post.mp4"}
       />
 
       <LeftImage
@@ -218,13 +215,14 @@ export default function LandingPage({ post }: any) {
           </Box>
         }
         buttonName={"Create your Eprofile"}
+        alt="e profile"
         image="https://assets.craftyart.in/w_assets/images/order_img (1).png"
       />
 
       <CustomerSaying />
       <Celebrate />
 
-      <Box className="h-[650px] sm:h-[430px] 2sm:h-[500px] bg-[url('https://assets.craftyart.in/w_assets/images/bottomRounded.png')]  bg-cover bg-no-repeat bg-bottom px-[20px]">
+      <Box className="h-[650px] sm:h-[430px] 2sm:h-[500px] bg-[url('/images/bottomRounded.png')]  bg-cover bg-no-repeat bg-bottom px-[20px]">
         <Box className="flex flex-col items-center pt-14 gap-5   ">
           <Typography
             className="text-[30px] sm:text-[47px] font-bold text-white text-center "
