@@ -1,5 +1,6 @@
 import { decryptData } from "@/aes-crypto";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import ImageBox from "@/components/common/ImageBox";
 import { CategoryApiData, ServerSideProps } from "@/interface/categoryType";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
@@ -30,7 +31,7 @@ const ResumeStatic = dynamic(
   () => import("@/components/categoryStaticComponents/ResumeStatic")
 );
 const Breadcrumb = dynamic(() => import("@/components/common/Breadcrumb"));
-const ImageBox = dynamic(() => import("@/components/common/ImageBox"));
+// const ImageBox = dynamic(() => import("@/components/common/ImageBox"));
 const NotFound = dynamic(() => import("@/components/common/NotFound"));
 const TemplateModal = dynamic(
   () => import("@/components/singleTemplate/TemplateModal")

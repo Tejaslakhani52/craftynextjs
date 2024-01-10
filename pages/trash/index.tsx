@@ -14,7 +14,6 @@ import Tabs from "@mui/material/Tabs";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import axios from "axios";
-import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";

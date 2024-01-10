@@ -1,5 +1,6 @@
 import { decryptData } from "@/aes-crypto";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
+import ImageBox from "@/components/common/ImageBox";
 import { CategoryApiData } from "@/interface/categoryType";
 import { DataType } from "@/interface/searchTemplateType";
 import { ActionStateType } from "@/interface/stateType";
@@ -12,7 +13,6 @@ import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 
 const Breadcrumb = dynamic(() => import("@/components/common/Breadcrumb"));
-const ImageBox = dynamic(() => import("@/components/common/ImageBox"));
 const FaqsBox = dynamic(() => import("@/components/common/FAQs"));
 const QuestionsTitle = dynamic(
   () => import("@/components/common/QuestionsTitle")

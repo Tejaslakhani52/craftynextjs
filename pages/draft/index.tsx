@@ -11,7 +11,6 @@ import { Box, Button } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
-import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -135,20 +134,16 @@ const DraftBoxes = ({
                     alignItems: "center",
                   }}
                 >
-                  <Image
+                  <img
                     src={image}
                     alt={image}
-                    className="opacity-0"
+                    className={`opacity-0`}
                     style={{
                       maxWidth: `${multiSize}px`,
                       maxHeight: "180px",
                       width: "auto",
                       transition: "0.5s all",
                     }}
-                    width={200}
-                    height={200}
-                    quality={60}
-                    priority={true}
                     onLoad={(e: any) => e.target.classList.remove("opacity-0")}
                   />
                 </div>

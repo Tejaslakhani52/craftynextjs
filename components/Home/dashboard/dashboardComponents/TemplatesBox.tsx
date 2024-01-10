@@ -239,9 +239,10 @@ export const TemplatesBoxes = ({
         <Typography className="text-black font-semibold text-[22px] max-sm:text-[14px]">
           {item?.category_name}
         </Typography>
-        <Button
-          className="normal-case"
-          onClick={() => router.push(`/templates/${item?.id_name}`)}
+        <Link
+          prefetch={false}
+          href={`/templates/${item?.id_name}`}
+          className="normal-case flex items-center"
         >
           <span className="text-[#2EC6B8] font-semibold text-[16px] max-sm:text-[14px] flex items-center">
             See all
@@ -250,7 +251,7 @@ export const TemplatesBoxes = ({
           <span className="w-[7px] inline-block ml-3">
             <Icons.rightActiveArrowIcon svgProps={{ width: 7 }} />
           </span>
-        </Button>
+        </Link>
       </Box>
       <Box
         className="flex items-center overflow-auto scroll_none gap-[15px] max-sm:gap-[10px] "
