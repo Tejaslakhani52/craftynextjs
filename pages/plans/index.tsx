@@ -2,11 +2,6 @@ import { decryptData } from "@/aes-crypto";
 import Icons from "@/assets";
 import { handleEmailClick } from "@/commonFunction/emailCheck";
 import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
-import CustomHead from "@/components/common/CustomHead";
-import DialogModal from "@/components/common/DialogBox";
-import FaqsBox from "@/components/common/FAQs";
-import GetTemplates from "@/components/common/GetTemplates";
-import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { RazorpayPage } from "@/components/payment/Razorpay";
 import Stripe from "@/components/payment/Stripe";
 import { PackageList } from "@/interface/currentPlane";
@@ -20,9 +15,18 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { addDays, format } from "date-fns";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+const FaqsBox = dynamic(() => import("@/components/common/FAQs"));
+const GetTemplates = dynamic(() => import("@/components/common/GetTemplates"));
+const QuestionsTitle = dynamic(
+  () => import("@/components/common/QuestionsTitle")
+);
+const DialogModal = dynamic(() => import("@/components/common/DialogBox"));
 
 export const MarkTextRight = ({ text }: any) => {
   return (

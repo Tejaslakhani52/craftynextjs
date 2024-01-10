@@ -1,12 +1,22 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import Celebrate from "./landingPageComponents/Celebrate";
-import CustomInvitations from "./landingPageComponents/CustomInvitations";
-import CustomerSaying from "./landingPageComponents/CustomerSaying";
-import ExploreBlog from "./landingPageComponents/ExploreBlog";
-import LeftImage from "./landingPageComponents/LeftImage";
-import RightImage from "./landingPageComponents/RightImage";
-import TrendingFunctionalities from "./landingPageComponents/TrendingFunctionalities";
+import dynamic from "next/dynamic";
+
+const Celebrate = dynamic(() => import("./landingPageComponents/Celebrate"));
+const CustomInvitations = dynamic(
+  () => import("./landingPageComponents/CustomInvitations")
+);
+const CustomerSaying = dynamic(
+  () => import("./landingPageComponents/CustomerSaying")
+);
+const ExploreBlog = dynamic(
+  () => import("./landingPageComponents/ExploreBlog")
+);
+const LeftImage = dynamic(() => import("./landingPageComponents/LeftImage"));
+const RightImage = dynamic(() => import("./landingPageComponents/RightImage"));
+const TrendingFunctionalities = dynamic(
+  () => import("./landingPageComponents/TrendingFunctionalities")
+);
 
 export const MarkText = ({ text }: any) => {
   return (

@@ -1,17 +1,30 @@
 import React from "react";
 import { Box, Button, Typography } from "@mui/material";
-import LeftImageSection from "../wedding/components/LeftImageSection";
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import RightImageSection from "../wedding/components/RightImageSection";
-import WithCraftyartBanner from "@/components/common/WithCraftyartBanner";
-import CustomerSayingSmall from "@/components/common/CustomerSayingSmall";
-import GetTemplates from "@/components/common/GetTemplates";
-import QuestionsTitle from "@/components/common/QuestionsTitle";
-import FaqsBox from "@/components/common/FAQs";
 import { useRouter } from "next/router";
-import CustomHead from "@/components/common/CustomHead";
 import Head from "next/head";
-import FLink from "@/components/common/FLink";
+import dynamic from "next/dynamic";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+const FaqsBox = dynamic(() => import("@/components/common/FAQs"));
+const GetTemplates = dynamic(() => import("@/components/common/GetTemplates"));
+const QuestionsTitle = dynamic(
+  () => import("@/components/common/QuestionsTitle")
+);
+const LeftImageSection = dynamic(
+  () => import("../wedding/components/LeftImageSection")
+);
+const RightImageSection = dynamic(
+  () => import("../wedding/components/RightImageSection")
+);
+const FLink = dynamic(() => import("@/components/common/FLink"));
+
+const CustomerSayingSmall = dynamic(
+  () => import("@/components/common/CustomerSayingSmall")
+);
+const WithCraftyartBanner = dynamic(
+  () => import("@/components/common/WithCraftyartBanner")
+);
 
 export default function index() {
   const router = useRouter();

@@ -1,10 +1,16 @@
 import Icons from "@/assets";
-import ForgotPass from "@/components/auth/authComponents/ForgotPass";
-import LoginContentBox from "@/components/auth/authComponents/LoginContentBox";
 import { authCookiesGet } from "@/redux/action/AuthToken";
 import { Box } from "@mui/material";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+const ForgotPass = dynamic(
+  () => import("@/components/auth/authComponents/ForgotPass")
+);
+const LoginContentBox = dynamic(
+  () => import("@/components/auth/authComponents/LoginContentBox")
+);
 
 export default function index() {
   const router = useRouter();

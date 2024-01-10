@@ -5,16 +5,20 @@ import {
   useScreenHeight,
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
-import Breadcrumb from "@/components/common/Breadcrumb";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { DataType } from "@/interface/searchTemplateType";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
+
+const Breadcrumb = dynamic(() => import("@/components/common/Breadcrumb"));
+const TemplateModal = dynamic(
+  () => import("@/components/singleTemplate/TemplateModal")
+);
 
 interface ImageBoxProps {
   templates: DataType | any;

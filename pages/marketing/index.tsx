@@ -1,15 +1,24 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import CustomHead from "@/components/common/CustomHead";
-import CustomizableSliderTemplates from "@/components/common/CustomizableSliderTemplates";
-import FaqsBox from "@/components/common/FAQs";
-import FLink from "@/components/common/FLink";
-import FreeTrialBlackBanner from "@/components/common/FreeTrialBlackBanner";
-import GetTemplates from "@/components/common/GetTemplates";
-import LeftDetail from "@/components/common/LeftDetail";
-import QuestionsTitle from "@/components/common/QuestionsTitle";
-import RightDetail from "@/components/common/RightDetail";
 import { Box } from "@mui/material";
+import dynamic from "next/dynamic";
 import Head from "next/head";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+const FaqsBox = dynamic(() => import("@/components/common/FAQs"));
+const FLink = dynamic(() => import("@/components/common/FLink"));
+const GetTemplates = dynamic(() => import("@/components/common/GetTemplates"));
+const QuestionsTitle = dynamic(
+  () => import("@/components/common/QuestionsTitle")
+);
+
+const CustomizableSliderTemplates = dynamic(
+  () => import("@/components/common/CustomizableSliderTemplates")
+);
+const FreeTrialBlackBanner = dynamic(
+  () => import("@/components/common/FreeTrialBlackBanner")
+);
+const LeftDetail = dynamic(() => import("@/components/common/LeftDetail"));
+const RightDetail = dynamic(() => import("@/components/common/RightDetail"));
 
 const sliderTemplate = [
   {

@@ -67,10 +67,9 @@ export default function LoginContentBox(props: any) {
       );
 
       toast.success("Success Login");
-      dispatch(openSidebar(true));
       authCookiesSet(userCredential?.user?.uid);
-
       router.push(`${router.pathname}`);
+      dispatch(openSidebar(true));
 
       // window.location.reload();
 

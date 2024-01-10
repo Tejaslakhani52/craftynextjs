@@ -63,6 +63,7 @@ function ImageBox({
 
   return (
     <Link
+      prefetch={false}
       className={`h-auto bg-white cursor-pointer ${
         uniqueCat
           ? "p-3 max-sm:p-1 min-w-[250px] max-sm:min-w-[130px]"

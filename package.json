@@ -7,7 +7,10 @@
     "build": "next build",
     "export": "next build && next export",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true next build",
+    "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build"
   },
   "devDependencies": {
     "@types/cookie": "^0.6.0",
@@ -27,6 +30,7 @@
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
     "@mui/styled-engine-sc": "^6.0.0-alpha.3",
+    "@next/bundle-analyzer": "^14.0.4",
     "@reduxjs/toolkit": "^1.9.7",
     "@stripe/react-stripe-js": "^2.3.2",
     "@stripe/stripe-js": "^2.1.11",
@@ -34,6 +38,7 @@
     "@types/react-dom": "^18.2.14",
     "autoprefixer": "^10.4.16",
     "axios": "^1.5.1",
+    "cross-env": "^7.0.3",
     "crypto-js": "^4.2.0",
     "date-fns": "^2.30.0",
     "file-saver": "^2.0.5",

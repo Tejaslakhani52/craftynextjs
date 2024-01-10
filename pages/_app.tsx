@@ -1,20 +1,11 @@
-import { decryptData } from "@/aes-crypto";
-import { useScreenHeight } from "@/commonFunction/screenWidthHeight";
-import MobileBottomBar from "@/components/common/MobileBottomBar";
-import Footer from "@/components/footer/Footer";
-import Header from "@/components/header/Header";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
-import Index from "@/private/Index";
-import { authCookiesGet, setCC } from "@/redux/action/AuthToken";
 import store from "@/redux/store";
 import "@/styles/globals.css";
-import { Box } from "@mui/material";
-import axios from "axios";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { Toaster } from "react-hot-toast";
 import { Provider } from "react-redux";
+import dynamic from "next/dynamic";
+
+const HomeImport = dynamic(() => import("./Home"));
 
 export async function getStaticProps() {
   const router = useRouter();
@@ -38,53 +29,13 @@ export default function App({
   Component,
   pageProps,
 }: AppProps & { paragraphContent: string }) {
-  const router = useRouter();
-  const id = router.query;
-  const str = router.pathname.substring(1);
-  const screenHeight = useScreenHeight();
-  const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
-
-  const token = authCookiesGet();
-
-  useEffect(() => {
-    axios.get("/api/get/getIp").then((res) => {
-      const ip: any = JSON.parse(decryptData(res?.data));
-
-      axios
-        .post("/api/get/getCountryCode", { ip: ip?.ip })
-        .then((response: any) => {
-          const res: any = JSON.parse(decryptData(response?.data));
-          setCC(res?.countryCode);
-        });
-    });
-  }, []);
-
   return (
     <>
       <Provider store={store}>
-        <Box>
-          <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-          <Box
-            sx={{
-              marginLeft: sidebarOpen ? "250px" : "0",
-              marginTop: "70px",
-              minHeight: `${screenHeight - 568}px`,
-            }}
-            className="max-lg:ml-0 max-sm:mb-[80px]"
-          >
-            <div style={{ zIndex: "5000000000000000", position: "fixed" }}>
-              <Toaster />
-            </div>
-            <Component {...pageProps} />
-            {pageProps.paragraphContent && <p>{pageProps.paragraphContent}</p>}
-          </Box>
-          <Box>{!token && <Footer />}</Box>
-        </Box>
-
-        <TemplateModal open={id?.templates ? true : false} />
-
-        <MobileBottomBar />
-        <Index />
+        <HomeImport>
+          <Component {...pageProps} />
+          {pageProps.paragraphContent && <p>{pageProps.paragraphContent}</p>}
+        </HomeImport>
       </Provider>
     </>
   );

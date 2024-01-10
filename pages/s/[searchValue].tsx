@@ -4,12 +4,16 @@ import {
   useScreenWidth,
 } from "@/commonFunction/screenWidthHeight";
 import ImageBox from "@/components/common/ImageBox";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { Box, Skeleton, Typography } from "@mui/material";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import StackGrid from "react-stack-grid";
+
+const TemplateModal = dynamic(
+  () => import("@/components/singleTemplate/TemplateModal")
+);
 
 export default function searchValue() {
   const router = useRouter();

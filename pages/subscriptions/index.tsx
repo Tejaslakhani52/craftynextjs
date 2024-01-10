@@ -1,9 +1,9 @@
-import MainLoaderBox from "@/components/common/MainLoaderBox";
-import Account from "@/components/userAccount/Account";
 import { openSidebar } from "@/redux/reducer/actionDataReducer";
-import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+const Account = dynamic(() => import("@/components/userAccount/Account"));
 
 export default function index() {
   const dispatch = useDispatch();

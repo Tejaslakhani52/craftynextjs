@@ -246,6 +246,7 @@ export default function Sidebar(setOpen: any) {
             </Button>
             <Box onClick={() => dispatch(openSidebar(false))}>
               <Link
+                prefetch={false}
                 href={"/plans"}
                 className="text-black font-medium text-[15px] w-full flex gap-5 px-[20px] justify-between  w-full normal-case	text-black mb-2 relative"
               >
@@ -302,6 +303,7 @@ export default function Sidebar(setOpen: any) {
                   </Box>
                 ) : (
                   <Link
+                    prefetch={false}
                     href={item.path}
                     className={`flex cursor-pointer py-3 px-3 w-full hover:bg-[#F4F7FE] ${
                       router.pathname === item.path && " bg-[#F4F7FE]"

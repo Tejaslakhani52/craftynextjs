@@ -1,16 +1,30 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
-import CustomHead from "@/components/common/CustomHead";
-import ExploreTemplates from "@/components/common/ExploreTemplates";
-import FaqsBox from "@/components/common/FAQs";
-import FLink from "@/components/common/FLink";
-import GetStartedLinearBanner from "@/components/common/GetStartedLinearBanner";
-import GetTemplates from "@/components/common/GetTemplates";
-import QuestionsTitle from "@/components/common/QuestionsTitle";
 import { Box, Typography } from "@mui/material";
 import Head from "next/head";
-import LeftImageSection from "./components/LeftImageSection";
-import RightImageSection from "./components/RightImageSection";
+import dynamic from "next/dynamic";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+
+const CustomerSaying = dynamic(
+  () =>
+    import("@/components/Home/landingPage/landingPageComponents/CustomerSaying")
+);
+const ExploreTemplates = dynamic(
+  () => import("@/components/common/ExploreTemplates")
+);
+const FaqsBox = dynamic(() => import("@/components/common/FAQs"));
+const FLink = dynamic(() => import("@/components/common/FLink"));
+const GetStartedLinearBanner = dynamic(
+  () => import("@/components/common/GetStartedLinearBanner")
+);
+const GetTemplates = dynamic(() => import("@/components/common/GetTemplates"));
+const QuestionsTitle = dynamic(
+  () => import("@/components/common/QuestionsTitle")
+);
+const LeftImageSection = dynamic(() => import("./components/LeftImageSection"));
+const RightImageSection = dynamic(
+  () => import("./components/RightImageSection")
+);
 
 export default function index() {
   return (

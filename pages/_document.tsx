@@ -42,7 +42,7 @@ export default function Document() {
                 "https://twitter.com/craftyartstudio",
                 "https://www.instagram.com/craftyart_official",
                 "https://www.youtube.com/channel/UCVt1DA8bQrM7YunIIrK-gSg",
-                "https://in.pinterest.com/craftyart_official"
+                "https://in.pinterest.com/craftyart_official",
               ],
             }),
           }}

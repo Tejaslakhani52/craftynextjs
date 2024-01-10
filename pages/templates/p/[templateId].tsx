@@ -1,22 +1,26 @@
 import Icons from "@/assets";
 import { calculateHeight } from "@/commonFunction/calculateHeight";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
-import CustomHead from "@/components/common/CustomHead";
 import TemplateModal, {
   IconsText,
 } from "@/components/singleTemplate/TemplateModal";
-import ShowPremiumDialog from "@/components/templatePayment/ShowPremiumDialog";
 import { SingleTempType } from "@/interface/getSingleTempType";
 import { SearchTempType } from "@/interface/searchTemplateType";
 import { authCookiesGet, tokenGet, tokenSet } from "@/redux/action/AuthToken";
 import { modalClosePath, tempId } from "@/redux/reducer/actionDataReducer";
 import { Box, Typography } from "@mui/material";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { useDispatch } from "react-redux";
 import StackGrid from "react-stack-grid";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+const ShowPremiumDialog = dynamic(
+  () => import("@/components/templatePayment/ShowPremiumDialog")
+);
 
 export async function getServerSideProps(context: any) {
   try {
@@ -353,6 +357,7 @@ export default function templateId({ templateData, anotherData }: serverProps) {
                 )
                 ?.map((templates: any, index: number) => (
                   <Link
+                    prefetch={false}
                     href={`/templates/p/${templates.id_name}`}
                     onClick={(e) => e.preventDefault()}
                   >

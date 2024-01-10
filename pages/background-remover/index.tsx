@@ -1,11 +1,4 @@
 import { MarkText } from "@/components/Home/landingPage/LandingPage";
-import CustomHead from "@/components/common/CustomHead";
-import CustomerSayingSmall from "@/components/common/CustomerSayingSmall";
-import FaqsBox from "@/components/common/FAQs";
-import FLink from "@/components/common/FLink";
-import GetTemplates from "@/components/common/GetTemplates";
-import QuestionsTitle from "@/components/common/QuestionsTitle";
-import WithCraftyartBanner from "@/components/common/WithCraftyartBanner";
 import { authCookiesGet } from "@/redux/action/AuthToken";
 import { Box, Button, Typography } from "@mui/material";
 import Tab from "@mui/material/Tab";
@@ -14,8 +7,27 @@ import axios from "axios";
 import { saveAs } from "file-saver";
 import Head from "next/head";
 import React, { useEffect, useRef, useState } from "react";
-import LeftImageSection from "../wedding/components/LeftImageSection";
-import RightImageSection from "../wedding/components/RightImageSection";
+import dynamic from "next/dynamic";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+const FaqsBox = dynamic(() => import("@/components/common/FAQs"));
+const GetTemplates = dynamic(() => import("@/components/common/GetTemplates"));
+const QuestionsTitle = dynamic(
+  () => import("@/components/common/QuestionsTitle")
+);
+const LeftImageSection = dynamic(
+  () => import("../wedding/components/LeftImageSection")
+);
+const RightImageSection = dynamic(
+  () => import("../wedding/components/RightImageSection")
+);
+const FLink = dynamic(() => import("@/components/common/FLink"));
+const CustomerSayingSmall = dynamic(
+  () => import("@/components/common/CustomerSayingSmall")
+);
+const WithCraftyartBanner = dynamic(
+  () => import("@/components/common/WithCraftyartBanner")
+);
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -313,12 +325,6 @@ export default function index() {
                     </p>
                   </div>
                 </div>
-
-                {/* <div className="my-4">
-              <Typography className="text-center font-medium">
-                You have no image? Try one of these
-              </Typography>
-            </div> */}
               </Box>
             )}
           </Box>

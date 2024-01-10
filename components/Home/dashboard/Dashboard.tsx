@@ -5,8 +5,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
-import CustomSize from "./dashboardComponents/CustomSize";
-import TemplatesBox from "./dashboardComponents/TemplatesBox";
+
+import dynamic from "next/dynamic";
+
+const CustomSize = dynamic(() => import("./dashboardComponents/CustomSize"));
+const TemplatesBox = dynamic(
+  () => import("./dashboardComponents/TemplatesBox")
+);
 
 const bannerCategory = [
   {
@@ -125,6 +130,7 @@ export default function Dashboard() {
           <Box className="flex max-sm:hidden lg:justify-center items-center gap-[30px] md:gap-[50px] py-10 overflow-auto scroll_none">
             {bannerCategory?.map((item, index) => (
               <Link
+                prefetch={false}
                 key={index}
                 href={item?.path}
                 className="flex flex-col items-center cursor-pointer gap-[10px]"

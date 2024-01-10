@@ -1,23 +1,40 @@
 import { decryptData } from "@/aes-crypto";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
-import FestivalBanner from "@/components/categoryStaticComponents/FestivalStatic";
-import FlyerStatic from "@/components/categoryStaticComponents/FlyerStatic";
-import InvitationStatic from "@/components/categoryStaticComponents/InvitationStatic";
-import LogoStatic from "@/components/categoryStaticComponents/LogoStatic";
-import QuotesStatic from "@/components/categoryStaticComponents/QuotesStatic";
-import ResumeStatic from "@/components/categoryStaticComponents/ResumeStatic";
-import Breadcrumb from "@/components/common/Breadcrumb";
-import CustomHead from "@/components/common/CustomHead";
-import ImageBox from "@/components/common/ImageBox";
-import NotFound from "@/components/common/NotFound";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { CategoryApiData, ServerSideProps } from "@/interface/categoryType";
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+
+const FestivalBanner = dynamic(
+  () => import("@/components/categoryStaticComponents/FestivalStatic")
+);
+const FlyerStatic = dynamic(
+  () => import("@/components/categoryStaticComponents/FlyerStatic")
+);
+const InvitationStatic = dynamic(
+  () => import("@/components/categoryStaticComponents/InvitationStatic")
+);
+const LogoStatic = dynamic(
+  () => import("@/components/categoryStaticComponents/LogoStatic")
+);
+const QuotesStatic = dynamic(
+  () => import("@/components/categoryStaticComponents/QuotesStatic")
+);
+const ResumeStatic = dynamic(
+  () => import("@/components/categoryStaticComponents/ResumeStatic")
+);
+const Breadcrumb = dynamic(() => import("@/components/common/Breadcrumb"));
+const ImageBox = dynamic(() => import("@/components/common/ImageBox"));
+const NotFound = dynamic(() => import("@/components/common/NotFound"));
+const TemplateModal = dynamic(
+  () => import("@/components/singleTemplate/TemplateModal")
+);
 
 const otherData = {
   latestMeta: {

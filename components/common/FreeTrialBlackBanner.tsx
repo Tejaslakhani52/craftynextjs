@@ -27,7 +27,7 @@ export default function FreeTrialBlackBanner({ heading, text, path }: props) {
         </Box>
 
         {path ? (
-          <Link href={path}>
+          <Link prefetch={false} href={path}>
             <Button
               sx={{
                 textTransform: "unset",
@@ -48,7 +48,7 @@ export default function FreeTrialBlackBanner({ heading, text, path }: props) {
             </Button>
           </Link>
         ) : (
-          <Link href={"/"}>
+          <Link prefetch={false} href={"/"}>
             <Button
               sx={{
                 textTransform: "unset",

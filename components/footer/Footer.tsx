@@ -98,13 +98,13 @@ export const Special = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <Link href={"/marketing"}>
+      <Link prefetch={false} href={"/marketing"}>
         <OptionButton>Marketing</OptionButton>
       </Link>
-      <Link href={"/business"}>
+      <Link prefetch={false} href={"/business"}>
         <OptionButton>Business</OptionButton>
       </Link>
-      <Link href={"/invitation"}>
+      <Link prefetch={false} href={"/invitation"}>
         <OptionButton>Card & Invitation</OptionButton>
       </Link>
     </Box>
@@ -116,17 +116,17 @@ export const Company = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <Link href={"/about-us"}>
+      <Link prefetch={false} href={"/about-us"}>
         <OptionButton>About</OptionButton>
       </Link>
       {/* <OptionButton>Career</OptionButton> */}
-      <Link href={"/plans"}>
+      <Link prefetch={false} href={"/plans"}>
         <OptionButton>Price and plan</OptionButton>
       </Link>
-      <Link href={"/contact-us"}>
+      <Link prefetch={false} href={"/contact-us"}>
         <OptionButton>Contact us</OptionButton>
       </Link>
-      <Link href={"https://www.craftyartapp.com/blog"}>
+      <Link prefetch={false} href={"https://www.craftyartapp.com/blog"}>
         <OptionButton>Blog</OptionButton>
       </Link>
     </Box>
@@ -138,16 +138,16 @@ export const Legal = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <Link href={"/privacy-policy"}>
+      <Link prefetch={false} href={"/privacy-policy"}>
         <OptionButton>Privacy policy</OptionButton>
       </Link>
-      <Link href={"/referral-program"}>
+      <Link prefetch={false} href={"/referral-program"}>
         <OptionButton>referral program</OptionButton>
       </Link>
-      <Link href={"/term-condition"}>
+      <Link prefetch={false} href={"/term-condition"}>
         <OptionButton>Terms and condition</OptionButton>
       </Link>
-      <Link href={"/copyright-infringement"}>
+      <Link prefetch={false} href={"/copyright-infringement"}>
         <OptionButton>Copyright infrigment</OptionButton>
       </Link>
     </Box>
@@ -159,22 +159,22 @@ export const Discover = () => {
 
   return (
     <Box className="flex flex-col items-start text-white font-normal">
-      <Link href={"/invitation"}>
+      <Link prefetch={false} href={"/invitation"}>
         <OptionButton>Invitation</OptionButton>
       </Link>
-      <Link href={"/quotes"}>
+      <Link prefetch={false} href={"/quotes"}>
         <OptionButton>Quotes</OptionButton>
       </Link>
-      <Link href={"/flyer"}>
+      <Link prefetch={false} href={"/flyer"}>
         <OptionButton>Flyer</OptionButton>
       </Link>
-      <Link href={"/caricature"}>
+      <Link prefetch={false} href={"/caricature"}>
         <OptionButton>Caricature</OptionButton>
       </Link>
-      <Link href={""} onClick={handleClickWhatsapp}>
+      <Link prefetch={false} href={""} onClick={handleClickWhatsapp}>
         <OptionButton>Custom order</OptionButton>
       </Link>
-      <Link href={"/brand-kit"}>
+      <Link prefetch={false} href={"/brand-kit"}>
         <OptionButton>Brand Kit</OptionButton>
       </Link>
     </Box>

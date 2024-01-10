@@ -1,19 +1,25 @@
 import { decryptData } from "@/aes-crypto";
 import { useScreenWidth } from "@/commonFunction/screenWidthHeight";
-import Breadcrumb from "@/components/common/Breadcrumb";
-import FaqsBox from "@/components/common/FAQs";
-import ImageBox from "@/components/common/ImageBox";
-import QuestionsTitle from "@/components/common/QuestionsTitle";
-import TemplateModal from "@/components/singleTemplate/TemplateModal";
 import { CategoryApiData } from "@/interface/categoryType";
 import { DataType } from "@/interface/searchTemplateType";
 import { ActionStateType } from "@/interface/stateType";
 import { Box, Button, Rating, Typography } from "@mui/material";
 import axios from "axios";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
+
+const Breadcrumb = dynamic(() => import("@/components/common/Breadcrumb"));
+const ImageBox = dynamic(() => import("@/components/common/ImageBox"));
+const FaqsBox = dynamic(() => import("@/components/common/FAQs"));
+const QuestionsTitle = dynamic(
+  () => import("@/components/common/QuestionsTitle")
+);
+const TemplateModal = dynamic(
+  () => import("@/components/singleTemplate/TemplateModal")
+);
 
 export default function index() {
   const screenWidth = useScreenWidth();

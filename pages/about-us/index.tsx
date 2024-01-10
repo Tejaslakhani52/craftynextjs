@@ -1,8 +1,14 @@
-import CustomerSaying from "@/components/Home/landingPage/landingPageComponents/CustomerSaying";
-import CustomHead from "@/components/common/CustomHead";
-import GetTemplates from "@/components/common/GetTemplates";
 import { Box, Typography } from "@mui/material";
 import { useRouter } from "next/router";
+
+import dynamic from "next/dynamic";
+
+const CustomerSaying = dynamic(
+  () =>
+    import("@/components/Home/landingPage/landingPageComponents/CustomerSaying")
+);
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
+const GetTemplates = dynamic(() => import("@/components/common/GetTemplates"));
 
 const dEverything = [
   {

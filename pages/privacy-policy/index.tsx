@@ -1,5 +1,7 @@
-import CustomHead from "@/components/common/CustomHead";
 import { Box, Typography } from "@mui/material";
+import dynamic from "next/dynamic";
+
+const CustomHead = dynamic(() => import("@/components/common/CustomHead"));
 
 export default function index() {
   return (

@@ -108,7 +108,10 @@ export default function ExploreTemplates({ category, getAll, keyword }: any) {
                 }}
                 id={`content${index}`}
               >
-                <Link href={`/templates/p/${templates.id_name}`}>
+                <Link
+                  prefetch={false}
+                  href={`/templates/p/${templates.id_name}`}
+                >
                   <div className="w-full h-full p-[8px]">
                     <img
                       src={templates?.template_thumb}
@@ -139,7 +142,7 @@ export default function ExploreTemplates({ category, getAll, keyword }: any) {
         </StackGrid>
 
         <Box sx={{ display: "flex", justifyContent: "center", p: "30px" }}>
-          <Link href={getAll}>
+          <Link prefetch={false} href={getAll}>
             <button
               style={{
                 background:
