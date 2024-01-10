@@ -12,6 +12,14 @@ export default async function handler(
       return;
     }
 
+    const allowedDomain = "https://craftynextjs-al84.vercel.app/";
+    const referer = req.headers.referer || req.headers.referrer;
+
+    if (!referer || !referer.includes(allowedDomain)) {
+      res.status(500).json({ error: "Internal Server Error" });
+      return;
+    }
+
     const response = await axios.post<any>(
       `https://story.craftyartapp.com/get/main/data`,
       {
