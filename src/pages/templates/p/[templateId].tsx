@@ -383,7 +383,6 @@ export default function templateId({ templateData, anotherData }: serverProps) {
                 ?.map((templates: any, index: number) => (
                   <Link
                     key={index}
-                    prefetch={false}
                     href={`/templates/p/${templates.id_name}`}
                     onClick={(e) => e.preventDefault()}
                   >

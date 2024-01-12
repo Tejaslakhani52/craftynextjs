@@ -72,7 +72,6 @@ export default function TemplatesBoxes({
           {item?.category_name}
         </Typography>
         <Link
-          prefetch={false}
           href={`/templates/${item?.id_name}`}
           className="normal-case flex items-center"
         >

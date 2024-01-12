@@ -61,7 +61,6 @@ export default function ImageBox({
       }}
     >
       <Link
-        prefetch={false}
         href={`/templates/p/${templates.id_name}`}
         onClick={(e) => e.preventDefault()}
       >

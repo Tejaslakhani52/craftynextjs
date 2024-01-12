@@ -76,11 +76,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
                 </Button>
               </Box>
             )}
-            <Link
-              prefetch={false}
-              href={"/"}
-              className="w-[146px] cursor-pointer "
-            >
+            <Link href={"/"} className="w-[146px] cursor-pointer ">
               <img
                 src="/images/logo.svg"
                 alt="logo"

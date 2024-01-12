@@ -146,7 +146,6 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
             </Typography>
             {data?.allName?.map((item: any, index: number) => (
               <Link
-                prefetch={false}
                 key={index}
                 href={item.path}
                 onClick={() => {
@@ -207,7 +206,6 @@ export default function MenuBox() {
           className={` max-xl:hidden px-4 max-2xl:px-3 py-2   text-[14px] flex items-center whitespace-nowrap text-[#1C3048] hover:text-[#2EC6B8]`}
         >
           <Link
-            prefetch={false}
             href={"/plans"}
             onClick={() => {
               if (screenWidth < 1020) {
@@ -257,7 +255,6 @@ export default function MenuBox() {
               }}
             >
               <Link
-                prefetch={false}
                 href={"/plans"}
                 onClick={() => {
                   dispatch(openSidebar(false));

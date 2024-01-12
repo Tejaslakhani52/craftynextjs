@@ -437,7 +437,6 @@ export default function TemplateModal({
                       ?.map((templates: DataType, index: number) => (
                         <Link
                           key={index}
-                          prefetch={false}
                           href={`/templates/p/${templates.id_name}`}
                           onClick={(e) => e.preventDefault()}
                         >

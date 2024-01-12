@@ -53,7 +53,6 @@ export default function ImageBox({
 
   return (
     <Link
-      prefetch={false}
       className={`h-auto bg-white cursor-pointer block ${
         uniqueCat
           ? "p-3 max-sm:p-1 max-w-[250px] max-sm:max-w-[130px]"

@@ -60,7 +60,7 @@ export default function GetStartedLinearBanner(props: props) {
           {props?.text}
         </Typography>
 
-        <Link prefetch={false} href={props?.navigate}>
+        <Link href={props?.navigate}>
           <Button
             style={{
               backgroundColor: "white",

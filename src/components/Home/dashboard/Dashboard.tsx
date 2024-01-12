@@ -133,7 +133,6 @@ export default function Dashboard() {
           <Box className="flex max-sm:hidden  justify-center items-center gap-[30px] md:gap-[50px] py-10 overflow-auto scroll_none">
             {bannerCategory?.map((item, index) => (
               <Link
-                prefetch={false}
                 key={index}
                 href={item?.path}
                 className="flex flex-col items-center cursor-pointer gap-[10px]"

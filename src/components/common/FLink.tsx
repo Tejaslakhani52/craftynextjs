@@ -4,7 +4,6 @@ import React from "react";
 export default function FLink(props: any) {
   return (
     <Link
-      prefetch={false}
       href={props.lk}
       className="text_linear"
       target="_blank"
