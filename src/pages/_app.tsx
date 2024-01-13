@@ -4,7 +4,9 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { Provider } from "react-redux";
 import dynamic from "next/dynamic";
-import { Box } from "@mui/material";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const LayoutImport = dynamic(() => import("./Layout"));
 
@@ -30,13 +32,38 @@ export default function App({
   pageProps,
 }: AppProps & { paragraphContent: string }) {
   return (
-    <Box>
+    <main className={inter.className}>
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily} !important;
+        }
+
+        body {
+          font-family: ${inter.style.fontFamily} !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        input,
+        div,
+        button,
+        ul,
+        li {
+          font-family: ${inter.style.fontFamily} !important;
+          color: "#1C3048";
+        }
+      `}</style>
       <Provider store={store}>
         <LayoutImport>
           <Component {...pageProps} />
           {pageProps.paragraphContent && <p>{pageProps.paragraphContent}</p>}
         </LayoutImport>
       </Provider>
-    </Box>
+    </main>
   );
 }

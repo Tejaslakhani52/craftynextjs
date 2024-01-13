@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+}
 
 /* html {
   overflow-x: overlay;
 } */
 
 body {
-  font-family: "Inter", sans-serif !important;
+  /* font-family: "Inter", sans-serif !important; */
   /* overflow-x: hidden; */
   overflow: auto !important;
   padding: 0 !important;
@@ -32,8 +35,7 @@ div,
 button,
 ul,
 li {
-  font-family: "Inter" !important;
-  color: "#1C3048";
+  color: "#1C3048" !important;
 }
 
 .header {

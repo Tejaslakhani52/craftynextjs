@@ -12,6 +12,7 @@ export function isFakeDomain(req: NextApiRequest) {
     "localhost:3000",
     "192.168.29.92:3000",
     "craftynextjs-al84sub.vercel.app",
+    "craftynextjs-al84.vercel.app",
   ];
   const referer = req.headers.referer || "";
   const domainMatch = referer.match(/^https?:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
