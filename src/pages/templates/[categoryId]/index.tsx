@@ -207,7 +207,7 @@ export default function index({ jsonString }: ServerSideProps) {
     <>
       {!jsonString?.datas && <NotFound />}
 
-      {jsonString?.datas && (
+      {true && (
         <>
           <Box className="bg-[#F4F7FE] px-[10px] sm:px-[16px]">
             <CustomHead

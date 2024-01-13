@@ -149,6 +149,7 @@ export function BasicMenu({ title, itemName }: BasicMenuProps) {
                 key={index}
                 href={item.path}
                 onClick={() => {
+                  setOnBoxLeave(false);
                   dispatch(openSidebar(false));
                 }}
               >
