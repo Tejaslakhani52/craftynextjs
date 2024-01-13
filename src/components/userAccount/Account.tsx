@@ -223,7 +223,7 @@ const Account: React.FC<AccountProps> = ({ defaultTab }) => {
 
       {loading && (
         <main className="main">
-          <span className="loader"></span>
+          <span className="loader_span"></span>
         </main>
       )}
     </Box>

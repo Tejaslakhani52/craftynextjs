@@ -9,7 +9,7 @@ export default function MainLoaderBox() {
       {mainLoading && (
         <main className="main bg-white">
           <main className="main">
-            <span className="loader"></span>
+            <span className="loader_span"></span>
           </main>
         </main>
       )}

@@ -109,7 +109,7 @@ export default function Index() {
     <div>
       {mainLoading && (
         <main className="main" style={{ zIndex: "555555555555555555555555" }}>
-          <span className="loader"></span>
+          <span className="loader_span"></span>
         </main>
       )}
     </div>

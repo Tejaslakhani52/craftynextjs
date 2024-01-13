@@ -751,7 +751,7 @@ and generating ideas."
 
       {mainLoader && (
         <main className="main">
-          <span className="loader"></span>
+          <span className="loader_span"></span>
         </main>
       )}
     </>
