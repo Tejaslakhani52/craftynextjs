@@ -35,7 +35,10 @@ export default function Home(Props: any) {
   useEffect(() => {
     const handleRouteChangeError = () => setLoading(false);
     const handleRouteChangeStart = () => setLoading(false);
-    const handleRouteChangeComplete = () => setLoading(true);
+    const handleRouteChangeComplete = () =>
+      setTimeout(() => {
+        setLoading(true);
+      }, 500);
 
     router.events.on("routeChangeError", handleRouteChangeError);
     router.events.on("routeChangeStart", handleRouteChangeStart);
