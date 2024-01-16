@@ -25,8 +25,8 @@ export default function TemplatesBoxes({
     item?.category_name === "Trending" ||
     item?.category_name === "Invitation";
   const containerId = `carousel-slide-container-${item.category_id}`;
-  const [showPrevButton, setShowPrevButton] = useState(true);
-  const [showNextButton, setShowNextButton] = useState(true);
+  const [showPrevButton, setShowPrevButton] = useState(false);
+  const [showNextButton, setShowNextButton] = useState(false);
 
   const handleScroll = (e: Event) => {
     const container = e.target as HTMLElement;

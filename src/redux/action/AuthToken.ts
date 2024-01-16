@@ -1,25 +1,5 @@
 import { decryptData, encryptData } from "@/src/aes-crypto";
 import Cookies from "js-cookie";
-import { useState, useEffect } from "react";
-
-export const tokenSet = (key: string, value: any) => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem(key, value);
-  }
-};
-
-export const tokenGet = (key: string) => {
-  const [tokenValue, setTokenValue] = useState<any>("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem(key);
-      setTokenValue(token);
-    }
-  }, []);
-
-  return tokenValue;
-};
 
 export const authCookiesSet = (value: any) => {
   const expirationDate = new Date();
@@ -42,6 +22,16 @@ export const userPremium = (value: any) => {
   Cookies.set("_pmf ", String(value), {
     domain: ".craftyartapp.com",
   });
+
+  Cookies.set("_pmf", String(value));
+};
+
+export const userPremiumGet = () => {
+  const rawValue = Cookies.get("_pmf");
+
+  const value = rawValue !== undefined && parseInt(rawValue, 10) === 1;
+
+  return value;
 };
 
 export function removeUnusedSessions(): void {

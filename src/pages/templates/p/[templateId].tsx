@@ -1,14 +1,11 @@
 import Icons from "@/src/assets";
 import { calculateHeight } from "@/src/commonFunction/calculateHeight";
+import { isPurchased } from "@/src/commonFunction/isPurchased";
 import { useScreenWidth } from "@/src/commonFunction/screenWidthHeight";
 import TemplateModal from "@/src/components/singleTemplate/TemplateModal";
 import { SingleTempType } from "@/src/interface/getSingleTempType";
 import { SearchTempType } from "@/src/interface/searchTemplateType";
-import {
-  authCookiesGet,
-  tokenGet,
-  tokenSet,
-} from "@/src/redux/action/AuthToken";
+import { authCookiesGet, userPremiumGet } from "@/src/redux/action/AuthToken";
 import { modalClosePath, tempId } from "@/src/redux/reducer/actionDataReducer";
 import { Box, Typography } from "@mui/material";
 import axios from "axios";
@@ -16,7 +13,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import * as React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 
 const CustomHead = dynamic(() => import("@/src/components/common/CustomHead"));
@@ -106,7 +103,6 @@ export default function templateId({ templateData, anotherData }: serverProps) {
     }
   }, []);
 
-  const userPremium = tokenGet("premium");
   const screenWidth = useScreenWidth();
   const [idName, setIdName] = React.useState<string>("");
   const [openModal, setOpenModal] = React.useState<boolean>(false);
@@ -115,6 +111,9 @@ export default function templateId({ templateData, anotherData }: serverProps) {
   const [showImage, setShowImage] = React.useState<string>("");
   const [imageLoaded, setImageLoaded] = React.useState(false);
   const [showPremiumBox, setShowPremiumBox] = React.useState<boolean>(false);
+  const purchaseItems = useSelector(
+    (state: any) => state.auth.setPurchaseItems
+  );
 
   const handleImageLoad = () => {
     setImageLoaded(true);
@@ -149,10 +148,6 @@ export default function templateId({ templateData, anotherData }: serverProps) {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
-
-  React.useEffect(() => {
-    tokenSet("navigate", ``);
   }, []);
 
   const handleScroll = (e: Event) => {
@@ -299,10 +294,6 @@ export default function templateId({ templateData, anotherData }: serverProps) {
                       "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
                   }}
                   onClick={() => {
-                    tokenSet(
-                      "navigate",
-                      `/templates/p/${templateData?.id_name}`
-                    );
                     router.push("/login");
                   }}
                 >
@@ -317,7 +308,14 @@ export default function templateId({ templateData, anotherData }: serverProps) {
                 <Box>
                   <button
                     onClick={() => {
-                      if (templateData?.is_premium && userPremium !== "true") {
+                      if (
+                        templateData?.is_premium &&
+                        !userPremiumGet() &&
+                        !isPurchased(purchaseItems, {
+                          id: templateData.string_id,
+                          type: 0,
+                        })
+                      ) {
                         setShowPremiumBox(true);
                       } else
                         window.open(
@@ -461,12 +459,6 @@ export default function templateId({ templateData, anotherData }: serverProps) {
         tempData={{
           id: templateData.string_id,
           type: 0,
-          usdAmount: templateData.usdAmount,
-          usdVal: templateData.usdVal,
-          inrAmount: templateData.inrAmount,
-          inrVal: templateData.inrVal,
-        }}
-        amountProps={{
           usdAmount: templateData.usdAmount,
           usdVal: templateData.usdVal,
           inrAmount: templateData.inrAmount,

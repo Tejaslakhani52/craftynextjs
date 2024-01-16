@@ -15,18 +15,6 @@ import { useRouter } from "next/router";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-// export async function getServerSideProps(context: any) {
-//   const cookiesString = context.req.headers.cookie || "";
-
-//   const sessionId = extractCookieValue(cookiesString, "_sdf");
-
-//   return {
-//     props: {
-//       sessionId: sessionId || null,
-//     },
-//   };
-// }
-
 export default function Index() {
   const screenWidth = useScreenWidth();
   const dispatch = useDispatch();
@@ -88,7 +76,7 @@ export default function Index() {
           dispatch(mainLoader(false));
         }, 100);
       }
-    }, 500);
+    }, 50);
 
     return () => clearTimeout(timeoutId);
   }, [token, screenWidth]);
@@ -109,7 +97,7 @@ export default function Index() {
     <div>
       {mainLoading && (
         <main className="main" style={{ zIndex: "555555555555555555555555" }}>
-          <span className="loader_span"></span>
+          <span className="loader"></span>
         </main>
       )}
     </div>

@@ -5,8 +5,8 @@ import {
   removeUnusedSessions,
   setSessionVal,
 } from "@/src/redux/action/AuthToken";
+import { setPurchaseItems } from "@/src/redux/reducer/AuthDataReducer";
 import { mainLoad } from "@/src/redux/reducer/actionDataReducer";
-import { setPurchaseItems } from "@/src/redux/reducer/templateDataReducer";
 import { Box, Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
@@ -75,7 +75,6 @@ export function RazorpayPage({ setOpen }: any) {
                     purDatas.push({ id: _.id, type: _.type });
                   });
                   dispatch(setPurchaseItems(purDatas));
-
                   removeUnusedSessions();
                   toast.success(res.msg);
                   setOpen(false);

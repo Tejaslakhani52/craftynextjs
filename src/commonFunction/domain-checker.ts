@@ -10,6 +10,7 @@ export function isFakeDomain(req: NextApiRequest) {
     "betaeditor.craftyartapp.com",
     "payment.craftyartapp.com",
     "localhost:3000",
+    "localhost:3895",
     "192.168.29.92:3000",
     "craftynextjs-al84sub.vercel.app",
     "craftynextjs-al84.vercel.app",

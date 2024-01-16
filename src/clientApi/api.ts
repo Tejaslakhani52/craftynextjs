@@ -7,8 +7,8 @@ const API_BASE_URL = `${process.env.NEXT_PUBLIC_NEXT_API_BASE_URL}`;
 const api = {
   getIp: async () => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/get/ip`);
-      const res = JSON.parse(decryptData(response?.data));
+      const response = await axios.get(`https://story.craftyartapp.com/get-ip`);
+      const res = response?.data;
       return res;
     } catch (error) {
       throw error;

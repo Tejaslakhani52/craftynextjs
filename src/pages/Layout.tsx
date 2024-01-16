@@ -5,16 +5,39 @@ import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import api from "../clientApi/api";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { saveCardData } from "../redux/reducer/AuthDataReducer";
+import axios from "axios";
 
 const FooterImport = dynamic(() => import("@/src/components/footer/Footer"));
 const HeaderImport = dynamic(() => import("@/src/components/header/Header"));
-
 const IndexImport = dynamic(() => import("@/src/private/Index"));
 const MobileBottomBarImport = dynamic(
   () => import("@/src/components/common/MobileBottomBar")
 );
 
+export async function getInitialProps(context: any) {
+  const cookiesString = context.req.headers.cookie || "";
+  const sessionId = extractCookieValue(cookiesString, "_sdf");
+
+  return {
+    props: {
+      sessionId: sessionId || null,
+    },
+  };
+}
+
+const extractCookieValue = (cookiesString: any, cookieName: any) => {
+  const cookieRegex = new RegExp(
+    `(?:(?:^|.*;\\s*)${cookieName}\\s*\\=\\s*([^;]*).*$)|^.*$`
+  );
+
+  const match = cookiesString.match(cookieRegex);
+  return match ? match[1] || null : null;
+};
+
 export default function Home(Props: any) {
+  const dispatch = useDispatch();
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [token, setToken] = useState<string | null>(null);
   const router = useRouter();
@@ -29,6 +52,10 @@ export default function Home(Props: any) {
       api.getCountryCode({ ip: res?.ip }).then((response: any) => {
         setCC(response?.countryCode);
       });
+    });
+
+    api.cardList().then((res) => {
+      dispatch(saveCardData(res?.data?.data));
     });
   }, []);
 

@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3895",
     "build": "next build",
+    "build-start": "next build && next start -p 3895 --hostname localhost",
     "export": "next build && next export",
-    "start": "next start",
+    "start": "next start -p 3895 --hostname localhost",
     "lint": "next lint",
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",

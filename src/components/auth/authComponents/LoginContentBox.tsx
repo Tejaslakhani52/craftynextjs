@@ -67,6 +67,12 @@ export default function LoginContentBox(props: any) {
       toast.error(error?.code.split("auth/")[1]);
     }
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSignIn();
+    }
+  };
   return (
     <div>
       <DialogTitle
@@ -121,6 +127,7 @@ export default function LoginContentBox(props: any) {
                 password: e.target.value,
               })
             }
+            onKeyDown={handleKeyDown}
           />
         </Box>
 

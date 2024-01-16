@@ -6,11 +6,7 @@ import { useScreenHeight } from "@/src/commonFunction/screenWidthHeight";
 import { RazorpayPage } from "@/src/components/payment/Razorpay";
 import Stripe from "@/src/components/payment/Stripe";
 import { PackageList } from "@/src/interface/currentPlane";
-import {
-  authCookiesGet,
-  setSessionVal,
-  tokenSet,
-} from "@/src/redux/action/AuthToken";
+import { authCookiesGet, setSessionVal } from "@/src/redux/action/AuthToken";
 import { Box, Button, Radio, Typography } from "@mui/material";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -160,12 +156,6 @@ export default function index() {
   useEffect(() => {
     setChoosePlan(priceShowData);
   }, [priceShowData]);
-
-  useEffect(() => {
-    if (uId) {
-      tokenSet("navigate", ``);
-    }
-  }, [uId]);
 
   return (
     <div className="">
@@ -506,7 +496,6 @@ export default function index() {
                   }}
                   className="bg_linear max-sm:w-full py-[10px] w-[80%] mb-4 px-[20px]  max-lg:mx-auto text-[14px] 2sm:text-[16px]  "
                   onClick={() => {
-                    tokenSet("navigate", `/plans`);
                     router.push("login");
                   }}
                 >

@@ -1,9 +1,6 @@
-import { tokenGet } from "@/src/redux/action/AuthToken";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { serverSideToken } from "../redux/reducer/AuthDataReducer";
 
 const CustomHead = dynamic(() => import("@/src/components/common/CustomHead"));
 const Dashboard = dynamic(
@@ -35,16 +32,7 @@ const extractCookieValue = (cookiesString: any, cookieName: any) => {
 
 export default function Home({ sessionId }: any) {
   const assetsUrl = process.env.NEXT_PUBLIC_ASSETS_URL;
-  const dispatch = useDispatch();
-  // dispatch(serverSideToken(sessionId));
   const router = useRouter();
-  const urlNavigate = tokenGet("navigate");
-
-  useEffect(() => {
-    if (urlNavigate !== null) {
-      router.push(urlNavigate);
-    }
-  }, [urlNavigate]);
 
   return (
     <main>

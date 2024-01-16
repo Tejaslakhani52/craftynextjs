@@ -17,49 +17,39 @@ interface TemplateData {
   inrVal: number;
 }
 
-interface AmountProps {
-  usdAmount: string;
-  usdVal: number;
-  inrAmount: string;
-  inrVal: number;
-}
-
 type PropsType = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   tempData: TemplateData;
-  amountProps: AmountProps;
 };
 
 export default function ShowPremiumDialog({
   open,
   setOpen,
   tempData,
-  amountProps,
 }: PropsType) {
+  console.log("tempData: ", tempData);
   const router = useRouter();
   const [countryCode, setCountryCode] = useState<string>("IN");
   const [openPaymentDialog, setOpenPaymentDialog] = useState<boolean>(false);
-  const [amount, setAmount] = useState<string>("");
   const [stripeTestPromise, setStripeTestPromise] = useState<string | any>(
     null
   );
+  const [amount, setAmount] = useState<string>("");
 
   useEffect(() => {
     if (tempData && open) {
-      const PUBLIC_KEY =
-        "pk_live_51M92RVSF3l7nabbsQXTnM8YdI33NTB7FGC32dhqnwWPECcQ4LddrwsxM68TgkS5munQ9VsVtpF4m7PqGRmkVQGzF00EfT8vVbj";
+      const PUBLIC_KEY = `${process.env.NEXT_PUBLIC_STRIPE_KEY}`;
       const valStripe = loadStripe(PUBLIC_KEY);
       setStripeTestPromise(valStripe);
 
       const countryCodeVal: string = getCC();
       setCountryCode(countryCodeVal);
-
-      const val =
-        getCC() === "IN" ? amountProps.inrAmount : amountProps.usdAmount;
-
-      setAmount(val);
     }
+
+    const val = getCC() === "IN" ? tempData.inrAmount : tempData.usdAmount;
+
+    setAmount(val);
   }, [open, tempData]);
 
   return (
@@ -73,8 +63,13 @@ export default function ShowPremiumDialog({
           <Typography variant="h2" className="font-medium text-[22px] mb-2">
             This template requires a subscription
           </Typography>
-          <Typography className="text-[#ABB2C7] text-[16px]">
-            Subscribe or purchase the template to use this template
+          <Typography className="text-[#ABB2C7] text-[16px] mt-4">
+            Subscribe or purchase the template for{" "}
+            <span className="font-semibold text-black opacity-70">
+              {" "}
+              {amount}
+            </span>{" "}
+            to use this template.
           </Typography>
 
           <Box className="mt-10 flex justify-end items-center">
@@ -103,27 +98,10 @@ export default function ShowPremiumDialog({
         <DialogModal
           open={openPaymentDialog}
           setOpen={setOpenPaymentDialog}
-          className="w-[100%] lg:w-[80%] xl:w-[1000px]"
+          className="w-[100%] sm:w-[500px]"
         >
           <Box className="flex max-md:flex-col rounded-[8px] bg-[#F4F7FE] overflow-hidden">
-            <Box className="md:w-[50%] p-[30px] bg-white">
-              <Typography variant="h2" className="font-medium text-[22px] mb-2">
-                Amount
-              </Typography>
-              <Typography className="text-[#ABB2C7] text-[14px]  sm:w-[80%] ">
-                Access all assets, templates, integrations and{" "}
-                <span className="font-[700]"> Premium support.</span>
-              </Typography>
-
-              <Box className="mt-[20px]"></Box>
-
-              <Box className="flex justify-between">
-                <Typography className="font-semibold">Due today</Typography>
-                <Typography className="font-semibold">{amount}</Typography>
-              </Box>
-            </Box>
-
-            <Box className="md:w-[50%] p-[30px] ">
+            <Box className="md:w-[100%] p-[30px] ">
               <Typography variant="h2" className="font-medium text-[22px] mb-5">
                 Finalize Payment
               </Typography>

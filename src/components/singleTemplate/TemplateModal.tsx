@@ -1,26 +1,22 @@
-import { decryptData } from "@/src/aes-crypto";
 import Icons from "@/src/assets";
+import api from "@/src/clientApi/api";
 import { calculateHeight } from "@/src/commonFunction/calculateHeight";
+import { isPurchased } from "@/src/commonFunction/isPurchased";
 import {
   useScreenHeight,
   useScreenWidth,
 } from "@/src/commonFunction/screenWidthHeight";
 import { SingleTempType } from "@/src/interface/getSingleTempType";
 import { DataType, SearchTempType } from "@/src/interface/searchTemplateType";
-import {
-  authCookiesGet,
-  tokenGet,
-  tokenSet,
-} from "@/src/redux/action/AuthToken";
+import { authCookiesGet, userPremiumGet } from "@/src/redux/action/AuthToken";
 import { Box, Skeleton, Typography } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
-import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import StackGrid from "react-stack-grid";
 import ShowPremiumDialog from "../templatePayment/ShowPremiumDialog";
-import api from "@/src/clientApi/api";
 
 interface PropType {
   image: string | any;
@@ -73,7 +69,6 @@ export default function TemplateModal({
 }: TemplateModalPropType) {
   const router = useRouter();
   const [token, setToken] = React.useState<any>();
-  const premium = tokenGet("premium");
   const screenWidth = useScreenWidth();
   const screenHeight = useScreenHeight();
   const [anotherData, setAnotherData] = React.useState<SearchTempType[] | any>(
@@ -84,6 +79,9 @@ export default function TemplateModal({
   const [anotherTempLoad, setAnotherTempLoad] = useState<boolean>(true);
   const [showImage, setShowImage] = useState<string>("");
   const [showPremiumBox, setShowPremiumBox] = useState<boolean>(false);
+  const purchaseItems = useSelector(
+    (state: any) => state.auth.setPurchaseItems
+  );
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
@@ -322,10 +320,6 @@ export default function TemplateModal({
                           "linear-gradient(266deg, #2EC6B8 43.07%, #32E4D4 131.91%)",
                       }}
                       onClick={() => {
-                        tokenSet(
-                          "navigate",
-                          `/templates/p/${template?.id_name}`
-                        );
                         router.push("/login");
                       }}
                     >
@@ -343,7 +337,14 @@ export default function TemplateModal({
                   <Box>
                     <button
                       onClick={() => {
-                        if (template?.is_premium && premium !== "true") {
+                        if (
+                          template?.is_premium &&
+                          !userPremiumGet() &&
+                          !isPurchased(purchaseItems, {
+                            id: template.string_id,
+                            type: 0,
+                          })
+                        ) {
                           setShowPremiumBox(true);
                         } else
                           window.open(
@@ -497,12 +498,6 @@ export default function TemplateModal({
           tempData={{
             id: template.string_id,
             type: 0,
-            usdAmount: template.usdAmount,
-            usdVal: template.usdVal,
-            inrAmount: template.inrAmount,
-            inrVal: template.inrVal,
-          }}
-          amountProps={{
             usdAmount: template.usdAmount,
             usdVal: template.usdVal,
             inrAmount: template.inrAmount,

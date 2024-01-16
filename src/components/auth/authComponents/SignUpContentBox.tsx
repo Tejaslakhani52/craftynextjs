@@ -125,6 +125,12 @@ export default function SignUpContentBox(props: any) {
       )
     );
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSubmission();
+    }
+  };
   return (
     <div>
       {emailDialogShow ? (
@@ -230,6 +236,7 @@ export default function SignUpContentBox(props: any) {
                     confirmPassword: e.target.value,
                   })
                 }
+                onKeyDown={handleKeyDown}
               />
             </Box>
 

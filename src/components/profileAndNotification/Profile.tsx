@@ -1,6 +1,6 @@
 import api from "@/src/clientApi/api";
 import { UserProfileType } from "@/src/interface/commonType";
-import { tokenSet, userPremium } from "@/src/redux/action/AuthToken";
+import { userPremium } from "@/src/redux/action/AuthToken";
 import { customerId, userData } from "@/src/redux/reducer/AuthDataReducer";
 import { openSidebar } from "@/src/redux/reducer/actionDataReducer";
 import { Box, Divider } from "@mui/material";
@@ -27,7 +27,6 @@ export default function Profile() {
     api
       .getUserData()
       .then(({ user, url }) => {
-        tokenSet("premium", user?.is_premium === 1 ? "true" : "false");
         userPremium(`${user?.is_premium}`);
         dispatch(userData(user));
         setImageBaseUrl(url);

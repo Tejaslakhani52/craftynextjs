@@ -1,4 +1,3 @@
-import { decryptData } from "@/src/aes-crypto";
 import api from "@/src/clientApi/api";
 import { useScreenWidth } from "@/src/commonFunction/screenWidthHeight";
 import ImageBox from "@/src/components/common/ImageBox";
@@ -117,7 +116,7 @@ export async function getServerSideProps(context: any) {
       },
     };
   } catch (error) {
-    console.error("Error in getStaticProps:", error);
+    // console.error("Error in getStaticProps:", error);
     return {
       notFound: true,
     };

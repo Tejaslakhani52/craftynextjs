@@ -20,7 +20,7 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
   const [openLogin, setOpenLogin] = useState<boolean>(false);
   const [openSignUp, setOpenSignUp] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState<any>("");
-  const [token, setToken] = React.useState<string | null>(null);
+  const [token, setToken] = React.useState<string | null>("default");
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
@@ -87,18 +87,18 @@ export default function Header({ sidebarOpen, setSidebarOpen }: any) {
 
           <MenuBox />
         </Box>
-        <Box
-          className="w-[40%] flex items-center justify-end gap-4 max-lg:w-[60%]"
-          onKeyPress={(e) => {
-            const trimmedValue = searchValue?.trim();
-            const modifiedValue = trimmedValue?.replace(/ /g, "-");
+        <Box className="w-[40%] flex items-center justify-end gap-4 max-lg:w-[60%]">
+          <Box
+            className="w-[80%] bg-[#F4F7FE] px-4 py-[9px] rounded-[6px] flex items-center gap-3 max-sm:hidden"
+            onKeyPress={(e) => {
+              const trimmedValue = searchValue?.trim();
+              const modifiedValue = trimmedValue?.replace(/ /g, "-");
 
-            if (e.key === "Enter") {
-              router.push(`/s/${modifiedValue}`);
-            }
-          }}
-        >
-          <Box className="w-[80%] bg-[#F4F7FE] px-4 py-[9px] rounded-[6px] flex items-center gap-3 max-sm:hidden">
+              if (e.key === "Enter") {
+                router.push(`/s/${modifiedValue}`);
+              }
+            }}
+          >
             <Box className="w-[16px] flex items-center">
               <Icons.searchIcon />
             </Box>

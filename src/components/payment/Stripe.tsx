@@ -1,5 +1,5 @@
-import { decryptData } from "@/src/aes-crypto";
 import Icons from "@/src/assets";
+import api from "@/src/clientApi/api";
 import { capitalizeFirstLetter } from "@/src/commonFunction/capitalizeFirstLetter";
 import { getCardIconSvg } from "@/src/commonFunction/getCardIcon";
 import { PaymentProps, PurchaseItemProps } from "@/src/interface/payment_props";
@@ -8,8 +8,11 @@ import {
   removeUnusedSessions,
   setSessionVal,
 } from "@/src/redux/action/AuthToken";
+import {
+  saveCardData,
+  setPurchaseItems,
+} from "@/src/redux/reducer/AuthDataReducer";
 import { mainLoad } from "@/src/redux/reducer/actionDataReducer";
-import { setPurchaseItems } from "@/src/redux/reducer/templateDataReducer";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import { Box, Button, Typography } from "@mui/material";
 import {
@@ -20,13 +23,11 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import DialogModal from "../common/DialogBox";
 import EditCard from "./components/EditCard";
-import api from "@/src/clientApi/api";
 
 export const inputStyle = {
   color: "black",
@@ -68,23 +69,23 @@ export default function Stripe({ countryCode, setOpen }: PropsType) {
   const dispatch = useDispatch();
   const stripe = useStripe();
   const elements = useElements();
-  const [saveCard, setSaveCard] = useState([]);
+  // const [saveCard, setSaveCard] = useState([]);
   const [selectedDefaultCard, setSelectedDefaultCard] = useState<any>({});
   const [addNewOpen, setAddNewOpen] = useState<boolean>(false);
   const [openEditCard, setOpenEditCard] = useState<boolean>(false);
   const [openDeleteCard, setOpenDeleteCard] = useState<boolean>(false);
   const userData = useSelector((state: any) => state.auth.userData);
+  const saveCard = useSelector((state: any) => state.auth.saveCardData);
 
   const getCard = () => {
     api.cardList().then((res) => {
-      setSaveCard(res?.data?.data);
-      setSelectedDefaultCard(res?.data?.data?.[0]);
+      dispatch(saveCardData(res?.data?.data));
     });
   };
 
   useEffect(() => {
-    getCard();
-  }, []);
+    setSelectedDefaultCard(saveCard?.[0]);
+  }, [saveCard]);
 
   useEffect(() => {
     if (!openEditCard) {
@@ -143,14 +144,15 @@ export default function Stripe({ countryCode, setOpen }: PropsType) {
             }
           })
           .catch((err) => {
-            console.error(err);
+            // console.error(err);
             toast.error("Payment failed");
             dispatch(mainLoad(false));
           });
       })
       .catch((err: any) => {
-        console.error(err);
+        // console.error(err);
         toast.error("Payment failed");
+        setAddNewOpen(false);
         dispatch(mainLoad(false));
       });
   };

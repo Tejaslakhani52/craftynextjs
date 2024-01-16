@@ -32,8 +32,8 @@ const DialogModal = (props: any) => {
           style={{
             maxHeight:
               screenWidth < 600
-                ? ` ${screenHeight}px`
-                : ` ${screenHeight - 50}px`,
+                ? `${screenHeight}px`
+                : `${screenHeight - 50}px`,
             overflow: "auto",
           }}
         >

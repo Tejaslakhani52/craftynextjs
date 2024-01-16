@@ -1,11 +1,7 @@
 import { decryptData } from "@/src/aes-crypto";
 import Icons from "@/src/assets";
 import { useScreenHeight } from "@/src/commonFunction/screenWidthHeight";
-import {
-  authCookiesGet,
-  tokenSet,
-  userPremium,
-} from "@/src/redux/action/AuthToken";
+import { authCookiesGet, userPremium } from "@/src/redux/action/AuthToken";
 import { Box, Typography } from "@mui/material";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -54,7 +50,6 @@ const Account: React.FC<AccountProps> = ({ defaultTab }) => {
     api
       .getUserData()
       .then(({ user, url }) => {
-        tokenSet("premium", user?.is_premium === 1 ? "true" : "false");
         userPremium(`${user?.is_premium}`);
         setImageBaseUrl(url);
         setUserProfile(user);
